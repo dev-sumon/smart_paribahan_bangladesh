@@ -28,6 +28,7 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('backend.layouts.master');
+        $data['pageSlug'] = 'dashboard';
+        return view('backend.dashboard.index', $data);
     }
 }
