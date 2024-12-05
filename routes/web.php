@@ -26,5 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::controller(HomeController::class)->prefix('home')->name('home.')->group(function () {
-    Route::get('dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
 });

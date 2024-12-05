@@ -17,9 +17,15 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('home.dashboard') }}" class="nav-link {{ $pageSlug == 'dashboard' ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>{{ __('Dashboard') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('home.dashboard') }}" class="nav-link {{ $pageSlug == 'admin' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>{{ __('Admin') }}</p>
             </a>
           </li>
         </ul>
