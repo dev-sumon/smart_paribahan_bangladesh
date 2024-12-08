@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('b.admin.create') }}" method="POST">
+                                <form action="{{ route('admin.create') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>

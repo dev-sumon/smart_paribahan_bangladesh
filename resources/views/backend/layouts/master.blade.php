@@ -34,28 +34,7 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-{{-- <div class="wrapper">
 
-  @include('backend.includes.top_nav')
-
-  @include('backend.includes.aside')
-
-  <div class="content-wrapper">
-    <div class="content-header">
-      @yield('content')
-    </div>
- 
-  </div>
-  @include('backend.includes.footer')
-</div> --}}
-
-
-
-
-<div class="wrapper">
-
-  
-@auth
 @include('backend.includes.top_nav')
 
 @include('backend.includes.aside')
@@ -64,13 +43,8 @@
   <div class="content-header">
     @yield('content')
   </div>
-
 </div>
 @include('backend.includes.footer')
-@endauth
- 
-
-</div>
 
 
 <!-- jQuery -->

@@ -15,15 +15,15 @@ class AdminController extends Controller
     {
         $this->middleware('admin');
     }
-    public function index():View
+    public function index(): View
     {
         return view('backend.admin.index');
     }
-    public function create():View
+    public function create(): View
     {
         return view('backend.admin.create');
     }
-    public function store(AdminRequest $request):RedirectResponse
+    public function store(AdminRequest $request): RedirectResponse
     {
 
         $this->authorize('create', Admin::class);
@@ -34,7 +34,6 @@ class AdminController extends Controller
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
         $save->save();
-
-        return redirect()->route('b.admin.index');
+        return redirect()->route('admin.index');
     }
 }

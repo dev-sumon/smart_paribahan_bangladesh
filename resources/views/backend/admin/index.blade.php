@@ -12,7 +12,7 @@
                             <h4>{{ __('Admin List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('b.admin.create') }}" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('admin.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
