@@ -28,7 +28,7 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $data['pageSlug'] = 'dashboard';
-        return view('backend.dashboard.index', $data);
+    
+        return view('home');
     }
 }

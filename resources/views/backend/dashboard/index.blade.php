@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 
 @section('title', 'Dashboard')
-
 @section('content')
 <div class="container-fluid">
     <div class="row mb-2">
