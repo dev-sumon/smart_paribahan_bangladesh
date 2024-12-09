@@ -11,7 +11,7 @@ class AdminRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,16 +32,16 @@ class AdminRequest extends FormRequest
     {
         return [
             'email' => 'required|email|unique:admins,email',
-            'password' => 'required|srting|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
         ];
     }
     protected function update(): array
     {
         return [
-            'email' => 'required|email|unique:admins,email' . $this->route('id'),
+            'email' => 'required|email|unique:admins,email,' .$this->route('id'),
             'password' => 'nullable|string|min:8|confirmed',
-            'password_confirmation' => 'nullable|srting|min:8',
+            'password_confirmation' => 'nullable|string|min:8',
         ];
     }
 }

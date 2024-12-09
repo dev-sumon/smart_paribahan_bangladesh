@@ -26,27 +26,31 @@
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
-                                            <th>{{ __('Updated At') }}</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th class="text-center">{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($admins as $key=>$admin )
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $admin->name }}</td>
+                                            <td>{{ $admin->email }}</td>
+                                            <td>{{ $admin->status }}</td>
+                                            {{-- <td>{{ $admin->create_at }}</td> --}}
+                                            <td>{{ $admin->created_at ? $admin->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+
+                                            <td>{{ $admin->created_user ? $admin->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="javascript::void(0)" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="javascript::void(0)" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="javascript::void(0)" data-id="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="javascript::void(0)" data-id="" class="btn btn-warning"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('admin.detalis', $admin->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('admin.update', $admin->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('admin.delete', $admin->id) }}" data-id="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="{{ route('admin.status.update', $admin->id) }}" data-id="" class="btn btn-warning"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
