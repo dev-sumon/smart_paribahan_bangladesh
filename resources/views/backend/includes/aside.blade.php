@@ -23,9 +23,15 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ route('admin.index') }}" class="nav-link {{ request()->is('admin*') ? 'active' : '' }}">
+            <a href="{{ route('admin.index') }}" class="nav-link {{ request()->is('admin.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-user-tie"></i>
               <p>{{ __('Admin') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('stand.index') }}" class="nav-link {{ request()->is('stand.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-location"></i>
+              <p>{{ __('Stand') }}</p>
             </a>
           </li>
         </ul>

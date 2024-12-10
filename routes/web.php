@@ -38,6 +38,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
 
     Route::controller(StandController::class)->prefix('stand')->name('stand.')->group(function(){
-        
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store','store')->name('store');
     });
 });

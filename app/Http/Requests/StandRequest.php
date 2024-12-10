@@ -22,7 +22,7 @@ class StandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name '=> 'required|string|min:3|max:50',
+            'name' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
         ]
         +
@@ -32,16 +32,16 @@ class StandRequest extends FormRequest
     {
         return [
             'description' => 'required|string|min:20|max:500',
-            'loaction' => 'required|string|min:3|max:250',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048'
+            'location' => 'required|string|min:3|max:250',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ];
     }
     protected function update(): array
     {
         return [
             'description' => 'nullable|string|min:20|max:500',
-            'loaction' => 'nullable|string|min:3|max:250',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048'
+            'location' => 'nullable|string|min:3|max:250',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ];
     }
 }
