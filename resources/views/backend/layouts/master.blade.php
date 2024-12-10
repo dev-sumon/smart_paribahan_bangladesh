@@ -77,5 +77,10 @@
 <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stack('link_script')
+<script src="{{ asset('backend/js/custom.js') }}"></script>
+@stack('script')
 </body>
 </html>
