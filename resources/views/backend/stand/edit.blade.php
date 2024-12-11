@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
                                         @if($stand->image)
-                                            <img src="{{ Storage::url($stand->image) }}" alt="{{ $stand->name }}" class="display-image" style="width: 100%; height: 300px; object-fit: cover;">
+                                            <img src="{{ Storage::url($stand->image) }}" alt="{{ $stand->name }}" class="display-image" style="width: 100%; height: auto; object-fit: cover;">
                                         @else
                                             <p>{{ __('No image available') }}</p>
                                         @endif

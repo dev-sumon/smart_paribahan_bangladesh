@@ -62,9 +62,17 @@ class StandController extends Controller
         $path = $image->storeAs("stands/", $filename, 'public');
         $update->image = $path;
 
-      
-
         $update->update();
+        return redirect()->route('stand.index');
+    }
+    public function status($id): RedirectResponse{
+        $stand = Stand::findOrFail($id);
+        if($stand->status == 1){
+            $stand->status = 0;
+        }else{
+            $stand->status = 1;
+        }
+        $stand->save();
         return redirect()->route('stand.index');
     }
 }
