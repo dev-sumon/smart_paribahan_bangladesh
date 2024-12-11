@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StandRequest;
 use App\Models\Stand;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
+use App\Http\Requests\StandRequest;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class StandController extends Controller
 {
@@ -23,9 +24,6 @@ class StandController extends Controller
     }
     public function store(StandRequest $request): RedirectResponse
     {
-
-
-
         $save = new Stand();
         $save->name = $request->name;
         $save->description = $request->description;
@@ -39,9 +37,34 @@ class StandController extends Controller
             $save->image = $path;
         }
 
-
         $save->save();
+        return redirect()->route('stand.index');
+    }
+    public function update($id):View
+    {
+        $data['stand'] = Stand::findOrFail($id);
+        return view('backend.stand.edit', $data);
+    }
+    public function update_store(StandRequest $request, $id):RedirectResponse
+    {
+        $update = Stand::findOrFail($id);
+        $update->name = $request->name;
+        $update->description = $request->description;
+        $update->location = $request->location;
+        $update->status = $request->status ?? 0;
 
+        if($request->hasFile('image'));
+            if($update->iamge && Storage::exists($update->image)){
+                Storage::delete($update->image);
+            }
+        $image = $request->file('image');
+        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs("stands/", $filename, 'public');
+        $update->image = $path;
+
+      
+
+        $update->update();
         return redirect()->route('stand.index');
     }
 }
