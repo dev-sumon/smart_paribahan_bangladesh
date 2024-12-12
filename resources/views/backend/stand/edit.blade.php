@@ -22,21 +22,21 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Admin Name" name="name" value="{{ old('name') ?? $stand->name }}">
+                                        <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') ?? $stand->name }}">
                                         @if($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter Admin Name" name="description" value="{{ old('description') ?? $stand->description }}">
+                                        <input type="text" class="form-control" id="description" placeholder="Enter Stand Description" name="description" value="{{ old('description') ?? $stand->description }}">
                                         @if($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="location">{{ __('Location') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="location" placeholder="Enter Admin Name" name="location" value="{{ old('location') ?? $stand->location }}">
+                                        <input type="text" class="form-control" id="location" placeholder="Enter Stand Location" name="location" value="{{ old('location') ?? $stand->location }}">
                                         @if($errors->has('location'))
                                             <div class="text-danger">{{ $errors->first('location') }}</div>
                                         @endif
@@ -48,7 +48,7 @@
                                         @else
                                             <p>{{ __('No image available') }}</p>
                                         @endif
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Admin Name" name="image">
+                                        <input type="file" class="form-control" id="image" placeholder="Enter Stand Image" name="image">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
