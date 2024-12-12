@@ -59,17 +59,17 @@ class AdminController extends Controller
         $update->save();
         return redirect()->route('admin.index');
     }
-    public function status($id){
+    public function status($id): RedirectResponse{
         $admin = Admin::findOrFail($id);
-        if($admin->status ==1){
-            $admin->status =0;
+        if($admin->status == 1){
+            $admin->status = 0;
         }else{
             $admin->status = 1;
         }
         $admin->save();
         return redirect()->route('admin.index');
     }
-    public function delete($id)
+    public function delete($id): RedirectResponse
     {
         $admin = Admin::findOrFail($id);
         $admin->delete();
@@ -77,7 +77,7 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index');
     }
-    public function detalis($id){
+    public function detalis($id): View{
         $data['admin'] = Admin::findOrFail($id);
         return view('backend.admin.show', $data);
     }
