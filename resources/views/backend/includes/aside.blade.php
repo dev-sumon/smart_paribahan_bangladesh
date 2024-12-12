@@ -34,6 +34,12 @@
               <p>{{ __('Stand') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('vehicle.index') }}" class="nav-link {{ request()->is('vehicle.*') ? 'active' : '' }}">
+              <i class="nav-icon fa-solid fa-car"></i>
+              <p>{{ __('Vehicle') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
