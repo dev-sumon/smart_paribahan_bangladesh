@@ -77,7 +77,7 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index');
     }
-    public function detalis($id){
+    public function detalis($id): View{
         $data['admin'] = Admin::findOrFail($id);
         return view('backend.admin.show', $data);
     }

@@ -75,4 +75,16 @@ class StandController extends Controller
         $stand->save();
         return redirect()->route('stand.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $stand = Stand::findOrFail($id);
+        $stand->delete();
+
+        return redirect()->route('stand.index');
+    }
+    public function detalis($id): View
+    {
+        $data['stand'] = Stand::findOrFail($id);
+        return view('backend.stand.show', $data);
+    }
 }

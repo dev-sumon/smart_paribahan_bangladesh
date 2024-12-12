@@ -46,9 +46,9 @@
                                             <td>{{ $stand->created_user ? $stand->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('stand.detalis', $stand->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('stand.update', $stand->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="javascript:void(0)" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="{{ route('stand.delete', $stand->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="{{ route('stand.status.update', $stand->id) }}" data-id="" class="btn {{$stand->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
