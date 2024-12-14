@@ -40,6 +40,12 @@
               <p>{{ __('Vehicle') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('faq.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-question"></i>
+              <p>{{ __('FAQ') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
