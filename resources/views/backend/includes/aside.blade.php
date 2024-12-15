@@ -29,6 +29,12 @@
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="{{ route('worker.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-nurse"></i>
+              <p>{{ __('Field Worker') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="{{ route('stand.index') }}" class="nav-link {{ request()->is('stand.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-location"></i>
               <p>{{ __('Stand') }}</p>
