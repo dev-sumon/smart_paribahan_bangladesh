@@ -99,4 +99,9 @@ class FieldWorkerController extends Controller
 
         return redirect()->route('worker.index');
     }
+    public function detalis($id): View
+    {
+        $data['worker'] = FieldWorker::findOrFail($id);
+        return view('backend.field_worker.show', $data);
+    }
 }

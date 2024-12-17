@@ -45,7 +45,7 @@
                                             <td>{{ $worker->created_by  }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('worker.detalis', $worker->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('worker.update', $worker->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="{{ route('worker.delete', $worker->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="{{ route('worker.status.update', $worker->id) }}" data-id="" class="btn {{ $worker->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>

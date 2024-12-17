@@ -78,5 +78,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::put('update/{id}', 'update_store')->name('update');
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 });
