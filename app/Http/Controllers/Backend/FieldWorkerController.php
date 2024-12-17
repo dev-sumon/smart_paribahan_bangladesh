@@ -92,4 +92,11 @@ class FieldWorkerController extends Controller
         $worker->save();
         return redirect()->route('worker.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $worker = FieldWorker::findOrFail($id);
+        $worker->delete();
+
+        return redirect()->route('worker.index');
+    }
 }
