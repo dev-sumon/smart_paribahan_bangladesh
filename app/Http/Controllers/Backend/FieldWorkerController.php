@@ -79,4 +79,17 @@ class FieldWorkerController extends Controller
         $update->save();
         return redirect()->route('worker.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $worker = FieldWorker::findOrFail($id);
+
+        if($worker->status == 1){
+            $worker->status = 0;
+        }else{
+            $worker->status = 1;
+        }
+    
+        $worker->save();
+        return redirect()->route('worker.index');
+    }
 }
