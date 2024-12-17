@@ -31,10 +31,10 @@ class FieldWorkRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'phone' => 'required|string|regex:/^(\+?[0-9]{1,3})?[-. (]?[0-9]{3}[-. )]?[0-9]{3}[-. ]?[0-9]{4}$/|max:15',
+            'phone' => 'required|string|max:15',
             'email' => 'required|email|unique:field_workers,email',
             'nid' => 'required|string|min:10|max:13',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg',
             'father_name' => 'required|max:20|string|min:3',
             'mother_name' => 'required|max:20|string|min:3',
             'address' => 'required|string|max:255',
@@ -45,10 +45,10 @@ class FieldWorkRequest extends FormRequest
     protected function update(): array
     {
         return [
-            'phone' => 'nullable|string|regex:/^(\+?[0-9]{1,3})?[-. (]?[0-9]{3}[-. )]?[0-9]{3}[-. ]?[0-9]{4}$/|max:15',
-            'email' => 'nullable|email|unique:field_workers,email',
+            'phone' => 'nullable|string|max:15',
+            'email' => 'required|email|unique:field_workers,email,' .$this->route('id'),
             'nid' => 'nullable|string|min:10|max:13',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg',
             'father_name' => 'nullable|max:20|string|min:3',
             'mother_name' => 'nullable|max:20|string|min:3',
             'address' => 'nullable|string|max:255',

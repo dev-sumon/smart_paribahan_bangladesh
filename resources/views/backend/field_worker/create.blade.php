@@ -12,13 +12,13 @@
                             <h4>{{ __('Create new Admin') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('worker.index') }}" class="btn btn-info">{{ __('back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('worker.store') }}" method="POST">
+                                <form action="{{ route('worker.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
