@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
+use App\Http\Controllers\Backend\NoticeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,6 +61,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
+
     Route::controller(FaqController::class)->prefix('faq')->name('faq.')->group(function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
@@ -70,6 +72,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
+
     Route::controller(FieldWorkerController::class)->prefix('worker')->name('worker.')->group( function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
@@ -79,5 +82,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+
+    Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group( function() {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
     });
 });

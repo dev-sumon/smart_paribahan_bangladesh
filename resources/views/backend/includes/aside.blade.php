@@ -52,6 +52,12 @@
               <p>{{ __('FAQ') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('notice.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-bell"></i>
+              <p>{{ __('Notice') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
