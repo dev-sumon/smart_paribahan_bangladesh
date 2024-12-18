@@ -33,16 +33,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach ($notices as $key=>$notice)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class=""></span></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $notice->title }}</td>
+                                            <td>{{ $notice->date }}</td>
+                                            <td>{{ $notice->category }}</td>
+                                            <td><a href="{{ asset('storage/' . $notice->file) }}" download>Download PDF</a></td>
+                                            <td><span class="">{{ $notice->status }}</span></td>
+                                            <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
@@ -52,7 +52,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

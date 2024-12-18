@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="" method="POST">
+                                <form action="{{ route('notice.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">{{ __('Title') }} <span class="text-danger">*</span></label>

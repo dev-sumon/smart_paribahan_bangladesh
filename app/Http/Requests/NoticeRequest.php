@@ -22,11 +22,12 @@ class NoticeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|min:50|max:250',
+            'title' => 'required|string|min:20|max:250',
             'status' => 'required|boolean',
             'date' => 'required|string|min:4|max:9',
             'category' => 'required|string|min:3|max:50',
-            'file' => 'required|string|mimes:pdf',
+            'file' => 'required|mimes:pdf',
+
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
