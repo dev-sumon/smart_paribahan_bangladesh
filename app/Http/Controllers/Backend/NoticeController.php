@@ -8,6 +8,7 @@ use App\Models\Notice;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
@@ -37,6 +38,34 @@ class NoticeController extends Controller
         }        
 
         $save->save();
+        return redirect()->route('notice.index');
+    }
+    public function update($id): View
+    {
+        $data['notice'] = Notice::findOrFail($id);
+        return view('backend.notice.edit', $data);
+    }
+    public function update_store(NoticeRequest $request, $id): RedirectResponse
+    {
+        $update = Notice::findOrFail($id);
+
+        $update->title = $request->title;
+        $update->date = $request->date;
+        $update->category = $request->category;
+        $update->status = $request->status ?? 0;
+
+
+        if ($request->hasFile('file')) {
+            if ($update->file && Storage::exists($update->file)) {
+                Storage::delete($update->file);
+            }
+    
+            $file = $request->file('file');
+            $filename = $request->name . time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs("notices/", $filename, 'public');
+            $update->file = $path;
+        }
+        $update->save();
         return redirect()->route('notice.index');
     }
 }
