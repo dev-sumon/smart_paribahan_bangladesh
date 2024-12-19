@@ -68,4 +68,15 @@ class NoticeController extends Controller
         $update->save();
         return redirect()->route('notice.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $notice = Notice::findOrFail($id);
+        if($notice->status == 1){
+            $notice->status = 0;
+        }else{
+            $notice->status = 1;
+        }
+        $notice->save();
+        return redirect()->route('notice.index');
+    }
 }

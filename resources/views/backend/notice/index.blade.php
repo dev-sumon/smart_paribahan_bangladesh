@@ -40,7 +40,7 @@
                                             <td>{{ $notice->date }}</td>
                                             <td>{{ $notice->category }}</td>
                                             <td><a href="{{ asset('storage/' . $notice->file) }}" download>Download PDF</a></td>
-                                            <td><span class="">{{ $notice->status }}</span></td>
+                                            <td><span class="{{$notice->statusBg()}}">{{ $notice->statusTitle() }}</span></td>
                                             <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -48,7 +48,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('notice.update', $notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" class="btn"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('notice.status.update', $notice->id) }}" class="btn {{$notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
