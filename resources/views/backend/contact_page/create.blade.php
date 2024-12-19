@@ -12,40 +12,47 @@
                             <h4>{{ __('Create New Contact') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('contact.index') }}" class="btn btn-info">{{ __('back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('notice.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">{{ __('Title') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="title" placeholder="Enter The Notice Title" name="title" value="{{ old('title') }}">
+                                        <input type="text" class="form-control" id="title" placeholder="Enter The Title" name="title" value="{{ old('title') }}">
                                         @if($errors->has('title'))
                                             <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="date" class="mt-3">{{ __('Date') }} <span class="text-danger">*</span></label>
-                                        <input type="text" name="date" value="{{ old('date') }}" class="form-control" placeholder="Enter The Date">
-                                        @if($errors->has('date'))
-                                            <div class="text-danger">{{ $errors->first('date') }}</div>
+                                        <label for="description" class="mt-3">{{ __('Description') }} <span class="text-danger">*</span></label>
+                                        <input type="text" name="description" value="{{ old('description') }}" class="form-control" placeholder="Enter The description">
+                                        @if($errors->has('description'))
+                                            <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="category" class="mt-3">{{ __('Category') }} <span class="text-danger">*</span></label>
-                                        <input type="text" name="category" value="{{ old('category') }}" class="form-control" placeholder="Enter The Category">
-                                        @if($errors->has('category'))
-                                            <div class="text-danger">{{ $errors->first('category') }}</div>
+                                        <label for="address" class="mt-3">{{ __('address') }} <span class="text-danger">*</span></label>
+                                        <input type="text" name="address" value="{{ old('address') }}" class="form-control" placeholder="Enter The address">
+                                        @if($errors->has('address'))
+                                            <div class="text-danger">{{ $errors->first('address') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="file" class="mt-3">{{ __('file') }} <span class="text-danger">*</span></label>
-                                        <input type="file" name="file" value="{{ old('file') }}" class="form-control" placeholder="Enter The File">
-                                        @if($errors->has('file'))
-                                            <div class="text-danger">{{ $errors->first('file') }}</div>
+                                        <label for="phone" class="mt-3">{{ __('Phone No.') }} <span class="text-danger">*</span></label>
+                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Your Phone">
+                                        @if($errors->has('phone'))
+                                            <div class="text-danger">{{ $errors->first('phone') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="mt-3">{{ __('Email') }} <span class="text-danger">*</span></label>
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Your Email">
+                                        @if($errors->has('email'))
+                                            <div class="text-danger">{{ $errors->first('email') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
