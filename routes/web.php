@@ -100,5 +100,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
     });
 });
