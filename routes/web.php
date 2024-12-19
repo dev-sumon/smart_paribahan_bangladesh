@@ -6,11 +6,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\StandController;
+use App\Http\Controllers\Backend\NoticeController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
-use App\Http\Controllers\Backend\NoticeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -93,5 +94,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+
+    Route::controller(ContactInfoController::class)->prefix('contact')->name('contact.')->group( function() {
+        Route::get('index', 'index')->name('index');
     });
 });

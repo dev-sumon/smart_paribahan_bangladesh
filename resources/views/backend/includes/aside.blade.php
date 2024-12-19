@@ -58,6 +58,12 @@
               <p>{{ __('Notice') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('contact.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-address-book"></i>
+              <p>{{ __('Contact Info') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

@@ -9,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h4>{{ __('Notice List') }}</h4>
+                            <h4>{{ __('Contact List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('notice.create') }}" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -33,26 +33,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($notices as $key=>$notice)
+                                        
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $notice->title }}</td>
-                                            <td>{{ $notice->date }}</td>
-                                            <td>{{ $notice->category }}</td>
-                                            <td><a href="{{ asset('storage/' . $notice->file) }}" download>Download PDF</a></td>
-                                            <td><span class="{{$notice->statusBg()}}">{{ $notice->statusTitle() }}</span></td>
-                                            <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><span class=""></span></td>
+                                            <td></td>
+                                            <td></td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('notice.detalis', $notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('notice.update', $notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('notice.delete', $notice->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('notice.status.update', $notice->id) }}" class="btn {{$notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="" class="btn"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
