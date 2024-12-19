@@ -79,4 +79,11 @@ class NoticeController extends Controller
         $notice->save();
         return redirect()->route('notice.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $notice = Notice::findOrFail($id);
+        $notice->delete();
+
+        return redirect()->route('notice.index');
+    }
 }
