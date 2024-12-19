@@ -86,4 +86,9 @@ class NoticeController extends Controller
 
         return redirect()->route('notice.index');
     }
+    public function detalis($id): view
+    {
+        $data['notice'] = Notice::findOrFail($id);
+        return view('backend.notice.show', $data);
+    }
 }
