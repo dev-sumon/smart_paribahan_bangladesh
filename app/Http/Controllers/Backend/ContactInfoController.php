@@ -44,6 +44,26 @@ class ContactInfoController extends Controller
         $contact->save();
         return redirect()->route('contact.index');
     }
+    public function update($id): View
+    {
+        $data['contact'] = ContactInfo::findOrFail($id);
+        return view('backend.contact_page.edit', $data);
+    }
+    public function update_store(ContactInfoRequest $request, $id): RedirectResponse
+    {
+        $update = ContactInfo::findOrFail($id);
+
+        $update->title = $request->title;
+        $update->description = $request->description;
+        $update->address = $request->address;
+        $update->phone = $request->phone;
+        $update->email = $request->email;
+        $update->status = $request->status ?? 0;
+
+        $update->save();
+        return redirect()->route('contact.index');
+
+    }
     public function delete($id): RedirectResponse
     {
         $contact = ContactInfo::findOrFail($id);
