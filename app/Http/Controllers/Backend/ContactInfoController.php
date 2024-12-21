@@ -70,4 +70,9 @@ class ContactInfoController extends Controller
         $contact->delete();
         return redirect()->route('contact.index');
     }
+    public function detalis($id)
+    {
+        $data['contact'] = ContactInfo::findOrFail($id);
+        return view('backend.contact_page.show', $data);
+    }
 }

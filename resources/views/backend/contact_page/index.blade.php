@@ -24,7 +24,7 @@
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Title') }}</th>
                                             <th>{{ __('Description') }}</th>
-                                            <th>{{ __('Address') }}</th>
+                                            
                                             <th>{{ __('Phone') }}</th>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __('Status') }}</th>
@@ -39,17 +39,17 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $contact->title }}</td>
                                                 <td>{{ $contact->description }}</td>
-                                                <td>{{ $contact->address }}</td>
+                                                
                                                 <td>{{ $contact->phone }}</td>
                                                 <td>{{ $contact->email }}</td>
                                                 <td><span
                                                         class="{{ $contact->statusBg() }}">{{ $contact->statusTitle() }}</span>
                                                 </td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $contact->created_at ? $contact->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                                <td>{{ $contact->created_user ? $contact->created_user->name : 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
-                                                        <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('contact.detalis', $contact->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('contact.update', $contact->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="{{ route('contact.delete', $contact->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                         <a href="{{ route('contact.status.update', $contact->id) }}" class="btn {{ $contact->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
