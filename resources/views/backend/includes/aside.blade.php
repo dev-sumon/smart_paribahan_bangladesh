@@ -64,6 +64,12 @@
               <p>{{ __('Contact Info') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('blog.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-blog"></i>
+              <p>{{ __('Blog') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
