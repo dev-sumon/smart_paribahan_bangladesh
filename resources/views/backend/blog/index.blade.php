@@ -38,7 +38,7 @@
                                                 <td>{{ $blog->title }}</td>
                                                 <td>{{ $blog->description }}</td>
                                                 <td><img src="{{ asset('storage/'. $blog->image) }}" alt="{{ $blog->title }}" width="100"></td>
-                                                <td><span class="">{{ $blog->status }}</span></td>
+                                                <td><span class="{{ $blog->statusBg() }}">{{ $blog->statusTitle() }}</span></td>
                                                 <td>{{ $blog->created_at ? $blog->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                                 <td>{{ $blog->created_admin ? $blog->created_admin->name : 'system' }}</td>
                                                 <td class="text-center">
@@ -46,7 +46,7 @@
                                                         <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('blog.update', $blog->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="" data-id="" class="btn"><i class="fa-solid fa-power-off"></i></a>
+                                                        <a href="{{ route('blog.status.update', $blog->id) }}" data-id="" class="btn {{ $blog->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

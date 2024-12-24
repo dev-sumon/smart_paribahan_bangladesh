@@ -62,4 +62,15 @@ class BlogController extends Controller
         $update->save();
         return redirect()->route('blog.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $blog = Blog::findOrFail($id);
+        if($blog->status == 1){
+            $blog->status = 0;
+        }else{
+            $blog->status = 1;
+        }
+        $blog->save();
+        return redirect()->route('blog.index');
+    }
 }
