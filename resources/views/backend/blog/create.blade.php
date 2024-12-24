@@ -12,13 +12,13 @@
                             <h4>{{ __('Create new Vehicle') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('blog.index') }}" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('blog.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">{{ __('Title') }} <span class="text-danger">*</span></label>
@@ -35,8 +35,8 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">{{ __('Thumbnail Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Admin Name" name="image" value="{{ old('image') }}">
+                                        <label for="image">{{ __('Blog image') }} <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter Admin Name" name="image" value="{{ old('image') }}">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
