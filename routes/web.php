@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
+use App\Http\Controllers\Backend\BlogController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -99,6 +100,16 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::controller(ContactInfoController::class)->prefix('contact')->name('contact.')->group( function() {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(BlogController::class)->prefix('blog')->name('blog.')->group( function(){
+        Route::get('index','index')->name('index');
+        Route::get('create','create')->name('create');
         Route::post('store', 'store')->name('store');
         Route::get('update/{id}', 'update')->name('update');
         Route::put('update/{id}', 'update_store')->name('update');
