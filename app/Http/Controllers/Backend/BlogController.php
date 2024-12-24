@@ -80,4 +80,9 @@ class BlogController extends Controller
 
         return redirect()->route('blog.index');
     }
+    public function detalis($id): View
+    {
+        $data['blog'] = Blog::findOrFail($id);
+        return view('backend.blog.show', $data);
+    }
 }

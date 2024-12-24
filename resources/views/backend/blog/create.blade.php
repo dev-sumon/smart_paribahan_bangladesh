@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" id="image" placeholder="Enter The Blog Image" name="image" value="{{ old('image') }}">
+                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter The Blog Image" name="image" value="{{ old('image') }}">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
