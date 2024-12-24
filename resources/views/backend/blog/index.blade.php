@@ -32,15 +32,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       @foreach ($blogs as $key=>$blog )
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><img src="" alt="" width="100"></td>
-                                                <td><span class=""></span></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $blog->title }}</td>
+                                                <td>{{ $blog->description }}</td>
+                                                {{-- <td><img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}" width="100"></td> --}}
+                                                <td><img src="{{ asset('storage/'. $blog->image) }}" alt="{{ $blog->title }}" width="100"></td>
+                                                <td><span class="">{{ $blog->status }}</span></td>
+                                                <td>{{ $blog->created_at ? $blog->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                                <td>{{ $blog->created_admin ? $blog->created_admin->name : 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
@@ -50,7 +51,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                        
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
