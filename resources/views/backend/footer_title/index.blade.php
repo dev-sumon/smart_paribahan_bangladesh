@@ -12,7 +12,7 @@
                             <h4>{{ __('Title List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('FooterTitle.create') }}" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('footerTitle.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -39,10 +39,10 @@
                                             <td>{{ $title->created_user ? $title->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('FooterTitle.detalis', $title->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('FooterTitle.update', $title->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('FooterTitle.delete', $title->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('FooterTitle.satus.update', $title->id) }}" class="btn {{ $title->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('footerTitle.detalis', $title->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('footerTitle.update', $title->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('footerTitle.delete', $title->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="{{ route('footerTitle.satus.update', $title->id) }}" class="btn {{ $title->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
+use App\Http\Controllers\Backend\FooterController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -118,7 +119,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(FooterTitleController::class)->prefix('FooterTitle')->name('FooterTitle.')->group(function(){
+    Route::controller(FooterTitleController::class)->prefix('footerTitle')->name('footerTitle.')->group(function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -127,5 +128,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('ststus/{id}', 'status')->name('satus.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(FooterController::class)->prefix('footer')->name('footer.')->group( function(){
+        Route::get('index', 'index')->name('index');
     });
 });

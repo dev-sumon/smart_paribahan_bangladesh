@@ -28,7 +28,7 @@ class FooterTitleController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
-        return redirect()->route('FooterTitle.index');
+        return redirect()->route('footerTitle.index');
     }
     public function update($id): View
     {
@@ -43,7 +43,7 @@ class FooterTitleController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
-        return redirect()->route('FooterTitle.index');
+        return redirect()->route('footerTitle.index');
     }
     public function status($id): RedirectResponse
     {
@@ -56,14 +56,14 @@ class FooterTitleController extends Controller
 
         $title->save();
 
-        return redirect()->route('FooterTitle.index');
+        return redirect()->route('footerTitle.index');
     }
     public function delete($id): RedirectResponse
     {
         $title = FooterTitle::findOrFail($id);
         $title->delete();
 
-        return redirect()->route('FooterTitle.index');
+        return redirect()->route('footerTitle.index');
     }
     public function detalis($id): View
     {
