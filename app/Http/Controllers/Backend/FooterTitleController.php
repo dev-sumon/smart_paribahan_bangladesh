@@ -45,4 +45,17 @@ class FooterTitleController extends Controller
         $update->save();
         return redirect()->route('FooterTitle.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $title = FooterTitle::findOrFail($id);
+        if($title->status == 1){
+            $title->status = 0;
+        }else{
+            $title->status = 1;
+        }
+        
+        $title->save();
+
+        return redirect()->route('FooterTitle.index');
+    }
 }
