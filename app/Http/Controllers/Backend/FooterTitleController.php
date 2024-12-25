@@ -30,4 +30,19 @@ class FooterTitleController extends Controller
         $save->save();
         return redirect()->route('FooterTitle.index');
     }
+    public function update($id): View
+    {
+        $data['title'] = FooterTitle::findOrFail($id);
+        return view('backend.footer_title.edit', $data);
+    }
+    public function update_store(FooterTitleRequest $request, $id): RedirectResponse
+    {
+        $update = FooterTitle::findOrFail($id);
+
+        $update->title = $request->title;
+        $update->status = $request->status ?? 0;
+
+        $update->save();
+        return redirect()->route('FooterTitle.index');
+    }
 }
