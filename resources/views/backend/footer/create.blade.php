@@ -49,7 +49,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="goole_play">{{ __('Goole Play') }} <span class="text-danger">*</span></label>
+                                        <label for="goole_play">{{ __('Google Play') }} <span class="text-danger">*</span></label>
                                         <input type="file" class="form-control h-auto" id="goole_play" placeholder="Enter Google Play Image" name="goole_play" value="{{ old('goole_play') }}">
                                         @if($errors->has('goole_play'))
                                             <div class="text-danger">{{ $errors->first('goole_play') }}</div>

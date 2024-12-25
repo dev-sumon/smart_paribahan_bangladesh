@@ -35,7 +35,6 @@
                                     <tbody>
                                         @foreach ($footers as $key=>$footer)
                                         <tr>
-                                            
                                             <td>{{ $loop->iteration }}</td>
                                             <td><img src="{{ asset('storage/' . $footer->logo) }}" alt="Logo" width="100"></td>
                                             <td>{{ $footer->description }}</td>
@@ -47,12 +46,11 @@
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('footer.update', $footer->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
-                                           
                                         </tr>
                                         @endforeach
                                     </tbody>
