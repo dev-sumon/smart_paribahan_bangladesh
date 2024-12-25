@@ -70,6 +70,12 @@
               <p>{{ __('Blog') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('FooterTitle.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-heading"></i>
+              <p>{{ __('Footer Title') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
