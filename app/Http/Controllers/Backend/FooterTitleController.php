@@ -65,4 +65,9 @@ class FooterTitleController extends Controller
 
         return redirect()->route('FooterTitle.index');
     }
+    public function detalis($id): View
+    {
+        $data['title'] = FooterTitle::findOrFail($id);
+        return view('backend.footer_title.show', $data);
+    }
 }

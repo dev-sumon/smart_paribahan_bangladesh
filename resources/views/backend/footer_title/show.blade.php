@@ -9,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h1 class="float-start">{{ __('FAQ Detalis') }}</h1>
+                            <h1 class="float-start">{{ __('Title Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('faq.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('FooterTitle.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -21,29 +21,24 @@
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
                                         <tr>
-                                            <th>{{ __('Question') }}</th>
+                                            <th>{{ __('Title') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $faq->question }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>{{ __('Answer') }}</th>
-                                            <th>{{ __(':') }}</th>
-                                            <td> {{ $faq->answer }}</td>
+                                            <td>{{ $title->title }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><span class="{{ $faq->statusBg() }}">{{ $faq->statusTitle() }}</span></td>
+                                            <td><span class="{{ $title->statusBg() }}">{{ $title->statusTitle() }}</span></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $faq->created_at }}</td>
+                                            <td> {{ $title->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created By') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $faq->created_by }}</td>
+                                            <td> {{ $title->created_by ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

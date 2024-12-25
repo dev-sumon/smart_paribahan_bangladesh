@@ -126,5 +126,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::post('update/{id}', 'update_store')->name('update');
         Route::get('ststus/{id}', 'status')->name('satus.update');
         Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 });
