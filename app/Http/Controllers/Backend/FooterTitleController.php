@@ -53,8 +53,15 @@ class FooterTitleController extends Controller
         }else{
             $title->status = 1;
         }
-        
+
         $title->save();
+
+        return redirect()->route('FooterTitle.index');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $title = FooterTitle::findOrFail($id);
+        $title->delete();
 
         return redirect()->route('FooterTitle.index');
     }
