@@ -112,4 +112,16 @@ class FooterController extends Controller
         $update->save();
         return redirect()->route('footer.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $footer = Footer::findOrFail($id);
+        if($footer->status == 1){
+            $footer->status = 0;
+        }else{
+            $footer->status = 1;
+        }
+
+        $footer->save();
+        return redirect()->route('footer.index');
+    }
 }
