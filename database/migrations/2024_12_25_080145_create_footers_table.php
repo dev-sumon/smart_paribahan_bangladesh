@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('description');
             $table->string('phone');
             $table->string('email');
-            $table->string('goole_play');
-            $table->string('app_store');
-            $table->string('status');
+            $table->string('goole_play')->nullable();
+            $table->string('app_store')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

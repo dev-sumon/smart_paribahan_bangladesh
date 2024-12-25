@@ -12,7 +12,7 @@
                             <h4>{{ __('Footer List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('footer.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -33,15 +33,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($footers as $key=>$footer)
                                         <tr>
-                                            <td><img src="" alt="" width="100"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class=""></span></td>
-                                            <td></td>
-                                            <td></td>
+                                            
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td><img src="{{ asset('storage/' . $footer->logo) }}" alt="Logo" width="100"></td>
+                                            <td>{{ $footer->description }}</td>
+                                            <td>{{ $footer->phone }}</td>
+                                            <td>{{ $footer->email }}</td>
+                                            <td><span class="">{{ $footer->status }}</span></td>
+                                            <td>{{ $footer->created_at ? $footer->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $footer->created_user ? $footer->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
@@ -50,7 +52,9 @@
                                                     <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
+                                           
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

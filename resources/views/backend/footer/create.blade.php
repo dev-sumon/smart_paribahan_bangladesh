@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Create new Stand') }}</h4>
+                            <h4>{{ __('Create new Footer') }}</h4>
                         </span>
                         <span class="float-right">
                             <a href="" class="btn btn-info">{{ __('back') }}</a>
@@ -18,34 +18,48 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('footer.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') }}">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        <label for="logo">{{ __('Footer Logo') }} <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control h-auto" id="logo" placeholder="Enter Stand Logo" name="logo" value="{{ old('logo') }}">
+                                        @if($errors->has('logo'))
+                                            <div class="text-danger">{{ $errors->first('logo') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter Stand Description" name="description" value="{{ old('description') }}">
+                                        <input type="text" class="form-control" id="description" placeholder="Enter Footer Description" name="description" value="{{ old('description') }}">
                                         @if($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="location">{{ __('Location') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="location" placeholder="Enter Stand Location" name="location" value="{{ old('location') }}">
-                                        @if($errors->has('location'))
-                                            <div class="text-danger">{{ $errors->first('location') }}</div>
+                                        <label for="phone">{{ __('Phone') }} <span class="text-danger">*</span></label>
+                                        <input type="tell" class="form-control" id="phone" placeholder="Enter Footer Phone" name="phone" value="{{ old('phone') }}">
+                                        @if($errors->has('phone'))
+                                            <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Stand Image" name="image" value="{{ old('image') }}">
-                                        @if($errors->has('image'))
-                                            <div class="text-danger">{{ $errors->first('image') }}</div>
+                                        <label for="email">{{ __('Email') }} <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" value="{{ old('email') }}">
+                                        @if($errors->has('email'))
+                                            <div class="text-danger">{{ $errors->first('email') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goole_play">{{ __('Goole Play') }} <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control h-auto" id="goole_play" placeholder="Enter Google Play Image" name="goole_play" value="{{ old('goole_play') }}">
+                                        @if($errors->has('goole_play'))
+                                            <div class="text-danger">{{ $errors->first('goole_play') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="app_store">{{ __('App Store') }} <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control h-auto" id="app_store" placeholder="Enter App Store Image" name="app_store" value="{{ old('app_store') }}">
+                                        @if($errors->has('app_store'))
+                                            <div class="text-danger">{{ $errors->first('app_store') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
