@@ -124,4 +124,11 @@ class FooterController extends Controller
         $footer->save();
         return redirect()->route('footer.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $footer = Footer::findOrFail($id);
+        $footer->delete();
+
+        return redirect()->route('footer.index');
+    }
 }
