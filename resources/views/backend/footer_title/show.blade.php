@@ -12,7 +12,7 @@
                             <h1 class="float-start">{{ __('Title Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('FooterTitle.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('footerTitle.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">

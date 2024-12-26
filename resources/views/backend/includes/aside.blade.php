@@ -71,9 +71,15 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ route('FooterTitle.index') }}" class="nav-link">
+            <a href="{{ route('footerTitle.index') }}" class="nav-link">
               <i class="nav-icon fa-solid fa-heading"></i>
               <p>{{ __('Footer Title') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('footer.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-file-invoice"></i>
+              <p>{{ __('Footer') }}</p>
             </a>
           </li>
         </ul>

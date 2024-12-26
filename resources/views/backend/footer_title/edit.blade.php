@@ -12,13 +12,13 @@
                             <h4>{{ __('Create new Title') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('FooterTitle.index') }}" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('footerTitle.index') }}" class="btn btn-info">{{ __('back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('FooterTitle.update', $title->id) }}" method="POST">
+                                <form action="{{ route('footerTitle.update', $title->id) }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">{{ __('Title') }} <span class="text-danger">*</span></label>
