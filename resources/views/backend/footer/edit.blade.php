@@ -9,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Create new Footer') }}</h4>
+                            <h4>{{ __('Update Footer') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('footer.index') }}" class="btn btn-info">{{ __('back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">

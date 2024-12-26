@@ -9,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h1 class="float-start">{{ __('Stand Detalis') }}</h1>
+                            <h1 class="float-start">{{ __('Footer Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('stand.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('footer.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -21,40 +21,50 @@
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
                                         <tr>
-                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Logo') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->name }}</td>
+                                            <td><img src="{{ asset('storage/' . $footer->logo) }}" alt="" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Description') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->description }}</td>
+                                            <td>{{ $footer->description }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Location') }}</th>
+                                            <th>{{ __('Phone') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->location }}</td>
+                                            <td> {{ $footer->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Image') }}</th>
+                                            <th>{{ __('Email') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->name }}" width="100"></td>
+                                            <td> {{ $footer->email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Google Play') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td><img src="{{ asset('storage/' . $footer->goole_play) }}" alt="" width="100"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('App Store') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td><img src="{{ asset('storage/' . $footer->app_store) }}" alt="" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><span class="{{ $stand->statusBg() }}">{{ $stand->statusTitle() }}</span>
+                                            <td><span class="{{ $footer->statusBg() }}">{{ $footer->statusTitle() }}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->created_at }}</td>
+                                            <td> {{ $footer->created_at }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created B') }}y</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $footer->created_by ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

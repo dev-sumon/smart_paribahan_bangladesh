@@ -131,4 +131,9 @@ class FooterController extends Controller
 
         return redirect()->route('footer.index');
     }
+    public function detalis($id)
+    {
+        $data['footer'] = Footer::findOrFail($id);
+        return view('backend.footer.show', $data);
+    }
 }
