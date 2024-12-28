@@ -82,6 +82,12 @@
               <p>{{ __('Footer') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('owner.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-circle-user"></i>
+              <p>{{ __('Owner') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

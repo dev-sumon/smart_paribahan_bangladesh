@@ -17,7 +17,7 @@ use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
-
+use App\Http\Controllers\Backend\OwnerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -163,6 +163,12 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(OwnerController::class)->prefix('owner')->name('owner.')->group( function(){
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
     });
     
 });
