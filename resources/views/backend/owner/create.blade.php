@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Create new Vehicle') }}</h4>
+                            <h4>{{ __('Create New Owner') }}</h4>
                         </span>
                         <span class="float-right">
                             <a href="" class="btn btn-info">{{ __('Back') }}</a>

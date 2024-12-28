@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\OwnerRequest;
 use App\Models\Owner;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\OwnerRequest;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class OwnerController extends Controller
 {
@@ -46,5 +47,33 @@ class OwnerController extends Controller
     {
         $data['owner'] = Owner::findOrFail($id);
         return view('backend.owner.edit', $data);
+    }
+    public function update_store(OwnerRequest $request, $id): RedirectResponse
+    {
+        $update = Owner::findOrFail($id);
+
+        $update->name = $request->name;
+        $update->description = $request->description;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->license_number = $request->license_number;
+        $update->blood_group = $request->blood_group;
+        $update->status = $request->status ?? 0;
+
+        if($request->password){
+            $update->password = $request->password;
+        }
+
+        if($request->hasFile('image'));
+            if($update->iamge && Storage::exists($update->image)){
+                Storage::delete($update->image);
+            }
+        $image = $request->file('image');
+        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs("owner/", $filename, 'public');
+        $update->image = $path;
+
+        $update->save();
+        return redirect()->route('owner.index');
     }
 }

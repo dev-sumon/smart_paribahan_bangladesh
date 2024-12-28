@@ -9,17 +9,18 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Create new Vehicle') }}</h4>
+                            <h4>{{ __('Update Owner') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('owner.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('owner.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('owner.update', $owner->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="name" placeholder="Enter The Owner Name" name="name" value="{{ old('name') ?? $owner->name }}">

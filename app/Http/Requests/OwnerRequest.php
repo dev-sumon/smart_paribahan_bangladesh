@@ -44,8 +44,8 @@ class OwnerRequest extends FormRequest
     protected function update(): array
     {
         return [
-            'email' => 'required|email|unique:owners,email,' .$this->route('id'),
-            'phone' => 'required|string|min:11|max:11|unique:owners,phone' .$this->route('id'),
+            'email' => 'required|email|unique:owners,email,' . $this->route('id'),
+            'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
             'license_number' => 'required|string|min:10|max:12',
             'blood_group' => 'nullable|string|min:2|max:3',
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
