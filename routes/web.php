@@ -49,7 +49,7 @@ Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')-
 });
 
 
-Route::get('/owner/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
+// Route::get('/owner/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 
 
 
@@ -164,4 +164,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
+    
+});
+
+Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
+    Route::get('/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 });
