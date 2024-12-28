@@ -34,10 +34,10 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">{{ __('Admin Login') }}</div>
+                            <div class="card-header">{{ __('Owner Login') }}</div>
             
                             <div class="card-body">
-                                <form method="POST" action="{{ route('admin.login') }}">
+                                <form method="POST" action="{{ route('owner.login') }}">
                                     @csrf
             
                                     <div class="row mb-3">

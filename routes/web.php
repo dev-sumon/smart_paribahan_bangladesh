@@ -7,14 +7,17 @@ use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\StandController;
+use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\NoticeController;
-use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
+use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
-use App\Http\Controllers\Backend\FooterController;
+use App\Http\Controllers\Backend\OwnerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,8 +33,30 @@ Route::controller(AdminLoginController::class)->prefix('admin')->name('admin.')-
     Route::post('/logout', 'logout')->name('logout');
 });
 
+
+
+
+
+
+
+// Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')->group( function(){
+//     Route::get('/login', 'ownerLogin')->name('login');
+// });
+Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')->group( function(){
+    Route::get('/login', 'ownerLogin')->name('login');
+    Route::post('/login', 'ownerLoginCheck')->name('login');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
+
+// Route::get('/owner/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
+
+
+
+
+
 Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [BackendDashboardController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function () {
         Route::get('index', 'index')->name('index');
@@ -139,4 +164,19 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
+    Route::controller(OwnerController::class)->prefix('owner')->name('owner.')->group( function(){
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    
+});
+
+Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
+    Route::get('/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 });
