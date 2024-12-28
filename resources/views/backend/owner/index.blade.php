@@ -40,7 +40,7 @@
                                             <td><img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" width="100"></td>
                                             <td>{{ $owner->email }}</td>
                                             <td>{{ $owner->license_number }}</td>
-                                            <td><span class="">{{ $owner->status }}</span></td>
+                                            <td><span class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span></td>
                                             <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $owner->created_user ? $owner->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -48,7 +48,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('owner.update', $owner->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('owner.status.update', $owner->id) }}" class="btn {{ $owner->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

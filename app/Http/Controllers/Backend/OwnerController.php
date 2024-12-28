@@ -76,4 +76,15 @@ class OwnerController extends Controller
         $update->save();
         return redirect()->route('owner.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $owner = Owner::findOrFail($id);
+        if($owner->status == 1){
+            $owner->status = 0;
+        }else{
+            $owner->status = 1;
+        }
+        $owner->save();
+        return redirect()->route('owner.index');
+    }
 }
