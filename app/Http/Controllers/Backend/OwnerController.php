@@ -94,4 +94,9 @@ class OwnerController extends Controller
 
         return redirect()->route('owner.index');
     }
+    public function detalis($id): View
+    {
+        $data['owner'] = Owner::findOrFail($id);
+        return view('backend.owner.show', $data);
+    }
 }
