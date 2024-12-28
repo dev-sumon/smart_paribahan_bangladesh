@@ -87,4 +87,11 @@ class OwnerController extends Controller
         $owner->save();
         return redirect()->route('owner.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $owner = Owner::findOrFail($id);
+        $owner->delete();
+
+        return redirect()->route('owner.index');
+    }
 }
