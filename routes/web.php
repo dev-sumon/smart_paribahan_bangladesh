@@ -56,7 +56,7 @@ Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+// Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
 
 
 
@@ -182,13 +182,14 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
     
+    // Route::controller()
 });
 
 Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
     Route::get('/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 });
  
-// Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
-//     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
-// });
+Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+});
 

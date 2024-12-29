@@ -13,7 +13,7 @@ class Driver extends Authenticatable
     use HasFactory, Notifiable;
 
 
-    protected $gaurd = 'vehicles_driver';
+    protected $gaurd = 'driver';
 
     /**
      * The attributes that are mass assignable.
