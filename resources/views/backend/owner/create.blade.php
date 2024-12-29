@@ -12,7 +12,7 @@
                             <h4>{{ __('Create New Owner') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('owner.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
