@@ -51,6 +51,10 @@ return [
             'driver' => 'session',
             'provider' => 'owners'
         ],
+        'driver' => [
+            'driver' => 'session',
+            'provider' => 'drivers'
+        ],
     ],
 
     /*
@@ -82,6 +86,10 @@ return [
         'owners' => [
             'driver' => 'eloquent',
             'model' => env('OWNER_MODEL', App\Models\Owner::class),
+        ],
+        'drivers' => [
+            'driver' => 'eloquent',
+            'model' => env('DRIVER_MODEL', App\Models\Driver::class),
         ],
 
         // 'users' => [

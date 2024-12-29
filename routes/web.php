@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Backend\OwnerController;
+use App\Http\Controllers\Driver\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,8 +50,13 @@ Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')-
     Route::post('/logout', 'logout')->name('logout');
 });
 
+Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.')->group( function(){
+    Route::get('/login', 'driverLogin')->name('login');
+    Route::post('/login', 'driverLoginCheck')->name('login');
+    Route::post('/logout', 'logout')->name('logout');
+});
 
-// Route::get('/owner/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
 
 
 
@@ -180,3 +187,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
     Route::get('/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 });
+ 
+// Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
+//     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+// });
+
