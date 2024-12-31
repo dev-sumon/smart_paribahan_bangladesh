@@ -96,4 +96,11 @@ class DriverController extends Controller
         $driver->save();
         return redirect()->route('driver.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $driver = Driver::findOrFail($id);
+        $driver->delete();
+
+        return redirect()->route('driver.index');
+    }
 }
