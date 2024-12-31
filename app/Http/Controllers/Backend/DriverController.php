@@ -103,4 +103,9 @@ class DriverController extends Controller
 
         return redirect()->route('driver.index');
     }
+    public function detalis($id): View
+    {
+        $data['driver'] = Driver::findOrFail($id);
+        return view('backend.driver.show', $data);
+    }
 }
