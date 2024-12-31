@@ -44,7 +44,7 @@
                                             <td><img src="{{ asset('storage/' . $driver->image) }}" alt="{{ $driver->name }}" width="100"></td>
                                             <td>{{ $driver->email }}</td>
                                             <td>{{ $driver->driving_license }}</td>
-                                            <td><span class="">{{ $driver->status }}</span></td>
+                                            <td><span class="{{ $driver->statusBg() }}">{{ $driver->statusTitle() }}</span></td>
                                             <td>{{ $driver->created_at ? $driver->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $driver->created_user ? $driver->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -52,7 +52,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('driver.update', $driver->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('driver.status.update', $driver->id) }}" class="btn {{ $driver->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

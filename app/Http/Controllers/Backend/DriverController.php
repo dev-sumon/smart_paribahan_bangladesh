@@ -84,4 +84,16 @@ class DriverController extends Controller
         $update->save();
         return redirect()->route('driver.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $driver = Driver::findOrFail($id);
+        if($driver->status == 1){
+            $driver->status = 0;
+        }else{
+            $driver->status = 1;
+        }
+
+        $driver->save();
+        return redirect()->route('driver.index');
+    }
 }
