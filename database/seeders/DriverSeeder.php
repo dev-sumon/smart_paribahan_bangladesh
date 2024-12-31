@@ -21,6 +21,7 @@ class DriverSeeder extends Seeder
             'email' => 'driver@example.com',
             'phone' => '01772941135',
             'vehicles_license' => '111 BBC 2AC',
+            'driving_license' => '1234567890123',
             'blood_group' => 'O+',
             'password' => Hash::make('driver@example.com'),
             'status' => 1

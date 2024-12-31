@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('designation');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('vehicles_license');
+            $table->string('vehicles_license')->unique();
+            $table->string('driving_license')->unique();
             $table->string('blood_group');
             $table->string('image')->nullable();
             $table->string('password');
