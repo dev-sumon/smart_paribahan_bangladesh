@@ -12,7 +12,7 @@
                             <h4>{{ __('Driver List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('driver.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">

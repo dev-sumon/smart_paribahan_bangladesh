@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('vehicles_license')->unique();
             $table->string('driving_license')->unique();
-            $table->string('blood_group');
+            $table->string('blood_group')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('status');
             $table->string('password');
-            $table->string('status');
             $table->timestamps();
         });
     }

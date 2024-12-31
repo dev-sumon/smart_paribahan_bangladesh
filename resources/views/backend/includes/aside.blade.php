@@ -91,7 +91,6 @@
           <li class="nav-item menu-open">
             <a href="{{ route('driver.index') }}" class="nav-link">
               <i class="nav-icon fa-solid fa-dharmachakra"></i>
-              {{-- <i class="fa-solid fa-dharmachakra"></i> --}}
               <p>{{ __('Driver') }}</p>
             </a>
           </li>

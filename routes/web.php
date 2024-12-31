@@ -185,6 +185,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     
     Route::controller(DriverController::class)->prefix('driver')->name('driver.')->group( function(){
         Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
     });
 });
 
