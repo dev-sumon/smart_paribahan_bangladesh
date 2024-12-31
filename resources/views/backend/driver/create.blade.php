@@ -22,7 +22,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter The Owner Name" name="name" value="{{ old('name') }}">
+                                        <input type="text" class="form-control" id="name" placeholder="Enter The Driver Name" name="name" value="{{ old('name') }}">
                                         @if($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
@@ -43,14 +43,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="mt-3">{{ __('Email') }} <span class="text-danger">*</span></label>
-                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Owner Email">
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Driver Email">
                                         @if($errors->has('email'))
                                             <div class="text-danger">{{ $errors->first('email') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="mt-3">{{ __('Phone No.') }} <span class="text-danger">*</span></label>
-                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Owner Phone">
+                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Driver Phone">
                                         @if($errors->has('phone'))
                                             <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif

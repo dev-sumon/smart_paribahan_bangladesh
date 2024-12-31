@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Driver;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DriverRequest;
-use App\Models\Driver;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DriverController extends Controller
 {
@@ -44,6 +45,43 @@ class DriverController extends Controller
         }
 
         $save->save();
+        return redirect()->route('driver.index');
+    }
+    public function update($id): View
+    {
+        $data['driver'] = Driver::findOrFail($id);
+        return view('backend.driver.edit', $data);
+    }
+    public function update_store(DriverRequest $request, $id): RedirectResponse
+    {
+        $update = Driver::findOrFail($id);
+
+        
+
+        $update->name = $request->name;
+        $update->description = $request->description;
+        $update->designation = $request->designation;
+        $update->email = $request->email;
+        $update->phone = $request->phone;
+        $update->vehicles_license = $request->vehicles_license;
+        $update->driving_license = $request->driving_license;
+        $update->blood_group = $request->blood_group;
+        $update->status = $request->status ?? 0;
+
+        if($request->password){
+            $update->password = $request->password;
+        }
+
+        if($request->hasFile('image'));
+            if($update->iamge && Storage::exists($update->image)){
+                Storage::delete($update->image);
+            }
+        $image = $request->file('image');
+        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs("driver/", $filename, 'public');
+        $update->image = $path;
+
+        $update->save();
         return redirect()->route('driver.index');
     }
 }

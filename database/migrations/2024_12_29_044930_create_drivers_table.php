@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('driving_license')->unique();
             $table->string('blood_group')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status');
             $table->string('password');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
