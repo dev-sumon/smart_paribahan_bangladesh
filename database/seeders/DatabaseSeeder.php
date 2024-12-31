@@ -26,5 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             OwnerSeeder::class,
         ]);
+        $this->call([
+            DriverSeeder::class,
+        ]);
     }
 }

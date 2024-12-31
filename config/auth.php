@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Driver;
 use App\Models\Owner;
 
 return [
@@ -51,6 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'owners'
         ],
+        'driver' => [
+            'driver' => 'session',
+            'provider' => 'drivers'
+        ],
     ],
 
     /*
@@ -82,6 +87,10 @@ return [
         'owners' => [
             'driver' => 'eloquent',
             'model' => env('OWNER_MODEL', App\Models\Owner::class),
+        ],
+        'drivers' => [
+            'driver' => 'eloquent',
+            'model' => env('DRIVER_MODEL', App\Models\Driver::class),
         ],
 
         // 'users' => [
