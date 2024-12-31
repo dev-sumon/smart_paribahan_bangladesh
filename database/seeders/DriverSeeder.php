@@ -14,7 +14,7 @@ class DriverSeeder extends Seeder
      */
     public function run(): void
     {
-        Driver::created([
+        Driver::create([
             'name' => 'Test Driver',
             'description' => 'Hellow I am driver. our experience 5 year this profession.',
             'designation' => 'member',
