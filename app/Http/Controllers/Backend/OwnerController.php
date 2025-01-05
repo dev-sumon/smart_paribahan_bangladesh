@@ -28,7 +28,7 @@ class OwnerController extends Controller
         $save->description = $request->description;
         $save->email = $request->email;
         $save->phone = $request->phone;
-        $save->license_number = $request->license_number;
+        $save->vehicles_license = $request->vehicles_license;
         $save->blood_group = $request->blood_group;
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
@@ -56,7 +56,7 @@ class OwnerController extends Controller
         $update->description = $request->description;
         $update->email = $request->email;
         $update->phone = $request->phone;
-        $update->license_number = $request->license_number;
+        $update->vehicles_license = $request->vehicles_license;
         $update->blood_group = $request->blood_group;
         $update->status = $request->status ?? 0;
 

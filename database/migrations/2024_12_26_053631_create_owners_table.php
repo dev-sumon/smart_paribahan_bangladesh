@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('license_number');
+            $table->string('vehicles_license')->unique();
             $table->string('blood_group')->nullable();
             $table->string('image')->nullable();
             $table->string('password');

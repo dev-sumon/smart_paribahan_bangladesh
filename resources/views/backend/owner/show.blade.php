@@ -41,9 +41,9 @@
                                             <td> {{ $owner->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('License Number') }}</th>
+                                            <th>{{ __('Vehicles License') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->license_number }}</td>
+                                            <td> {{ $owner->vehicles_license }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Blood Group') }}</th>

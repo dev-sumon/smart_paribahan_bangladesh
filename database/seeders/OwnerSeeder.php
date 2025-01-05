@@ -19,7 +19,7 @@ class OwnerSeeder extends Seeder
             'description' => 'Even before the arrival',
             'email' => 'owner@example.com',
             'phone' => '01772941135',
-            'license_number' => 'P 688 CC',
+            'vehicles_license' => 'P 688 CC',
             'password' => Hash::make('owner@example.com'),
             'status' => 1
         ]);
