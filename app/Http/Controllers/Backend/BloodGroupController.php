@@ -11,9 +11,10 @@ use Illuminate\Http\Request;
 
 class BloodGroupController extends Controller
 {
-    public function index():View
+    public function index(): View
     {
-        return view('backend.blood_group.index');
+        $data['bloods'] = BloodGroup::latest()->get();
+        return view('backend.blood_group.index', $data);
     }
     public function create(): View
     {
@@ -27,6 +28,21 @@ class BloodGroupController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
+        return redirect()->route('blood.index');
+    }
+    public function update($id): View
+    {
+        $data['blood'] = BloodGroup::findOrFail($id);
+        return view('backend.blood_group.edit', $data);
+    }
+    public function update_store(BloodGroupRequest $request, $id): RedirectResponse
+    {
+        $update = BloodGroup::findOrFail($id);
+
+        $update->blood_group = $request->blood_group;
+        $update->status = $request->status ?? 0;
+
+        $update->save();
         return redirect()->route('blood.index');
     }
 }

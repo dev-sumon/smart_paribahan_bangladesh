@@ -12,7 +12,7 @@
                             <h4>{{ __('Blood Group Create') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('blood.index') }}" class="btn btn-info">{{ __('back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
