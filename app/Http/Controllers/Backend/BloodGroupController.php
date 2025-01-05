@@ -57,4 +57,11 @@ class BloodGroupController extends Controller
         $blood->save();
         return redirect()->route('blood.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $blood = BloodGroup::findOrFail($id);
+        $blood->delete();
+
+        return redirect()->route('blood.index');
+    }
 }
