@@ -64,4 +64,8 @@ class BloodGroupController extends Controller
 
         return redirect()->route('blood.index');
     }
+    public function detalis($id): View{
+        $data['blood'] = BloodGroup::findOrFail($id);
+        return view('backend.blood_group.show', $data);
+    }
 }

@@ -39,7 +39,7 @@
                                             <td>{{ $blood->created_user ? $blood->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('blood.detalis', $blood->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('blood.update', $blood->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="{{ route('blood.delete', $blood->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="{{ route('blood.status.update', $blood->id) }}" data-id="" class="btn {{ $blood->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
