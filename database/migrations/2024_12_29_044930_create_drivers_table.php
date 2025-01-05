@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('password');
             $table->boolean('status');
+            $table->unsignedBigInteger('owner_id')->nullable();
+            $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
