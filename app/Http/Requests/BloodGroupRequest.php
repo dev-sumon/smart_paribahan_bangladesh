@@ -11,7 +11,7 @@ class BloodGroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class BloodGroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'status'=>'required|boolean',
+        ]
+        +
+        ($this->isMethod('POST') ?  $this->store(): $this->update());
+    }
+    protected function store(): array
+    {
+        return [
+            'blood_group'=>'required|max:3|string|min:2|unique:blood_groups,blood_group',
+        ];
+    }
+    protected function update(): array
+    {
+        return [
+            'blood_group'=>'required|max:3|string|min:2|unique:blood_groups,blood_group,' . $this->route('id'),
         ];
     }
 }

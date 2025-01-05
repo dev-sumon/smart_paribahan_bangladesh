@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Admin Update') }}</h4>
+                            <h4>{{ __('Blood Group Create') }}</h4>
                         </span>
                         <span class="float-right">
                             <a href="" class="btn btn-info">{{ __('back') }}</a>
@@ -18,21 +18,20 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="" method="POST">
+                                <form action="{{ route('blood.store') }}" method="POST">
                                     @csrf
-                                    @method('PUT')
                                     <div class="form-group">
-                                        <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Admin Name" name="name" value="{{ old('name') ?? }}">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        <label for="blood_group">{{ __('Blood Group') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="blood_group" placeholder="Enter The Blood Group Name" name="blood_group" value="{{ old('blood_group') }}">
+                                        @if($errors->has('blood_group'))
+                                            <div class="text-danger">{{ $errors->first('blood_group') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
-                                            <option value="1" {{ (old('status') ?? $admin->status) == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ (old('status') ?? $admin->status) == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
