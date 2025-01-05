@@ -45,4 +45,16 @@ class BloodGroupController extends Controller
         $update->save();
         return redirect()->route('blood.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $blood = BloodGroup::findOrFail($id);
+        if($blood->status == 1){
+            $blood->status = 0;
+        }else{
+            $blood->status = 1;
+        }
+
+        $blood->save();
+        return redirect()->route('blood.index');
+    }
 }

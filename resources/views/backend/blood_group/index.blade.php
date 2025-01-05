@@ -34,7 +34,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $blood->blood_group }}</td>
-                                            <td><span class="">{{ $blood->status }}</span></td>
+                                            <td><span class="{{ $blood->statusBg() }}">{{ $blood->statusTitle() }}</span></td>
                                             <td>{{ $blood->created_at ? $blood->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $blood->created_user ? $blood->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -42,7 +42,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('blood.update', $blood->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="javascript:void(0)" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('blood.status.update', $blood->id) }}" data-id="" class="btn {{ $blood->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
