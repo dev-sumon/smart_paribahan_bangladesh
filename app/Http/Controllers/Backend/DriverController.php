@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DriverRequest;
+use App\Models\Owner;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +20,8 @@ class DriverController extends Controller
     }
     public function create(): View
     {
-        return view('backend.driver.create');
+        $data['owners'] = Owner::latest()->get();
+        return view('backend.driver.create', $data);
     }
     public function store(DriverRequest $request): RedirectResponse
     {
@@ -50,6 +52,7 @@ class DriverController extends Controller
     public function update($id): View
     {
         $data['driver'] = Driver::findOrFail($id);
+        $data['owners'] = Owner::latest()->get();
         return view('backend.driver.edit', $data);
     }
     public function update_store(DriverRequest $request, $id): RedirectResponse
@@ -106,6 +109,7 @@ class DriverController extends Controller
     public function detalis($id): View
     {
         $data['driver'] = Driver::findOrFail($id);
+        $data['owners'] = Owner::latest()->get();
         return view('backend.driver.show', $data);
     }
 }

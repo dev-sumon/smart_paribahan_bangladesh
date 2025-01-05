@@ -55,11 +55,23 @@
                                             <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="vehicles_license">{{ __('Vehicles License') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="vehicles_license" placeholder="Enter The Vehicles License" name="vehicles_license" value="{{ old('vehicles_license') }}">
                                         @if($errors->has('vehicles_license'))
                                             <div class="text-danger">{{ $errors->first('vehicles_license') }}</div>
+                                        @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label  class="mt-3" for="vehicles_license">{{ __('Vehicles License') }}</label>
+                                        <select name="vehicles_license" id="vehicles_license" class="form-control">
+                                            <option value=" " selected hidden>{{ __('Select Vehicles License') }}</option>
+                                            @foreach ($owners as $owner)
+                                                <option value="{{ $owner->id }}" {{ $owner->id==old('vehicles_license') ? 'selected': '' }}>{{ $owner->vehicles_license}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('vehicles_license'))
+                                        <div class="text-danger">{{ $errors->first('vehicles_license') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
