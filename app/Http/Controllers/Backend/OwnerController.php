@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\BloodGroup;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +20,8 @@ class OwnerController extends Controller
     }
     public function create(): View
     {
-        return view('backend.owner.create');
+        $data['bloods'] = BloodGroup::latest()->get();
+        return view('backend.owner.create', $data);
     }
     public function store(OwnerRequest $request): RedirectResponse
     {
@@ -29,7 +31,7 @@ class OwnerController extends Controller
         $save->email = $request->email;
         $save->phone = $request->phone;
         $save->vehicles_license = $request->vehicles_license;
-        $save->blood_group = $request->blood_group;
+        $save->blood_group_id = $request->blood_group_id;
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
 
@@ -46,6 +48,7 @@ class OwnerController extends Controller
     public function update($id): View
     {
         $data['owner'] = Owner::findOrFail($id);
+        $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.owner.edit', $data);
     }
     public function update_store(OwnerRequest $request, $id): RedirectResponse
@@ -57,7 +60,7 @@ class OwnerController extends Controller
         $update->email = $request->email;
         $update->phone = $request->phone;
         $update->vehicles_license = $request->vehicles_license;
-        $update->blood_group = $request->blood_group;
+        $update->blood_group_id = $request->blood_group_id;
         $update->status = $request->status ?? 0;
 
         if($request->password){
@@ -96,6 +99,7 @@ class OwnerController extends Controller
     }
     public function detalis($id): View
     {
+        $data['owner'] = Owner::with('blood_group')->findOrFail($id);
         $data['owner'] = Owner::findOrFail($id);
         return view('backend.owner.show', $data);
     }

@@ -48,7 +48,7 @@
                                         <tr>
                                             <th>{{ __('Blood Group') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->blood_group }}</td>
+                                            <td> {{ $owner->blood_group->blood_group ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Image') }}</th>
@@ -67,7 +67,7 @@
                                             <td> {{ $owner->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created By') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $owner->created_by ?? 'N/A' }}</td>
                                         </tr>
