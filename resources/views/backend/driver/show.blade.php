@@ -48,7 +48,7 @@
                                         <tr>
                                             <th>{{ __('Vehicles License Number') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $driver->vehicles_license }}</td>
+                                            <td>{{ $driver->owner ? $driver->owner->vehicles_license : __('Not Assigned') }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Driving License') }}</th>
@@ -58,7 +58,8 @@
                                         <tr>
                                             <th>{{ __('Blood Group') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $driver->blood_group }}</td>
+                                            {{-- <td> {{ $driver->blood_group }}</td> --}}
+                                            <td> {{ $driver->blood_group->blood_group ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Image') }}</th>

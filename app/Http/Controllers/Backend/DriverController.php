@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DriverRequest;
+use App\Models\BloodGroup;
 use App\Models\Owner;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,7 @@ class DriverController extends Controller
     public function create(): View
     {
         $data['owners'] = Owner::latest()->get();
+        $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.create', $data);
     }
     public function store(DriverRequest $request): RedirectResponse
@@ -32,9 +34,9 @@ class DriverController extends Controller
         $save->designation = $request->designation;
         $save->email = $request->email;
         $save->phone = $request->phone;
-        $save->vehicles_license = $request->vehicles_license;
+        $save->owner_id = $request->owner_id;
         $save->driving_license = $request->driving_license;
-        $save->blood_group = $request->blood_group;
+        $save->blood_group_id = $request->blood_group_id;
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
 
@@ -53,6 +55,7 @@ class DriverController extends Controller
     {
         $data['driver'] = Driver::findOrFail($id);
         $data['owners'] = Owner::latest()->get();
+        $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.edit', $data);
     }
     public function update_store(DriverRequest $request, $id): RedirectResponse
@@ -66,9 +69,9 @@ class DriverController extends Controller
         $update->designation = $request->designation;
         $update->email = $request->email;
         $update->phone = $request->phone;
-        $update->vehicles_license = $request->vehicles_license;
+        $update->owner_id = $request->owner_id;
         $update->driving_license = $request->driving_license;
-        $update->blood_group = $request->blood_group;
+        $update->blood_group_id = $request->blood_group_id;
         $update->status = $request->status ?? 0;
 
         if($request->password){
@@ -106,10 +109,17 @@ class DriverController extends Controller
 
         return redirect()->route('driver.index');
     }
+    // public function detalis($id): View
+    // {
+    //     $data['driver'] = Driver::findOrFail($id);
+    //     $data['owners'] = Owner::latest()->get();
+    //     return view('backend.driver.show', $data);
+    // }
     public function detalis($id): View
-    {
-        $data['driver'] = Driver::findOrFail($id);
-        $data['owners'] = Owner::latest()->get();
-        return view('backend.driver.show', $data);
-    }
+{
+    $data['driver'] = Driver::with('owner')->findOrFail($id); // ড্রাইভার সহ মালিকের ডেটা লোড
+    $data['owners'] = Owner::latest()->get();
+    return view('backend.driver.show', $data);
+}
+
 }

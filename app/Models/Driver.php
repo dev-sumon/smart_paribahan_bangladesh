@@ -61,7 +61,9 @@ class Driver extends Authenticatable
     public function owner(){
         return $this->belongsTo(Owner::class, 'owner_id');
     }
-
+    public function blood_group(){
+        return $this->belongsTo(BloodGroup::class, 'blood_group_id');
+    }
 
     public function statusBg(){
         if($this->status == 1){
