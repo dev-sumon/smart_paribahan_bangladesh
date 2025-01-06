@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\BloodGroupController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Backend\DivisionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -203,6 +204,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(DivisionController::class)->prefix('division')->name('division.')->group( function(){
+        Route::get('index', 'index')->name('index');
     });
 });
 
