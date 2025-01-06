@@ -56,7 +56,7 @@
                                             <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label  class="mt-3" for="vehicles_license">{{ __('Vehicles License') }}</label>
                                         <select name="vehicles_license" id="vehicles_license" class="form-control">
                                             @foreach ($owners as $owner )
@@ -66,7 +66,23 @@
                                         @if($errors->has('owner'))
                                         <div class="text-danger">{{ $errors->first('owner') }}</div>
                                         @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label class="mt-3" for="owner_id">{{ __('Vehicles License') }}</label>
+                                        <select name="owner_id" id="owner_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Vehicles License') }}</option>
+                                            @foreach ($owners as $owner)
+                                                <option value="{{ $owner->id }}" 
+                                                    {{ (old('owner_id', $driver->owner_id) == $owner->id) ? 'selected' : '' }}>
+                                                    {{ $owner->vehicles_license }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('owner_id'))
+                                        <div class="text-danger">{{ $errors->first('owner_id') }}</div>
+                                        @endif
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="driving_license">{{ __('Driving License') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="driving_license" placeholder="Enter The Driving License" name="driving_license" value="{{ old('driving_license') ?? $driver->driving_license }}">
@@ -74,11 +90,27 @@
                                             <div class="text-danger">{{ $errors->first('driving_license') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="blood_group">{{ __('Blood Group') }}</label>
                                         <input type="text" class="form-control" id="blood_group" placeholder="Enter The Blood Group" name="blood_group" value="{{ old('blood_group') ?? $driver->blood_group }}">
                                         @if($errors->has('blood_group'))
                                             <div class="text-danger">{{ $errors->first('blood_group') }}</div>
+                                        @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label  class="mt-3" for="blood_group_id">{{ __('Blood Group') }}</label>
+                                        <select name="blood_group_id" id="blood_group_id" class="form-control">
+                                            <option value=" " selected hidden>{{ __('Select Blood Broup') }}</option>
+                                            @foreach ($bloods as $blood)
+                                                {{-- <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id') ? 'selected': '' }}>{{ $blood->blood_group}}</option> --}}
+                                                {{-- <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id', $owner->blood_group_id) ? 'selected': '' }}>{{ $owner->blood_group_id}}</option> --}}
+                                                <option value="{{ $blood->id }}" 
+                                                    {{ old('blood_group_id', $driver->blood_group_id) == $blood->id ? 'selected' : '' }}>
+                                                    {{ $blood->blood_group }}
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('blood_group'))
+                                        <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -88,7 +120,7 @@
                                         @else
                                             <p>{{ __('No image available') }}</p>
                                         @endif
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Driver Image" name="image">
+                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter Driver Image" name="image">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif

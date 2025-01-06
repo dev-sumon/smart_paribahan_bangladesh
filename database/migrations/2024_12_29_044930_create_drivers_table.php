@@ -18,14 +18,14 @@ return new class extends Migration
             $table->string('designation');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('vehicles_license')->unique();
             $table->string('driving_license')->unique();
-            $table->string('blood_group')->nullable();
             $table->string('image')->nullable();
             $table->string('password');
             $table->boolean('status');
             $table->unsignedBigInteger('owner_id')->nullable();
             $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('blood_group_id')->nullable();
+            $table->foreign('blood_group_id')->references('id')->on('blood_groups')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
