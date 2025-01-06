@@ -34,8 +34,7 @@ class OwnerRequest extends FormRequest
         return [
             'email' => 'required|email|unique:owners,email',
             'phone' => 'required|string|min:11|max:11|unique:owners,phone',
-            'vehicles_license' => 'required|string|min:10|max:12',
-            'blood_group' => 'nullable|string|min:2|max:3',
+            'vehicles_license' => 'required|string|min:10|max:12|unique:owners,vehicles_license',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
@@ -46,8 +45,7 @@ class OwnerRequest extends FormRequest
         return [
             'email' => 'required|email|unique:owners,email,' . $this->route('id'),
             'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
-            'vehicles_license' => 'required|string|min:10|max:12',
-            'blood_group' => 'nullable|string|min:2|max:3',
+            'vehicles_license' => 'required|string|min:10|max:12|unique:owners,vehicles_license,' . $this->route('id'),
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',

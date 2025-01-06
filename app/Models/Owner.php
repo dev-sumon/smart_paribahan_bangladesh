@@ -59,6 +59,9 @@ class Owner extends Authenticatable
     }
 
 
+    public function blood_group(){
+        return $this->belongsTo(BloodGroup::class, 'blood_group_id');
+    }
 
 
     public function statusBg(){
