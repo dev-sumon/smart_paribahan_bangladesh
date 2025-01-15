@@ -11,7 +11,7 @@ class DivisionReqest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,20 @@ class DivisionReqest extends FormRequest
     {
         return [
             //
+        ]
+        +
+        ($this->isMethod('POST') ? $this->store() : $this->update());
+    }
+    protected function store(): array
+    {
+        return [
+
+        ];
+    }
+    protected function update(): array
+    {
+        return [
+
         ];
     }
 }

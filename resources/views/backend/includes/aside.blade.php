@@ -102,7 +102,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('division.index') }}" class="nav-link">
-              <i class="nav-icon fa-solid fa-droplet"></i>
+              <i class="nav-icon fa-solid fa-layer-group"></i>
               <p>{{ __('Division') }}</p>
             </a>
           </li>

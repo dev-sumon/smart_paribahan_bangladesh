@@ -12,7 +12,7 @@
                             <h4>{{ __('Division List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('division.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
