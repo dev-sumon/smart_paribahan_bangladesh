@@ -64,4 +64,9 @@ class DivisionController extends Controller
 
         return redirect()->route('division.index');
     }
+    public function detalis($id): View
+    {
+        $data['division'] = Division::findOrFail($id);
+        return view('backend.division.show', $data);
+    }
 }
