@@ -34,7 +34,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $division->division }}</td>
-                                            <td><span class="">{{ $division->status }}</span></td>
+                                            <td><span class="{{ $division->statusBg() }}">{{ $division->statusTitle() }}</span></td>
                                             <td>{{ $division->created_at ? $division->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $division->created_user ? $division->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -42,7 +42,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('division.update', $division->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('division.status.update', $division->id) }}" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('division.status.update', $division->id) }}" data-id="" class="btn {{ $division->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
