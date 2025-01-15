@@ -57,4 +57,11 @@ class DivisionController extends Controller
         $Division->save();
         return redirect()->route('division.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $division = Division::findOrFail($id);
+        $division->delete();
+
+        return redirect()->route('division.index');
+    }
 }
