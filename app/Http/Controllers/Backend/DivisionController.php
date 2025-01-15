@@ -45,4 +45,16 @@ class DivisionController extends Controller
         $update->save();
         return redirect()->route('division.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $Division = Division::findOrFail($id);
+        if($Division->status == 1){
+            $Division->status = 0;
+        }else{
+            $Division->status = 1;
+        }
+
+        $Division->save();
+        return redirect()->route('division.index');
+    }
 }

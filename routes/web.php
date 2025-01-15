@@ -211,6 +211,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::post('store', 'store')->name('store');
         Route::get('update/{id}', 'update')->name('update');
         Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
     });
 });
 
