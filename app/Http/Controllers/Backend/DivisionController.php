@@ -13,7 +13,8 @@ class DivisionController extends Controller
 {
     public function index(): View
     {
-        return view('backend.division.index');
+        $data['divisions'] = Division::latest()->get();
+        return view('backend.division.index', $data);
     }
     public function create(): View
     {
@@ -27,6 +28,21 @@ class DivisionController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
+        return redirect()->route('division.index');
+    }
+    public function update($id): View
+    {
+        $data['division'] = Division::findOrFail($id);
+        return view('backend.division.edit', $data);
+    }
+    public function update_store(DivisionReqest $request, $id): RedirectResponse
+    {
+        $update = Division::findOrFail($id);
+
+        $update->division = $request->division;
+        $update->status = $request->status ?? 0;
+
+        $update->save();
         return redirect()->route('division.index');
     }
 }

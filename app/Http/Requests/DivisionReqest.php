@@ -22,7 +22,7 @@ class DivisionReqest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'status'=>'required|boolean',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -30,13 +30,13 @@ class DivisionReqest extends FormRequest
     protected function store(): array
     {
         return [
-
+            'division'=>'required|max:20|string|min:3|unique:divisions,division',
         ];
     }
     protected function update(): array
     {
         return [
-
+            'division' => 'required|max:20|string|min:3|unique:divisions,division,' . $this->route('id'),
         ];
     }
 }
