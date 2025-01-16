@@ -73,4 +73,11 @@ class DistrictController extends Controller
 
         return redirect()->route('district.index');
     }
+    public function detalis($id): View
+    {
+        $data['district'] = District::with('division')->findOrFail($id);
+        $data['district'] = District::findOrFail($id);
+
+        return view('backend.district.show', $data);
+    }
 }
