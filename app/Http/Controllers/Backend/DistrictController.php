@@ -65,16 +65,12 @@ class DistrictController extends Controller
 
         $district->save();
         return redirect()->route('district.index');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $district = District::findOrFail($id);
+        $district->delete();
 
-
-        // $Division = Division::findOrFail($id);
-        // if($Division->status == 1){
-        //     $Division->status = 0;
-        // }else{
-        //     $Division->status = 1;
-        // }
-
-        // $Division->save();
-        // return redirect()->route('division.index');
+        return redirect()->route('district.index');
     }
 }
