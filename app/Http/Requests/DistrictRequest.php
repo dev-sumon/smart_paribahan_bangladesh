@@ -36,7 +36,7 @@ class DistrictRequest extends FormRequest
     protected function update(): array
     {
         return [
-            'district'=>'required|max:20|string|min:3|unique:districts,district,' . $this->route('id'),
+            'district' => 'required|max:20|string|min:3|unique:districts,district,' . $this->route('id'),
         ];
     }
 }

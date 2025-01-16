@@ -40,4 +40,18 @@ class DistrictController extends Controller
 
         return view('backend.district.edit', $data);
     }
+    public function update_store(DistrictRequest $request, $id): RedirectResponse
+    {
+        $update = District::findOrFail($id);
+
+
+        $update->division_id = $request->division_id;
+        $update->district = $request->district;
+        $update->status = $request->status ?? 0;
+
+
+        $update->save();
+        return redirect()->route('district.index');
+
+    }
 }

@@ -18,8 +18,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('district.store') }}" method="POST">
+                                <form action="{{ route('district.update', $district->id) }}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label  class="mt-3" for="division_id">{{ __('Division') }}</label>
                                         <select name="division_id" id="division_id" class="form-control">
