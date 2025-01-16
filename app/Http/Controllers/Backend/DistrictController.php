@@ -14,7 +14,8 @@ class DistrictController extends Controller
 {
     public function index(): View
     {
-        return view('backend.district.index');
+        $data['districts'] = District::with('division')->latest()->get();
+        return view('backend.district.index', $data);
     }
     public function create(): View
     {
@@ -31,5 +32,12 @@ class DistrictController extends Controller
 
         $save->save();
         return redirect()->route('district.index');
+    }
+    public function update($id): View
+    {
+        $data['district'] = District::findOrFail($id);
+        $data['divisions'] = Division::latest()->get();
+
+        return view('backend.district.edit', $data);
     }
 }
