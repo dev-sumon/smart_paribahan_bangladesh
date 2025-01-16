@@ -106,6 +106,12 @@
               <p>{{ __('Division') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('district.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-landmark"></i>
+              <p>{{ __('District') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
