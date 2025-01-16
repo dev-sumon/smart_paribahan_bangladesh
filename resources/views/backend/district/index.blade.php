@@ -37,8 +37,8 @@
                                             <td>{{ $district->division->division ?? 'N/A' }}</td>
                                             <td>{{ $district->district }}</td>
                                             <td><span class="{{ $district->statusBg() }}">{{ $district->statusTitle() }}</span></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $district->created_at ? $district->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $district->created_user ? $district->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('district.detalis', $district->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
