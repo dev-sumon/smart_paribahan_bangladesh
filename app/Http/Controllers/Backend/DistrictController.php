@@ -54,4 +54,27 @@ class DistrictController extends Controller
         return redirect()->route('district.index');
 
     }
+    public function status($id): RedirectResponse
+    {
+        $district = District::findOrFail($id);
+        if($district->status == 1){
+            $district->status = 0;
+        }else{
+            $district->status = 1;
+        }
+
+        $district->save();
+        return redirect()->route('district.index');
+
+
+        // $Division = Division::findOrFail($id);
+        // if($Division->status == 1){
+        //     $Division->status = 0;
+        // }else{
+        //     $Division->status = 1;
+        // }
+
+        // $Division->save();
+        // return redirect()->route('division.index');
+    }
 }
