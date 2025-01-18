@@ -112,6 +112,12 @@
               <p>{{ __('District') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('thana.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-building-shield"></i>
+              <p>{{ __('Thana') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

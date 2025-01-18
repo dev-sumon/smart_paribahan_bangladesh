@@ -58,7 +58,6 @@
                                         <tr>
                                             <th>{{ __('Blood Group') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            {{-- <td> {{ $driver->blood_group }}</td> --}}
                                             <td> {{ $driver->blood_group->blood_group ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
@@ -92,4 +91,3 @@
         </div>
     </div>
 @endsection
-`

@@ -72,8 +72,7 @@
                                         <select name="owner_id" id="owner_id" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicles License') }}</option>
                                             @foreach ($owners as $owner)
-                                                <option value="{{ $owner->id }}" 
-                                                    {{ (old('owner_id', $driver->owner_id) == $owner->id) ? 'selected' : '' }}>
+                                                <option value="{{ $owner->id }}" {{ (old('owner_id', $driver->owner_id) == $owner->id) ? 'selected' : '' }}>
                                                     {{ $owner->vehicles_license }}
                                                 </option>
                                             @endforeach
