@@ -10,6 +10,7 @@ use App\Http\Requests\ThanaRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use PhpParser\Node\Stmt\Return_;
 
 class ThanaController extends Controller
 {
@@ -74,5 +75,12 @@ class ThanaController extends Controller
         $thana->delete();
 
         return redirect()->route('thana.index');
+    }
+    public function detalis($id): View
+    {
+        $data['thana'] = Thana::with('district.division')->findOrFail($id);
+
+        return view('backend.thana.show', $data);
+
     }
 }

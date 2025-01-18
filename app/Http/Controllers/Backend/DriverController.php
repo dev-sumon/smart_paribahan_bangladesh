@@ -117,7 +117,7 @@ class DriverController extends Controller
     // }
     public function detalis($id): View
 {
-    $data['driver'] = Driver::with('owner')->findOrFail($id); // ড্রাইভার সহ মালিকের ডেটা লোড
+    $data['driver'] = Driver::with('owner')->findOrFail($id);
     $data['owners'] = Owner::latest()->get();
     return view('backend.driver.show', $data);
 }
