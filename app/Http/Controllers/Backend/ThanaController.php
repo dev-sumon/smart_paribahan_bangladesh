@@ -68,4 +68,11 @@ class ThanaController extends Controller
         return redirect()->route('thana.index');
 
     }
+    public function delete($id): RedirectResponse
+    {
+        $thana = Thana::findOrFail($id);
+        $thana->delete();
+
+        return redirect()->route('thana.index');
+    }
 }
