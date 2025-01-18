@@ -22,6 +22,8 @@ class ThanaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
             'status'=>'required|boolean',
         ]
         +
