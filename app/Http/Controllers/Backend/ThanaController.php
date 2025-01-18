@@ -43,4 +43,16 @@ class ThanaController extends Controller
         $data['districts'] = District::all();
         return view('backend.thana.edit', $data);
     }
+    public function update_store(ThanaRequest $request, $id): RedirectResponse
+    {
+        $update = Thana::findOrFail($id);
+
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana = $request->thana;
+        $update->status = $request->status ?? 0;
+
+        $update->save();
+        return redirect()->route('thana.index');
+    }
 }

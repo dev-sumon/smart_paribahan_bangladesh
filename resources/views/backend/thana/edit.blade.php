@@ -9,17 +9,18 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Thana Create') }}</h4>
+                            <h4>{{ __('Thana Update') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('district.index') }}" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('thana.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('thana.store') }}" method="POST">
+                                <form action="{{ route('thana.update', $thana->id) }}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label class="mt-3" for="division_id">{{ __('Division') }}</label>
                                         <select name="division_id" id="division_id" class="form-control">

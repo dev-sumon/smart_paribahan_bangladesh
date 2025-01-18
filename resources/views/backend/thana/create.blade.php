@@ -12,7 +12,7 @@
                             <h4>{{ __('Thana Create') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('district.index') }}" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('thana.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
