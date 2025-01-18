@@ -113,7 +113,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ route('district.index') }}" class="nav-link">
+            <a href="{{ route('thana.index') }}" class="nav-link">
               <i class="nav-icon fa-solid fa-building-shield"></i>
               <p>{{ __('Thana') }}</p>
             </a>
