@@ -38,7 +38,7 @@
                                             <td>{{ $thana->division->division }}</td>
                                             <td>{{ $thana->district->district }}</td>
                                             <td>{{ $thana->thana }}</td>
-                                            <td><span class="">{{ $thana->status }}</span></td>
+                                            <td><span class="{{ $thana->statusBg() }}">{{ $thana->statusTitle() }}</span></td>
                                             <td>{{ $thana->created_at ? $thana->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $thana->created_user ? $thana->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -46,7 +46,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('thana.update', $thana->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('thana.status.update', $thana->id) }}" data-id="" class="btn {{ $thana->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>  

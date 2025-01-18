@@ -55,4 +55,17 @@ class ThanaController extends Controller
         $update->save();
         return redirect()->route('thana.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $thana = Thana::findOrFail($id);
+        if($thana->status == 1){
+            $thana->status = 0;
+        }else{
+            $thana->status = 1;
+        }
+
+        $thana->save();
+        return redirect()->route('thana.index');
+
+    }
 }
