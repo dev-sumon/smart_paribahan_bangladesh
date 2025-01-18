@@ -15,8 +15,8 @@ class ThanaController extends Controller
 {
     public function index(): View
     {
-       
-        return view('backend.thana.index');
+        $data['thanas'] = Thana::with('district.division')->latest()->get();
+        return view('backend.thana.index', $data);
     }
     public function create(): View
     {

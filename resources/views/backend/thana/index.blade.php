@@ -32,15 +32,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       @foreach ($thanas as $key=>$thana)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class=""></span></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $thana->division->division }}</td>
+                                            <td>{{ $thana->district->district }}</td>
+                                            <td>{{ $thana->thana }}</td>
+                                            <td><span class="">{{ $thana->status }}</span></td>
+                                            <td>{{ $thana->created_at ? $thana->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $thana->created_user ? $thana->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
@@ -49,8 +49,8 @@
                                                     <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
-                                        </tr>
-                                        
+                                        </tr>  
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
