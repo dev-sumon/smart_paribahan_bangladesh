@@ -12,7 +12,7 @@
                             <h4>{{ __('Union List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('union.ceate') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">

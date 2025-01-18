@@ -11,7 +11,7 @@ class UnionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,24 @@ class UnionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
+            'thana_id' => 'required|exists:thanas,id',
+            'status'=>'required|boolean',
+        ]
+        +
+        ($this->isMethod('POST') ? $this->store() : $this->update());
+    }
+    protected function store():array
+    {
+        return [
+            'union' => 'required|max:20|string|min:3|unique:unions,union',
+        ];
+    }
+    protected function update():array
+    {
+        return [
+            'union' => 'required|max:20|string|min:3|unique:unions,union,' . $this->route('id'),
         ];
     }
 }

@@ -241,6 +241,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
     Route::controller(UnionController::class)->prefix('union')->name('union.')->group(function(){
         Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('ceate');
+        Route::post('store', 'store')->name('store');
     });
 });
 

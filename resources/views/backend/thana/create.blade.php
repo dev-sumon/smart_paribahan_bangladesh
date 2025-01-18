@@ -21,7 +21,7 @@
                                 <form action="{{ route('thana.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label  class="mt-3" for="division_id">{{ __('Division') }}</label>
+                                        <label  class="mt-3" for="division_id">{{ __('Division') }} <span class="text-danger">*</span></label>
                                         <select name="division_id" id="division_id" class="form-control">
                                             <option value=" " selected hidden>{{ __('Select Division') }}</option>
                                             @foreach ($divisions as $division)
@@ -33,7 +33,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label  class="mt-3" for="district_id">{{ __('District') }}</label>
+                                        <label  class="mt-3" for="district_id">{{ __('District') }} <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district_id" class="form-control">
                                             <option value=" " selected hidden>{{ __('Select District') }}</option>
                                             @foreach ($districts as $district)
