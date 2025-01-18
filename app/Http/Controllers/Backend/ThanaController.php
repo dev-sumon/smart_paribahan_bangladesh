@@ -36,4 +36,11 @@ class ThanaController extends Controller
         $save->save();
         return redirect()->route('thana.index');
     }
+    public function update($id): View
+    {
+        $data['thana'] = Thana::with('district.division')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::all();
+        return view('backend.thana.edit', $data);
+    }
 }
