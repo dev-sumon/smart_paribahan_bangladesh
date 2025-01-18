@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\NoticeController;
 use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\StandController;
 use App\Http\Controllers\Backend\ThanaController;
+use App\Http\Controllers\Backend\UnionController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Driver\DashboardController;
@@ -237,6 +238,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(UnionController::class)->prefix('union')->name('union.')->group(function(){
+        Route::get('index', 'index')->name('index');
     });
 });
 
