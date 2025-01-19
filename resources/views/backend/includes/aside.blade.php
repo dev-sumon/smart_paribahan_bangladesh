@@ -118,6 +118,12 @@
               <p>{{ __('Thana') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('union.index') }}" class="nav-link">
+              <i class="nav-icon fa-solid fa-underline"></i>
+              <p>{{ __('Union') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

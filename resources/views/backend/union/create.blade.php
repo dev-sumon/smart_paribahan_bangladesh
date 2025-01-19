@@ -9,16 +9,16 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Thana Create') }}</h4>
+                            <h4>{{ __('Union Create') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('thana.index') }}" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('union.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('thana.store') }}" method="POST">
+                                <form action="{{ route('union.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label  class="mt-3" for="division_id">{{ __('Division') }} <span class="text-danger">*</span></label>
@@ -45,10 +45,22 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="thana">{{ __('Thana') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="thana" placeholder="Enter The Thana Name" name="thana" value="{{ old('thana') }}">
-                                        @if($errors->has('thana'))
-                                            <div class="text-danger">{{ $errors->first('thana') }}</div>
+                                        <label for="thana_id">{{ __('Thana') }} <span class="text-danger">*</span></label>
+                                        <select name="thana_id" id="thana_id"  class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Thana') }}</option>
+                                            @foreach ($thanas as $thana)
+                                                <option value="{{ $thana->id }}" {{ $thana->id==old('thana_id') ? 'selected' : '' }}>{{ $thana->thana }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('thana_id'))
+                                            <div class="text-danger">{{ $errors->first('thana_id') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="union">{{ __('Union') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="union" placeholder="Enter The Union Name" name="union" value="{{ old('union') }}">
+                                        @if($errors->has('union'))
+                                            <div class="text-danger">{{ $errors->first('union') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
