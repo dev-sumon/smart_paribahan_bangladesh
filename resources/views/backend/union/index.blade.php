@@ -40,7 +40,7 @@
                                             <td>{{ $union->district->district }}</td>
                                             <td>{{ $union->thana->thana }}</td>
                                             <td>{{ $union->union }}</td>
-                                            <td><span class="">{{ $union->status }}</span></td>
+                                            <td><span class="{{ $union->statusBg() }}">{{ $union->statusTitle() }}</span></td>
                                             <td>{{ $union->created_at ? $union->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $union->created_user ? $union->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -48,7 +48,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('union.update', $union->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('union.status.update', $union->id) }}" data-id="" class="btn {{ $union->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>  

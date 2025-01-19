@@ -63,4 +63,16 @@ class UnionController extends Controller
         $update->save();
         return redirect()->route('union.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $union = Union::findOrFail($id);
+        if($union->status == 1){
+            $union->status = 0;
+        }else{
+            $union->status = 1;
+        }
+        
+        $union->save();
+        return redirect()->route('union.index');
+    }
 }
