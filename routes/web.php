@@ -246,6 +246,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('update{id}', 'update')->name('update');
         Route::put('update{id}', 'update_store')->name('update');
         Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 });
 

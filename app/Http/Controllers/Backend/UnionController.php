@@ -75,4 +75,10 @@ class UnionController extends Controller
         $union->save();
         return redirect()->route('union.index');
     }
+    public function detalis($id): View
+    {
+        $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
+
+        return view('backend.union.show', $data);
+    }
 }
