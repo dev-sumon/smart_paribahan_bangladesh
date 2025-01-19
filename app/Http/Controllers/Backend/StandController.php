@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
+use App\Models\District;
+use App\Models\Division;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 use App\Http\Requests\StandRequest;
@@ -20,11 +24,19 @@ class StandController extends Controller
     }
     public function create(): View
     {
-        return view('backend.stand.create');
+        $data['divisions'] = Division::latest()->get();
+        $data['districts'] = District::latest()->get();
+        $data['thanas'] = Thana::latest()->get();
+        $data['unions'] = Union::latest()->get();
+        return view('backend.stand.create', $data);
     }
     public function store(StandRequest $request): RedirectResponse
     {
         $save = new Stand();
+        $save->division_id = $request->division_id;
+        $save->district_id = $request->district_id;
+        $save->thana_id = $request->thana_id;
+        $save->union_id = $request->union_id;
         $save->name = $request->name;
         $save->description = $request->description;
         $save->location = $request->location;
@@ -43,6 +55,10 @@ class StandController extends Controller
     public function update($id):View
     {
         $data['stand'] = Stand::findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::all();
+        $data['thanas'] = Thana::all();
+        $data['unions'] = Union::all();
         return view('backend.stand.edit', $data);
     }
     public function update_store(StandRequest $request, $id):RedirectResponse
@@ -84,7 +100,11 @@ class StandController extends Controller
     }
     public function detalis($id): View
     {
-        $data['stand'] = Stand::findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
+
+        // $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
+
+
         return view('backend.stand.show', $data);
     }
 }

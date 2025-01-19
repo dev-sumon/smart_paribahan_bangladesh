@@ -21,7 +21,27 @@
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
                                         <tr>
-                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Division Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $stand->division->division }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('District Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $stand->district->district }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Thana Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $stand->thana->thana }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Union Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $stand->union->union }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $stand->name }}</td>
                                         </tr>

@@ -21,7 +21,71 @@
                                 <form action="{{ route('stand.update', $stand->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
+                                        <label class="mt-3" for="division_id">{{ __('Division') }}</label>
+                                        <select name="division_id" id="division_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Division') }}</option>
+                                            @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}" 
+                                                {{ old('division_id', $stand->division_id ?? '') == $division->id ? 'selected' : '' }}>
+                                                {{ $division->division }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('division_id'))
+                                            <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                                        @endif
+                                    </div>
+                                   
+                                    <div class="form-group">
+                                        <label class="mt-3" for="district_id">{{ __('District') }}</label>
+                                        <select name="district_id" id="district_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select District') }}</option>
+                                            @foreach ($districts as $district)
+                                                <option 
+                                                    value="{{ $district->id }}" 
+                                                    {{ old('district_id', $stand->district_id ?? '') == $district->id ? 'selected' : '' }}>
+                                                    {{ $district->district }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('district_id'))
+                                            <div class="text-danger">{{ $errors->first('district_id') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mt-3" for="thana_id">{{ __('Thana') }}</label>
+                                        <select name="thana_id" id="thana_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Thana') }}</option>
+                                            @foreach ($thanas as $thana)
+                                                <option 
+                                                    value="{{ $thana->id }}" 
+                                                    {{ old('thana_id', $stand->thana_id ?? '') == $thana->id ? 'selected' : '' }}>
+                                                    {{ $thana->thana }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('thana_id'))
+                                            <div class="text-danger">{{ $errors->first('thana_id') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mt-3" for="union_id">{{ __('Union') }}</label>
+                                        <select name="union_id" id="union_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Union') }}</option>
+                                            @foreach ($unions as $union)
+                                                <option 
+                                                    value="{{ $union->id }}" 
+                                                    {{ old('union_id', $stand->union_id ?? '') == $union->id ? 'selected' : '' }}>
+                                                    {{ $union->union }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('union_id'))
+                                            <div class="text-danger">{{ $errors->first('union_id') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">{{ __('Stand Name') }} <span class="text-danger">*</span></label>
                                         <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') ?? $stand->name }}">
                                         @if($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
@@ -29,7 +93,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter Stand Description" name="description" value="{{ old('description') ?? $stand->description }}">
+                                        <textarea name="description" id="description" class="w-100 p-3" rows="6" style="outline: none;">{{ old('description', $stand->description) }}</textarea>
                                         @if($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
