@@ -75,6 +75,13 @@ class UnionController extends Controller
         $union->save();
         return redirect()->route('union.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $union = Union::findOrFail($id);
+        $union->delete();
+
+        return redirect()->route('union.index');
+    }
     public function detalis($id): View
     {
         $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
