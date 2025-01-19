@@ -40,4 +40,15 @@ class UnionController extends Controller
         return redirect()->route('union.index');
 
     }
+    public function update($id): View
+    {
+
+        $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::all();
+        $data['thanas'] = Thana::all();
+
+        return view('backend.union.edit', $data);
+
+    }
 }
