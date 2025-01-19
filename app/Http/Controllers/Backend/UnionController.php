@@ -16,7 +16,8 @@ class UnionController extends Controller
 {
     public function index(): View
     {
-        return view('backend.union.index');
+        $data['unions'] = Union::with('division', 'district', 'thana')->latest()->get();
+        return view('backend.union.index', $data);
     }
     public function create(): View
     {

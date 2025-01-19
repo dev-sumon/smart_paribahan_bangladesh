@@ -33,16 +33,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                       @foreach ($unions as $key=>$union)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><span class=""></span></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $union->division->division }}</td>
+                                            <td>{{ $union->district->district }}</td>
+                                            <td>{{ $union->thana->thana }}</td>
+                                            <td>{{ $union->union }}</td>
+                                            <td><span class="">{{ $union->status }}</span></td>
+                                            <td>{{ $union->created_at ? $union->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $union->created_user ? $union->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
@@ -52,7 +52,7 @@
                                                 </div>
                                             </td>
                                         </tr>  
-                                       
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
