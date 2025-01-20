@@ -23,6 +23,10 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
+                                            <th>{{ __('NID No') }}</th>
+                                            <th>{{ __('Father Name') }}</th>
+                                            <th>{{ __('Mother Name') }}</th>
+                                            <th>{{ __('Image') }}</th>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
@@ -35,6 +39,10 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $admin->name }}</td>
+                                            <td>{{ $admin->nid }}</td>
+                                            <td>{{ $admin->father_name }}</td>
+                                            <td>{{ $admin->mother_name }}</td>
+                                            <td><img src="{{ asset('storage/' . $admin->image) }}" alt="{{ $admin->name }}" width="100"></td>
                                             <td>{{ $admin->email }}</td>
                                             <td><span class="{{$admin->statusBg()}}">{{$admin->statusTitle()}}</span></td>
                                             <td>{{ $admin->created_at ? $admin->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
