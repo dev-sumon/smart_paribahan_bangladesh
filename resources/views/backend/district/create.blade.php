@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Division Create') }}</h4>
+                            <h4>{{ __('District Create') }}</h4>
                         </span>
                         <span class="float-right">
                             <a href="{{ route('district.index') }}" class="btn btn-info">{{ __('Back') }}</a>
