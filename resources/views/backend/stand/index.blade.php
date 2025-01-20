@@ -22,7 +22,7 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
-                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __('Description') }}</th>
                                             <th>{{ __('Location') }}</th>
                                             <th>{{ __('Image') }}</th>
