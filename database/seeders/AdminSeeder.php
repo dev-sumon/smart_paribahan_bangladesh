@@ -16,6 +16,9 @@ class AdminSeeder extends Seeder
     {
         Admin::create([
             'name' => 'Super Admin',
+            'nid' => '0000000000',
+            'father_name' => 'Test Father',
+            'mother_name' => 'Test Mother',
             'email' => 'superadmin@example.com',
             'password' => Hash::make('superadmin@example.com'),
             'status' => 1
