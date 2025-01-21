@@ -40,7 +40,7 @@ class AdminController extends Controller
         $save->password = bcrypt($request->password);
         $save->status = $request->has('status') ? $request->status : 0;
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("admins/", $filename, 'public');
@@ -65,28 +65,31 @@ class AdminController extends Controller
         $update->mother_name = $request->mother_name;
         $update->nid = $request->nid;
         $update->email = $request->email;
-        if($request->password){
+        if ($request->password) {
             $update->password = $request->password;
         }
         $update->status = $request->status ?? 0;
-        
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+
+        if ($request->hasFile('image')) {
+            if ($update->iamge && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("admins/", $filename, 'public');
-        $update->image = $path;
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("admins/", $filename, 'public');
+            $update->image = $path;
+        };
+
 
         $update->save();
         return redirect()->route('admin.index');
     }
-    public function status($id): RedirectResponse{
+    public function status($id): RedirectResponse
+    {
         $admin = Admin::findOrFail($id);
-        if($admin->status == 1){
+        if ($admin->status == 1) {
             $admin->status = 0;
-        }else{
+        } else {
             $admin->status = 1;
         }
         $admin->save();
@@ -100,7 +103,8 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index');
     }
-    public function detalis($id): View{
+    public function detalis($id): View
+    {
         $data['admin'] = Admin::findOrFail($id);
         return view('backend.admin.show', $data);
     }
