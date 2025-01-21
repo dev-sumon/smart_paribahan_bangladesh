@@ -31,6 +31,11 @@
                                             <td>{{ $owner->description }}</td>
                                         </tr>
                                         <tr>
+                                            <th>{{ __('Blood Group') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->blood_group->blood_group ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $owner->email }}</td>
@@ -41,15 +46,41 @@
                                             <td> {{ $owner->phone }}</td>
                                         </tr>
                                         <tr>
+                                            <th>{{ __('Division') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->division->division ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('District.') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->district->district ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Thana') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->thana->thana ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Union') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->union->union ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Stand') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->stand->name ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Vehicle Type') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->vehicle->name ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
                                             <th>{{ __('Vehicles License') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $owner->vehicles_license }}</td>
                                         </tr>
-                                        <tr>
-                                            <th>{{ __('Blood Group') }}</th>
-                                            <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->blood_group->blood_group ?? 'N/A' }}</td>
-                                        </tr>
+                                        
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>

@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Owner;
+use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
+use App\Models\Vehicle;
+use App\Models\District;
+use App\Models\Division;
+use App\Models\BloodGroup;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Models\BloodGroup;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,6 +27,12 @@ class OwnerController extends Controller
     public function create(): View
     {
         $data['bloods'] = BloodGroup::latest()->get();
+        $data['divisions'] = Division::latest()->get();
+        $data['districts'] = District::latest()->get();
+        $data['thanas'] = Thana::latest()->get();
+        $data['unions'] = Union::latest()->get();
+        $data['vehicles'] = Vehicle::latest()->get();
+        $data['stands'] = Stand::latest()->get();
         return view('backend.owner.create', $data);
     }
     public function store(OwnerRequest $request): RedirectResponse
@@ -32,6 +44,12 @@ class OwnerController extends Controller
         $save->phone = $request->phone;
         $save->vehicles_license = $request->vehicles_license;
         $save->blood_group_id = $request->blood_group_id;
+        $save->division_id = $request->division_id;
+        $save->district_id = $request->district_id;
+        $save->thana_id = $request->thana_id;
+        $save->union_id = $request->union_id;
+        $save->vehicle_id = $request->vehicle_id;
+        $save->stand_id = $request->stand_id;
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
 
@@ -49,6 +67,12 @@ class OwnerController extends Controller
     {
         $data['owner'] = Owner::findOrFail($id);
         $data['bloods'] = BloodGroup::latest()->get();
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::all();
+        $data['thanas'] = Thana::all();
+        $data['unions'] = Union::all();
+        $data['vehicles'] = Vehicle::all();
+        $data['stands'] = Stand::all();
         return view('backend.owner.edit', $data);
     }
     public function update_store(OwnerRequest $request, $id): RedirectResponse
@@ -61,7 +85,13 @@ class OwnerController extends Controller
         $update->phone = $request->phone;
         $update->vehicles_license = $request->vehicles_license;
         $update->blood_group_id = $request->blood_group_id;
-        $update->status = $request->status ?? 0;
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana_id = $request->thana_id;
+        $update->union_id = $request->union_id;
+        $update->vehicle_id = $request->vehicle_id;
+        $update->stand_id = $request->stand_id;
+        $update->status = $request->status ?? 0; 
 
         if($request->password){
             $update->password = $request->password;
@@ -99,8 +129,9 @@ class OwnerController extends Controller
     }
     public function detalis($id): View
     {
-        $data['owner'] = Owner::with('blood_group')->findOrFail($id);
-        $data['owner'] = Owner::findOrFail($id);
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicle', 'stand')->findOrFail($id);
+        // $data['owner'] = Owner::with('blood_group')->findOrFail($id);
+        // $data['owner'] = Owner::findOrFail($id);
         return view('backend.owner.show', $data);
     }
 }
