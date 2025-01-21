@@ -24,8 +24,6 @@ return new class extends Migration
             $table->boolean('status');
             $table->unsignedBigInteger('owner_id')->nullable();
             $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('blood_group_id')->nullable();
-            $table->foreign('blood_group_id')->references('id')->on('blood_groups')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

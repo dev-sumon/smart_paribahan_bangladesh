@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('district_id')->nullable();
-            $table->foreign('district_id')->references('id')->on('district')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
