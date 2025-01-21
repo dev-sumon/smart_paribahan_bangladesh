@@ -32,6 +32,12 @@ class OwnerRequest extends FormRequest
     protected function store(): array
     {
         return [
+            'division_id' => 'nullable|exists:divisions,id',
+            'district_id' => 'nullable|exists:districts,id',
+            'thana_id' => 'nullable|exists:thanas,id',
+            'union_id' => 'nullable|exists:unions,id',
+            'stand_id' => 'nullable|exists:stands,id',
+            'vehicle_id' => 'nullable|exists:vehicles,id',
             'email' => 'required|email|unique:owners,email',
             'phone' => 'required|string|min:11|max:11|unique:owners,phone',
             'vehicles_license' => 'required|string|min:10|max:12|unique:owners,vehicles_license',
@@ -43,6 +49,12 @@ class OwnerRequest extends FormRequest
     protected function update(): array
     {
         return [
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
+            'thana_id' => 'required|exists:thanas,id',
+            'union_id' => 'required|exists:unions,id',
+            'stand_id' => 'required|exists:stands,id',
+            'vehicle_id' => 'required|exists:vehicles,id',
             'email' => 'required|email|unique:owners,email,' . $this->route('id'),
             'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
             'vehicles_license' => 'required|string|min:10|max:12|unique:owners,vehicles_license,' . $this->route('id'),
