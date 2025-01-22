@@ -21,6 +21,20 @@
                                 <form action="{{ route('stand.update', $stand->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
+                                        <label for="name">{{ __('Stand Name') }} <span class="text-danger">*</span></label>
+                                        <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ $stand->name ?? old('name')  }}">
+                                        @if($errors->has('name'))
+                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="slug">{{ __('Slug') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="slug" placeholder="Enter slug" name="slug" value="{{ $stand->slug ?? old('slug') }}">
+                                        @if($errors->has('slug'))
+                                            <div class="text-danger">{{ $errors->first('slug') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
                                         <label class="mt-3" for="division_id">{{ __('Division') }}</label>
                                         <select name="division_id" id="division_id" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Division') }}</option>
@@ -84,13 +98,7 @@
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="name">{{ __('Stand Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') ?? $stand->name }}">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
-                                        @endif
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
                                         <textarea name="description" id="description" class="w-100 p-3" rows="6" style="outline: none;">{{ old('description', $stand->description) }}</textarea>
@@ -141,3 +149,12 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function () {
+            $('#name').on('keyup', function () {
+                slugGenerate($(this));
+            });
+        })
+    </script>
+@endpush

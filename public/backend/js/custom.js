@@ -27,3 +27,12 @@ $(document).ready(function(){
         },
     });
 });
+
+
+// Slug js 
+
+function slugGenerate(title){
+    let inputTitle = title.val();
+    let slug = inputTitle.toLowerCase().replace(/ /g,'-');
+    $('#slug').val(slug);
+}

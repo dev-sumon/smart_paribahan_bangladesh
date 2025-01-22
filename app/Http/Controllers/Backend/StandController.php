@@ -37,7 +37,8 @@ class StandController extends Controller
         $save->district_id = $request->district_id;
         $save->thana_id = $request->thana_id;
         $save->union_id = $request->union_id;
-        $save->name = $request->name;
+        $save->name = $request->name; 
+        $save->slug = $request->slug; 
         $save->description = $request->description;
         $save->location = $request->location;
         $save->status = $request->has('status') ? $request->status : 0;
@@ -65,6 +66,7 @@ class StandController extends Controller
     {
         $update = Stand::findOrFail($id);
         $update->name = $request->name;
+        $update->slug = $request->slug; 
         $update->description = $request->description;
         $update->location = $request->location;
         $update->status = $request->status ?? 0;
