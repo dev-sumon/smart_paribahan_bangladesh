@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('backend.layouts.master', ['page_slug' => 'footer_title'])
 
 
 @section('title', 'Admin - management')
