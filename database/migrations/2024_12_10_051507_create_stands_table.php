@@ -18,14 +18,6 @@ return new class extends Migration
             $table->longText('location');
             $table->string('image');
             $table->boolean('status')->default(1);
-            $table->unsignedBigInteger('division_id')->nullable();
-            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('district_id')->nullable();
-            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('thana_id')->nullable();
-            $table->foreign('thana_id')->references('id')->on('thanas')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('union_id')->nullable();
-            $table->foreign('union_id')->references('id')->on('unions')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

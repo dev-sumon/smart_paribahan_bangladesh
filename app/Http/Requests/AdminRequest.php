@@ -46,7 +46,7 @@ class AdminRequest extends FormRequest
             'nid' => 'required|max:14|min:10|unique:admins,nid,' .$this->route('id'),
             'father_name' => 'required|string|max:20|min:3',
             'mother_name' => 'required|string|max:20|min:3',
-            'image' =>'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'email' => 'required|email|unique:admins,email,' .$this->route('id'),
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
