@@ -74,6 +74,12 @@ class DriverController extends Controller
         $data['driver'] = Driver::findOrFail($id);
         $data['owners'] = Owner::latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::all();
+        $data['thanas'] = Thana::all();
+        $data['unions'] = Union::all();
+        $data['vehicles'] = Vehicle::all();
+        $data['stands'] = Stand::all();
         return view('backend.driver.edit', $data);
     }
     public function update_store(DriverRequest $request, $id): RedirectResponse
