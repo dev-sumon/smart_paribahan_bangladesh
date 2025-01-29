@@ -252,6 +252,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
         Route::get('division/{id}', 'division')->name('division');
+        Route::get('district/{id}', 'district')->name('district');
+        Route::get('thana/{id}', 'thana')->name('thana');
     });
 });
 

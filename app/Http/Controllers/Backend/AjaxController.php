@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Thana;
 use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -27,6 +28,14 @@ class AjaxController extends Controller
         return response()->json([
             'success' => true,
             'data' => $district
+        ]);
+    }
+    public function thana(Request $request, $id): JsonResponse
+    {
+        $thanas = Thana::where('district_id', $id)->latest()->get();
+        return response()->json([
+            'success' => true,
+            'data' => $thanas
         ]);
     }
 }
