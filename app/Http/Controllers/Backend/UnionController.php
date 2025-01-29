@@ -48,23 +48,6 @@ class UnionController extends Controller
         return view('backend.union.edit', $data);
     }
 
-    // public function update($id): View
-    // {
-    //     $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
-    //     $data['divisions'] = Division::all();
-    //     $data['districts'] = District::all();
-    //     $data['thanas'] = Thana::all();
-
-    //     return view('backend.union.edit', $data);
-
-    // }
-    // public function update($id): View
-    // {
-    //     $data['thana'] = Thana::with('district.division')->findOrFail($id);
-    //     $data['divisions'] = Division::all();
-    //     $data['districts'] = District::where('division_id', $data['thana']->division_id)->get(); 
-    //     return view('backend.thana.edit', $data);
-    // }
     public function update_store(UnionRequest $request, $id): RedirectResponse
     {
         $update = Union::findOrFail($id);
