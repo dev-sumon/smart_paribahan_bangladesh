@@ -66,15 +66,15 @@ class FieldWorkerController extends Controller
         $update->password = bcrypt($request->password);
 
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
             $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("worker/", $filename, 'public');
             $update->image = $path;
-        
+        }
 
         $update->save();
         return redirect()->route('worker.index');

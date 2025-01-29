@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Create new Admin') }}</h4>
+                            <h4>{{ __('Create New Field Worker') }}</h4>
                         </span>
                         <span class="float-right">
                             <a href="{{ route('worker.index') }}" class="btn btn-info">{{ __('back') }}</a>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Stand Image" name="image" value="{{ old('image') }}">
+                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter Stand Image" name="image" value="{{ old('image') }}">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
@@ -94,7 +94,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>

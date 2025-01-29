@@ -24,8 +24,6 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Mobile') }}</th>
-                                            <th>{{ __('NID No') }}</th>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
@@ -38,8 +36,6 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $worker->name }}</td>
-                                            <td>{{ $worker->phone }}</td>
-                                            <td>{{ $worker->nid }}</td>
                                             <td><img src="{{ asset('storage/' .$worker->image) }}" alt="{{ $worker->image }}" width="100"></td>
                                             <td><span class="{{ $worker->statusBg() }}">{{ $worker->statusTitle() }}</span></td>
                                             <td>{{ $worker->created_at }}</td>
