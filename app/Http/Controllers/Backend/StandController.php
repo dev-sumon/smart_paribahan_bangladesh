@@ -25,9 +25,6 @@ class StandController extends Controller
     public function create(): View
     {
         $data['divisions'] = Division::latest()->get();
-        $data['districts'] = District::latest()->get();
-        $data['thanas'] = Thana::latest()->get();
-        $data['unions'] = Union::latest()->get();
         return view('backend.stand.create', $data);
     }
     public function store(StandRequest $request): RedirectResponse
@@ -54,11 +51,11 @@ class StandController extends Controller
     }
     public function update($id):View
     {
-        $data['stand'] = Stand::findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
         $data['divisions'] = Division::all();
-        $data['districts'] = District::all();
-        $data['thanas'] = Thana::all();
-        $data['unions'] = Union::all();
+        $data['districts'] = District::where('division_id', $data['stand']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['stand']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['stand']->thana_id)->get();
         return view('backend.stand.edit', $data);
     }
     public function update_store(StandRequest $request, $id):RedirectResponse
@@ -69,16 +66,18 @@ class StandController extends Controller
         $update->location = $request->location;
         $update->status = $request->status ?? 0;
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+        if ($request->hasFile('image')) {
+            if ($update->iamge && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("stands/", $filename, 'public');
-        $update->image = $path;
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("stands/", $filename, 'public');
+            $update->image = $path;
+        };
+        
 
-        $update->update();
+        $update->save();
         return redirect()->route('stand.index');
     }
     public function status($id): RedirectResponse{
@@ -101,10 +100,6 @@ class StandController extends Controller
     public function detalis($id): View
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
-
-        // $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
-
-
         return view('backend.stand.show', $data);
     }
 }
