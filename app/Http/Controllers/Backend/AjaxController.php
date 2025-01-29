@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
 use App\Models\District;
@@ -41,10 +42,18 @@ class AjaxController extends Controller
     }
     public function union(Request $request, $id): JsonResponse
     {
-        $unions = Union::where('district_id', $id)->latest()->get();
+        $unions = Union::where('thana_id', $id)->latest()->get();
         return response()->json([
             'success' => true,
             'data' => $unions
+        ]);
+    }
+    public function stand(Request $request, $id): JsonResponse
+    {
+        $stands = Stand::where('district_id', $id)->latest()->get();
+        return response()->json([
+            'success' => true,
+            'data' => $stands
         ]);
     }
 }

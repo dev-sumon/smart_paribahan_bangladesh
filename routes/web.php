@@ -255,6 +255,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('district/{id}', 'district')->name('district');
         Route::get('thana/{id}', 'thana')->name('thana');
         Route::get('union/{id}', 'union')->name('union');
+        Route::get('stand/{id}', 'stand')->name('stand');
     });
 });
 
