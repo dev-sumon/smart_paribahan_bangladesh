@@ -22,7 +22,7 @@ class ThanaController extends Controller
     public function create(): View
     {
         $data['divisions'] = Division::latest()->get();
-        $data['districts'] = District::latest()->get();
+        // $data['districts'] = District::latest()->get();
         return view('backend.thana.create', $data);
     }
     public function store(ThanaRequest $request): RedirectResponse
@@ -41,7 +41,7 @@ class ThanaController extends Controller
     {
         $data['thana'] = Thana::with('district.division')->findOrFail($id);
         $data['divisions'] = Division::all();
-        $data['districts'] = District::all();
+        $data['districts'] = District::where('division_id', $data['thana']->division_id)->get(); 
         return view('backend.thana.edit', $data);
     }
     public function update_store(ThanaRequest $request, $id): RedirectResponse
