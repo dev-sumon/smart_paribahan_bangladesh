@@ -89,7 +89,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('create', 'create')->name('create');
         Route::post('store','store')->name('store');
         Route::get('update/{id}', 'update')->name('update');
-        Route::post('update/{id}', 'update_store')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
@@ -254,6 +254,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('division/{id}', 'division')->name('division');
         Route::get('district/{id}', 'district')->name('district');
         Route::get('thana/{id}', 'thana')->name('thana');
+        Route::get('union/{id}', 'union')->name('union');
     });
 });
 

@@ -23,8 +23,6 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Stand Name') }}</th>
-                                            <th>{{ __('Description') }}</th>
-                                            <th>{{ __('Location') }}</th>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
@@ -38,8 +36,6 @@
                                         <tr>
                                             <td>{{ $loop->iteration}}</td>
                                             <td>{{ $stand->name }}</td>
-                                            <td>{{ $stand->description }}</td>
-                                            <td>{{ $stand->location }}</td>
                                             <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->name }}" width="100"></td>
                                             <td><span class="{{$stand->statusBg()}}">{{$stand->statusTitle()}}</span></td>
                                             <td>{{ $stand->created_at ? $stand->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
