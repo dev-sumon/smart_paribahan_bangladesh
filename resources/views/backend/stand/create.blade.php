@@ -151,7 +151,7 @@
                 });
             });
 
-            $('#district').on('change', function() { 
+            $('#thana').on('change', function() { 
                 let unionId = $(this).val();
                 let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
 
