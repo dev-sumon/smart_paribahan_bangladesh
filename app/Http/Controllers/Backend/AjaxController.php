@@ -50,7 +50,7 @@ class AjaxController extends Controller
     }
     public function stand(Request $request, $id): JsonResponse
     {
-        $stands = Stand::where('district_id', $id)->latest()->get();
+        $stands = Stand::where('union_id', $id)->latest()->get();
         return response()->json([
             'success' => true,
             'data' => $stands

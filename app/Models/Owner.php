@@ -107,4 +107,6 @@ class Owner extends Authenticatable
     public function stand(){
         return $this->belongsTo(Stand::class, 'stand_id', 'id');
     }
+
+
 }

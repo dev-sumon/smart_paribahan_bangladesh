@@ -29,10 +29,6 @@ class OwnerController extends Controller
         $data['bloods'] = BloodGroup::latest()->get();
         $data['vehicles'] = Vehicle::latest()->get();
         $data['divisions'] = Division::latest()->get();
-        // $data['districts'] = District::latest()->get();
-        // $data['thanas'] = Thana::latest()->get();
-        // $data['unions'] = Union::latest()->get();
-        // $data['stands'] = Stand::latest()->get();
         return view('backend.owner.create', $data);
     }
     public function store(OwnerRequest $request): RedirectResponse
@@ -65,14 +61,14 @@ class OwnerController extends Controller
     }
     public function update($id): View
     {
-        $data['owner'] = Owner::findOrFail($id);
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
         $data['bloods'] = BloodGroup::latest()->get();
-        $data['divisions'] = Division::all();
-        $data['districts'] = District::all();
-        $data['thanas'] = Thana::all();
-        $data['unions'] = Union::all();
         $data['vehicles'] = Vehicle::all();
-        $data['stands'] = Stand::all();
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::where('division_id', $data['owner']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['owner']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['owner']->thana_id)->get();
+        $data['stands'] = Stand::where('union_id', $data['owner']->union_id)->get();
         return view('backend.owner.edit', $data);
     }
     public function update_store(OwnerRequest $request, $id): RedirectResponse
@@ -130,8 +126,6 @@ class OwnerController extends Controller
     public function detalis($id): View
     {
         $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicle', 'stand')->findOrFail($id);
-        // $data['owner'] = Owner::with('blood_group')->findOrFail($id);
-        // $data['owner'] = Owner::findOrFail($id);
         return view('backend.owner.show', $data);
     }
 }

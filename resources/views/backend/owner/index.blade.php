@@ -37,7 +37,12 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $owner->name }}</td>
-                                            <td><img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" width="100"></td>
+                                            {{-- <td><img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" width="100"></td> --}}
+                                            <td>
+                                                <div class="ratio ratio-1x1" style="width: 100px; height: 100px;">
+                                                    <img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" class="img-fluid rounded" style="object-fit: cover; width: 100%; height: 100%;">
+                                                </div>
+                                            </td>                                                                                        
                                             <td>{{ $owner->email }}</td>
                                             <td>{{ $owner->vehicles_license }}</td>
                                             <td><span class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span></td>
