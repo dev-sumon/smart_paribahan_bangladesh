@@ -39,4 +39,7 @@ class Union extends Model
     public function thana(){
         return $this->belongsTo(Thana::class, 'thana_id', 'id');
     }
+    public function stand(){
+        return $this->belongsTo(Stand::class, 'stand_id', 'id');
+    }
 }
