@@ -53,7 +53,7 @@
                                         <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label  class="mt-3" for="division_id">{{ __('Division') }} <span class="text-danger">*</span></label>
                                         <select name="division_id" id="division_id" class="form-control">
                                             <option value=" " selected hidden>{{ __('Select Division') }}</option>
@@ -64,8 +64,21 @@
                                         @if($errors->has('division_id'))
                                         <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
+                                        <label for="division">Division <span class="text-danger">*</span></label>
+                                        <select name="division_id" id="division" class="form-control">
+                                            <option value="" selected hidden>Select Division</option>
+                                            @foreach ($divisions as $division)
+                                                <option value="{{ $division->id }}">{{ $division->division }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('division_id'))
+                                        <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                                        @endif
+                                    </div>
+
+                                    {{-- <div class="form-group">
                                         <label  class="mt-3" for="district_id">{{ __('District') }} <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district_id" class="form-control">
                                             <option value=" " selected hidden>{{ __('Select District') }}</option>
@@ -76,8 +89,15 @@
                                         @if($errors->has('district_id'))
                                         <div class="text-danger">{{ $errors->first('district_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
+                                        <label for="district">District <span class="text-danger">*</span></label>
+                                        <select name="district_id" id="district" class="form-control">
+                                            <option value="" selected hidden>Select District</option>
+                                        </select>
+                                    </div>
+
+                                    {{-- <div class="form-group">
                                         <label for="thana_id">{{ __('Thana') }} <span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana_id"  class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
@@ -88,8 +108,15 @@
                                         @if($errors->has('thana_id'))
                                             <div class="text-danger">{{ $errors->first('thana_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
+                                        <label for="thana">Thana <span class="text-danger">*</span></label>
+                                        <select name="thana_id" id="thana" class="form-control">
+                                            <option value="" selected hidden>Select Thana</option>
+                                        </select>
+                                    </div>
+
+                                    {{-- <div class="form-group">
                                         <label for="union_id">{{ __('Union') }} <span class="text-danger">*</span></label>
                                         <select name="union_id" id="union_id"  class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
@@ -100,8 +127,16 @@
                                         @if($errors->has('union_id'))
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
+                                        <label for="union">Union <span class="text-danger">*</span></label>
+                                        <select name="union_id" id="union" class="form-control">
+                                            <option value="" selected hidden>Select Union</option>
+                                        </select>
+                                    </div>
+
+
+                                    {{-- <div class="form-group">
                                         <label for="stand_id">{{ __('Stand') }} <span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand_id"  class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
@@ -112,8 +147,15 @@
                                         @if($errors->has('stand_id'))
                                             <div class="text-danger">{{ $errors->first('stand_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
+                                        <label for="stand">Stand <span class="text-danger">*</span></label>
+                                        <select name="stand_id" id="stand" class="form-control">
+                                            <option value="" selected hidden>Select Stand</option>
+                                        </select>
+                                    </div>
+
+                                    {{-- <div class="form-group">
                                         <label for="vehicle_id">{{ __('Vehicle Type') }} <span class="text-danger">*</span></label>
                                         <select name="vehicle_id" id="vehicle_id"  class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
@@ -124,6 +166,12 @@
                                         @if($errors->has('vehicle_id'))
                                             <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
                                         @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label for="vehicle">Vehicl <span class="text-danger">*</span></label>
+                                        <select name="vehicle_id" id="vehicle" class="form-control">
+                                            <option value="" selected hidden>Select Vehicle</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label  class="mt-3" for="vehicles_license">{{ __('Vehicles License') }}</label>
@@ -203,3 +251,124 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#division').on('change', function() {
+                let divisionId = $(this).val();
+                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let districts = response.data;
+                        let districtSelect = $('#district');
+                        districtSelect.empty();
+                        districtSelect.append('<option value="">Select District</option>');
+
+                        $.each(districts, function(index, district) {
+                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#district').on('change', function() { 
+                let districtId = $(this).val();
+                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let thanas = response.data;
+                        let thanaSelect = $('#thana');
+                        thanaSelect.empty();
+                        thanaSelect.append('<option value="">Select Thana</option>');
+
+                        $.each(thanas, function(index, thana) {
+                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#thana').on('change', function() { 
+                let unionId = $(this).val();
+                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let unions = response.data;
+                        let unionSelect = $('#union');
+                        unionSelect.empty();
+                        unionSelect.append('<option value="">Select Union</option>');
+
+                        $.each(unions, function(index, union) {
+                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+            
+            $('#union').on('change', function() { 
+                let standId = $(this).val();
+                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId); 
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let stands = response.data;
+                        let standSelect = $('#stand');
+                        standSelect.empty();
+                        standSelect.append('<option value="">Select Stand</option>');
+
+                        $.each(stands, function(index, stand) {
+                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+            $('#stand').on('change', function() { 
+                let vehicleId = $(this).val();
+                let _url = '{{ route("ajax.vehicle", ":id") }}'.replace(':id', vehicleId); 
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let vehicles = response.data;
+                        let vehicleSelect = $('#vehicle');
+                        vehicleSelect.empty();
+                        vehicleSelect.append('<option value="">Select vehicle</option>');
+
+                        $.each(vehicles, function(index, vehicle) {
+                            vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.vehicle + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+        });
+    </script>
+@endpush
