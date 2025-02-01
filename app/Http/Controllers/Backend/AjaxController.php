@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
+use App\Models\Vehicle;
 use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -54,6 +55,14 @@ class AjaxController extends Controller
         return response()->json([
             'success' => true,
             'data' => $stands
+        ]);
+    }
+    public function vehicle(Request $request, $id): JsonResponse
+    {
+        $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
+        return response()->json([
+            'success' => true,
+            'data' => $vehicles
         ]);
     }
 }
