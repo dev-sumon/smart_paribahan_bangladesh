@@ -9,8 +9,8 @@
           <div class="row d-flex align-items-center column_reverse">
             <div class="col-12 mb-5 col-md-5">
               <div class="title">
-                <h3>আপনার নিরাপদ যাত্রার</h3>
-                <h2>স্মার্ট সলিউশন</h2>
+                <h3>{{ __('আপনার নিরাপদ যাত্রার') }}</h3>
+                <h2>{{ __('স্মার্ট সলিউশন') }}</h2>
                 <p class="lead">
                   সময় কারও জন্য অপেক্ষা না করলেও আপনার জীবনের সময় বাঁচাতে স্মার্ট সল্যুশন নিয়ে আপনার পাশে আমরা আছি
                 </p>
@@ -19,12 +19,14 @@
                 <div class="col-4 col-md-6 col-xl-4">
                   <select class="form-select select_iteam">
                       <option>বিভাগ</option>
-                      <option>Rangpur</option>
-                      <option>Dahaka</option>
-                      <option>Borisal</option>
-                      <option>Chattogram</option>
-                      <option>Rajshahi</option>
-                      <option>Rajshahi</option>
+                      <option>ঢাকা</option>
+                      <option>চট্টগ্রাম</option>
+                      <option>রাজশাহী</option>
+                      <option>খুলনা</option>
+                      <option>বরিশাল</option>
+                      <option>সিলেট</option>
+                      <option>রংপুর</option>
+                      <option>ময়মনসিংহ</option>
                   </select>
                 </div>
                 <div class="col-4 col-md-6 col-xl-4">
@@ -75,9 +77,11 @@
                       <option value="">গাড়ি</option>
                     </select>
                 </div>
-                  <div class="col-12 submit">
-                    <button class="btn btn-custom mt-3 w-100">এখানে সার্চ করুন</button>
-                  </div>
+                  <form action="{{ route('f.cng.index') }}">
+                    <div class="col-12 submit">
+                      <button class="btn btn-custom mt-3 w-100">এখানে সার্চ করুন</button>
+                    </div>
+                  </form>
               </div>
             </div>
             <div class="col-12 col-md-7 mb-5 text-center">
@@ -100,7 +104,7 @@
             <div class="col-6 col-md-4 col-lg-2">
               <div class="card p-3 text-center">
                 <div class="details">
-                  <a href="cng.html">
+                  <a href="{{ route('f.cng.index') }}">
                     <img src="{{ asset('forntend/images/Group (6).svg') }}" alt="সি এন জি">
                     <p>সি এন জি</p>
                   </a>

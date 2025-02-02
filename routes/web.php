@@ -31,6 +31,7 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
 use App\Http\Controllers\Forntend\SignUpController;
 
@@ -63,6 +64,11 @@ Route::group(['as' => 'f.'], function () {
 
     Route::controller(SignUpController::class)->prefix('signup')->name('signup.')->group(function(){
         Route::get('/', 'index')->name('index');
+    });
+    Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
+        Route::get('/map', 'map')->name('map');
     });
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
