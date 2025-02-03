@@ -17,7 +17,11 @@ use App\Http\Controllers\Backend\NoticeController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\DivisionController;
 use App\Http\Controllers\Driver\DashboardController;
+use App\Http\Controllers\Forntend\BlogPageController;
+use App\Http\Controllers\Forntend\HelpPageController;
+use App\Http\Controllers\Forntend\HomePageController;
 use App\Http\Controllers\Backend\BloodGroupController;
+use App\Http\Controllers\Forntend\ContactUsController;
 use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\FooterTitleController;
@@ -27,15 +31,51 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Forntend\CngInfoController;
+use App\Http\Controllers\Forntend\LoginController;
+use App\Http\Controllers\Forntend\SignUpController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['as' => 'f.'], function () {
+    Route::get('/', [HomePageController::class, 'index'])->name('home');
+
+    Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
+        Route::get('/', 'index')->name('index');
+    });
+
+    Route::controller(BlogPageController::class)->prefix('blog')->name('blog.')->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/inner_blog', 'inner_blog')->name('inner_blog');
+    });
+
+    Route::controller(ContactUsController::class)->prefix('contact-us')->name('contact.')->group(function(){
+        Route::get('/', 'index')->name('index');
+    });
+
+    Route::controller(LoginController::class)->prefix('login')->name('login.')->group(function(){
+        Route::get('/', 'index')->name('index');
+    });
+
+    Route::controller(SignUpController::class)->prefix('signup')->name('signup.')->group(function(){
+        Route::get('/', 'index')->name('index');
+    });
+    Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
+        Route::get('/map', 'map')->name('map');
+        Route::get('/community', 'community')->name('community');
+        Route::get('/owner', 'owner')->name('owner');
+        Route::get('/driver', 'driver')->name('driver');
+        Route::get('/notice', 'notice')->name('notice');
+    });
+});
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(AdminLoginController::class)->prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', 'adminLogin')->name('login');
