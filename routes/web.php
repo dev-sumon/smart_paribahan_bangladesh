@@ -69,6 +69,10 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/', 'index')->name('index');
         Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
         Route::get('/map', 'map')->name('map');
+        Route::get('/community', 'community')->name('community');
+        Route::get('/owner', 'owner')->name('owner');
+        Route::get('/driver', 'driver')->name('driver');
+        Route::get('/notice', 'notice')->name('notice');
     });
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

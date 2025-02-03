@@ -167,14 +167,14 @@
                                     <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
                                         <li><a href="{{ route('f.cng.cng_stand') }}" class="">স্ট্যান্ডের পরিচিতি</a></li>
                                         <li><a href="{{ route('f.cng.map') }}" class="active-link">মানচিত্রে স্ট্যান্ড</a></li>
-                                        <li><a href="stand_community.html">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
-                                        <li><a href="cng_owner_list.html">বাইক মালিক এর তালিকা</a></li>
+                                        <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
+                                        <li><a href="{{ route('f.cng.owner') }}">সি এন জি মালিক এর তালিকা</a></li>
                                     </ul>
                                 </div>
                                 <div class="nav2 pt-4">
                                     <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="cng_driver_list.html">বাইক ড্রাইভার এর তালিকা </a></li>
-                                        <li><a href="notice_page.html">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
+                                        <li><a href="{{ route('f.cng.driver') }}">সি এন জি ড্রাইভার এর তালিকা </a></li>
+                                        <li><a href="{{ route('f.cng.notice') }}">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -307,30 +307,30 @@
                 <div class="row gallery_image g-3">
                     <div class="col-6 col-md-4">
                         <div class="">
-                            <img src="{{ asset('forntend/images/Rectangle 3842.png') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('forntend/images/Rectangle 3842.png') }}" alt="gallery_image" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="">
-                            <img src="{{ asset('forntend/images/Rectangle 3844.png') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('forntend/images/Rectangle 3844.png') }}" alt="gallery_image" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class=""></div>
-                        <img src="{{ asset('forntend/images/Rectangle 3846.png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('forntend/images/Rectangle 3846.png') }}" alt="gallery_image" class="img-fluid">
                     </div>
                 </div>
             </div>
             <div class="row pt-3">
                 <div class="row gallery_image g-3">
                     <div class="col-6 col-md-4">
-                        <img src="{{ asset('forntend/images/Rectangle 3847.png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('forntend/images/Rectangle 3847.png') }}" alt="gallery_image" class="img-fluid">
                     </div>
                     <div class="col-6 col-md-4">
-                        <img src="{{ asset('forntend/images/Rectangle 3843.png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('forntend/images/Rectangle 3843.png') }}" alt="gallery_image" class="img-fluid">
                     </div>
                     <div class="col-12 col-md-4">
-                        <img src="{{ asset('forntend/images/Rectangle 3845 (1).png') }}" alt="" class="img-fluid">
+                        <img src="{{ asset('forntend/images/Rectangle 3845 (1).png') }}" alt="gallery_image" class="img-fluid">
                     </div>
                 </div>
             </div>

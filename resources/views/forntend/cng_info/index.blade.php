@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="stand_community.html">
+                                <a href="{{ route('f.cng.community') }}">
                                     <img src="{{ asset('forntend/images/team 1.svg') }}" alt="">
                                     <p class="pt-3">সি এন জি স্টেশন সভাপতি ও সদস্য  বৃন্দ তালিকা </p>
                                 </a>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="cng_owner_list.html">
+                                <a href="{{ route('f.cng.owner') }}">
                                     <img src="{{ asset('forntend/images/owner 1.svg') }}" alt="">
                                     <p class="pt-3">সি এন জি মালিক এর তালিকা </p>
                                 </a>
@@ -177,7 +177,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="cng_driver_list.html">
+                                <a href="{{ route('f.cng.driver') }}">
                                     <img src="{{ asset('forntend/images/driver11 1.svg') }}" alt="">
                                     <p class="pt-3">সি এন জি  ড্রাইভার এর তালিকা </p>
                                 </a>
@@ -185,7 +185,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="notice_page.html">
+                                <a href="{{ route('f.cng.notice') }}">
                                     <img src="{{ asset('forntend/images/report 1.svg') }}" alt="">
                                     <p class="pt-3">সি এন জি স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </p>
                                 </a>

@@ -1,5 +1,5 @@
 @extends('forntend.layouts.master')
-@section('title', 'standCommunity')
+@section('title', 'CNGowner')
 @section('content')
      <!-- president and members section start-->
      <section class="president_and_members pt-5 pb-4">
@@ -8,8 +8,7 @@
                 <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5>
             </div>
             <div class="member_list_title">
-                <h2>সি এন জি স্টেশন সভাপতি <br class="d-none d-sm-inline">
-                     ও সদস্য বৃন্দ তালিকা</h2>
+                <h2>সি এন জি মালিক এর তালিকা</h2>
             </div>
         </div>
     </section>
@@ -67,7 +66,7 @@
                     <div class="advisement text-center">
                       <div class="add_image">
                         <a href="#">
-                          <img class="text-center" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                          <img class="text-center" src="images/add_banner.jpg" alt="add banner">
                         </a>
                       </div>
                     </div>
@@ -80,8 +79,8 @@
     <section class="dealist pb-5">
         <div class="container">
             <div class="row d-flex align-content-center">
-                <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center stant_location_item">
-                    <div class="row g-2 pt-5">
+                <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center cng_owner_location_item">
+                    <div class="row g-2">
                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                             <div class="dropdown">
                                 <select>
@@ -96,7 +95,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
+                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                             <div class="dropdown">
                                 <select>
                                     <option>জেলা</option>
@@ -123,7 +122,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
+                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                             <div class="dropdown">
                                 <select>
                                     <option>স্ট্যান্ড</option>
@@ -141,37 +140,12 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                      <button class="btn btn-outline-success mt-3 mb-5" type="submit">ক্লিক করুন</button>
-                    <div class="mt-5 d-lg-block d-md-none d-sm-block community_advisement">
-                        <div class="advisement">
-                            <div class="add_image">
-                                <a href="#">
-                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
-                                </a>
-                            </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-outline-success mt-3 mb-5" type="submit">ক্লিক করুন</button>
                         </div>
-                    </div>
-                    <div class="mt-5 d-lg-block d-md-none d-sm-none community_advisement">
-                        <div class="advisement">
-                            <div class="add_image">
-                                <a href="#">
-                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-5 d-lg-block d-md-none d-sm-none community_advisement">
-                        <div class="advisement">
-                            <div class="add_image">
-                                <a href="#">
-                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    </div> 
                 </div>
-                <div class="col-md-12 col-lg-8">
+                <div class="col-12 col-lg-8">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-12 col-lg-12 pb-5">
                             <div class="content_nav">
@@ -179,8 +153,8 @@
                                     <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
                                         <li><a href="{{ route('f.cng.cng_stand') }}">স্ট্যান্ডের পরিচিতি</a></li>
                                         <li><a href="{{ route('f.cng.map') }}">মানচিত্রে স্ট্যান্ড</a></li>
-                                        <li><a href="{{ route('f.cng.community') }}"  class="active-link">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
-                                        <li><a href="{{ route('f.cng.owner') }}">সি এন জি মালিক এর তালিকা</a></li>
+                                        <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
+                                        <li><a href="{{ route('f.cng.owner') }}" class="active-link">সি এন জি মালিক এর তালিকা</a></li>
                                     </ul>
                                 </div>
                                 <div class="nav2 pt-4">
@@ -191,107 +165,204 @@
                                 </div>
                             </div>
                         </div>
-                     </div>
-                      
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-md-6 col-12 pb-5">
+                    </div>
+                    <div class="row owner_list">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সভাপতি</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845 (2).png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12 pb-5">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile-card">
-                                <img src="{{ asset('forntend/images/Rectangle 3845.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                <div class="badge">সাধারণ <br> সম্পাদক</div>
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
                                 <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p>nzrul@degmail.com</p>
-                                    <p>+880 1777000000</p>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                            <div class="profile-card">
+                                <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3">
+                                <div class="profile-details">
+                                    <p class="owner">সি এন জি মালিক</p>
+                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
+                                    <p class="number">+880 1777000000</p>
+                                    <a href="cng_owner_profile.html">আরও জানুন</a>
+                                    <span>>></span>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="next_page d-flex align-items-center justify-content-md-center text-center">
+                        <div class="left_arrow">
+                            <a href="#"><i class="fa-solid fa-angles-left"></i></a>
+                        </div>
+                        <div class="page_number d-flex">
+                            <a href="#">১</a>
+                            <a href="#">২</a>
+                            <a href="#">৩</a>
+                        </div>
+                        <div class="right_arrow">
+                            <a href="#"><i class="fa-solid fa-angles-right"></i></a>
+                        </div>
+                    </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>

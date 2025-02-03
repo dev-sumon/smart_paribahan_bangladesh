@@ -20,4 +20,20 @@ class CngInfoController extends Controller
     {
         return view('forntend.cng_info.map');
     }
+    public function community(): View
+    {
+        return view('forntend.cng_info.stand_community');
+    }
+    Public function owner(): View
+    {
+        return view('forntend.cng_info.owner_list');
+    }
+    public function driver(): View
+    {
+        return view('forntend.cng_info.driver_list');
+    }
+    public function notice(): View
+    {
+        return view('forntend.cng_info.notice');
+    }
 }
