@@ -31,6 +31,7 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
 use App\Http\Controllers\Forntend\SignUpController;
@@ -73,6 +74,9 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/owner', 'owner')->name('owner');
         Route::get('/driver', 'driver')->name('driver');
         Route::get('/notice', 'notice')->name('notice');
+    });
+    Route::controller(AuthDriverLoginController::class)->prefix('driver-login')->name('login')->group(function(){
+        Route::get('/login', 'driverLogin')->name('login');
     });
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
