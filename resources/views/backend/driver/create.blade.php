@@ -174,6 +174,12 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="vehicles_license">Vehicles License <span class="text-danger">*</span></label>
+                                        <select name="vehicles_license" id="vehicles_license" class="form-control">
+                                            <option value="" selected hidden>Select Vehicles License</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label  class="mt-3" for="vehicles_license">{{ __('Vehicles License') }}</label>
                                         <select name="owner_id" id="owner_id" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicles License') }}</option>
@@ -361,6 +367,29 @@
 
                         $.each(vehicles, function(index, vehicle) {
                             vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.vehicle + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#vehicle').on('change', function() { 
+                let vehicleId = $(this).val();
+                let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId); 
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let licenses = response.data;
+                        let licenseSelect = $('#vehicles_license');
+                        licenseSelect.empty();
+                        licenseSelect.append('<option value="">Select Vehicles License</option>');
+
+                        $.each(licenses, function(index, license) {
+                            licenseSelect.append('<option value="' + license + '">' + license + '</option>');
                         });
                     },
                     error: function(error) {

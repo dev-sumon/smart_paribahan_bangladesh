@@ -101,8 +101,16 @@ class Owner extends Authenticatable
     public function union(){
         return $this->belongsTo(Union::class, 'union_id', 'id');
     }
-    public function vehicle(){
-        return $this->belongsTo(Vehicle::class, 'vehicle_id', 'id');
+    // public function vehicle(){
+    //     return $this->hasMany(Vehicle::class, 'owner_id', 'id');
+    // }
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicle_id'); // 'vehicle_id' পরিবর্তন হতে পারে, আপনার ডাটাবেস অনুযায়ী
+    }
+    public function vehiclesLicense()
+    {
+        return $this->hasOne(Owner::class, 'owner_id'); // 'owner_id' পরিবর্তন হতে পারে, আপনার ডাটাবেস অনুযায়ী
     }
     public function stand(){
         return $this->belongsTo(Stand::class, 'stand_id', 'id');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -106,6 +107,10 @@ Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.
     Route::get('/login', 'driverLogin')->name('login');
     Route::post('/login', 'driverLoginCheck')->name('login');
     Route::post('/logout', 'logout')->name('logout');
+});
+Route::controller(DriverRegistrationController::class)->prefix('dRegistration')->name('dRegistration.')->group(function(){
+    Route::get('driver/register', 'registerForm')->name('registerForm');
+    Route::post('driver/register', 'register')->name('register');
 });
 
 // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
@@ -300,7 +305,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('thana/{id}', 'thana')->name('thana');
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
-        Route::get('stand/{id}', 'stand')->name('stand');
+        // Route::get('stand/{id}', 'stand')->name('stand');
+        Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
+
         Route::get('vehicle/{id}', 'vehicle')->name('vehicle');
     });
 });

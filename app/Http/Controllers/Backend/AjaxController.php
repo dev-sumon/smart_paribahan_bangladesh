@@ -65,4 +65,13 @@ class AjaxController extends Controller
             'data' => $vehicles
         ]);
     }
+    public function vehiclesLicense(Request $request, $id): JsonResponse
+    {
+        $licenses = Vehicle::where('id', $id)->pluck('license_number');
+        return response()->json([
+            'success' => true,
+            'data' => $licenses
+        ]);
+    }
+
 }
