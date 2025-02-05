@@ -24,7 +24,7 @@ class DriverLoginController extends Controller
         if($check){
             if($check->status == 1){
                 if(Auth::guard('driver')->attempt($credentials)){
-                    return redirect()->route('driver.dashboard');
+                    return redirect()->route('f.home');
                 }
             }
         }

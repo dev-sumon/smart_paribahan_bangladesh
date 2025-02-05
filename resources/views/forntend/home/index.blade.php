@@ -93,6 +93,14 @@
           
         </div>
       </section>
+      {{-- <a class="dropdown-item" href="{{ route('driver.logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
+                @csrf
+            </form> --}}
       <!-- hero section end -->
   
       <!-- vehicles_list section start -->
