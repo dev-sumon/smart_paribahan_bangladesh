@@ -29,4 +29,19 @@ class DriverRegistrationController extends Controller
         $save->save();
         return redirect()->route('f.home');
     }
+    // public function update($id): View
+    // {
+    //     $data['driver'] = Driver::findOrFail($id);
+    //     return view('driver.dashboard.dashboard', $data);
+    // }
+
+    public function update(Request $request, $id): View
+{
+    $data['driver'] = Driver::findOrFail($id);
+    $data['driver']->update($request->all());
+
+    return view('driver.dashboard.dashboard', $data);
+}
+
+
 }

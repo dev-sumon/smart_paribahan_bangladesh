@@ -118,6 +118,7 @@ Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.
 Route::controller(DriverRegistrationController::class)->prefix('dRegistration')->name('dRegistration.')->group(function(){
     Route::get('driver/register', 'registerForm')->name('registerForm');
     Route::post('driver/register', 'register')->name('register');
+    Route::put('driver/update/{id}', 'update')->name('update');
 });
 
 // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
