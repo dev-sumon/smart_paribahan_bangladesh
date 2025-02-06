@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Forntend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Division;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomePageController extends Controller
 {
     public function index(){
-        return view('forntend.home.index');
+
+        $data['divisions'] = Division::latest()->get();
+
+        return view('forntend.home.index', $data);
     }
 }

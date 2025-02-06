@@ -36,6 +36,7 @@ use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginC
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
 use App\Http\Controllers\Forntend\SignUpController;
+// use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -43,6 +44,12 @@ use App\Http\Controllers\Forntend\SignUpController;
 
 Auth::routes();
 
+
+
+// Route::post('/logout', function () {
+//     Auth::logout();
+//     return redirect()->route('f.home');
+// })->name('logout');
 
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
