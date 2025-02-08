@@ -116,9 +116,9 @@ Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.
     Route::post('/login', 'driverLoginCheck')->name('login');
     Route::post('/logout', 'logout')->name('logout');
 });
-Route::controller(DriverRegistrationController::class)->prefix('dRegistration')->name('dRegistration.')->group(function(){
-    Route::get('driver/register', 'registerForm')->name('registerForm');
-    Route::post('driver/register', 'register')->name('register');
+Route::controller(DriverRegistrationController::class)->prefix('signup')->name('signup.')->group(function(){
+    Route::get('driver/signup', 'signupForm')->name('signupForm');
+    Route::post('driver/signup', 'signup')->name('signup');
     Route::put('driver/update/{id}', 'update')->name('update');
 });
 

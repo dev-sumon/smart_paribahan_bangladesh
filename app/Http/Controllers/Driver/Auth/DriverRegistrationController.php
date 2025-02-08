@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class DriverRegistrationController extends Controller
 {
-    public function registerForm(): View
+    public function signupForm(): View
     {
         return view('driver.auth.register');
     }
-    public function register(DriverRequest $request)
+    public function signup(DriverRequest $request)
     {
         $save = new Driver();
 
