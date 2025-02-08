@@ -37,6 +37,8 @@ use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginC
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
 use App\Http\Controllers\Forntend\SignUpController;
+use App\Http\Controllers\Owner\Auth\OwnerSignupController;
+
 // use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
@@ -109,6 +111,10 @@ Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')-
     Route::get('/login', 'ownerLogin')->name('login');
     Route::post('/login', 'ownerLoginCheck')->name('login');
     Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::controller(OwnerSignupController::class)->prefix('signup')->name('owner.signup.')->group(function(){
+    Route::get('owner/signup', 'signupForm')->name('signup');
 });
 
 Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.')->group( function(){
