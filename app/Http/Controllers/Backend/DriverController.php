@@ -33,7 +33,7 @@ class DriverController extends Controller
         // $data['districts'] = District::latest()->get();
         // $data['thanas'] = Thana::latest()->get();
         // $data['unions'] = Union::latest()->get();
-        $data['vehicles'] = Vehicle::latest()->get();
+        // $data['vehicles'] = Vehicle::latest()->get();
         // $data['stands'] = Stand::latest()->get();
         return view('backend.driver.create', $data);
     }
@@ -140,10 +140,10 @@ class DriverController extends Controller
         return redirect()->route('driver.index');
     }
     public function detalis($id): View
-{
-    $data['driver'] = Driver::with('owner')->findOrFail($id);
-    $data['owners'] = Owner::latest()->get();
-    return view('backend.driver.show', $data);
-}
+    {
+        $data['driver'] = Driver::with('owner')->findOrFail($id);
+        $data['owners'] = Owner::latest()->get();
+        return view('backend.driver.show', $data);
+    }
 
 }

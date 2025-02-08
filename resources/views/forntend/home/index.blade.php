@@ -17,17 +17,15 @@
               </div>
               <div class="row g-2">
                 <div class="col-4 col-md-6 col-xl-4">
-                  <select class="form-select select_iteam">
-                      <option>বিভাগ</option>
-                      <option>ঢাকা</option>
-                      <option>চট্টগ্রাম</option>
-                      <option>রাজশাহী</option>
-                      <option>খুলনা</option>
-                      <option>বরিশাল</option>
-                      <option>সিলেট</option>
-                      <option>রংপুর</option>
-                      <option>ময়মনসিংহ</option>
-                  </select>
+                  <select name="division_id" id="division" class="form-control form-select select_iteam">
+                    <option value="" selected hidden>বিভাগ</option>
+                    @foreach ($divisions as $division)
+                        <option value="{{ $division->id }}">{{ $division->division }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('division_id'))
+                <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                @endif
                 </div>
                 <div class="col-4 col-md-6 col-xl-4">
                     <select name="" id="" class="form-select select_iteam">
@@ -38,6 +36,7 @@
                       <option value="">জেলা</option>
                     </select>
                 </div>
+                
                 <div class="col-4 col-md-6 col-xl-4">
                     <select name="" id="" class="form-select select_iteam">
                       <option value="">থানা</option>
@@ -93,6 +92,14 @@
           
         </div>
       </section>
+      {{-- <a class="dropdown-item" href="{{ route('driver.logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
+                @csrf
+            </form> --}}
       <!-- hero section end -->
   
       <!-- vehicles_list section start -->

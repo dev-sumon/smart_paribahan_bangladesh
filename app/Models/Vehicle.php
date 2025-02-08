@@ -27,4 +27,10 @@ class Vehicle extends Model
             return 'btn-success';
         }
     }
+
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class, 'owner_id');
+    }
 }

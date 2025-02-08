@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -31,9 +32,12 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
+use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
 use App\Http\Controllers\Forntend\SignUpController;
+// use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -41,6 +45,12 @@ use App\Http\Controllers\Forntend\SignUpController;
 
 Auth::routes();
 
+
+
+// Route::post('/logout', function () {
+//     Auth::logout();
+//     return redirect()->route('f.home');
+// })->name('logout');
 
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
@@ -74,6 +84,9 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/driver', 'driver')->name('driver');
         Route::get('/notice', 'notice')->name('notice');
     });
+    Route::controller(AuthDriverLoginController::class)->prefix('driver-login')->name('login')->group(function(){
+        Route::get('/login', 'driverLogin')->name('login');
+    });
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -102,6 +115,11 @@ Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.
     Route::get('/login', 'driverLogin')->name('login');
     Route::post('/login', 'driverLoginCheck')->name('login');
     Route::post('/logout', 'logout')->name('logout');
+});
+Route::controller(DriverRegistrationController::class)->prefix('dRegistration')->name('dRegistration.')->group(function(){
+    Route::get('driver/register', 'registerForm')->name('registerForm');
+    Route::post('driver/register', 'register')->name('register');
+    Route::put('driver/update/{id}', 'update')->name('update');
 });
 
 // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
@@ -296,7 +314,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('thana/{id}', 'thana')->name('thana');
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
-        Route::get('stand/{id}', 'stand')->name('stand');
+        // Route::get('stand/{id}', 'stand')->name('stand');
+        Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
+
         Route::get('vehicle/{id}', 'vehicle')->name('vehicle');
     });
 });
@@ -306,6 +326,14 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
 });
  
 Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+    Route::get('/dashboard/{id}', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+    Route::post('/dashboard/update/{id}', [DashboardController::class, 'updateDashboard'])->name('driver.updateDashboard');
+    Route::controller(DriverAjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
+        Route::get('division/{id}', 'division')->name('division');
+        Route::get('district/{id}', 'district')->name('district');
+        Route::get('thana/{id}', 'thana')->name('thana');
+        Route::get('union/{id}', 'union')->name('union');
+        Route::get('stand/{id}', 'stand')->name('stand');
+    });
 });
 

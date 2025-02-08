@@ -55,8 +55,29 @@
               <li><a class="dropdown-item" href="#">বাংলা</a></li>
             </ul>
           </div>
+          {{-- <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger me-2 d-none d-lg-block login loginButton">লগ ইন</a>
+          <a href="{{ route('f.signup.index') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a>
+          <a href="{{ route('dRegistration.registerForm') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a> --}}
+
+          @if (Auth::guard('driver')->check())
+              {{-- Logout button --}}
+              {{-- <a class="dropdown-item" href="{{ route('driver.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
+                @csrf
+            </form> --}}
+            <a href="{{ route('driver.dashboard',Auth::guard('driver')->user()->id) }}">{{ __('Profile') }}</a>
+          @elseif (Auth::guard('owner')->check())
+              <a class="dropdwon-item" href="{{ route('owner.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+              </a>
+          @else
           <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger me-2 d-none d-lg-block login loginButton">লগ ইন</a>
           <a href="{{ route('f.signup.index') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a>
+          <a href="{{ route('dRegistration.registerForm') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a>
+              {{-- Login and registration buttons --}}
+          @endif
         </div>
       </div> 
     </div>

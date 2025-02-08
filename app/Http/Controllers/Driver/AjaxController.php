@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Driver;
 
 use App\Models\Stand;
 use App\Models\Thana;
@@ -15,7 +15,7 @@ class AjaxController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('driver');
     }
     public function division(Request $request, $id): JsonResponse
     {
@@ -73,5 +73,4 @@ class AjaxController extends Controller
             'data' => $licenses
         ]);
     }
-
 }

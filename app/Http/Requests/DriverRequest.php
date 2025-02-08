@@ -23,7 +23,7 @@ class DriverRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:30',
-            'status' => 'required|boolean',
+            'status' => 'nullable|boolean',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -35,7 +35,7 @@ class DriverRequest extends FormRequest
             'designation' => 'nullable|min:3|max:55',
             'email' => 'required|email|unique:drivers,email',
             'phone' => 'required|string|unique:drivers,phone',
-            'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license',
+            'driving_license' => 'nullable|string|min:13|max:13|unique:drivers,driving_license',
             'blood_group' => 'nullable|string|min:2|max:3',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'required|string|min:8|confirmed',
