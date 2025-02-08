@@ -81,7 +81,7 @@
         <div class="container d-flex justify-content-center align-items-center pt-5 py-5">
           <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
             <a href="{{ route('signup.signup') }}">{{ __('ড্রাইভার সাইন আপ') }}</a>
-            <a href="">{{ __('মালিক সাইন আপ') }}</a>
+            <a href="{{ route('owner.signup.signup') }}">{{ __('মালিক সাইন আপ') }}</a>
             <a href="">{{ __('মাঠ কর্মী সাইন আপ') }}</a>
           </div>
         </div>
