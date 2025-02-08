@@ -75,7 +75,7 @@
           @else
           <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger me-2 d-none d-lg-block login loginButton">লগ ইন</a>
           <a href="{{ route('f.signup.index') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a>
-          <a href="{{ route('dRegistration.registerForm') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a>
+          {{-- <a href="{{ route('dRegistration.registerForm') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a> --}}
               {{-- Login and registration buttons --}}
           @endif
         </div>

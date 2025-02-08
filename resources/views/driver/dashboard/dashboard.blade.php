@@ -1,26 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ __('Document') }}</title>
-</head>
-<body>
-    <h1>{{ __('Driver Dashbaord') }}</h1>
-    <li class="nav-item dropdown">
-        <a class="dropdown-item" href="{{ route('driver.logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-    </li>
-</body>
-</html> --}}
-
 @extends('forntend.layouts.master')
 @section('title', 'Driver Dashboard')
 @section('content')
@@ -39,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-10 m-auto">
                         <h3>{{ __('Driver Profile Update') }}</h3>
-                        <form action="{{ route('dRegistration.update', $driver->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('signup.update', $driver->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -271,31 +248,41 @@
                                     {{ __('Update') }}
                                 </button>
                             </div>
-                            <div class="form-group text-center">
-                                <a href="{{ route('driver.logout') }}" style="border: 2px solid #ea1827; color: #ea1827; background-color: #FFFFFF; padding: 5px; border-radius: 3px;">{{ __('Logout') }}</a>
-                            </div>
+                           
                         </form>
                         
-                     {{-- <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
-                         @csrf
-                         <div class="form-grou">
-                            <a class="dropdown-item" href="{{ route('driver.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                         </div>
-                     </form> --}}
+                     
                     </div>
                 </div>
             </div>
            
         </div>
     </section>
+    <section class="logout">
+        <div class="container">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-10 m-auto">
+                        <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="">
+                            @csrf
+                            <div class="form-grou">
+                            <a class="dropdown-item" href="{{ route('driver.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
     <!-- error_section section design end -->
 @endsection
 
 
 @push('script')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#division').on('change', function() {
                 let divisionId = $(this).val();
@@ -439,5 +426,5 @@
             });
 
         });
-    </script>
+    </script> --}}
 @endpush

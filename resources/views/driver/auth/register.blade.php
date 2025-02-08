@@ -5,7 +5,7 @@
     <div class="container d-flex justify-content-center align-items-center">
       <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
         <h4 class="mb-4">{{ __('অ্যাকাউন্ট তৈরী করুন') }}</h4>
-        <form action="{{ route('dRegistration.register') }}"  method="POST" enctype="multipart/form-data">
+        <form action="{{ route('signup.signup') }}"  method="POST" enctype="multipart/form-data">
             @csrf
           <div class="form-group">
                 <label for="name">{{ __('নাম') }} <span class="text-danger">*</span></label>
