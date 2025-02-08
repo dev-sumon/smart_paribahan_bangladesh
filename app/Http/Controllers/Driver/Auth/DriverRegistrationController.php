@@ -35,13 +35,7 @@ class DriverRegistrationController extends Controller
     //     return view('driver.dashboard.dashboard', $data);
     // }
 
-    public function update(Request $request, $id): View
-{
-    $data['driver'] = Driver::findOrFail($id);
-    $data['driver']->update($request->all());
 
-    return view('driver.dashboard.dashboard', $data);
-}
 
 
 }

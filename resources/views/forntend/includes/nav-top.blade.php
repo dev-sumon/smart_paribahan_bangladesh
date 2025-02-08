@@ -67,7 +67,7 @@
             <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
                 @csrf
             </form> --}}
-            <a href="{{ route('driver.dashboard') }}">{{ __('Profile') }}</a>
+            <a href="{{ route('driver.dashboard',Auth::guard('driver')->user()->id) }}">{{ __('Profile') }}</a>
           @elseif (Auth::guard('owner')->check())
               <a class="dropdwon-item" href="{{ route('owner.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}

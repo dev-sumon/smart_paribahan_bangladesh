@@ -32,6 +32,7 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
@@ -325,6 +326,14 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
 });
  
 Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+    Route::get('/dashboard/{id}', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+    Route::post('/dashboard/update/{id}', [DashboardController::class, 'updateDashboard'])->name('driver.updateDashboard');
+    Route::controller(DriverAjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
+        Route::get('division/{id}', 'division')->name('division');
+        Route::get('district/{id}', 'district')->name('district');
+        Route::get('thana/{id}', 'thana')->name('thana');
+        Route::get('union/{id}', 'union')->name('union');
+        Route::get('stand/{id}', 'stand')->name('stand');
+    });
 });
 
