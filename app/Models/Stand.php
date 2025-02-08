@@ -40,7 +40,20 @@ class Stand extends Model
     public function thana(){
         return $this->belongsTo(Thana::class, 'thana_id', 'id');
     }
-    public function union(){
-        return $this->belongsTo(Union::class, 'union_id', 'id');
+    // public function union(){
+    //     return $this->belongsTo(Union::class, 'union_id', 'id');
+    // }
+
+
+
+    public function union()
+    {
+        return $this->belongsTo(Union::class);
+    }
+
+    // Relationship: A stand has many vehicles
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
     }
 }

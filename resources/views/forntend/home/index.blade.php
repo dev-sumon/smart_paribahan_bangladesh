@@ -16,7 +16,7 @@
                 </p>
               </div>
               <div class="row g-2">
-                <div class="col-4 col-md-6 col-xl-4">
+                 <div class="col-4 col-md-6 col-xl-4">
                   <select name="division_id" id="division" class="form-control form-select select_iteam">
                     <option value="" selected hidden>বিভাগ</option>
                     @foreach ($divisions as $division)
@@ -27,55 +27,59 @@
                 <div class="text-danger">{{ $errors->first('division_id') }}</div>
                 @endif
                 </div>
-                <div class="col-4 col-md-6 col-xl-4">
-                    <select name="" id="" class="form-select select_iteam">
-                      <option value="">জেলা</option>
-                      <option value="">জেলা</option>
-                      <option value="">জেলা</option>
-                      <option value="">জেলা</option>
+                {{-- <div class="form-group">
+                    <label for="district">District <span class="text-danger">*</span></label>
+                    <select name="district_id" id="district" class="form-control">
+                        <option value="" selected hidden>Select District</option>
+                    </select>
+                </div> --}}
+                {{-- <select name="district_id" id="district" class="form-select select_iteam">
+                    <option value="">জেলা</option>
+                </select>
+
+                <select name="thana_id" id="thana" class="form-select select_iteam">
+                    <option value="">থানা</option>
+                </select>
+
+                <select name="union_id" id="union" class="form-select select_iteam">
+                    <option value="">ইউনিয়ন</option>
+                </select>
+
+                <select name="stand_id" id="stand" class="form-select select_iteam">
+                    <option value="">স্ট্যান্ড</option>
+                </select>
+
+                <select name="vehicle_id" id="vehicle" class="form-select select_iteam">
+                    <option value="">গাড়ি</option>
+                </select> --}}
+               <div class="col-4 col-md-6 col-xl-4">
+                    <select name="district_id" id="district" class="form-select select_iteam">
                       <option value="">জেলা</option>
                     </select>
                 </div>
-                
+
                 <div class="col-4 col-md-6 col-xl-4">
-                    <select name="" id="" class="form-select select_iteam">
-                      <option value="">থানা</option>
-                      <option value="">থানা</option>
-                      <option value="">থানা</option>
-                      <option value="">থানা</option>
+                    <select name="thana_id" id="thana" class="form-select select_iteam">
                       <option value="">থানা</option>
                     </select>
                 </div>
                 <div class="col-4 col-md-6 col-xl-4">
-                  <select name="" id="" class="form-select select_iteam">
-                    <option value="">ইউনিয়ন</option>
-                    <option value="">ইউনিয়ন</option>
-                    <option value="">ইউনিয়ন</option>
-                    <option value="">ইউনিয়ন</option>
+                  <select name="union_id" id="union" class="form-select select_iteam">
                     <option value="">ইউনিয়ন</option>
                   </select>
-                   
+
                 </div>
                 <div class="col-4 col-md-6 col-xl-4">
-                    <select name="" id="" class="form-select select_iteam">
-                      <option value="">স্ট্যান্ড</option>
-                      <option value="">স্ট্যান্ড</option>
-                      <option value="">স্ট্যান্ড</option>
-                      <option value="">স্ট্যান্ড</option>
-                      <option value="">স্ট্যান্ড</option>
+                    <select name="stand_id" id="stand" class="form-select select_iteam">
                       <option value="">স্ট্যান্ড</option>
                     </select>
                 </div>
                 <div class="col-4 col-md-6 col-xl-4">
-                    <select name="" id="" class="form-select select_iteam">
-                      <option value="">গাড়ি</option>
-                      <option value="">গাড়ি</option>
-                      <option value="">গাড়ি</option>
-                      <option value="">গাড়ি</option>
-                      <option value="">গাড়ি</option>
+                    <select name="vehicle_id" id="vehicle" class="form-select select_iteam">
                       <option value="">গাড়ি</option>
                     </select>
                 </div>
+
                   <form action="{{ route('f.cng.index') }}">
                     <div class="col-12 submit">
                       <button class="btn btn-custom mt-3 w-100">এখানে সার্চ করুন</button>
@@ -89,7 +93,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
       </section>
       {{-- <a class="dropdown-item" href="{{ route('driver.logout') }}"
@@ -101,9 +105,9 @@
                 @csrf
             </form> --}}
       <!-- hero section end -->
-  
+
       <!-- vehicles_list section start -->
-  
+
       <section class="vehicles_list">
         <div class="container">
           <div class="row justify-content-center">
@@ -171,9 +175,9 @@
           </div>
         </div>
       </section>
-      
+
       <!-- vehicles_list section end -->
-  
+
       <!-- Connected with us section Start -->
       <section class="connected_us" id="price-section">
         <div class="container py-5 pb-5">
@@ -223,7 +227,7 @@
         </div>
     </section>
       <!-- Connected with us section End! -->
-  
+
       <!-- search driver section start  -->
       <section class="search_section">
         <div class="image">
@@ -250,7 +254,7 @@
         </div>
       </section>
       <!-- search driver section end  -->
-  
+
       <!-- help_us section start  -->
       <section class="help_us">
         <div class="container">
@@ -261,33 +265,33 @@
             </div>
             <div class="desc">
               <p>
-                যেকোনো যাত্রী প্রয়োজনের সময় তার নিকটবর্তী স্টেশনে গাড়ির জন্য সিগন্যাল পাঠাতে <span class="d-none d-md-inline"><br></span> পারবেন।ফলে কাউকে ঘণ্টার পর ঘণ্টা গাড়ির জন্য অপেক্ষা করতে হবে না। 
+                যেকোনো যাত্রী প্রয়োজনের সময় তার নিকটবর্তী স্টেশনে গাড়ির জন্য সিগন্যাল পাঠাতে <span class="d-none d-md-inline"><br></span> পারবেন।ফলে কাউকে ঘণ্টার পর ঘণ্টা গাড়ির জন্য অপেক্ষা করতে হবে না।
               </p>
             </div>
           </div>
           <div class="car-container">
               <img src="{{ asset('forntend/images/Group 2.png') }}" alt="Car and Phone" class="car-image">
-  
+
               <div class="feature-box feature-box-1">
                   <span class="icon-circle-1">1</span>
                   <p class="feature-text">আপনার কোনো কিছু গাড়িতে হারিয়ে গেলে আপনি এটা খুব সহজে খুঁজে বের করতে পারবেন।</p>
               </div>
-      
+
               <div class="feature-box feature-box-2">
                   <span class="icon-circle-2">2</span>
                   <p class="feature-text">যাত্রীরা নিরাপদেও স্মার্ট প্রযুক্তির মাধ্যমে চলাচল করতে পারবে।</p>
               </div>
-      
+
               <div class="feature-box feature-box-3">
                   <span class="icon-circle-3">3</span>
                   <p class="feature-text">যাত্রী যদি চায় তাহলে ড্রাইভারকে অনলাইনে পেমেন্ট করতে পারে যেমন বিকাশ, রকেট, নগদ অনলাইন সিস্টেমের মাধ্যমে।</p>
               </div>
-      
+
               <div class="feature-box feature-box-4">
                   <span class="icon-circle-4">4</span>
                   <p class="feature-text">যাত্রীদের কোনো কিছু যদি গাড়ির মধ্যে ফেলে যায়। তাহলে ড্রাইভার হারানো বিজ্ঞপ্তি দিতে পারবে।</p>
               </div>
-      
+
               <div class="feature-box feature-box-5">
                   <span class="icon-circle-5">5</span>
                   <p class="feature-text">প্রত্যেকটি গাড়ির মধ্যে QRকোড থাকবে।</p>
@@ -297,7 +301,7 @@
       </div>
     </section>
     <!-- help_us section end  -->
-  
+
     <!-- BD Smart vehicles Blog section Start -->
     <section class="bd_smart_vehicle_part">
       <div class="container pt-5 pb-5">
@@ -349,28 +353,28 @@
       </div>
     </section>
     <!-- BD Smart vehicles Blog section End! -->
-  
+
     <!-- FAQ section start  -->
     <section class="faq pb-5" id="faq">
       <div class="container d-flex justify-content-center">
           <div class="row w-100">
             <div class="faq-section">
               <div class="faq-title  py-5 pb-5">সচরাচর আপনার প্রশ্ন সমূহ</div>
-          
+
               <div class="faq-item">
                   <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহন কি কাজ করে?</div>
                   <div class="faq-answer">
                     যদি আপনার কোনো জিনিস গাড়িতে হারিয়ে যায়, তবে বাংলাদেশ স্মার্ট পরিবহনের মাধ্যমে তা সহজেই খুঁজে পাওয়া সম্ভব। সার্চ অপশনে গাড়ির নম্বর বা ফোন নম্বর দিয়ে সার্চ করলে আপনি সরাসরি ড্রাইভারের সাথে যোগাযোগ করতে পারবেন এবং প্রয়োজনীয় তথ্য পেয়ে হারানো জিনিসটি পুনরুদ্ধার করতে পারবেন।
                   </div>
               </div>
-          
+
               <div class="faq-item">
                   <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহন কেন প্রয়োজন?</div>
                   <div class="faq-answer">
                     বাংলাদেশ স্মার্ট পরিবহন মানুষের সেবায় কাজ করছে। এটি যাত্রীদের নিরাপদ, স্মার্ট, ও প্রযুক্তি-নির্ভর যাত্রা নিশ্চিত করে।
                   </div>
               </div>
-          
+
               <div class="faq-item">
                   <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহনের লক্ষ্য কি?</div>
                   <div class="faq-answer">
@@ -398,7 +402,7 @@
               <div class="faq-item">
                   <div class="faq-question">আমি কি যাত্রার সময় কিছু হারিয়ে গেলে খুঁজে পাব?</div>
                   <div class="faq-answer">
-                    হ্যাঁ, স্মার্ট বাংলাদেশে আপনি হারানো জিনিসপত্র খুঁজে পাওয়ার জন্য একটি বিশেষ সাপোর্ট সিস্টেম পাবেন। যাত্রার পরে, আপনি আমাদের কাস্টমার সাপোর্টে যোগাযোগ করে সাহায্য নিতে পারেন। 
+                    হ্যাঁ, স্মার্ট বাংলাদেশে আপনি হারানো জিনিসপত্র খুঁজে পাওয়ার জন্য একটি বিশেষ সাপোর্ট সিস্টেম পাবেন। যাত্রার পরে, আপনি আমাদের কাস্টমার সাপোর্টে যোগাযোগ করে সাহায্য নিতে পারেন।
                   </div>
               </div>
               <div class="faq-item last-faq">
@@ -407,11 +411,122 @@
                     আপনি ক্যাশ, মোবাইল ব্যাংকিং, অথবা কার্ড ব্যবহার করে ভাড়া পরিশোধ করতে পারেন।
                   </div>
               </div>
-          
+
             </div>
           </div>
       </div>
     </section>
-    
+
     <!-- EAQ section end  -->
 @endsection
+
+@push('script')
+<script>
+    $(document).ready(function () {
+        // Fetch districts based on selected division
+        $('#division').on('change', function () {
+            var division_id = $(this).val();
+            if (division_id) {
+                $.ajax({
+                    url: '/home/get-districts/' + division_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#district').empty();
+                        $('#district').append('<option value="">জেলা নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#district').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#district').empty();
+            }
+        });
+
+        // Fetch thanas based on selected district
+        $('#district').on('change', function () {
+            var district_id = $(this).val();
+            if (district_id) {
+                $.ajax({
+                    url: '/home/get-thanas/' + district_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#thana').empty();
+                        $('#thana').append('<option value="">থানা নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#thana').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#thana').empty();
+            }
+        });
+
+        // Fetch unions based on selected thana
+        $('#thana').on('change', function () {
+            var thana_id = $(this).val();
+            if (thana_id) {
+                $.ajax({
+                    url: '/home/get-unions/' + thana_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#union').empty();
+                        $('#union').append('<option value="">ইউনিয়ন নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#union').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#union').empty();
+            }
+        });
+
+        // Fetch stands based on selected union
+        $('#union').on('change', function () {
+            var union_id = $(this).val();
+            if (union_id) {
+                $.ajax({
+                    url: '/home/get-stands/' + union_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#stand').empty();
+                        $('#stand').append('<option value="">স্ট্যান্ড নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#stand').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#stand').empty();
+            }
+        });
+
+        // Fetch vehicles based on selected stand
+        $('#stand').on('change', function () {
+            var stand_id = $(this).val();
+            if (stand_id) {
+                $.ajax({
+                    url: '/home/get-vehicles/' + stand_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#vehicle').empty();
+                        $('#vehicle').append('<option value="">গাড়ি নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#vehicle').empty();
+            }
+        });
+    });
+</script>
+@endpush
