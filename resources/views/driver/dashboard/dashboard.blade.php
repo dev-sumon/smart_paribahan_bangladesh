@@ -54,44 +54,46 @@
                                 <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="division_id">{{ __('Division') }}</label>
-                                <select name="division_id" id="division_id" class="form-control" style="border: 2px solid #ea1827">
-                                    <option value="" selected hidden>{{ __('Select Division') }}</option>
-                                    @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}" 
-                                        {{ old('division_id', $driver->division_id ?? '') == $division->id ? 'selected' : '' }}>
-                                        {{ $division->division }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('division_id'))
-                                    <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="district">{{ __('District') }}<span class="text-danger">*</span></label>
-                                <select name="district_id" id="district" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select District') }}</option>
-                                </select>
-                            </div> --}}
-                            <div class="form-group">
-                                <label class="mt-3" for="division">{{ __('Division') }}</label>
-                                <select name="division_id" id="division" class="form-control" style="border: 2px solid #ea1827">
-                                    <option value="" selected hidden>{{ __('Select Division') }}</option>
-                                    @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->division }}</option>
-                                    @endforeach
+                           
+
+                            <div class="col-4 col-md-6 col-xl-4">
+                                <select name="division_id" id="division" class="form-control form-select select_iteam">
+                                  <option value="" selected hidden>বিভাগ</option>
+                                  @foreach ($divisions as $division)
+                                      <option value="{{ $division->id }}">{{ $division->division }}</option>
+                                  @endforeach
+                              </select>
+                              @if($errors->has('division_id'))
+                              <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                              @endif
+                              </div>
+                              <div class="col-4 col-md-6 col-xl-4">
+                                <select name="district_id" id="district" class="form-select select_iteam">
+                                  <option value="">জেলা</option>
                                 </select>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="district">{{ __('District') }}</label>
-                                <select name="district_id" id="district" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select District') }}</option>
+            
+                            <div class="col-4 col-md-6 col-xl-4">
+                                <select name="thana_id" id="thana" class="form-select select_iteam">
+                                  <option value="">থানা</option>
                                 </select>
                             </div>
-                            
+                            <div class="col-4 col-md-6 col-xl-4">
+                              <select name="union_id" id="union" class="form-select select_iteam">
+                                <option value="">ইউনিয়ন</option>
+                              </select>
+            
+                            </div>
+                            <div class="col-4 col-md-6 col-xl-4">
+                                <select name="stand_id" id="stand" class="form-select select_iteam">
+                                  <option value="">স্ট্যান্ড</option>
+                                </select>
+                            </div>
+                            <div class="col-4 col-md-6 col-xl-4">
+                                <select name="vehicle_id" id="vehicle" class="form-select select_iteam">
+                                  <option value="">গাড়ি</option>
+                                </select>
+                            </div>
                             {{-- <div class="form-group">
                                 <label class="mt-3" for="district_id">{{ __('District') }}</label>
                                 <select name="district_id" id="district_id" class="form-control">
@@ -282,149 +284,119 @@
 
 
 @push('script')
-    {{-- <script>
-        $(document).ready(function() {
-            $('#division').on('change', function() {
-                let divisionId = $(this).val();
-                if (divisionId) {
-                    let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
-
-                    $.ajax({
-                        url: _url,
-                        type: 'GET',
-                        success: function(response) {
-                            let districts = response.data;
-                            let districtSelect = $('#district');
-                            districtSelect.empty();
-                            districtSelect.append('<option value="">Select District</option>');
-
-                            $.each(districts, function(index, district) {
-                                districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
-                            });
-                        },
-                        error: function(xhr) {
-                            console.log(xhr.responseText);
-                        }
-                    });
-                } else {
-                    $('#district').empty().append('<option value="">Select District</option>');
-                }
-            });
-
-            $('#district').on('change', function() { 
-                let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
-
+<script>
+    $(document).ready(function () {
+        // Fetch districts based on selected division
+        $('#division').on('change', function () {
+            var division_id = $(this).val();
+            if (division_id !== null || division_id !== undefined) {
+                let _url = '{{ route("driver.getDistricts",["division_id"=>":id"]) }}';
+                _url = _url.replace(':id', division_id);
+                
                 $.ajax({
                     url: _url,
                     type: 'GET',
-                    success: function(response) {
-                        let thanas = response.data;
-                        let thanaSelect = $('#thana');
-                        thanaSelect.empty();
-                        thanaSelect.append('<option value="">Select Thana</option>');
-
-                        $.each(thanas, function(index, thana) {
-                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#district').empty();
+                        $('#district').append('<option value="">জেলা নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#district').append('<option value="' + key + '">' + value + '</option>');
                         });
-                    },
-                    error: function(error) {
-                        console.log(error);
                     }
                 });
-            });
-
-            $('#thana').on('change', function() { 
-                let unionId = $(this).val();
-                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
-
-                $.ajax({
-                    url: _url,
-                    type: 'GET',
-                    success: function(response) {
-                        let unions = response.data;
-                        let unionSelect = $('#union');
-                        unionSelect.empty();
-                        unionSelect.append('<option value="">Select Union</option>');
-
-                        $.each(unions, function(index, union) {
-                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
-                        });
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                });
-            });
-            
-            $('#union').on('change', function() { 
-                let standId = $(this).val();
-                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId); 
-
-                $.ajax({
-                    url: _url,
-                    type: 'GET',
-                    success: function(response) {
-                        let stands = response.data;
-                        let standSelect = $('#stand');
-                        standSelect.empty();
-                        standSelect.append('<option value="">Select Stand</option>');
-
-                        $.each(stands, function(index, stand) {
-                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
-                        });
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                });
-            });
-            $('#stand').on('change', function() { 
-                let vehicleId = $(this).val();
-                let _url = '{{ route("ajax.vehicle", ":id") }}'.replace(':id', vehicleId); 
-
-                $.ajax({
-                    url: _url,
-                    type: 'GET',
-                    success: function(response) {
-                        let vehicles = response.data;
-                        let vehicleSelect = $('#vehicle');
-                        vehicleSelect.empty();
-                        vehicleSelect.append('<option value="">Select vehicle</option>');
-
-                        $.each(vehicles, function(index, vehicle) {
-                            vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.vehicle + '</option>');
-                        });
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                });
-            });
-
-            $('#vehicle').on('change', function() { 
-                let vehicleId = $(this).val();
-                let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId); 
-
-                $.ajax({
-                    url: _url,
-                    type: 'GET',
-                    success: function(response) {
-                        let licenses = response.data;
-                        let licenseSelect = $('#vehicles_license');
-                        licenseSelect.empty();
-                        licenseSelect.append('<option value="">Select Vehicles License</option>');
-
-                        $.each(licenses, function(index, license) {
-                            licenseSelect.append('<option value="' + license + '">' + license + '</option>');
-                        });
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                });
-            });
-
+            } else {
+                $('#district').empty();
+            }
         });
-    </script> --}}
+
+        // Fetch thanas based on selected district
+        $('#district').on('change', function () {
+            var district_id = $(this).val();
+            if (district_id !== null || district_id !== undefined) {
+                let _url = '{{ route("driver.getThanas",["district_id"=>":id"]) }}';
+                _url = _url.replace(':id', district_id);
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#thana').empty();
+                        $('#thana').append('<option value="">থানা নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#thana').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#thana').empty();
+            }
+        });
+
+        // Fetch unions based on selected thana
+        $('#thana').on('change', function () {
+            var thana_id = $(this).val();
+            if (thana_id !== null || thana_id !== undefined) {
+                let _url = '{{ route("driver.getThanas",["thana_id"=>":id"]) }}';
+                _url = _url.replace(':id', thana_id);
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#union').empty();
+                        $('#union').append('<option value="">ইউনিয়ন নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#union').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#union').empty();
+            }
+        });
+
+        // Fetch stands based on selected union
+        $('#union').on('change', function () {
+            var union_id = $(this).val();
+            if (union_id) {
+                $.ajax({
+                    url: '/home/get-stands/' + union_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#stand').empty();
+                        $('#stand').append('<option value="">স্ট্যান্ড নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#stand').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#stand').empty();
+            }
+        });
+
+        // Fetch vehicles based on selected stand
+        $('#stand').on('change', function () {
+            var stand_id = $(this).val();
+            if (stand_id) {
+                $.ajax({
+                    url: '/home/get-vehicles/' + stand_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#vehicle').empty();
+                        $('#vehicle').append('<option value="">গাড়ি নির্বাচন করুন</option>');
+                        $.each(data, function (key, value) {
+                            $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#vehicle').empty();
+            }
+        });
+    });
+</script>
 @endpush
