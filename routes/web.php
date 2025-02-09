@@ -56,6 +56,13 @@ Auth::routes();
 
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
+    Route::controller(HomePageController::class)->prefix('home')->name('home.')->group(function(){
+        Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
+        Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
+        Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
+        Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
+        Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('get.vehicles');
+    });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
         Route::get('/', 'index')->name('index');
@@ -253,7 +260,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    
+
     Route::controller(DriverController::class)->prefix('driver')->name('driver.')->group( function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
@@ -330,7 +337,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
     Route::get('/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 });
- 
+
 Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
     Route::get('/dashboard/{id}', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
     Route::post('/dashboard/update/{id}', [DashboardController::class, 'updateDashboard'])->name('driver.updateDashboard');

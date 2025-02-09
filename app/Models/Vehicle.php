@@ -33,4 +33,8 @@ class Vehicle extends Model
     {
         return $this->belongsTo(Owner::class, 'owner_id');
     }
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class);
+    }
 }

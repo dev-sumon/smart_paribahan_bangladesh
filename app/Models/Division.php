@@ -27,4 +27,10 @@ class Division extends Model
             return 'btn-success';
         }
     }
+
+
+    public function districts()
+    {
+        return $this->hasMany(District::class);
+    }
 }
