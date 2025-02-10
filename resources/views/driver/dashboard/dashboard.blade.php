@@ -148,20 +148,6 @@
                                     <div class="text-danger">{{ $errors->first('image') }}</div>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
-                                <label for="password" class="mt-3">{{ __('Password') }} <span class="text-danger">*</span></label>
-                                <input type="password" name="password" id="password" style="border: 2px solid #ea1827" value="{{ old('password') }}" class="form-control" placeholder="Enter Your Password">
-                                @if($errors->has('password'))
-                                    <div class="text-danger">{{ $errors->first('password') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="password_confirmation" class="mt-3">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" style="border: 2px solid #ea1827" value="{{ old('password_confirmation') }}" class="form-control" placeholder="Enter Confirm Password">
-                                @if($errors->has('password_confirmation'))
-                                    <div class="text-danger">{{ $errors->first('password_confirmation') }}</div>
-                                @endif
-                            </div> --}}
                             <div class="form-group">
                                 <button type="submit" class="btn w-100 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">
                                     {{ __('Update') }}
