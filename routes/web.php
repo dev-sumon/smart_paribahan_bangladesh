@@ -338,9 +338,21 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner'], function(){
     Route::get('/dashboard', [OwnerDashboardController::class, 'dashboard'])->name('owner.dashboard');
 });
 
-Route::group(['middleware' => ['driver'], 'prefix' => 'driver'], function () {
-    Route::get('/dashboard/{id}', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
-    Route::post('/dashboard/update/{id}', [DashboardController::class, 'updateDashboard'])->name('driver.updateDashboard');
+Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'], function () {
+    // Route::get('/dashboard/{id}', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
+    // Route::post('/dashboard/update/{id}', [DashboardController::class, 'updateDashboard'])->name('driver.updateDashboard');
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
+        Route::post('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
+        Route::get('/get-districts/{division_id}', 'district')->name('getDistricts');
+        Route::get('/get-thanas/{district_id}', 'thana')->name('getThanas');
+        Route::get('/get-unions/{thana_id}', 'union')->name('getUnions');
+        Route::get('/get-stands/{union_id}', 'stand')->name('getStands');
+        Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('getVehicles');
+    });
+    
+    Route::get('/get-districts/{driver_id}', [DriverController::class, 'getDistrictsByDriver'])->name('get.districts');
+
     Route::controller(DriverAjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
         Route::get('division/{id}', 'division')->name('division');
         Route::get('district/{id}', 'district')->name('district');

@@ -65,6 +65,11 @@ class Driver extends Authenticatable
         return $this->belongsTo(BloodGroup::class, 'blood_group_id');
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
+
     public function statusBg(){
         if($this->status == 1){
             return 'badge badge-success';
