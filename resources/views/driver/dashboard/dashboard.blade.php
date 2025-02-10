@@ -42,8 +42,8 @@
                             </div>
                             <div class="form-group">
                                 <label  class="mt-3" for="blood_group_id">{{ __('Blood Group') }}</label>
-                                <select name="blood_group_id" id="blood_group_id" class="form-control" style="border: 2px solid #ea1827">
-                                    <option value=" " selected hidden>{{ __('Select Blood Broup') }}</option>
+                                <select name="blood_group_id" id="blood_group_id" class="form-control form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="" selected hidden>{{ __('Select Blood Broup') }}</option>
                                     @foreach ($bloods as $blood)
                                         <option value="{{ $blood->id }}" 
                                             {{ old('blood_group_id', $driver->blood_group_id) == $blood->id ? 'selected' : '' }}>
@@ -51,128 +51,55 @@
                                     @endforeach
                                 </select>
                                 @if($errors->has('blood_group'))
-                                <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
+                                    <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                 @endif
                             </div>
-                           
-
-                            <div class="col-4 col-md-6 col-xl-4">
-                                <select name="division_id" id="division" class="form-control form-select select_iteam">
-                                  <option value="" selected hidden>বিভাগ</option>
-                                  @foreach ($divisions as $division)
-                                      <option value="{{ $division->id }}">{{ $division->division }}</option>
-                                  @endforeach
-                              </select>
-                              @if($errors->has('division_id'))
-                              <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                              @endif
-                              </div>
-                              <div class="col-4 col-md-6 col-xl-4">
-                                <select name="district_id" id="district" class="form-select select_iteam">
-                                  <option value="">জেলা</option>
-                                </select>
-                            </div>
-            
-                            <div class="col-4 col-md-6 col-xl-4">
-                                <select name="thana_id" id="thana" class="form-select select_iteam">
-                                  <option value="">থানা</option>
-                                </select>
-                            </div>
-                            <div class="col-4 col-md-6 col-xl-4">
-                              <select name="union_id" id="union" class="form-select select_iteam">
-                                <option value="">ইউনিয়ন</option>
-                              </select>
-            
-                            </div>
-                            <div class="col-4 col-md-6 col-xl-4">
-                                <select name="stand_id" id="stand" class="form-select select_iteam">
-                                  <option value="">স্ট্যান্ড</option>
-                                </select>
-                            </div>
-                            <div class="col-4 col-md-6 col-xl-4">
-                                <select name="vehicle_id" id="vehicle" class="form-select select_iteam">
-                                  <option value="">গাড়ি</option>
-                                </select>
-                            </div>
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="district_id">{{ __('District') }}</label>
-                                <select name="district_id" id="district_id" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select District') }}</option>
-                                    @foreach ($districts as $district)
+                            <div class="form-group">
+                                <label class="mt-3" for="division_id">{{ __('Division') }}</label>
+                                <select name="division_id" id="division" class="form-control form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="" selected hidden>{{ __('বিভাগ') }}</option>
+                                    @foreach ($divisions as $division)
                                         <option 
-                                            value="{{ $district->id }}" 
-                                            {{ old('district_id', $driver->district_id ?? '') == $district->id ? 'selected' : '' }}>
-                                            {{ $district->district }}
+                                            value="{{ $division->id }}" 
+                                            {{ old('division_id', $driver->division_id ?? '') == $division->id ? 'selected' : '' }}>
+                                            {{ $division->division }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('district_id'))
-                                    <div class="text-danger">{{ $errors->first('district_id') }}</div>
-                                @endif
-                            </div> --}}
-                            
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="thana_id">{{ __('Thana') }}</label>
-                                <select name="thana_id" id="thana_id" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select Thana') }}</option>
-                                    @foreach ($thanas as $thana)
-                                        <option 
-                                            value="{{ $thana->id }}" 
-                                            {{ old('thana_id', $driver->thana_id ?? '') == $thana->id ? 'selected' : '' }}>
-                                            {{ $thana->thana }}
-                                        </option>
-                                    @endforeach
+                                    @if($errors->has('division_id'))
+                                        <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                                    @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="district_id" class="mt-3">{{ __('District') }}</label>
+                                <select name="district_id" id="district" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="">{{ __('জেলা') }}</option>
                                 </select>
-                                @if($errors->has('thana_id'))
-                                    <div class="text-danger">{{ $errors->first('thana_id') }}</div>
-                                @endif
-                            </div> --}}
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="union_id">{{ __('Union') }}</label>
-                                <select name="union_id" id="union_id" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select Union') }}</option>
-                                    @foreach ($unions as $union)
-                                        <option 
-                                            value="{{ $union->id }}" 
-                                            {{ old('union_id', $driver->union_id ?? '') == $union->id ? 'selected' : '' }}>
-                                            {{ $union->union }}
-                                        </option>
-                                    @endforeach
+                            </div>
+                            <div class="form-group">
+                                <label for="thana_id" class="mt-3">{{ __('Thana') }}</label>
+                                <select name="thana_id" id="Thana" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="">{{ __('থানা') }}</option>
                                 </select>
-                                @if($errors->has('union_id'))
-                                    <div class="text-danger">{{ $errors->first('union_id') }}</div>
-                                @endif
-                            </div> --}}
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="stand_id">{{ __('Stand') }}</label>
-                                <select name="stand_id" id="stand_id" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select Stand') }}</option>
-                                    @foreach ($stands as $stand)
-                                        <option 
-                                            value="{{ $stand->id }}" 
-                                            {{ old('stand_id', $driver->stand_id ?? '') == $stand->id ? 'selected' : '' }}>
-                                            {{ $stand->name }}
-                                        </option>
-                                    @endforeach
+                            </div>
+                            <div class="form-group">
+                                <label for="union_id" class="mt-3">{{ __('Union') }}</label>
+                                <select name="union_id" id="Union" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="">{{ __('ইউনিয়ন') }}</option>
                                 </select>
-                                @if($errors->has('stand_id'))
-                                    <div class="text-danger">{{ $errors->first('stand_id') }}</div>
-                                @endif
-                            </div> --}}
-                            {{-- <div class="form-group">
-                                <label for="vehicle_id">{{ __('Vehicle Type') }} <span class="text-danger">*</span></label>
-                                <select name="vehicle_id" id="vehicle_id"  class="form-control">
-                                    <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
-                                    @foreach ($vehicles as $vehicle)
-                                    <option value="{{ $vehicle->id }}" {{ old('vehicle_id', $driver->vehicle_id ?? '') == $vehicle->id ? 'selected' : '' }}>
-                                        {{ $vehicle->name }}
-                                    </option>                                            
-                                    @endforeach
+                            </div>
+                            <div class="form-group">
+                                <label for="stand_id" class="mt-3">{{ __('Stand') }}</label>
+                                <select name="stand_id" id="Stand" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="">{{ __('স্ট্যান্ড') }}</option>
                                 </select>
-                                @if($errors->has('vehicle_id'))
-                                    <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
-                                @endif
-                            </div> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="vehicle_id" class="mt-3">{{ __('Vehicle') }}</label>
+                                <select name="vehicle_id" id="Stand" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                    <option value="">{{ __('গাড়ি') }}</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="email" class="mt-3">{{ __('Email') }} <span class="text-danger">*</span></label>
                                 <input type="email" name="email" style="border: 2px solid #ea1827" value="{{ old('email') }}" class="form-control" placeholder="Enter Driver Email">
@@ -182,7 +109,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone" class="mt-3">{{ __('Phone No.') }} <span class="text-danger">*</span></label>
-                                <input type="tel" name="phone" style="border: 2px solid #ea1827" value="{{ old('phone') }}" class="form-control" placeholder="Enter Driver Phone">
+                                <input type="tel" name="phone" style="border: 2px solid #ea1827" value="{{ old('phone') }}" class="form-control" placeholder="Enter Driver Phone" value="{{ old('name', $driver->phone) }}">
                                 @if($errors->has('phone'))
                                     <div class="text-danger">{{ $errors->first('phone') }}</div>
                                 @endif
@@ -209,19 +136,19 @@
                                     <div class="text-danger">{{ $errors->first('driving_license') }}</div>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
                                 @if($driver->image)
                                     <img src="" alt="" class="display-image" style="width: 100%; height: auto; object-fit: cover;">
                                 @else
                                     <p>{{ __('No image available') }}</p>
                                 @endif
-                                <input type="file" class="form-control h-auto" id="image" placeholder="Enter Driver Image" name="image">
+                                <input type="file" class="form-control h-auto" id="image" placeholder="Enter Driver Image" name="image" style="border: 2px solid #ea1827">
                                 @if($errors->has('image'))
                                     <div class="text-danger">{{ $errors->first('image') }}</div>
                                 @endif
-                            </div> --}}
-                            <div class="form-group">
+                            </div>
+                            {{-- <div class="form-group">
                                 <label for="password" class="mt-3">{{ __('Password') }} <span class="text-danger">*</span></label>
                                 <input type="password" name="password" id="password" style="border: 2px solid #ea1827" value="{{ old('password') }}" class="form-control" placeholder="Enter Your Password">
                                 @if($errors->has('password'))
@@ -233,16 +160,6 @@
                                 <input type="password" name="password_confirmation" id="password_confirmation" style="border: 2px solid #ea1827" value="{{ old('password_confirmation') }}" class="form-control" placeholder="Enter Confirm Password">
                                 @if($errors->has('password_confirmation'))
                                     <div class="text-danger">{{ $errors->first('password_confirmation') }}</div>
-                                @endif
-                            </div>
-                            {{-- <div class="form-group">
-                                <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
-                                <select name="status" id="status" class="form-control">
-                                    <option value="1" {{ (old('status') ?? $driver->status) == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                    <option value="0" {{ (old('status') ?? $driver->status) == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
-                                </select>
-                                @if($errors->has('status'))
-                                    <div class="text-danger">{{ $errors->first('status') }}</div>
                                 @endif
                             </div> --}}
                             <div class="form-group">
@@ -337,7 +254,7 @@
         $('#thana').on('change', function () {
             var thana_id = $(this).val();
             if (thana_id !== null || thana_id !== undefined) {
-                let _url = '{{ route("driver.getThanas",["thana_id"=>":id"]) }}';
+                let _url = '{{ route("driver.getUnions",["thana_id"=>":id"]) }}';
                 _url = _url.replace(':id', thana_id);
                 $.ajax({
                     url: _url,

@@ -143,7 +143,7 @@
                 <div class="text-center">
                     <span class="no_account">আপনার কোন একাউন্ট নেই?</span>
                     <br />
-                    <a href="signup_page .html" class="btn btn-dark mt-2 w-100 create_button">একাউন্ট তৈরি করুন</a>
+                    <a href="{{ route('signup.signup') }}" class="btn btn-dark mt-2 w-100 create_button">একাউন্ট তৈরি করুন</a>
                 </div>
             </form>
         </div>
