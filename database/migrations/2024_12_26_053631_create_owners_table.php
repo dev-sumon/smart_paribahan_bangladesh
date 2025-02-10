@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('vehicles_license')->unique();
+            $table->string('vehicles_license')->unique()->nullable();
             $table->string('image')->nullable();
             $table->string('password');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
