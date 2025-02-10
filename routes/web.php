@@ -122,6 +122,7 @@ Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')-
 
 Route::controller(OwnerSignupController::class)->prefix('signup')->name('owner.signup.')->group(function(){
     Route::get('owner/signup', 'signupForm')->name('signup');
+    Route::post('driver/register', 'register')->name('register');
 });
 
 Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.')->group( function(){

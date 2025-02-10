@@ -23,7 +23,7 @@ class OwnerLoginController extends Controller
         if ($check) {
             if ($check->status == 1) {
                 if (Auth::guard('owner')->attempt($credentials)) {
-                    return redirect()->route('owner.dashboard');
+                    return redirect()->route('f.home');
                 }
             }
         }
