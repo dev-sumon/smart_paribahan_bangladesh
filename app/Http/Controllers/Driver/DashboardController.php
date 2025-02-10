@@ -55,13 +55,13 @@ class DashboardController extends Controller
 
     public function stand($union_id)
     {
-        $stands = Stand::where('union_id', $union_id)->pluck('stand', 'id');
+        $stands = Stand::where('union_id', $union_id)->pluck('name', 'id');
         return response()->json($stands);
     }
 
     public function vehicle($stand_id)
     {
-        $vehicles = Vehicle::where('stand_id', $stand_id)->pluck('vehicle', 'id');
+        $vehicles = Vehicle::where('stand_id', $stand_id)->pluck('name', 'id');
         return response()->json($vehicles);
     }
 
