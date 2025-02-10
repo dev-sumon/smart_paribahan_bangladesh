@@ -30,11 +30,6 @@ class DriverController extends Controller
         $data['owners'] = Owner::latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
         $data['divisions'] = Division::latest()->get();
-        // $data['districts'] = District::latest()->get();
-        // $data['thanas'] = Thana::latest()->get();
-        // $data['unions'] = Union::latest()->get();
-        // $data['vehicles'] = Vehicle::latest()->get();
-        // $data['stands'] = Stand::latest()->get();
         return view('backend.driver.create', $data);
     }
     public function store(DriverRequest $request): RedirectResponse
@@ -86,7 +81,7 @@ class DriverController extends Controller
     {
         $update = Driver::findOrFail($id);
 
-        
+
 
         $update->name = $request->name;
         $update->description = $request->description;

@@ -27,7 +27,7 @@ class OwnerController extends Controller
     public function create(): View
     {
         $data['bloods'] = BloodGroup::latest()->get();
-        $data['vehicles'] = Vehicle::latest()->get();
+        // $data['vehicles'] = Vehicle::latest()->get();
         $data['divisions'] = Division::latest()->get();
         return view('backend.owner.create', $data);
     }
@@ -87,7 +87,7 @@ class OwnerController extends Controller
         $update->union_id = $request->union_id;
         $update->vehicle_id = $request->vehicle_id;
         $update->stand_id = $request->stand_id;
-        $update->status = $request->status ?? 0; 
+        $update->status = $request->status ?? 0;
 
         if($request->password){
             $update->password = $request->password;

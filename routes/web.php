@@ -328,10 +328,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('thana/{id}', 'thana')->name('thana');
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
+        Route::get('stand/{id}/vehicles', 'standVehicles')->name('standVehicles');
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
-        Route::get('vehicle/{id}', 'vehicle')->name('vehicle');
-
-        Route::get('/owner/{id}/vehicles', 'ownerVehicles')->name('ownerVehicles');
     });
 });
 
@@ -351,7 +349,7 @@ Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'
         Route::get('/get-stands/{union_id}', 'stand')->name('getStands');
         Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('getVehicles');
     });
-    
+
     Route::get('/get-districts/{driver_id}', [DriverController::class, 'getDistrictsByDriver'])->name('get.districts');
 
     Route::controller(DriverAjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
