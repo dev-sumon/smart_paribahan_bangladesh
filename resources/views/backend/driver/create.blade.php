@@ -101,18 +101,11 @@
                                             <option value="" selected hidden>Select Vehicles License</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label  class="mt-3" for="vehicles_license">{{ __('Vehicles License') }}</label>
-                                        <select name="owner_id" id="owner_id" class="form-control">
-                                            <option value="" selected hidden>{{ __('Select Vehicles License') }}</option>
-                                            @foreach ($owners as $owner)
-                                                <option value="{{ $owner->id }}" {{ $owner->id==old('owner_id') ? 'selected': '' }}>{{ $owner->vehicles_license}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('vehicles_license'))
-                                        <div class="text-danger">{{ $errors->first('vehicles_license') }}</div>
-                                        @endif
-                                    </div>
+                                    {{-- <div class="form-group">
+                                        <label for="vehicles_license">Vehicles License <span class="text-danger">*</span></label>
+                                        <input type="text" name="vehicles_license" id="vehicles_license" class="form-control" readonly>
+                                    </div> --}}
+
                                     <div class="form-group">
                                         <label for="driving_license">{{ __('Driving License') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="driving_license" placeholder="Enter The Driving License" name="driving_license" value="{{ old('driving_license') }}">
@@ -206,9 +199,9 @@
                 });
             });
 
-            $('#district').on('change', function() { 
+            $('#district').on('change', function() {
                 let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
+                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId);
 
                 $.ajax({
                     url: _url,
@@ -229,9 +222,9 @@
                 });
             });
 
-            $('#thana').on('change', function() { 
+            $('#thana').on('change', function() {
                 let unionId = $(this).val();
-                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
+                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId);
 
                 $.ajax({
                     url: _url,
@@ -251,10 +244,10 @@
                     }
                 });
             });
-            
-            $('#union').on('change', function() { 
+
+            $('#union').on('change', function() {
                 let standId = $(this).val();
-                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId); 
+                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId);
 
                 $.ajax({
                     url: _url,
@@ -274,9 +267,9 @@
                     }
                 });
             });
-            $('#stand').on('change', function() { 
-                let vehicleId = $(this).val();
-                let _url = '{{ route("ajax.ownerVehicles", ":id") }}'.replace(':id', vehicleId); 
+            $('#stand').on('change', function() {
+                let standId = $(this).val();
+                let _url = '{{ route("ajax.standVehicles", ":id") }}'.replace(':id', standId);
 
                 $.ajax({
                     url: _url,
@@ -285,10 +278,10 @@
                         let vehicles = response.data;
                         let vehicleSelect = $('#vehicle');
                         vehicleSelect.empty();
-                        vehicleSelect.append('<option value="">Select vehicle</option>');
+                        vehicleSelect.append('<option value="">Select Vehicle</option>');
 
                         $.each(vehicles, function(index, vehicle) {
-                            vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.vehicle + '</option>');
+                            vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.name + '</option>');
                         });
                     },
                     error: function(error) {
@@ -297,28 +290,28 @@
                 });
             });
 
-            // $('#vehicle').on('change', function() { 
-            //     let vehicleId = $(this).val();
-            //     let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId); 
 
-            //     $.ajax({
-            //         url: _url,
-            //         type: 'GET',
-            //         success: function(response) {
-            //             let licenses = response.data;
-            //             let licenseSelect = $('#vehicles_license');
-            //             licenseSelect.empty();
-            //             licenseSelect.append('<option value="">Select Vehicles License</option>');
+            $('#vehicle').on('change', function() {
+                let vehicleId = $(this).val();
+                let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId);
 
-            //             $.each(licenses, function(index, license) {
-            //                 licenseSelect.append('<option value="' + license + '">' + license + '</option>');
-            //             });
-            //         },
-            //         error: function(error) {
-            //             console.log(error);
-            //         }
-            //     });
-            // });
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let licenseSelect = $('#vehicles_license');
+                        licenseSelect.empty();
+                        licenseSelect.append('<option value="">Select Vehicles License</option>');
+
+                        $.each(response.data, function(index, vehicles_license) {
+                            licenseSelect.append('<option value="' + vehicles_license + '">' + vehicles_license + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
 
         });
     </script>

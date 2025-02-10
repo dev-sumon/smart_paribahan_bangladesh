@@ -72,14 +72,14 @@
                                         <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="district">District <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>Select District</option>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="thana">Thana <span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
@@ -99,6 +99,12 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="vehicle">Vehicle <span class="text-danger">*</span></label>
+                                        <select name="vehicle_id" id="vehicle" class="form-control">
+                                            <option value="" selected hidden>Select Vehicle</option>
+                                        </select>
+                                    </div>
+                                    {{-- <div class="form-group">
                                         <label for="vehicle_id">{{ __('Vehicle') }} <span class="text-danger">*</span></label>
                                         <select name="vehicle_id" id="vehicle_id"  class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
@@ -109,7 +115,7 @@
                                         @if($errors->has('vehicle_id'))
                                             <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="vehicles_license">{{ __('Vehicles License') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="vehicles_license" placeholder="Enter The Vehicle License Number" name="vehicles_license" value="{{ old('vehicles_license') }}">
@@ -189,9 +195,9 @@
                 });
             });
 
-            $('#district').on('change', function() { 
+            $('#district').on('change', function() {
                 let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
+                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId);
 
                 $.ajax({
                     url: _url,
@@ -212,9 +218,9 @@
                 });
             });
 
-            $('#thana').on('change', function() { 
+            $('#thana').on('change', function() {
                 let unionId = $(this).val();
-                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
+                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId);
 
                 $.ajax({
                     url: _url,
@@ -234,10 +240,10 @@
                     }
                 });
             });
-            
-            $('#union').on('change', function() { 
+
+            $('#union').on('change', function() {
                 let standId = $(this).val();
-                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId); 
+                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId);
 
                 $.ajax({
                     url: _url,
@@ -257,7 +263,28 @@
                     }
                 });
             });
+            $('#stand').on('change', function() {
+                let standId = $(this).val();
+                let _url = '{{ route("ajax.standVehicles", ":id") }}'.replace(':id', standId);
 
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let vehicles = response.data;
+                        let vehicleSelect = $('#vehicle');
+                        vehicleSelect.empty();
+                        vehicleSelect.append('<option value="">Select Vehicle</option>');
+
+                        $.each(vehicles, function(index, vehicle) {
+                            vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
         });
     </script>
 @endpush

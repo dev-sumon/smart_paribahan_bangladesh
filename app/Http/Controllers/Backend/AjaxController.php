@@ -58,30 +58,21 @@ class AjaxController extends Controller
             'data' => $stands
         ]);
     }
-    // public function vehicle(Request $request, $id): JsonResponse
-    // {
-    //     $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => $vehicles
-    //     ]);
-    // }
-    // public function vehiclesLicense(Request $request, $id): JsonResponse
-    // {
-    //     $licenses = Vehicle::where('id', $id)->pluck('license_number');
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => $licenses
-    //     ]);
-    // }
-    public function ownerVehicles(Request $request, $id): JsonResponse
+    public function standVehicles(Request $request, $id): JsonResponse
     {
-        $owner = Owner::with('vehicles')->find($id);
+        $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
 
         return response()->json([
             'success' => true,
-            'data' => $owner ? $owner->vehicles : null
+            'data' => $vehicles
         ]);
     }
-
+    public function vehiclesLicense(Request $request, $id): JsonResponse
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return response()->json([
+            'success' => true,
+            'data' => $vehicle->vehicles_license
+        ]);
+    }
 }
