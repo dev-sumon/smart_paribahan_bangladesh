@@ -22,6 +22,10 @@ class StandRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
+            'thana_id' => 'required|exists:thanas,id',
+            'union_id' => 'required|exists:unions,id',
             'name' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
         ]

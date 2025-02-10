@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Stand extends Model
+
 {
+
+    protected $fillable = ['stand', 'id', 'union_id'];
     public function statusBg(){
         if($this->status == 1){
             return 'badge badge-success';
@@ -56,8 +59,4 @@ class Stand extends Model
     {
         return $this->hasMany(Vehicle::class);
     }
-    // public function vehicles()
-    // {
-    //     return $this->hasMany(Vehicle::class);
-    // }
 }

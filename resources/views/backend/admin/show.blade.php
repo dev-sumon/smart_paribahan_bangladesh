@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('backend.layouts.master',['page_slug'=>'admin'])
 
 
 @section('title', 'Admin - management')
@@ -26,6 +26,26 @@
                                             <td>{{ $admin->name }}</td>
                                         </tr>
                                         <tr>
+                                            <th>{{ __('NID') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $admin->nid }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Father Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $admin->father_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Mother Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $admin->mother_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __(key: 'Image') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td><img src="{{ asset('storage/' . $admin->image) }}" alt="{{ $admin->name }}" width="100"></td>
+                                        </tr>
+                                        <tr>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $admin->email }}</td>
@@ -33,7 +53,7 @@
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $admin->status }}</td>
+                                            <td><span class="{{ $admin->statusBg() }}">{{ $admin->statusTitle() }}</span></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
@@ -43,7 +63,7 @@
                                         <tr>
                                             <th>{{ __('Created By') }}y</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $admin->created_by }}</td>
+                                            <td> {{ $admin->created_b ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

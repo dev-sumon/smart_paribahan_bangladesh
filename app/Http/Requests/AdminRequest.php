@@ -31,6 +31,10 @@ class AdminRequest extends FormRequest
     protected function store(): array
     {
         return [
+            'nid' => 'required|max:14|min:10|unique:admins,nid',
+            'father_name' => 'required|string|max:20|min:3',
+            'mother_name' => 'required|string|max:20|min:3',
+            'image' =>'unllable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'email' => 'required|email|unique:admins,email',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
@@ -39,6 +43,10 @@ class AdminRequest extends FormRequest
     protected function update(): array
     {
         return [
+            'nid' => 'required|max:14|min:10|unique:admins,nid,' .$this->route('id'),
+            'father_name' => 'required|string|max:20|min:3',
+            'mother_name' => 'required|string|max:20|min:3',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'email' => 'required|email|unique:admins,email,' .$this->route('id'),
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',

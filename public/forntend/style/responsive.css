@@ -1,0 +1,1609 @@
+/* @media (min-width: 768px) and (max-width: 992px) {
+    .navbar .menu_bar{
+        display: none;
+    }
+    .navbar .language{
+        display: none !important;
+    }
+} */
+ @media(min-width: 1400px){
+
+ }
+ @media(min-width: 1200px) and (max-width: 1400px){
+
+ }
+ @media(min-width: 992px) and (max-width: 1200px){
+    .hero .title h3 {
+        font-size: 40px;
+    }
+    .hero .title h2 {
+        font-size: 66px;
+    }
+    .hero .hero_image img{
+        width: 100%;
+    }
+    .search_section .text h2{
+        font-size: 25px;
+    }
+    .search_section .btn {
+        padding: 10px 14px;
+    }
+    .search_section .container {
+        padding: 20px 20px;
+    }
+    .car-image {
+        padding: 128px;
+    }
+    .feature-box {
+        width: 300px;
+    }
+    .feature-box-1 {
+        top: 5%;
+        left: -30%;
+    }
+    .feature-box-2 {
+        top: 5%;
+        right: -17%;
+    }
+    .feature-box-3 {
+        bottom: 32%;
+        left: -17%;
+    }
+    .feature-box-4 {
+        bottom: 43%;
+        right: -30%;
+    }
+    .feature-box-5 {
+        bottom: 20%;
+        left: 50%;
+    }
+    .location_item .dropdown::after {
+        right: 55px;
+    }
+    .cng_owner_location_item .dropdown::after {
+        right: 55px;
+    }
+    .dealist .owner_list .profile-card .profile-details {
+        padding: 0px 0px;
+    }
+    .stant_location_item .dropdown::after {
+        right: 55px;
+    }
+ }
+ @media(max-width: 1199.98px){
+    .dealist .driver_list .profile .beage {
+        transform: translate(380%, -150%) !important;
+    }
+    .dealist .right_side .card {
+        padding: 20px;
+    }
+    .dealist .badge {
+        top: 20px;
+    }
+ }
+ @media(min-width: 768px) and (max-width: 992px){
+    .hero{
+        margin-bottom: 50px;
+    }
+    .hero .title h3 {
+        font-size: 30px;
+    }
+    .hero .title h2 {
+        font-size: 48px;
+    }
+    .hero .hero_image img{
+        width: 100%;
+    }
+    .hero .title p {
+        font-size: 21px;
+    }
+    .vehicles_list {
+        margin-bottom: 50px;
+    }
+    .search_section .container {
+        padding: 20px 20px;
+    }
+    .search_section .text h2{
+        font-size: 20px;
+        padding-left: 0px;
+    }
+    .search_section .btn {
+        padding: 10px 10px !important;
+        font-size: 20px;
+    }
+    .search_section .search {
+        font-size: 15px;
+        margin-bottom: 0px !important;
+    }
+    .car-image {
+        padding: 0px;
+        margin-bottom: 50px;
+    }
+    .feature-box {
+        position: static;
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    .icon-circle-1{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 390px;
+        left: 5px;
+    }
+    .icon-circle-2{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 580px;
+        left: 5px;
+    }
+    .icon-circle-3{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 740px;
+        left: 5px;
+    }
+    .icon-circle-4{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 930px;
+        left: 5px;
+    }
+    .icon-circle-5{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 1118px;
+        left: 5px;
+    }
+    .icon-circle-1::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-1::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-2::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-2::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-3::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-3::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-4::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-4::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-5::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-5::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .dealist .location_item {
+        margin-top: 50px;
+    }
+    .cng_owner_location_item .dropdown::after {
+        right: 60px;
+    }
+    .dealist .profile-card{
+        width: 100%;
+    }
+    .dealist .owner_list .profile-card .profile-details {
+        padding: 0px 0px !important;
+    }
+    .stant_location_item .dropdown::after {
+        right: 100px;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(420%, -150%) !important;
+    }
+    .location_item .dropdown::after {
+        right: 115px;
+    }
+    .dealist .badge {
+        top: 60px;
+    }
+ }
+ @media(min-width: 575px) and (max-width: 768px){
+    .hero .hero_image img{
+        width: 100%;
+    }
+    .connected_us .container .section-title {
+        font-size: 40px;
+    }
+    .vehicles_list {
+        margin-bottom: 50px;
+    }
+    .search_section .container {
+        padding: 20px 20px;
+    }
+    .search_section .text h2{
+        padding-left: 0px;
+        text-align: center !important;
+    }
+    .search_section .search {
+        margin-bottom: 20px;
+    }
+    .search_section .btn {
+        padding: 5px 100px;
+    }
+    .search_section .col-12{
+        text-align: center;
+        justify-content: center;
+    }
+    .help_us .help_us_headr .title h2 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .car-image {
+        padding: 0px !important;
+        margin-bottom: 50px;
+    }
+    .feature-box {
+        position: static;
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    .icon-circle-1{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 350px;
+        left: 5px;
+    }
+    .icon-circle-2{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 540px;
+        left: 5px;
+    }
+    .icon-circle-3{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 700px;
+        left: 5px;
+    }
+    .icon-circle-4{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 890px;
+        left: 5px;
+    }
+    .icon-circle-5{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 1080px;
+        left: 5px;
+    }
+    .icon-circle-1::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-1::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-2::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-2::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-3::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-3::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-4::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-4::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-5::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-5::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .bd_smart_vehicle_part .heading_section {
+        font-family: 'Hind Siliguri', sans-serif;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0.2px;
+        color: #141F39;
+    }
+    .dealist .location_item {
+        margin-top: 20px;
+    }
+    .cng_owner_location_item .dropdown::after {
+        right: 130px;
+    }
+    .location_item .dropdown::after {
+        right: 115px;
+    }
+    .dealist .profile-card{
+        width: 100%;
+    }
+    .dealist .owner_list .profile-card .profile-details {
+        padding: 0px 0px;
+    }
+    .president_and_members .member_list_title h2 {
+        font-size: 46px;
+        line-height: 54px;
+    }
+    
+    .certified_social {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+    
+      .certified, .social {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    
+      .social {
+        margin-top: 10px;
+      }
+      footer .copy_right {
+        padding-top: 10px;
+        text-align: start;
+    }
+    .hero .column_reverse{
+        flex-direction: column-reverse;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(430%, -150%) !important;
+    }
+ }
+  @media(max-width: 767.98px){
+    .dealist .badge {
+        left: 110px;
+    }
+  }
+ @media(max-width: 575px){
+    .hero .hero_image img{
+        width: 100%;
+    }
+    .hero .title h3 {
+        color: #141F39;
+        font-family: "Hind Siliguri";
+        font-size: 34px;
+        font-weight: 700;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }
+    .hero .title h2 {
+        font-size: 54px;
+        text-align: center;
+    }
+    .hero .title p {
+        font-size: 18px;
+        text-align: center;
+    }
+    .hero .hero_image img{
+        width: 100%;
+    }
+    .connected_us .container .section-title {
+        font-size: 40px;
+    }
+    .vehicles_list {
+        margin-bottom: 0px;
+    }
+    .search_section .container {
+        padding: 20px 20px;
+    }
+    .search_section .text h2{
+        font-size: 32px;
+        padding-left: 0px;
+    }
+    .search_section .col-12 {
+        text-align: center;
+        justify-content: center;
+    }
+    .justify-content-sm-center {
+        -ms-flex-pack: center !important;
+        justify-content: center !important;
+    }
+    .search_section .search {
+        margin-bottom: 20px;
+    }
+    .search_section .me-2{
+        margin-right: 0rem !important;
+    }
+    .help_us .help_us_headr .title h2 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .car-image {
+        padding: 0px;
+        margin-bottom: 50px;
+    }
+    .feature-box {
+        position: static;
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    .icon-circle-1{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 375px;
+        left: 5px;
+    }
+    .icon-circle-2{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 565px;
+        left: 5px;
+    }
+    .icon-circle-3{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 725px;
+        left: 5px;
+    }
+    .icon-circle-4{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 915px;
+        left: 5px;
+    }
+    .icon-circle-5{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 1105px;
+        left: 5px;
+    }
+    .icon-circle-1::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-1::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-2::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-2::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-3::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-3::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-4::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-4::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-5::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-5::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .car-container {
+        padding-bottom: 50px;
+    }
+    .head-text{
+        margin-bottom: 50px;
+    }
+    .faq-title {
+        font-size: 32px;
+        text-align: left;
+        line-height: 40px;
+    }
+    .faq-question {
+        font-size: 14px;
+        padding: 15px 20px;
+    }
+    .faq-answer {
+        font-size: 16px;
+    }
+    .footer_gray .left_footer .mobile_app_link{
+        display: block !important;
+    }
+    .footer_gray .left_footer .mobile_app_link .app_store{
+        margin-top: 10px;
+    }
+    .notice .all_notice_button{
+        text-align: start !important;
+        margin-top: 20px;
+        margin-left: 5px;
+    }
+    .notice .advisement{
+        margin-top: 50px !important;
+    }
+    .location_item .dropdown {
+        width: 100%;
+    }
+    .location_item .dropdown::after {
+        right: 20px;
+    }
+    .dealist .btn {
+        width: 100%;
+    }
+    .dealist .location_item .advisement{
+        display: none;
+    }
+    .dealist .cover_advisement{
+        display: none;
+    }
+    .location_item .dropdown select {
+        appearance: auto;
+        -webkit-appearance: auto;
+        -moz-appearance: auto;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    .location_item .dropdown::after {
+        display: none;  
+    }
+    .dealist .location_item {
+        margin-top: 20px;
+    }
+    .president_and_members .stand_location h5 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .president_and_members .member_list_title h2 {
+        font-size: 46px;
+        line-height: 54px;
+        text-align: left;
+    }
+    .cng_owner_location_item .dropdown {
+        width: 100%;
+    }
+    .cng_owner_location_item .dropdown::after {
+        display: none;
+    }
+    .stant_location_item .dropdown{
+        width: 100%;
+    }
+    .stant_location_item .dropdown select {
+        appearance: auto;
+        -webkit-appearance: auto;
+        -moz-appearance: auto;
+        background: #fff;
+        cursor: pointer;
+    }
+    .stant_location_item .dropdown::after {
+        display: none;
+    }
+    .dealist .profile-card{
+        width: 100%;
+    }
+    .dealist .owner_list .profile-card .profile-details {
+        padding: 0px 0px;
+    }
+    .president_and_members .stand_location h5 {
+        line-height: 28px;
+        text-align: left;
+    }
+    .location_item .dropdown select {
+        appearance: auto;
+        -webkit-appearance: auto;
+        -moz-appearance: auto;
+        background: #fff;
+        cursor: pointer;
+    }
+    .dealist .badge {
+        left: 130px;
+    }
+    .community_advisement{
+        display: none;
+    }
+    .certified_social {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+    
+      .certified, .social {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    
+      .social {
+        margin-top: 10px;
+      }
+      footer .copy_right {
+        padding-top: 10px;
+        text-align: start;
+    }
+    .hero .column_reverse{
+        flex-direction: column-reverse;
+    }
+    .profile_section .profile_image img {
+        width: 100%;
+        height: auto;
+    }
+    .profile_section .profile_deatils{
+        display: block !important;
+    }
+    .profile_section .profile_deatils .profile_info{
+        margin-top: 100px;
+    }
+    .profile_section .profile_deatils .profile_info h3 {
+        font-size: 42px;
+        line-height: 50px;
+    }
+    .profile_section .profile_deatils .profile_info .pt-3{
+        padding-top: 0px !important;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(645%, -150%) !important;
+    }
+    .cng_owner_location_item .dropdown select {
+        appearance: auto;
+        -webkit-appearance: auto;
+        -moz-appearance: auto;
+        background: #fff;
+        cursor: pointer;
+    }
+    .dealist .right_side .card {
+        padding: 45px 140px;
+    }
+    .blog_hero .banner_head h2 {
+        font-size: 48px;
+        line-height: 54px;
+    }
+    .left_card h1 {
+        font-family: "Exo", sans-serif;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 43.2px;
+    }
+    .contact_deatils  .column_reverse{
+        flex-direction: column-reverse;
+    }
+    .contact_deatils .details .conatact_info h3{
+        font-family: "Hind Siliguri";
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 44px;
+        letter-spacing: 0.20px;
+        text-align: left;
+        margin-top: 30px;
+        color: #000000;
+    }
+    .contact_deatils .details .conatact_info p{
+        font-family: "Hind Siliguri";
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: 0.20px;
+        text-align: left;
+        color: #000000;
+    }
+ }
+ @media(max-width: 425px){
+    .navbar .navbar-brand{
+        width: 50%;
+      }
+      .navbar .navbar-brand img{
+        width: 100%;
+      }
+      .navbar .navbar-toggler{
+        padding: 0;
+      }
+    .hero .title p {
+        font-size: 18px;
+        text-align: center;
+        padding: 0px 27px;
+    }
+    .hero .title h2 {
+        padding-top: 0px;
+    }
+    .connected_us .container .section-title {
+        font-size: 28px;
+    }
+    .search_section .search {
+        margin-bottom: 20px;
+    }
+    .search_section .text h2{
+        font-size: 32px;
+        padding-left: 0px;
+    }
+    .help_us .help_us_headr .title h2 {
+        text-align: start;
+    }
+    .help_us .help_us_headr .desc p {
+        text-align: start;
+    }
+    .car-image {
+        padding: 0px;
+        margin-bottom: 50px;
+    }
+    .feature-box {
+        position: static;
+        width: 100%;
+        margin-bottom: 100px;
+    }
+    .icon-circle-1{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 275px;
+        left: 5px;
+    }
+    .icon-circle-2{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 465px;
+        left: 5px;
+    }
+    .icon-circle-3{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 655px;
+        left: 5px;
+    }
+    .icon-circle-4{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 875px;
+        left: 5px;
+    }
+    .icon-circle-5{
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        color: #FF4040;
+        border-radius: 50%;
+        font-family: "Manrope", sans-serif;
+        font-size: 25.24px;
+        font-weight: 800;
+        border: 4px solid #FF4040;
+        padding: 20px;
+        overflow: visible;
+        top: 1065px;
+        left: 5px;
+    }
+    .icon-circle-1::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-1::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-2::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-2::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-3::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-3::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-4::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-4::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .icon-circle-5::before {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 9px;
+        top: 10px;
+        left: 80%;
+        transform: skewX(-54deg);
+        background-color: #FFF;
+    }
+    .icon-circle-5::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        top: 9px;
+        left: -15%;
+        transform: skewY(170deg);
+        background-color: #fff;
+    }
+    .faq-question {
+        padding: 15px 25px;
+    }
+    .location_item .dropdown::after {
+        right: 12px;
+    }
+    .cng_owner_location_item .dropdown {
+        width: 100%;
+    }
+    .dealist .owner_list .profile-card .profile-details {
+        padding: 0px 0px;
+    }
+    .dealist .badge {
+        left: 55px;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .designation {
+        font-family: 'Hind Siliguri';
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .designation_name {
+        font-family: 'Kohinoor Bangla';
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .email {
+        font-family: 'Hind Siliguri';
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .email_address {
+        font-family: 'Hind Siliguri';
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .phone{
+        font-family: 'Hind Siliguri';
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .number{
+        font-family: 'Hind Siliguri';
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .car{
+        font-family: 'Hind Siliguri';
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .car_number{
+        font-family: 'Kohinoor Bangla';
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .blood{
+        font-family: 'Hind Siliguri';
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .profile_section .profile_deatils .profile_info .deatils .blood_group{
+        font-family: 'Kohinoor Bangla';
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 38px;
+        letter-spacing: 0.2px;
+        text-align: left;
+        color: #141F39;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(510%, -150%) !important;
+    }
+    .dealist .right_side .card {
+        padding: 45px 62px;
+    }
+    .inner_page_hero .desc h5 {
+        font-size: 20px;
+        line-height: 28px;
+        padding: 0px 15px;
+    }
+    .inner_page_hero .title h2 {
+        font-size: 46px;
+    }
+    .inner_page_hero .hero_details {
+        padding: 20px 0px;
+    }
+    .notice_bord_section .head .title h3 {
+        font-size: 24px;
+        line-height: 32px;
+        text-align: left !important;
+    }
+    .custom-header th {
+        font-size: 10px;
+        line-height: 10px;
+    }
+    .table td {
+        font-size: 10px;
+    }
+    .table td, .table th {
+        padding: .5rem;
+    }
+    .profile_section .profile_image img {
+        width: 100% !important;
+        height: auto;
+        object-fit: cover;
+    }
+    .dealist .badge {
+        left: 32px;
+        top: 130px;
+    }
+ }
+ @media(max-width: 375px){
+    .form-select {
+        padding: .375rem 1.25rem .375rem .75rem;
+    }
+    .search_section .text h2{
+        font-size: 32px;
+        padding-left: 0px;
+    }
+    .icon-circle-1{
+        top: 244px;
+        left: 16px;
+    }
+    .icon-circle-2{
+        top: 464px;
+        left: 16px;
+    }
+    .icon-circle-3{
+        top: 654px;
+        left: 16px;
+    }
+    .icon-circle-4{
+        top: 874px;
+        left: 16px;
+    }
+    .icon-circle-5{
+        top: 1094px;
+        left: 16px;
+    }
+    .dealist .owner_list .profile-card .profile-details {
+        padding: 0px 0px;
+    }
+    .dealist .badge {
+        left: 35px;
+        top: 90px;
+    }
+    .dealist .right_side .card {
+        padding: 45px 37px;
+    }
+    .blog_hero{
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .blog_hero .banner_head h2 {
+        font-size: 46px;
+        line-height: 54px;
+    }
+    .blog_hero .banner_title p {
+        font-size: 16px !important;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(460%, -150%) !important;
+    }
+ }
+ @media(max-width: 360px){
+    .icon-circle-1{
+        top: 234px !important;
+    }
+    .icon-circle-2{
+        top: 454px !important;
+    }
+    .icon-circle-3{
+        top: 644px !important;
+    }
+    .icon-circle-4{
+        top: 894px !important;
+    }
+    .icon-circle-5{
+        top: 1114px !important;
+    }
+    .bd_smart_vehicle_part .heading_section {
+        font-size: 36px;
+    }
+    .faq-question {
+        padding: 15px 25px !important;
+    }
+    .location_item .dropdown {
+        padding: 5px;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(450%, -150%) !important;
+    }
+ }
+ @media(max-width: 320px){
+    .icon-circle-1 {
+        top: 208px !important;
+    }
+    .icon-circle-2 {
+        top: 428px !important;
+    }
+    .icon-circle-3 {
+        top: 618px !important;
+    }
+    .icon-circle-4 {
+        top: 868px !important;
+    }
+    .icon-circle-5 {
+        top: 1088px !important;
+    }
+    .dealist .badge {
+        left: 35px;
+    }
+    .dealist .driver_list .profile .beage {
+        transform: translate(390%, -150%) !important;
+    }
+    .dealist .right_side .card {
+        padding: 45px 12px;
+    }
+ }

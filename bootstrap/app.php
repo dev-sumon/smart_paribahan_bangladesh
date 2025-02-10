@@ -13,6 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
+            'owner' => \App\Http\Middleware\OwnerMiddleware::class,
+            'driver' => \App\Http\Middleware\DriverMiddleware::class,
         ]);
         
     })

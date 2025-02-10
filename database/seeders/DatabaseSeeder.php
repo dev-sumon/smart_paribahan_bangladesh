@@ -23,5 +23,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
         ]);
+        $this->call([
+            OwnerSeeder::class,
+        ]);
+        $this->call([
+            DriverSeeder::class,
+        ]);
     }
 }
