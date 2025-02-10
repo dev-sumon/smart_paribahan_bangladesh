@@ -112,8 +112,18 @@ class Owner extends Authenticatable
     {
         return $this->hasOne(Owner::class, 'owner_id'); // 'owner_id' পরিবর্তন হতে পারে, আপনার ডাটাবেস অনুযায়ী
     }
-    public function stand(){
-        return $this->belongsTo(Stand::class, 'stand_id', 'id');
+    // public function stand(){
+    //     return $this->belongsTo(Stand::class, 'stand_id', 'id');
+    // }
+
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class, 'stand_id');
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'owner_id'); // 'stand_id' পরিবর্তন করে 'owner_id' দিন
     }
 
 

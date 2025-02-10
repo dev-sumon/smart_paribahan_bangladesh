@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
@@ -57,20 +58,29 @@ class AjaxController extends Controller
             'data' => $stands
         ]);
     }
-    public function vehicle(Request $request, $id): JsonResponse
+    // public function vehicle(Request $request, $id): JsonResponse
+    // {
+    //     $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => $vehicles
+    //     ]);
+    // }
+    // public function vehiclesLicense(Request $request, $id): JsonResponse
+    // {
+    //     $licenses = Vehicle::where('id', $id)->pluck('license_number');
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => $licenses
+    //     ]);
+    // }
+    public function ownerVehicles(Request $request, $id): JsonResponse
     {
-        $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
+        $owner = Owner::with('vehicles')->find($id);
+
         return response()->json([
             'success' => true,
-            'data' => $vehicles
-        ]);
-    }
-    public function vehiclesLicense(Request $request, $id): JsonResponse
-    {
-        $licenses = Vehicle::where('id', $id)->pluck('license_number');
-        return response()->json([
-            'success' => true,
-            'data' => $licenses
+            'data' => $owner ? $owner->vehicles : null
         ]);
     }
 
