@@ -78,19 +78,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="thana_id" class="mt-3">{{ __('Thana') }}</label>
-                                <select name="thana_id" id="Thana" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                <select name="thana_id" id="thana" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('থানা') }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="union_id" class="mt-3">{{ __('Union') }}</label>
-                                <select name="union_id" id="Union" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                <select name="union_id" id="union" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('ইউনিয়ন') }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="stand_id" class="mt-3">{{ __('Stand') }}</label>
-                                <select name="stand_id" id="Stand" class="form-select select_iteam" style="border: 2px solid #ea1827">
+                                <select name="stand_id" id="stand" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('স্ট্যান্ড') }}</option>
                                 </select>
                             </div>
@@ -262,9 +262,11 @@
         // Fetch stands based on selected union
         $('#union').on('change', function () {
             var union_id = $(this).val();
-            if (union_id) {
+            if (union_id !== null || union_id !== undefined) {
+                let _url = '{{ route("driver.getStands",["union_id"=>":id"]) }}';
+                _url = _url.replace(':id', union_id);
                 $.ajax({
-                    url: '/home/get-stands/' + union_id,
+                    url: _url,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -283,9 +285,11 @@
         // Fetch vehicles based on selected stand
         $('#stand').on('change', function () {
             var stand_id = $(this).val();
-            if (stand_id) {
+            if (stand_id !== null || stand_id !== undefined) {
+                let _url = '{{ route("driver.getVehicles",["stand_id"=>":id"]) }}';
+                _url = _url.replace(':id', stand_id);
                 $.ajax({
-                    url: '/home/get-vehicles/' + stand_id,
+                    url: _url,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
