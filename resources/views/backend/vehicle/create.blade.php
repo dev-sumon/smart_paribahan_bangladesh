@@ -28,8 +28,17 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
+                                        <label for="stand">Select Stand</label>
+                                        <select name="stand_id" id="stand" class="form-control">
+                                            <option value="" selected hidden>Select Stand</option>
+                                            @foreach($stands as $stand)
+                                                <option value="{{ $stand->id }}">{{ $stand->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Admin Name" name="image" value="{{ old('image') }}">
+                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter Admin Name" name="image" value="{{ old('image') }}">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif

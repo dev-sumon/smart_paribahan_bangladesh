@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Stand;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -19,12 +20,14 @@ class VehicleListController extends Controller
     }
     public function create(): view
     {
-        return view('backend.vehicle.create');
+        $data['stands'] = Stand::latest()->get();
+        return view('backend.vehicle.create', $data);
     }
     public function store(VehicleRequest $request): RedirectResponse
     {
         $save = new Vehicle();
         $save->name = $request->name;
+        $save->stand_id = $request->stand_id;
         $save->status = $request->has('status') ? $request->status : 0;
 
         if($request->hasFile('image')){
