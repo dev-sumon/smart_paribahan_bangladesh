@@ -2565,6 +2565,14 @@ div .adds2{
     background-color: #ffffff;
 }
 /* select role page css end */
+/* logout section css start */
+.logout .logout_form .form-group a{
+        background-color: #ea1827;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px;
+}
+/* logout section css end */
 /* Footer start */
 footer {
     background-color: #051E38;
