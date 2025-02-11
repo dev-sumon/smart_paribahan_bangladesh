@@ -10,12 +10,14 @@ use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 
 class HomePageController extends Controller
 {
     public function index(){
 
         $data['divisions'] = Division::latest()->get();
+        $data['faqs'] = Faq::latest()->get();
 
         return view('forntend.home.index', $data);
     }
@@ -48,4 +50,8 @@ class HomePageController extends Controller
         $vehicles = Vehicle::where('stand_id', $stand_id)->pluck('name', 'id');
         return response()->json($vehicles);
     }
+    // public function faq(){
+    //     $data['faqs'] = Faq::latest()->get();
+    //     return view('forntend.home.index', )
+    // }
 }

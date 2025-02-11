@@ -57,6 +57,7 @@ Auth::routes();
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
     Route::controller(HomePageController::class)->prefix('home')->name('home.')->group(function(){
+        // Route::get('faq', 'faq')->name('faq');
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
         Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');

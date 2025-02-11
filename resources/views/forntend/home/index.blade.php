@@ -336,7 +336,15 @@
             <div class="faq-section">
               <div class="faq-title  py-5 pb-5">সচরাচর আপনার প্রশ্ন সমূহ</div>
 
-              <div class="faq-item">
+              @foreach ($faqs as $faq)
+                <div class="faq-item">
+                  <div class="faq-question">{{ $faq->question }}</div>
+                  <div class="faq-answer">
+                    {{ $faq->answer }}
+                  </div>
+                </div>
+              @endforeach
+              {{-- <div class="faq-item">
                   <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহন কি কাজ করে?</div>
                   <div class="faq-answer">
                     যদি আপনার কোনো জিনিস গাড়িতে হারিয়ে যায়, তবে বাংলাদেশ স্মার্ট পরিবহনের মাধ্যমে তা সহজেই খুঁজে পাওয়া সম্ভব। সার্চ অপশনে গাড়ির নম্বর বা ফোন নম্বর দিয়ে সার্চ করলে আপনি সরাসরি ড্রাইভারের সাথে যোগাযোগ করতে পারবেন এবং প্রয়োজনীয় তথ্য পেয়ে হারানো জিনিসটি পুনরুদ্ধার করতে পারবেন।
@@ -385,7 +393,7 @@
                   <div class="faq-answer">
                     আপনি ক্যাশ, মোবাইল ব্যাংকিং, অথবা কার্ড ব্যবহার করে ভাড়া পরিশোধ করতে পারেন।
                   </div>
-              </div>
+              </div> --}}
 
             </div>
           </div>
