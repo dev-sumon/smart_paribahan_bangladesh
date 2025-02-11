@@ -167,11 +167,11 @@
         <div class="container">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-10 m-auto">
-                        <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="">
+                    <div class="col-md-2 m-auto">
+                        <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="logout_form">
                             @csrf
-                            <div class="form-grou">
-                            <a class="dropdown-item" href="{{ route('driver.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <div class="form-group">
+                            <a class="dropdown-item text-center" href="{{ route('driver.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             </div>
