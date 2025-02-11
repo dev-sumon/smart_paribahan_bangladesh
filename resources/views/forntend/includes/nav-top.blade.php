@@ -58,7 +58,7 @@
           @if (Auth::guard('driver')->check())
             <a href="{{ route('driver.dashboard',Auth::guard('driver')->user()->id) }}">{{ __('Profile') }}</a>
           @elseif (Auth::guard('owner')->check())
-          <a href="{{ route('owner.dashboard',Auth::guard('owner')->user()->id) }}">{{ __('Profile') }}</a>
+          <a href="{{ route('owner.dashboard', Auth::guard('owner')->user()->id) }}">{{ __('Profile') }}</a>
           @else
           <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger me-2 d-none d-lg-block login loginButton">লগ ইন</a>
           <a href="{{ route('f.signup.index') }}" class="btn btn-outline-danger d-none d-lg-block signUp">সাইন আপ</a>
