@@ -92,6 +92,13 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/owner', 'owner')->name('owner');
         Route::get('/driver', 'driver')->name('driver');
         Route::get('/notice', 'notice')->name('notice');
+
+
+        Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
+        Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
+        Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
+        Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
+        Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('get.vehicles');
     });
     Route::controller(AuthDriverLoginController::class)->prefix('driver-login')->name('login')->group(function(){
         Route::get('/login', 'driverLogin')->name('login');
