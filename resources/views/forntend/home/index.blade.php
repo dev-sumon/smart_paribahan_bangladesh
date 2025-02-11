@@ -27,31 +27,6 @@
                 <div class="text-danger">{{ $errors->first('division_id') }}</div>
                 @endif
                 </div>
-                {{-- <div class="form-group">
-                    <label for="district">District <span class="text-danger">*</span></label>
-                    <select name="district_id" id="district" class="form-control">
-                        <option value="" selected hidden>Select District</option>
-                    </select>
-                </div> --}}
-                {{-- <select name="district_id" id="district" class="form-select select_iteam">
-                    <option value="">জেলা</option>
-                </select>
-
-                <select name="thana_id" id="thana" class="form-select select_iteam">
-                    <option value="">থানা</option>
-                </select>
-
-                <select name="union_id" id="union" class="form-select select_iteam">
-                    <option value="">ইউনিয়ন</option>
-                </select>
-
-                <select name="stand_id" id="stand" class="form-select select_iteam">
-                    <option value="">স্ট্যান্ড</option>
-                </select>
-
-                <select name="vehicle_id" id="vehicle" class="form-select select_iteam">
-                    <option value="">গাড়ি</option>
-                </select> --}}
                <div class="col-4 col-md-6 col-xl-4">
                     <select name="district_id" id="district" class="form-select select_iteam">
                       <option value="">জেলা</option>

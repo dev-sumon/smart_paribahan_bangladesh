@@ -291,6 +291,28 @@
             });
 
 
+            // $('#vehicle').on('change', function() {
+            //     let vehicleId = $(this).val();
+            //     let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId);
+
+            //     $.ajax({
+            //         url: _url,
+            //         type: 'GET',
+            //         success: function(response) {
+            //             let licenseSelect = $('#vehicles_license');
+            //             licenseSelect.empty();
+            //             licenseSelect.append('<option value="">Select Vehicles License</option>');
+
+            //             $.each(response.data, function(index, vehicles_license) {
+            //                 licenseSelect.append('<option value="' + vehicles_license + '">' + vehicles_license + '</option>');
+            //             });
+            //         },
+            //         error: function(error) {
+            //             console.log(error);
+            //         }
+            //     });
+            // });
+
             $('#vehicle').on('change', function() {
                 let vehicleId = $(this).val();
                 let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId);
@@ -303,15 +325,18 @@
                         licenseSelect.empty();
                         licenseSelect.append('<option value="">Select Vehicles License</option>');
 
-                        $.each(response.data, function(index, vehicles_license) {
-                            licenseSelect.append('<option value="' + vehicles_license + '">' + vehicles_license + '</option>');
-                        });
+                        if (response.success && response.data.length > 0) {
+                            licenseSelect.append('<option value="' + response.data[0] + '">' + response.data[0] + '</option>');
+                        } else {
+                            licenseSelect.append('<option value="">No License Available</option>');
+                        }
                     },
                     error: function(error) {
                         console.log(error);
                     }
                 });
             });
+
 
         });
     </script>

@@ -67,12 +67,31 @@ class AjaxController extends Controller
             'data' => $vehicles
         ]);
     }
+    // public function vehiclesLicense(Request $request, $id): JsonResponse
+    // {
+    //     $vehicle = Vehicle::findOrFail($id);
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => [$vehicle->vehicles_license]
+    //     ]);
+    // }
+
     public function vehiclesLicense(Request $request, $id): JsonResponse
     {
         $vehicle = Vehicle::findOrFail($id);
+
+        // Vehicle এর owner আছে কিনা তা চেক করুন
+        if ($vehicle->owner) {
+            return response()->json([
+                'success' => true,
+                'data' => $vehicle->owner->vehicles_license // Owner থেকে vehicles_license আনছি
+            ]);
+        }
+
         return response()->json([
-            'success' => true,
-            'data' => $vehicle->vehicles_license
+            'success' => false,
+            'message' => 'Owner not found for this vehicle'
         ]);
     }
+
 }
