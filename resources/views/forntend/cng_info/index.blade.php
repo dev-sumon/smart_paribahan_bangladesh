@@ -71,60 +71,49 @@
                 <div class="row g-2">
                     <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                         <div class="dropdown">
-                            <select>
-                                <option value="1">বিভাগ</option>
-                                <option value="2">বিভাগ</option>
-                                <option value="3">বিভাগ</option>
-                                <option value="4">বিভাগ</option>
-                                <option value="5">বিভাগ</option>
-                                <option value="6">বিভাগ</option>
-                                <option value="7">বিভাগ</option>
-                                <option value="8">বিভাগ</option>
+                            <select name="division_id" id="division">
+                                <option value="" selected hidden>বিভাগ</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->division }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('division_id'))
+                            <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
+                        <div class="dropdown">
+                            <select name="district_id" id="district">
+                                <option value="">জেলা</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
+                        <div class="dropdown">
+                            <select name="thana_id" id="thana">
+                                <option value="">থানা</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                         <div class="dropdown">
-                            <select>
-                                <option>জেলা</option>
-                                <option value="1">জেলা</option>
-                                <option value="2">জেলা</option>
+                            <select name="union_id" id="union">
+                                <option value="">ইউনিয়ন</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                         <div class="dropdown">
-                            <select>
-                                <option>থানা</option>
-                                <option value="1">থানা</option>
-                                <option value="2">থানা</option>
+                            <select name="stand_id" id="stand">
+                                <option value="">স্ট্যান্ড</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                         <div class="dropdown">
-                            <select>
-                                <option>ইউনিয়ন</option>
-                                <option value="1">ইউনিয়ন</option>
-                                <option value="2">ইউনিয়ন</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select>
-                                <option>স্ট্যান্ড</option>
-                                <option value="1">স্ট্যান্ড</option>
-                                <option value="2">স্ট্যান্ড</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select>
-                                <option>গাড়ি</option>
-                                <option value="1">গাড়ি</option>
-                                <option value="2">গাড়ি</option>
+                            <select name="vehicle_id" id="vehicle">
+                                <option value="">গাড়ি</option>
                             </select>
                         </div>
                     </div>
@@ -217,3 +206,115 @@
         </div>
     </section>
 @endsection
+
+
+@push('script')
+  <script>
+      $(document).ready(function () {
+          // Fetch districts based on selected division
+          $('#division').on('change', function () {
+              var division_id = $(this).val();
+              if (division_id) {
+                  $.ajax({
+                      url: '/home/get-districts/' + division_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#district').empty();
+                          $('#district').append('<option value="">জেলা</option>');
+                          $.each(data, function (key, value) {
+                              $('#district').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#district').empty();
+              }
+          });
+
+          // Fetch thanas based on selected district
+          $('#district').on('change', function () {
+              var district_id = $(this).val();
+              if (district_id) {
+                  $.ajax({
+                      url: '/home/get-thanas/' + district_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#thana').empty();
+                          $('#thana').append('<option value="">থানা</option>');
+                          $.each(data, function (key, value) {
+                              $('#thana').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#thana').empty();
+              }
+          });
+
+          // Fetch unions based on selected thana
+          $('#thana').on('change', function () {
+              var thana_id = $(this).val();
+              if (thana_id) {
+                  $.ajax({
+                      url: '/home/get-unions/' + thana_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#union').empty();
+                          $('#union').append('<option value="">ইউনিয়ন</option>');
+                          $.each(data, function (key, value) {
+                              $('#union').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#union').empty();
+              }
+          });
+
+          // Fetch stands based on selected union
+          $('#union').on('change', function () {
+              var union_id = $(this).val();
+              if (union_id) {
+                  $.ajax({
+                      url: '/home/get-stands/' + union_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#stand').empty();
+                          $('#stand').append('<option value="">স্ট্যান্ড</option>');
+                          $.each(data, function (key, value) {
+                              $('#stand').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#stand').empty();
+              }
+          });
+
+          // Fetch vehicles based on selected stand
+          $('#stand').on('change', function () {
+              var stand_id = $(this).val();
+              if (stand_id) {
+                  $.ajax({
+                      url: '/home/get-vehicles/' + stand_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#vehicle').empty();
+                          $('#vehicle').append('<option value="">গাড়ি</option>');
+                          $.each(data, function (key, value) {
+                              $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#vehicle').empty();
+              }
+          });
+      });
+  </script>
+@endpush
