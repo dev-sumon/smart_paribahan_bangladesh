@@ -57,18 +57,6 @@
                                     <div class="text-danger">{{ $errors->first('image') }}</div>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="blood_group_id">{{ __('Blood Group') }} <span class="text-danger">*</span></label>
-                                <select name="blood_group_id" id="blood_group_id" class="form-control form-select select_iteam" style="border: 2px solid #ea1827">
-                                    <option value="" selected hidden>{{ __('Blood Group') }}</option>
-                                    @foreach ($bloods as $blood)
-                                        <option value="{{ $blood->id }}">{{ $blood->blood_group }}</option>
-                                    @endforeach
-                                </select>
-                                    @if($errors->has('division_id'))
-                                        <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                                    @endif
-                            </div> --}}
                             <div class="form-group">
                                 <label class="mt-3" for="blood_group_id">{{ __('Blood Group') }} <span class="text-danger">*</span></label>
                                 <select name="blood_group_id" id="blood_group_id" class="form-control form-select select_iteam" style="border: 2px solid #ea1827">
@@ -85,19 +73,6 @@
                                 @endif
                             </div>
                             
-                            
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="division_id">{{ __('Division') }} <span class="text-danger">*</span></label>
-                                <select name="division_id" id="division" class="form-control form-select select_iteam" style="border: 2px solid #ea1827">
-                                    <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                                    @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}">{{ $division->division }}</option>
-                                    @endforeach
-                                </select>
-                                    @if($errors->has('division_id'))
-                                        <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                                    @endif
-                            </div> --}}
                             <div class="form-group">
                                 <label class="mt-3" for="division_id">{{ __('Division') }} <span class="text-danger">*</span></label>
                                 <select name="division_id" id="division" class="form-control form-select select_iteam" style="border: 2px solid #ea1827">
