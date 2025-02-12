@@ -32,6 +32,7 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
 use App\Http\Controllers\Forntend\CngInfoController;
@@ -175,6 +176,16 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
+    Route::controller(VehicleTypeController::class)->prefix('vehicle-type')->name('vehicle_type.')->group(function(){
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
     Route::controller(VehicleListController::class)->prefix('vehicle')->name('vehicle.')->group(function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');

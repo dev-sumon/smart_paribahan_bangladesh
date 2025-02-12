@@ -41,6 +41,12 @@
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="{{ route('vehicle_type.index') }}" class="nav-link {{ $page_slug == 'vehicle_type' ? 'active' : '' }}">
+              <i class="fas fa-cogs"></i>
+              <p>{{ __('Vehicle Type') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="{{ route('vehicle.index') }}" class="nav-link {{ $page_slug == 'vehicle' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-car"></i>
               <p>{{ __('Vehicle') }}</p>
