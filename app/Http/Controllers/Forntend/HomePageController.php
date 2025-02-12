@@ -16,7 +16,8 @@ class HomePageController extends Controller
 {
     public function index(){
 
-        $data['divisions'] = Division::latest()->get();
+        // $data['divisions'] = Division::latest()->get();
+        $data['divisions'] = Division::with('districts.thanas.unions.stands.vehicles')->latest()->get();
         $data['faqs'] = Faq::latest()->get();
 
         return view('forntend.home.index', $data);
