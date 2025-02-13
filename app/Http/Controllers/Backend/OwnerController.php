@@ -26,9 +26,10 @@ class OwnerController extends Controller
     }
     public function create(): View
     {
+        $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands'])->latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
         // $data['vehicles'] = Vehicle::latest()->get();
-        $data['divisions'] = Division::latest()->get();
+        // $data['divisions'] = Division::latest()->get();
         return view('backend.owner.create', $data);
     }
     public function store(OwnerRequest $request): RedirectResponse
