@@ -64,12 +64,7 @@ class OwnerController extends Controller
     {
         $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
         $data['bloods'] = BloodGroup::latest()->get();
-        $data['vehicles'] = Vehicle::all();
-        $data['divisions'] = Division::all();
-        $data['districts'] = District::where('division_id', $data['owner']->division_id)->get();
-        $data['thanas'] = Thana::where('district_id', $data['owner']->district_id)->get();
-        $data['unions'] = Union::where('thana_id', $data['owner']->thana_id)->get();
-        $data['stands'] = Stand::where('union_id', $data['owner']->union_id)->get();
+        // $data['vehicles'] = Vehicle::all();
         return view('backend.owner.edit', $data);
     }
     public function update_store(OwnerRequest $request, $id): RedirectResponse

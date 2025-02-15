@@ -47,5 +47,10 @@ class Division extends Model
     {
         return $this->hasMany(Stand::class);
     }
+    public function owners()
+{
+    return $this->hasMany(Owner::class, 'division_id');
+}
+
 
 }

@@ -21,6 +21,13 @@
                                 <form action="{{ route('vehicle.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
+                                        <label for="name">{{ __('name') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter vehicle name" name="name" value="{{ old('name') }}">
+                                        @if($errors->has('name'))
+                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
                                         <label for="stand">Select Vehicle Type</label>
                                         <select name="vehicle_type_id" id="stand" class="form-control">
                                             <option value="" selected hidden>Select Vehicle Type</option>

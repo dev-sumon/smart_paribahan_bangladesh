@@ -27,9 +27,8 @@ class DriverController extends Controller
     }
     public function create(): View
     {
-        $data['owners'] = Owner::latest()->get();
+        $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
-        $data['divisions'] = Division::latest()->get();
         return view('backend.driver.create', $data);
     }
     public function store(DriverRequest $request): RedirectResponse

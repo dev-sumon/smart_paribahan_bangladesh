@@ -58,12 +58,11 @@ Auth::routes();
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
     Route::controller(HomePageController::class)->prefix('home')->name('home.')->group(function(){
-        // Route::get('faq', 'faq')->name('faq');
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
         Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
-        Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('get.vehicles');
+        Route::get('/get-vehicles/{stand_id}', 'vehicle_types')->name('get.vehicles');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
@@ -349,6 +348,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('stand/{id}', 'stand')->name('stand');
         Route::get('stand/{id}/vehicles', 'standVehicles')->name('standVehicles');
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
+        Route::get('/get-vehicles/{stand_id}',  'getVehiclesByStand');
+
     });
 });
 

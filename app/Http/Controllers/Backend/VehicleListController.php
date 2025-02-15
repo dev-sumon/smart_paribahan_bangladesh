@@ -37,8 +37,8 @@ class VehicleListController extends Controller
         $save->vehicle_licence = $request->vehicle_licence;
         $save->stand_id = $request->stand_id;
         $save->vehicle_type_id = $request->vehicle_type_id;
-        $save->owners_id = $request->owners_id;
-        $save->drivers_id = $request->drivers_id;
+        $save->owner_id = $request->owner_id;
+        $save->driver_id = $request->driver_id;
         $save->status = $request->status ?? 0;
 
         

@@ -16,16 +16,16 @@
                 </p>
               </div>
               <div class="row g-2">
-                 <div class="col-4 col-md-6 col-xl-4">
+                <div class="col-4 col-md-6 col-xl-4">
                   <select name="division_id" id="division" class="form-control form-select select_iteam">
                     <option value="" selected hidden>বিভাগ</option>
                     @foreach ($divisions as $division)
                         <option value="{{ $division->id }}">{{ $division->division }}</option>
                     @endforeach
-                </select>
-                @if($errors->has('division_id'))
-                <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                @endif
+                  </select>
+                    @if($errors->has('division_id'))
+                      <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                    @endif
                 </div>
                <div class="col-4 col-md-6 col-xl-4">
                     <select name="district_id" id="district" class="form-select select_iteam">
@@ -50,7 +50,7 @@
                     </select>
                 </div>
                 <div class="col-4 col-md-6 col-xl-4">
-                    <select name="vehicle_id" id="vehicle" class="form-select select_iteam">
+                    <select name="vehicle_id" id="vehicle_type" class="form-select select_iteam">
                       <option value="">গাড়ি</option>
                     </select>
                 </div>
@@ -71,14 +71,6 @@
 
         </div>
       </section>
-      {{-- <a class="dropdown-item" href="{{ route('driver.logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="d-none">
-                @csrf
-            </form> --}}
       <!-- hero section end -->
 
       <!-- vehicles_list section start -->
@@ -86,7 +78,6 @@
       <section class="vehicles_list">
         <div class="container">
           <div class="row justify-content-center">
-            <!-- Each card now occupies 4 columns on medium and larger screens, 6 columns on small screens -->
             <div class="col-6 col-md-4 col-lg-2">
               <div class="card p-3 text-center">
                 <div class="details">
@@ -344,57 +335,7 @@
                   </div>
                 </div>
               @endforeach
-              {{-- <div class="faq-item">
-                  <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহন কি কাজ করে?</div>
-                  <div class="faq-answer">
-                    যদি আপনার কোনো জিনিস গাড়িতে হারিয়ে যায়, তবে বাংলাদেশ স্মার্ট পরিবহনের মাধ্যমে তা সহজেই খুঁজে পাওয়া সম্ভব। সার্চ অপশনে গাড়ির নম্বর বা ফোন নম্বর দিয়ে সার্চ করলে আপনি সরাসরি ড্রাইভারের সাথে যোগাযোগ করতে পারবেন এবং প্রয়োজনীয় তথ্য পেয়ে হারানো জিনিসটি পুনরুদ্ধার করতে পারবেন।
-                  </div>
-              </div>
-
-              <div class="faq-item">
-                  <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহন কেন প্রয়োজন?</div>
-                  <div class="faq-answer">
-                    বাংলাদেশ স্মার্ট পরিবহন মানুষের সেবায় কাজ করছে। এটি যাত্রীদের নিরাপদ, স্মার্ট, ও প্রযুক্তি-নির্ভর যাত্রা নিশ্চিত করে।
-                  </div>
-              </div>
-
-              <div class="faq-item">
-                  <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহনের লক্ষ্য কি?</div>
-                  <div class="faq-answer">
-                    বাংলাদেশ স্মার্ট পরিবহন ডিজিটাল প্রযুক্তির ব্যবহার করে স্মার্ট ও নিরাপদ যাতায়াত নিশ্চিত করার লক্ষ্যে কাজ করছে, যাতে যাত্রীরা আরো সহজ ও নিরাপদে গন্তব্যে পৌঁছাতে পারেন।
-                  </div>
-              </div>
-              <div class="faq-item">
-                  <div class="faq-question">বাংলাদেশ স্মার্ট পরিবহন কিভাবে আমাদেরকে সাহায্য করে?</div>
-                  <div class="faq-answer">
-                    বাংলাদেশ স্মার্ট পরিবহন বিভিন্ন উপায়ে সহায়তা করে। উদাহরণস্বরূপ, যদি কোনো যাত্রী কোনো ড্রাইভার সম্পর্কে সন্দেহ করেন, তবে গাড়ির ভিতরে থাকা স্ক্যান কোড ব্যবহার করে ড্রাইভারের পরিচয় যাচাই করা যাবে। স্ক্যান করলে ড্রাইভারের ছবি ও বিস্তারিত তথ্য পাওয়া যাবে, যা যাত্রাকে আরো নিরাপদ ও নিশ্চিন্ত করবে।
-                  </div>
-              </div>
-              <div class="faq-item">
-                  <div class="faq-question">স্মার্ট বাংলাদেশ গাড়ির প্রধান সুবিধা কী?</div>
-                  <div class="faq-answer">
-                    স্মার্ট বাংলাদেশ গাড়ির মাধ্যমে যাত্রীরা খুব সহজে এবং নিরাপদে গন্তব্যে পৌঁছাতে পারবেন। আমাদের ড্রাইভারগণ অভিজ্ঞ এবং নির্ভরযোগ্য, যা যাত্রার সময় নিরাপত্তা নিশ্চিত করে।
-                  </div>
-              </div>
-              <div class="faq-item">
-                  <div class="faq-question">স্মার্ট বাংলাদেশ গাড়ির চালকরা কি প্রশিক্ষিত?</div>
-                  <div class="faq-answer">
-                    হ্যাঁ, আমাদের সব চালককে প্রশিক্ষণ প্রদান করা হয়েছে এবং তারা পরিবহন নীতিমালা সম্পর্কে সচেতন। নিরাপত্তা এবং সেবার মান বজায় রাখতে আমাদের চালকদের সবসময় পর্যবেক্ষণে রাখা হয়।
-                  </div>
-              </div>
-              <div class="faq-item">
-                  <div class="faq-question">আমি কি যাত্রার সময় কিছু হারিয়ে গেলে খুঁজে পাব?</div>
-                  <div class="faq-answer">
-                    হ্যাঁ, স্মার্ট বাংলাদেশে আপনি হারানো জিনিসপত্র খুঁজে পাওয়ার জন্য একটি বিশেষ সাপোর্ট সিস্টেম পাবেন। যাত্রার পরে, আপনি আমাদের কাস্টমার সাপোর্টে যোগাযোগ করে সাহায্য নিতে পারেন।
-                  </div>
-              </div>
-              <div class="faq-item last-faq">
-                  <div class="faq-question">স্মার্ট বাংলাদেশ গাড়ির পেমেন্ট পদ্ধতি কী কী?</div>
-                  <div class="faq-answer">
-                    আপনি ক্যাশ, মোবাইল ব্যাংকিং, অথবা কার্ড ব্যবহার করে ভাড়া পরিশোধ করতে পারেন।
-                  </div>
-              </div> --}}
-
+             
             </div>
           </div>
       </div>
@@ -406,7 +347,6 @@
 @push('script')
   <script>
       $(document).ready(function () {
-          // Fetch districts based on selected division
           $('#division').on('change', function () {
               var division_id = $(this).val();
               if (division_id) {
@@ -426,8 +366,6 @@
                   $('#district').empty();
               }
           });
-
-          // Fetch thanas based on selected district
           $('#district').on('change', function () {
               var district_id = $(this).val();
               if (district_id) {
@@ -447,8 +385,6 @@
                   $('#thana').empty();
               }
           });
-
-          // Fetch unions based on selected thana
           $('#thana').on('change', function () {
               var thana_id = $(this).val();
               if (thana_id) {
@@ -468,8 +404,6 @@
                   $('#union').empty();
               }
           });
-
-          // Fetch stands based on selected union
           $('#union').on('change', function () {
               var union_id = $(this).val();
               if (union_id) {
@@ -489,27 +423,90 @@
                   $('#stand').empty();
               }
           });
+          // $('#stand').on('change', function () {
+          //     var stand_id = $(this).val();
+          //     if (stand_id) {
+          //         $.ajax({
+          //             url: '/home/get-vehicles/' + stand_id,
+          //             type: 'GET',
+          //             dataType: 'json',
+          //             success: function (data) {
+          //                 $('#vehicle_type').empty();
+          //                 $('#vehicle_type').append('<option value="">গাড়ি</option>');
+          //                 $.each(data, function (key, value) {
+          //                     $('#vehicle_type').append('<option value="' + key + '">' + value + '</option>');
+          //                 });
+          //             }
+          //         });
+          //     } else {
+          //         $('#vehicle_type').empty();
+          //     }
+          // });
+          // $('#stand').on('change', function () {
+          //     var stand_id = $(this).val();
+          //     if (stand_id) {
+          //         $.ajax({
+          //             url: '/home/get-vehicles/' + stand_id,
+          //             type: 'GET',
+          //             dataType: 'json',
+          //             success: function (data) {
+          //                 $('#vehicle_type').empty();
+          //                 $('#vehicle_type').append('<option value="">গাড়ি</option>');
+          //                 $.each(data, function (key, value) {
+          //                     $('#vehicle_type').append('<option value="' + key + '">' + value + '</option>');
+          //                 });
+          //             }
+          //         });
+          //     } else {
+          //         $('#vehicle_type').empty();
+          //     }
+          // });
+        //   $(document).ready(function(){
+        //     $('#stand').change(function(){
+        //         var standId = $(this).val();
+        //         if(standId) {
+        //             $.ajax({
+        //                 url: '/get-vehicle-types/' + standId,
+        //                 type: "GET",
+        //                 dataType: "json",
+        //                 success: function(data) {
+        //                     $('#vehicle_type').empty();
+        //                     $('#vehicle_type').append('<option value="">গাড়ি</option>');
+        //                     $.each(data, function(key, vehicle){
+        //                         $('#vehicle_type').append('<option value="'+ vehicle.id +'">'+ vehicle.vehicle_type.name +'</option>');
+        //                     });
+        //                 }
+        //             });
+        //         } else {
+        //             $('#vehicle_type').empty();
+        //             $('#vehicle_type').append('<option value="">গাড়ি</option>');
+        //         }
+        //     });
+        // });
+        $(document).ready(function(){
+    $('#stand').change(function(){
+        var standId = $(this).val();
+        if(standId) {
+            $.ajax({
+                url: '/home/get-vehicles/' + standId,  // Controller থেকে vehicleTypes ফাংশন কল
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    $('#vehicle_type').empty();
+                    $('#vehicle_type').append('<option value="">গাড়ি</option>');
+                    $.each(data, function(key, vehicle){
+                        $('#vehicle_type').append('<option value="'+ vehicle.id +'">'+ vehicle.name +'</option>');
+                    });
+                }
+            });
+        } else {
+            $('#vehicle_type').empty();
+            $('#vehicle_type').append('<option value="">গাড়ি</option>');
+        }
+    });
+});
 
-          // Fetch vehicles based on selected stand
-          $('#stand').on('change', function () {
-              var stand_id = $(this).val();
-              if (stand_id) {
-                  $.ajax({
-                      url: '/home/get-vehicles/' + stand_id,
-                      type: 'GET',
-                      dataType: 'json',
-                      success: function (data) {
-                          $('#vehicle').empty();
-                          $('#vehicle').append('<option value="">গাড়ি</option>');
-                          $.each(data, function (key, value) {
-                              $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
-                          });
-                      }
-                  });
-              } else {
-                  $('#vehicle').empty();
-              }
-          });
+
       });
   </script>
 @endpush
