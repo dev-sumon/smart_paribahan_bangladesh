@@ -14,7 +14,8 @@
                 <p class="lead">{{ __('সময় কারও জন্য অপেক্ষা না করলেও আপনার জীবনের সময় বাঁচাতে স্মার্ট সল্যুশন নিয়ে আপনার পাশে আমরা আছি') }}</p>
               </div>
               <div class="row g-2">
-                <form action="">
+                <form action="{{ route('f.cng.index') }}" >
+                  
                   <div class="row">
                     <div class="form-group col-4">
                       <select name="division_id" id="division" class="form-control form-select select_iteam">
@@ -152,7 +153,6 @@
         <div class="container py-5 pb-5">
             <div class="row g-2">
                 <h2 class="section-title mb-5">{{ __('আমাদের সাথে যুক্ত আছেন') }}</h2>
-                <!-- Card 1 -->
                 <div class="col-12 col-md-6 col-lg-3 mb-5 d-flex justify-content-center">
                     <div class="custom-card">
                         <div class="icon-container">
@@ -162,7 +162,6 @@
                         <p class="price" data-original="78090">{{ __('0') }}</p>
                     </div>
                 </div>
-                <!-- Card 2 -->
                 <div class="col-12 col-md-6 col-lg-3 mb-5 d-flex justify-content-center">
                     <div class="custom-card">
                         <div class="icon-container">
@@ -172,7 +171,6 @@
                         <p class="price" data-original="90090">{{ __('0') }}</p>
                     </div>
                 </div>
-                <!-- Card 3 -->
                 <div class="col-12 col-md-6 col-lg-3 mb-5 d-flex justify-content-center">
                     <div class="custom-card">
                         <div class="icon-container">
@@ -182,7 +180,6 @@
                         <p class="price" data-original="78090">{{ __('0') }}</p>
                     </div>
                 </div>
-                <!-- Card 4 -->
                 <div class="col-12 col-md-6 col-lg-3 mb-5 d-flex justify-content-center">
                     <div class="custom-card">
                         <div class="icon-container">
@@ -277,7 +274,6 @@
             <h2 class="heading_section">{{ __('বাংলাদেশ স্মার্ট পরিবহন ব্লগ থেকে') }}</h2>
             <p class="sub_text">{{ __('সকল বিবৃতি, আপডেট, রিলিজ ও অন্যান্য') }}</p>
           </div>
-          <!-- Blog Post 1 -->
           <div class="col-md-12 col-lg-4 mb-4 pb-4">
             <div class="post_card pb-4">
               <img src="{{ asset('forntend/images/smart_car.png') }}" alt="Blog 1" class="post_image">
@@ -288,7 +284,6 @@
               </div>
             </div>
           </div>
-          <!-- Blog Post 2 -->
           <div class="col-md-12 col-lg-4 mb-4">
             <div class="post_card">
               <img src="{{ asset('forntend/images/Location tracking-pana 1.png') }}" alt="Blog 2" class="post_image">
@@ -299,7 +294,6 @@
               </div>
             </div>
           </div>
-          <!-- Blog Post 3 -->
           <div class="col-md-12 col-lg-4 mb-4">
             <div class="post_card">
               <img src="{{ asset('forntend/images/squti_Take Away-pana 1.png') }}" alt="Blog 3" class="post_image">
@@ -433,7 +427,7 @@
                     dataType: "json",
                     success: function(data) {
                         $('#vehicle_type').empty();
-                        $('#vehicle_type').append('<option value="">গাড়ির ধরন</option>');
+                        $('#vehicle_type').append('<option value="">গাড়ি</option>');
                         $.each(data, function(key, vehicleType) {
                             $('#vehicle_type').append('<option value="'+ vehicleType.id +'">'+ vehicleType.name +'</option>');
                         });
@@ -442,7 +436,7 @@
                 });
             } else {
                 $('#vehicle_type').empty();
-                $('#vehicle_type').append('<option value="">গাড়ির ধরন</option>');
+                $('#vehicle_type').append('<option value="">গাড়ি</option>');
                 $('#vehicle_type').prop('disabled', true);
             }
         });

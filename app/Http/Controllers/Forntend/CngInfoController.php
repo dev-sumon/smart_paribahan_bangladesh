@@ -49,10 +49,10 @@ class CngInfoController extends Controller
         $data['divisions'] = Division::latest()->get();
         return view('forntend.cng_info.index', $data);
     }
-    public function cng_stand(): View
-    {
-        return view('forntend.cng_info.stand');
-    }
+    // public function cng_stand(): View
+    // {
+    //     return view('forntend.cng_info.stand');
+    // }
     public function map(): View
     {
         return view('forntend.cng_info.map');
@@ -72,5 +72,35 @@ class CngInfoController extends Controller
     public function notice(): View
     {
         return view('forntend.cng_info.notice');
+    }
+    
+    // public function cng_stand(Request $request)
+    // {
+    //     $query = Stand::query();
+
+    //     if ($request->filled('division_id')) {
+    //         $query->where('division_id', $request->division_id);
+    //     }
+    //     if ($request->filled('district_id')) {
+    //         $query->where('district_id', $request->district_id);
+    //     }
+    //     if ($request->filled('thana_id')) {
+    //         $query->where('thana_id', $request->thana_id);
+    //     }
+    //     if ($request->filled('union_id')) {
+    //         $query->where('union_id', $request->union_id);
+    //     }
+    //     if ($request->filled('stand_id')) {
+    //         $query->where('id', $request->stand_id);
+    //     }
+
+    //     $data['stands'] = $query->get();
+
+    //     return view('forntend.cng_info.stand', $data);
+    // }
+    public function cng_stand($id)
+    {
+        $data['stands'] = Stand::findOrFail($id);
+        return view('forntend.cng_info.stand', $data);
     }
 }

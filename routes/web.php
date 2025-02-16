@@ -63,6 +63,9 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
         Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
+        // Route::post('/search-stands', 'searchStands')->name('searchStands');
+        Route::post('/search-stands',  'searchStands')->name('searchStands');
+        Route::get('/cng-stand/{id}', 'showStand')->name('cng_stand');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
@@ -88,6 +91,7 @@ Route::group(['as' => 'f.'], function () {
     Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
+        Route::get('/cng-stand/{id}', 'show')->name('cng_stand_details');
         Route::get('/map', 'map')->name('map');
         Route::get('/community', 'community')->name('community');
         Route::get('/owner', 'owner')->name('owner');

@@ -133,12 +133,18 @@
                     <div class="row text-end">
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                         
-                        <div class="card">
-                            <a href="{{ route('f.cng.cng_stand') }}">
+                        {{-- <div class="card">
+                            <a href="{{ route('cng_stand', $stand->id) }}">
                                 <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                 <p class="pt-3">স্ট্যান্ডের পরিচিতি </p>
                             </a>
-                        </div>
+                        </div> --}}
+                            <div class="card">
+                                <a href="{{ route('f.home.cng_stand', $stands->id) }}">
+                                    <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
+                                    <p class="pt-3">স্ট্যান্ডের পরিচিতি </p>
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
