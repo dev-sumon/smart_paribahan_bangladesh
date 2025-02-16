@@ -62,7 +62,7 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
-        Route::get('/get-vehicles/{stand_id}', 'vehicle_types')->name('get.vehicles');
+        Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){

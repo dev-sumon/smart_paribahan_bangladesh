@@ -16,50 +16,55 @@
                 </p>
               </div>
               <div class="row g-2">
-                <div class="col-4 col-md-6 col-xl-4">
-                  <select name="division_id" id="division" class="form-control form-select select_iteam">
-                    <option value="" selected hidden>বিভাগ</option>
-                    @foreach ($divisions as $division)
-                        <option value="{{ $division->id }}">{{ $division->division }}</option>
-                    @endforeach
-                  </select>
-                    @if($errors->has('division_id'))
-                      <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                    @endif
-                </div>
-               <div class="col-4 col-md-6 col-xl-4">
-                    <select name="district_id" id="district" class="form-select select_iteam">
-                      <option value="">জেলা</option>
-                    </select>
-                </div>
-
-                <div class="col-4 col-md-6 col-xl-4">
-                    <select name="thana_id" id="thana" class="form-select select_iteam">
-                      <option value="">থানা</option>
-                    </select>
-                </div>
-                <div class="col-4 col-md-6 col-xl-4">
-                  <select name="union_id" id="union" class="form-select select_iteam">
-                    <option value="">ইউনিয়ন</option>
-                  </select>
-
-                </div>
-                <div class="col-4 col-md-6 col-xl-4">
-                    <select name="stand_id" id="stand" class="form-select select_iteam">
-                      <option value="">স্ট্যান্ড</option>
-                    </select>
-                </div>
-                <div class="col-4 col-md-6 col-xl-4">
-                    <select name="vehicle_id" id="vehicle_type" class="form-select select_iteam">
-                      <option value="">গাড়ি</option>
-                    </select>
-                </div>
-
-                  <form action="{{ route('f.cng.index') }}">
-                    <div class="col-12 submit">
+                <form action="">
+                  <div class="row">
+                    <div class="form-group col-4">
+                      <select name="division_id" id="division" class="form-control form-select select_iteam">
+                        <option value="" selected hidden>বিভাগ</option>
+                        @foreach ($divisions as $division)
+                            <option value="{{ $division->id }}">{{ $division->division }}</option>
+                        @endforeach
+                      </select>
+                      @if($errors->has('division_id'))
+                        <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                      @endif
+                    </div>
+                    
+                    <div class="form-group col-4">
+                      <select name="district_id" id="district" class="form-select select_iteam">
+                        <option value="">জেলা</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-group col-4">
+                      <select name="thana_id" id="thana" class="form-select select_iteam">
+                        <option value="">থানা</option>
+                      </select>
+                    </div>
+                
+                    <div class="form-group col-4">
+                      <select name="union_id" id="union" class="form-select select_iteam">
+                        <option value="">ইউনিয়ন</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-group col-4">
+                      <select name="stand_id" id="stand" class="form-select select_iteam">
+                        <option value="">স্ট্যান্ড</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-group col-4">
+                      <select name="vehicle_type_id" id="vehicle_type" class="form-select select_iteam">
+                        <option value="">গাড়ি</option>
+                      </select>
+                    </div>
+                    
+                    <div class="submit col-12">
                       <button class="btn btn-custom mt-3 w-100">এখানে সার্চ করুন</button>
                     </div>
-                  </form>
+                  </div>
+                </form>
               </div>
             </div>
             <div class="col-12 col-md-7 mb-5 text-center">
@@ -423,89 +428,28 @@
                   $('#stand').empty();
               }
           });
-          // $('#stand').on('change', function () {
-          //     var stand_id = $(this).val();
-          //     if (stand_id) {
-          //         $.ajax({
-          //             url: '/home/get-vehicles/' + stand_id,
-          //             type: 'GET',
-          //             dataType: 'json',
-          //             success: function (data) {
-          //                 $('#vehicle_type').empty();
-          //                 $('#vehicle_type').append('<option value="">গাড়ি</option>');
-          //                 $.each(data, function (key, value) {
-          //                     $('#vehicle_type').append('<option value="' + key + '">' + value + '</option>');
-          //                 });
-          //             }
-          //         });
-          //     } else {
-          //         $('#vehicle_type').empty();
-          //     }
-          // });
-          // $('#stand').on('change', function () {
-          //     var stand_id = $(this).val();
-          //     if (stand_id) {
-          //         $.ajax({
-          //             url: '/home/get-vehicles/' + stand_id,
-          //             type: 'GET',
-          //             dataType: 'json',
-          //             success: function (data) {
-          //                 $('#vehicle_type').empty();
-          //                 $('#vehicle_type').append('<option value="">গাড়ি</option>');
-          //                 $.each(data, function (key, value) {
-          //                     $('#vehicle_type').append('<option value="' + key + '">' + value + '</option>');
-          //                 });
-          //             }
-          //         });
-          //     } else {
-          //         $('#vehicle_type').empty();
-          //     }
-          // });
-        //   $(document).ready(function(){
-        //     $('#stand').change(function(){
-        //         var standId = $(this).val();
-        //         if(standId) {
-        //             $.ajax({
-        //                 url: '/get-vehicle-types/' + standId,
-        //                 type: "GET",
-        //                 dataType: "json",
-        //                 success: function(data) {
-        //                     $('#vehicle_type').empty();
-        //                     $('#vehicle_type').append('<option value="">গাড়ি</option>');
-        //                     $.each(data, function(key, vehicle){
-        //                         $('#vehicle_type').append('<option value="'+ vehicle.id +'">'+ vehicle.vehicle_type.name +'</option>');
-        //                     });
-        //                 }
-        //             });
-        //         } else {
-        //             $('#vehicle_type').empty();
-        //             $('#vehicle_type').append('<option value="">গাড়ি</option>');
-        //         }
-        //     });
-        // });
-        $(document).ready(function(){
-    $('#stand').change(function(){
-        var standId = $(this).val();
-        if(standId) {
-            $.ajax({
-                url: '/home/get-vehicles/' + standId,  // Controller থেকে vehicleTypes ফাংশন কল
-                type: "GET",
-                dataType: "json",
-                success: function(data) {
-                    $('#vehicle_type').empty();
-                    $('#vehicle_type').append('<option value="">গাড়ি</option>');
-                    $.each(data, function(key, vehicle){
-                        $('#vehicle_type').append('<option value="'+ vehicle.id +'">'+ vehicle.name +'</option>');
-                    });
-                }
-            });
-        } else {
-            $('#vehicle_type').empty();
-            $('#vehicle_type').append('<option value="">গাড়ি</option>');
-        }
-    });
-});
-
+          $('#stand').change(function() {
+            var standId = $(this).val();
+            if(standId) {
+                $.ajax({
+                    url: '/home/get-vehicles/' + standId,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('#vehicle_type').empty();
+                        $('#vehicle_type').append('<option value="">গাড়ির ধরন</option>');
+                        $.each(data, function(key, vehicleType) {
+                            $('#vehicle_type').append('<option value="'+ vehicleType.id +'">'+ vehicleType.name +'</option>');
+                        });
+                        $('#vehicle_type').prop('disabled', false);
+                    }
+                });
+            } else {
+                $('#vehicle_type').empty();
+                $('#vehicle_type').append('<option value="">গাড়ির ধরন</option>');
+                $('#vehicle_type').prop('disabled', true);
+            }
+        });
 
       });
   </script>
