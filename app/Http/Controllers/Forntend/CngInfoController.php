@@ -73,7 +73,7 @@ class CngInfoController extends Controller
     {
         return view('forntend.cng_info.notice');
     }
-    
+
     // public function cng_stand(Request $request)
     // {
     //     $query = Stand::query();
@@ -95,6 +95,36 @@ class CngInfoController extends Controller
     //     }
 
     //     $data['stands'] = $query->get();
+
+    //     return view('forntend.cng_info.stand', $data);
+    // }
+    // public function searchStands(Request $request)
+    // {
+    //     $division_id = $request->division_id;
+    //     $district_id = $request->district_id;
+    //     $thana_id = $request->thana_id;
+    //     $union_id = $request->union_id;
+    //     $stand_id = $request->stand_id;
+    //     $vehicle_type_id = $request->vehicle_type_id;
+
+    //     $stands = Stand::where('division_id', $division_id)
+    //                    ->where('district_id', $district_id)
+    //                    ->where('thana_id', $thana_id)
+    //                    ->where('union_id', $union_id)
+    //                    ->where('stand_id', $stand_id)
+    //                    ->where('vehicle_type_id', $vehicle_type_id)
+    //                    ->get();
+    //                    $data['stands_with_vehicles'] = $stands->map(function ($stand) use ($vehicle_type_id) {
+    //                     $vehicles = $stand->vehicles()->where('vehicle_type_id', $vehicle_type_id)->get();
+    //                     $stand->vehicles = $vehicles;
+    //                     return $stand;
+    //                 });
+
+    //     return view('forntend.cng_info.index', $data);
+    // }
+    // public function showStand($id)
+    // {
+    //     $data['stand'] = Stand::findOrFail($id);
 
     //     return view('forntend.cng_info.stand', $data);
     // }

@@ -64,8 +64,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
         Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
         // Route::post('/search-stands', 'searchStands')->name('searchStands');
-        Route::post('/search-stands',  'searchStands')->name('searchStands');
-        Route::get('/cng-stand/{id}', 'showStand')->name('cng_stand');
+        Route::post('/search',  'search')->name('search');
+        Route::get('/stand/{id}', 'showStand')->name('stand');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
@@ -97,6 +97,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/owner', 'owner')->name('owner');
         Route::get('/driver', 'driver')->name('driver');
         Route::get('/notice', 'notice')->name('notice');
+        // Route::post('/search-stands',  'searchStands')->name('searchStands');
+        // Route::get('/cng-stand/{id}', 'showStand')->name('showStand');
 
 
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');

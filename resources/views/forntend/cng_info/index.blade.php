@@ -50,7 +50,7 @@
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
-                                    
+
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                     <div class="advisement text-center">
@@ -132,19 +132,28 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="row text-end">
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                        
+
                         {{-- <div class="card">
                             <a href="{{ route('cng_stand', $stand->id) }}">
                                 <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                 <p class="pt-3">স্ট্যান্ডের পরিচিতি </p>
                             </a>
                         </div> --}}
-                            <div class="card">
-                                <a href="{{ route('f.home.cng_stand', $stands->id) }}">
+                            {{-- <div class="card">
+                                <a href="{{ route('f.home.cng_stand', $stand->id) }}">
+                                    <a href="{{ route('f.cng.showStand', $stand->id) }}">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                     <p class="pt-3">স্ট্যান্ডের পরিচিতি </p>
                                 </a>
-                            </div>
+                            </div> --}}
+                            @foreach ($stands as $stand)
+                                <div class="card">
+                                    <a href="{{ route('f.home.cng_stand', $stand->id) }}">
+                                        <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
+                                        <p class="pt-3">স্ট্যান্ডের পরিচিতি</p>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">

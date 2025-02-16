@@ -61,33 +61,53 @@ class HomePageController extends Controller
 
 
 
-    public function searchStands(Request $request)
+    public function search(Request $request)
     {
-        $division_id = $request->division_id;
-        $district_id = $request->district_id;
-        $thana_id = $request->thana_id;
-        $union_id = $request->union_id;
-        $stand_id = $request->stand_id;
-        $vehicle_type_id = $request->vehicle_type_id;
+        $data = [];
 
-        $stands = Stand::where('division_id', $division_id)
-                       ->where('district_id', $district_id)
-                       ->where('thana_id', $thana_id)
-                       ->where('union_id', $union_id)
-                       ->where('stand_id', $stand_id)
-                       ->where('vehicle_type_id', $vehicle_type_id)
-                       ->get();
-                       $data['stands_with_vehicles'] = $stands->map(function ($stand) use ($vehicle_type_id) {
-                        $vehicles = $stand->vehicles()->where('vehicle_type_id', $vehicle_type_id)->get();
-                        $stand->vehicles = $vehicles; 
-                        return $stand;
-                    });
+    if($request->vehicle_type_id){
+        $data['vahicle_type'] = VehicleType::with(['stand.division','stand.district','stand.thana','stand.union','vahicles'])->findOrFail($request->vahicle_type_id);
+        return view('vahicles',$data);
+    }elseif($request->stand_id){
+        $data['stands']= Stand::with(['division','district','thana','union' ,'vahiclesTypes.vahicles'])->findOrFail($request->stand_id);
+        return view('stands',$data);
+    }elseif($request->union_id){
+        $data['unions']= Union::with(['division','district','thana','stands.vahiclesTypes.vahicles'])->findOrFail($request->union_id);
+        return view('unions',$data);
+    }elseif($request->thana_id){
+        $data['thanas']= Thana::with(['division','district','unions','stands.vahiclesTypes.vahicles'])->latest()->findOrFail($request->thana_id);
+        return view('thanas',$data);
+    }elseif($request->district_id){
+        $data['districts']= District::with(['division','thanas','unions','stands.vahiclesTypes.vahicles'])->latest()->findOrFail($request->district_id);
+        return view('districts',$data);
+    }if($request->division_id){
+        $data['divisions']= Division::with(['districts','thanas','unions','stands.vahiclesTypes.vahicles'])->findOrFail($request->division_id);
+        return view('divisions',$data);
+    }
+        // $data = [];
+        // if($request->division_id){
+
+        // }
+        // $data['stands'] = Stand::query()
+        // ->when($request->division_id, function ($query) use ($request) {
+        //     return $query->where('division_id', $request->division_id);
+        // })
+        // ->when($request->district_id, function ($query) use ($request) {
+        //     return $query->where('district_id', $request->district_id);
+        // })
+        // ->when($request->thana_id, function ($query) use ($request) {
+        //     return $query->where('thana_id', $request->thana_id);
+        // })
+        // ->when($request->union_id, function ($query) use ($request) {
+        //     return $query->where('union_id', $request->union_id);
+        // })
+        // ->get();
 
         return view('forntend.cng_info.index', $data);
     }
     public function showStand($id)
     {
-        $data['stand'] = Stand::findOrFail($id);
+        $data['stand'] = Stand::with('vehicles')->findOrFail($id);
 
         return view('forntend.cng_info.stand', $data);
     }
