@@ -24,8 +24,6 @@
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Title') }}</th>
                                             <th>{{ __('Date') }}</th>
-                                            <th>{{ __('Category') }}</th>
-                                            <th>{{ __('File') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -38,8 +36,6 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $notice->title }}</td>
                                             <td>{{ $notice->date }}</td>
-                                            <td>{{ $notice->category }}</td>
-                                            <td><a href="{{ asset('storage/' . $notice->file) }}" download>Download PDF</a></td>
                                             <td><span class="{{$notice->statusBg()}}">{{ $notice->statusTitle() }}</span></td>
                                             <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
@@ -68,7 +64,7 @@
 
 
 @push('script')
-<script>
-    
-</script>
+    <script>
+        
+    </script>
 @endpush
