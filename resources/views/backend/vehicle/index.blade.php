@@ -22,6 +22,7 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
+                                            <th>{{ __('Vehicle Type') }}</th>
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __('Status') }}</th>
@@ -34,6 +35,7 @@
                                         @foreach ($vehicles as $key=>$vehicle)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $vehicle->vehicleType->name }}</td>
                                                 <td>{{ $vehicle->name }}</td>
                                                 <td><img src="{{ asset('storage/'. $vehicle->image) }}" alt="{{ $vehicle->name }}" width="100"></td>
                                                 <td><span class="{{$vehicle->statusBg()}}">{{$vehicle->statusTitle()}}</span></td>
