@@ -28,13 +28,16 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="stand">Select Vehicle Type</label>
+                                        <label for="stand">{{ __('Select Vehicle Type') }} <span class="text-danger">*</span></label>
                                         <select name="vehicle_type_id" id="stand" class="form-control">
-                                            <option value="" selected hidden>Select Vehicle Type</option>
+                                            <option value="" selected hidden>{{ __('Select Vehicle Type') }}</option>
                                             @foreach($vehicle_types as $vehicle_type)
                                                 <option value="{{ $vehicle_type->id }}">{{ $vehicle_type->name }}</option>
                                             @endforeach
                                         </select>
+                                        @if($errors->has('vehicle_type_id'))
+                                            <div class="text-danger">{{ $errors->first('vehicle_type_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="vehicle_licence">{{ __('Vehicle licence') }} <span class="text-danger">*</span></label>
@@ -44,27 +47,18 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="stand">Select Stand</label>
-                                        <select name="stand_id" id="stand" class="form-control">
-                                            <option value="" selected hidden>Select Stand</option>
-                                            @foreach($stands as $stand)
-                                                <option value="{{ $stand->id }}">{{ $stand->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="owner_id">Select Owner</label>
+                                        <label for="owner_id">{{ __('Select Owner') }}</label>
                                         <select name="owner_id" id="owner" class="form-control">
-                                            <option value="" selected hidden>Select Owner</option>
+                                            <option value="" selected hidden>{{ __('Select Owner') }}</option>
                                             @foreach($owners as $owner)
                                                 <option value="{{ $owner->id }}">{{ $owner->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="driver_id">Select Driver</label>
+                                        <label for="driver_id">{{ __('Select Driver') }}</label>
                                         <select name="driver_id" id="driver" class="form-control">
-                                            <option value="" selected hidden>Select Driver</option>
+                                            <option value="" selected hidden>{{ __('Select Driver') }}</option>
                                             @foreach($drivers as $driver)
                                                 <option value="{{ $driver->id }}">{{ $driver->name }}</option>
                                             @endforeach
@@ -74,7 +68,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>

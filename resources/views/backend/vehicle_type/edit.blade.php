@@ -1,4 +1,4 @@
-@extends('backend.layouts.master', ['page_slug' => 'vehicle'])
+@extends('backend.layouts.master', ['page_slug' => 'vehicle_type'])
 
 
 @section('title', 'Admin - management')
@@ -12,7 +12,7 @@
                             <h4>{{ __('Create new Vehicle') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('vehicle_type.index') }}" class="btn btn-info">{{ __('back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -42,7 +42,7 @@
                                         @else
                                             <p>{{ __('No image available') }}</p>
                                         @endif
-                                        <input type="file" class="form-control" id="image" placeholder="Enter vehicle image" name="image">
+                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter vehicle image" name="image">
                                         @if($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif

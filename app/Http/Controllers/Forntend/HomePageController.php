@@ -17,7 +17,7 @@ class HomePageController extends Controller
 {
     public function index(){
 
-        $data['divisions'] = Division::with('districts.thanas.unions.stands.vehicles')->latest()->get();
+        $data['divisions'] = Division::with('districts.thanas.unions.stands.vehicleTypes')->latest()->get();
         $data['faqs'] = Faq::latest()->get();
 
         return view('forntend.home.index', $data);
@@ -45,10 +45,24 @@ class HomePageController extends Controller
         $stands = Stand::where('union_id', $union_id)->pluck('name', 'id');
         return response()->json($stands);
     }
+    // public function vehicleTypes($stand_id)
+    // {
+    //     $vehicle_types = VehicleType::where('stand_id', $stand_id)->pluck('name', 'id');
+    //     // $vehicle_type_ids = Vehicle::where('stand_id', $stand_id)->pluck('vehicle_type_id')->unique();
+    //     // $vehicle_types = VehicleType::whereIn('id', $vehicle_type_ids)->get(['id', 'name']);
+    //     return response()->json($vehicle_types);
+    // }
+    // public function stand($union_id)
+    // {
+    //     $stands = Stand::where('union_id', $union_id)->with('vehicleTypes')->pluck('name', 'id');
+        
+    //     return response()->json($stands);
+    // }
+
     public function vehicleTypes($stand_id)
     {
-        $vehicle_type_ids = Vehicle::where('stand_id', $stand_id)->pluck('vehicle_type_id')->unique();
-        $vehicle_types = VehicleType::whereIn('id', $vehicle_type_ids)->get(['id', 'name']);
+        $vehicle_types = VehicleType::where('stand_id', $stand_id)->get(['id', 'name']);
+        
         return response()->json($vehicle_types);
     }
 
@@ -70,7 +84,7 @@ class HomePageController extends Controller
         return view('vahicles',$data);
     }elseif($request->stand_id){
         $data['stands']= Stand::with(['division','district','thana','union' ,'vahiclesTypes.vahicles'])->findOrFail($request->stand_id);
-        return view('forntend.cng_info.index',$data);
+        return view('division',$data);
     }elseif($request->union_id){
         $data['unions']= Union::with(['division','district','thana','stands.vahiclesTypes.vahicles'])->findOrFail($request->union_id);
         return view('unions',$data);

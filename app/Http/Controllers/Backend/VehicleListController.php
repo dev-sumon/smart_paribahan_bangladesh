@@ -19,6 +19,7 @@ class VehicleListController extends Controller
     public function index(): View
     {
         $data['vehicles'] = Vehicle::latest()->get();
+        $data['vehicle_type'] = VehicleType::latest()->get();
         return view('backend.vehicle.index', $data);
     }
     public function create(): view
@@ -35,7 +36,6 @@ class VehicleListController extends Controller
         $save = new Vehicle();
         $save->name = $request->name;
         $save->vehicle_licence = $request->vehicle_licence;
-        $save->stand_id = $request->stand_id;
         $save->vehicle_type_id = $request->vehicle_type_id;
         $save->owner_id = $request->owner_id;
         $save->driver_id = $request->driver_id;
@@ -46,11 +46,21 @@ class VehicleListController extends Controller
         $save->save();
         return redirect()->route('vehicle.index');
     }
+    // public function update($id): View
+    // {
+    //     $data['vehicle'] = Vehicle::findOrFail($id);
+    //     $data['vehicle_types'] = VehicleType::latest()->get();
+    //     return view('backend.vehicle.edit', $data);
+    // }
     public function update($id): View
     {
         $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['vehicle_types'] = VehicleType::latest()->get();
+        $data['drivers'] = Driver::latest()->get();
+        $data['owners'] = Owner::latest()->get();
         return view('backend.vehicle.edit', $data);
     }
+
     public function update_store(VehicleRequest $request, $id)
     {
         $update = Vehicle::findOrFail($id);
@@ -90,6 +100,9 @@ class VehicleListController extends Controller
     public function detalis($id): view
     {
         $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['vehicle_types'] = VehicleType::latest()->get();
+        $data['drivers'] = Driver::latest()->get();
+        $data['owners'] = Owner::latest()->get();
         return view('backend.vehicle.show', $data);
     }
 

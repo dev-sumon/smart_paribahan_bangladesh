@@ -50,9 +50,13 @@ class Stand extends Model
     {
         return $this->hasMany(Vehicle::class);
     }
+    // public function vehicleTypes()
+    // {
+    //     return $this->hasMany(VehicleType::class);
+    // }
     public function vehicleTypes()
     {
-        return $this->hasMany(VehicleType::class);
+        return $this->hasMany(VehicleType::class, 'stand_id');
     }
 
 }
