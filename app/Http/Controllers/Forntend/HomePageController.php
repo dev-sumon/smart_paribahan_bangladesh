@@ -70,7 +70,7 @@ class HomePageController extends Controller
         return view('vahicles',$data);
     }elseif($request->stand_id){
         $data['stands']= Stand::with(['division','district','thana','union' ,'vahiclesTypes.vahicles'])->findOrFail($request->stand_id);
-        return view('stands',$data);
+        return view('forntend.cng_info.index',$data);
     }elseif($request->union_id){
         $data['unions']= Union::with(['division','district','thana','stands.vahiclesTypes.vahicles'])->findOrFail($request->union_id);
         return view('unions',$data);
@@ -103,7 +103,7 @@ class HomePageController extends Controller
         // })
         // ->get();
 
-        return view('forntend.cng_info.index', $data);
+        // return view('forntend.cng_info.index', $data);
     }
     public function showStand($id)
     {
