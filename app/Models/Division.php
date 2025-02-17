@@ -33,4 +33,24 @@ class Division extends Model
     {
         return $this->hasMany(District::class);
     }
+    public function thanas()
+    {
+        return $this->hasMany(Thana::class);
+    }
+
+    public function unions()
+    {
+        return $this->hasMany(Union::class);
+    }
+
+    public function stands()
+    {
+        return $this->hasMany(Stand::class);
+    }
+    public function owners()
+{
+    return $this->hasMany(Owner::class, 'division_id');
+}
+
+
 }

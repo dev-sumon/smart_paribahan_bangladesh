@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Stand;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -15,18 +16,20 @@ class VehicleTypeController extends Controller
 {
     public function index(): View
     {
-        $data['vehicle_types'] = VehicleType::all();
+        $data['vehicle_types'] = VehicleType::with('stand')->get();
         return view('backend.vehicle_type.index', $data);
     }
     public function create(): View
     {
-        return view('backend.vehicle_type.create');
+        $data['stands'] = Stand::latest()->get();
+        return view('backend.vehicle_type.create', $data);
     }
     public function store(VehicleTypeRequest $request): RedirectResponse
     {
         $save = new VehicleType();
 
         $save->name = $request->name;
+        $save->stand_id = $request->stand_id;
         $save->status = $request->status ?? 0;
 
 

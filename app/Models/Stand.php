@@ -36,27 +36,23 @@ class Stand extends Model
     public function division(){
         return $this->belongsTo(Division::class, 'division_id', 'id');
     }
-
     public function district(){
         return $this->belongsTo(District::class, 'district_id', 'id');
     }
     public function thana(){
         return $this->belongsTo(Thana::class, 'thana_id', 'id');
     }
-    // public function union(){
-    //     return $this->belongsTo(Union::class, 'union_id', 'id');
-    // }
-
-
-
     public function union()
     {
         return $this->belongsTo(Union::class);
     }
-
-    // Relationship: A stand has many vehicles
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class);
     }
+    public function vehicleTypes()
+    {
+        return $this->hasMany(VehicleType::class);
+    }
+
 }

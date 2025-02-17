@@ -33,4 +33,13 @@ class VehicleType extends Model
             return 'btn-success';
         }
     }
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class);
+    }
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'vehicle_type_id');
+    }
+
 }

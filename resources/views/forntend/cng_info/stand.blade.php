@@ -185,7 +185,6 @@
                         <!-- Content Description start-->
                        
                         <div class="content_text ">
-                            
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
@@ -194,7 +193,7 @@
                                 </div>
                                 <div class="col-md-8 col-12">
                                     <div class="normal_content text-start">
-                                        <p>নিজবাহাদুরপুর সি এন জি স্ট্যান্ড</p>
+                                        <p>{{ $stand->name }}</p>
                                     </div>
                                 </div>
                             </div>

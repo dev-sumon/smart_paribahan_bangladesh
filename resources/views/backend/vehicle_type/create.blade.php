@@ -35,6 +35,15 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
+                                        <label for="stand">{{ __('Select Stand') }}</label>
+                                        <select name="stand_id" id="stand" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Stand') }}</option>
+                                            @foreach($stands as $stand)
+                                                <option value="{{ $stand->id }}">{{ $stand->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>

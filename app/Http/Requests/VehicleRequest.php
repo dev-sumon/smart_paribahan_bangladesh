@@ -31,15 +31,19 @@ class VehicleRequest extends FormRequest
     protected function store(): array
     {
         return[
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'stand_id' => 'required|exists:stands,id'
+            'stand_id' => 'required|exists:stands,id',
+            'vehicle_type_id' => 'nullable|exists:vehicle_types,id',
+            'owner_id' => 'nullable|exists:owners,id',
+            'driver_id' => 'nullable|exists:drivers,id',
         ];
     }
     protected function update(): array
     {
         return[
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'stand_id' => 'required|exists:stands,id'
+            'stand_id' => 'required|exists:stands,id',
+            'vehicle_type_id' => 'nullable|exists:vehicle_types,id',
+            'owner_id' => 'nullable|exists:owners,id',
+            'driver_id' => 'nullable|exists:drivers,id',
         ];
     }
 }

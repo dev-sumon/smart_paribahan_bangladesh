@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Owner;
 use App\Models\Stand;
+use App\Models\Driver;
 use App\Models\Vehicle;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -20,22 +23,25 @@ class VehicleListController extends Controller
     }
     public function create(): view
     {
+        $data['vehicle_types'] = VehicleType::latest()->get();
+        $data['owners'] = Owner::latest()->get();
+        $data['drivers'] = Driver::latest()->get();
         $data['stands'] = Stand::latest()->get();
         return view('backend.vehicle.create', $data);
     }
     public function store(VehicleRequest $request): RedirectResponse
     {
+        
         $save = new Vehicle();
         $save->name = $request->name;
+        $save->vehicle_licence = $request->vehicle_licence;
         $save->stand_id = $request->stand_id;
-        $save->status = $request->has('status') ? $request->status : 0;
+        $save->vehicle_type_id = $request->vehicle_type_id;
+        $save->owner_id = $request->owner_id;
+        $save->driver_id = $request->driver_id;
+        $save->status = $request->status ?? 0;
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
-            $path = $image->storeAs("vehicle/", $filename, 'public');
-            $save->image = $path;
-        }
+        
 
         $save->save();
         return redirect()->route('vehicle.index');
