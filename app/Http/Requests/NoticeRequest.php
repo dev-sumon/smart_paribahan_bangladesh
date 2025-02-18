@@ -35,13 +35,21 @@ class NoticeRequest extends FormRequest
     protected function store(): array
     {
         return [
-            
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
+            'thana_id' => 'required|exists:thanas,id',
+            'union_id' => 'required|exists:unions,id',
+            'stand_id' => 'required|exists:stands,id',
         ];
     }
     protected function update(): array
     {
         return [
-
+            'division_id' => 'nullable|exists:divisions,id',
+            'district_id' => 'nullable|exists:districts,id',
+            'thana_id' => 'nullable|exists:thanas,id',
+            'union_id' => 'nullable|exists:unions,id',
+            'stand_id' => 'nullable|exists:stands,id',
         ];
     }
 }

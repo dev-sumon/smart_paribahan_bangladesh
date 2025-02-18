@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Notice;
+use App\Models\Division;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticeRequest;
-use App\Models\Notice;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
@@ -19,12 +20,18 @@ class NoticeController extends Controller
     }
     public function create(): View
     {
-        return view('backend.notice.create');
+        $data['divisions'] = Division::latest()->get();
+        return view('backend.notice.create', $data);
     }
     public function store(NoticeRequest $request): RedirectResponse
     {
         $save = new Notice();
 
+        $save->division_id = $request->division_id;
+        $save->district_id = $request->district_id;
+        $save->thana_id = $request->thana_id;
+        $save->union_id = $request->union_id;
+        $save->stand_id = $request->stand_id;
         $save->title = $request->title;
         $save->date = $request->date;
         $save->category = $request->category;
