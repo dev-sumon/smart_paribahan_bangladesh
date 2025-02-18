@@ -14,8 +14,9 @@
                 <p class="lead">{{ __('সময় কারও জন্য অপেক্ষা না করলেও আপনার জীবনের সময় বাঁচাতে স্মার্ট সল্যুশন নিয়ে আপনার পাশে আমরা আছি') }}</p>
               </div>
               <div class="row g-2">
-                <form action="{{ route('f.cng.index') }}" >
-                  
+                <form action="{{ route('f.home.search') }}" method="post" >
+                  @csrf
+
                   <div class="row">
                     <div class="form-group col-4">
                       <select name="division_id" id="division" class="form-control form-select select_iteam">
@@ -28,37 +29,37 @@
                         <div class="text-danger">{{ $errors->first('division_id') }}</div>
                       @endif
                     </div>
-                    
+
                     <div class="form-group col-4">
                       <select name="district_id" id="district" class="form-select select_iteam">
                         <option value="">{{ __('জেলা') }}</option>
                       </select>
                     </div>
-                    
+
                     <div class="form-group col-4">
                       <select name="thana_id" id="thana" class="form-select select_iteam">
                         <option value="">{{ __('থানা') }}</option>
                       </select>
                     </div>
-                
+
                     <div class="form-group col-4">
                       <select name="union_id" id="union" class="form-select select_iteam">
                         <option value="">{{ __('ইউনিয়ন') }}</option>
                       </select>
                     </div>
-                    
+
                     <div class="form-group col-4">
                       <select name="stand_id" id="stand" class="form-select select_iteam">
                         <option value="">{{ __('স্ট্যান্ড') }}</option>
                       </select>
                     </div>
-                    
+
                     <div class="form-group col-4">
                       <select name="vehicle_type_id" id="vehicle_type" class="form-select select_iteam">
                         <option value="">{{ __('গাড়ি') }}</option>
                       </select>
                     </div>
-                    
+
                     <div class="submit col-12">
                       <button class="btn btn-custom mt-3 w-100">{{ __('এখানে সার্চ করুন') }}</button>
                     </div>
@@ -330,7 +331,7 @@
                   </div>
                 </div>
               @endforeach
-             
+
             </div>
           </div>
       </div>
