@@ -44,6 +44,15 @@ class District extends Model
     {
         return $this->hasMany(Thana::class);
     }
+    public function unions()
+    {
+        return $this->hasMany(Union::class);
+    }
+    public function stands()
+    {
+        return $this->hasMany(Stand::class);
+    }
+    
     public function drivers()
     {
         return $this->hasMany(Driver::class, 'district_id');
