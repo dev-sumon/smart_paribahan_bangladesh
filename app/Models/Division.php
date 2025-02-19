@@ -48,9 +48,13 @@ class Division extends Model
         return $this->hasMany(Stand::class);
     }
     public function owners()
-{
-    return $this->hasMany(Owner::class, 'division_id');
-}
+    {
+        return $this->hasMany(Owner::class, 'division_id');
+    }
+    // public function vehicleTypes()
+    // {
+    //     return $this->hasMany(VehicleType::class, 'division_id');
+    // }
 
 
 }

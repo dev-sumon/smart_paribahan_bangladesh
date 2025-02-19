@@ -63,7 +63,6 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
         Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
-        // Route::post('/search-stands', 'searchStands')->name('searchStands');
         Route::post('/search',  'search')->name('search');
         Route::get('/stand/{id}', 'showStand')->name('stand');
     });
