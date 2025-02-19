@@ -27,4 +27,26 @@ class Notice extends Model
             return 'btn-success';
         }
     }
+
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class,'district_id');
+    }
+    public function thana()
+    {
+        return $this->belongsTo(Thana::class,'thana_id');
+    }
+    public function union()
+    {
+        return $this->belongsTo(Union::class,'union_id');
+    }
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class,'stand_id');
+    }
 }
