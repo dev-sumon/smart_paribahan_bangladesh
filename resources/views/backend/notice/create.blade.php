@@ -21,9 +21,9 @@
                                 <form action="{{ route('notice.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="division">Division<span class="text-danger">*</span></label>
+                                        <label for="division">{{ __('Division') }}<span class="text-danger">*</span></label>
                                         <select name="division_id" id="division" class="form-control">
-                                            <option value="" selected hidden>Select Division</option>
+                                            <option value="" selected hidden>{{ __('Select Division') }}</option>
                                             @foreach ($divisions as $division)
                                                 <option value="{{ $division->id }}">{{ $division->division }}</option>
                                             @endforeach
@@ -34,9 +34,9 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="district">District<span class="text-danger">*</span></label>
+                                        <label for="district">{{ __('District') }}<span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
-                                            <option value="" selected hidden>Select District</option>
+                                            <option value="" selected hidden>{{ __('Select District') }}</option>
                                         </select>
                                         @if($errors->has('district_id'))
                                             <div class="text-danger">{{ $errors->first('district_id') }}</div>
@@ -44,27 +44,27 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="thana">Thana<span class="text-danger">*</span></label>
+                                        <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
-                                            <option value="" selected hidden>Select Thana</option>
+                                            <option value="" selected hidden>{{ __('Select Thana') }}</option>
                                         </select>
                                         @if($errors->has('thana_id'))
                                             <div class="text-danger">{{ $errors->first('thana_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="union">Union<span class="text-danger">*</span></label>
+                                        <label for="union">{{ __('Union') }}<span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
-                                            <option value="" selected hidden>Select Union</option>
+                                            <option value="" selected hidden>{{ __('Select Union') }}</option>
                                         </select>
                                         @if($errors->has('union_id'))
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="stand">Stand<span class="text-danger">*</span></label>
+                                        <label for="stand">{{ __('Stand') }}<span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
-                                            <option value="" selected hidden>Select Stand</option>
+                                            <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                         </select>
                                         @if($errors->has('stand_id'))
                                         <div class="text-danger">{{ $errors->first('stand_id') }}</div>
