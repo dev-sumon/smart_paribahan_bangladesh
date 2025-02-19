@@ -64,66 +64,18 @@
         <div class="container">
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center location_item">
-                <div class="row g-2">
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="division_id" id="division">
-                                <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                                @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}" {{ $division->id == old( 'division_id', $division->id) ? 'selected' : '' }}>{{ $division->division }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('division_id'))
-                            <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                            @endif
+                    <div class="row g-2">
+                        @include('forntend.cng_info.partials.search_bar')
+                    </div>
+                    <div class="mt-5 d-lg-block d-md-none d-sm-none">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="district_id" id="district">
-                                <option value="">{{ __('জেলা') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="thana_id" id="thana">
-                                <option value="">{{ __('থানা') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="union_id" id="union">
-                                <option value="">{{ __('ইউনিয়ন') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="stand_id" id="stand">
-                                <option value="">{{ __('স্ট্যান্ড') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="vehicle_id" id="vehicle">
-                                <option value="">{{ __('গাড়ি') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                    <button class="btn btn-outline-success mt-3 mb-5" type="submit">{{ __('ক্লিক করুন') }}</button>
-                <div class="mt-5 d-lg-block d-md-none d-sm-none">
-                    <div class="advisement">
-                        <div class="add_image">
-                            <a href="#">
-                                <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 </div>
                 <div class="col-md-12 col-lg-8">
                     <div class="row ">
@@ -132,7 +84,7 @@
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ $division->division }}</p>
+                                    <p class="pt-3">{{ $district->division->division }}</p>
                                 </a>
                             </div>
                         </div>
@@ -141,36 +93,16 @@
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                    {{-- <p class="pt-3">{{ $district->district }}</p> --}}
+                                    <p class="pt-3">{{ $district->district }}</p>
                                 </a>
                             </div>
                         </div>
-
                     </div>
-                    {{-- <div class="row ">
-                        <div class="col-12">
-                            <h1 class="pt-3">{{ __('Jelaa Talika') }}</h1>
-                        </div>
-
-                        @foreach ($division->districts as $district)
-                            <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                                <div class="card">
-                                    <a href="">
-                                        <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                        <p class="pt-3">{{ $district->district }}</p>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div> --}}
-
                     <div class="row ">
                         <div class="col-12">
                             <h1 class="pt-3">{{ __('থানা তালিকা') }}</h1>
                         </div>
-
-                        @foreach ($division->thanas as $thana)
+                        @foreach ($district->thanas as $thana)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
                                     <a href="">
@@ -181,13 +113,11 @@
                             </div>
                         @endforeach
                     </div>
-
                     <div class="row ">
                         <div class="col-12">
                             <h1 class="pt-3">{{ __('ইউনিয়ন তালিকা') }}</h1>
                         </div>
-
-                        @foreach ($division->unions as $union)
+                        @foreach ($district->unions as $union)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
                                     <a href="">
@@ -198,13 +128,11 @@
                             </div>
                         @endforeach
                     </div>
-
                     <div class="row ">
                         <div class="col-12">
                             <h1 class="pt-3">{{ __('স্ট্যান্ডের তালিকা') }}</h1>
                         </div>
-
-                        @foreach ($division->stands as $stand)
+                        @foreach ($district->stands as $stand)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
                                     <a href="{{ route('f.cng.cng_stand_details', $stand->id) }}">
@@ -214,7 +142,6 @@
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
                     <div class="row">
                         {{-- <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">

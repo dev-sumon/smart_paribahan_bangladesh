@@ -64,18 +64,18 @@
         <div class="container">
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center location_item">
-                    <div class="row g-2">
-                        @include('forntend.cng_info.partials.search_bar')
-                    </div>
-                    <div class="mt-5 d-lg-block d-md-none d-sm-none">
-                        <div class="advisement">
-                            <div class="add_image">
-                                <a href="#">
-                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
-                                </a>
-                            </div>
+                <div class="row g-2">
+                    @include('forntend.cng_info.partials.search_bar')
+                </div>
+                <div class="mt-5 d-lg-block d-md-none d-sm-none">
+                    <div class="advisement">
+                        <div class="add_image">
+                            <a href="#">
+                                <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                            </a>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div class="col-md-12 col-lg-8">
                     <div class="row ">
@@ -84,7 +84,7 @@
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ $thana->division->division }}</p>
+                                    <p class="pt-3">{{ $union->division->division }}</p>
                                 </a>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ $thana->district->district }}</p>
+                                    <p class="pt-3">{{ $union->district->district }}</p>
                                 </a>
                             </div>
                         </div>
@@ -102,21 +102,39 @@
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ $thana->thana }}</p>
+                                    <p class="pt-3">{{ $union->thana->thana }}</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
+                            <h1 class="pt-3 text-start">{{ __('ইউনিয়ন পরিচিতি') }}</h1>
+                            <div class="card">
+                                <a href="">
+                                    <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
+                                    <p class="pt-3">{{ $union->union }}</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
+                            <h1 class="pt-3 text-start">{{ __('স্ট্যান্ডের পরিচিতি') }}</h1>
+                            <div class="card">
+                                <a href="">
+                                    <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
+                                    <p class="pt-3">{{ $stand->stand }}</p>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="row ">
                         <div class="col-12">
-                            <h1 class="pt-3">{{ __('ইউনিয়ন তালিকা') }}</h1>
+                            <h1 class="pt-3">{{ __('স্ট্যান্ডের তালিকা') }}</h1>
                         </div>
-                        @foreach ($thana->unions as $union)
+                        @foreach ($union->stands as $stand)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
-                                    <a href="">
+                                    <a href="{{ route('f.cng.cng_stand_details', $stand->id) }}">
                                         <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                        <p class="pt-3">{{ $union->union }}</p>
+                                        <p class="pt-3">{{ $stand->name }}</p>
                                     </a>
                                 </div>
                             </div>
@@ -124,9 +142,9 @@
                     </div>
                     <div class="row ">
                         <div class="col-12">
-                            <h1 class="pt-3">{{ __('স্ট্যান্ডের তালিকা') }}</h1>
+                            <h1 class="pt-3">{{ __('গাড়ি তালিকা') }}</h1>
                         </div>
-                        @foreach ($thana->stands as $stand)
+                        @foreach ($union->stands as $stand)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
                                     <a href="{{ route('f.cng.cng_stand_details', $stand->id) }}">

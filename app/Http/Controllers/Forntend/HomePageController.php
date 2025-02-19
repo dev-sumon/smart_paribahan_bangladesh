@@ -65,6 +65,10 @@ class HomePageController extends Controller
 
     public function search(Request $request)
     {
+
+        // dd($request->all());
+
+
         $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands.vehicleTypes.vehicles'])->latest()->get();
 
         if ($request->vehicle_type_id) {
@@ -72,16 +76,14 @@ class HomePageController extends Controller
             return view('forntend.cng_info.vehicle', $data);
         } elseif ($request->stand_id) {
             $data['stand'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles'])->findOrFail($request->stand_id);
-            return view('forntend.cng_info.division', $data);
+            return view('forntend.cng_info.stand', $data);
         } elseif ($request->union_id) {
             $data['union'] = Union::with(['division', 'district', 'thana', 'stands.vehicleTypes.vehicles'])->findOrFail($request->union_id);
-            return view('forntend.cng_info.unions', $data);
+            return view('forntend.cng_info.union', $data);
         } elseif ($request->thana_id) {
             $data['thana'] = Thana::with(['division', 'district', 'unions', 'stands.vehicleTypes.vehicles'])->latest()->findOrFail($request->thana_id);
             return view('forntend.cng_info.thana', $data);
         } elseif ($request->district_id) {
-            $data['district'] = District::with(['division', 'thanas', 'unions', 'stands.vehicleTypes.vehicles'])->latest()->findOrFail($request->district_id);
-            // $data['district'] = $data['thana']->district;
             return view('forntend.cng_info.district', $data);
         }
         if ($request->division_id) {
