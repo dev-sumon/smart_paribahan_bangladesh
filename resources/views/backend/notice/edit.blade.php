@@ -114,11 +114,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="file" class="mt-3">{{ __('file') }} <span class="text-danger">*</span></label>
+                                        @if($notice->file)
+                                            <img src="{{ Storage::url($notice->file) }}" alt="{{ $notice->file }}">
+                                        @else
+                                            <p>{{ __('No image available') }}</p>
+                                        @endif
                                         <input type="file" name="file" value="{{ old('file') }}" class="form-control h-auto" placeholder="Enter The File">
                                         @if($errors->has('file'))
                                             <div class="text-danger">{{ $errors->first('file') }}</div>
                                         @endif
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
