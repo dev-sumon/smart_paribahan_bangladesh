@@ -84,6 +84,7 @@ class HomePageController extends Controller
             $data['thana'] = Thana::with(['division', 'district', 'unions', 'stands.vehicleTypes.vehicles'])->latest()->findOrFail($request->thana_id);
             return view('forntend.cng_info.thana', $data);
         } elseif ($request->district_id) {
+            $data['district'] = District::with(['thanas', 'unions', 'stands.vehicleTypes.vehicles'])->findOrFail($request->district_id);
             return view('forntend.cng_info.district', $data);
         }
         if ($request->division_id) {
