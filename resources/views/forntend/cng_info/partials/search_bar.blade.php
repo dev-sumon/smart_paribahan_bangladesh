@@ -70,14 +70,14 @@
 <script>
     $(document).ready(function() {
         $('#searchForm').on('submit', function(e) {
-            e.preventDefault(); // ফর্মের ডিফল্ট সাবমিশন বন্ধ করুন
+            e.preventDefault();
 
             $.ajax({
                 url: $(this).attr('action'),
                 type: 'POST',
                 data: $(this).serialize(),
                 success: function(response) {
-                    $('#searchResult').html(response); // সার্চ রেজাল্ট দেখান
+                    $('#searchResult').html(response);
                 },
                 error: function(xhr) {
                     alert('An error occurred. Please try again.');

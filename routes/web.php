@@ -65,6 +65,7 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
         Route::post('/search',  'search')->name('search');
         Route::get('/stand/{id}', 'showStand')->name('stand');
+        Route::get('/stand-intro/{id}', 'showStandIntro')->name('standIntro');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){

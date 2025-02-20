@@ -65,56 +65,8 @@
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center location_item">
                 <div class="row g-2">
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="division_id" id="division">
-                                <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                                @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->division }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('division_id'))
-                            <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="district_id" id="district">
-                                <option value="">{{ __('জেলা') }}</option>
-                              </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="thana_id" id="thana">
-                                <option value="">{{ __('থানা') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="union_id" id="union">
-                                <option value="">{{ __('ইউনিয়ন') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="stand_id" id="stand">
-                                <option value="">{{ __('স্ট্যান্ড') }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                        <div class="dropdown">
-                            <select name="vehicle_id" id="vehicle">
-                                <option value="">{{ __('গাড়ি') }}</option>
-                            </select>
-                        </div>
-                    </div>
+                    @include('forntend.cng_info.partials.search_bar')
                 </div>
-                    <button class="btn btn-outline-success mt-3 mb-5" type="submit">{{ __('ক্লিক করুন') }}</button>
                 <div class="mt-5 d-lg-block d-md-none d-sm-none">
                     <div class="advisement">
                         <div class="add_image">
@@ -128,14 +80,14 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="row text-end">
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                            {{-- @foreach ($stands as $stand)
+                            @foreach ($stands as $stand)
                                 <div class="card">
                                     <a href="{{ route('f.home.cng_stand', $stand->id) }}">
                                         <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                         <p class="pt-3">{{ __('স্ট্যান্ডের পরিচিতি') }}</p>
                                     </a>
                                 </div>
-                            @endforeach --}}
+                            @endforeach
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
