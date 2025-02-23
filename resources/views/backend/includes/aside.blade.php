@@ -132,7 +132,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('commitee.index') }}" class="nav-link {{ $page_slug == 'commitee' ? 'active' : '' }}">
-              <i class="nav-icon fa-solid fa-underline"></i>
+              <i class="nav-icon fa-solid fa-users"></i>
               <p>{{ __('Stand Committee') }}</p>
             </a>
           </li>

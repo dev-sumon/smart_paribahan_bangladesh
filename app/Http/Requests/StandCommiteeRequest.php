@@ -46,7 +46,7 @@ class StandCommiteeRequest extends FormRequest
     {
         return [
             'phone' => 'nullable|string|max:15',
-            'email' => 'required|email|unique:stand_committees,email,' . $this->stand_committee->id,
+            'email' => 'required|email|unique:stand_committees,email,' . $this->route('id'),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'division_id' => 'nullable|exists:divisions,id',
             'district_id' => 'nullable|exists:districts,id',

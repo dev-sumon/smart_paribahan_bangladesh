@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
+use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
 use App\Models\StandCommittee;
@@ -52,6 +56,48 @@ class StandCommiteeController extends Controller
         
 
         $save->save();
+        return redirect()->route('commitee.index');
+    }
+    public function update($id): View
+    {
+        $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::where('division_id', $data['commitee']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['commitee']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['commitee']->thana_id)->get();
+        $data['stands'] = Stand::where('union_id', $data['commitee']->union_id)->get();
+
+        return view('backend.stand_commitee.edit', $data);
+    }
+    public function update_store(StandCommiteeRequest $request, $id): RedirectResponse
+    {
+        $update = StandCommittee::findOrFail($id);
+        
+
+        $update->name = $request->name;
+        $update->designation = $request->designation;
+        $update->phone = $request->phone;
+        $update->email = $request->email;
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana_id = $request->thana_id;
+        $update->union_id = $request->union_id;
+        $update->stand_id = $request->stand_id;
+        $update->status = $request->status ?? 0;
+
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
+                Storage::delete($update->image);
+            }
+    
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("committee/", $filename, 'public');
+            $update->image = $path;
+        }
+        
+
+        $update->save();
         return redirect()->route('commitee.index');
     }
 }
