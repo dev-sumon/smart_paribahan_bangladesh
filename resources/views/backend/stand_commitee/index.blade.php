@@ -24,6 +24,7 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Email') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -31,13 +32,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      
+                                      @foreach ($commitees as $key=>$commitee)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $commitee->name }}</td>
+                                            <td>{{ $commitee->email }}</td>
+                                            <td>{{ $commitee->status }}</td>
+                                            {{-- <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td> --}}
+                                            <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
@@ -47,7 +50,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                      
+                                      @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -63,7 +66,7 @@
 
 
 @push('script')
-<script>
-    
-</script>
+    <script>
+        
+    </script>
 @endpush

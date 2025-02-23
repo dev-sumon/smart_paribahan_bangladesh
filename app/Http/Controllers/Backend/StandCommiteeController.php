@@ -15,7 +15,8 @@ class StandCommiteeController extends Controller
 {
     public function index(): View
     {
-        return view('backend.stand_commitee.index');
+        $data['commitees'] = StandCommittee::latest()->get();
+        return view('backend.stand_commitee.index', $data);
     }
     public function create(): View
     {
