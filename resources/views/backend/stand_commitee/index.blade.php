@@ -24,7 +24,6 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Image') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -36,8 +35,6 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
-                                            {{-- <td><img src="{{ asset('storage/' .$worker->image) }}" alt="{{ $worker->image }}" width="100"></td> --}}
                                             <td></td>
                                             <td></td>
                                             <td></td>

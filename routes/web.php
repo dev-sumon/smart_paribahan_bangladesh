@@ -361,6 +361,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+
     });
 });
 
