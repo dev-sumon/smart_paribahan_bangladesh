@@ -130,6 +130,12 @@
               <p>{{ __('Union') }}</p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('commitee.index') }}" class="nav-link {{ $page_slug == 'commitee' ? 'active' : '' }}">
+              <i class="nav-icon fa-solid fa-underline"></i>
+              <p>{{ __('Stand Committee') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

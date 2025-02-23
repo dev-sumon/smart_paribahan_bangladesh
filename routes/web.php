@@ -32,6 +32,7 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
@@ -355,6 +356,10 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
         Route::get('/get-vehicles/{stand_id}',  'getVehiclesByStand');
 
+    });
+    Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function(){
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
     });
 });
 
