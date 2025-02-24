@@ -87,7 +87,7 @@ class VehicleListController extends Controller
         }else{
             $vehicle->status = 1;
         }
-        $vehicle->save();
+        $vehicle->save(); 
         return redirect()->route('vehicle.index');
     }
     public function delete($id): RedirectResponse

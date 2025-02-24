@@ -25,6 +25,7 @@
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __('Email') }}</th>
+                                            <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -37,6 +38,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $commitee->name }}</td>
                                             <td>{{ $commitee->email }}</td>
+                                            <td>{{ $commitee->stand->name }}</td>
                                             <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td>
                                             <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>

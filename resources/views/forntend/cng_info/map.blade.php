@@ -101,7 +101,7 @@
                                 </select>
                             </div>
                         </div>
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
+                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                             <div class="dropdown">
                                 <select>
                                     <option>জেলা</option>
@@ -128,7 +128,7 @@
                                 </select>
                             </div>
                         </div>
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
+                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
                             <div class="dropdown">
                                 <select>
                                     <option>স্ট্যান্ড</option>
