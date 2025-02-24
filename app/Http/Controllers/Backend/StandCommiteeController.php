@@ -111,4 +111,11 @@ class StandCommiteeController extends Controller
         $commitee->save();
         return redirect()->route('commitee.index');
     }
+    public function delete($id): RedirectResponse
+    {
+        $commitee = StandCommittee::findOrFail($id);
+        $commitee->delete();
+
+        return redirect()->route('commitee.index');
+    }
 }

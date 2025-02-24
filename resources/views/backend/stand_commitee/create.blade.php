@@ -12,7 +12,7 @@
                             <h4>{{ __('Create new Stand Commitee') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('commitee.index') }}" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('commitee.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
