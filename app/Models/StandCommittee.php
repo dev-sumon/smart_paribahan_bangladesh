@@ -27,7 +27,7 @@ class StandCommittee extends Model
             return 'btn-success';
         }
     }
-    
+
     public function division()
     {
         return $this->belongsTo(Division::class, 'division_id');
@@ -38,14 +38,14 @@ class StandCommittee extends Model
     }
     public function thana()
     {
-        return $this->belongsTo(Thana::class, 'Thana_id');
+        return $this->belongsTo(Thana::class, 'thana_id');
     }
     public function union()
     {
-        return $this->belongsTo(Union::class, 'Union_id');
+        return $this->belongsTo(Union::class, 'union_id');
     }
     public function stand()
     {
-        return $this->belongsTo(Stand::class, 'Stand_id');
+        return $this->belongsTo(Stand::class, 'stand_id');
     }
 }

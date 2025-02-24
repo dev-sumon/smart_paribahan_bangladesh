@@ -118,4 +118,9 @@ class StandCommiteeController extends Controller
 
         return redirect()->route('commitee.index');
     }
+    public function detalis($id): View
+    {
+        $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
+        return view('backend.stand_commitee.show', $data);
+    }
 }

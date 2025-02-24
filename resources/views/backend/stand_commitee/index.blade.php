@@ -42,7 +42,7 @@
                                             <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('commitee.detalis', $commitee->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('commitee.update', $commitee->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="{{ route('commitee.delete', $commitee->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="{{ route('commitee.status.update', $commitee->id) }}" data-id="" class="btn {{ $commitee->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>

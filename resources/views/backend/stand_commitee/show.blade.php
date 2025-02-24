@@ -1,4 +1,4 @@
-@extends('backend.layouts.master', ['page_slug' => 'stand'])
+@extends('backend.layouts.master', ['page_slug' => 'commitee'])
 
 
 @section('title', 'Admin - management')
@@ -21,60 +21,80 @@
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
                                         <tr>
+                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $commitee->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Designation') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $commitee->designation }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Phone') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $commitee->phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Email') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $commitee->email }}</td>
+                                        </tr>
+                                        <tr>
                                             <th>{{ __('Division Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->division->division }}</td>
+                                            <td>{{ $commitee->division->division }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('District Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->district->district }}</td>
+                                            <td>{{ $commitee->district->district }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Thana Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->thana->thana }}</td>
+                                            <td>{{ $commitee->thana->thana }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Union Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->union->union }}</td>
+                                            <td>{{ $commitee->union->union }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->name }}</td>
+                                            <td>{{ $commitee->name }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Description') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->description }}</td>
+                                            <td>{{ $commitee->designation }}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>{{ __('Location') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->location }}</td>
-                                        </tr>
+                                            <td> {{ $commitee->location }}</td>
+                                        </tr> --}}
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->name }}" width="100"></td>
+                                            <td><img src="{{ asset('storage/' . $commitee->image) }}" alt="{{ $commitee->name }}" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><span class="{{ $stand->statusBg() }}">{{ $stand->statusTitle() }}</span>
+                                            <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->created_at }}</td>
+                                            <td> {{ $commitee->created_at }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created B') }}y</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $commitee->created_by ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
