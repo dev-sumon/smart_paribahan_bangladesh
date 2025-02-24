@@ -67,6 +67,7 @@ Route::group(['as' => 'f.'], function () {
         Route::post('/search',  'search')->name('search');
         Route::get('/stand/{id}', 'showStand')->name('stand');
         Route::get('/stand-intro/{id}', 'showStandIntro')->name('standIntro');
+        Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
@@ -98,8 +99,7 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/owner', 'owner')->name('owner');
         Route::get('/driver', 'driver')->name('driver');
         Route::get('/notice', 'notice')->name('notice');
-        // Route::post('/search-stands',  'searchStands')->name('searchStands');
-        // Route::get('/cng-stand/{id}', 'showStand')->name('showStand');
+
 
 
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');

@@ -62,5 +62,10 @@ class Stand extends Model
     {
         return $this->hasMany(VehicleType::class);
     }
+    public function commitees()
+    {
+        return $this->hasMany(StandCommittee::class);
+    }
+
 
 }

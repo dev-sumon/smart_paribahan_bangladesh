@@ -3,6 +3,7 @@
 @section('content')
     <section class="notice">
         <div class="container py-5">
+           
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
@@ -40,13 +41,18 @@
                             <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
                         </div>
                     </div>
+                    
                     <div class="all_notice_button text-end">
                         <a href="notice_page.html" class="gradient-border-button">
                             <span>সকল</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
-
+                    <div class="hero_details">
+                        <div class="title pt-3">
+                            <h2>{{ $vehicle_type->stand->name }}</h2>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                     <div class="advisement text-center">
@@ -97,7 +103,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="">
+                                <a href="{{ route('f.home.standCommitee',$vehicle_type->id) }}">
                                     <img src="{{ asset('forntend/images/team 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('স্টেশন সভাপতি ও সদস্য বৃন্দ তালিকা') }}</p>
                                 </a>
