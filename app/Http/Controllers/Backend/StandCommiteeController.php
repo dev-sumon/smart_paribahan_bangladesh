@@ -100,4 +100,15 @@ class StandCommiteeController extends Controller
         $update->save();
         return redirect()->route('commitee.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $commitee = StandCommittee::findOrFail($id);
+        if($commitee->status == 1){
+            $commitee->status = 0;
+        }else{
+            $commitee->status = 1;
+        }
+        $commitee->save();
+        return redirect()->route('commitee.index');
+    }
 }

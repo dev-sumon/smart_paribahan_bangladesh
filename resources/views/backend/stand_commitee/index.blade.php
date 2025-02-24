@@ -38,7 +38,7 @@
                                             <td>{{ $commitee->name }}</td>
                                             <td>{{ $commitee->email }}</td>
                                             <td>{{ $commitee->status }}</td>
-                                            {{-- <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td> --}}
+                                            <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td>
                                             <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>
                                             <td class="text-center">
@@ -46,7 +46,7 @@
                                                     <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('commitee.update', $commitee->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('commitee.status.update', $commitee->id) }}" data-id="" class="btn {{ $commitee->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
