@@ -66,16 +66,6 @@
                                             <td>{{ $commitee->name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Description') }}</th>
-                                            <th>{{ __(':') }}</th>
-                                            <td>{{ $commitee->designation }}</td>
-                                        </tr>
-                                        {{-- <tr>
-                                            <th>{{ __('Location') }}</th>
-                                            <th>{{ __(':') }}</th>
-                                            <td> {{ $commitee->location }}</td>
-                                        </tr> --}}
-                                        <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td><img src="{{ asset('storage/' . $commitee->image) }}" alt="{{ $commitee->name }}" width="100"></td>
