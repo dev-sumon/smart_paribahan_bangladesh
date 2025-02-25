@@ -44,7 +44,7 @@
                     
                     <div class="all_notice_button text-end">
                         <a href="notice_page.html" class="gradient-border-button">
-                            <span>সকল</span>
+                            <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>

@@ -284,7 +284,7 @@
                         }
                     },
                     error: function (error) {
-                        console.log(error);
+                        console.error('AJAX Error:', error);
                     }
                 });
             });
