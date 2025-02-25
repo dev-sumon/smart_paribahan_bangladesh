@@ -168,21 +168,25 @@
                         </div>
                     </div>
                     <div class="row driver_list">
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
+                        @foreach ($stand->drivers as $key=>$driver)
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                                <div class="profile text-center">
+                                    <div class="profile_image">
+                                        {{-- <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3"> --}}
+                                        <img src="{{ $driver->image ? asset('storage/' . $driver->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
+                                    </div>
+                                    <div class="beage">+</div>
+                                    <div class="profile-details">
+                                        <h3>{{ $driver->name }}</h3>
+                                        <p class="driver">সি এন জি ড্রাইভার</p>
+                                        <a href="cng_driver_profile.html">আরও জানুন </a>
+                                        <span>>></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
+                        @endforeach
+                        
+                        {{-- <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                             <div class="profile text-center">
                                 <div class="profile_image">
                                     <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
@@ -377,7 +381,7 @@
                                    
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     <div class="next_page d-flex align-items-center justify-content-center text-center">
                         <div class="left_arrow">
                             <a href="#"><i class="fa-solid fa-angles-left"></i></a>

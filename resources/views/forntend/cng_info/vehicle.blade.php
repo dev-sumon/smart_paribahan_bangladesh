@@ -119,7 +119,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="">
+                                <a href="{{ route('f.home.standDriver', $vehicle_type->id) }}">
                                     <img src="{{ asset('forntend/images/driver11 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('ড্রাইভার এর তালিকা') }}</p>
                                 </a>

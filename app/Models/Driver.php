@@ -91,4 +91,9 @@ class Driver extends Authenticatable
             return 'btn-success';
         }
     }
+
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class);
+    }
 }
