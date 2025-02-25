@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->boolean('status');
+            $table->unsignedBigInteger('stand_id')->nullable();
+            $table->foreign('stand_id')->references('id')->on('stands')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

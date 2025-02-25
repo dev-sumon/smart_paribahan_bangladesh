@@ -32,6 +32,7 @@ use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
@@ -58,12 +59,15 @@ Auth::routes();
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
     Route::controller(HomePageController::class)->prefix('home')->name('home.')->group(function(){
-        // Route::get('faq', 'faq')->name('faq');
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
         Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
-        Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('get.vehicles');
+        Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
+        Route::post('/search',  'search')->name('search');
+        Route::get('/stand/{id}', 'showStand')->name('stand');
+        Route::get('/stand-intro/{id}', 'showStandIntro')->name('standIntro');
+        Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
@@ -89,11 +93,13 @@ Route::group(['as' => 'f.'], function () {
     Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
+        Route::get('/cng-stand/{id}', 'show')->name('cng_stand_details');
         Route::get('/map', 'map')->name('map');
         Route::get('/community', 'community')->name('community');
         Route::get('/owner', 'owner')->name('owner');
         Route::get('/driver', 'driver')->name('driver');
         Route::get('/notice', 'notice')->name('notice');
+
 
 
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
@@ -349,6 +355,18 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('stand/{id}', 'stand')->name('stand');
         Route::get('stand/{id}/vehicles', 'standVehicles')->name('standVehicles');
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
+        Route::get('/get-vehicles/{stand_id}',  'getVehiclesByStand');
+
+    });
+    Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function(){
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update{id}', 'update')->name('update');
+        Route::put('update{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 });
 

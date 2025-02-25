@@ -1,4 +1,4 @@
-@extends('backend.layouts.master', ['page_slug' => 'vehicle'])
+@extends('backend.layouts.master', ['page_slug' => 'vehicle_type'])
 
 
 @section('title', 'Admin - management')
@@ -20,6 +20,11 @@
                             <div class="col-md-12">
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
+                                        <tr>
+                                            <th>{{ __('Stand Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $vehicle_type->stand->name }}</td>
+                                        </tr>
                                         <tr>
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __(':') }}</th>

@@ -32,12 +32,14 @@ class VehicleTypeRequest extends FormRequest
     {
         return[
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'stand_id' => 'required|exists:stands,id',
         ];
     }
     protected function update(): array
     {
         return[
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'stand_id' => 'required|exists:stands,id',
         ];
     }
 }

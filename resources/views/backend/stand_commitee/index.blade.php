@@ -1,7 +1,8 @@
-@extends('backend.layouts.master', ['page_slug' => 'notice'])
+@extends('backend.layouts.master', ['page_slug' => 'commitee'])
 
 
-@section('title', 'Admin - management')
+
+@section('title', 'Stand Commitee')
 @section('content')
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
@@ -9,10 +10,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h4>{{ __('Notice List') }}</h4>
+                            <h4>{{ __('Stand Commitee List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('notice.create') }}" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('commitee.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -22,8 +23,9 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
-                                            <th>{{ __('Title') }}</th>
-                                            <th>{{ __('Date') }}</th>
+                                            <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Email') }}</th>
+                                            <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -31,24 +33,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($notices as $key=>$notice)
+                                      @foreach ($commitees as $key=>$commitee)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $notice->title }}</td>
-                                            <td>{{ $notice->date }}</td>
-                                            <td><span class="{{$notice->statusBg()}}">{{ $notice->statusTitle() }}</span></td>
-                                            <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
+                                            <td>{{ $commitee->name }}</td>
+                                            <td>{{ $commitee->email }}</td>
+                                            <td>{{ $commitee->stand->name }}</td>
+                                            <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td>
+                                            <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('notice.detalis', $notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('notice.update', $notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('notice.delete', $notice->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('notice.status.update', $notice->id) }}" class="btn {{$notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('commitee.detalis', $commitee->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('commitee.update', $commitee->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('commitee.delete', $commitee->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="{{ route('commitee.status.update', $commitee->id) }}" data-id="" class="btn {{ $commitee->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                      @endforeach
                                     </tbody>
                                 </table>
                             </div>

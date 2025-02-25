@@ -50,4 +50,8 @@ class Thana extends Model
     {
         return $this->hasMany(Union::class);
     }
+    public function stands()
+    {
+        return $this->hasMany(Stand::class);
+    }
 }

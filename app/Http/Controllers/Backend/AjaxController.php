@@ -58,33 +58,40 @@ class AjaxController extends Controller
             'data' => $stands
         ]);
     }
+    // public function standVehicles(Request $request, $id): JsonResponse
+    // {
+    //     $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
+
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => $vehicles
+    //     ]);
+    // }
     public function standVehicles(Request $request, $id): JsonResponse
     {
-        $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
+        $stand = Stand::with(['vehicles' => function ($query) {
+            $query->whereNull('driver_id');
+        }])->findOrFail($id);
 
         return response()->json([
             'success' => true,
-            'data' => $vehicles
+            'data' => $stand->vehicles
         ]);
     }
-    // public function vehiclesLicense(Request $request, $id): JsonResponse
-    // {
-    //     $vehicle = Vehicle::findOrFail($id);
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => [$vehicle->vehicles_license]
-    //     ]);
-    // }
 
+
+    public function getVehiclesByStand($stand_id)
+    {
+        $vehicles = Vehicle::where('stand_id', $stand_id)->get();
+        return response()->json($vehicles);
+    }
     public function vehiclesLicense(Request $request, $id): JsonResponse
     {
         $vehicle = Vehicle::findOrFail($id);
-
-        // Vehicle এর owner আছে কিনা তা চেক করুন
         if ($vehicle->owner) {
             return response()->json([
                 'success' => true,
-                'data' => $vehicle->owner->vehicles_license // Owner থেকে vehicles_license আনছি
+                'data' => $vehicle->owner->vehicles_license
             ]);
         }
 
@@ -93,5 +100,4 @@ class AjaxController extends Controller
             'message' => 'Owner not found for this vehicle'
         ]);
     }
-
 }

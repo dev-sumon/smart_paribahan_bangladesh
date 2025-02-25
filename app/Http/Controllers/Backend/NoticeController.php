@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
+use App\Models\Notice;
+use App\Models\District;
+use App\Models\Division;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticeRequest;
-use App\Models\Notice;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
@@ -19,12 +24,18 @@ class NoticeController extends Controller
     }
     public function create(): View
     {
-        return view('backend.notice.create');
+        $data['divisions'] = Division::latest()->get();
+        return view('backend.notice.create', $data);
     }
     public function store(NoticeRequest $request): RedirectResponse
     {
         $save = new Notice();
 
+        $save->division_id = $request->division_id;
+        $save->district_id = $request->district_id;
+        $save->thana_id = $request->thana_id;
+        $save->union_id = $request->union_id;
+        $save->stand_id = $request->stand_id;
         $save->title = $request->title;
         $save->date = $request->date;
         $save->category = $request->category;
@@ -42,20 +53,33 @@ class NoticeController extends Controller
     }
     public function update($id): View
     {
+
         $data['notice'] = Notice::findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::where('division_id', $data['notice']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['notice']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['notice']->thana_id)->get();
+        $data['stands'] = Stand::where('union_id', $data['notice']->union_id)->get(); 
+
+
         return view('backend.notice.edit', $data);
     }
     public function update_store(NoticeRequest $request, $id): RedirectResponse
     {
         $update = Notice::findOrFail($id);
 
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana_id = $request->thana_id;
+        $update->union_id = $request->union_id;
+        $update->stand_id = $request->stand_id;
         $update->title = $request->title;
         $update->date = $request->date;
         $update->category = $request->category;
         $update->status = $request->status ?? 0;
 
 
-        if ($request->hasFile('file')) {
+        if($request->hasFile('file')) {
             if ($update->file && Storage::exists($update->file)) {
                 Storage::delete($update->file);
             }
@@ -65,6 +89,7 @@ class NoticeController extends Controller
             $path = $file->storeAs("notices/", $filename, 'public');
             $update->file = $path;
         }
+
         $update->save();
         return redirect()->route('notice.index');
     }
