@@ -43,7 +43,7 @@
                   @endif
               </div>
               <div class="form-group">
-                <label for="image">{{ __('Image') }}</label>
+                <label for="image">{{ __('ছবি') }}</label>
                 <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
                 @if($errors->has('image'))
                     <div class="text-danger">{{ $errors->first('image') }}</div>
