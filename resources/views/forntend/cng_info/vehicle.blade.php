@@ -1,5 +1,5 @@
 @extends('forntend.layouts.master')
-@section('title', 'CNG')
+@section('title',  $vehicle_type->name)
 @section('content')
     <section class="notice">
         <div class="container py-5">
