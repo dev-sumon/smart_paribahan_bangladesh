@@ -31,11 +31,8 @@
 
     <!-- responsive css link  -->
     <link rel="stylesheet" href="{{ asset('forntend/style/responsive.css') }}">
-    <!-- jQuery CDN (Bootstrap 4 & 5 এর আগে রাখতে হবে) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
+    <!-- jQuery CDN (Bootstrap ) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     @stack('css')
 

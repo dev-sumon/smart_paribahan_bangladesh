@@ -46,10 +46,10 @@ class Stand extends Model
     {
         return $this->belongsTo(Union::class);
     }
-    public function vehicles()
-    {
-        return $this->hasMany(Vehicle::class);
-    }
+    // public function vehicles()
+    // {
+    //     return $this->hasMany(Vehicle::class);
+    // }
     // public function vehicleTypes()
     // {
     //     return $this->hasMany(VehicleType::class);
@@ -66,6 +66,12 @@ class Stand extends Model
     {
         return $this->hasMany(StandCommittee::class);
     }
+    // App\Models\Stand.php
+    public function vehicles()
+    {
+        return $this->hasManyThrough(Vehicle::class, VehicleType::class, 'stand_id', 'vehicle_type_id', 'id', 'id');
+    }
+
 
 
 }
