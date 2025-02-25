@@ -177,6 +177,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -189,6 +191,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -201,8 +205,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -215,8 +219,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -229,8 +233,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -243,8 +247,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -257,8 +261,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -271,8 +275,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -285,8 +289,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -299,8 +303,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -313,8 +317,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
@@ -327,8 +331,8 @@
                                 <div class="profile-details">
                                     <h3>মুহাম্মদ নজরুল ইসলাম</h3>
                                     <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
+                                    <a href="cng_driver_profile.html">আরও জানুন </a>
+                                    <span>>></span>
                                 </div>
                             </div>
                         </div>
