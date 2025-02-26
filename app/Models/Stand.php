@@ -71,6 +71,10 @@ class Stand extends Model
     {
         return $this->hasManyThrough(Vehicle::class, VehicleType::class, 'stand_id', 'vehicle_type_id', 'id', 'id');
     }
+    public function owners()
+    {
+        return $this->hasMany(Owner::class);
+    }
     public function drivers()
     {
         return $this->hasMany(Driver::class);
