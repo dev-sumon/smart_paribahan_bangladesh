@@ -65,16 +65,13 @@ class VehicleListController extends Controller
     {
         $update = Vehicle::findOrFail($id);
         $update->name = $request->name;
+        $update->vehicle_licence = $request->vehicle_licence;
+        $update->vehicle_type_id = $request->vehicle_type_id;
+        $update->owner_id = $request->owner_id;
+        $update->driver_id = $request->driver_id;
         $update->status = $request->status ?? 0;
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
-                Storage::delete($update->image);
-            }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("vehicle/", $filename, 'public');
-        $update->image = $path;
+        
 
         $update->update();
         return redirect()->route('vehicle.index');

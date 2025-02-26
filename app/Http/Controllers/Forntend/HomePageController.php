@@ -92,12 +92,6 @@ class HomePageController extends Controller
             return view('forntend.cng_info.division', $data);
         }
     }
-    // public function showStand($id)
-    // {
-    //     $data['stand'] = Stand::with('vehicles')->findOrFail($id);
-
-    //     return view('forntend.', $data);
-    // }
     public function showStand($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->findOrFail($id);
@@ -115,7 +109,7 @@ class HomePageController extends Controller
     }
     public function standDriver($id)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers')->findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers', 'notices')->findOrFail($id);
         return view('forntend.cng_info.driver_list', $data);
     }
 
