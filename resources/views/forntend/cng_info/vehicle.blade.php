@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="">
+                                <a href="{{ route('f.home.standOwner', $vehicle_type->stand_id) }}">
                                     <img src="{{ asset('forntend/images/owner 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('মালিক এর তালিকা') }}</p>
                                 </a>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="">
+                                <a href="{{ route('f.home.standNotice', $vehicle_type->stand_id) }}">
                                     <img src="{{ asset('forntend/images/report 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী') }}</p>
                                 </a>
