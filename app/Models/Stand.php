@@ -75,7 +75,10 @@ class Stand extends Model
     {
         return $this->hasMany(Driver::class);
     }
-
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
+    }
 
 
 }

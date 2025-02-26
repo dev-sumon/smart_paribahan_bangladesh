@@ -7,10 +7,11 @@
         <div class="container">
             <div class="row">
                 <div class="stand_location">
-                    <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5>
+                    {{-- <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5> --}}
+                    <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
                 </div>
                 <div class="member_list_title">
-                    <h2>সি এন জি ড্রাইভার এর তালিকা</h2>
+                    <h2>{{ __('সি এন জি ড্রাইভার এর তালিকা') }}</h2>
                 </div>
             </div>
         </div>
@@ -23,43 +24,21 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>নোটিশ বোর্ড</h5>
+                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
+                    @foreach ($stand->notices as $key=>$notice)
+                        <div class="notice_list d-flex align-items-center">
+                            <div class="icon-button">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="notice_head_line">
+                                <p class="p-0">{{ $notice->title }}</p>
+                            </div>
                         </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="all_notice_button text-end">
                         <a href="#" class="gradient-border-button">
-                            <span>সকল</span>
+                            <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
                     </div>
@@ -185,203 +164,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        
-                        {{-- <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    <a href="cng_driver_profile.html">আরও জানুন </a>
-                                    <span>>></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
-                            <div class="profile text-center">
-                                <div class="profile_image">
-                                    <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                                </div>
-                                <div class="beage">+</div>
-                                <div class="profile-details">
-                                    <h3>মুহাম্মদ নজরুল ইসলাম</h3>
-                                    <p class="driver">সি এন জি ড্রাইভার</p>
-                                    
-                                   
-                                </div>
-                            </div>
-                        </div> --}}
                     <div class="next_page d-flex align-items-center justify-content-center text-center">
                         <div class="left_arrow">
                             <a href="#"><i class="fa-solid fa-angles-left"></i></a>

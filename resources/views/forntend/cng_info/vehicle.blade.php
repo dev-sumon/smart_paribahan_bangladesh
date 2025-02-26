@@ -9,39 +9,16 @@
                     <div class="title pt-2">
                         <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
+                    @foreach ($vehicle_type->stand->notices as $key=>$notice)
+                        <div class="notice_list d-flex align-items-center">
+                            <div class="icon-button">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="notice_head_line">
+                                <p class="p-0">{{ $notice->title }}</p>
+                            </div>
                         </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    
+                    @endforeach
                     <div class="all_notice_button text-end">
                         <a href="notice_page.html" class="gradient-border-button">
                             <span>{{ __('সকল') }}</span>
@@ -87,7 +64,7 @@
                     <div class="row text-end">
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standIntro', $vehicle_type->id) }}">
+                                <a href="{{ route('f.home.standIntro', $vehicle_type->stand_id) }}">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                     <p class="pt-3">{{ __('স্ট্যান্ডের পরিচিতি') }}</p>
                                 </a>
@@ -95,7 +72,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.stand', $vehicle_type->id) }}">
+                                <a href="{{ route('f.home.stand', $vehicle_type->stand_id) }}">
                                     <img src="{{ asset('forntend/images/map 1.svg') }}" alt="">
                                     <p class="pt-3">{{ __('মানচিত্রে স্ট্যান্ড') }}</p>
                                 </a>
@@ -103,7 +80,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standCommitee',$vehicle_type->id) }}">
+                                <a href="{{ route('f.home.standCommitee',$vehicle_type->stand_id) }}">
                                     <img src="{{ asset('forntend/images/team 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('স্টেশন সভাপতি ও সদস্য বৃন্দ তালিকা') }}</p>
                                 </a>
@@ -119,7 +96,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standDriver', $vehicle_type->id) }}">
+                                <a href="{{ route('f.home.standDriver', $vehicle_type->stand_id) }}">
                                     <img src="{{ asset('forntend/images/driver11 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('ড্রাইভার এর তালিকা') }}</p>
                                 </a>
