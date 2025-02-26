@@ -35,6 +35,7 @@ class DriverRegistrationController extends Controller
         $save->union_id = $request->union_id;
         $save->vehicle_id = $request->vehicle_id;
         $save->stand_id = $request->stand_id;
+        $save->driving_license = $request->driving_license;
         $save->password = Hash::make($request->password);
     
         if($request->hasFile('image')){

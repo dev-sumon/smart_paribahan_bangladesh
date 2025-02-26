@@ -29,6 +29,13 @@
                   @endif
               </div>
               <div class="form-group">
+                  <label for="driving_license">{{ __('ড্রাইভিং লাইসেন্স ') }}</label>
+                  <input type="text" class="form-control" id="driving_license" placeholder="আপনার ড্রাইভিং লাইসেন্স নাম্বার লিখুন" name="driving_license" value="{{ old('driving_license') }}">
+                  @if($errors->has('driving_license'))
+                      <div class="text-danger">{{ $errors->first('driving_license') }}</div>
+                  @endif
+              </div>
+              <div class="form-group">
                   <label for="email" class="mt-3">{{ __('মেইল লিখুন') }}</label>
                   <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="মেইল লিখুন">
                   @if($errors->has('email'))

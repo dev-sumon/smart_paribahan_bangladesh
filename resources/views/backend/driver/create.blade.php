@@ -42,6 +42,34 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
+                                        <label for="driving_license">{{ __('Driving License') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="driving_license" placeholder="Enter The Driving License" name="driving_license" value="{{ old('driving_license') }}">
+                                        @if($errors->has('driving_license'))
+                                            <div class="text-danger">{{ $errors->first('driving_license') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="mt-3">{{ __('Email') }} <span class="text-danger">*</span></label>
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Driver Email">
+                                        @if($errors->has('email'))
+                                            <div class="text-danger">{{ $errors->first('email') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="mt-3">{{ __('Phone No.') }} <span class="text-danger">*</span></label>
+                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Driver Phone">
+                                        @if($errors->has('phone'))
+                                            <div class="text-danger">{{ $errors->first('phone') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">{{ __('Image') }}</label>
+                                        <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
+                                        @if($errors->has('image'))
+                                            <div class="text-danger">{{ $errors->first('image') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
                                         <label  class="mt-3" for="blood_group_id">{{ __('Blood Group') }}</label>
                                         <select name="blood_group_id" id="blood_group_id" class="form-control">
                                             <option value=" " selected hidden>{{ __('Select Blood Broup') }}</option>
@@ -74,60 +102,26 @@
                                     <div class="form-group">
                                         <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
-                                            <option value="" selected hidden>Select Thana</option>
+                                            <option value="" selected hidden>{{ __('Select Thana') }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="union">Union <span class="text-danger">*</span></label>
+                                        <label for="union">{{ __('Union') }} <span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
-                                            <option value="" selected hidden>Select Union</option>
+                                            <option value="" selected hidden>{{ __('Select Union') }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="stand">Stand <span class="text-danger">*</span></label>
+                                        <label for="stand">{{ __('Stand') }} <span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
-                                            <option value="" selected hidden>Select Stand</option>
+                                            <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="vehicle">Vehicl <span class="text-danger">*</span></label>
+                                        <label for="vehicle">{{ __('Vehicl') }} <span class="text-danger">*</span></label>
                                         <select name="vehicle_id" id="vehicle" class="form-control">
-                                            <option value="" selected hidden>Select Vehicle</option>
+                                            <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
                                         </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="vehicles_license">Vehicles License <span class="text-danger">*</span></label>
-                                        <select name="vehicles_license" id="vehicles_license" class="form-control">
-                                            <option value="" selected hidden>Select Vehicles License</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="driving_license">{{ __('Driving License') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="driving_license" placeholder="Enter The Driving License" name="driving_license" value="{{ old('driving_license') }}">
-                                        @if($errors->has('driving_license'))
-                                            <div class="text-danger">{{ $errors->first('driving_license') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="mt-3">{{ __('Email') }} <span class="text-danger">*</span></label>
-                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Driver Email">
-                                        @if($errors->has('email'))
-                                            <div class="text-danger">{{ $errors->first('email') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone" class="mt-3">{{ __('Phone No.') }} <span class="text-danger">*</span></label>
-                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Driver Phone">
-                                        @if($errors->has('phone'))
-                                            <div class="text-danger">{{ $errors->first('phone') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="image">{{ __('Image') }}</label>
-                                        <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
-                                        @if($errors->has('image'))
-                                            <div class="text-danger">{{ $errors->first('image') }}</div>
-                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="mt-3">{{ __('Password') }} <span class="text-danger">*</span></label>
