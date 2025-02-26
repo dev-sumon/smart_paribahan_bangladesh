@@ -1,15 +1,16 @@
 @extends('forntend.layouts.master')
-@section('title', 'CNGnotice')
+@section('title', 'CNG Notice')
 @section('content')
      <!-- president and members section start-->
      <section class="president_and_members pt-5 pb-4">
         <div class="container">
             <div class="stand_location">
-                <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5>
+                {{-- <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5> --}}
+                <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
             </div>
             <div class="member_list_title">
-                <h2>সি এন জি স্ট্যান্ড এর বার্ষিক বাজেট <br>
-                     উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </h2>
+                <h2>{{ __('সি এন জি স্ট্যান্ড এর বার্ষিক বাজেট ') }}<br>
+                     {{ __('উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী ') }}</h2>
             </div>
         </div>
     </section>
@@ -21,43 +22,21 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>নোটিশ বোর্ড</h5>
+                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
+                      @foreach ($stand->notices as $key=>$notice)
+                          <div class="notice_list d-flex align-items-center">
+                              <div class="icon-button">
+                                  <i class="fa-solid fa-chevron-right"></i>
+                              </div>
+                              <div class="notice_head_line">
+                                  <p class="p-0">{{ $notice->title }}</p>
+                              </div>
+                          </div>
+                      @endforeach
                     <div class="all_notice_button text-end">
                         <a href="#" class="gradient-border-button">
-                            <span>সকল</span>
+                            <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                             </a>
                     </div>
@@ -83,21 +62,23 @@
           <div class="row">
             <div class="col-md-12 col-lg-8">
               <div class="title">
-                <h3 class="text-center text-lg-start">বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী</h3>
+                <h3 class="text-center text-lg-start">{{ __('বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী') }}</h3>
               </div>
               <div class="select_option row g-2 mt-3">
                 <div class="year col-12 col-md-6">
                   <select name="" id="" class="form-select">
-                    <option value="">২০২১-২০২২</option>
-                    <option value="">২০২১-২০২২</option>
-                    <option value="">২০২১-২০২২</option>
+                    <option value="">{{ __('তারিখ নির্বাচন করুন') }}</option>
+                      @foreach ($stand->notices as $notice)
+                          <option value="{{ $notice->id }}">{{ $notice->date }}</option>
+                      @endforeach
                   </select>
                 </div>
                 <div class="notice_type col-12 col-md-6">
                   <select name="" id="" class="form-select">
-                    <option value="">উন্নয়ন পলিকল্পনা</option>
-                    <option value="">উন্নয়ন পলিকল্পনা</option>
-                    <option value="">উন্নয়ন পলিকল্পনা</option>
+                    <option value="">{{ __('বিভাগ') }}</option>
+                      @foreach ($stand->notices as $notice)
+                          <option value="{{ $notice->id }}">{{ $notice->category }}</option>
+                      @endforeach
                   </select>
                 </div>
               </div>
@@ -109,71 +90,29 @@
             <table class="table table text-center">
               <thead class="custom-header">
                 <tr>
-                  <th>সিরিয়াল নাম্বার</th>
-                  <th>শিরোনাম</th>
-                  <th>বছর</th>
-                  <th>শ্রেণী</th>
-                  <th>ফাইল</th>
+                  <th>{{ __('সিরিয়াল নাম্বার') }}</th>
+                  <th>{{ __('শিরোনাম') }}</th>
+                  <th>{{ __('বছর') }}</th>
+                  <th>{{ __('শ্রেণী') }}</th>
+                  <th>{{ __('ফাইল') }}</th>
                 </tr>
               </thead>
               <tbody>
                 
-                <tr>
-                  <td>১</td>
-                  <td>বার্ষিক বাজেট উন্নয়ন পরিকল্পনা</td>
-                  <td>২০২১-২০২২</td>
-                  <td>বাজেট</td>
-                  <td>
-                    <a href="AFS_00_E.pdf" target="_blank">
-                      <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>২</td>
-                  <td>বার্ষিক বাজেট উন্নয়ন পরিকল্পনা</td>
-                  <td>২০২১-২০২২</td>
-                  <td>বাজেট</td>
-                  <td>
-                    <a href="AFS_00_E.pdf" target="_blank">
-                      <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>৩</td>
-                  <td>বার্ষিক বাজেট উন্নয়ন পরিকল্পনা</td>
-                  <td>২০২১-২০২২</td>
-                  <td>বাজেট</td>
-                  <td>
-                    <a href="AFS_00_E.pdf" target="_blank">
-                      <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>৪</td>
-                  <td>বার্ষিক বাজেট উন্নয়ন পরিকল্পনা</td>
-                  <td>২০২১-২০২২</td>
-                  <td>বাজেট</td>
-                  <td>
-                    <a href="AFS_00_E.pdf" target="_blank">
-                      <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>৫</td>
-                  <td>বার্ষিক বাজেট উন্নয়ন পরিকল্পনা</td>
-                  <td>২০২১-২০২২</td>
-                  <td>বাজেট</td>
-                  <td>
-                    <a href="AFS_00_E.pdf" target="_blank">
-                      <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
-                    </a>
-                  </td>
-                </tr>
-                
+                @foreach ($stand->notices as $key=>$notice)
+                  <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $notice->title }}</td>
+                    <td>{{ $notice->date }}</td>
+                    <td>{{ $notice->category }}</td>
+                    <td>
+                      <a href="{{ $notice->file ? asset('storage/' . $notice->file) : asset('forntend/images/Group.png') }}" target="_blank">
+                        <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
+                        {{-- <img src="{{ $notice->file ? asset('storage/' . $notice->file) : asset('forntend/images/Group.png') }}" alt="PDF Icon" class="profile-image mb-3"> --}}
+                      </a>
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

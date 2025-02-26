@@ -112,5 +112,10 @@ class HomePageController extends Controller
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers', 'notices')->findOrFail($id);
         return view('forntend.cng_info.driver_list', $data);
     }
+    public function standNotice($id)
+    {
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers', 'notices')->findOrFail($id);
+        return view('forntend.cng_info.notice', $data);
+    }
 
 }
