@@ -9,7 +9,7 @@
                     <h5>{{ $owner->division->division }} - {{ $owner->district->district }} - {{ $owner->thana->thana }} - {{ $owner->union->union }}</h5>
                 </div>
                 <div class="member_list_title">
-                    <h2>{{ $owner->vehicle->name }} মালিক এর বিস্তারিত</h2>
+                    <h2>{{ $owner->vehicle->name }} {{ __('মালিক এর বিস্তারিত') }}</h2>
                 </div>
             </div>
         </section>
@@ -23,7 +23,7 @@
                       <img src="{{ $owner->image ? asset('storage/' . $owner->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="rounded-2">
                   </div>
                   <div class="profile_info">
-                      <span class="owner">আমি {{ $owner->vehicle->name }} এর মালিক</span>
+                      <span class="owner">{{ __('আমি') }} {{ $owner->vehicle->name }} {{ __('এর মালিক') }}</span>
                       <h3>{{ $owner->name }}</h3>
                       
                       <span class="desc">
@@ -34,23 +34,23 @@
                           <div class="designation_name"> সহ সভাপতি</div>
                       </div> --}}
                       <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                          <div class="email">ইমেল - </div>
+                          <div class="email">{{ __('ইমেল - ') }}</div>
                           <div class="email_address">{{ $owner->email }}</div>
                       </div>
                       <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                          <div class="phone">মোবাইল নাম্বার - </div>
+                          <div class="phone">{{ __('মোবাইল নাম্বার - ') }}</div>
                           <div class="number">{{ $owner->phone }}</div>
                       </div>
                       <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                          <div class="car">গাড়ির নাম্বার - </div>
+                          <div class="car">{{ __('গাড়ির নাম্বার - ') }}</div>
                           <div class="car_number">{{ $owner->vehicles_license }}</div>
                       </div>
                       <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                          <div class="blood">ব্লাড গ্রুপ - </div>
+                          <div class="blood">{{ __('ব্লাড গ্রুপ - ') }}</div>
                           <div class="blood_group">{{ $owner->blood_group->blood_group }}</div>
                       </div>
                       <div class="book_now d-none">
-                          <a href="">গাড়ি বুক করুন</a>
+                          <a href="">{{ __('গাড়ি বুক করুন') }}</a>
                       </div>
                   </div>
               </div>
@@ -85,8 +85,8 @@
           <div class="container pt-5 pb-5">
               <div class="row">
                   <div class="d-none d-sm-flex mb-3">
-                      <h3>ইমেজ গ্যালারী - </h3>
-                      <p class="ml-4">মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন সি এন জি স্ট্যান্ড এর </p> 
+                      <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
+                      <p class="ml-4">{{ $owner->district->district }} - {{ $owner->thana->thana }} - {{ $owner->union->union }} {{ $owner->vehicle->name }} স্ট্যান্ড এর</p> 
                   </div>
                   
                   <div class="row gallery_image g-3">

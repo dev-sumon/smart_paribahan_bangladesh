@@ -96,4 +96,24 @@ class Driver extends Authenticatable
     {
         return $this->belongsTo(Stand::class);
     }
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
+    }
+    public function thana()
+    {
+        return $this->belongsTo(Thana::class);
+    }
+    public function union()
+    {
+        return $this->belongsTo(Union::class);
+    }
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'owner_id');
+    }
+    public function vehicleTypes()
+    {
+        return $this->hasManyThrough(Vehicle::class, VehicleType::class, 'vehicle_type_id', 'id', 'id', 'vehicle_id');
+    }
 }
