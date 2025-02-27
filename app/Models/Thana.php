@@ -54,4 +54,8 @@ class Thana extends Model
     {
         return $this->hasMany(Stand::class);
     }
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
+    }
 }

@@ -76,6 +76,7 @@ Route::group(['as' => 'f.'], function () {
 
         Route::get('/division-notice/{id}', 'divisionNotice')->name('divisionNotice');
         Route::get('/district-notice/{id}', 'districtNotice')->name('districtNotice');
+        Route::get('/thana-notice/{id}', 'thanaNotice')->name('thanaNotice');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
