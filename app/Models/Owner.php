@@ -123,7 +123,11 @@ class Owner extends Authenticatable
 
     public function vehicles()
     {
-        return $this->hasMany(Vehicle::class, 'owner_id'); // 'stand_id' পরিবর্তন করে 'owner_id' দিন
+        return $this->hasMany(Vehicle::class, 'owner_id');
+    }
+    public function vehicleTypes()
+    {
+        return $this->hasManyThrough(Vehicle::class, VehicleType::class, 'vehicle_type_id', 'id', 'id', 'vehicle_id');
     }
 
 

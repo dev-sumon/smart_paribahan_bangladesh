@@ -108,7 +108,6 @@
                     <td>
                       <a href="{{ $notice->file ? asset('storage/' . $notice->file) : asset('forntend/images/Group.png') }}" target="_blank">
                         <img src="{{ asset('forntend/images/Group.png') }}" alt="PDF Icon" style="width: 24px;">
-                        {{-- <img src="{{ $notice->file ? asset('storage/' . $notice->file) : asset('forntend/images/Group.png') }}" alt="PDF Icon" class="profile-image mb-3"> --}}
                       </a>
                     </td>
                   </tr>

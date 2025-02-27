@@ -132,7 +132,7 @@
                         <div class="content_nav">
                             <div class="nav1">
                                 <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                    <li><a href="{{ route('f.cng.cng_stand') }}" class="active-link">স্ট্যান্ডের পরিচিতি</a></li>
+                                    <li><a href="{{ route('f.cng.cng_stand') }}" class="active-link">{{ __('স্ট্যান্ডের পরিচিতি') }}</a></li>
                                     <li><a href="{{ route('f.cng.map') }}">মানচিত্রে স্ট্যান্ড</a></li>
                                     <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
                                     <li><a href="{{ route('f.cng.owner') }}">বাইক মালিক এর তালিকা</a></li>
@@ -151,14 +151,13 @@
                             <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                                 <div class="profile text-center">
                                     <div class="profile_image">
-                                        {{-- <img src="{{ asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3"> --}}
                                         <img src="{{ $driver->image ? asset('storage/' . $driver->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
                                     </div>
                                     <div class="beage">+</div>
                                     <div class="profile-details">
                                         <h3>{{ $driver->name }}</h3>
                                         <p class="driver">সি এন জি ড্রাইভার</p>
-                                        <a href="cng_driver_profile.html">আরও জানুন </a>
+                                        <a href="">আরও জানুন </a>
                                         <span>>></span>
                                     </div>
                                 </div>

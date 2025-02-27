@@ -70,10 +70,12 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
         Route::get('/stand-driver/{id}', 'standDriver')->name('standDriver');
         Route::get('/stand-owner/{id}', 'standOwner')->name('standOwner');
+        Route::get('/owner-profile/{id}', 'ownerProfile')->name('ownerProfile');
+
+
+
+
         Route::get('/stand-notice/{id}', 'standNotice')->name('standNotice');
-
-
-
         Route::get('/division-notice/{id}', 'divisionNotice')->name('divisionNotice');
         Route::get('/district-notice/{id}', 'districtNotice')->name('districtNotice');
         Route::get('/thana-notice/{id}', 'thanaNotice')->name('thanaNotice');

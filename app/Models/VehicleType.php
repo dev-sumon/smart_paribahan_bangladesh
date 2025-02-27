@@ -41,4 +41,8 @@ class VehicleType extends Model
     {
         return $this->hasMany(Vehicle::class, 'vehicle_type_id');
     }
+    public function owners()
+    {
+        return $this->belongsTo(Owner::class, '');
+    }
 }
