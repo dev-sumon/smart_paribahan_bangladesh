@@ -49,4 +49,8 @@ class Notice extends Model
     {
         return $this->belongsTo(Stand::class,'stand_id');
     }
+    // public function division()
+    // {
+    //     return $this->belongsTo(Division::class);
+    // }
 }

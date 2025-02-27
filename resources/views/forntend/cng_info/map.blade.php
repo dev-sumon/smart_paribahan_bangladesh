@@ -1,5 +1,5 @@
 @extends('forntend.layouts.master', ['page_slug'=>'map'])
-@section('title', 'StandMap')
+@section('title', 'Stand Map')
 @section('content')
     <!-- inner_page_hero section start-->
     <section class="inner_page_hero mt-5">
