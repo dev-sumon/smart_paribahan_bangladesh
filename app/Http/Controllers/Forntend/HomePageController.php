@@ -75,7 +75,7 @@ class HomePageController extends Controller
             $data['vehicle_type'] = VehicleType::with(['stand.division', 'stand.district', 'stand.thana', 'stand.union', 'vehicles'])->findOrFail($request->vehicle_type_id);
             return view('forntend.cng_info.vehicle', $data);
         } elseif ($request->stand_id) {
-            $data['stand'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles'])->findOrFail($request->stand_id);
+            $data['stand'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices'])->findOrFail($request->stand_id);
             return view('forntend.cng_info.stand', $data);
         } elseif ($request->union_id) {
             $data['union'] = Union::with(['division', 'district', 'thana', 'stands.vehicleTypes.vehicles', 'notices'])->findOrFail($request->union_id);
