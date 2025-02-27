@@ -1,5 +1,5 @@
 @extends('forntend.layouts.master')
-@section('title', 'District')
+@section('title', 'Union')
 @section('content')
     <section class="notice">
         <div class="container py-5">

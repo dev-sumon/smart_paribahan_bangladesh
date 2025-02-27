@@ -71,6 +71,10 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/stand-driver/{id}', 'standDriver')->name('standDriver');
         Route::get('/stand-owner/{id}', 'standOwner')->name('standOwner');
         Route::get('/stand-notice/{id}', 'standNotice')->name('standNotice');
+
+
+
+        Route::get('/division-notice/{id}', 'divisionNotice')->name('divisionNotice');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){

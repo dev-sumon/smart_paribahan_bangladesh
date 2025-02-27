@@ -55,5 +55,9 @@ class Division extends Model
     {
         return $this->hasMany(Notice::class);
     }
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
+    }
 
 }

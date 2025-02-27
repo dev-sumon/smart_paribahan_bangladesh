@@ -88,7 +88,7 @@ class HomePageController extends Controller
             return view('forntend.cng_info.district', $data);
         }
         if ($request->division_id) {
-            $data['division'] = Division::with(['districts', 'thanas', 'unions', 'stands.vehicleTypes.vehicles'])->findOrFail($request->division_id);
+            $data['division'] = Division::with(['districts', 'thanas', 'unions', 'stands.vehicleTypes.vehicles', 'notices'])->findOrFail($request->division_id);
             return view('forntend.cng_info.division', $data);
         }
     }
@@ -119,8 +119,23 @@ class HomePageController extends Controller
     }
     public function standNotice($id)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices')->findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices')->latest()->findOrFail($id);
         return view('forntend.cng_info.notice', $data);
     }
+
+
+
+
+
+
+
+
+    public function divisionNotice($id)
+    {
+        $data['division_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}
+    ])->findOrFail($id);
+        return view('forntend.cng_info.division_notice', $data);
+    }
+
 
 }
