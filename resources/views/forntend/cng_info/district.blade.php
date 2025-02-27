@@ -8,43 +8,21 @@
                     <div class="title pt-2">
                         <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
+                    @foreach ($district->notices->take(4) as $key=>$notice)
+                        <div class="notice_list d-flex align-items-center">
+                            <div class="icon-button">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="notice_head_line">
+                                <p class="p-0">{{ $notice->title }}</p>
+                            </div>
                         </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="notice_page.html" class="gradient-border-button">
+                        <a href="{{ route('f.home.districtNotice', $district->id) }}" class="gradient-border-button">
                             <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
-                        </a>
+                            </a>
                     </div>
 
                 </div>
