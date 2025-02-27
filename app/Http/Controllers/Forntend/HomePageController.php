@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Forntend;
 
+use App\Models\Faq;
+use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
@@ -11,7 +13,6 @@ use App\Models\Division;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
 
 class HomePageController extends Controller
 {
@@ -117,10 +118,12 @@ class HomePageController extends Controller
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'owners', 'notices')->findOrFail($id);
         return view('forntend.cng_info.owner_list', $data);
     }
-    public function standNotice($id)
+    public function ownerProfile($id)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices')->latest()->findOrFail($id);
-        return view('forntend.cng_info.notice', $data);
+        // $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'vehicles', 'owners', 'notices')->findOrFail($id);
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicles')->findOrFail($id);
+
+        return view('forntend.cng_info.owner_details', $data);
     }
 
 
@@ -130,6 +133,14 @@ class HomePageController extends Controller
 
 
 
+
+
+
+    public function standNotice($id)
+    {
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices')->latest()->findOrFail($id);
+        return view('forntend.cng_info.notice', $data);
+    }
     public function divisionNotice($id)
     {
         $data['division_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}

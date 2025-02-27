@@ -155,7 +155,7 @@
                                             <p class="owner">সি এন জি মালিক</p>
                                             <h3>{{ $owner->name }}</h3>
                                             <p class="number">{{ $owner->phone }}</p>
-                                            <a href="cng_owner_profile.html">আরও জানুন </a>
+                                            <a href="{{ route('f.home.ownerProfile', $owner->id) }}">{{ __('আরও জানুন') }}</a>
                                             <span>>></span>
                                         </div>
                                     </div>
