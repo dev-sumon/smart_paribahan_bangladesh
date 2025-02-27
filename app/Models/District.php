@@ -57,5 +57,9 @@ class District extends Model
     {
         return $this->hasMany(Driver::class, 'district_id');
     }
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
+    }
 
 }

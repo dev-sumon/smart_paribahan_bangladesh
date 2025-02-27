@@ -1,12 +1,11 @@
 @extends('forntend.layouts.master')
-@section('title', $division_notice->division->division)
+@section('title', $district_notice->district->district)
 @section('content')
      <!-- president and members section start-->
      <section class="president_and_members pt-5 pb-4">
         <div class="container">
             <div class="stand_location">
-                {{-- <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5> --}}
-                <h3>{{ $division_notice->division->division }}</h3>
+                <h3>{{ $district_notice->division->division }} - {{ $district_notice->district->district }}</h3>
             </div>
         </div>
     </section>
@@ -20,7 +19,7 @@
                     <div class="title pt-2">
                         <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                      @foreach ($division_notice->notices->take(4) as $key=>$notice)
+                      @foreach ($district_notice->notices->take(4) as $key=>$notice)
                           <div class="notice_list d-flex align-items-center">
                               <div class="icon-button">
                                   <i class="fa-solid fa-chevron-right"></i>
@@ -31,11 +30,17 @@
                           </div>
                       @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="#" class="gradient-border-button">
+                        <a href="{{ route('f.home.districtNotice', $district_notice->id) }}" class="gradient-border-button">
                             <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                             </a>
                     </div>
+                    {{-- <div class="all_notice_button text-end">
+                      <a href="{{ route('f.home.divisionNotice', $division->id) }}" class="gradient-border-button">
+                          <span>{{ __('সকল') }}</span>
+                          <i class="fa-solid fa-arrow-right arrow"></i>
+                      </a>
+                  </div> --}}
                                         
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
@@ -64,7 +69,7 @@
                 <div class="year col-12 col-md-6">
                   <select name="" id="" class="form-select">
                     <option value="">{{ __('তারিখ নির্বাচন করুন') }}</option>
-                      @foreach ($division_notice->notices as $notice)
+                      @foreach ($district_notice->notices as $notice)
                           <option value="{{ $notice->id }}">{{ $notice->date }}</option>
                       @endforeach
                   </select>
@@ -72,7 +77,7 @@
                 <div class="notice_type col-12 col-md-6">
                   <select name="" id="" class="form-select">
                     <option value="">{{ __('বিভাগ') }}</option>
-                      @foreach ($division_notice->notices as $notice)
+                      @foreach ($district_notice->notices as $notice)
                           <option value="{{ $notice->id }}">{{ $notice->category }}</option>
                       @endforeach
                   </select>
@@ -95,7 +100,7 @@
               </thead>
               <tbody>
                 
-                @foreach ($division_notice->notices as $key=>$notice)
+                @foreach ($district_notice->notices as $key=>$notice)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $notice->title }}</td>
