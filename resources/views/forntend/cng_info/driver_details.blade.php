@@ -19,16 +19,13 @@
      <div class="profile_section pt-5 pb-4">
         <div class="container">
             <div class="profile_deatils d-lg-flex d-md-block column-gap-5">
-                <div class="profile_image text-center py-md-5">
-                    <img src="{{ $driver->image ? asset('storage/' . $driver->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3">
-                    {{-- <img src="images/Rectangle 3850.png" alt=""> --}}
+                <div class="profile_image text-center">
+                    <img src="{{ $driver->image ? asset('storage/' . $driver->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3 rounded-2">
                 </div>
                 <div class="profile_info">
                     <span class="owner">আমি এর ড্রাইভার</span>
-                    {{-- <h3>মুহাম্মদ আশফাক জামিল</h3> --}}
                     <h3>{{ $driver->name }}</h3>
                     <span class="desc">
-                      {{-- একটি লক্ষ্য ঠিক করো। সেই লক্ষ্যকে নিজের জীবনের অংশ বানিয়ে ফেলো। চিন্তা করো, স্বপ্ন দেখো। তোমার মস্তিষ্ক, পেশী, রক্তনালী – পুরো শরীরে সেই লক্ষ্যকে ছড়িয়ে দাও, আর বাকি সবকিছু ভুলে যাও। এটাই সাফল্যের পথ।” – স্বামীজী --}}
                       {{ $driver->description }}
                     </span>
                     {{-- <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
@@ -45,7 +42,13 @@
                     </div>
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                         <div class="car">গাড়ির নাম্বার - </div>
-                        {{-- <div class="car_number">{{ $driver->vehicles->vehicle_licence }}</div> --}}
+                        <div class="car_number">
+                            {{-- {{ $driver->vehicles->vehicle_licence }} --}}
+                            {{-- @foreach($driver->vehicles as $vehicle) --}}
+                            {{-- {{ $driver->vehicles->vehicle_licence }} --}}
+                        {{-- @endforeach --}}
+
+                        </div>
                     </div>
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                         <div class="blood">ব্লাড গ্রুপ - </div>
@@ -84,37 +87,38 @@
       <div class="container pt-5 pb-5">
           <div class="row">
               <div class="d-none d-sm-flex mb-3">
-                  <h3>ইমেজ গ্যালারী - </h3>
-                  <p class="ml-4">মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন সি এন জি স্ট্যান্ড এর </p> 
+                  <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
+                  {{-- <p class="ml-4">মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন সি এন জি স্ট্যান্ড এর </p>  --}}
+                  <p class="ml-4">{{ $driver->district->district }} - {{ $driver->thana->thana }} - {{ $driver->union->union }} - {{ $driver->stand->name }} {{ __('স্ট্যান্ড এর') }}</p> 
               </div>
               
               <div class="row gallery_image g-3">
                   <div class="col-6 col-md-4">
                       <div class="">
-                          <img src="images/Rectangle 3842.png" alt="" class="img-fluid">
+                          <img src="{{ asset('forntend/images/Rectangle 3842.png') }}" alt="" class="img-fluid">
                       </div>
                   </div>
                   <div class="col-6 col-md-4">
                       <div class="">
-                          <img src="images/Rectangle 3844.png" alt="" class="img-fluid">
+                          <img src="{{ asset('forntend/images/Rectangle 3844.png') }}" alt="" class="img-fluid">
                       </div>
                   </div>
                   <div class="col-12 col-md-4">
                       <div class=""></div>
-                      <img src="images/Rectangle 3846.png" alt="" class="img-fluid">
+                      <img src="{{ asset('forntend/images/Rectangle 3846.png') }}" alt="" class="img-fluid">
                   </div>
               </div>
           </div>
           <div class="row pt-3">
               <div class="row gallery_image g-3">
                   <div class="col-6 col-md-4">
-                      <img src="images/Rectangle 3847.png" alt="" class="img-fluid">
+                      <img src="{{ asset('forntend/images/Rectangle 3847.png') }}" alt="" class="img-fluid">
                   </div>
                   <div class="col-6 col-md-4">
-                      <img src="images/Rectangle 3843.png" alt="" class="img-fluid">
+                      <img src="{{ asset('forntend/images/Rectangle 3843.png') }}" alt="" class="img-fluid">
                   </div>
                   <div class="col-12 col-md-4">
-                      <img src="images/Rectangle 3845 (1).png" alt="" class="img-fluid">
+                      <img src="{{ asset('forntend/images/Rectangle 3845 (1).png') }}" alt="" class="img-fluid">
                   </div>
               </div>
           </div>
