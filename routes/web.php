@@ -39,6 +39,7 @@ use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginC
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\LoginController;
 use App\Http\Controllers\Forntend\SignUpController;
+use App\Http\Controllers\Backend\NoticeCategoryController;
 use App\Http\Controllers\Owner\Auth\OwnerSignupController;
 
 // use Illuminate\Support\Facades\Auth;
@@ -228,6 +229,17 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     });
 
     Route::controller(FieldWorkerController::class)->prefix('worker')->name('worker.')->group( function(){
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+
+    Route::controller(NoticeCategoryController::class)->prefix('notice-category')->name('notice_category.')->group(function(){
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');

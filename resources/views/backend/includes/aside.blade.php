@@ -59,6 +59,12 @@
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="{{ route('notice_category.index') }}" class="nav-link {{ $page_slug == 'notice_category' ? 'active' : '' }}">
+              <i class="nav-icon fa-solid fa-bell-concierge"></i>
+              <p>{{ __('Notice Category') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="{{ route('notice.index') }}" class="nav-link {{ $page_slug == 'notice' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-bell"></i>
               <p>{{ __('Notice') }}</p>
