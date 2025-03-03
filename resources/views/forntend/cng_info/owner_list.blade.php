@@ -153,6 +153,7 @@
                                     <img src="{{ $owner->image ? asset('storage/' . $owner->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3" style="height: 200px; width: 180px;">
                                         <div class="profile-details">
                                             <p class="owner">সি এন জি মালিক</p>
+                                            {{-- <p class="owner">সি এন জি মালিক</p> --}}
                                             <h3>{{ $owner->name }}</h3>
                                             <p class="number">{{ $owner->phone }}</p>
                                             <a href="{{ route('f.home.ownerProfile', $owner->id) }}">{{ __('আরও জানুন') }}</a>

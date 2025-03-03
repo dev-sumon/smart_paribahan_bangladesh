@@ -157,6 +157,7 @@
                                     <div class="profile-details">
                                         <h3>{{ $driver->name }}</h3>
                                         <p class="driver">সি এন জি ড্রাইভার</p>
+                                        {{-- <p class="driver">{{ $stand->vehicleTypes->name }}</p> --}}
                                         <a href="{{ route('f.home.driverProfile', $driver->id) }}">আরও জানুন </a>
                                         <span>>></span>
                                     </div>

@@ -121,14 +121,12 @@ class HomePageController extends Controller
     }
     public function ownerProfile($id)
     {
-        // $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'vehicles', 'owners', 'notices')->findOrFail($id);
         $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicles')->findOrFail($id);
 
         return view('forntend.cng_info.owner_details', $data);
     }
     public function driverProfile($id)
     {
-        // $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'vehicles', 'owners', 'notices')->findOrFail($id);
         $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'vehicles')->findOrFail($id);
 
         return view('forntend.cng_info.driver_details', $data);
