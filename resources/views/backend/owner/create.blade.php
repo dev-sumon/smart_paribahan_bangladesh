@@ -116,13 +116,13 @@
                                             <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
                                         @endif
                                     </div> --}}
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="vehicles_license">{{ __('Vehicles License') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="vehicles_license" placeholder="Enter The Vehicle License Number" name="vehicles_license" value="{{ old('vehicles_license') }}">
                                         @if($errors->has('vehicles_license'))
                                             <div class="text-danger">{{ $errors->first('vehicles_license') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }}</label>
                                         <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
@@ -170,7 +170,7 @@
 @endsection
 
 @push('script')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#division').on('change', function() {
                 let divisionId = $(this).val();
@@ -279,6 +279,150 @@
                         $.each(vehicles, function(index, vehicle) {
                             vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicle.name + '</option>');
                         });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script> --}}
+    <script>
+        $(document).ready(function() {
+            $('#division').on('change', function() {
+                let divisionId = $(this).val();
+                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let districts = response.data;
+                        let districtSelect = $('#district');
+                        districtSelect.empty();
+                        districtSelect.append('<option value="">Select District</option>');
+
+                        $.each(districts, function(index, district) {
+                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#district').on('change', function() {
+                let districtId = $(this).val();
+                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let thanas = response.data;
+                        let thanaSelect = $('#thana');
+                        thanaSelect.empty();
+                        thanaSelect.append('<option value="">Select Thana</option>');
+
+                        $.each(thanas, function(index, thana) {
+                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#thana').on('change', function() {
+                let unionId = $(this).val();
+                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let unions = response.data;
+                        let unionSelect = $('#union');
+                        unionSelect.empty();
+                        unionSelect.append('<option value="">Select Union</option>');
+
+                        $.each(unions, function(index, union) {
+                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#union').on('change', function() {
+                let standId = $(this).val();
+                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let stands = response.data;
+                        let standSelect = $('#stand');
+                        standSelect.empty();
+                        standSelect.append('<option value="">Select Stand</option>');
+
+                        $.each(stands, function(index, stand) {
+                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+            $('#stand').on('change', function () {
+                let standId = $(this).val();
+                let url = '{{ route("ajax.standVehicles", ":id") }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (response) {
+                        let vehicleSelect = $('#vehicle');
+                        vehicleSelect.empty();
+                        vehicleSelect.append('<option value="" selected hidden>Select Vehicle</option>');
+
+                        if (response.data.length > 0) {
+                            $.each(response.data, function (index, vehicle) {
+                                let vehicleText = `${vehicle.name} : ${vehicle.vehicle_licence}`;
+                                vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicleText + '</option>');
+                            });
+                        } else {
+                            vehicleSelect.append('<option value="" disabled>No Vehicles Found</option>');
+                        }
+                    },
+                    error: function (error) {
+                        console.error('AJAX Error:', error);
+                    }
+                });
+            });
+            $('#vehicle').on('change', function() {
+                let vehicleId = $(this).val();
+                let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let licenseSelect = $('#vehicles_license');
+                        licenseSelect.empty();
+                        licenseSelect.append('<option value="">Select Vehicles License</option>');
+
+                        if (response.success && response.data.length > 0) {
+                            licenseSelect.append('<option value="' + response.data[0] + '">' + response.data[0] + '</option>');
+                        } else {
+                            licenseSelect.append('<option value="">No License Available</option>');
+                        }
                     },
                     error: function(error) {
                         console.log(error);
