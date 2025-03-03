@@ -28,6 +28,11 @@ class DashboardController extends Controller
         $data['driver'] = Driver::findOrFail($id);
         $data['bloods'] = BloodGroup::latest()->get();
         $data['divisions'] = Division::latest()->get();
+        $data['districts'] = District::latest()->get();
+        $data['thanas'] = Thana::latest()->get();
+        $data['unions'] = Union::latest()->get();
+        $data['stands'] = Stand::latest()->get();
+        $data['vehicles'] = Vehicle::latest()->get();
     
         return view('driver.dashboard.dashboard', $data);
     }
