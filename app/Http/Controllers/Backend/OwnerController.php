@@ -58,6 +58,11 @@ class OwnerController extends Controller
         }
 
         $save->save();
+
+        if ($request->vehicle_id) {
+            Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $save->id]);
+        }
+
         return redirect()->route('owner.index');
     }
     public function update($id): View
@@ -99,6 +104,11 @@ class OwnerController extends Controller
         $update->image = $path;
 
         $update->save();
+
+        if ($request->vehicle_id) {
+            Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $update->id]);
+        }
+
         return redirect()->route('owner.index');
     }
     public function status($id): RedirectResponse

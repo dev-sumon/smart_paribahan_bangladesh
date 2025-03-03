@@ -43,7 +43,8 @@
                       </div>
                       <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                           <div class="car">{{ __('গাড়ির নাম্বার - ') }}</div>
-                          <div class="car_number">{{ $owner->vehicles_license }}</div>
+                          <div class="car_number">{{ $owner->vehicle ? $owner->vehicle->vehicle_licence : 'No License Available' }}</div>
+                          
                       </div>
                       <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                           <div class="blood">{{ __('ব্লাড গ্রুপ - ') }}</div>

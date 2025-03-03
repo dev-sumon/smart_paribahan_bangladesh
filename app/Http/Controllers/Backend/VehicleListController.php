@@ -25,8 +25,8 @@ class VehicleListController extends Controller
     public function create(): view
     {
         $data['vehicle_types'] = VehicleType::latest()->get();
-        $data['owners'] = Owner::latest()->get();
-        $data['drivers'] = Driver::latest()->get();
+        $data['owners'] = Owner::whereNull('vehicle_id')->latest()->get();
+        $data['drivers'] = Driver::whereNull('vehicle_id')->latest()->get();
         $data['stands'] = Stand::latest()->get();
         return view('backend.vehicle.create', $data);
     }
@@ -44,6 +44,14 @@ class VehicleListController extends Controller
         
 
         $save->save();
+
+
+        if ($request->driver_id) {
+            Driver::where('id', $request->driver_id)->update(['vehicle_id' => $save->id]);
+        }
+        if ($request->owner_id) {
+            Owner::where('id', $request->owner_id)->update(['vehicle_id' => $save->id]);
+        }
         return redirect()->route('vehicle.index');
     }
     // public function update($id): View
@@ -74,6 +82,15 @@ class VehicleListController extends Controller
         
 
         $update->update();
+
+        if ($request->driver_id) {
+            Driver::where('id', $request->driver_id)->update(['vehicle_id' => $update->id]);
+        }
+        if ($request->owner_id) {
+            Owner::where('id', $request->owner_id)->update(['vehicle_id' => $update->id]);
+        }
+
+
         return redirect()->route('vehicle.index');
     }
     public function status($id): RedirectResponse
