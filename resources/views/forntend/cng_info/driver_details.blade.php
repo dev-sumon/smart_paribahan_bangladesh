@@ -43,7 +43,8 @@
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                         <div class="car">গাড়ির নাম্বার - </div>
                         <div class="car_number">
-                            {{-- {{ $driver->vehicles->vehicle_licence }} --}}
+                            {{-- {{ $driver->vehicle->vehicle_licence }} --}}
+                            {{ $driver->vehicle ? $driver->vehicle->vehicle_licence : 'No License Available' }}
                             {{-- @foreach($driver->vehicles as $vehicle) --}}
                             {{-- {{ $driver->vehicles->vehicle_licence }} --}}
                         {{-- @endforeach --}}

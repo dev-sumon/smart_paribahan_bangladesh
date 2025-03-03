@@ -59,7 +59,7 @@ class AjaxController extends Controller
     }
     public function vehicle(Request $request, $id): JsonResponse
     {
-        $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
+        $vehicles = Vehicle::where('stand_id', $id)->whereNull('driver_id')->latest()->get();
         return response()->json([
             'success' => true,
             'data' => $vehicles
