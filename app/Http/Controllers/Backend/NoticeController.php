@@ -10,6 +10,7 @@ use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
+use App\Models\NoticeCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticeRequest;
 use Illuminate\Http\RedirectResponse;
@@ -25,6 +26,11 @@ class NoticeController extends Controller
     public function create(): View
     {
         $data['divisions'] = Division::latest()->get();
+        $data['districts'] = District::latest()->get();
+        $data['thanas'] = Thana::latest()->get();
+        $data['unions'] = Union::latest()->get();
+        $data['stands'] = Stand::latest()->get();
+        $data['categories'] = NoticeCategory::latest()->get();
         return view('backend.notice.create', $data);
     }
     public function store(NoticeRequest $request): RedirectResponse
@@ -38,7 +44,7 @@ class NoticeController extends Controller
         $save->stand_id = $request->stand_id;
         $save->title = $request->title;
         $save->date = $request->date;
-        $save->category = $request->category;
+        $save->notice_category_id = $request->notice_category_id;
         $save->status = $request->status ?? 0;
 
         if ($request->hasFile('file')) {
@@ -46,7 +52,10 @@ class NoticeController extends Controller
             $filename = $request->name . time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs("notices/", $filename, 'public');
             $save->file = $path;
-        }        
+        }
+        
+        // dd($request->all());
+
 
         $save->save();
         return redirect()->route('notice.index');
@@ -54,7 +63,7 @@ class NoticeController extends Controller
     public function update($id): View
     {
 
-        $data['notice'] = Notice::findOrFail($id);
+        $data['notice'] = Notice::all($id);
         $data['divisions'] = Division::all();
         $data['districts'] = District::where('division_id', $data['notice']->division_id)->get();
         $data['thanas'] = Thana::where('district_id', $data['notice']->district_id)->get();

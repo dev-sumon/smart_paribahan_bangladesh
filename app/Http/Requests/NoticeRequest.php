@@ -25,7 +25,6 @@ class NoticeRequest extends FormRequest
             'title' => 'required|string|min:20|max:250',
             'status' => 'required|boolean',
             'date' => 'required|string|min:4|max:9',
-            'category' => 'required|string|min:3|max:50',
             'file' => 'required|mimes:pdf',
 
         ]
@@ -40,6 +39,7 @@ class NoticeRequest extends FormRequest
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
             'stand_id' => 'required|exists:stands,id',
+            'notice_category_id' => 'required|exists:notice_categories,id',
         ];
     }
     protected function update(): array
@@ -50,6 +50,7 @@ class NoticeRequest extends FormRequest
             'thana_id' => 'nullable|exists:thanas,id',
             'union_id' => 'nullable|exists:unions,id',
             'stand_id' => 'nullable|exists:stands,id',
+            'notice_category_id' => 'nullable|exists:notice_categories,id',
         ];
     }
 }
