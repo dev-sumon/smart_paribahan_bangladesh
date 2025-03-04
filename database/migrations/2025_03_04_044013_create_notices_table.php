@@ -11,20 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('notices', function (Blueprint $table) {
+        Schema::create('notices', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('date');
+            $table->string('file');
+            $table->boolean('status');
+            $table->unsignedBigInteger('notice_category_id')->nullable();
+            $table->foreign('notice_category_id')->references('id')->on('notice_category')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('division_id')->nullable();
-            $table->unsignedBigInteger('district_id')->nullable();
-            $table->unsignedBigInteger('thana_id')->nullable();
-            $table->unsignedBigInteger('union_id')->nullable();
-            $table->unsignedBigInteger('stand_id')->nullable();
-
-
-
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('district_id')->nullable();
             $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('thana_id')->nullable();
             $table->foreign('thana_id')->references('id')->on('thanas')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('union_id')->nullable();
             $table->foreign('union_id')->references('id')->on('unions')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('stand_id')->nullable();
             $table->foreign('stand_id')->references('id')->on('stands')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 
@@ -33,12 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('notices', function (Blueprint $table) {
-            $table->dropForeign(['division_id']);
-            $table->dropForeign(['district_id']);
-            $table->dropForeign(['thana_id']);
-            $table->dropForeign(['union_id']);
-            $table->dropForeign(['stand_id']);
-        });
+        Schema::dropIfExists('notices');
     }
 };

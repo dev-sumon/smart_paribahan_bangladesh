@@ -25,7 +25,7 @@
                                         <select name="division_id" id="division" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Division') }}</option>
                                             @foreach ($divisions as $division)
-                                                <option value="{{ $division->id }}">{{ $division->division }}</option>
+                                                <option value="{{ $division->id }}" {{ $division->id==old('division_id') ? 'selected' : '' }}>{{ $division->division }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('division_id'))
@@ -36,7 +36,10 @@
                                     <div class="form-group">
                                         <label for="district">{{ __('District') }}<span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
-                                            <option value="" selected hidden>{{ __('Select District') }}</option>
+                                            <option value="" selected hidden >{{ __('Select District') }}</option>
+                                            @foreach ($districts as $district)
+                                                <option value="{{ $district->id }}" {{ $district->id==old('district_id') ? 'selected' : '' }}>{{ $district->district }}</option>
+                                            @endforeach
                                         </select>
                                         @if($errors->has('district_id'))
                                             <div class="text-danger">{{ $errors->first('district_id') }}</div>
@@ -47,6 +50,9 @@
                                         <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
+                                            @foreach ($thanas as $thana)
+                                                <option value="{{ $thana->id }}" {{ $thana->id==old('thana_id') ? 'selected' : '' }}>{{ $thana->thana }}</option>
+                                            @endforeach
                                         </select>
                                         @if($errors->has('thana_id'))
                                             <div class="text-danger">{{ $errors->first('thana_id') }}</div>
@@ -56,6 +62,9 @@
                                         <label for="union">{{ __('Union') }}<span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
+                                            @foreach ($unions as $union)
+                                                <option value="{{ $union->id }}" {{ $union->id==old('union_id') ? 'selected' : '' }}>{{ $union->union }}</option>
+                                            @endforeach
                                         </select>
                                         @if($errors->has('union_id'))
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
@@ -65,6 +74,9 @@
                                         <label for="stand">{{ __('Stand') }}<span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
+                                            @foreach ($stands as $stand)
+                                                <option value="{{ $stand->id }}" {{ $stand->id==old('stand_id') ? 'selected' : '' }}>{{ $stand->name }}</option>
+                                            @endforeach
                                         </select>
                                         @if($errors->has('stand_id'))
                                         <div class="text-danger">{{ $errors->first('stand_id') }}</div>
@@ -86,7 +98,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="category" class="mt-3">{{ __('Category') }} <span class="text-danger">*</span></label>
-                                        <input type="text" name="category" value="{{ old('category') }}" class="form-control" placeholder="Enter The Category">
+                                        {{-- <input type="text" name="category" value="{{ old('category') }}" class="form-control" placeholder="Enter The Category"> --}}
+                                        <select name="notice_category_id" id="notice_category_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Division') }}</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                         @if($errors->has('category'))
                                             <div class="text-danger">{{ $errors->first('category') }}</div>
                                         @endif
@@ -140,6 +158,7 @@
                         districtSelect.append('<option value="">Select District</option>');
 
                         $.each(districts, function(index, district) {
+                            // let selected = (district.id == old('district_id')) ? 'selected' : '';
                             districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
                         });
                     },
