@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Driver\Auth;
 
 use App\Models\Driver;
+use App\Models\Vehicle;
 use App\Models\Division;
 use App\Models\BloodGroup;
 use Illuminate\Http\Request;
@@ -46,6 +47,11 @@ class DriverRegistrationController extends Controller
         }
         
         $save->save();
+
+        if ($request->vehicle_id) {
+            Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $save->id]);
+        }
+
         return redirect()->route('f.home');
     }
     // public function update($id): View
