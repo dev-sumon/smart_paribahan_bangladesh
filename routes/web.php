@@ -90,7 +90,7 @@ Route::group(['as' => 'f.'], function () {
 
     Route::controller(BlogPageController::class)->prefix('blog')->name('blog.')->group(function(){
         Route::get('/', 'index')->name('index');
-        Route::get('/inner_blog', 'inner_blog')->name('inner_blog');
+        Route::get('/inner_blog/{id}', 'inner_blog')->name('inner_blog');
     });
 
     Route::controller(ContactUsController::class)->prefix('contact-us')->name('contact.')->group(function(){
