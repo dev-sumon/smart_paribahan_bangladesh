@@ -33,6 +33,8 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
+  {{-- custom css --}}
+  <link rel="stylesheet" href="{{ asset('backend/dist/css/custom.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
