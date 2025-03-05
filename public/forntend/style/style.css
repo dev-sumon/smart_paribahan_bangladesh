@@ -2634,3 +2634,28 @@ footer .copy_right{
     text-decoration: none;
 }
 /* Footer end */
+
+.page-item.disabled .page-link {
+
+    background-color: #fff;
+    border-color: #ff2626;
+    color: #ff2626;
+}
+.pagination .page-item .page-link{
+    color: #ff2626;
+    border-color: #ff2626;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #ff2626 !important;
+}
+.page-item.active .page-link:focus{
+    outline: none;
+}
+.pagination .align-items-sm-center{
+    gap: 10px;
+}
+.pagination .align-items-sm-center{
+    justify-content: end;
+}
