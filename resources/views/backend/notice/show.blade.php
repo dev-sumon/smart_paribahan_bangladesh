@@ -33,7 +33,7 @@
                                         <tr>
                                             <th>{{ __('Category') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $notice->category }}</td>
+                                            <td> {{ $notice->noticeCategory->name ?? 'No Category' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('File') }}</th>

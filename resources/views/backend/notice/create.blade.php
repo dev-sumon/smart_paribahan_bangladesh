@@ -98,9 +98,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="category" class="mt-3">{{ __('Category') }} <span class="text-danger">*</span></label>
-                                        {{-- <input type="text" name="category" value="{{ old('category') }}" class="form-control" placeholder="Enter The Category"> --}}
                                         <select name="notice_category_id" id="notice_category_id" class="form-control">
-                                            <option value="" selected hidden>{{ __('Select Division') }}</option>
+                                            <option value="" selected hidden>{{ __('Select Notice Category') }}</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
@@ -120,7 +119,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>

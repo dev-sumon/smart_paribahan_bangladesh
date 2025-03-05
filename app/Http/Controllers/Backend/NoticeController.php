@@ -54,8 +54,6 @@ class NoticeController extends Controller
             $save->file = $path;
         }
         
-        // dd($request->all());
-
 
         $save->save();
         return redirect()->route('notice.index');
@@ -63,12 +61,13 @@ class NoticeController extends Controller
     public function update($id): View
     {
 
-        $data['notice'] = Notice::all($id);
+        $data['notice'] = Notice::findOrFail($id);
         $data['divisions'] = Division::all();
         $data['districts'] = District::where('division_id', $data['notice']->division_id)->get();
         $data['thanas'] = Thana::where('district_id', $data['notice']->district_id)->get();
         $data['unions'] = Union::where('thana_id', $data['notice']->thana_id)->get();
-        $data['stands'] = Stand::where('union_id', $data['notice']->union_id)->get(); 
+        $data['stands'] = Stand::where('union_id', $data['notice']->union_id)->get();
+        $data['notice_categories'] = NoticeCategory::where('notice_category_id', $data['notice']->notice_category_id)->get();
 
 
         return view('backend.notice.edit', $data);
@@ -122,7 +121,7 @@ class NoticeController extends Controller
     }
     public function detalis($id): view
     {
-        $data['notice'] = Notice::findOrFail($id);
+        $data['notice'] = Notice::with('noticeCategory')->findOrFail($id);
         return view('backend.notice.show', $data);
     }
 }

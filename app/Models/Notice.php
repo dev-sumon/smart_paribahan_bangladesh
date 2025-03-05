@@ -53,4 +53,8 @@ class Notice extends Model
     // {
     //     return $this->belongsTo(Division::class);
     // }
+    public function noticeCategory()
+    {
+        return $this->belongsTo(NoticeCategory::class, 'notice_category_id');
+    }
 }
