@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone" class="mt-3">{{ __('মোবাইল নাম্বার') }} <span class="text-danger">*</span></label>
-                                <input type="tel" name="phone" style="border: 2px solid #ea1827" value="{{ old('phone') }}" class="form-control" placeholder="মোবাইল নাম্বার" value="{{ old('phone' ?? $driver->phone) }}">
+                                <input type="tel" name="phone" style="border: 2px solid #ea1827" class="form-control" placeholder="মোবাইল নাম্বার" value="{{  $driver->phone ?? old('phone') }}">
                                 @if($errors->has('phone'))
                                     <div class="text-danger">{{ $errors->first('phone') }}</div>
                                 @endif
@@ -175,137 +175,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="form-group">
-                                <label class="mt-3" for="owner_id">{{ __('Vehicles License') }}</label>
-                                <select name="owner_id" id="owner_id" class="form-control">
-                                    <option value="" selected hidden>{{ __('Select Vehicles License') }}</option>
-                                    @foreach ($owners as $owner)
-                                        <option value="{{ $owner->id }}" {{ (old('owner_id', $driver->owner_id) == $owner->id) ? 'selected' : '' }}>
-                                            {{ $owner->vehicles_license }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('owner_id'))
-                                <div class="text-danger">{{ $errors->first('owner_id') }}</div>
-                                @endif
-                            </div> --}}
-                            
-                            {{-- 
-                            <div class="form-group">
-                                <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                @if($driver->image)
-                                    <img src="" alt="" class="display-image" style="width: 100%; height: auto; object-fit: cover;">
-                                @else
-                                    <p>{{ __('No image available') }}</p>
-                                @endif
-                                <input type="file" class="form-control h-auto" id="image" placeholder="Enter Driver Image" name="image" style="border: 2px solid #ea1827">
-                                @if($errors->has('image'))
-                                    <div class="text-danger">{{ $errors->first('image') }}</div>
-                                @endif
-                            </div> --}}
-                            {{-- <div class="form-group">
-                                <label for="name">{{ __('নাম') }}</label>
-                                <input type="text" class="form-control" id="name" placeholder="আপনার নাম লিখুন" name="name" value="{{ old('name') }}">
-                                @if($errors->has('name'))
-                                    <div class="text-danger">{{ $errors->first('name') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="description">{{ __('ডেসক্রিপশন') }}</label>
-                                <input type="text" class="form-control" id="description" placeholder="আপনার সম্পর্কে লিখুন" name="description" value="{{ old('description') }}">
-                                @if($errors->has('description'))
-                                    <div class="text-danger">{{ $errors->first('description') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="designation">{{ __('পদবি ') }}</label>
-                                <input type="text" class="form-control" id="designation" placeholder="আপনার পদবি লিখুন" name="designation" value="{{ old('designation') }}">
-                                @if($errors->has('designation'))
-                                    <div class="text-danger">{{ $errors->first('designation') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="driving_license">{{ __('ড্রাইভিং লাইসেন্স ') }}</label>
-                                <input type="text" class="form-control" id="driving_license" placeholder="আপনার ড্রাইভিং লাইসেন্স নাম্বার লিখুন" name="driving_license" value="{{ old('driving_license') }}">
-                                @if($errors->has('driving_license'))
-                                    <div class="text-danger">{{ $errors->first('driving_license') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="mt-3">{{ __('মেইল লিখুন') }}</label>
-                                <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="মেইল লিখুন">
-                                @if($errors->has('email'))
-                                    <div class="text-danger">{{ $errors->first('email') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="mt-3">{{ __('মোবাইল নাম্বার') }}</label>
-                                <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="মোবাইল নাম্বার">
-                                @if($errors->has('phone'))
-                                    <div class="text-danger">{{ $errors->first('phone') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                              <label for="image">{{ __('ছবি') }}</label>
-                              <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
-                              @if($errors->has('image'))
-                                  <div class="text-danger">{{ $errors->first('image') }}</div>
-                              @endif
-                          </div>
-                          <div class="form-group">
-                            <label  class="mt-3" for="blood_group_id">{{ __('রক্তের গ্রুপ') }}</label>
-                            <select name="blood_group_id" id="blood_group_id" class="form-control">
-                                <option value=" " selected hidden>{{ __('রক্তের গ্রুপ নির্বাচন করুন') }}</option>
-                                @foreach ($bloods as $blood)
-                                    <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id') ? 'selected': '' }}>{{ $blood->blood_group}}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('blood_group'))
-                              <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
-                            @endif
-                          </div>
-                          <div class="form-group">
-                              <label for="division">{{ __('বিভাগ') }}</label>
-                              <select name="division_id" id="division" class="form-control">
-                                  <option value="" selected hidden>{{ __('বিভাগ নির্বাচন করুন') }}</option>
-                                  @foreach ($divisions as $division)
-                                      <option value="{{ $division->id }}">{{ $division->division }}</option>
-                                  @endforeach
-                              </select>
-                              @if($errors->has('division_id'))
-                              <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                              @endif
-                          </div>
-                          <div class="form-group">
-                              <label for="district">{{ __('জেলা') }}</label>
-                              <select name="district_id" id="district" class="form-control">
-                                  <option value="" selected hidden>{{ __('জেলা নির্বাচন করুন') }}</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label for="thana">{{ __('থানা ') }}</label>
-                              <select name="thana_id" id="thana" class="form-control">
-                                  <option value="" selected hidden>{{ __('থানা নির্বাচন করুন') }}</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label for="union">{{ __(('ইউনিয়ন')) }} </label>
-                              <select name="union_id" id="union" class="form-control">
-                                  <option value="" selected hidden>{{ __('ইউনিয়ন নির্বাচন করুন') }}</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label for="stand">{{ __('স্ট্যান্ড') }}</label>
-                              <select name="stand_id" id="stand" class="form-control">
-                                  <option value="" selected hidden>{{ __('স্ট্যান্ড নির্বাচন করুন') }}</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label for="vehicle">{{ __('গাড়ি') }}</label>
-                              <select name="vehicle_id" id="vehicle" class="form-control">
-                                  <option value="" selected hidden>{{ __('গাড়ি নির্বাচন করুন') }}</option>
-                              </select>
-                          </div> --}}
                             <div class="form-group">
                                 <button type="submit" class="btn w-100 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">
                                     {{ __('Update') }}
@@ -436,7 +305,7 @@
             }
         });
 
-        // Fetch vehicles based on selected stand
+        Fetch vehicles based on selected stand
         $('#stand').on('change', function () {
             var stand_id = $(this).val();
             if (stand_id !== null || stand_id !== undefined) {
