@@ -1,7 +1,5 @@
 @extends('backend.layouts.master', ['page_slug' => 'blog'])
-
-
-@section('title', 'Admin - management')
+@section('title', 'Admin - Blog')
 @section('content')
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
@@ -30,9 +28,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter blog Name" name="description" value="{{ old('description') ?? $blog->description }}">
+                                        <textarea name="description" id="description" class="form-control" placeholder="Enter Description" style="width: 100%; height: 400px;">{{ $blog->description ?? old('description') }}</textarea>
                                         @if($errors->has('description'))
-                                            <div class="text-danger">{{ $errors->first('description') }}</div>
+                                        <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -59,7 +57,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
-                                            {{ __('Submit') }}
+                                            {{ __('Update') }}
                                         </button>
                                     </div>
                                 </form>
