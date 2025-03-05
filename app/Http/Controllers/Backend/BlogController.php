@@ -50,14 +50,18 @@ class BlogController extends Controller
         $update->description = $request->description;
         $update->status = $request->status ?? 0;
 
-        if($request->hasFile(key: 'image'));
-            if($update->iamge && Storage::exists($update->image)){
-                Storage::delete($update->image);
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::disk('public')->exists($update->image)) {
+                Storage::disk('public')->delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("blog/", $filename, 'public');
-        $update->image = $path;
+        
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('blog', $filename, 'public');
+            $update->image = $path;
+        }
+
+        
 
         $update->save();
         return redirect()->route('blog.index');

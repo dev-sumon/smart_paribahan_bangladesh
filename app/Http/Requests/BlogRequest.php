@@ -31,14 +31,14 @@ class BlogRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'description' => 'required|string|max:500|min:50',
+            'description' => 'required|string|min:50',
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ];
     }
     protected function update(): array
     {
         return [
-            'description' => 'nullable|string|max:500|min:50',
+            'description' => 'nullable|string|min:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ];
     }

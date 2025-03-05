@@ -1,7 +1,5 @@
 @extends('backend.layouts.master', ['page_slug' => 'blog'])
-
-
-@section('title', 'Admin - management')
+@section('title', 'Admin - Blog')
 @section('content')
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
@@ -23,7 +21,6 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Title') }}</th>
-                                            <th>{{ __('Description') }}</th>
                                             <th>{{ __('Thumbnail Image') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
@@ -36,7 +33,6 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $blog->title }}</td>
-                                                <td>{{ $blog->description }}</td>
                                                 <td><img src="{{ asset('storage/'. $blog->image) }}" alt="{{ $blog->title }}" width="100"></td>
                                                 <td><span class="{{ $blog->statusBg() }}">{{ $blog->statusTitle() }}</span></td>
                                                 <td>{{ $blog->created_at ? $blog->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>

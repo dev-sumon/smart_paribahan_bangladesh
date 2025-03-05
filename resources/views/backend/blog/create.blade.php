@@ -1,7 +1,5 @@
 @extends('backend.layouts.master', ['page_slug' => 'blog'])
-
-
-@section('title', 'Admin - management')
+@section('title', 'Admin - Blog')
 @section('content')
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
@@ -22,16 +20,16 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">{{ __('Title') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="title" placeholder="Enter Blog Name" name="title" value="{{ old('title') }}">
+                                        <input type="text" class="form-control" id="title" placeholder="Enter Blog Title" name="title" value="{{ old('title') }}">
                                         @if($errors->has('title'))
                                             <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter vehicle Name" name="description" value="{{ old('description') }}">
+                                        <textarea name="description" id="description" class="form-control" placeholder="Enter Description" value="{{ old('description') }}" style="width: 100%; height: 400px;"></textarea>
                                         @if($errors->has('description'))
-                                            <div class="text-danger">{{ $errors->first('description') }}</div>
+                                        <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -45,7 +43,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
