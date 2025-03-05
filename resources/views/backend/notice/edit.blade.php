@@ -29,7 +29,7 @@
                                             <option value="{{ $division->id }}" {{ $notice->division_id == $division->id ? 'selected' : '' }}>
                                                 {{ $division->division }}
                                             </option>
-                                        @endforeach
+                                            @endforeach
                                         </select>
                                         @if($errors->has('division_id'))
                                             <div class="text-danger">{{ $errors->first('division_id') }}</div>
@@ -105,11 +105,25 @@
                                             <div class="text-danger">{{ $errors->first('date') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="category" class="mt-3">{{ __('Category') }} <span class="text-danger">*</span></label>
                                         <input type="text" name="category" value="{{ old('category') ?? $notice->category }}" class="form-control" placeholder="Enter The Category">
                                         @if($errors->has('category'))
                                             <div class="text-danger">{{ $errors->first('category') }}</div>
+                                        @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label for="notice_category">{{ __('Category') }}<span class="text-danger">*</span></label>
+                                        <select name="notice_category_id" id="notice_category_id" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Notice Category') }}</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" {{ $notice->category_id == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->category }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('category_id'))
+                                            <div class="text-danger">{{ $errors->first('category_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -129,7 +143,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ (old('status') ?? $notice->status) == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ (old('status') ?? $notice->status) == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ (old('status') ?? $notice->status) == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
