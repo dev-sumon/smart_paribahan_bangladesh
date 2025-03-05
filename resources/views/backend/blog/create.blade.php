@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <textarea name="description" id="description" class="form-control" placeholder="Enter Description" value="{{ old('description') }}" style="width: 100%; height: 400px;"></textarea>
+                                        <textarea name="description" id="description" class="form-control" placeholder="Enter Description" style="width: 100%; height: 400px;">{{ old('description') }}</textarea>
                                         @if($errors->has('description'))
                                         <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif

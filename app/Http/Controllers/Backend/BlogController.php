@@ -25,6 +25,7 @@ class BlogController extends Controller
         $save = new Blog();
         $save->title = $request->title;
         $save->description = $request->description;
+        $save->creator = auth('admin')->user()->name;
         $save->status = $request->status ?? 0;
 
         if ($request->hasFile('image')) {
