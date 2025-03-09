@@ -87,18 +87,6 @@ class NoticeController extends Controller
         $update->notice_category_id = $request->notice_category_id;
         $update->status = $request->status ?? 0;
 
-
-        // if($request->hasFile('file')) {
-        //     if ($update->file && Storage::exists($update->file)) {
-        //         Storage::delete($update->file);
-        //     }
-    
-        //     $file = $request->file('file');
-        //     $filename = $request->name . time() . '.' . $file->getClientOriginalExtension();
-        //     $path = $file->storeAs("notices/", $filename, 'public');
-        //     $update->file = $path;
-        // }
-
         if ($request->hasFile('file')) {
             if ($update->iamge && Storage::exists($update->file)) {
                 Storage::delete($update->file);
