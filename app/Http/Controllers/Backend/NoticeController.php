@@ -67,7 +67,8 @@ class NoticeController extends Controller
         $data['thanas'] = Thana::where('district_id', $data['notice']->district_id)->get();
         $data['unions'] = Union::where('thana_id', $data['notice']->thana_id)->get();
         $data['stands'] = Stand::where('union_id', $data['notice']->union_id)->get();
-        $data['notice_categories'] = NoticeCategory::where('notice_category_id', $data['notice']->notice_category_id)->get();
+        $data['categories'] = NoticeCategory::latest()->get();
+
 
 
         return view('backend.notice.edit', $data);
@@ -83,20 +84,30 @@ class NoticeController extends Controller
         $update->stand_id = $request->stand_id;
         $update->title = $request->title;
         $update->date = $request->date;
-        $update->category = $request->category;
+        $update->notice_category_id = $request->notice_category_id;
         $update->status = $request->status ?? 0;
 
 
-        if($request->hasFile('file')) {
-            if ($update->file && Storage::exists($update->file)) {
+        // if($request->hasFile('file')) {
+        //     if ($update->file && Storage::exists($update->file)) {
+        //         Storage::delete($update->file);
+        //     }
+    
+        //     $file = $request->file('file');
+        //     $filename = $request->name . time() . '.' . $file->getClientOriginalExtension();
+        //     $path = $file->storeAs("notices/", $filename, 'public');
+        //     $update->file = $path;
+        // }
+
+        if ($request->hasFile('file')) {
+            if ($update->iamge && Storage::exists($update->file)) {
                 Storage::delete($update->file);
             }
-    
             $file = $request->file('file');
             $filename = $request->name . time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs("notices/", $filename, 'public');
             $update->file = $path;
-        }
+        };
 
         $update->save();
         return redirect()->route('notice.index');
