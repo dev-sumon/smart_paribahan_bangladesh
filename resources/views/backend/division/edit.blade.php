@@ -33,7 +33,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ (old('status') ?? $division->status) == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ (old('status') ?? $division->status) == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ (old('status') ?? $division->status) == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
-                                            {{ __('Submit') }}
+                                            {{ __('Update') }}
                                         </button>
                                     </div>
                                 </form>
