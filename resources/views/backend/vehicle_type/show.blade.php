@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h1 class="float-start">{{ __('Vehicle Detalis') }}</h1>
+                            <h1 class="float-start">{{ __('Vehicle Type Detalis') }}</h1>
                         </span>
                         <span class="float-right">
                             <a href="{{ route('vehicle_type.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
@@ -47,7 +47,7 @@
                                             <td> {{ $vehicle_type->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created B') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $vehicle_type->created_by ?? 'N/A' }}</td>
                                         </tr>

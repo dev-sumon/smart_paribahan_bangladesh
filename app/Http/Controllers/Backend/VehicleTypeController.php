@@ -45,7 +45,7 @@ class VehicleTypeController extends Controller
     }
     public function update($id): View
     {
-        $data['vehicle_type'] = VehicleType ::findOrFail($id);
+        $data['vehicle_type'] = VehicleType::findOrFail($id);
         return view('backend.vehicle_type.edit', $data);
     }
     public function update_store(VehicleTypeRequest $request, $id):RedirectResponse
