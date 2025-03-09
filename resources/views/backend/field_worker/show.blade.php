@@ -72,7 +72,7 @@
                                             <td> {{ $worker->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created By') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $worker->created_by ?? 'N/A' }}</td>
                                         </tr>
