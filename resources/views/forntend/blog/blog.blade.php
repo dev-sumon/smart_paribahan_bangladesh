@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 {{-- <h1>{{ $blog->title }}</h1> --}}
-                                <h1><a href="{{ route('f.blog.inner_blog', $blog->id) }}">{{ Str::limit($blog->title, 40, '...') }}</a></h1>
+                                <h1><a href="{{ route('f.blog.inner_blog', $blog->id) }}" style="color: #141F39">{{ Str::limit($blog->title, 40, '...') }}</a></h1>
                                 <p class="card_text mt-4 mb-4">{!! Str::limit(strip_tags($blog->description), 300, '...') !!}</p>
                                 <a href="{{ route('f.blog.inner_blog', $blog->id) }}">
                                     <button class="custom_btn">

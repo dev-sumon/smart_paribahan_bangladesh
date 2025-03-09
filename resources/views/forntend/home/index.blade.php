@@ -275,36 +275,18 @@
             <h2 class="heading_section">{{ __('বাংলাদেশ স্মার্ট পরিবহন ব্লগ থেকে') }}</h2>
             <p class="sub_text">{{ __('সকল বিবৃতি, আপডেট, রিলিজ ও অন্যান্য') }}</p>
           </div>
+          @foreach ($blogs as $blog)
           <div class="col-md-12 col-lg-4 mb-4 pb-4">
             <div class="post_card pb-4">
-              <img src="{{ asset('forntend/images/smart_car.png') }}" alt="Blog 1" class="post_image">
+              <img src="{{ asset('storage/'. $blog->image) }}" class="card-img-top" alt="Card Image">
               <div class="post_content">
-                <h4 class="post_title">{{ __('স্মার্ট বাংলাদেশে পরিবহন খাত আনস্মার্টই থাকবে?') }}</h4>
-                <p class="post_date"><i class="fa-regular fa-calendar mr-1" style="color: red;"></i> {{ __('জুন ৬, ২০২৪') }}</p>
-                <p class="post_description">{{ __('সমৃদ্ধ বাংলাদেশ গড়ে তুলতে সবার আগে প্রয়োজন আধুনিক যোগাযোগ ব্যবস্থা। সেটা হোক সড়ক, রেলপথ, নৌপথ ও তথ্যপ্রযুক্তি ব্যবস্থা।') }}</p>
+                <h4 class="post_title"><a href="{{ route('f.blog.inner_blog', $blog->id) }}" style="color: #141F39">{{ Str::limit($blog->title, 40, '...') }}</a></h4>
+                <p class="post_date"><i class="fa-regular fa-calendar mr-1" style="color: red;"></i>{{ $blog->created_at->format('d M, Y') }}</p>
+                <p class="post_description">{!! Str::limit(strip_tags($blog->description), 250, '...') !!}</p>
               </div>
             </div>
           </div>
-          <div class="col-md-12 col-lg-4 mb-4">
-            <div class="post_card">
-              <img src="{{ asset('forntend/images/Location tracking-pana 1.png') }}" alt="Blog 2" class="post_image">
-              <div class="post_content">
-                <h4 class="post_title">{{ __('স্মার্ট বাংলাদেশে পরিবহন খাত আনস্মার্টই থাকবে?') }}</h4>
-                <p class="post_date"><i class="fa-regular fa-calendar mr-1" style="color: red;"></i>{{ __('জুন ৬, ২০২৪') }}</p>
-                <p class="post_description">{{ __('সমৃদ্ধ বাংলাদেশ গড়ে তুলতে সবার আগে প্রয়োজন আধুনিক যোগাযোগ ব্যবস্থা। সেটা হোক সড়ক, রেলপথ, নৌপথ ও তথ্যপ্রযুক্তি ব্যবস্থা।') }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12 col-lg-4 mb-4">
-            <div class="post_card">
-              <img src="{{ asset('forntend/images/squti_Take Away-pana 1.png') }}" alt="Blog 3" class="post_image">
-              <div class="post_content">
-                <h4 class="post_title">{{ __('স্মার্ট বাংলাদেশে পরিবহন খাত আনস্মার্টই থাকবে?') }}</h4>
-                <p class="post_date"><i class="fa-regular fa-calendar mr-1" style="color: red;"></i> {{ __('জুন ৬, ২০২৪') }}</p>
-                <p class="post_description">{{ __('সমৃদ্ধ বাংলাদেশ গড়ে তুলতে সবার আগে প্রয়োজন আধুনিক যোগাযোগ ব্যবস্থা। সেটা হোক সড়ক, রেলপথ, নৌপথ ও তথ্যপ্রযুক্তি ব্যবস্থা।') }}</p>
-              </div>
-            </div>
-          </div>
+          @endforeach
           <div class="btn_section">
             <a href="{{ route('f.blog.index') }}" class="gradient-border-button">
               <span>{{ __('সব গুলো ব্লগ') }}</span>
