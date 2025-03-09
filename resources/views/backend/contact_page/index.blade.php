@@ -23,8 +23,6 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Title') }}</th>
-                                            <th>{{ __('Description') }}</th>
-                                            
                                             <th>{{ __('Phone') }}</th>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __('Status') }}</th>
@@ -38,7 +36,6 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $contact->title }}</td>
-                                                <td>{{ $contact->description }}</td>
                                                 
                                                 <td>{{ $contact->phone }}</td>
                                                 <td>{{ $contact->email }}</td>

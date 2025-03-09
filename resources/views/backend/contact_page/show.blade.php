@@ -12,7 +12,7 @@
                             <h1 class="float-start">{{ __('Contact Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('contact.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -57,7 +57,7 @@
                                             <td> {{ $contact->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created By') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $contact->created_by ?? 'N/A' }}</td>
                                         </tr>
