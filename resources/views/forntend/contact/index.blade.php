@@ -7,13 +7,14 @@
           <div class="row">
             <div class="details d-flex column-gap-2 column_reverse">
               <div class="conatact_info col-lg-6">
-                <h3>যোগাযোগ করুন</h3>
+                {{-- <h3>যোগাযোগ করুন</h3> --}}
+                @foreach ($contacts as $contact)
+                <h3>{{ $contact->title }}</h3>
                 <p>
-                  আপনার যেকোনো প্রশ্ন বা পরামর্শের জন্য আমাদের সাথে সরাসরি যোগাযোগ
-                  করতে পারেন। আমরা আপনাকে সেরা সেবা দেওয়ার জন্য সবসময় প্রস্তুত। 
-                  নির্দিষ্ট প্রয়োজনের জন্য আমাদের হটলাইন নম্বরে ফোন করুন অথবা 
-                  ইমেইলের মাধ্যমে আপনার বার্তা পাঠান।
+                    {{ $contact->description }}
                 </p>
+                @endforeach
+                {{-- <h3>যোগাযোগ করুন</h3> --}}
               </div>
               <div class="map order-lg-2 col-lg-6">
                 <img src="{{ asset('forntend/images/Group 66.png') }}" alt="">
@@ -28,7 +29,25 @@
        <section class="contact pt-5 py-5">
           <div class="container">
               <div class="row g-5">
-                  <div class="col-lg-4 col-sm-12">
+                @foreach ($contacts as $contact)
+                    <div class="col-lg-4 col-sm-12">
+                        <h4>{{ __('অফিসের ঠিকানা') }}</h4>
+                    
+                        <a href="https://www.google.com/maps/search/?api=1&query=Section+11,+Block+A+(Main+road),+Plot+5+(beside+shopno+super+shop),+Pallabi,+Dhaka+1221" target="_blank">
+                           {{ $contact->address }}
+                        </a>                    
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <h4>{{ __('ফোন নাম্বার') }}</h4>
+                        <a href="tel:+880 1308282653">{{ $contact->phone }}</a>
+                        {{-- <a href="tel:+880 1308282688">+880 1308282688</a> --}}
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <h4>{{ __('ই-মেইল') }}</h4>
+                        <a href="mailto:bangladeshsmartparibahan@gmail.com">{{ $contact->email }}</a>
+                    </div>
+                @endforeach
+                  {{-- <div class="col-lg-4 col-sm-12">
                       <h4>অফিসের ঠিকানা</h4>
                     
                       <a href="https://www.google.com/maps/search/?api=1&query=Section+11,+Block+A+(Main+road),+Plot+5+(beside+shopno+super+shop),+Pallabi,+Dhaka+1221" target="_blank">
@@ -43,7 +62,7 @@
                   <div class="col-lg-4 col-sm-12">
                       <h4>ই-মেইল</h4>
                       <a href="mailto:bangladeshsmartparibahan@gmail.com">bangladeshsmartparibahan@gmail.com</a>
-                  </div>
+                  </div> --}}
               </div>
           </div>
        </section>
@@ -52,7 +71,7 @@
       <!-- conact form section design start -->
       <section class="form-container-section pt-5 pb-5">
           <div class="container">
-              <h5 class="mb-4">আপনাদের জিজ্ঞাসা ইনবক্স করুন</h5>
+              <h5 class="mb-4">{{ __('আপনাদের জিজ্ঞাসা ইনবক্স করুন') }}</h5>
               <form>
                   <div class="form-group">
                       <input type="text" class="form-control" placeholder="আপনার নাম">
@@ -71,7 +90,7 @@
                   <div class="form-group">
                       <textarea class="form-control" rows="4" placeholder="বিস্তারিত লিখুন"></textarea>
                   </div>
-                  <button type="submit" class="btn btn-submit btn-sm">সাবমিট</button>
+                  <button type="submit" class="btn btn-submit btn-sm">{{ __('সাবমিট') }}</button>
               </form>
           </div>
       </section>
