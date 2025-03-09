@@ -1847,7 +1847,7 @@ div .adds2{
 
 /* contact page css start  */
 /* contact deatils section css start  */
-.contact_deatils .deatils .conatact_info h3{
+.contact_deatils h3{
     font-family: 'Hind Siliguri';
     font-size: 30px;
     font-weight: 600;
@@ -1855,7 +1855,7 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #000000;
 }
-.contact_deatils .deatils .conatact_info p{
+.contact_deatils p{
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 400;
