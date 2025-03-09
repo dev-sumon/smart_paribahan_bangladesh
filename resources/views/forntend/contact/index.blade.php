@@ -1,5 +1,5 @@
 @extends('forntend.layouts.master')
-@section('title', 'ContactUs')
+@section('title', 'Contact Us')
 @section('content')
      <!-- contact deatils section design strat -->
      <section class="contact_deatils pt-5 py-5">
