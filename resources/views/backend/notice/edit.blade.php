@@ -12,7 +12,7 @@
                             <h4>{{ __('Notice Update') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('notice.index') }}" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('notice.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -105,27 +105,20 @@
                                             <div class="text-danger">{{ $errors->first('date') }}</div>
                                         @endif
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label for="category" class="mt-3">{{ __('Category') }} <span class="text-danger">*</span></label>
-                                        <input type="text" name="category" value="{{ old('category') ?? $notice->category }}" class="form-control" placeholder="Enter The Category">
-                                        @if($errors->has('category'))
-                                            <div class="text-danger">{{ $errors->first('category') }}</div>
-                                        @endif
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="notice_category">{{ __('Category') }}<span class="text-danger">*</span></label>
                                         <select name="notice_category_id" id="notice_category_id" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Notice Category') }}</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}" {{ $notice->category_id == $category->id ? 'selected' : '' }}>
-                                                    {{ $category->category }}
+                                                <option value="{{ $category->id }}" {{ $notice->notice_category_id == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}
                                                 </option>
                                             @endforeach
                                         </select>
-                                        @if($errors->has('category_id'))
-                                            <div class="text-danger">{{ $errors->first('category_id') }}</div>
+                                        @if($errors->has('notice_category_id'))
+                                            <div class="text-danger">{{ $errors->first('notice_category_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div>                                    
                                     <div class="form-group">
                                         <label for="file" class="mt-3">{{ __('file') }} <span class="text-danger">*</span></label>
                                         @if($notice->file)
@@ -151,7 +144,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
-                                            {{ __('Submit') }}
+                                            {{ __('Update') }}
                                         </button>
                                     </div>
                                 </form>

@@ -25,7 +25,6 @@ class NoticeRequest extends FormRequest
             'title' => 'required|string|min:20|max:250',
             'status' => 'required|boolean',
             'date' => 'required|string|min:4|max:9',
-            'file' => 'required|mimes:pdf',
 
         ]
         +
@@ -40,6 +39,7 @@ class NoticeRequest extends FormRequest
             'union_id' => 'required|exists:unions,id',
             'stand_id' => 'required|exists:stands,id',
             'notice_category_id' => 'required|exists:notice_categories,id',
+            'file' => 'required|mimes:pdf',
         ];
     }
     protected function update(): array
@@ -51,6 +51,7 @@ class NoticeRequest extends FormRequest
             'union_id' => 'nullable|exists:unions,id',
             'stand_id' => 'nullable|exists:stands,id',
             'notice_category_id' => 'nullable|exists:notice_categories,id',
+            'file' => 'nullable|mimes:pdf',
         ];
     }
 }
