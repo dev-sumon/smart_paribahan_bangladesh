@@ -12,7 +12,7 @@
                             <h4>{{ __('Create new FAQ') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('faq.index') }}" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('faq.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -38,7 +38,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>

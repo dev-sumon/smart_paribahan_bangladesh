@@ -23,7 +23,6 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Question') }}</th>
-                                            <th>{{ __('Answer') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -35,7 +34,6 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $faq->question }}</td>
-                                            <td>{{ $faq->answer }}</td>
                                             <td><span class="{{$faq->statusBg()}}">{{$faq->statusTitle()}}</span></td>
                                             <td>{{ $faq->created_at ? $faq->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $faq->created_user ? $faq->created_user->name : 'system' }}</td>

@@ -41,9 +41,9 @@
                                             <td> {{ $faq->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created By') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $faq->created_by }}</td>
+                                            <td> {{ $faq->created_by ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
