@@ -9,16 +9,16 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Create new Vehicle') }}</h4>
+                            <h4>{{ __('Update Vehicle Type') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('vehicle_type.index') }}" class="btn btn-info">{{ __('back') }}</a>
+                            <a href="{{ route('vehicle_type.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('vehicle_type.update', $vehicle_type->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('vehicle_type.update_store', $vehicle_type->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
@@ -28,13 +28,6 @@
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter Admin Name" name="image" value="{{ $vehicle_type->image ?? old('image') }}">
-                                        @if($errors->has('image'))
-                                            <div class="text-danger">{{ $errors->first('image') }}</div>
-                                        @endif
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
                                         @if($vehicle_type->image)
@@ -59,7 +52,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
-                                            {{ __('Submit') }}
+                                            {{ __('Update') }}
                                         </button>
                                     </div>
                                 </form>
