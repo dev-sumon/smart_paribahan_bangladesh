@@ -34,7 +34,7 @@ class AdminRequest extends FormRequest
             'nid' => 'required|max:14|min:10|unique:admins,nid',
             'father_name' => 'required|string|max:20|min:3',
             'mother_name' => 'required|string|max:20|min:3',
-            'image' =>'unllable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' =>'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'email' => 'required|email|unique:admins,email',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
