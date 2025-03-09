@@ -31,7 +31,7 @@ class OwnerRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'description' => 'nullable|string|min:20|max:500',
+            'description' => 'nullable|string|min:50|',
             'division_id' => 'nullable|exists:divisions,id',
             'district_id' => 'nullable|exists:districts,id',
             'thana_id' => 'nullable|exists:thanas,id',
@@ -49,6 +49,7 @@ class OwnerRequest extends FormRequest
     protected function update(): array
     {
         return [
+            'description' => 'nullable|string|min:50|',
             'division_id' => 'required|exists:divisions,id',
             'district_id' => 'required|exists:districts,id',
             'thana_id' => 'required|exists:thanas,id',

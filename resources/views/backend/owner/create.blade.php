@@ -103,25 +103,6 @@
                                             <option value="" selected hidden>Select Vehicle</option>
                                         </select>
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label for="vehicle_id">{{ __('Vehicle') }} <span class="text-danger">*</span></label>
-                                        <select name="vehicle_id" id="vehicle_id"  class="form-control">
-                                            <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
-                                            @foreach ($vehicles as $vehicle)
-                                                <option value="{{ $vehicle->id }}" {{ $vehicle->id==old('vehicle_id') ? 'selected' : '' }}>{{ $vehicle->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('vehicle_id'))
-                                            <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
-                                        @endif
-                                    </div> --}}
-                                    {{-- <div class="form-group">
-                                        <label for="vehicles_license">{{ __('Vehicles License') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="vehicles_license" placeholder="Enter The Vehicle License Number" name="vehicles_license" value="{{ old('vehicles_license') }}">
-                                        @if($errors->has('vehicles_license'))
-                                            <div class="text-danger">{{ $errors->first('vehicles_license') }}</div>
-                                        @endif
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }}</label>
                                         <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
