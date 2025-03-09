@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Forntend;
 
 use App\Models\Faq;
+use App\Models\Blog;
 use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
+use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Driver;
+use Illuminate\Support\Facades\View;
 
 class HomePageController extends Controller
 {
@@ -23,6 +25,7 @@ class HomePageController extends Controller
         $data['divisions'] = Division::with('districts','thanas','unions','stands','stands.vehicleTypes')->latest()->get();
         $data['faqs'] = Faq::latest()->get();
         $data['districts'] = District::latest()->get();
+        $data['blogs'] = Blog::latest()->take(3)->get();
 
         return view('forntend.home.index', $data);
     }
@@ -172,6 +175,5 @@ class HomePageController extends Controller
     ])->findOrFail($id);
         return view('forntend.cng_info.union_notice', $data);
     }
-
 
 }
