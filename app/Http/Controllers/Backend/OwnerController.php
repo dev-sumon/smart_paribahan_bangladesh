@@ -16,6 +16,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Ui\Presets\Vue;
 
 class OwnerController extends Controller
 {
@@ -67,14 +68,16 @@ class OwnerController extends Controller
     }
     public function update($id): View
     {
-        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->findOrFail($id);
         $data['divisions'] = Division::all();
         $data['districts'] = District::where('division_id', $data['owner']->division_id)->get();
         $data['thanas'] = Thana::where('district_id', $data['owner']->district_id)->get();
         $data['unions'] = Union::where('thana_id', $data['owner']->thana_id)->get();
-        $data['stands'] = Stand::where('stand_id', $data['owner']->stand_id)->latest()->get();
-        $data['bloods'] = BloodGroup::latest()->get();
+        $data['stands'] = Stand::where('id', $data['owner']->stand_id)->get();
+        $data['vehicles'] = Vehicle::where('id', $data['owner']->vehicle_id)->get();
         // $data['vehicles'] = Vehicle::all();
+        $data['bloods'] = BloodGroup::latest()->get();
+        
         return view('backend.owner.edit', $data);
     }
     public function update_store(OwnerRequest $request, $id): RedirectResponse
@@ -99,14 +102,25 @@ class OwnerController extends Controller
             $update->password = $request->password;
         }
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+        // if($request->hasFile('image'));
+        //     if($update->image && Storage::exists($update->image)){
+        //         Storage::delete($update->image);
+        //     }
+        // $image = $request->file('image');
+        // $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        // $path = $image->storeAs("owner/", $filename, 'public');
+        // $update->image = $path;
+
+
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("owner/", $filename, 'public');
-        $update->image = $path;
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("owner/", $filename, 'public');
+            $update->image = $path;
+        };
 
         $update->save();
 
