@@ -6,12 +6,13 @@
                 <select name="division_id" id="division">
                     <option value="" selected hidden>{{ __('বিভাগ') }}</option>
                     @foreach ($divisions as $division)
-                        <option value="{{ $division->id }}" {{ $division->id == old( 'division_id', $division->id) ? 'selected' : '' }}>{{ $division->division }}</option>
+                        <option value="{{ $division->id }}">{{ $division->division }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('division_id'))
-                <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                    <div class="text-danger">{{ $errors->first('division_id') }}</div>
                 @endif
+                
             </div>
         </div>
         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
@@ -66,7 +67,7 @@
 </form>
 
 
-@push('js')
+{{-- @push('js')
 <script>
     $(document).ready(function() {
         $('#searchForm').on('submit', function(e) {
@@ -86,4 +87,4 @@
         });
     });
 </script>
-@endpush
+@endpush --}}

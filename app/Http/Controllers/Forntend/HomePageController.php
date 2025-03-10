@@ -58,6 +58,12 @@ class HomePageController extends Controller
 
         return response()->json($vehicle_types);
     }
+    public function vehicles($stand_id)
+    {
+        $vehicle_types = Vehicle::where('vehicle_type_id', $stand_id)->get(['id', 'name']);
+
+        return response()->json($vehicle_types);
+    }
 
 
 

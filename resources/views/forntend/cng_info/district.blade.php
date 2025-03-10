@@ -60,7 +60,7 @@
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
                             <h1 class="pt-3 text-start">{{ __('বিভাগ পরিচিতি') }}</h1>
                             <div class="card">
-                                <a href="">
+                                <a href="#">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $district->division->division }}</p>
                                 </a>
@@ -69,7 +69,7 @@
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
                             <h1 class="pt-3 text-start">{{ __('জেলা পরিচিতি') }}</h1>
                             <div class="card">
-                                <a href="">
+                                <a href="#">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $district->district }}</p>
                                 </a>
@@ -83,7 +83,7 @@
                         @foreach ($district->thanas as $thana)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
-                                    <a href="">
+                                    <a href="#">
                                         <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                         <p class="pt-3">{{ $thana->thana }}</p>
                                     </a>
@@ -98,7 +98,7 @@
                         @foreach ($district->unions as $union)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
-                                    <a href="">
+                                    <a href="#">
                                         <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                         <p class="pt-3">{{ $union->union }}</p>
                                     </a>
