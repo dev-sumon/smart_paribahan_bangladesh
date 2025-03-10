@@ -71,15 +71,24 @@ class DriverController extends Controller
     }
     public function update($id): View
     {
-        $data['driver'] = Driver::findOrFail($id);
-        $data['owners'] = Owner::latest()->get();
-        $data['bloods'] = BloodGroup::latest()->get();
+        // $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
+        // $data['driver'] = Driver::findOrFail($id);
+        // $data['owners'] = Owner::latest()->get();
+        // $data['bloods'] = BloodGroup::latest()->get();
+        // $data['divisions'] = Division::all();
+        // $data['districts'] = District::all();
+        // $data['thanas'] = Thana::all();
+        // $data['unions'] = Union::all();
+        // $data['vehicles'] = Vehicle::all();
+        // $data['stands'] = Stand::all();
+        $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->findOrFail($id);
         $data['divisions'] = Division::all();
-        $data['districts'] = District::all();
-        $data['thanas'] = Thana::all();
-        $data['unions'] = Union::all();
-        $data['vehicles'] = Vehicle::all();
-        $data['stands'] = Stand::all();
+        $data['districts'] = District::where('division_id', $data['driver']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['driver']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['driver']->thana_id)->get();
+        $data['stands'] = Stand::where('id', $data['driver']->stand_id)->get();
+        $data['vehicles'] = Vehicle::where('id', $data['driver']->vehicle_id)->get();
+        $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.edit', $data);
     }
     public function update_store(DriverRequest $request, $id): RedirectResponse
@@ -108,14 +117,18 @@ class DriverController extends Controller
             $update->password = $request->password;
         }
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+        
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("driver/", $filename, 'public');
-        $update->image = $path;
+            
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("driver/", $filename, 'public');
+            $update->image = $path;
+        }
+
 
         $update->save();
         

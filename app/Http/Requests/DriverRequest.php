@@ -50,7 +50,7 @@ class DriverRequest extends FormRequest
             'email' => 'required|email|unique:drivers,email,' . $this->route('id'),
             'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . $this->route('id'),
             'blood_group' => 'nullable|string|min:2|max:3',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
         ];
