@@ -36,7 +36,6 @@
                             <i class="fa-solid fa-arrow-right arrow"></i>
                             </a>
                     </div>
-                                        
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                   <div class="advisement text-center">

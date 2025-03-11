@@ -58,6 +58,12 @@ class HomePageController extends Controller
 
         return response()->json($vehicle_types);
     }
+    public function vehicles($stand_id)
+    {
+        $vehicle_types = Vehicle::where('vehicle_type_id', $stand_id)->get(['id', 'name']);
+
+        return response()->json($vehicle_types);
+    }
 
 
 
@@ -105,6 +111,7 @@ class HomePageController extends Controller
     public function showStandIntro($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->findOrFail($id);
+        $data['divisions'] = Division::all();
         return view('forntend.cng_info.stand_intro', $data);
     }
     public function standCommitee($id)
