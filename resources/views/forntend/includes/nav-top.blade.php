@@ -7,9 +7,9 @@
 
       <!-- Login Button and Menu Icon (Responsive Mode) -->
       <div class="d-flex d-lg-none align-items-center justify-content-center responsive_menu">
-        <a href="login.html" class="btn btn-outline-danger btn-sm btn-login"><i class="fas fa-user-circle"></i> লগ ইন</a>
+        <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger btn-sm btn-login"><i class="fas fa-user-circle"></i> লগ ইন</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class=""><i class="fa-solid fa-bars"></i></span>
+          <span class=""><a href="{{ route('f.login.index') }}"><i class="fa-solid fa-bars"></i></a></span>
         </button>
       </div>
 
