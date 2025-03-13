@@ -19,8 +19,8 @@
 
                   <div class="row">
                     <div class="form-group col-4">
-                      <select name="division_id" id="division" class="form-control form-select select_iteam">
-                        <option value="" selected hidden>{{ __('বিভাগ') }}</option>
+                      <select name="division_id" id="division" class="form-select select_iteam">
+                        <option value="">{{ __('বিভাগ') }}</option>
                         @foreach ($divisions as $division)
                             <option value="{{ $division->id }}">{{ $division->division }}</option>
                         @endforeach

@@ -1,4 +1,4 @@
-@extends('forntend.layouts.master')
+@extends('forntend.layouts.master', ['page_slug' => 'driver'])
 @section('title', 'CNGdriver')
 @section('content')
      <!-- nav section end -->
@@ -131,22 +131,7 @@
                 </div>
                 <div class="col-12 col-lg-8">
                     <div class="col-md-12 col-lg-12 pb-5">
-                        <div class="content_nav">
-                            <div class="nav1">
-                                <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                    <li><a href="{{ route('f.cng.cng_stand') }}" class="active-link">{{ __('স্ট্যান্ডের পরিচিতি') }}</a></li>
-                                    <li><a href="{{ route('f.cng.map') }}">মানচিত্রে স্ট্যান্ড</a></li>
-                                    <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
-                                    <li><a href="{{ route('f.cng.owner') }}">বাইক মালিক এর তালিকা</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav2 pt-4">
-                                <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                    <li><a href="cng_driver_list.html">বাইক ড্রাইভার এর তালিকা </a></li>
-                                    <li><a href="notice_page.html">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @include('forntend.cng_info.partials.inner_menu')
                     </div>
                     <div class="row driver_list">
                         @foreach ($stand->drivers as $key=>$driver)
@@ -159,7 +144,6 @@
                                     <div class="profile-details">
                                         <h3>{{ $driver->name }}</h3>
                                         <p class="driver">সি এন জি ড্রাইভার</p>
-                                        {{-- <p class="driver">{{ $stand->vehicleTypes->name }}</p> --}}
                                         <a href="{{ route('f.home.driverProfile', $driver->id) }}">আরও জানুন </a>
                                         <span>>></span>
                                     </div>

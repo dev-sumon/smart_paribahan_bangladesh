@@ -1,4 +1,4 @@
-@extends('forntend.layouts.master')
+@extends('forntend.layouts.master', ['page_slug'=>'owner'])
 @section('title', 'CNG Owner')
 @section('content')
      <!-- president and members section start-->
@@ -127,29 +127,13 @@
                 <div class="col-12 col-lg-8">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-12 col-lg-12 pb-5">
-                            <div class="content_nav">
-                                <div class="nav1">
-                                    <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="{{ route('f.cng.cng_stand') }}">স্ট্যান্ডের পরিচিতি</a></li>
-                                        <li><a href="{{ route('f.cng.map') }}">মানচিত্রে স্ট্যান্ড</a></li>
-                                        <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
-                                        <li><a href="{{ route('f.cng.owner') }}" class="active-link">সি এন জি মালিক এর তালিকা</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav2 pt-4">
-                                    <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="{{ route('f.cng.driver') }}">সি এন জি ড্রাইভার এর তালিকা </a></li>
-                                        <li><a href="{{ route('f.cng.notice') }}">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @include('forntend.cng_info.partials.inner_menu')
                         </div>
                     </div>
                     <div class="row owner_list">
                             @foreach ($stand->owners as $key=>$owner)
                             <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-5">
                                 <div class="profile-card">
-                                    {{-- <img src="images/Rectangle 3848.png" alt="Profile Image" class="profile-image mb-3"> --}}
                                     <img src="{{ $owner->image ? asset('storage/' . $owner->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3" style="height: 200px; width: 180px;">
                                         <div class="profile-details">
                                             <p class="owner">সি এন জি মালিক</p>
