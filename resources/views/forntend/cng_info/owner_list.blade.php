@@ -44,7 +44,7 @@
                     <div class="advisement text-center">
                       <div class="add_image">
                         <a href="#">
-                          <img class="text-center" src="images/add_banner.jpg" alt="add banner">
+                          <img class="text-center" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
                         </a>
                       </div>
                     </div>
@@ -57,10 +57,35 @@
     <section class="dealist pb-5">
         <div class="container">
             <div class="row d-flex align-content-center">
-                <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center cng_owner_location_item">
-                    <div class="row g-2">
-                        @include('forntend.cng_info.partials.search_bar')
-                    </div> 
+                <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center stant_location_item">
+                    @include('forntend.cng_info.partials.search_bar')
+                    <div class="mt-5 d-lg-block d-md-none d-sm-block community_advisement">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 d-lg-block d-md-none d-sm-none community_advisement">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 d-lg-block d-md-none d-sm-none community_advisement">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-8">
                     <div class="row d-flex justify-content-between">

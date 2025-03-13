@@ -11,7 +11,7 @@
                         <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
                     </div>
                     <div class="title pt-3">
-                        <h2>{{ __('স্ট্যান্ডের পরিচিতি') }}</h2>
+                        <h2> {{ $owner->vehicle->name }} {{ __('স্ট্যান্ডের পরিচিতি') }}</h2>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                             <div class="advisement">
                                 <div class="add_image">
                                     <a href="#">
-                                        <img class="" src="{{ asset('backend/images/add_banner.jpg') }}" alt="add banner">
+                                        <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
                                     </a>
                                 </div>
                             </div>
