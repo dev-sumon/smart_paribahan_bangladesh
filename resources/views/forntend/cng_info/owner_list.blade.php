@@ -23,7 +23,7 @@
                     <div class="title pt-2">
                         <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    @foreach ($stand->notices as $key=>$notice)
+                    @foreach ($stand->notices->take(4) as $key=>$notice)
                         <div class="notice_list d-flex align-items-center">
                             <div class="icon-button">
                                 <i class="fa-solid fa-chevron-right"></i>
@@ -34,12 +34,11 @@
                         </div>
                     @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="#" class="gradient-border-button">
+                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
                             <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
-                    </div>
-                                       
+                    </div>           
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                     <div class="advisement text-center">

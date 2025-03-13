@@ -25,43 +25,21 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>নোটিশ বোর্ড</h5>
+                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
+                    @foreach ($stand->notices->take(4) as $key=>$notice)
                     <div class="notice_list d-flex align-items-center">
                         <div class="icon-button">
                             <i class="fa-solid fa-chevron-right"></i>
                         </div>
                         <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
+                            <p class="p-0">{{ $notice->title }}</p>
                         </div>
                     </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="#" class="gradient-border-button">
-                            <span>সকল</span>
+                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
+                            <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
@@ -71,7 +49,7 @@
                     <div class="advisement">
                         <div class="add_image text-center">
                             <a href="#">
-                                <img class="" src="{{ asset('backend/images/add_banner.jpg') }}" alt="add banner">
+                                <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
                             </a>
                         </div>
                     </div>

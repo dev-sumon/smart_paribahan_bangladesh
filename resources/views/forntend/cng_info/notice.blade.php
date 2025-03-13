@@ -24,7 +24,7 @@
                     <div class="title pt-2">
                         <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                      @foreach ($stand->notices as $key=>$notice)
+                      @foreach ($stand->notices->take(4) as $key=>$notice)
                           <div class="notice_list d-flex align-items-center">
                               <div class="icon-button">
                                   <i class="fa-solid fa-chevron-right"></i>
