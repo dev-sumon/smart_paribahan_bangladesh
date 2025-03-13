@@ -81,90 +81,7 @@
         <div class="container">
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center stant_location_item">
-                      <form action="{{ route('f.home.search') }}" method="post" >
-                        @csrf
-                        <div class="row">
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                                {{-- <div class="dropdown">
-                                    <select name="division_id" id="division">
-                                        <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                                        @foreach ($stand->divisions as $division)
-                                            <option value="{{ $division->id }}" {{ $division->id == old( 'division_id', $division->id) ? 'selected' : '' }}>{{ $division->division }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if($errors->has('division_id'))
-                                    <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                                    @endif
-                                </div> --}}
-                                <div class="dropdown">
-                                    <select name="division_id" id="division">
-                                        <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                                
-                                        @if($stand->division)
-                                            <option value="{{ $stand->division->id }}" {{ old('division_id') == $stand->division->id ? 'selected' : '' }}>
-                                                {{ $stand->division->division }}
-                                            </option>
-                                        @endif
-                                
-                                    </select>
-                                
-                                    @error('division_id')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                
-                            </div>
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                                <div class="dropdown">
-                                    <select name="district_id" id="district">
-                                        <option value="">{{ __('জেলা') }}</option>
-                                    </select>
-                                    {{-- <select name="district_id" id="district">
-                                        <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                                        @foreach ($districts as $district)
-                                            <option value="{{ $district->id }}" {{ $district->id == old( 'district_id', $district->id) ? 'selected' : '' }}>{{ $district->district }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if($errors->has('division_id'))
-                                    <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                                    @endif --}}
-                                </div>
-                            </div>
-                            
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                                <div class="dropdown">
-                                    <select name="thana_id" id="thana">
-                                        <option value="">{{ __('থানা') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                                <div class="dropdown">
-                                    <select name="union_id" id="union">
-                                        <option value="">{{ __('ইউনিয়ন') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                                <div class="dropdown">
-                                    <select name="stand_id" id="stand">
-                                        <option value="">{{ __('স্ট্যান্ড') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                                <div class="dropdown">
-                                    <select name="vehicle_id" id="vehicle">
-                                        <option value="">{{ __('গাড়ি') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="submit">
-                                <button class="btn btn-outline-success mt-3 mb-5" type="submit">{{ __('ক্লিক করুন') }}</button>
-                            </div>
-                        </div>
-                    </form>
-                    
+                    @include('forntend.cng_info.partials.search_bar')
                     <div class="mt-5 d-lg-block d-md-none d-sm-block community_advisement">
                         <div class="advisement">
                             <div class="add_image">
@@ -196,22 +113,7 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-12 col-lg-12 pb-5">
-                            <div class="content_nav">
-                                <div class="nav1">
-                                    <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="{{ route('f.home.standIntro', $stand->id) }}">{{ __('স্ট্যান্ডের পরিচিতি') }}</a></li>
-                                        <li><a href="{{ route('f.home.stand', $stand->id) }}">{{ __('মানচিত্রে স্ট্যান্ড') }}</a></li>
-                                        <li><a href="{{ route('f.home.standCommitee', $stand->id) }}"  class="active-link">{{ __('সভাপতি ও সদস্য বৃন্দ তালিকা') }}</a></li>
-                                        <li><a href="{{ route('f.cng.owner') }}">{{ __('সি এন জি মালিক এর তালিকা') }}</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav2 pt-4">
-                                    <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="{{ route('f.cng.driver') }}">{{ __('সি এন জি ড্রাইভার এর তালিকা') }}</a></li>
-                                        <li><a href="{{ route('f.cng.notice') }}">{{ __('স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী') }}</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @include('forntend.cng_info.partials.inner_menu')
                         </div>
                      </div>
                       
@@ -236,3 +138,114 @@
     </section>
     <!-- deatils section start -->
 @endsection
+@push('script')
+  <script>
+      $(document).ready(function () {
+          // Fetch districts based on selected division
+          $('#division').on('change', function () {
+              var division_id = $(this).val();
+              if (division_id) {
+                  $.ajax({
+                      url: '/home/get-districts/' + division_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#district').empty();
+                          $('#district').append('<option value="">জেলা</option>');
+                          $.each(data, function (key, value) {
+                              $('#district').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#district').empty();
+              }
+          });
+
+          // Fetch thanas based on selected district
+          $('#district').on('change', function () {
+              var district_id = $(this).val();
+              if (district_id) {
+                  $.ajax({
+                      url: '/home/get-thanas/' + district_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#thana').empty();
+                          $('#thana').append('<option value="">থানা</option>');
+                          $.each(data, function (key, value) {
+                              $('#thana').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#thana').empty();
+              }
+          });
+
+          // Fetch unions based on selected thana
+          $('#thana').on('change', function () {
+              var thana_id = $(this).val();
+              if (thana_id) {
+                  $.ajax({
+                      url: '/home/get-unions/' + thana_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#union').empty();
+                          $('#union').append('<option value="">ইউনিয়ন</option>');
+                          $.each(data, function (key, value) {
+                              $('#union').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#union').empty();
+              }
+          });
+
+          // Fetch stands based on selected union
+          $('#union').on('change', function () {
+              var union_id = $(this).val();
+              if (union_id) {
+                  $.ajax({
+                      url: '/home/get-stands/' + union_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#stand').empty();
+                          $('#stand').append('<option value="">স্ট্যান্ড</option>');
+                          $.each(data, function (key, value) {
+                              $('#stand').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#stand').empty();
+              }
+          });
+
+          // Fetch vehicles based on selected stand
+          // Fetch vehicles based on selected stand
+        $('#stand').on('change', function () {
+            var stand_id = $(this).val();
+            if (stand_id) {
+                $.ajax({
+                    url: '/home/get-vehicles/' + stand_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#vehicle').empty();
+                        $('#vehicle').append('<option value="">গাড়ি</option>');
+                        $.each(data, function (key, value) {
+                            $('#vehicle').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#vehicle').empty();
+            }
+        });
+      });
+  </script>
+@endpush

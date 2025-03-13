@@ -106,39 +106,46 @@ class HomePageController extends Controller
     public function showStand($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['page_slug'] = 'map';
         return view('forntend.cng_info.map', $data);
     }
     public function showStandIntro($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->findOrFail($id);
         $data['divisions'] = Division::all();
+        $data['page_slug'] = 'intro';
         return view('forntend.cng_info.stand_intro', $data);
     }
     public function standCommitee($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'commitees')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['page_slug'] = 'commitee';
         return view('forntend.cng_info.stand_community', $data);
     }
     public function standDriver($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers', 'notices')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['page_slug'] = 'driver';
         return view('forntend.cng_info.driver_list', $data);
     }
     public function standOwner($id)
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'owners', 'notices')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['page_slug'] = 'owner';
         return view('forntend.cng_info.owner_list', $data);
     }
     public function ownerProfile($id)
     {
         $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicles')->findOrFail($id);
-
         return view('forntend.cng_info.owner_details', $data);
     }
     public function driverProfile($id)
     {
         $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'vehicles')->findOrFail($id);
-
         return view('forntend.cng_info.driver_details', $data);
     }
 

@@ -1,4 +1,4 @@
-@extends('forntend.layouts.master')
+@extends('forntend.layouts.master', ['page_slug' => 'driver'])
 @section('title', 'CNGdriver')
 @section('content')
      <!-- nav section end -->
@@ -63,90 +63,12 @@
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center cng_owner_location_item">
                     <div class="row g-2">
-                        {{-- @include('forntend.cng_info.partials.search_bar') --}}
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option value="1">বিভাগ</option>
-                                    <option value="2">বিভাগ</option>
-                                    <option value="3">বিভাগ</option>
-                                    <option value="4">বিভাগ</option>
-                                    <option value="5">বিভাগ</option>
-                                    <option value="6">বিভাগ</option>
-                                    <option value="7">বিভাগ</option>
-                                    <option value="8">বিভাগ</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>জেলা</option>
-                                    <option value="1">জেলা</option>
-                                    <option value="2">জেলা</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>থানা</option>
-                                    <option value="1">থানা</option>
-                                    <option value="2">থানা</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>ইউনিয়ন</option>
-                                    <option value="1">ইউনিয়ন</option>
-                                    <option value="2">ইউনিয়ন</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>স্ট্যান্ড</option>
-                                    <option value="1">স্ট্যান্ড</option>
-                                    <option value="2">স্ট্যান্ড</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>গাড়ি</option>
-                                    <option value="1">গাড়ি</option>
-                                    <option value="2">গাড়ি</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-outline-success mt-3 mb-5" type="submit">ক্লিক করুন</button>
-                        </div>
-
+                        @include('forntend.cng_info.partials.search_bar')
                     </div>
                 </div>
                 <div class="col-12 col-lg-8">
                     <div class="col-md-12 col-lg-12 pb-5">
-                        <div class="content_nav">
-                            <div class="nav1">
-                                <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                    <li><a href="{{ route('f.cng.cng_stand') }}" class="active-link">{{ __('স্ট্যান্ডের পরিচিতি') }}</a></li>
-                                    <li><a href="{{ route('f.cng.map') }}">মানচিত্রে স্ট্যান্ড</a></li>
-                                    <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
-                                    <li><a href="{{ route('f.cng.owner') }}">বাইক মালিক এর তালিকা</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav2 pt-4">
-                                <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                    <li><a href="cng_driver_list.html">বাইক ড্রাইভার এর তালিকা </a></li>
-                                    <li><a href="notice_page.html">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @include('forntend.cng_info.partials.inner_menu')
                     </div>
                     <div class="row driver_list">
                         @foreach ($stand->drivers as $key=>$driver)
@@ -159,7 +81,6 @@
                                     <div class="profile-details">
                                         <h3>{{ $driver->name }}</h3>
                                         <p class="driver">সি এন জি ড্রাইভার</p>
-                                        {{-- <p class="driver">{{ $stand->vehicleTypes->name }}</p> --}}
                                         <a href="{{ route('f.home.driverProfile', $driver->id) }}">আরও জানুন </a>
                                         <span>>></span>
                                     </div>

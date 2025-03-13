@@ -20,15 +20,6 @@
                 <select name="district_id" id="district">
                     <option value="">{{ __('জেলা') }}</option>
                 </select>
-                {{-- <select name="district_id" id="district">
-                    <option value="" selected hidden>{{ __('বিভাগ') }}</option>
-                    @foreach ($districts as $district)
-                        <option value="{{ $district->id }}" {{ $district->id == old( 'district_id', $district->id) ? 'selected' : '' }}>{{ $district->district }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('division_id'))
-                <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                @endif --}}
             </div>
         </div>
         
@@ -65,26 +56,3 @@
         </div>
     </div>
 </form>
-
-
-{{-- @push('js')
-<script>
-    $(document).ready(function() {
-        $('#searchForm').on('submit', function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: $(this).serialize(),
-                success: function(response) {
-                    $('#searchResult').html(response);
-                },
-                error: function(xhr) {
-                    alert('An error occurred. Please try again.');
-                }
-            });
-        });
-    });
-</script>
-@endpush --}}

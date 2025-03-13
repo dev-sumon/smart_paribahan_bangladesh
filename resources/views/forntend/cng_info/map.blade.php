@@ -87,68 +87,7 @@
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center cng_owner_location_item">
                     <div class="row g-4">
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option value="1">বিভাগ</option>
-                                    <option value="2">বিভাগ</option>
-                                    <option value="3">বিভাগ</option>
-                                    <option value="4">বিভাগ</option>
-                                    <option value="5">বিভাগ</option>
-                                    <option value="6">বিভাগ</option>
-                                    <option value="7">বিভাগ</option>
-                                    <option value="8">বিভাগ</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>জেলা</option>
-                                    <option value="1">জেলা</option>
-                                    <option value="2">জেলা</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>থানা</option>
-                                    <option value="1">থানা</option>
-                                    <option value="2">থানা</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>ইউনিয়ন</option>
-                                    <option value="1">ইউনিয়ন</option>
-                                    <option value="2">ইউনিয়ন</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>স্ট্যান্ড</option>
-                                    <option value="1">স্ট্যান্ড</option>
-                                    <option value="2">স্ট্যান্ড</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>গাড়ি</option>
-                                    <option value="1">গাড়ি</option>
-                                    <option value="2">গাড়ি</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-outline-success mt-3 mb-5" type="submit">ক্লিক করুন</button>
-                        </div>
+                        @include('forntend.cng_info.partials.search_bar')
                         <div class="mt-5 d-lg-block d-md-none d-sm-block community_advisement">
                             <div class="advisement">
                                 <div class="add_image">
@@ -163,7 +102,7 @@
                 <div class="col-sm-12 col-lg-8">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-12 col-lg-12 pb-5">
-                            <div class="content_nav">
+                            {{-- <div class="content_nav">
                                 <div class="nav1">
                                     <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
                                         <li><a href="{{ route('f.cng.cng_stand') }}" class="">স্ট্যান্ডের পরিচিতি</a></li>
@@ -178,7 +117,8 @@
                                         <li><a href="{{ route('f.cng.notice') }}">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
+                            @include('forntend.cng_info.partials.inner_menu')
                         </div>
                         <div class="content_text">
                             <div class="row">
@@ -189,7 +129,6 @@
                                 </div>
                                 <div class="col-md-8 col-12">
                                     <div class="normal_content text-start">
-                                        {{-- <p>মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</p> --}}
                                         <p>{{ $stand->name }}</p>
                                     </div>
                                 </div>
@@ -255,7 +194,6 @@
                                 <div class="col-md-8 col-12">
                                     <div class="normal_content text-start">
                                         <p>
-                                            {{-- সিলেট নামের উৎপত্তি নিয়ে নানা মতবাদ রয়েছে। প্রাচীন গৌড়ের রাজা ‘গুহক’ তার কন্যা শীলাদেবীর নামে একটি হাট স্থাপন করেন।  --}}
                                             {{ $stand->description }}
                                         </p>
                                     </div>
@@ -270,7 +208,6 @@
                                 <div class="col-md-8 col-12">
                                     <div class="normal_content text-start">
                                         <p>
-                                            {{-- সিলেট নামের উৎপত্তি নিয়ে নানা মতবাদ রয়েছে। প্রাচীন গৌড়ের রাজা ‘গুহক’ তার কন্যা শীলাদেবীর নামে একটি হাট স্থাপন করেন।  --}}
                                             {{ $stand->description }}
                                         </p>
                                     </div>
@@ -285,7 +222,6 @@
                                 <div class="col-md-8 col-12">
                                     <div class="normal_content text-start">
                                         <p>
-                                            {{-- সিলেট নামের উৎপত্তি নিয়ে নানা মতবাদ রয়েছে। প্রাচীন গৌড়ের রাজা ‘গুহক’ তার কন্যা শীলাদেবীর নামে একটি হাট স্থাপন করেন।  --}}
                                             {{ $stand->description }}
                                         </p>
                                     </div>
@@ -308,7 +244,6 @@
                     <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
                     <p class="ml-4">{{ __('মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন সি এন জি স্ট্যান্ড এর') }}</p> 
                 </div>
-                
                 <div class="row gallery_image g-3">
                     <div class="col-6 col-md-4">
                         <div class="">
@@ -343,3 +278,116 @@
     </section>
     <!-- gallery section end -->
 @endsection
+
+
+@push('script')
+  <script>
+      $(document).ready(function () {
+          // Fetch districts based on selected division
+          $('#division').on('change', function () {
+              var division_id = $(this).val();
+              if (division_id) {
+                  $.ajax({
+                      url: '/home/get-districts/' + division_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#district').empty();
+                          $('#district').append('<option value="">জেলা</option>');
+                          $.each(data, function (key, value) {
+                              $('#district').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#district').empty();
+              }
+          });
+
+          // Fetch thanas based on selected district
+          $('#district').on('change', function () {
+              var district_id = $(this).val();
+              if (district_id) {
+                  $.ajax({
+                      url: '/home/get-thanas/' + district_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#thana').empty();
+                          $('#thana').append('<option value="">থানা</option>');
+                          $.each(data, function (key, value) {
+                              $('#thana').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#thana').empty();
+              }
+          });
+
+          // Fetch unions based on selected thana
+          $('#thana').on('change', function () {
+              var thana_id = $(this).val();
+              if (thana_id) {
+                  $.ajax({
+                      url: '/home/get-unions/' + thana_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#union').empty();
+                          $('#union').append('<option value="">ইউনিয়ন</option>');
+                          $.each(data, function (key, value) {
+                              $('#union').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#union').empty();
+              }
+          });
+
+          // Fetch stands based on selected union
+          $('#union').on('change', function () {
+              var union_id = $(this).val();
+              if (union_id) {
+                  $.ajax({
+                      url: '/home/get-stands/' + union_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success: function (data) {
+                          $('#stand').empty();
+                          $('#stand').append('<option value="">স্ট্যান্ড</option>');
+                          $.each(data, function (key, value) {
+                              $('#stand').append('<option value="' + key + '">' + value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('#stand').empty();
+              }
+          });
+
+          // Fetch vehicles based on selected stand
+          // Fetch vehicles based on selected stand
+        $('#stand').on('change', function () {
+            var stand_id = $(this).val();
+            if (stand_id) {
+                $.ajax({
+                    url: '/home/get-vehicles/' + stand_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#vehicle').empty();
+                        $('#vehicle').append('<option value="">গাড়ি</option>');
+                        $.each(data, function (key, value) {
+                            $('#vehicle').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#vehicle').empty();
+            }
+        });
+      });
+  </script>
+@endpush
