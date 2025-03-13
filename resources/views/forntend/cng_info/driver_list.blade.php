@@ -63,70 +63,7 @@
             <div class="row d-flex align-content-center">
                 <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center cng_owner_location_item">
                     <div class="row g-2">
-                        {{-- @include('forntend.cng_info.partials.search_bar') --}}
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option value="1">বিভাগ</option>
-                                    <option value="2">বিভাগ</option>
-                                    <option value="3">বিভাগ</option>
-                                    <option value="4">বিভাগ</option>
-                                    <option value="5">বিভাগ</option>
-                                    <option value="6">বিভাগ</option>
-                                    <option value="7">বিভাগ</option>
-                                    <option value="8">বিভাগ</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>জেলা</option>
-                                    <option value="1">জেলা</option>
-                                    <option value="2">জেলা</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>থানা</option>
-                                    <option value="1">থানা</option>
-                                    <option value="2">থানা</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>ইউনিয়ন</option>
-                                    <option value="1">ইউনিয়ন</option>
-                                    <option value="2">ইউনিয়ন</option>
-                                </select>
-                            </div>
-                        </div>
-                         <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>স্ট্যান্ড</option>
-                                    <option value="1">স্ট্যান্ড</option>
-                                    <option value="2">স্ট্যান্ড</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-12 d-flex flex-column align-items-center text-center">
-                            <div class="dropdown">
-                                <select>
-                                    <option>গাড়ি</option>
-                                    <option value="1">গাড়ি</option>
-                                    <option value="2">গাড়ি</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-outline-success mt-3 mb-5" type="submit">ক্লিক করুন</button>
-                        </div>
-
+                        @include('forntend.cng_info.partials.search_bar')
                     </div>
                 </div>
                 <div class="col-12 col-lg-8">
