@@ -77,6 +77,7 @@ Route::group(['as' => 'f.'], function () {
 
 
 
+
         Route::get('/stand-notice/{id}', 'standNotice')->name('standNotice');
         Route::get('/division-notice/{id}', 'divisionNotice')->name('divisionNotice');
         Route::get('/district-notice/{id}', 'districtNotice')->name('districtNotice');
@@ -84,6 +85,9 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/union-notice/{id}', 'unionNotice')->name('unionNotice');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/single-blog/{id}', 'singleBlog')->name('single.blog');
+
+
+        Route::get('/driverProfileSearch', 'driverProfileSearch')->name('driverProfileSearch');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){

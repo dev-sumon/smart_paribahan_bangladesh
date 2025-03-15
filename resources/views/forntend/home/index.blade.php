@@ -204,19 +204,24 @@
           <div class="row d-flex align-items-center justify-content-center">
             <div class="col-12 col-md-4 d-flex align-items-center justify-content-sm-center">
               <div class="text">
-                <h2>{{ __('সরাসরি গাড়ি অথবা') }}<span class="d-none d-md-inline"><br></span>{{ __('ড্রাইভার কে খুঁজুন') }}</h2>
+                <h2>{{ __('সরাসরি গাড়ি অথবা ') }}<span class="d-none d-md-inline"><br></span>{{ __('ড্রাইভার কে খুঁজুন') }}</h2>
               </div>
             </div>
             <div class="col-12 col-md-5">
-              <form class="d-flex" role="search">
+              {{-- <form class="d-flex" role="search">
                 <input class="form-control me-2 search" type="search" placeholder="গাড়ির অথবা ড্রাইভার নাম্বার" aria-label="Search">
-              </form>
+              </form> --}}
+              <form class="d-flex" role="search" action="{{ route('f.home.driverProfileSearch') }}" method="GET">
+                <input class="form-control me-2 search" type="search" name="query" placeholder="গাড়ির অথবা ড্রাইভার নাম্বার" aria-label="Search">
+                <button type="submit" class="btn btn-outline-success">{{ __('ক্লিক করুন') }}</button>
+            </form>
+            
             </div>
-            <div class="col-12 justify-content-sm-center col-md-3 d-flex justify-content-end form">
+            {{-- <div class="col-12 justify-content-sm-center col-md-3 d-flex justify-content-end form">
               <form class="d-flex align-items-end" role="search">
                 <a href="error.html" class="btn btn-outline-success" type="submit">{{ __('ক্লিক করুন') }}</a>
               </form>
-            </div>
+            </div> --}}
           </div>
         </div>
       </section>
