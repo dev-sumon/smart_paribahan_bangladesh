@@ -102,6 +102,7 @@ class HomePageController extends Controller
             $data['division'] = Division::with(['districts', 'thanas', 'unions', 'stands.vehicleTypes.vehicles', 'notices'])->findOrFail($request->division_id);
             return view('forntend.cng_info.division', $data);
         }
+
     }
     public function showStand($id)
     {
@@ -188,6 +189,20 @@ class HomePageController extends Controller
         $data['union_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}
     ])->findOrFail($id);
         return view('forntend.cng_info.union_notice', $data);
+    }
+
+
+
+
+
+    public function driverProfileSearch(Request $request){
+        $query = $request->input('query');
+
+        $data['vehicles'] = Vehicle::where('vehicle_licence', 'LIKE', "%{$query}%")->get();
+        $data['drivers'] = Driver::where('driving_license', 'LIKE', "%{$query}%")
+      ->orWhere('phone', 'LIKE', "%{$query}%")
+      ->get();
+        return view('forntend.cng_info.search_info', $data);
     }
 
 }

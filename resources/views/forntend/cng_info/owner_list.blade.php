@@ -23,7 +23,7 @@
                     <div class="title pt-2">
                         <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    @foreach ($stand->notices as $key=>$notice)
+                    @foreach ($stand->notices->take(4) as $key=>$notice)
                         <div class="notice_list d-flex align-items-center">
                             <div class="icon-button">
                                 <i class="fa-solid fa-chevron-right"></i>
@@ -34,18 +34,17 @@
                         </div>
                     @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="#" class="gradient-border-button">
+                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
                             <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
-                    </div>
-                                       
+                    </div>           
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                     <div class="advisement text-center">
                       <div class="add_image">
                         <a href="#">
-                          <img class="text-center" src="images/add_banner.jpg" alt="add banner">
+                          <img class="text-center" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
                         </a>
                       </div>
                     </div>
@@ -58,10 +57,35 @@
     <section class="dealist pb-5">
         <div class="container">
             <div class="row d-flex align-content-center">
-                <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center cng_owner_location_item">
-                    <div class="row g-2">
-                        @include('forntend.cng_info.partials.search_bar')
-                    </div> 
+                <div class="col-sm-12 col-lg-4 d-flex flex-column align-items-center text-center stant_location_item">
+                    @include('forntend.cng_info.partials.search_bar')
+                    <div class="mt-5 d-lg-block d-md-none d-sm-block community_advisement">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 d-lg-block d-md-none d-sm-none community_advisement">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 d-lg-block d-md-none d-sm-none community_advisement">
+                        <div class="advisement">
+                            <div class="add_image">
+                                <a href="#">
+                                    <img class="" src="{{ asset('forntend/images/add_banner.jpg') }}" alt="add banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-8">
                     <div class="row d-flex justify-content-between">

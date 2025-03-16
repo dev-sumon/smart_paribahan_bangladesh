@@ -25,45 +25,23 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>নোটিশ বোর্ড</h5>
+                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
                     </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
+                    @foreach ($stand->notices->take(4) as $key=>$notice)
+                        <div class="notice_list d-flex align-items-center">
+                            <div class="icon-button">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="notice_head_line">
+                                <p class="p-0">{{ $notice->title }}</p>
+                            </div>
                         </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।</p>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="notice_page.html" class="gradient-border-button">
-                            <span>সকল</span>
+                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
+                            <span>{{ __('সকল') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
-                            </a>
+                          </a>
                     </div>
                                         
                 </div>
@@ -102,22 +80,6 @@
                 <div class="col-sm-12 col-lg-8">
                     <div class="row d-flex justify-content-between">
                         <div class="col-md-12 col-lg-12 pb-5">
-                            {{-- <div class="content_nav">
-                                <div class="nav1">
-                                    <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="{{ route('f.cng.cng_stand') }}" class="">স্ট্যান্ডের পরিচিতি</a></li>
-                                        <li><a href="{{ route('f.cng.map') }}" class="active-link">মানচিত্রে স্ট্যান্ড</a></li>
-                                        <li><a href="{{ route('f.cng.community') }}">সভাপতি ও সদস্য বৃন্দ তালিকা</a></li>
-                                        <li><a href="{{ route('f.cng.owner') }}">সি এন জি মালিক এর তালিকা</a></li>
-                                    </ul>
-                                </div>
-                                <div class="nav2 pt-4">
-                                    <ul class="d-flex flex-md-row flex-column gap-3 p-0 m-0 list-unstyled">
-                                        <li><a href="{{ route('f.cng.driver') }}">সি এন জি ড্রাইভার এর তালিকা </a></li>
-                                        <li><a href="{{ route('f.cng.notice') }}">স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী </a></li>
-                                    </ul>
-                                </div>
-                            </div> --}}
                             @include('forntend.cng_info.partials.inner_menu')
                         </div>
                         <div class="content_text">

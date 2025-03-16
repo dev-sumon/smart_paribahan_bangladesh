@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\AjaxController;
 use App\Http\Controllers\Backend\BlogController;
@@ -15,9 +15,12 @@ use App\Http\Controllers\Backend\UnionController;
 use App\Http\Controllers\Backend\DriverController;
 use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\NoticeController;
+use App\Http\Controllers\Forntend\LoginController;
+use App\Http\Controllers\Forntend\SignUpController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\DivisionController;
 use App\Http\Controllers\Driver\DashboardController;
+use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\BlogPageController;
 use App\Http\Controllers\Forntend\HelpPageController;
 use App\Http\Controllers\Forntend\HomePageController;
@@ -27,20 +30,18 @@ use App\Http\Controllers\Backend\ContactInfoController;
 use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
-use App\Http\Controllers\Owner\Auth\OwnerLoginController;
-use App\Http\Controllers\Backend\Auth\AdminLoginController;
-use App\Http\Controllers\Driver\Auth\DriverLoginController;
-use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
-use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
-use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Backend\VehicleTypeController;
-use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
-use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
-use App\Http\Controllers\Forntend\CngInfoController;
-use App\Http\Controllers\Forntend\LoginController;
-use App\Http\Controllers\Forntend\SignUpController;
+use App\Http\Controllers\Backend\StandCommiteeController;
+use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\NoticeCategoryController;
 use App\Http\Controllers\Owner\Auth\OwnerSignupController;
+use App\Http\Controllers\Backend\Auth\AdminLoginController;
+use App\Http\Controllers\Driver\Auth\DriverLoginController;
+use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
+use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
+use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
+use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
 
 // use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,7 @@ Route::group(['as' => 'f.'], function () {
 
 
 
+
         Route::get('/stand-notice/{id}', 'standNotice')->name('standNotice');
         Route::get('/division-notice/{id}', 'divisionNotice')->name('divisionNotice');
         Route::get('/district-notice/{id}', 'districtNotice')->name('districtNotice');
@@ -84,6 +86,9 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/union-notice/{id}', 'unionNotice')->name('unionNotice');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/single-blog/{id}', 'singleBlog')->name('single.blog');
+
+
+        Route::get('/driverProfileSearch', 'driverProfileSearch')->name('driverProfileSearch');
     });
 
     Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){

@@ -18,41 +18,44 @@
         <!-- Left-aligned menu items -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('f.home') }}">হোম</a>
+            <a class="nav-link" href="{{ route('f.home') }}">{{ __('Home') }}</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              সার্ভিস সমূহ
+              {{ __('Services') }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-              <li><a class="dropdown-item" href="#">সার্ভিস ১</a></li>
-              <li><a class="dropdown-item" href="#">সার্ভিস ২</a></li>
+              <li><a class="dropdown-item" href="#">{{ __('Service1') }}</a></li>
+              <li><a class="dropdown-item" href="#">{{ __('Service2') }}</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">সম্পর্কিত</a>
+            <a class="nav-link" href="#">{{ __('Related') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('f.help.index') }}">হেল্প</a>
+            <a class="nav-link" href="{{ route('f.help.index') }}">{{ __('Help') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('f.blog.index') }}">ব্লগ</a>
+            <a class="nav-link" href="{{ route('f.blog.index') }}">{{ __('Blog') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('f.contact.index') }}">যোগাযোগ</a>
+            <a class="nav-link" href="{{ route('f.contact.index') }}">{{ __('Contact') }}</a>
           </li>
         </ul>
 
         <!-- Right-aligned Language Selector and Buttons -->
+        @php
+          $currentLang = Session::get('locale', 'bn');
+      @endphp
         <div class="d-flex align-items-center">
           <div class="dropdown me-3">
             <a class="btn btn-outline-secondary dropdown-toggle language_button" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="images/icon _language_.svg" alt="">
-               বাংলা
+                {{ $currentLang == 'bn' ? 'বাংলা' : 'English' }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-              <li><a class="dropdown-item" href="#">English</a></li>
-              <li><a class="dropdown-item" href="#">বাংলা</a></li>
+              <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['lang' => 'en']) }}">English</a></li>
+              <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['lang' => 'bn']) }}">বাংলা</a></li>
             </ul>
           </div>
           @if (Auth::guard('driver')->check())
