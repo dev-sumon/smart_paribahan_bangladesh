@@ -199,9 +199,10 @@ class HomePageController extends Controller
         $query = $request->input('query');
 
         $data['vehicles'] = Vehicle::where('vehicle_licence', 'LIKE', "%{$query}%")->get();
-        $data['drivers'] = Driver::where('driving_license', 'LIKE', "%{$query}%")
-      ->orWhere('phone', 'LIKE', "%{$query}%")
-      ->get();
+        $data['drivers'] = Driver::where('phone', 'LIKE', "%{$query}%")->get();
+    //     $data['drivers'] = Driver::where('driving_license', 'LIKE', "%{$query}%")
+    //   ->orWhere('phone', 'LIKE', "%{$query}%")
+    //   ->get();
         return view('forntend.cng_info.search_info', $data);
     }
 
