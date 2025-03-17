@@ -9,9 +9,9 @@
           <div class="row d-flex align-items-center column_reverse">
             <div class="col-12 mb-5 col-md-5">
               <div class="title">
-                <h3>{{ __('আপনার নিরাপদ যাত্রার') }}</h3>
-                <h2>{{ __('স্মার্ট সলিউশন') }}</h2>
-                <p class="lead">{{ __('সময় কারও জন্য অপেক্ষা না করলেও আপনার জীবনের সময় বাঁচাতে স্মার্ট সল্যুশন নিয়ে আপনার পাশে আমরা আছি') }}</p>
+                <h3>{{ __('Have a safe journey') }}</h3>
+                <h2>{{ __('Smart Solution') }}</h2>
+                <p class="lead">{{ __('Even though time waits for no one, we are here to help you save time in your life with smart solutions.') }}</p>
               </div>
               <div class="row g-2">
                 <form action="{{ route('f.home.search') }}" method="post" >
@@ -20,7 +20,7 @@
                   <div class="row">
                     <div class="form-group col-4">
                       <select name="division_id" id="division" class="form-select select_iteam">
-                        <option value="">{{ __('বিভাগ') }}</option>
+                        <option value="">{{ __('department') }}</option>
                         @foreach ($divisions as $division)
                             <option value="{{ $division->id }}">{{ $division->division }}</option>
                         @endforeach
@@ -32,36 +32,36 @@
 
                     <div class="form-group col-4">
                       <select name="district_id" id="district" class="form-select select_iteam">
-                        <option value="">{{ __('জেলা') }}</option>
+                        <option value="">{{ __('district') }}</option>
                       </select>
                     </div>
 
                     <div class="form-group col-4">
                       <select name="thana_id" id="thana" class="form-select select_iteam">
-                        <option value="">{{ __('থানা') }}</option>
+                        <option value="">{{ __('Station') }}</option>
                       </select>
                     </div>
 
                     <div class="form-group col-4">
                       <select name="union_id" id="union" class="form-select select_iteam">
-                        <option value="">{{ __('ইউনিয়ন') }}</option>
+                        <option value="">{{ __('Union') }}</option>
                       </select>
                     </div>
 
                     <div class="form-group col-4">
                       <select name="stand_id" id="stand" class="form-select select_iteam">
-                        <option value="">{{ __('স্ট্যান্ড') }}</option>
+                        <option value="">{{ __('Stand') }}</option>
                       </select>
                     </div>
 
                     <div class="form-group col-4">
                       <select name="vehicle_type_id" id="vehicle_type" class="form-select select_iteam">
-                        <option value="">{{ __('গাড়ি') }}</option>
+                        <option value="">{{ __('Vehicle') }}</option>
                       </select>
                     </div>
 
                     <div class="submit col-12">
-                      <button class="btn btn-custom mt-3 w-100">{{ __('এখানে সার্চ করুন') }}</button>
+                      <button class="btn btn-custom mt-3 w-100">{{ __('Search here') }}</button>
                     </div>
                   </div>
                 </form>
@@ -88,7 +88,7 @@
                 <div class="details">
                   <a href="{{ route('f.cng.index') }}">
                     <img src="{{ asset('forntend/images/Group (6).svg') }}" alt="সি এন জি">
-                    <p>{{ __('সি এন জি') }}</p>
+                    <p>{{ __('C N G') }}</p>
                   </a>
                 </div>
               </div>
@@ -98,7 +98,7 @@
                 <div class="details">
                   <a href="hiace.html">
                     <img src="{{ asset('forntend/images/Group (7).svg') }}" alt="হায়েস">
-                    <p>{{ __('হায়েস') }}</p>
+                    <p>{{ __('Hiace') }}</p>
                   </a>
                 </div>
               </div>
@@ -108,7 +108,7 @@
                 <div class="details">
                   <a href="car.html">
                     <img src="{{ asset('forntend/images/Group (2).svg') }}" alt="কার">
-                    <p>{{ __('কার') }}</p>
+                    <p>{{ __('Car') }}</p>
                   </a>
                 </div>
               </div>
@@ -118,7 +118,7 @@
                 <div class="details">
                   <a href="micro.html">
                     <img src="{{ asset('forntend/images/Group (3).svg') }}" alt="মাইক্রো">
-                    <p>{{ __('মাইক্রো') }}</p>
+                    <p>{{ __('Micro') }}</p>
                   </a>
                 </div>
               </div>
@@ -128,7 +128,7 @@
                 <div class="details">
                   <a href="bike.html">
                     <img src="{{ asset('forntend/images/Group (4).svg') }}" alt="বাইক">
-                    <p>{{ __('বাইক') }}</p>
+                    <p>{{ __('Bike') }}</p>
                   </a>
                 </div>
               </div>
@@ -138,7 +138,7 @@
                 <div class="details">
                   <a href="#">
                     <img src="{{ asset('forntend/images/Group (5).svg') }}" alt="পার্সেল">
-                    <p>{{ __('পার্সেল') }}</p>
+                    <p>{{ __('Parcel') }}</p>
                   </a>
                 </div>
               </div>
@@ -153,13 +153,13 @@
       <section class="connected_us" id="price-section">
         <div class="container py-5 pb-5">
             <div class="row g-2">
-                <h2 class="section-title mb-5">{{ __('আমাদের সাথে যুক্ত আছেন') }}</h2>
+                <h2 class="section-title mb-5">{{ __('Connected with us') }}</h2>
                 <div class="col-12 col-md-6 col-lg-3 mb-5 d-flex justify-content-center">
                     <div class="custom-card">
                         <div class="icon-container">
                             <img class="train" src="{{ asset('forntend/images/train.svg') }}" alt="Train Icon">
                         </div>
-                        <p class="card-text">{{ __('সর্বমোট গাড়ির স্টেশন') }}</p>
+                        <p class="card-text">{{ __('Total Car Stations') }}</p>
                         <p class="price" data-original="78090">{{ __('0') }}</p>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                         <div class="icon-container">
                             <img class="car" src="{{ asset('forntend/images/CAR 02 1.svg') }}" alt="Car Icon">
                         </div>
-                        <p class="card-text">{{ __('সর্বমোট গাড়ি') }}</p>
+                        <p class="card-text">{{ __('Total Cars') }}</p>
                         <p class="price" data-original="90090">{{ __('0') }}</p>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                         <div class="icon-container">
                             <img class="man" src="{{ asset('forntend/images/MAN 01 1.svg') }}" alt="Man Icon">
                         </div>
-                        <p class="card-text">{{ __('সর্বমোট গাড়ির মালিক') }}</p>
+                        <p class="card-text">{{ __('Total Car Owners') }}</p>
                         <p class="price" data-original="78090">{{ __('0') }}</p>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                         <div class="icon-container">
                             <img class="driver" src="{{ asset('forntend/images/DRIVER 1.svg') }}" alt="Driver Icon">
                         </div>
-                        <p class="card-text">{{ __('সর্বমোট অভিজ্ঞ ড্রাইভার') }}</p>
+                        <p class="card-text">{{ __('Total Experienced Drivers') }}</p>
                         <p class="price" data-original="78090">{{ __('0') }}</p>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
           <div class="row d-flex align-items-center justify-content-center">
             <div class="col-12 col-md-4 d-flex align-items-center justify-content-sm-center">
               <div class="text">
-                <h2>{{ __('সরাসরি গাড়ি অথবা ') }}<span class="d-none d-md-inline"><br></span>{{ __('ড্রাইভার কে খুঁজুন') }}</h2>
+                <h2>{{ __('Directly to the car or') }}<span class="d-none d-md-inline"><br></span>{{ __('Find a driver') }}</h2>
               </div>
             </div>
             <div class="col-12 col-md-5">
@@ -212,14 +212,14 @@
                 <input class="form-control me-2 search" type="search" placeholder="গাড়ির অথবা ড্রাইভার নাম্বার" aria-label="Search">
               </form> --}}
               <form class="d-flex" role="search" action="{{ route('f.home.driverProfileSearch') }}" method="GET">
-                <input class="form-control me-2 search" type="search" name="query" placeholder="গাড়ির অথবা ড্রাইভার নাম্বার" aria-label="Search">
-                <button type="submit" class="btn btn-outline-success">{{ __('ক্লিক করুন') }}</button>
+                <input class="form-control me-2 search" type="search" name="query" placeholder="Vehicle or driver number" aria-label="Search">
+                <button type="submit" class="btn btn-outline-success">{{ __('Click') }}</button>
             </form>
             
             </div>
             {{-- <div class="col-12 justify-content-sm-center col-md-3 d-flex justify-content-end form">
               <form class="d-flex align-items-end" role="search">
-                <a href="error.html" class="btn btn-outline-success" type="submit">{{ __('ক্লিক করুন') }}</a>
+                <a href="error.html" class="btn btn-outline-success" type="submit">{{ __('Click') }}</a>
               </form>
             </div> --}}
           </div>
