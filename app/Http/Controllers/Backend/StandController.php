@@ -14,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class StandController extends Controller
 {
@@ -36,8 +37,20 @@ class StandController extends Controller
         $save->union_id = $request->union_id;
         $save->name = $request->name;
         $save->description = $request->description;
-        $save->location = $request->location;
+        // $save->location = $request->location;
         $save->status = $request->has('status') ? $request->status : 0;
+
+
+
+        $location = $request->location;
+
+        if (!Str::contains($location, 'www.google.com/maps/embed?pb=')) {
+            return redirect()->back()->withErrors(['location' => 'Please provide a valid Google Maps Embed link.']);
+        }
+
+        $save->location = $location;
+
+
 
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -63,8 +76,21 @@ class StandController extends Controller
         $update = Stand::findOrFail($id);
         $update->name = $request->name;
         $update->description = $request->description;
-        $update->location = $request->location;
         $update->status = $request->status ?? 0;
+
+
+
+        $location = $request->location;
+
+        if (!Str::contains($location, 'www.google.com/maps/embed?pb=')) {
+            return redirect()->back()->withErrors(['location' => 'Please provide a valid Google Maps Embed link.']);
+        }
+
+        $update->location = $location;
+
+
+
+
 
         if ($request->hasFile('image')) {
             if ($update->iamge && Storage::exists($update->image)) {

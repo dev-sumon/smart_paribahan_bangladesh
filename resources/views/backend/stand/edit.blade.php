@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="location">{{ __('Location') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="location" placeholder="Enter Stand Location" name="location" value="{{ old('location') ?? $stand->location }}">
+                                        <input type="url" class="form-control" id="location" placeholder="Enter Stand Location" name="location" value="{{ old('location') ?? $stand->location }}">
                                         @if($errors->has('location'))
                                             <div class="text-danger">{{ $errors->first('location') }}</div>
                                         @endif

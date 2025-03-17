@@ -53,7 +53,8 @@
                                         <tr>
                                             <th>{{ __('Location') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->location }}</td>
+                                            {{-- <td> {{ $stand->location }}</td> --}}
+                                            <td><iframe src="{{ $stand->location }}" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Image') }}</th>
