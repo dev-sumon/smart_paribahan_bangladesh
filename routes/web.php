@@ -38,6 +38,8 @@ use App\Http\Controllers\Owner\Auth\OwnerSignupController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
+use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
+use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
@@ -170,6 +172,11 @@ Route::controller(DriverRegistrationController::class)->prefix('signup')->name('
     Route::get('driver/signup', 'signupForm')->name('signupForm');
     Route::post('driver/signup', 'signup')->name('signup');
     Route::put('driver/update/{id}', 'update')->name('update');
+});
+Route::controller(FieldWorkerLoginController::class)->prefix('field_worker')->name('field_worker.')->group(function(){
+    Route::get('/login', 'fieldWorkerLogin')->name('login');
+    Route::post('/login', 'fieldWorkerLoginCheck')->name('login');
+    Route::post('/logout', 'logout')->name('logout');
 });
 
 // Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
@@ -438,6 +445,12 @@ Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'
         Route::get('thana/{id}', 'thana')->name('thana');
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
+    });
+});
+
+Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as' => 'field_worker.'], function(){
+    Route::controller(FieldWorkerDashboardController::class)->group(function (){
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
 });
 

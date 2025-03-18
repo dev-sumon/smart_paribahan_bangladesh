@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class FieldWorker extends Model
+// class FieldWorker extends Model
+class FieldWorker extends Authenticatable
 {
     public function statusBg(){
         if($this->status == 1){

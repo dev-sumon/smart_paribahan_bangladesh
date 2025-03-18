@@ -56,6 +56,10 @@ return [
             'driver' => 'session',
             'provider' => 'drivers'
         ],
+        'field_worker' => [
+            'driver' => 'session',
+            'provider' => 'field_workers',
+        ],
     ],
 
     /*
@@ -91,6 +95,10 @@ return [
         'drivers' => [
             'driver' => 'eloquent',
             'model' => env('DRIVER_MODEL', App\Models\Driver::class),
+        ],
+        'field_workers' => [
+            'driver' => 'eloquent',
+            'model' => env('FIELDWORKER_MODEL', App\Models\FieldWorker::class),
         ],
 
         // 'users' => [
