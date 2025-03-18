@@ -12,7 +12,7 @@
 @endsection
 
 
-
+{{-- 
 <section class="logout">
     <div class="container">
         <div class="card-body">
@@ -31,4 +31,4 @@
         </div>
     </div>
     
-</section>
+</section> --}}

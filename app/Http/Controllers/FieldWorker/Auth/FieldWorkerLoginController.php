@@ -26,12 +26,12 @@ class FieldWorkerLoginController extends Controller
         if($check){
             if($check->status == 1){
                 if(Auth::guard('field_worker')->attempt($credentials)){
-                    // return redirect()->route('f.home');
-                    return view('field_worker.dashboard');
+                    return redirect()->route('f.home');
+                    // return view('field_worker.dashboard');
                 }
             }
         }
-        // return redirect()->route('field_worker.dashboard');
+        return redirect()->route('field_worker.dashboard');
     }
     public function logout()
     {
