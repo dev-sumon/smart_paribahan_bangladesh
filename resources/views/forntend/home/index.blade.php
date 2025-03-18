@@ -20,7 +20,7 @@
                   <div class="row">
                     <div class="form-group col-4">
                       <select name="division_id" id="division" class="form-select select_iteam">
-                        <option value="">{{ __('department') }}</option>
+                        <option value="">{{ __('Department') }}</option>
                         @foreach ($divisions as $division)
                             <option value="{{ $division->id }}">{{ $division->division }}</option>
                         @endforeach
@@ -32,7 +32,7 @@
 
                     <div class="form-group col-4">
                       <select name="district_id" id="district" class="form-select select_iteam">
-                        <option value="">{{ __('district') }}</option>
+                        <option value="">{{ __('District') }}</option>
                       </select>
                     </div>
 
