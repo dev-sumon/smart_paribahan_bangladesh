@@ -209,7 +209,7 @@
             </div>
             <div class="col-12 col-md-5">
               {{-- <form class="d-flex" role="search">
-                <input class="form-control me-2 search" type="search" placeholder="গাড়ির অথবা ড্রাইভার নাম্বার" aria-label="Search">
+                <input class="form-control me-2 search" type="search" placeholder="Vehicle or driver number" aria-label="Search">
               </form> --}}
               <form class="d-flex" role="search" action="{{ route('f.home.driverProfileSearch') }}" method="GET">
                 <input class="form-control me-2 search" type="search" name="query" placeholder="Vehicle or driver number" aria-label="Search">
@@ -233,10 +233,10 @@
          <div class="row">
           <div class="help_us_headr text-center">
             <div class="title">
-              <h2>{{ __('আমরা কিভাবে আপনাকে সহয়ায়তা করি') }}</h2>
+              <h2>{{ __('How we help you') }}</h2>
             </div>
             <div class="desc">
-              <p>{{ __('যেকোনো যাত্রী প্রয়োজনের সময় তার নিকটবর্তী স্টেশনে গাড়ির জন্য সিগন্যাল পাঠাতে') }}<span class="d-none d-md-inline"><br></span>{{ __('পারবেন।ফলে কাউকে ঘণ্টার পর ঘণ্টা গাড়ির জন্য অপেক্ষা করতে হবে না।') }}</p>
+              <p>{{ __('Any passenger can send a signal for a car to the nearest station when needed.') }}<span class="d-none d-md-inline"><br></span>{{ __('As a result, no one has to wait for hours for a car.') }}</p>
             </div>
           </div>
           <div class="car-container">
@@ -244,27 +244,27 @@
 
               <div class="feature-box feature-box-1">
                   <span class="icon-circle-1">{{ __('1') }}</span>
-                  <p class="feature-text">{{ __('আপনার কোনো কিছু গাড়িতে হারিয়ে গেলে আপনি এটা খুব সহজে খুঁজে বের করতে পারবেন।') }}</p>
+                  <p class="feature-text">{{ __('If you lose something in the vehicle, you can easily find it.') }}</p>
               </div>
 
               <div class="feature-box feature-box-2">
                   <span class="icon-circle-2">{{ __('2') }}</span>
-                  <p class="feature-text">{{ __('যাত্রীরা নিরাপদেও স্মার্ট প্রযুক্তির মাধ্যমে চলাচল করতে পারবে।') }}</p>
+                  <p class="feature-text">{{ __('Passengers can travel safely using smart technology.') }}</p>
               </div>
 
               <div class="feature-box feature-box-3">
                   <span class="icon-circle-3">{{ __('3') }}</span>
-                  <p class="feature-text">{{ __('যাত্রী যদি চায় তাহলে ড্রাইভারকে অনলাইনে পেমেন্ট করতে পারে যেমন বিকাশ, রকেট, নগদ অনলাইন সিস্টেমের মাধ্যমে।') }}</p>
+                  <p class="feature-text">{{ __('Passengers can make online payments to the driver if they wish, using platforms like bKash, Rocket, or Nagad.') }}</p>
               </div>
 
               <div class="feature-box feature-box-4">
                   <span class="icon-circle-4">{{ __('4') }}</span>
-                  <p class="feature-text">{{ __('যাত্রীদের কোনো কিছু যদি গাড়ির মধ্যে ফেলে যায়। তাহলে ড্রাইভার হারানো বিজ্ঞপ্তি দিতে পারবে।') }}</p>
+                  <p class="feature-text">{{ __('If passengers leave something behind in the vehicle, the driver can issue a lost-and-found notice.') }}</p>
               </div>
 
               <div class="feature-box feature-box-5">
                   <span class="icon-circle-5">{{ __('5') }}</span>
-                  <p class="feature-text">{{ __('প্রত্যেকটি গাড়ির মধ্যে QRকোড থাকবে।') }}</p>
+                  <p class="feature-text">{{ __('Each vehicle will have a QR code.') }}</p>
               </div>
           </div>
          </div>
@@ -277,8 +277,8 @@
       <div class="container pt-5 pb-5">
         <div class="row d-flex align-items-stretch">
           <div class="head-text">
-            <h2 class="heading_section">{{ __('বাংলাদেশ স্মার্ট পরিবহন ব্লগ থেকে') }}</h2>
-            <p class="sub_text">{{ __('সকল বিবৃতি, আপডেট, রিলিজ ও অন্যান্য') }}</p>
+            <h2 class="heading_section">{{ __('From the Bangladesh Smart Transport Blog') }}</h2>
+            <p class="sub_text">{{ __('All Statements, Updates, Releases, and Others') }}</p>
           </div>
           @foreach ($blogs as $blog)
           <div class="col-md-12 col-lg-4 mb-4 pb-4">
@@ -294,7 +294,7 @@
           @endforeach
           <div class="btn_section">
             <a href="{{ route('f.blog.index') }}" class="gradient-border-button">
-              <span>{{ __('সব গুলো ব্লগ') }}</span>
+              <span>{{ __('All Blogs') }}</span>
               <i class="fa-solid fa-arrow-right arrow"></i>
             </a>
           </div>
@@ -308,7 +308,7 @@
       <div class="container d-flex justify-content-center">
           <div class="row w-100">
             <div class="faq-section">
-              <div class="faq-title  py-5 pb-5">{{ __('সচরাচর আপনার প্রশ্ন সমূহ') }}</div>
+              <div class="faq-title  py-5 pb-5">{{ __('Frequently Asked Questions (FAQ)') }}</div>
 
               @foreach ($faqs as $faq)
                 <div class="faq-item">
