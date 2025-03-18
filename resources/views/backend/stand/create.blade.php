@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">{{ __('Stand Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') }}">
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') }}">
                                         @if($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="location">{{ __('Location') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="location" placeholder="Enter Stand Location" name="location" value="{{ old('location') }}">
+                                        <input type="url" class="form-control" id="location" placeholder="Enter Stand Google Map Link" name="location" value="{{ old('location') }}">
                                         @if($errors->has('location'))
                                             <div class="text-danger">{{ $errors->first('location') }}</div>
                                         @endif
