@@ -8,10 +8,10 @@
             <div class="row align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 col-sm-12 text-md-start text-center mb-4 mb-md-0">
                     <div class="banner_head pt-3">
-                        <h2>{{ __('বাংলাদেশ স্মার্ট') }} <br class="d-none d-sm-inline">{{ __('পরিবহন ব্লগ') }}</h2>
+                        <h2>{{ __('Bangladesh Smart ') }} <br class="d-none d-sm-inline">{{ __('Transport Blog') }}</h2>
                     </div>
                     <div class="banner_title">
-                        <p>{{ __('সকল বিবৃতি, আপডেট, রিলিজ ও অন্যান্য') }}</p>
+                        <p>{{ __('All Statements, Updates, Releases, and Others') }}</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 d-flex justify-content-lg-end justify-content-sm-center banner_image">
@@ -51,7 +51,7 @@
                     <div class="blog_card_form d-block d-sm-none">
                         <div class="sidebar shadow mt-5">
                             <div class="search-bar mb-4 ">
-                                <h6 class="text-start"> এখানে অনুসন্ধান করুন </h6>
+                                <h6 class="text-start"> Search here </h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
                                     <input type="text" class="form-control search-input" placeholder="অনুসন্ধান">
@@ -65,14 +65,14 @@
                             <div class="left_link d-flex text-center">
                                 <i class="fa-solid fa-user"></i>
                                 <h5 class="ml-2">{{ $blog->creator }}</h5>
-                                {{-- <h5 class="ml-2">অ্যাডমিন দ্বারা</h5> --}}
+                                {{-- <h5 class="ml-2">By Admin</h5> --}}
                             </div>
                             <div class="right_link d-flex text-center">
                                 <i class="fa-solid fa-folder-open"></i>
-                                <h5 class="ml-2">বিভাগ</h5>
+                                <h5 class="ml-2">Division</h5>
                             </div>
                         </div>
-                        {{-- <h1>স্মার্ট বাংলাদেশে পরিবহন <br class="d-none d-sm-inline"> খাত আনস্মার্টই থাকবে?</h1> --}}
+                        {{-- <h1> Will the transportation sector  <br class="d-none d-sm-inline"> remain unsmart in Smart Bangladesh?</h1> --}}
                         <h1>{{ $blog->title }}</h1>
                         <div class="card shadow mt-5">
                             <img src="{{ asset('storage/'. $blog->image) }}" class="card-img-top" alt="Card Image">
@@ -84,9 +84,9 @@
                                     <div class="card-body inner_buttom">
                                         <div class="d-lg-flex d-sm-block justify-content-between align-items-center mt-4">
                                             <div>
-                                                <a class="tag mr-4" href="#">ট্যাগ</a>
-                                                <a class="a_bike mr-2" href="#">বাইক রাইড</a>
-                                                <a class="a_bike" href="#">বাইক রাইড</a>
+                                                <a class="tag mr-4" href="#">Tag</a>
+                                                <a class="a_bike mr-2" href="#">Bike Ride</a>
+                                                <a class="a_bike" href="#">Bike Ride</a>
                                             </div>
                                             <div class="d-flex gap-4 pt-3">
                                                 <a href="#" class="inner_icon "><i
@@ -108,10 +108,10 @@
                     <div class="blog_card_form d-none d-sm-block">
                         <div class="sidebar shadow mt-5">
                             <div class="search-bar mb-4 ">
-                                <h6 class="text-start"> এখানে অনুসন্ধান করুন </h6>
+                                <h6 class="text-start"> Search here </h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
-                                    <input type="text" class="form-control search-input" placeholder="অনুসন্ধান">
+                                    <input type="text" class="form-control search-input" placeholder="Search">
                                     <i class="fas fa-search search-icon"></i>
                                 </div>
                             </div>
@@ -120,16 +120,16 @@
                     <div class="blog_card_form">
                         <div class="sidebar shadow">
                             <div class="search-bar mb-4">
-                                <h6 class="text-start"> বিভাগ </h6>
+                                <h6 class="text-start"> Division </h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
                                     <input type="text" class="form-control search-input mt-4"
-                                        placeholder="বিভিন্ন গাড়ি নিয়ে ">
+                                        placeholder="Various cars">
                                     <input type="text" class="form-control search-input mt-4"
-                                        placeholder="প্রোমোশনসমূহ">
-                                    <input type="text" class="form-control search-input mt-4" placeholder="নিউজরুম">
+                                        placeholder="Promotions">
+                                    <input type="text" class="form-control search-input mt-4" placeholder="Newsroom">
                                     <input type="text" class="form-control search-input mt-4"
-                                        placeholder="বিভিন্ন গাড়ি নিয়ে ">
+                                        placeholder="Various cars ">
                                 </div>
                             </div>
                         </div>
