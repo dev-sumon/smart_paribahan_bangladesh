@@ -7,18 +7,17 @@
             <div class="row">
                 <div class="hero_details">
                     <div class="desc">
-                        {{-- <h5>সিলেট বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা - নিজবাহাদুরপুর ইউনিয়ন</h5> --}}
                         <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
                     </div>
                     <div class="title pt-3">
-                        <h2> {{ $owner->vehicle->name }} {{ __('স্ট্যান্ডের পরিচিতি') }}</h2>
+                        <h2>{{ __('স্ট্যান্ডের পরিচিতি') }}</h2>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- inner_page_hero section start-->
-  
+
     <!-- notice section start  -->
     <section class="notice">
         <div class="container py-5">
@@ -43,7 +42,7 @@
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
-                                        
+
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                     <div class="advisement">
@@ -59,7 +58,7 @@
     </section>
 
     <!-- notice section end  -->
-  
+
     <section class="dealist">
         <div class="container">
             <div class="row d-flex align-content-center">
@@ -84,9 +83,9 @@
                         </div>
                         <div class="video-responsive">
                             <iframe width="725" height="408" src="https://www.youtube.com/embed/eHJnEHyyN1Y?si=tYCENquNCQV1e60P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>                        
+                        </div>
                         <div class="content_text ">
-                            
+
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
@@ -99,7 +98,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
