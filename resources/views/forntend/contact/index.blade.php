@@ -71,26 +71,26 @@
       <!-- conact form section design start -->
       <section class="form-container-section pt-5 pb-5">
           <div class="container">
-              <h5 class="mb-4">{{ __('আপনাদের জিজ্ঞাসা ইনবক্স করুন') }}</h5>
+              <h5 class="mb-4">{{ __('Send us your queries in the inbox.') }}</h5>
               <form>
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="আপনার নাম">
+                      <input type="text" class="form-control" placeholder="{{ __('Your Name') }}">
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
-                          <input type="email" class="form-control" placeholder="আপনার ইমেইল">
+                          <input type="email" class="form-control" placeholder="{{ __('Your Email') }}">
                       </div>
                       <div class="form-group col-md-6">
-                          <input type="text" class="form-control" placeholder="আপনার ফোন নাম্বার">
+                          <input type="text" class="form-control" placeholder="{{ __('Your Phone Number') }}">
                       </div>
                   </div>
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="আপনার বিষয়">
+                      <input type="text" class="form-control" placeholder="{{ __('Your Subject') }}">
                   </div>
                   <div class="form-group">
-                      <textarea class="form-control" rows="4" placeholder="বিস্তারিত লিখুন"></textarea>
+                      <textarea class="form-control" rows="4" placeholder="{{ __('Write in Detail') }}"></textarea>
                   </div>
-                  <button type="submit" class="btn btn-submit btn-sm">{{ __('সাবমিট') }}</button>
+                  <button type="submit" class="btn btn-submit btn-sm">{{ __('Submit') }}</button>
               </form>
           </div>
       </section>

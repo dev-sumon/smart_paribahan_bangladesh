@@ -212,7 +212,7 @@
                 <input class="form-control me-2 search" type="search" placeholder="Vehicle or driver number" aria-label="Search">
               </form> --}}
               <form class="d-flex" role="search" action="{{ route('f.home.driverProfileSearch') }}" method="GET">
-                <input class="form-control me-2 search" type="search" name="query" placeholder="Vehicle or driver number" aria-label="Search">
+                <input class="form-control me-2 search" type="search" name="query" placeholder="{{ __('Vehicle or driver number') }}" aria-label="Search">
                 <button type="submit" class="btn btn-outline-success">{{ __('Click') }}</button>
             </form>
             

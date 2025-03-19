@@ -8,7 +8,7 @@
             <div class="row align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 col-sm-12 text-md-start text-center mb-4 mb-md-0">
                     <div class="banner_head pt-3">
-                        <h2>{{ __('Bangladesh Smart ') }} <br class="d-none d-sm-inline">{{ __('Transport Blog') }}</h2>
+                        <h2>{{ __('Bangladesh Smart') }} <br class="d-none d-sm-inline">{{ __('Transport Blog') }}</h2>
                     </div>
                     <div class="banner_title">
                         <p>{{ __('All Statements, Updates, Releases, and Others') }}</p>
@@ -51,10 +51,10 @@
                     <div class="blog_card_form d-block d-sm-none">
                         <div class="sidebar shadow mt-5">
                             <div class="search-bar mb-4 ">
-                                <h6 class="text-start"> Search here </h6>
+                                <h6 class="text-start">{{ __('Search here') }}</h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
-                                    <input type="text" class="form-control search-input" placeholder="অনুসন্ধান">
+                                    <input type="text" class="form-control search-input" placeholder="{{ __('Search') }}">
                                     <i class="fas fa-search search-icon"></i>
                                 </div>
                             </div>
@@ -69,10 +69,10 @@
                             </div>
                             <div class="right_link d-flex text-center">
                                 <i class="fa-solid fa-folder-open"></i>
-                                <h5 class="ml-2">Division</h5>
+                                <h5 class="ml-2">{{ __('Division') }}</h5>
                             </div>
                         </div>
-                        {{-- <h1> Will the transportation sector  <br class="d-none d-sm-inline"> remain unsmart in Smart Bangladesh?</h1> --}}
+                        {{-- <h1>Will the transportation sector<br class="d-none d-sm-inline">remain unsmart in Smart Bangladesh?</h1> --}}
                         <h1>{{ $blog->title }}</h1>
                         <div class="card shadow mt-5">
                             <img src="{{ asset('storage/'. $blog->image) }}" class="card-img-top" alt="Card Image">
@@ -84,9 +84,9 @@
                                     <div class="card-body inner_buttom">
                                         <div class="d-lg-flex d-sm-block justify-content-between align-items-center mt-4">
                                             <div>
-                                                <a class="tag mr-4" href="#">Tag</a>
-                                                <a class="a_bike mr-2" href="#">Bike Ride</a>
-                                                <a class="a_bike" href="#">Bike Ride</a>
+                                                <a class="tag mr-4" href="#">{{ __('Tag') }}</a>
+                                                <a class="a_bike mr-2" href="#">{{ __('Bike Ride') }}</a>
+                                                <a class="a_bike" href="#">{{ __('Bike Ride') }}</a>
                                             </div>
                                             <div class="d-flex gap-4 pt-3">
                                                 <a href="#" class="inner_icon "><i
@@ -108,10 +108,10 @@
                     <div class="blog_card_form d-none d-sm-block">
                         <div class="sidebar shadow mt-5">
                             <div class="search-bar mb-4 ">
-                                <h6 class="text-start"> Search here </h6>
+                                <h6 class="text-start">{{ __('Search here') }}</h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
-                                    <input type="text" class="form-control search-input" placeholder="Search">
+                                    <input type="text" class="form-control search-input" placeholder="{{ __('Search') }}">
                                     <i class="fas fa-search search-icon"></i>
                                 </div>
                             </div>
@@ -120,16 +120,16 @@
                     <div class="blog_card_form">
                         <div class="sidebar shadow">
                             <div class="search-bar mb-4">
-                                <h6 class="text-start"> Division </h6>
+                                <h6 class="text-start">{{ __('Division') }}  </h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
                                     <input type="text" class="form-control search-input mt-4"
-                                        placeholder="Various cars">
+                                        placeholder="{{ __('Various cars') }} ">
                                     <input type="text" class="form-control search-input mt-4"
-                                        placeholder="Promotions">
-                                    <input type="text" class="form-control search-input mt-4" placeholder="Newsroom">
+                                        placeholder="{{ __('Promotions') }} ">
+                                    <input type="text" class="form-control search-input mt-4" placeholder="{{ __('Newsroom') }}">
                                     <input type="text" class="form-control search-input mt-4"
-                                        placeholder="Various cars ">
+                                        placeholder="{{ __('Various cars') }}  ">
                                 </div>
                             </div>
                         </div>
@@ -137,34 +137,31 @@
                     <div class="blog_card_form">
                         <div class="sidebar shadow">
                             <div class="search-bar mb-4">
-                                <h6 class="text-start new_blog"> নতুন ব্লগ </h6>
+                                <h6 class="text-start new_blog">{{ __('New Blog') }}</h6>
                                 <hr class="blog_hr">
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center mb-4">
                                         <span class="date me-2">
-                                            <i class="fa-regular fa-calendar mr-1"></i> জুন 6, 2024
+                                            <i class="fa-regular fa-calendar mr-1"></i>{{ __('June 6, 2024') }}
                                         </span>
                                     </div>
-                                    <a href="#" class="new_blog_text fw-bold">স্মার্ট বাংলাদেশের পরিবহন খাত
-                                        আনস্মার্টই থাকবে?</a>
+                                    <a href="#" class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a>
                                 </div>
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center mb-4">
                                         <span class="date me-2">
-                                            <i class="fa-regular fa-calendar mr-1"></i> জুন 6, 2024
+                                            <i class="fa-regular fa-calendar mr-1"></i> {{ __('June 6, 2024') }}
                                         </span>
                                     </div>
-                                    <a href="#" class="new_blog_text fw-bold">স্মার্ট বাংলাদেশের পরিবহন খাত
-                                        আনস্মার্টই থাকবে?</a>
+                                    <a href="#" class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a>
                                 </div>
                                 <div>
                                     <div class="d-flex align-items-center mb-4">
                                         <span class="date me-2">
-                                            <i class="fa-regular fa-calendar mr-1"></i> জুন 6, 2024
+                                            <i class="fa-regular fa-calendar mr-1"></i>{{ __('June 6, 2024') }}
                                         </span>
                                     </div>
-                                    <a href="#" class="new_blog_text fw-bold">স্মার্ট বাংলাদেশের পরিবহন খাত
-                                        আনস্মার্টই থাকবে?</a>
+                                    <a href="#" class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -172,21 +169,21 @@
                     <div class="blog_card_form">
                         <div class="sidebar shadow">
                             <div class="search-bar mb-4">
-                                <h6 class="text-start ">জনপ্রিয় ট্যাগ</h6>
+                                <h6 class="text-start ">{{ __('Popular Tags') }}</h6>
                                 <hr class="blog_hr" />
                                 <div class="container mt-4">
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
-                                            <a href="#" class="btn popular_a btn-sm mb-2">বাইক রাইড</a>
-                                            <a href="#" class="btn popular_a btn-sm mb-2">কার রাইড</a>
+                                            <a href="#" class="btn popular_a btn-sm mb-2">{{ __('Bike Ride') }}</a>
+                                            <a href="#" class="btn popular_a btn-sm mb-2">{{ __('Bike Ride') }}</a>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <a href="#" class="btn popular_a btn-sm mb-2">বাইক রাইড</a>
-                                            <a href="#" class="btn popular_a btn-sm mb-2">কার রাইড</a>
+                                            <a href="#" class="btn popular_a btn-sm mb-2">{{ __('Bike Ride') }}</a>
+                                            <a href="#" class="btn popular_a btn-sm mb-2">{{ __('Bike Ride') }}</a>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <a href="#" class="btn popular_a btn-sm d-block mb-2">বাইক রাইড</a>
-                                            <a href="#" class="btn popular_a btn-sm d-block mb-2">কার রাইড</a>
+                                            <a href="#" class="btn popular_a btn-sm d-block mb-2">{{ __('Bike Ride') }}</a>
+                                            <a href="#" class="btn popular_a btn-sm d-block mb-2">{{ __('Bike Ride') }}</a>
                                         </div>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                       @foreach ($district_notice->notices->take(4) as $key=>$notice)
                           <div class="notice_list d-flex align-items-center">
@@ -31,7 +31,7 @@
                       @endforeach
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.districtNotice', $district_notice->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                             </a>
                     </div>        
@@ -56,12 +56,12 @@
           <div class="row">
             <div class="col-md-12 col-lg-8">
               <div class="title">
-                <h3 class="text-center text-lg-start">{{ __('বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী') }}</h3>
+                <h3 class="text-center text-lg-start">{{ __('Annual Budget, Development Plan & Financial Statement') }}</h3>
               </div>
               <div class="select_option row g-2 mt-3">
                 <div class="year col-12 col-md-6">
                   <select name="" id="" class="form-select">
-                    <option value="">{{ __('তারিখ নির্বাচন করুন') }}</option>
+                    <option value="">{{ __('Select Date') }}</option>
                       @foreach ($district_notice->notices as $notice)
                           <option value="{{ $notice->id }}">{{ $notice->date }}</option>
                       @endforeach
@@ -69,7 +69,7 @@
                 </div>
                 <div class="notice_type col-12 col-md-6">
                   <select name="" id="" class="form-select">
-                    <option value="">{{ __('বিভাগ') }}</option>
+                    <option value="">{{ __('Division') }}</option>
                       @foreach ($district_notice->notices as $notice)
                           <option value="{{ $notice->id }}">{{ $notice->category }}</option>
                       @endforeach
@@ -84,11 +84,11 @@
             <table class="table table text-center">
               <thead class="custom-header">
                 <tr>
-                  <th>{{ __('সিরিয়াল নাম্বার') }}</th>
-                  <th>{{ __('শিরোনাম') }}</th>
-                  <th>{{ __('বছর') }}</th>
-                  <th>{{ __('শ্রেণী') }}</th>
-                  <th>{{ __('ফাইল') }}</th>
+                  <th>{{ __('Serial Number') }}</th>
+                  <th>{{ __('Title') }}</th>
+                  <th>{{ __('Year') }}</th>
+                  <th>{{ __('Category') }}</th>
+                  <th>{{ __('File') }}</th>
                 </tr>
               </thead>
               <tbody>
