@@ -18,18 +18,18 @@
     <div class="container">
         <div class="chat-widget">
         <div class="chat-header" onclick="toggleChatBox()">
-            <i class="fa-solid fa-phone-volume"></i> {{ __('সরাসরি কথা বলুন') }}
+            <i class="fa-solid fa-phone-volume"></i> {{ __('Talk Directly') }}
         </div>
         <div class="chat-box" id="chatBox">
             <div class="close-btn" onclick="toggleChatBox()">&times;</div>
             <div class="header"><i class="fa-solid fa-hands-clapping"></i>
             <br>
-            {{ __('যেকোনো জিজ্ঞাসায় সরাসরি') }}<br>{{ __('আমাদের সাথে') }}
+            {{ __('For Any Inquiry,') }}<br>{{ __('Contact Directly With Us') }}
             </div>
             <div class="options">
-            <button class="live-chat"><i class="fa-regular fa-comment-dots"></i> {{ __('লাইভ চ্যাট করুন') }}</button>
-            <button class="whatsapp"><i class="fa-brands fa-whatsapp"></i> {{ __('WhatsApp-মেসেজ করুন') }}</button>
-            <button class="call"><i class="fa-solid fa-phone-volume"></i> {{ __('কল করুন') }}<br>{{ __('01777 000000 নম্বরে') }}</button>
+            <button class="live-chat"><i class="fa-regular fa-comment-dots"></i> {{ __('Live Chat') }}</button>
+            <button class="whatsapp"><i class="fa-brands fa-whatsapp"></i> {{ __('Send a WhatsApp Message') }}</button>
+            <button class="call"><i class="fa-solid fa-phone-volume"></i> {{ __('Call at') }}<br>{{ __('Call at 01777 000000') }}</button>
             </div>
         </div>
         <div class="floating-btn" onclick="toggleChatBox()">
