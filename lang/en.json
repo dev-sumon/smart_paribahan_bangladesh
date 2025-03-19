@@ -99,7 +99,16 @@
     "Year" : "Year" ,
     "Category" : "Category" ,
     "File" : "File" ,
-    
+
+    "List of Stands" : "List of Stands" ,
+    "List of Unions" : "List of Unions" ,
+    "List of Police Stations" : "List of Police Stations" ,
+    "District Information" : "District Information" ,
+    "Division Information" : "Division Information" ,
+
+    "" : "" ,
+    "" : "" ,
+    "" : "" ,
     "" : "" ,
     "" : "" ,
     "" : "" ,
