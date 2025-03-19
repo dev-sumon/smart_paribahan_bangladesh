@@ -7,7 +7,7 @@
 
       <!-- Login Button and Menu Icon (Responsive Mode) -->
       <div class="d-flex d-lg-none align-items-center justify-content-center responsive_menu">
-        <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger btn-sm btn-login"><i class="fas fa-user-circle"></i>Log In</a>
+        <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger btn-sm btn-login"><i class="fas fa-user-circle"></i>{{ __('Log In') }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class=""><a href="{{ route('f.login.index') }}"><i class="fa-solid fa-bars"></i></a></span>
         </button>
@@ -63,8 +63,8 @@
           @elseif (Auth::guard('owner')->check())
           <a href="{{ route('owner.dashboard', Auth::guard('owner')->user()->id) }}">{{ __('Profile') }}</a>
           @else
-          <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger me-2 d-none d-lg-block login loginButton">Log In</a>
-          <a href="{{ route('f.signup.index') }}" class="btn btn-outline-danger d-none d-lg-block signUp">Sign Up</a>
+          <a href="{{ route('f.login.index') }}" class="btn btn-outline-danger me-2 d-none d-lg-block login loginButton">{{ __('Log In') }}</a>
+          <a href="{{ route('f.signup.index') }}" class="btn btn-outline-danger d-none d-lg-block signUp">{{ __('Sign Up') }}</a>
           @endif
         </div>
       </div> 
