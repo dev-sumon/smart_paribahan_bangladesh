@@ -452,6 +452,11 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
     Route::controller(FieldWorkerDashboardController::class)->group(function (){
         Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::put('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
+        Route::get('index', 'index')->name('index');
+        Route::get('driver-create', 'driverCreate')->name('driver.create');
+        Route::post('driver-store', 'driverStore')->name('driver.store');
+        Route::get('blog-create', 'blogCreate')->name('blog.create');
+        Route::post('blog-store', 'blogStore')->name('blog.store');
     });
 });
 
