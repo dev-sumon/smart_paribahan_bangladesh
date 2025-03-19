@@ -18,7 +18,7 @@
     "Stand" : "স্ট্যান্ড",
     "Union" : "ইউনিয়ন",
     "thana" : "থানা",
-    
+
     "C N G" : "সি এন জি",
     "Parcel" : "পার্সেল",
     "Bike" : "বাইক",
@@ -89,15 +89,18 @@
     "List of Owners" : "মালিক এর তালিকা",
     "List of Drivers" : "ড্রাইভার এর তালিকা",
     "Annual Budget, Development Plan & Financial Statement of Stand" : "স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
+
+    "Notice Board" : "নোটিশ বোর্ড",
+    "All" : "সকল",
+    "Annual Budget, Development Plan & Financial Statement" : "বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী",
+    "Select Date" : "তারিখ নির্বাচন করুন",
+
+    "Serial Number" : "সিরিয়াল নাম্বার",
+    "Title" : "শিরোনাম",
+    "Year" : "বছর",
+    "Category" : "শ্রেণী",
+    "File" : "ফাইল",
+    
     "" : "",
     "" : "",
     "" : "",
