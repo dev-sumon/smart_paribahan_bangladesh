@@ -8,10 +8,10 @@
             <div class="row align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 col-sm-12 text-md-start text-center mb-4 mb-md-0">
                 <div class="banner_head pt-3">
-                    <h2>{{ __('বাংলাদেশ স্মার্ট ') }}<br class="d-none d-sm-inline"> {{ __('পরিবহন ব্লগ') }}</h2>
+                    <h2>{{ __('Bangladesh Smart') }}<br class="d-none d-sm-inline"> {{ __('Transport Blog') }}</h2>
                 </div>
                 <div class="banner_title">
-                    <p>{{ __('সকল বিবৃতি, আপডেট, রিলিজ ও অন্যান্য') }}</p>
+                    <p>{{ __('All Statements, Updates, Releases, and Others') }}</p>
                 </div>
                 </div>
                 <div class="col-md-6 col-sm-12 d-flex justify-content-lg-end justify-content-sm-center banner_image">
@@ -50,10 +50,10 @@
                     <div class="blog_card_form d-block d-sm-none">
                     <div class="sidebar shadow mt-5">
                         <div class="search-bar mb-4 ">
-                            <h6 class="text-start">{{ __(' এখানে অনুসন্ধান করুন ') }}</h6>
+                            <h6 class="text-start">{{ __('Search here') }}</h6>
                             <hr class="blog_hr">
                             <div class="input-container">
-                                <input type="text" class="form-control search-input" placeholder="অনুসন্ধান">
+                                <input type="text" class="form-control search-input" placeholder="Search">
                                 <i class="fas fa-search search-icon"></i> 
                             </div>
                         </div>
@@ -96,10 +96,10 @@
                 <div class="blog_card_form d-none d-sm-block">
                     <div class="sidebar shadow mt-5">
                     <div class="search-bar mb-4 ">
-                        <h6 class="text-start"> এখানে অনুসন্ধান করুন </h6>
+                        <h6 class="text-start">Search here</h6>
                         <hr class="blog_hr">
                         <div class="input-container">
-                            <input type="text" class="form-control search-input" placeholder="অনুসন্ধান">
+                            <input type="text" class="form-control search-input" placeholder="Search">
                             <i class="fas fa-search search-icon"></i> 
                         </div>
                     </div>
