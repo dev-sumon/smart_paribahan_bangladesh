@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                     @foreach ($division->notices->take(4) as $key=>$notice)
                         <div class="notice_list d-flex align-items-center">
@@ -20,7 +20,7 @@
                     @endforeach
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.divisionNotice', $division->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="row ">
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
-                            <h1 class="pt-3 text-start">{{ __('বিভাগ পরিচিতি') }}</h1>
+                            <h1 class="pt-3 text-start">{{ __('Division Information') }}</h1>
                             <div class="card">
                                 <a href="#">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="row ">
                         <div class="col-12">
-                            <h1 class="pt-3">{{ __('জেলা তালিকা') }}</h1>
+                            <h1 class="pt-3">{{ __('District List') }}</h1>
                         </div>
                         @foreach ($division->districts as $district)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
@@ -85,7 +85,7 @@
                     </div>
                     <div class="row ">
                         <div class="col-12">
-                            <h1 class="pt-3">{{ __('থানা তালিকা') }}</h1>
+                            <h1 class="pt-3">{{ __('List of Police Stations') }}</h1>
                         </div>
                         @foreach ($division->thanas as $thana)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="row ">
                         <div class="col-12">
-                            <h1 class="pt-3">{{ __('ইউনিয়ন তালিকা') }}</h1>
+                            <h1 class="pt-3">{{ __('List of Unions') }}</h1>
                         </div>
                         @foreach ($division->unions as $union)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
@@ -115,7 +115,7 @@
                     </div>
                     <div class="row ">
                         <div class="col-12">
-                            <h1 class="pt-3">{{ __('স্ট্যান্ডের তালিকা') }}</h1>
+                            <h1 class="pt-3">{{ __('List of Stands') }}</h1>
                         </div>
                         @foreach ($division->stands as $stand)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
