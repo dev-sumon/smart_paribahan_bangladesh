@@ -10,7 +10,7 @@
                         <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
                     </div>
                     <div class="title pt-3">
-                        <h2>{{ __('স্ট্যান্ডের পরিচিতি') }}</h2>
+                        <h2>{{ __('Stand Introduction') }}</h2>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                     @foreach ($stand->notices->take(4) as $key=>$notice)
                     <div class="notice_list d-flex align-items-center">
@@ -38,7 +38,7 @@
                     @endforeach
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
@@ -89,7 +89,7 @@
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
-                                        <h2>{{ __('স্ট্যান্ডের নাম - ') }}</h2>
+                                        <h2>{{ __('Stand Name') }} - </h2>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-12">
@@ -102,7 +102,7 @@
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
-                                        <h2>{{ __('নামকরণ - ') }}</h2>
+                                        <h2>{{ __('Naming') }} - </h2>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-12">
@@ -114,7 +114,7 @@
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
-                                        <h2>{{ __('অবস্থান  - ') }}</h2>
+                                        <h2>{{ __('Location') }}  - </h2>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-12">
@@ -126,7 +126,7 @@
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
-                                        <h2>{{ __('অবস্থান  - ') }}</h2>
+                                        <h2>{{ __('Location') }}  - </h2>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-12">
@@ -138,7 +138,7 @@
                             <div class="row mt-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
-                                        <h2>{{ __('অবস্থান  - ') }}</h2>
+                                        <h2>{{ __('Location') }}  - </h2>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-12">
@@ -150,7 +150,7 @@
                             <div class="row mt-5 mb-5">
                                 <div class="col-md-4 col-12">
                                     <div class="bold_content text-start">
-                                        <h2>{{ __('অবস্থান  - ') }}</h2>
+                                        <h2>{{ __('Location') }}  - </h2>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-12">

@@ -136,9 +136,10 @@
     "CNG Owner List" : "CNG Owner List" ,
     "CNG Driver List" : "CNG Driver List" ,
     "CNG Stand Annual Budget, Development Plan, and Financial Statement" : "CNG Stand Annual Budget, Development Plan, and Financial Statement" ,
-    "" : "" ,
-    "" : "" ,
-    "" : "" ,
+
+    "Naming" : "Naming" ,
+    "Stand Name" : "Stand Name" ,
+    "Location" : "Location" ,
     "" : "" ,
     "" : "" ,
     "" : "" ,
