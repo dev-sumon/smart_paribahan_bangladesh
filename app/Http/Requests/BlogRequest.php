@@ -23,7 +23,7 @@ class BlogRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:3|max:250',
-            'status' => 'required|boolean',
+            'status' => 'nullable|boolean',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());

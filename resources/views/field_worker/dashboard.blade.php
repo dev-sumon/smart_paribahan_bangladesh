@@ -17,17 +17,8 @@
                     <div class="col-md-10 m-auto">
                         <div class="top d-flex justify-content-between pb-3">
                             <h3 class="text-start">{{ __('মাঠকর্মী প্রোফাইল') }}</h3>
-                            <a href="" class="text-end ms-auto btn w-10 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">Add</a>
+                            <a href="{{ route('field_worker.index') }}" class="text-end ms-auto btn w-10 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">Add</a>
                         </div>
-                        
-                        {{-- <div class="header">
-                            <span class="float-left">
-                                <h4>{{ __('Field Worker List') }}</h4>
-                            </span>
-                            <span class="float-right">
-                                <a href="" class="btn btn-info">{{ __('Create') }}</a>
-                            </span>
-                        </div> --}}
                         <form action="{{ route('field_worker.updateDashboard', $worker->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
