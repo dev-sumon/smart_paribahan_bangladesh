@@ -451,6 +451,7 @@ Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'
 Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as' => 'field_worker.'], function(){
     Route::controller(FieldWorkerDashboardController::class)->group(function (){
         Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::put('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
     });
 });
 

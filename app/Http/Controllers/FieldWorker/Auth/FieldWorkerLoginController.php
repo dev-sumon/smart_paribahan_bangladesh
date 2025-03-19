@@ -19,7 +19,7 @@ class FieldWorkerLoginController extends Controller
         }
         return view('field_worker.auth.login');
     }
-    public function fieldWorkerLoginCheck(Request $request)
+    public function driverLoginCheck(Request $request)
     {
         $credentials = $request->only('email', 'password');
         $check = FieldWorker::where('email', $request->email)->first();
@@ -27,7 +27,6 @@ class FieldWorkerLoginController extends Controller
             if($check->status == 1){
                 if(Auth::guard('field_worker')->attempt($credentials)){
                     return redirect()->route('f.home');
-                    // return view('field_worker.dashboard');
                 }
             }
         }
