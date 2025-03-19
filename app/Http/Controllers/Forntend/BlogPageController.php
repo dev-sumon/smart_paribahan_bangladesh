@@ -17,6 +17,7 @@ class BlogPageController extends Controller
     public function inner_blog($id): View
     {
         $data['blog'] = Blog::find($id);
+        $data['blogs'] = Blog::latest()->get()->take('3');
         // $data['blog'] = Blog::where('id', $id)->first();
         return view('forntend.blog.inner_blog.index', $data);
     }

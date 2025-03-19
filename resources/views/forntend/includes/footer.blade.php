@@ -3,7 +3,7 @@
       <div class="row">
         <!-- Logo and Contact Section -->
           <div class="col-md-12 col-lg-6 mb-4 left_footer">
-              <a href="index.html">
+              <a href="{{ route('f.home') }}">
                 <img src="{{ asset('forntend/images/footer_logo.png') }}" alt="Logo" class="mb-3 logo">
               </a>
               <p class="mb-3">Phasellus pulvinar porta turpis sit amet <br> facilis sapien bibendum eu praesent massa.</p>
@@ -24,34 +24,34 @@
 
           <!-- Useful Links -->
           <div class="col-md-4 col-lg-2 mb-4 mt-2 mt-md-3 mt-lg-5">
-              <h6 class="text-capitalize footer_text">Useful Links</h6>
+              <h6 class="text-capitalize footer_text">{{ __('Useful Links') }}</h6>
               <ul class="list-unstyled">
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Features</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">About</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Service</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Team</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('Features') }}</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('About') }}</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('Service') }}</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('Team') }}</a></li>
               </ul>
           </div>
 
           <!-- Help & Support -->
           <div class="col-md-4 col-lg-2 mb-4 mt-2 mt-md-3 mt-lg-5">
-              <h6 class="text-capitalize footer_text">Help & Support</h6>
+              <h6 class="text-capitalize footer_text">{{ __('Help & Support') }}</h6>
               <ul class="list-unstyled">
-                  <li class="mt-2"><a href="#faq" class="footer_gray text-decoration-none">FAQ</a></li>
-                  <li class="mt-2"><a href="blog.html" class="footer_gray text-decoration-none">Blog</a></li>
-                  <li class="mt-2"><a href="contact.html" class="footer_gray text-decoration-none">Contact Us</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Support</a></li>
+                  <li class="mt-2"><a href="#faq" class="footer_gray text-decoration-none">{{ __('FAQ') }}</a></li>
+                  <li class="mt-2"><a href="{{ route('f.blog.index') }}" class="footer_gray text-decoration-none">{{ __('Blog') }}</a></li>
+                  <li class="mt-2"><a href="{{ route('f.contact.index') }}" class="footer_gray text-decoration-none">{{ __('Contact Us') }}</a></li>
+                  <li class="mt-2"><a href="{{ route('f.help.index') }}" class="footer_gray text-decoration-none">{{ __('Support') }}</a></li>
               </ul>
           </div>
 
           <!-- Resources -->
           <div class="col-md-4 col-lg-2 mb-4 mt-2 mt-md-3 mt-lg-5">
-              <h6 class="text-capitalize footer_text">Resources</h6>
+              <h6 class="text-capitalize footer_text">{{ __('Resources') }}</h6>
               <ul class="list-unstyled">
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Guides and resources</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Team</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Tools</a></li>
-                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">Support</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('Guides and resources') }}</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('Team') }}</a></li>
+                  <li class="mt-2"><a href="#" class="footer_gray text-decoration-none">{{ __('Tools') }}</a></li>
+                  <li class="mt-2"><a href="{{ route('f.help.index') }}" class="footer_gray text-decoration-none">{{ __('Support') }}</a></li>
               </ul>
           </div>
 
@@ -59,7 +59,9 @@
 
         <div class="d-flex justify-content-between align-items-center mt-4 certified_social">
           <div class="certified">
-            <p class="mb-0 copy_right">© All Right Reserved</p>
+            <p class="mb-0 copy_right">Copyright © 2024 - {{ date('Y') . ' ' . config('app.name') }} | developed by <a
+                href="https://rayhansict.com/" target="_blank">Rayhans ICT</a></p>
+            {{-- <span></span> --}}
           </div>
           <div class="d-flex gap-3 social">
             <a href="#" class="footer_gray"><i class="fab fa-facebook-square"></i></a>

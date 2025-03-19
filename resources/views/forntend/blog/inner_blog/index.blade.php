@@ -137,32 +137,22 @@
                     <div class="blog_card_form">
                         <div class="sidebar shadow">
                             <div class="search-bar mb-4">
-                                <h6 class="text-start new_blog">{{ __('New Blog') }}</h6>
+                                <h6 class="text-start new_blog"> {{ __('New Blog') }}</h6>
                                 <hr class="blog_hr">
-                                <div class="mb-3">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <span class="date me-2">
-                                            <i class="fa-regular fa-calendar mr-1"></i>{{ __('June 6, 2024') }}
-                                        </span>
+                                @foreach ($blogs as $key => $blog)
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-4">
+                                            <span class="date me-2">
+                                                <i
+                                                    class="fa-regular fa-calendar mr-1"></i>{{ $blog->created_at->format('d M, Y') }}
+                                            </span>
+                                        </div>
+                                        {{-- <a href="#"
+                                        class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a> --}}
+                                        <a href="{{ route('f.blog.inner_blog', $blog->id) }}" class="new_blog_text fw-bold"
+                                            style="color: #141F39">{{ Str::limit($blog->title, 70, '...') }}</a>
                                     </div>
-                                    <a href="#" class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <span class="date me-2">
-                                            <i class="fa-regular fa-calendar mr-1"></i> {{ __('June 6, 2024') }}
-                                        </span>
-                                    </div>
-                                    <a href="#" class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a>
-                                </div>
-                                <div>
-                                    <div class="d-flex align-items-center mb-4">
-                                        <span class="date me-2">
-                                            <i class="fa-regular fa-calendar mr-1"></i>{{ __('June 6, 2024') }}
-                                        </span>
-                                    </div>
-                                    <a href="#" class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
