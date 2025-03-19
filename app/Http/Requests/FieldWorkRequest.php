@@ -23,7 +23,7 @@ class FieldWorkRequest extends FormRequest
     {
         return [
             'name'=>'required|max:20|string|min:3',
-            'status'=>'required|boolean',
+            
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -38,6 +38,7 @@ class FieldWorkRequest extends FormRequest
             'father_name' => 'required|max:20|string|min:3',
             'mother_name' => 'required|max:20|string|min:3',
             'address' => 'required|string|max:255',
+            'status'=>'required|boolean',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
         ];
@@ -52,6 +53,7 @@ class FieldWorkRequest extends FormRequest
             'father_name' => 'nullable|max:20|string|min:3',
             'mother_name' => 'nullable|max:20|string|min:3',
             'address' => 'nullable|string|max:255',
+            'status'=>'nullable|boolean',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
         ];
