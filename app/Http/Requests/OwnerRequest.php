@@ -57,7 +57,7 @@ class OwnerRequest extends FormRequest
             'vehicle_id' => 'required|exists:vehicles,id',
             'email' => 'required|email|unique:owners,email,' . $this->route('id'),
             'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
         ];
