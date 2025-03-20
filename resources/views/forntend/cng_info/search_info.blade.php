@@ -77,7 +77,7 @@
     <div class="container pt-5 pb-5">
         <div class="row">
             <div class="d-none d-sm-flex mb-3">
-                <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
+                <h3>{{ __('Image Gallery') }} - </h3>
                 <p class="ml-4">{{ $vehicle->driver->district->district }} - {{ $vehicle->driver->thana->thana }} - {{ $vehicle->driver->union->union }} - {{ $vehicle->driver->stand->name }} {{ __('স্ট্যান্ড এর') }}</p> 
             </div>
             
