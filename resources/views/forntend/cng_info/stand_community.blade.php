@@ -5,11 +5,11 @@
      <section class="president_and_members pt-5 pb-4">
         <div class="container">
             <div class="stand_location">
-                <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5>
+                <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
             </div>
             <div class="member_list_title">
-                <h2>{{ $stand->name }} স্টেশন সভাপতি <br class="d-none d-sm-inline">
-                     ও সদস্য বৃন্দ তালিকা</h2>
+                <h2>{{ $stand->name }} {{ __('Station President') }} <br class="d-none d-sm-inline">
+                {{ __('and Members List') }}</h2>
             </div>
         </div>
     </section>
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                     @foreach ($stand->notices->take(4) as $key=>$notice)
                         <div class="notice_list d-flex align-items-center">
@@ -35,7 +35,7 @@
                     @endforeach
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
                     </div>

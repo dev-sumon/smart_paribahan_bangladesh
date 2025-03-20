@@ -12,7 +12,7 @@
         <div class="error_image d-flex">
             <div class="error">
                 <div class="alert alert-danger text-center">
-                    <h2>দুঃখিত, কোনো তথ্য পাওয়া যায়নি!</h2>
+                    <h2>{{ __('Sorry, no information found!') }} </h2>
                 </div>
                 {{-- <a href="{{ url('/') }}" class="btn btn-primary">হোম পেজে ফিরে যান</a> --}}
             </div>

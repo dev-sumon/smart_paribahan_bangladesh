@@ -9,7 +9,7 @@
                 <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
             </div>
             <div class="member_list_title">
-                <h2>{{ __('সি এন জি মালিক এর তালিকা') }}</h2>
+                <h2>{{ __('CNG Owner List') }}</h2>
             </div>
         </div>
     </section>
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                     @foreach ($stand->notices->take(4) as $key=>$notice)
                         <div class="notice_list d-flex align-items-center">
@@ -35,7 +35,7 @@
                     @endforeach
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
                     </div>           
@@ -99,11 +99,11 @@
                                 <div class="profile-card">
                                     <img src="{{ $owner->image ? asset('storage/' . $owner->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3" style="height: 200px; width: 180px;">
                                         <div class="profile-details">
-                                            <p class="owner">সি এন জি মালিক</p>
-                                            {{-- <p class="owner">সি এন জি মালিক</p> --}}
+                                            <p class="owner">CNG Owner</p>
+                                            {{-- <p class="owner">CNG Owner</p> --}}
                                             <h3>{{ $owner->name }}</h3>
                                             <p class="number">{{ $owner->phone }}</p>
-                                            <a href="{{ route('f.home.ownerProfile', $owner->id) }}">{{ __('আরও জানুন') }}</a>
+                                            <a href="{{ route('f.home.ownerProfile', $owner->id) }}">{{ __('Learn More') }}</a>
                                             <span>>></span>
                                         </div>
                                     </div>
@@ -115,9 +115,9 @@
                                 <a href="#"><i class="fa-solid fa-angles-left"></i></a>
                             </div>
                             <div class="page_number d-flex">
-                                <a href="#">১</a>
-                                <a href="#">২</a>
-                                <a href="#">৩</a>
+                                <a href="#">{{ __('১') }}</a>
+                                <a href="#">{{ __('২') }}</a>
+                                <a href="#">{{ __('৩') }}</a>
                             </div>
                             <div class="right_arrow">
                                 <a href="#"><i class="fa-solid fa-angles-right"></i></a>

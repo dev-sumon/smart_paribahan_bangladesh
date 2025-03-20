@@ -106,7 +106,51 @@
     "List of Police Stations" : "থানা তালিকা",
     "District Information" : "জেলা পরিচিতি",
     "Division Information" : "বিভাগ পরিচিতি",
-    
+    "District List" : "জেলা তালিকা",
+
+    "Email" : "ই-মেইল",
+    "Phone Number" : "ফোন নাম্বার",
+    "Office Address" : "অফিসের ঠিকানা",
+
+    "Driver Details" : "ড্রাইভার এর বিস্তারিত",
+    "Sylhet Division - Moulvibazar District - Barlekha Thana - Nijbahadurpur Union" : "সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন",
+    "Vehicle Number" : "গাড়ির নাম্বার",
+    "Vice President" : "সহ সভাপতি",
+    "Designation" : "পদবি",
+    "I am the driver" : "আমি এর ড্রাইভার",
+    "Blood Group" : "ব্লাড গ্রুপ",
+    "Image Gallery" : "ইমেজ গ্যালারী",
+    "Stand's" : "স্ট্যান্ড এর",
+
+    "CNG Driver List" : "সি এন জি ড্রাইভার এর তালিকা",
+    "CNG Driver" : "সি এন জি ড্রাইভার",
+    "Learn More" : "আরও জানুন",
+    "1" : "১",
+    "2" : "২",
+    "3" : "৩",
+
+    "Sorry, no information found!" : "দুঃখিত, কোনো তথ্য পাওয়া যায়নি!",
+
+    "Smart Bangladesh refers to building a Smart Citizen, Smart Society, Smart Economy, and Smart Government." : "স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।",
+    "CNG Station President and Members List" : "সি এন জি স্টেশন সভাপতি ও সদস্য বৃন্দ তালিকা",
+    "CNG Owner List" : "সি এন জি মালিক এর তালিকা",
+    "CNG Stand Annual Budget, Development Plan, and Financial Statement" : "সি এন জি স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী",
+
+    "Naming" : "নামকরণ",
+    "Stand Name" : "স্ট্যান্ডের নাম",
+    "Location" : "অবস্থান",
+    "Map" : "মানচিত্র",
+
+    "Station President" : "স্টেশন সভাপতি",
+    "and Members List" : "ও সদস্য বৃন্দ তালিকা",
+    "CNG Owner" : "সি এন জি মালিক",
+
+    "Owner Login" : "মালিক লগ ইন",
+    "Driver Login" : "ড্রাইভার লগ ইন",
+    "Field Worker Login" : "মাঠ কর্মী লগ ইন",
+    "" : "",
+    "" : "",
+    "" : "",
     "" : "",
     "" : "",
     "" : "",

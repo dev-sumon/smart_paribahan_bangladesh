@@ -11,7 +11,7 @@
                     <h5>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }}</h5>
                 </div>
                 <div class="member_list_title">
-                    <h2>{{ __('সি এন জি ড্রাইভার এর তালিকা') }}</h2>
+                    <h2>{{ __('CNG Driver List') }}</h2>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                     @foreach ($stand->notices->take(4) as $key=>$notice)
                         <div class="notice_list d-flex align-items-center">
@@ -38,7 +38,7 @@
                     @endforeach
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
                     </div>
@@ -80,8 +80,8 @@
                                     <div class="beage">+</div>
                                     <div class="profile-details">
                                         <h3>{{ $driver->name }}</h3>
-                                        <p class="driver">সি এন জি ড্রাইভার</p>
-                                        <a href="{{ route('f.home.driverProfile', $driver->id) }}">আরও জানুন </a>
+                                        <p class="driver">{{ __('CNG Driver') }}</p>
+                                        <a href="{{ route('f.home.driverProfile', $driver->id) }}">{{ __('Learn More') }} </a>
                                         <span>>></span>
                                     </div>
                                 </div>
@@ -92,9 +92,9 @@
                             <a href="#"><i class="fa-solid fa-angles-left"></i></a>
                         </div>
                         <div class="page_number d-flex">
-                            <a href="#">১</a>
-                            <a href="#">২</a>
-                            <a href="#">৩</a>
+                            <a href="#">{{ __('১') }} </a>
+                            <a href="#">{{ __('২') }} </a>
+                            <a href="#">{{ __('৩') }} </a>
                         </div>
                         <div class="right_arrow">
                             <a href="#"><i class="fa-solid fa-angles-right"></i></a>

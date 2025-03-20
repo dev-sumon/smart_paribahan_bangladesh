@@ -5,10 +5,12 @@
     <section class="president_and_members pt-5 pb-4">
         <div class="container">
             <div class="stand_location">
-                <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5>
+                {{-- <h5>Sylhet Division - Moulvibazar District - Barlekha Thana - Nijbahadurpur Union</h5> --}}
+
+                <h2 class="ml-4">{{ $driver->district->district }} - {{ $driver->thana->thana }} - {{ $driver->union->union }} - {{ $driver->stand->name }}</h2> 
             </div>
             <div class="member_list_title">
-                <h2>{{ $driver->vehicle->name }} ড্রাইভার এর বিস্তারিত</h2>
+                <h2>{{ $driver->vehicle->name }} {{ __('Driver Details') }} </h2>
             </div>
         </div>
     </section>
@@ -23,25 +25,25 @@
                     <img src="{{ $driver->image ? asset('storage/' . $driver->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3 rounded-2">
                 </div>
                 <div class="profile_info">
-                    <span class="owner">আমি এর ড্রাইভার</span>
+                    <span class="owner">{{ __('I am the driver') }}</span>
                     <h3>{{ $driver->name }}</h3>
                     <span class="desc">
                       {{ $driver->description }}
                     </span>
                     {{-- <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                        <div class="designation">পদবি -  </div>
-                        <div class="designation_name"> সহ সভাপতি</div>
+                        <div class="designation">{{ __('Designation') }} -  </div>
+                        <div class="designation_name">{{ __('Vice President') }} -</div>
                     </div> --}}
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                        <div class="email">ইমেল - </div>
+                        <div class="email">{{ __('Email') }} - </div>
                         <div class="email_address">{{ $driver->email }}</div>
                     </div>
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                        <div class="phone">মোবাইল নাম্বার - </div>
+                        <div class="phone">{{ __('Phone Number') }} - </div>
                         <div class="number">{{ $driver->phone }}</div>
                     </div>
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                        <div class="car">গাড়ির নাম্বার - </div>
+                        <div class="car">{{ __('Vehicle Number') }} - </div>
                         <div class="car_number">
                             {{-- {{ $driver->vehicle->vehicle_licence }} --}}
                             {{ $driver->vehicle ? $driver->vehicle->vehicle_licence : 'No License Available' }}
@@ -52,7 +54,7 @@
                         </div>
                     </div>
                     <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                        <div class="blood">ব্লাড গ্রুপ - </div>
+                        <div class="blood">{{ __('Blood Group') }} - </div>
                         <div class="blood_group">{{ $driver->blood_group->blood_group }}</div>
                     </div>
                     <div class="book_now d-none">
@@ -88,9 +90,9 @@
       <div class="container pt-5 pb-5">
           <div class="row">
               <div class="d-none d-sm-flex mb-3">
-                  <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
+                  <h3>{{ __('Image Gallery') }} - </h3>
                   {{-- <p class="ml-4">মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন সি এন জি স্ট্যান্ড এর </p>  --}}
-                  <p class="ml-4">{{ $driver->district->district }} - {{ $driver->thana->thana }} - {{ $driver->union->union }} - {{ $driver->stand->name }} {{ __('স্ট্যান্ড এর') }}</p> 
+                  <h3 class="ml-4">{{ $driver->district->district }} - {{ $driver->thana->thana }} - {{ $driver->union->union }} - {{ $driver->stand->name }} {{ __("Stand's") }}</h3> 
               </div>
               
               <div class="row gallery_image g-3">
