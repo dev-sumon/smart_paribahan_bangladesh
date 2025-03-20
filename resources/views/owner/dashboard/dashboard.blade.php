@@ -246,25 +246,46 @@
           });
 
           // Fetch vehicles based on selected stand
+        //   $('#stand').on('change', function () {
+        //       var stand_id = $(this).val();
+        //       if (stand_id) {
+        //           $.ajax({
+        //               url: '/home/get-vehicles/' + stand_id,
+        //               type: 'GET',
+        //               dataType: 'json',
+        //               success: function (data) {
+        //                   $('#vehicle').empty();
+        //                   $('#vehicle').append('<option value="">গাড়ি</option>');
+        //                   $.each(data, function (key, value) {
+        //                       $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
+        //                   });
+        //               }
+        //           });
+        //       } else {
+        //           $('#vehicle').empty();
+        //       }
+        //   });
           $('#stand').on('change', function () {
-              var stand_id = $(this).val();
-              if (stand_id) {
-                  $.ajax({
-                      url: '/home/get-vehicles/' + stand_id,
-                      type: 'GET',
-                      dataType: 'json',
-                      success: function (data) {
-                          $('#vehicle').empty();
-                          $('#vehicle').append('<option value="">গাড়ি</option>');
-                          $.each(data, function (key, value) {
-                              $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
-                          });
-                      }
-                  });
-              } else {
-                  $('#vehicle').empty();
-              }
-          });
+            var stand_id = $(this).val();
+            if (stand_id) {
+                $.ajax({
+                    url: '/home/get-vehicles/' + stand_id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data); // এখানে JSON ডাটা চেক করুন
+                        $('#vehicle').empty();
+                        $('#vehicle').append('<option value="">গাড়ি</option>');
+                        $.each(data, function (key, value) {
+                            $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#vehicle').empty();
+            }
+        });
+
       });
   </script>
 @endpush
