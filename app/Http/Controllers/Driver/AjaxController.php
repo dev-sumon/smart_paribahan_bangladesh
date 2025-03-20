@@ -59,7 +59,9 @@ class AjaxController extends Controller
     }
     public function vehicle(Request $request, $id): JsonResponse
     {
-        $vehicles = Vehicle::where('stand_id', $id)->whereNull('driver_id')->latest()->get();
+        $vehicles = Vehicle::where('stand_id', $id)->whereNull('driver_id')->latest()->get()
+        ->whereNull('driver_id')
+        ->pluck('license_number');
         return response()->json([
             'success' => true,
             'data' => $vehicles
@@ -67,7 +69,9 @@ class AjaxController extends Controller
     }
     public function vehiclesLicense(Request $request, $id): JsonResponse
     {
-        $licenses = Vehicle::where('id', $id)->pluck('license_number');
+        $licenses = Vehicle::where('id', $id)
+        ->whereNull('driver_id')
+        ->pluck('license_number');
         return response()->json([
             'success' => true,
             'data' => $licenses
