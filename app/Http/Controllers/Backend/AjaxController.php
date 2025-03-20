@@ -70,7 +70,7 @@ class AjaxController extends Controller
     public function standVehicles(Request $request, $id): JsonResponse
     {
         $stand = Stand::with(['vehicles' => function ($query) {
-            $query->whereNull('driver_id');
+            $query->whereNull('driver_id')->whereNull('owner_id');
         }])->findOrFail($id);
 
         return response()->json([
