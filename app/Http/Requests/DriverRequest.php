@@ -31,7 +31,7 @@ class DriverRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'description' => 'nullable|min:55|max:500|string',
+            'description' => 'nullable|min:55|string',
             'designation' => 'nullable|min:3|max:55',
             'email' => 'required|email|unique:drivers,email',
             'phone' => 'required|string|unique:drivers,phone',

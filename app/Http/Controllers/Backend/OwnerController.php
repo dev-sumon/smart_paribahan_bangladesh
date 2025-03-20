@@ -77,7 +77,7 @@ class OwnerController extends Controller
         $data['vehicles'] = Vehicle::where('id', $data['owner']->vehicle_id)->get();
         // $data['vehicles'] = Vehicle::all();
         $data['bloods'] = BloodGroup::latest()->get();
-        
+
         return view('backend.owner.edit', $data);
     }
     public function update_store(OwnerRequest $request, $id): RedirectResponse
@@ -102,27 +102,18 @@ class OwnerController extends Controller
             $update->password = $request->password;
         }
 
-        // if($request->hasFile('image'));
-        //     if($update->image && Storage::exists($update->image)){
-        //         Storage::delete($update->image);
-        //     }
-        // $image = $request->file('image');
-        // $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        // $path = $image->storeAs("owner/", $filename, 'public');
-        // $update->image = $path;
-
-
         if ($request->hasFile('image')) {
             if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
+
             $image = $request->file('image');
             $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("owner/", $filename, 'public');
             $update->image = $path;
-        };
+        }
 
-        $update->save();
+        $update->update();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $update->id]);
