@@ -9,7 +9,7 @@
             <h5>{{ $vehicle->driver->district->district }} - {{ $vehicle->driver->thana->thana }} - {{ $vehicle->driver->union->union }}</h5>
         </div>
         <div class="member_list_title">
-            <h2>{{ $vehicle->name }} {{ __('ড্রাইভার এর বিস্তারিত') }}</h2>
+            <h2>{{ $vehicle->name }} {{ __('Driver Details') }}</h2>
         </div>
     </div>
 </section>
@@ -22,31 +22,31 @@
                 <img src="{{ $vehicle->image ? asset('storage/' . $vehicle->image) : asset('forntend/images/Ellipse 199.png') }}" alt="Profile Image" class="profile-image mb-3 rounded-2">
             </div>
             <div class="profile_info">
-                <span class="owner">{{ __('আমি এর ড্রাইভার') }}</span>
+                <span class="owner">{{ __('I am the driver') }}</span>
                 <h3>{{ $vehicle->driver->name }}</h3>
                 <span class="desc">
                   {{ $vehicle->driver->description }}
                 </span>
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                    <div class="email">{{ __('ইমেল - ') }}</div>
-                    <div class="number">{{ $vehicle->driver->email ?? 'ইমেল নম্বর পাওয়া যায়নি' }}</div>
+                    <div class="email">{{ __('Email') }} - </div>
+                    <div class="number">{{ $vehicle->driver->email ?? {{ __('Email number not found.') }} }}</div>
                 </div>
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                    <div class="phone">{{ __('মোবাইল নাম্বার - ') }}</div>
-                    <div class="number">{{ $vehicle->driver->phone ?? 'ফোন নম্বর পাওয়া যায়নি' }}</div>
+                    <div class="phone">{{ __('Mobile number') }} - </div>
+                    <div class="number">{{ $vehicle->driver->phone ?? {{ __('Email number not found.') }} }}</div>
                 </div>
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                    <div class="car">{{ __('গাড়ির নাম্বার - ') }}</div>
+                    <div class="car">{{ __('Vehicle Number') }}  - </div>
                     <div class="car_number">
                         {{ $vehicle->vehicle_licence }}
                     </div>
                 </div>
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
-                    <div class="blood">{{ __('ব্লাড গ্রুপ - ') }}</div>
+                    <div class="blood">{{ __('Blood Group') }} - </div>
                     <div class="blood_group">{{ $vehicle->driver->blood_group->blood_group }}</div>
                 </div>
                 <div class="book_now d-none">
-                    <a href="">{{ __('গাড়ি বুক করুন') }}</a>
+                    <a href="">{{ __('Book a car.') }}</a>
                 </div>
             </div>
         </div>
