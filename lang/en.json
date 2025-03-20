@@ -106,6 +106,8 @@
     "District Information" : "District Information" ,
     "Division Information" : "Division Information" ,
     "District List" : "District List" ,
+    "Thana Introduction" : "Thana Introduction" ,
+    "Union Introduction" : "Union Introduction" ,
 
     "Email" : "Email" ,
     "Phone Number" : "Phone Number" ,
@@ -134,7 +136,6 @@
     "Smart Bangladesh refers to building a Smart Citizen, Smart Society, Smart Economy, and Smart Government." : "Smart Bangladesh refers to building a Smart Citizen, Smart Society, Smart Economy, and Smart Government." ,
     "CNG Station President and Members List" : "CNG Station President and Members List" ,
     "CNG Owner List" : "CNG Owner List" ,
-    "CNG Driver List" : "CNG Driver List" ,
     "CNG Stand Annual Budget, Development Plan, and Financial Statement" : "CNG Stand Annual Budget, Development Plan, and Financial Statement" ,
 
     "Naming" : "Naming" ,
@@ -149,8 +150,7 @@
     "Owner Login" : "Owner Login" ,
     "Driver Login" : "Driver Login" ,
     "Field Worker Login" : "Field Worker Login" ,
-    "" : "" ,
-    "" : "" ,
+    "Station President and Members List" : "Station President and Members List" ,
     "" : "" ,
     "" : "" ,
     "" : "" ,
