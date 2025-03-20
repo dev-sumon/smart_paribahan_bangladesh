@@ -144,9 +144,10 @@
     "Station President" : "স্টেশন সভাপতি",
     "and Members List" : "ও সদস্য বৃন্দ তালিকা",
     "CNG Owner" : "সি এন জি মালিক",
-    "" : "",
-    "" : "",
-    "" : "",
+
+    "Owner Login" : "মালিক লগ ইন",
+    "Driver Login" : "ড্রাইভার লগ ইন",
+    "Field Worker Login" : "মাঠ কর্মী লগ ইন",
     "" : "",
     "" : "",
     "" : "",
