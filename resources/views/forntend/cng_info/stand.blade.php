@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="title pt-2">
-                        <h5>{{ __('নোটিশ বোর্ড') }}</h5>
+                        <h5>{{ __('Notice Board') }}</h5>
                     </div>
                     @foreach ($stand->notices->take(4) as $key=>$notice)
                     <div class="notice_list d-flex align-items-center">
@@ -23,7 +23,7 @@
                             <i class="fa-solid fa-chevron-right"></i>
                         </div>
                         <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
+                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
                         </div>
                     </div>
                     <div class="notice_list d-flex align-items-center">
@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-chevron-right"></i>
                         </div>
                         <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
+                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
                         </div>
                     </div>
                     <div class="notice_list d-flex align-items-center">
@@ -39,7 +39,7 @@
                             <i class="fa-solid fa-chevron-right"></i>
                         </div>
                         <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
+                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
                         </div>
                     </div>
                     <div class="notice_list d-flex align-items-center">
@@ -47,12 +47,12 @@
                             <i class="fa-solid fa-chevron-right"></i>
                         </div>
                         <div class="notice_head_line">
-                            <p class="p-0">{{ __('স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।') }}</p>
+                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
                         </div>
                     </div> --}}
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
+                            <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
@@ -96,7 +96,7 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="row ">
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
-                            <h1 class="pt-3 text-start">{{ __('বিভাগ পরিচিতি') }}</h1>
+                            <h1 class="pt-3 text-start">{{ __('Division Information') }}</h1>
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
-                            <h1 class="pt-3 text-start">{{ __('জেলা পরিচিতি') }}</h1>
+                            <h1 class="pt-3 text-start">{{ __('District Information') }}</h1>
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
-                            <h1 class="pt-3 text-start">{{ __('থানা পরিচিতি') }}</h1>
+                            <h1 class="pt-3 text-start">{{ __('Thana Introduction') }}</h1>
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
-                            <h1 class="pt-3 text-start">{{ __('ইউনিয়ন পরিচিতি') }}</h1>
+                            <h1 class="pt-3 text-start">{{ __('Union Introduction') }}</h1>
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
-                            <h1 class="pt-3 text-start">{{ __('স্ট্যান্ডের পরিচিতি') }}</h1>
+                            <h1 class="pt-3 text-start">{{ __('Stand Introduction') }}</h1>
                             <div class="card">
                                 <a href="">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
@@ -146,7 +146,7 @@
                             <div class="card">
                                 <a href="{{ route('f.cng.map') }}">
                                     <img src="{{ asset('forntend/images/map 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('মানচিত্রে স্ট্যান্ড') }}</p>
+                                    <p class="pt-3">{{ __('Stand on Map') }}</p>
                                 </a>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             <div class="card">
                                 <a href="{{ route('f.cng.community') }}">
                                     <img src="{{ asset('forntend/images/team 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('সি এন জি স্টেশন সভাপতি ও সদস্য বৃন্দ তালিকা') }}</p>
+                                    <p class="pt-3">{{ __('CNG Station President and Members List') }}</p>
                                 </a>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <div class="card">
                                 <a href="{{ route('f.cng.owner') }}">
                                     <img src="{{ asset('forntend/images/owner 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('সি এন জি মালিক এর তালিকা') }}</p>
+                                    <p class="pt-3">{{ __('CNG Owner List') }}</p>
                                 </a>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                             <div class="card">
                                 <a href="{{ route('f.cng.driver') }}">
                                     <img src="{{ asset('forntend/images/driver11 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('সি এন জি  ড্রাইভার এর তালিকা') }}</p>
+                                    <p class="pt-3">{{ __('List of CNG drivers') }}</p>
                                 </a>
                             </div>
                         </div>
@@ -178,7 +178,7 @@
                             <div class="card">
                                 <a href="{{ route('f.cng.notice') }}">
                                     <img src="{{ asset('forntend/images/report 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('সি এন জি স্ট্যান্ড এর বার্ষিক বাজেট উন্নয়ন পরিকল্পনা ও আর্থিক বিবরণী') }}</p>
+                                    <p class="pt-3">{{ __('CNG Stand Annual Budget, Development Plan, and Financial Statement') }}</p>
                                 </a>
                             </div>
                         </div> --}}
