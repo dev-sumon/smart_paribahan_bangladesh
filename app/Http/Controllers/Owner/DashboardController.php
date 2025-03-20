@@ -56,6 +56,7 @@ class DashboardController extends Controller
         $vehicles = Vehicle::where('stand_id', $stand_id)->pluck('name', 'id');
         return response()->json($vehicles);
     }
+    
 
     public function updateDashboard(OwnerRequest $request, $id){
         $update = Owner::findOrFail($id);

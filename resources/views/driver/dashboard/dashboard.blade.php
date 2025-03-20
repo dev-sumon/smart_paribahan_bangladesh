@@ -410,26 +410,48 @@
             });
 
             // Stand পরিবর্তন হলে Vehicle লোড হবে
-            $('#stand').on('change', function() {
-                var stand_id = $(this).val();
-                if (stand_id) {
-                    let _url = '{{ route('driver.getVehicles', ['stand_id' => ':id']) }}'.replace(':id',
-                        stand_id);
-                    $.ajax({
-                        url: _url,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#vehicle').empty().append(
-                                '<option value="">গাড়ি নির্বাচন করুন</option>');
-                            $.each(data, function(key, value) {
-                                $('#vehicle').append('<option value="' + key + '">' +
-                                    value + '</option>');
-                            });
-                        }
-                    });
-                }
-            });
+            // $('#stand').on('change', function() {
+            //     var stand_id = $(this).val();
+            //     if (stand_id) {
+            //         let _url = '{{ route('driver.getVehicles', ['stand_id' => ':id']) }}'.replace(':id',
+            //             stand_id);
+            //         $.ajax({
+            //             url: _url,
+            //             type: 'GET',
+            //             dataType: 'json',
+            //             success: function(data) {
+            //                 $('#vehicle').empty().append(
+            //                     '<option value="">গাড়ি নির্বাচন করুন</option>');
+            //                 $.each(data, function(key, value) {
+            //                     $('#vehicle').append('<option value="' + key + '">' +
+            //                         value + '</option>');
+            //                 });
+            //             }
+            //         });
+            //     }
+            // });
+            $('#stand').on('change', function () {
+    var stand_id = $(this).val();
+    if (stand_id) {
+        $.ajax({
+            url: '/home/get-vehicles/' + stand_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $('#vehicle').empty();
+                $('#vehicle').append('<option value="">গাড়ির ধরন</option>');
+                $.each(data, function (key, value) {
+                    // শুধুমাত্র vehicle_type দেখানো হচ্ছে
+                    $('#vehicle').append('<option value="' + key + '">' + value + '</option>');
+                });
+            }
+        });
+    } else {
+        $('#vehicle').empty();
+    }
+});
+
+
         });
     </script>
     {{-- <script>
