@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VehicleRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
@@ -23,6 +25,11 @@ class DashboardController extends Controller
 
         $data['owner'] = Owner::findOrFail($id);
         $data['divisions'] = Division::latest()->get();
+        $data['districts'] = District::latest()->get();
+        $data['thanas'] = Thana::latest()->get();
+        $data['unions'] = Union::latest()->get();
+        $data['stands'] = Stand::latest()->get();
+        $data['vehicles'] = Vehicle::latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
         return view('owner.dashboard.dashboard', $data);
     }
@@ -93,4 +100,31 @@ class DashboardController extends Controller
         
         return redirect()->route('f.home');
     }
+    public function addVehicle(): View
+    {
+        return view('owner.vechicle.index');
+    }
+    public function addVehicleStore(VehicleRequest $request): RedirectResponse
+    { 
+        $save = new Vehicle();
+        $save->name = $request->name;
+        $save->vehicle_licence = $request->vehicle_licence;
+        $save->vehicle_type_id = $request->vehicle_type_id;
+        $save->owner_id = $request->owner_id;
+        $save->driver_id = $request->driver_id;
+        $save->status = $request->status ?? 0;
+
+    
+        $save->save();
+        if ($request->driver_id) {
+            Driver::where('id', $request->driver_id)->update(['vehicle_id' => $save->id]);
+        }
+        if ($request->owner_id) {
+            Owner::where('id', $request->owner_id)->update(['vehicle_id' => $save->id]);
+        }
+        return redirect()->route('vehicle.index');
+    
+    }
+        
+    
 }

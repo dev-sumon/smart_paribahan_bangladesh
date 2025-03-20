@@ -6,7 +6,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10 m-auto">
-                        <h3>{{ __('Owner Profile Update') }}</h3>
+                        {{-- <h3>{{ __('Owner Profile Update') }}</h3> --}}
+                        <div class="top d-flex justify-content-between pb-3">
+                            <h3 class="text-start">{{ __('মালিক প্রোফাইল') }}</h3>
+                            <a href="{{ route('worker.index') }}" class="text-end ms-auto btn w-10 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">ADD New Vehicle</a>
+                        </div>
                         <form action="{{ route('owner.updateDashboard', $owner->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -88,31 +92,75 @@
                                     <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                 @endif
                             </div>
-                            
                             <div class="form-group">
+                                <label for="district">District <span class="text-danger">*</span></label>
+                                <select name="district_id" id="district" class="form-control" style="border: 2px solid #ea1827">
+                                    <option value="" hidden>Select District</option>
+                                    @foreach ($districts as $district)
+                                        <option value="{{ $district->id }}" {{ $owner->district_id == $district->id ? 'selected' : '' }}>
+                                            {{ $district->district }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <div class="form-group">
                                 <label for="district_id" class="mt-3">{{ __('District') }} <span class="text-danger">*</span></label>
                                 <select name="district_id" id="district" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('জেলা') }}</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
+                                <label for="thana">Thana <span class="text-danger">*</span></label>
+                                <select name="thana_id" id="thana" class="form-control" style="border: 2px solid #ea1827">
+                                    <option value="" hidden>Select Thana</option>
+                                    @foreach ($thanas as $thana)
+                                        <option value="{{ $thana->id }}" {{ $owner->thana_id == $thana->id ? 'selected' : '' }}>
+                                            {{ $thana->thana }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <div class="form-group">
                                 <label for="thana_id" class="mt-3">{{ __('Thana') }} <span class="text-danger">*</span></label>
                                 <select name="thana_id" id="thana" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('থানা') }}</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
+                            </div> --}}
+
+                            {{-- <div class="form-group">
                                 <label for="union_id" class="mt-3">{{ __('Union') }} <span class="text-danger">*</span></label>
                                 <select name="union_id" id="union" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('ইউনিয়ন') }}</option>
                                 </select>
+                            </div> --}}
+                            <div class="form-group">
+                                <label for="union">Union <span class="text-danger">*</span></label>
+                                <select name="union_id" id="union" class="form-control" style="border: 2px solid #ea1827">
+                                    <option value="" hidden>Select Union</option>
+                                    @foreach ($unions as $union)
+                                        <option value="{{ $union->id }}" {{ $owner->union_id == $union->id ? 'selected' : '' }}>
+                                            {{ $union->union }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
+                                <label for="stand">Stand <span class="text-danger">*</span></label>
+                                <select name="stand_id" id="stand" class="form-control" style="border: 2px solid #ea1827">
+                                    <option value="" hidden>Select Stand</option>
+                                    @foreach ($stands as $stand)
+                                        <option value="{{ $stand->id }}" {{ $owner->stand_id == $stand->id ? 'selected' : '' }}>
+                                            {{ $stand->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <div class="form-group">
                                 <label for="stand_id" class="mt-3">{{ __('Stand') }} <span class="text-danger">*</span></label>
                                 <select name="stand_id" id="stand" class="form-select select_iteam" style="border: 2px solid #ea1827">
                                     <option value="">{{ __('স্ট্যান্ড') }}</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="vehicle_id" class="mt-3">{{ __('Vehicle') }} <span class="text-danger">*</span></label>
                                 <select name="vehicle_id" id="vehicle" class="form-select select_iteam" style="border: 2px solid #ea1827">

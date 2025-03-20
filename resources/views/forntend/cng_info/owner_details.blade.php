@@ -9,7 +9,7 @@
                     <h5>{{ $owner->division->division }} - {{ $owner->district->district }} - {{ $owner->thana->thana }} - {{ $owner->union->union }}</h5>
                 </div>
                 <div class="member_list_title">
-                    <h2>{{ $owner->vehicle->name }} {{ __('মালিক এর বিস্তারিত') }}</h2>
+                    <h2> {{ __('মালিক এর বিস্তারিত') }}</h2>
                 </div>
             </div>
         </section>
@@ -23,7 +23,7 @@
                       <img src="{{ $owner->image ? asset('storage/' . $owner->image) : asset('frontend/images/Ellipse 199.png') }}" alt="Profile Image" class="rounded-2">
                   </div>
                   <div class="profile_info">
-                      <span class="owner">{{ __('আমি') }} {{ $owner->vehicle->name }} {{ __('এর মালিক') }}</span>
+                      <span class="owner">{{ __('আমি') }} {{ __('এর মালিক') }}</span>
                       <h3>{{ $owner->name }}</h3>
                       
                       <span class="desc">
@@ -87,7 +87,7 @@
               <div class="row">
                   <div class="d-none d-sm-flex mb-3">
                       <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
-                      <p class="ml-4">{{ $owner->district->district }} - {{ $owner->thana->thana }} - {{ $owner->union->union }} {{ $owner->vehicle->name }} স্ট্যান্ড এর</p> 
+                      <p class="ml-4">{{ $owner->district->district }} - {{ $owner->thana->thana }} - {{ $owner->union->union }}  স্ট্যান্ড এর</p> 
                   </div>
                   
                   <div class="row gallery_image g-3">

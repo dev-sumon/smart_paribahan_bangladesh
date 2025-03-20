@@ -199,14 +199,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            {{-- <div class="form-group">
-                                <label for="district_id" class="mt-3">{{ __('জেলা') }}</label>
-                                <select name="district_id" id="district" class="form-select select_iteam"
-                                    style="border: 2px solid #ea1827">
-                                    <option value="">{{ __('জেলা নির্বাচন করুন') }}</option>
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="district">District <span class="text-danger">*</span></label>
                                 <select name="district_id" id="district" class="form-control" style="border: 2px solid #ea1827">
@@ -218,13 +210,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="form-group">
-                                <label for="thana_id" class="mt-3">{{ __('থানা') }}</label>
-                                <select name="thana_id" id="thana" class="form-select select_iteam"
-                                    style="border: 2px solid #ea1827">
-                                    <option value="">{{ __('থানা নির্বাচন করুন') }}</option>
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="thana">Thana <span class="text-danger">*</span></label>
                                 <select name="thana_id" id="thana" class="form-control" style="border: 2px solid #ea1827">
@@ -236,13 +221,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="form-group">
-                                <label for="union_id" class="mt-3">{{ __('ইউনিয়ন') }}</label>
-                                <select name="union_id" id="union" class="form-select select_iteam"
-                                    style="border: 2px solid #ea1827">
-                                    <option value="">{{ __('ইউনিয়ন নির্বাচন করুন') }}</option>
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="union">Union <span class="text-danger">*</span></label>
                                 <select name="union_id" id="union" class="form-control" style="border: 2px solid #ea1827">
@@ -254,14 +232,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            {{-- <div class="form-group">
-                                <label for="stand_id" class="mt-3">{{ __('স্ট্যান্ড') }}</label>
-                                <select name="stand_id" id="stand" class="form-select select_iteam"
-                                    style="border: 2px solid #ea1827">
-                                    <option value="">{{ __('স্ট্যান্ড নির্বাচন করুন') }}</option>
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="stand">Stand <span class="text-danger">*</span></label>
                                 <select name="stand_id" id="stand" class="form-control" style="border: 2px solid #ea1827">
@@ -273,11 +243,22 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="vehicle_id" class="mt-3">{{ __('গাড়ি') }}</label>
                                 <select name="vehicle_id" id="vehicle" class="form-select select_iteam"
                                     style="border: 2px solid #ea1827">
                                     <option value="">{{ __('গাড়ি নির্বাচন করুন') }}</option>
+                                </select>
+                            </div> --}}
+                            <div class="form-group">
+                                <label for="vehicle_id" class="mt-3">{{ __('গাড়ি') }}</label>
+                                <select name="vehicle_id" id="vehicle_id" class="form-control" style="border: 2px solid #ea1827">
+                                    <option value="" hidden>{{ __('গাড়ি নির্বাচন করুন') }}</option>
+                                    @foreach ($vehicles as $vehicle)
+                                        <option value="{{ $vehicle->id }}" {{ old('vehicle_id') == $vehicle->id ? 'selected' : '' }}>
+                                            {{ $vehicle->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 

@@ -413,6 +413,8 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'],
     Route::controller(OwnerDashboardController::class)->group(function(){
         Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
         Route::put('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
+        Route::get('add-vehicle', 'addVehicle')->name('addVehicle');
+        Route::post('add-vehicles-srore', 'addVehicleStore')->name('addVehicleStore');
 
 
 
@@ -425,8 +427,6 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'],
 });
 
 Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'], function () {
-    // Route::get('/dashboard/{id}', [DashboardController::class, 'dashboard'])->name('driver.dashboard');
-    // Route::post('/dashboard/update/{id}', [DashboardController::class, 'updateDashboard'])->name('driver.updateDashboard');
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
         Route::post('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
