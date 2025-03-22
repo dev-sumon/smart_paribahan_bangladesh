@@ -17,7 +17,7 @@
     "Vehicle" : "গাড়ি",
     "Stand" : "স্ট্যান্ড",
     "Union" : "ইউনিয়ন",
-    "thana" : "থানা",
+    "Thana" : "থানা",
 
     "C N G" : "সি এন জি",
     "Parcel" : "পার্সেল",
@@ -151,11 +151,12 @@
     "Driver Login" : "ড্রাইভার লগ ইন",
     "Field Worker Login" : "মাঠ কর্মী লগ ইন",
     "Station President and Members List" : "স্টেশন সভাপতি ও সদস্য বৃন্দ তালিকা",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
+
+    "Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government" : "স্মার্ট বাংলাদেশ’ বলতে স্মার্ট নাগরিক, স্মার্ট সমাজ, স্মার্ট অর্থনীতি ও স্মার্ট সরকার গড়ে তোলাকে বুঝানো হয়েছে।",
+    "List of CNG drivers" : "সি এন জি  ড্রাইভার এর তালিকা",
+    "Email number not found." : "ইমেল নম্বর পাওয়া যায়নি",
+    "Mobile number" : "মোবাইল নাম্বার",
+    "Book a car." : "গাড়ি বুক করুন",
     "" : "",
     "" : "",
     "" : ""
