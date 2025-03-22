@@ -156,9 +156,10 @@
     "Email number not found." : "Email number not found." ,
     "Mobile number" : "Mobile number" ,
     "Book a car." : "Book a car." ,
-    "" : "" ,
-    "" : "" ,
-    "" : "" ,
+    
+    "Owner's details" : "Owner's details" ,
+    "I am" : "I am" ,
+    "the owner." : "the owner." ,
     "" : "" ,
     "" : "" ,
     "" : "" ,
