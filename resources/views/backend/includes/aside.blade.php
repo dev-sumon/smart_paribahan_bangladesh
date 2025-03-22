@@ -117,7 +117,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('thana.index') }}" class="nav-link {{ $page_slug == 'thana' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-building-shield"></i>
-              <p>{{ __('Thana') }}</p>
+              <p>{{ __('Thana ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
