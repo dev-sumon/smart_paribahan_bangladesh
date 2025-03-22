@@ -738,7 +738,11 @@
     color: #141F39;
     text-align: right;
 }
-
+.bd_smart_vehicle_part .post_card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 /* BD Smart vehicles Blog section End! */
 
 /* FAQ section css start */

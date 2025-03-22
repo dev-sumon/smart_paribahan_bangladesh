@@ -27,7 +27,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('stand.index') }}" class="nav-link {{ $page_slug == 'stand' ? 'active' : '' }}">
               <i class="nav-icon fas fa-location"></i>
-              <p>{{ __('Stand') }}</p>
+              <p>{{ __('Stand ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -39,7 +39,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('vehicle.index') }}" class="nav-link {{ $page_slug == 'vehicle' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-car"></i>
-              <p>{{ __('Vehicle') }}</p>
+              <p>{{ __('Vehicle ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -69,7 +69,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('blog.index') }}" class="nav-link {{ $page_slug == 'blog' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-blog"></i>
-              <p>{{ __('Blog') }}</p>
+              <p>{{ __('Blog ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -99,19 +99,19 @@
           <li class="nav-item menu-open">
             <a href="{{ route('blood.index') }}" class="nav-link {{ $page_slug == 'blood' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-droplet"></i>
-              <p>{{ __('Blood Group') }}</p>
+              <p>{{ __('Blood Group ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('division.index') }}" class="nav-link {{ $page_slug == 'division' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-layer-group"></i>
-              <p>{{ __('Division') }}</p>
+              <p>{{ __('Division ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('district.index') }}" class="nav-link {{ $page_slug == 'district' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-landmark"></i>
-              <p>{{ __('District') }}</p>
+              <p>{{ __('District ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -123,7 +123,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('union.index') }}" class="nav-link {{ $page_slug == 'union' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-underline"></i>
-              <p>{{ __('Union') }}</p>
+              <p>{{ __('Union ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
