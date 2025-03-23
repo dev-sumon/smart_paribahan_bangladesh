@@ -29,12 +29,12 @@
                 </span>
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                     <div class="email">{{ __('Email') }} - </div>
-                    <div class="number">{{ $vehicle->driver->email ?? {{ __('Email number not found.') }} }}</div>
-                </div>
+                    <div class="number">{{ $vehicle->driver->email ?? __('Email not found.') }}</div>
+                </div>                
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                     <div class="phone">{{ __('Mobile number') }} - </div>
-                    <div class="number">{{ $vehicle->driver->phone ?? {{ __('Email number not found.') }} }}</div>
-                </div>
+                    <div class="number">{{ $vehicle->driver->phone ?? __('Phone number not found.') }}</div>
+                </div>                
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                     <div class="car">{{ __('Vehicle Number') }}  - </div>
                     <div class="car_number">
