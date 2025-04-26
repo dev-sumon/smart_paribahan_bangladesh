@@ -647,6 +647,30 @@
     .dealist .badge {
         left: 110px;
     }
+    .search_section .row {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .search_section .col-12 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .search_section form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search_section input.search {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .search_section button {
+        width: 100%;
+    }
   }
  @media(max-width: 575px){
     .hero .hero_image img{

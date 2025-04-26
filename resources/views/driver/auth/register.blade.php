@@ -110,13 +110,30 @@
                     <option value="" selected hidden>{{ __('গাড়ি নির্বাচন করুন') }}</option>
                 </select>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
                 <input type="password" name="password" id="password" value="{{ old('password') }}" class="form-control" placeholder="পাসওয়ার্ড">
                 <span>{{ __('ন্যূনতম ৮ অক্ষরে লিখুন') }}</span>
                 @if($errors->has('password'))
                     <div class="text-danger">{{ $errors->first('password') }}</div>
                 @endif
+            </div> --}}
+
+            <div class="form-group" style="position: relative;">
+                <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
+                <input type="password" name="password" id="password" value="{{ old('password') }}"
+                    class="form-control" placeholder="পাসওয়ার্ড" style="padding-right: 40px;">
+
+                <!-- Eye Icon -->
+                <span id="togglePassword" style="position: absolute; top: 61px; right: 15px; cursor: pointer;">
+                    <i class="fa-solid fa-eye" id="eyeIcon" style="transition: color 0.3s; font-size: 15px;"></i>
+                </span>
+
+                @if ($errors->has('password'))
+                    <div class="text-danger">{{ $errors->first('password') }}</div>
+                @endif
+
+                <span>{{ __('ন্যূনতম ৮ অক্ষরে লিখুন') }}</span>
             </div>
             <div class="form-group">
                 <label for="password_confirmation" class="mt-3">{{ __('আবার পাসওয়ার্ড লিখুন') }}</label>
@@ -281,4 +298,25 @@
             });
         });
     </script>
+
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        if (type === 'text') {
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+            eyeIcon.style.color = 'red'; // Show করা অবস্থায় আইকন লাল হবে
+        } else {
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+            eyeIcon.style.color = ''; // Hide করলে আবার নরমাল রঙে আসবে
+        }
+    });
+</script>
 @endpush
