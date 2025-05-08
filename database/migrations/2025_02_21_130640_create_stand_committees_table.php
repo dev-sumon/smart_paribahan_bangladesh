@@ -29,6 +29,8 @@ return new class extends Migration
             $table->foreign('union_id')->references('id')->on('unions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('stand_id')->nullable();
             $table->foreign('stand_id')->references('id')->on('stands')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('vehicle_id')->nullable();
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

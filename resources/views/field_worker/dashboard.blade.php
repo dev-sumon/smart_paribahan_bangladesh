@@ -1,119 +1,161 @@
 @extends('forntend.layouts.master')
-@section('title', 'Driver Dashboard')
+@section('title', 'Field Worker Profile')
 @section('content')
-     <!-- error_section section design start -->
-     <section class="error_section pt-5 pb-5">
-        <div class="container">
-            <div class="error_image d-flex">
-                <div class="error">
-                    
-                </div>
-                {{-- <div class="image">
-                    <img src="{{ asset('forntend/images/Frame.png') }}" alt="">
-                </div> --}}
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-10 m-auto">
-                        <div class="top d-flex justify-content-between pb-3">
-                            <h3 class="text-start">{{ __('মাঠকর্মী প্রোফাইল') }}</h3>
-                            <a href="{{ route('field_worker.index') }}" class="text-end ms-auto btn w-10 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">Add</a>
-                        </div>
-                        <form action="{{ route('field_worker.updateDashboard', $worker->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group">
-                                <label for="name">{{ __('নাম') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="name" style="border: 2px solid #ea1827" placeholder="আপনার নাম লিখুন" name="name" value="{{ old('name')  ?? $worker->name }}">
-                                @if($errors->has('name'))
-                                    <div class="text-danger">{{ $errors->first('name') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="mt-3">{{ __('মোবাইল নাম্বার') }} <span class="text-danger">*</span></label>
-                                <input type="tel" name="phone" style="border: 2px solid #ea1827" class="form-control" placeholder="মোবাইল নাম্বার" value="{{  $worker->phone ?? old('phone') }}">
-                                @if($errors->has('phone'))
-                                    <div class="text-danger">{{ $errors->first('phone') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="mt-3">{{ __('মেইল লিখুন') }} <span class="text-danger">*</span></label>
-                                <input type="email" name="email" style="border: 2px solid #ea1827" value="{{ old('email') ?? $worker->email }}" class="form-control" placeholder="মেইল লিখুন">
-                                @if($errors->has('email'))
-                                    <div class="text-danger">{{ $errors->first('email') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="nid" class="mt-3">{{ __('জাতীয় পরিচয়পত্র নম্বর') }} <span class="text-danger">*</span></label>
-                                <input type="number" name="nid" value="{{ old('nid') ?? $worker->nid }}" class="form-control" placeholder="Enter Your NID" style="border: 2px solid #ea1827">
-                                @if($errors->has('nid'))
-                                    <div class="text-danger">{{ $errors->first('nid') }}</div>
-                                @endif
-                            </div>
-                            
-                           
-                            <div class="form-group">
-                                <label for="image">{{ __('ছবি') }} <span class="text-danger">*</span></label>
-                                @if($worker->image)
-                                    <img src="{{ asset('storage/' . $worker->image) }}" alt="Driver Image" class="display-image" style="width: 100%; height: auto; object-fit: cover;">
+    <section class="field_worker_profile">
+        <div class="main-wrapper">
+            <div class="profile-wrapper">
+                <!-- Profile Card -->
+                <div class="worker-card">
+                    <!-- Profile Header -->
+                    <div class="card-header">
+                        <div class="avatar-container">
+                            <div class="avatar-wrapper">
+                                @if ($worker->image)
+                                    <img src="{{ asset('storage/' . $worker->image) }}" alt="{{ $worker->name }}"
+                                        class="avatar-wrapper">
                                 @else
                                     <p>{{ __('No image available') }}</p>
                                 @endif
-                                <input type="file" class="form-control h-auto" id="image" placeholder="Enter Driver Image" name="image" style="border: 2px solid #ea1827">
-                                @if($errors->has('image'))
-                                    <div class="text-danger">{{ $errors->first('image') }}</div>
-                                @endif
                             </div>
-                            <div class="form-group">
-                                <label for="father_name">{{ __('পিতার নাম') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="father_name" placeholder="Enter Your Father Name" style="border: 2px solid #ea1827" name="father_name" value="{{ old('father_name') ?? $worker->father_name }}">
-                                @if($errors->has('father_name'))
-                                    <div class="text-danger">{{ $errors->first('father_name') }}</div>
-                                @endif
+                            <button class="btn-camera">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <h2 class="worker-name">{{ $worker->name }}</h2>
+                        <h4 class="worker-role">মাঠকর্মী</h4>
+                    </div>
+
+                    <!-- Profile Info -->
+                    <div class="card-body">
+                        <div class="info-container">
+                            <!-- Personal Info -->
+                            <div class="info-block">
+                                <h3 class="block-title">ব্যক্তিগত তথ্য</h3>
+
+                                <div class="data-row">
+                                    <div class="data-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="data-content">
+                                        <p class="label">মোবাইল নাম্বার</p>
+                                        <p class="value">{{ $worker->phone }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="data-row">
+                                    <div class="data-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="data-content">
+                                        <p class="label">ইমেইল</p>
+                                        <p class="value">{{ $worker->email }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="data-row">
+                                    <div class="data-icon">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <div class="data-content">
+                                        <p class="label">জাতীয় পরিচয়পত্র নম্বর</p>
+                                        <p class="value">{{ $worker->nid }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="mother_name">{{ __('মায়ের নাম') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="mother_name" style="border: 2px solid #ea1827" placeholder="Enter Your Mother Name" name="mother_name" value="{{ old('mother_name') ?? $worker->mother_name }}">
-                                @if($errors->has('mother_name'))
-                                    <div class="text-danger">{{ $errors->first('mother_name') }}</div>
-                                @endif
+
+                            <!-- Family Info -->
+                            <div class="info-block">
+                                <h3 class="block-title">পারিবারিক তথ্য</h3>
+
+                                <div class="data-row">
+                                    <div class="data-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="data-content">
+                                        <p class="label">পিতার নাম</p>
+                                        <p class="value">{{ $worker->father_name }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="data-row">
+                                    <div class="data-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="data-content">
+                                        <p class="label">মায়ের নাম</p>
+                                        <p class="value">{{ $worker->mother_name }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="data-row">
+                                    <div class="data-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="data-content">
+                                        <p class="label">ঠিকানা</p>
+                                        <p class="value">{{ $worker->address }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="address">{{ __('ঠিকানা') }} <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="address" style="border: 2px solid #ea1827" placeholder="Enter Your address" name="address" value="{{ old('address') ?? $worker->address }}">
-                                @if($errors->has('address'))
-                                    <div class="text-danger">{{ $errors->first('address') }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn w-100 submitBtn" style="background-color: #ea1827; color: #FFFFFF;">
-                                    {{ __('Update') }}
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    {{-- <div class="card-footer">
+                        <div class="btn-group">
+                            <button class="btn-primary">
+                                <a href="">
+                                    <i class="fas fa-edit"></i> 
+                                সম্পাদনা
+                                </a>
+                            </button>
+                            <button class="btn-secondary">
+                                <a href="{{ route('field_worker.logout') }}">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                লগআউট
+                                </a>
+                            </button>
+                        </div>
+                    </div> --}}
+                    <div class="card-footer">
+                        <div class="btn-group">
+                            <button class="btn-primary">
+                                <a href="{{ route('field_worker.field_worker_update', $worker->id) }}">
+                                    <i class="fas fa-edit"></i>
+                                    সম্পাদনা
+                                </a>
+                            </button>
+
+                            <form id="logout-form" action="{{ route('field_worker.logout') }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn-secondary">
+                                    <i class="fas fa-sign-out-alt"></i> লগআউট
                                 </button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="logout">
-        <div class="container">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-2 m-auto">
-                        <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" class="logout_form">
-                            @csrf
-                            <div class="form-group">
-                            <a class="dropdown-item text-center" href="{{ route('driver.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </section>
-    <!-- error_section section design end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection

@@ -78,13 +78,29 @@
                                         <tr>
                                             <th>{{ __('Vehicles License') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->vehicles_license }}</td>
+                                            {{-- <td> {{ $owner->vehicles_license }}</td> --}}
+                                            {{-- @fore ($owner->vehicles as $vehicle)
+                                                <td>
+                                                    {{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}
+                                                </td>
+                                            @endforelse --}}
+
+
+
+                                            <td>
+                                                @foreach ($owner->vehicles as $vehicle)
+                                                    {{-- <p class="display-inline">{{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}, </p> --}}
+                                                    <p class="d-inline">{{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}, </p>
+                                                @endforeach
+                                            </td>
+
                                         </tr>
-                                        
+
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" width="100"></td>
+                                            <td><img src="{{ asset('storage/' . $owner->image) }}"
+                                                    alt="{{ $owner->name }}" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>

@@ -30,6 +30,11 @@ class FieldWorkerDashboardController extends Controller
         $data['worker'] = Auth::guard('field_worker')->user();
         return view('field_worker.dashboard', $data);
     }
+
+    public function field_worker_update($id){
+        $data['worker'] = Auth::guard('field_worker')->user();
+        return view('field_worker.field_worker_update.index', $data);
+    }
     public function updateDashboard(FieldWorkRequest $request, $id): RedirectResponse
     {
         $update = FieldWorker::findOrFail($id);

@@ -200,7 +200,7 @@
 
 
     <!-- gallery section start -->
-    <section class="gallery_section">
+    {{-- <section class="gallery_section">
         <div class="container pt-5 pb-5">
             <div class="row">
                 <div class="d-none d-sm-flex mb-3">
@@ -238,7 +238,29 @@
                 </div>
             </div>
         </div>
+    </section> --}}
+    <section class="gallery_section">
+        <div class="container pt-5 pb-5">
+            <div class="row">
+                <div class="d-none d-sm-flex mb-3">
+                    <h3>{{ __('Image Gallery') }} -</h3> 
+                    <h3>{{ $stand->division->division }} - {{ $stand->district->district }} - {{ $stand->thana->thana }} - {{ $stand->union->union }} - {{ __("Stand's") }}</h3>
+                </div>
+    
+                <div class="row gallery_image g-3">
+                    @foreach(json_decode($stand->image, true) as $img)
+                        <div class="col-6 col-md-4">
+                            <div class="">
+                                <img src="{{ asset('storage/' . $img) }}" alt="gallery_image" class="img-fluid">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+    
+            </div>
+        </div>
     </section>
+    
     <!-- gallery section end -->
 @endsection
 

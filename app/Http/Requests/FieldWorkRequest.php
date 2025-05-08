@@ -34,7 +34,7 @@ class FieldWorkRequest extends FormRequest
             'phone' => 'required|string|max:15',
             'email' => 'required|email|unique:field_workers,email',
             'nid' => 'required|string|min:10|max:13',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg',
             'father_name' => 'required|max:20|string|min:3',
             'mother_name' => 'required|max:20|string|min:3',
             'address' => 'required|string|max:255',

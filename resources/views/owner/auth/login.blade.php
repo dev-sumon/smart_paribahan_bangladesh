@@ -124,6 +124,7 @@
                             </span>
                         @enderror
                     </div>
+<<<<<<< Updated upstream
                 </div>
                 <div class="form-check mb-3 d-flex justify-content-between">
                     <input class="form-check-input" type="checkbox" id="rememberMe" />
@@ -136,6 +137,12 @@
                     <hr>
                     <span>{{ __('অথবা') }}</span>
                     <hr>
+=======
+                    <div class="form-check mb-3 d-flex justify-content-between">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" />
+                        <label class="form-check-label" for="rememberMe">{{ __('মনে রাখুন') }}</label>
+                        <a class="forget_password" href="{{ route('owner.forgot.index') }}">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
                 <button type="button" class="btn btn-light border w-100 mb-3 google_button">

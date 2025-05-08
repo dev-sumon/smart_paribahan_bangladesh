@@ -54,7 +54,7 @@ class OwnerRequest extends FormRequest
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
             'stand_id' => 'required|exists:stands,id',
-            'vehicle_id' => 'required|exists:vehicles,id',
+            'vehicle_id' => 'nullable|exists:vehicles,id',
             'email' => 'required|email|unique:owners,email,' . $this->route('id'),
             'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',

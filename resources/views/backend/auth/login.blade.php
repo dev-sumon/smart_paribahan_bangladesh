@@ -120,7 +120,7 @@
                  <div class="form-check mb-3 d-flex justify-content-between">
                      <input class="form-check-input" type="checkbox" id="rememberMe" />
                      <label class="form-check-label" for="rememberMe">{{ __('মনে রাখুন') }}</label>
-                     <a class="forget_password" href="">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
+                     <a class="forget_password" href="{{ route('admin.forgot.index') }}">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
                  </div>
                  <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button>
                  {{-- <div class="text-center mb-3">

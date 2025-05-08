@@ -224,11 +224,20 @@
             </div> --}}
           </div>
         </div>
+<<<<<<< Updated upstream
       </section>
       <!-- search driver section end  -->
 
       <!-- help_us section start  -->
       <section class="help_us">
+=======
+    </section> --}}
+    <!-- search driver section start  -->
+    <section class="search_section py-5">
+        <div class="image mb-4">
+            <img src="{{ asset('forntend/images/Group 39894.svg') }}" alt="Driver Image" class="img-fluid">
+        </div>
+>>>>>>> Stashed changes
         <div class="container">
          <div class="row">
           <div class="help_us_headr text-center">

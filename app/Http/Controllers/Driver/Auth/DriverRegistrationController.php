@@ -26,6 +26,7 @@ class DriverRegistrationController extends Controller
 
         $save->name = $request->name;
         $save->description = $request->description;
+        $save->designation = $request->designation;
         $save->email = $request->email;
         $save->phone = $request->phone;
         $save->owner_id = $request->owner_id;
