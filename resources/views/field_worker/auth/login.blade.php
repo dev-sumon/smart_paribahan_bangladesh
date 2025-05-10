@@ -1,5 +1,4 @@
 @extends('forntend.layouts.master')
-<<<<<<< Updated upstream
  @section('title', 'Field Worker Login')
  @section('content')
      <section class="login_section">
@@ -42,7 +41,6 @@
          </div>
      </section>
  @endsection
-=======
 @section('title', 'Field Worker Login')
 @section('content')
     <section class="login_section">
@@ -130,4 +128,3 @@
         });
     </script>
 @endpush
->>>>>>> Stashed changes

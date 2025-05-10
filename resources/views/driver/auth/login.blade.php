@@ -123,32 +123,18 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-check mb-3 d-flex justify-content-between">
+                {{-- <div class="form-check mb-3 d-flex justify-content-between">
                     <input class="form-check-input" type="checkbox" id="rememberMe" />
                     <label class="form-check-label" for="rememberMe">{{ __('মনে রাখুন') }}</label>
                     <a class="forget_password" href="">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
                 </div>
-                <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button>
+                <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button> --}}
                 <div class="text-center mb-3">
-                    <div class="divider">
+                    {{-- <div class="divider">
                     <hr>
                     <span>{{ __('অথবা') }}</span>
                     <hr>
-                    </div>
-<<<<<<< Updated upstream
-                </div>
-                <button type="button" class="btn btn-light border w-100 mb-3 google_button">
-                    <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20" class="me-2" />
-                    {{ __('গুগল দিয়ে প্রবেশ করুন') }}
-                </button>
-                <div class="text-center">
-                    <span class="no_account">{{ __('আপনার কোন একাউন্ট নেই?') }}</span>
-                    <br />
-                    <a href="{{ route('signup.signup') }}" class="btn btn-dark mt-2 w-100 create_button">{{ __('একাউন্ট তৈরি করুন') }}</a>
-                </div>
-            </form>
-        </div>
-=======
+                    </div> --}}
 
                     <div class="form-check mb-3 d-flex justify-content-between">
                         <input class="form-check-input" type="checkbox" id="rememberMe" />
@@ -176,7 +162,6 @@
                     </div>
                 </form>
             </div>
->>>>>>> Stashed changes
         </div>
     </section>
 @endsection

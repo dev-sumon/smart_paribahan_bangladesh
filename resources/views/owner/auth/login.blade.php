@@ -124,26 +124,28 @@
                             </span>
                         @enderror
                     </div>
-<<<<<<< Updated upstream
                 </div>
-                <div class="form-check mb-3 d-flex justify-content-between">
+                {{-- <div class="form-check mb-3 d-flex justify-content-between">
                     <input class="form-check-input" type="checkbox" id="rememberMe" />
                     <label class="form-check-label" for="rememberMe">{{ __('মনে রাখুন') }}</label>
                     <a class="forget_password" href="">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
-                </div>
+                </div> --}}
+                 <div class="form-check mb-3 d-flex justify-content-between">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" />
+                        <label class="form-check-label" for="rememberMe">{{ __('মনে রাখুন') }}</label>
+                        <a class="forget_password" href="{{ route('owner.forgot.index') }}">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
+                    </div>
                 <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button>
                 <div class="text-center mb-3">
                     <div class="divider">
                     <hr>
                     <span>{{ __('অথবা') }}</span>
                     <hr>
-=======
-                    <div class="form-check mb-3 d-flex justify-content-between">
+                    {{-- <div class="form-check mb-3 d-flex justify-content-between">
                         <input class="form-check-input" type="checkbox" id="rememberMe" />
                         <label class="form-check-label" for="rememberMe">{{ __('মনে রাখুন') }}</label>
                         <a class="forget_password" href="{{ route('owner.forgot.index') }}">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
->>>>>>> Stashed changes
-                    </div>
+                    </div> --}}
                 </div>
                 <button type="button" class="btn btn-light border w-100 mb-3 google_button">
                     <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20" class="me-2" />
