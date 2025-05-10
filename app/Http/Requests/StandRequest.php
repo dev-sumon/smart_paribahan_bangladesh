@@ -22,16 +22,16 @@ class StandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'division_id' => 'required|exists:divisions,id',
-            'district_id' => 'required|exists:districts,id',
-            'thana_id' => 'required|exists:thanas,id',
-            'union_id' => 'required|exists:unions,id',
+            'division_id' => 'nullable|exists:divisions,id',
+            'district_id' => 'nullable|exists:districts,id',
+            'thana_id' => 'nullable|exists:thanas,id',
+            'union_id' => 'nullable|exists:unions,id',
             'name' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
             'location' => 'required|url',
         ]
-        +
-        ($this->isMethod('POST') ? $this->store() : $this->update());
+            +
+            ($this->isMethod('POST') ? $this->store() : $this->update());
     }
     protected function store(): array
     {
