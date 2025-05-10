@@ -21,99 +21,6 @@
                   @if ($errors->has('description'))
                       <div class="text-danger">{{ $errors->first('description') }}</div>
                   @endif
-<<<<<<< Updated upstream
-              </div>
-              <div class="form-group">
-                  <label for="designation">{{ __('পদবি ') }}</label>
-                  <input type="text" class="form-control" id="designation" placeholder="আপনার পদবি লিখুন" name="designation" value="{{ old('designation') }}">
-                  @if($errors->has('designation'))
-                      <div class="text-danger">{{ $errors->first('designation') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                  <label for="driving_license">{{ __('ড্রাইভিং লাইসেন্স ') }}</label>
-                  <input type="text" class="form-control" id="driving_license" placeholder="আপনার ড্রাইভিং লাইসেন্স নাম্বার লিখুন" name="driving_license" value="{{ old('driving_license') }}">
-                  @if($errors->has('driving_license'))
-                      <div class="text-danger">{{ $errors->first('driving_license') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                  <label for="email" class="mt-3">{{ __('মেইল লিখুন') }}</label>
-                  <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="মেইল লিখুন">
-                  @if($errors->has('email'))
-                      <div class="text-danger">{{ $errors->first('email') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                  <label for="phone" class="mt-3">{{ __('মোবাইল নাম্বার') }}</label>
-                  <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="মোবাইল নাম্বার">
-                  @if($errors->has('phone'))
-                      <div class="text-danger">{{ $errors->first('phone') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                <label for="image">{{ __('ছবি') }}</label>
-                <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
-                @if($errors->has('image'))
-                    <div class="text-danger">{{ $errors->first('image') }}</div>
-                @endif
-            </div>
-            <div class="form-group">
-              <label  class="mt-3" for="blood_group_id">{{ __('রক্তের গ্রুপ') }}</label>
-              <select name="blood_group_id" id="blood_group_id" class="form-control">
-                  <option value=" " selected hidden>{{ __('রক্তের গ্রুপ নির্বাচন করুন') }}</option>
-                  @foreach ($bloods as $blood)
-                      <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id') ? 'selected': '' }}>{{ $blood->blood_group}}</option>
-                  @endforeach
-              </select>
-              @if($errors->has('blood_group'))
-                <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
-              @endif
-            </div>
-            <div class="form-group">
-                <label for="division">{{ __('বিভাগ') }}</label>
-                <select name="division_id" id="division" class="form-control">
-                    <option value="" selected hidden>{{ __('বিভাগ নির্বাচন করুন') }}</option>
-                    @foreach ($divisions as $division)
-                        <option value="{{ $division->id }}">{{ $division->division }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('division_id'))
-                <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="district">{{ __('জেলা') }}</label>
-                <select name="district_id" id="district" class="form-control">
-                    <option value="" selected hidden>{{ __('জেলা নির্বাচন করুন') }}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="thana">{{ __('থানা ') }}</label>
-                <select name="thana_id" id="thana" class="form-control">
-                    <option value="" selected hidden>{{ __('থানা নির্বাচন করুন') }}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="union">{{ __(('ইউনিয়ন')) }} </label>
-                <select name="union_id" id="union" class="form-control">
-                    <option value="" selected hidden>{{ __('ইউনিয়ন নির্বাচন করুন') }}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="stand">{{ __('স্ট্যান্ড') }}</label>
-                <select name="stand_id" id="stand" class="form-control">
-                    <option value="" selected hidden>{{ __('স্ট্যান্ড নির্বাচন করুন') }}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="vehicle">{{ __('গাড়ি') }}</label>
-                <select name="vehicle_id" id="vehicle" class="form-control">
-                    <option value="" selected hidden>{{ __('গাড়ি নির্বাচন করুন') }}</option>
-                </select>
-            </div>
-            <div class="form-group">
-=======
               </div> --}}
                     <div class="form-group">
                         <label for="description">{{ __('ডেসক্রিপশন') }}</label>
@@ -221,15 +128,12 @@
                         </select>
                     </div>
                     {{-- <div class="form-group">
->>>>>>> Stashed changes
                 <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
                 <input type="password" name="password" id="password" value="{{ old('password') }}" class="form-control" placeholder="পাসওয়ার্ড">
                 <span>{{ __('ন্যূনতম ৮ অক্ষরে লিখুন') }}</span>
                 @if ($errors->has('password'))
                     <div class="text-danger">{{ $errors->first('password') }}</div>
                 @endif
-<<<<<<< Updated upstream
-=======
             </div> --}}
 
                     <div class="form-group" style="position: relative;">
@@ -290,7 +194,6 @@
                         </div>
                     </div>
                 </form>
->>>>>>> Stashed changes
             </div>
         </div>
     </section>
@@ -425,9 +328,6 @@
             });
         });
     </script>
-<<<<<<< Updated upstream
-@endpush
-=======
 
     <script>
         const togglePassword = document.getElementById('togglePassword');
@@ -450,4 +350,3 @@
         });
     </script>
 @endpush
->>>>>>> Stashed changes
