@@ -91,6 +91,12 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="vehicle">Vehicle <span class="text-danger">*</span></label>
+                                        <select name="vehicle_id" id="vehicle" class="form-control">
+                                            <option value="" selected hidden>Select Vehicle</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
@@ -208,6 +214,30 @@
                         console.log(error);
                     }
                 });
+            });
+            $('#stand').change(function() {
+                var standId = $(this).val();
+                if (standId) {
+                    $.ajax({
+                        url: '/home/get-vehicles/' + standId,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('#vehicle_type').empty();
+                            $('#vehicle_type').append('<option value="">গাড়ি</option>');
+                            $.each(data, function(key, vehicleType) {
+                                $('#vehicle_type').append('<option value="' +
+                                    vehicleType.id + '">' + vehicleType.name +
+                                    '</option>');
+                            });
+                            $('#vehicle_type').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    $('#vehicle_type').empty();
+                    $('#vehicle_type').append('<option value="">গাড়ি</option>');
+                    $('#vehicle_type').prop('disabled', true);
+                }
             });
         });
     </script>

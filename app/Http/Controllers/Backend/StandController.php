@@ -52,17 +52,28 @@ class StandController extends Controller
 
 
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs("stands/", $filename, 'public');
-            $save->image = $path;
+        // if($request->hasFile('image')){
+        //     $image = $request->file('image');
+        //     $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $image->storeAs("stands/", $filename, 'public');
+        //     $save->image = $path;
+        // }
+        $imagePaths = [];
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $img) {
+                $filename = Str::slug($request->name) . '_' . time() . '_' . $img->getClientOriginalName();
+                $path = $img->storeAs('stands', $filename, 'public');
+                $imagePaths[] = $path;
+            }
         }
+
+        $save->image = json_encode($imagePaths);
 
         $save->save();
         return redirect()->route('stand.index');
     }
-    public function update($id):View
+    public function update($id): View
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
         $data['divisions'] = Division::all();
@@ -71,7 +82,7 @@ class StandController extends Controller
         $data['unions'] = Union::where('thana_id', $data['stand']->thana_id)->get();
         return view('backend.stand.edit', $data);
     }
-    public function update_store(StandRequest $request, $id):RedirectResponse
+    public function update_store(StandRequest $request, $id): RedirectResponse
     {
         $update = Stand::findOrFail($id);
         $update->name = $request->name;
@@ -101,16 +112,17 @@ class StandController extends Controller
             $path = $image->storeAs("stands/", $filename, 'public');
             $update->image = $path;
         };
-        
+
 
         $update->save();
         return redirect()->route('stand.index');
     }
-    public function status($id): RedirectResponse{
+    public function status($id): RedirectResponse
+    {
         $stand = Stand::findOrFail($id);
-        if($stand->status == 1){
+        if ($stand->status == 1) {
             $stand->status = 0;
-        }else{
+        } else {
             $stand->status = 1;
         }
         $stand->save();

@@ -67,17 +67,36 @@ class AjaxController extends Controller
     //         'data' => $vehicles
     //     ]);
     // }
+    // public function standVehicles(Request $request, $id): JsonResponse
+    // {
+    //     $stand = Stand::with(['vehicles' => function ($query) {
+    //         $query->whereNull('driver_id')->whereNull('owner_id');
+    //     }])->findOrFail($id);
+
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => $stand->vehicles
+    //     ]);
+    // }
+
+
+
+
     public function standVehicles(Request $request, $id): JsonResponse
     {
-        $stand = Stand::with(['vehicles' => function ($query) {
-            $query->whereNull('driver_id')->whereNull('owner_id');
-        }])->findOrFail($id);
+        $stand = Stand::with([
+            'vehicles' => function ($query) {
+                $query->whereNull('driver_id')   // শুধু driver_id null চেক হবে
+                    ->with('vehicleType');     // vehicleType relation load হবে
+            }
+        ])->findOrFail($id);
 
         return response()->json([
             'success' => true,
             'data' => $stand->vehicles
         ]);
     }
+
 
 
     public function getVehiclesByStand($stand_id)

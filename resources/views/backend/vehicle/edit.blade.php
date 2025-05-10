@@ -67,6 +67,21 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">বর্তমান ইমেজসমূহ</label><br>
+                                        @if ($vehicle->image)
+                                            @foreach (json_decode($vehicle->image) as $img)
+                                                <img src="{{ asset('storage/' . $img) }}" width="100" class="me-2 mb-2">
+                                            @endforeach
+                                        @else
+                                            <p>কোনো ছবি পাওয়া যায়নি।</p>
+                                        @endif
+                                    </div>
+                            
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">নতুন ইমেজ আপলোড করুন (একাধিক)</label>
+                                        <input type="file" name="image[]" class="form-control" multiple>
+                                    </div>
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">

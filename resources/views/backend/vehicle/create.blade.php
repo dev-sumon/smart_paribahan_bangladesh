@@ -47,6 +47,14 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
+                                        <label for="image">{{ __('Image') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="file" class="form-control h-auto" id="image" name="image[]" multiple placeholder="Enter Stand Image" name="image" value="{{ old('image') }}">
+                                        @if ($errors->has('image'))
+                                            <div class="text-danger">{{ $errors->first('image') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
                                         <label for="owner_id">{{ __('Select Owner') }}</label>
                                         <select name="owner_id" id="owner" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Owner') }}</option>

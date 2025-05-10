@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('vehicle_licence');
-            // $table->string('image');
+            $table->longText('image');
             $table->boolean('status');
             $table->timestamps();
         });

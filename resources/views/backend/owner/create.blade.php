@@ -28,7 +28,7 @@
                                         @endif
                                     </div>
                                     <div class="from-group">
-                                        <textarea name="description" id="description" placeholder="Enter The Description" style="width: 100%; height: 400px; padding: 10px;">{{ old('description') }}</textarea>
+                                        <textarea name="description" id="description" placeholder="Enter The Description" style="width: 100%; height: 150px; padding: 10px;">{{ old('description') }}</textarea>
                                         @if($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif

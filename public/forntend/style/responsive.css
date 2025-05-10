@@ -349,6 +349,15 @@
         top: 60px;
     }
  }
+ @media(max-width: 768px){
+    .profile-header {
+        text-align: center;
+    }
+    
+    .contact-info {
+        justify-content: center;
+    }
+ }
  @media(min-width: 575px) and (max-width: 768px){
     .hero .hero_image img{
         width: 100%;
@@ -643,6 +652,18 @@
         transform: translate(430%, -150%) !important;
     }
  }
+ /* @media(min-width: 768px){
+    .field_worker_profile .info-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .field_worker_profile .btn-group {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .field_worker_profile .btn-primary, .btn-secondary {
+        width: auto;
+    }
+ } */
   @media(max-width: 767.98px){
     .dealist .badge {
         left: 110px;
@@ -1107,6 +1128,18 @@
         letter-spacing: 0.20px;
         text-align: left;
         color: #000000;
+    }
+    .profile_section .info{
+        display: block !important;
+        border: none;
+    }
+    .profile_section .info .section-title {
+        margin-bottom: 20px;
+    }
+    .profile_update_section .action-buttons {
+        display: block;
+        /* justify-content: space-between;
+        margin-top: 20px; */
     }
  }
  @media(max-width: 425px){

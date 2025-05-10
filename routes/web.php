@@ -20,6 +20,7 @@ use App\Http\Controllers\Forntend\SignUpController;
 use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\DivisionController;
 use App\Http\Controllers\Driver\DashboardController;
+use App\Http\Controllers\Forntend\AboutUsController;
 use App\Http\Controllers\Forntend\CngInfoController;
 use App\Http\Controllers\Forntend\BlogPageController;
 use App\Http\Controllers\Forntend\HelpPageController;
@@ -42,7 +43,10 @@ use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
 use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
+use App\Http\Controllers\Owner\Auth\ForgotPassword\OwnerForgotPasswordController;
+use App\Http\Controllers\Backend\Auth\ForgotPassword\AdminForgotPasswordController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Driver\Auth\ForgotPassword\driverForgotPasswordController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
 
 // use Illuminate\Support\Facades\Auth;
@@ -134,6 +138,11 @@ Route::group(['as' => 'f.'], function () {
     Route::controller(AuthDriverLoginController::class)->prefix('driver-login')->name('login')->group(function(){
         Route::get('/login', 'driverLogin')->name('login');
     });
+
+    Route::controller(AboutUsController::class)->prefix('about-us')->name('about.')->group(function(){
+        Route::get('/', 'index')->name('index');
+    });
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -173,9 +182,66 @@ Route::controller(DriverRegistrationController::class)->prefix('signup')->name('
     Route::post('driver/signup', 'signup')->name('signup');
     Route::put('driver/update/{id}', 'update')->name('update');
 });
+
+// Route::prefix('field_worker')->name('field_worker.')->group(function () {
+//     Route::get('/forgot-password', [FieldWorkerForgotPasswordController::class, 'showForgotForm'])->name('forgot.form');
+//     Route::post('/send-otp', [FieldWorkerForgotPasswordController::class, 'sendOtp'])->name('send.otp');
+//     Route::get('/verify-otp', [FieldWorkerForgotPasswordController::class, 'showVerifyForm'])->name('verify.form');
+//     Route::post('/check-otp', [FieldWorkerForgotPasswordController::class, 'checkOtp'])->name('check.otp');
+//     Route::get('/reset-password', [FieldWorkerForgotPasswordController::class, 'showResetForm'])->name('reset.form');
+//     Route::post('/reset-password', [FieldWorkerForgotPasswordController::class, 'resetPassword'])->name('reset.password');
+// });
+
+// Forgot Password Route Start
+
+Route::prefix('driver')->name('driver.')->group(function () {
+    Route::get('/forgot-index', [driverForgotPasswordController::class, 'index'])->name('forgot.index');
+    Route::get('/forgot-password', [driverForgotPasswordController::class, 'showForgotForm'])->name('forgot.form');
+    Route::post('/send-otp', [driverForgotPasswordController::class, 'sendOtp'])->name('send.otp');
+    Route::get('/verify-otp', [driverForgotPasswordController::class, 'showVerifyForm'])->name('verify.form');
+    Route::post('/check-otp', [driverForgotPasswordController::class, 'checkOtp'])->name('check.otp');
+    Route::get('/reset-password', [driverForgotPasswordController::class, 'showResetForm'])->name('reset.form');
+    Route::post('/reset-password', [driverForgotPasswordController::class, 'resetPassword'])->name('reset.password');
+});
+
+
+
+
+Route::prefix('owner')->name('owner.')->group(function () {
+    Route::get('/forgot-index', [OwnerForgotPasswordController::class, 'index'])->name('forgot.index');
+    Route::get('/forgot-password', [OwnerForgotPasswordController::class, 'showForgotForm'])->name('forgot.form');
+    Route::post('/send-otp', [ownerForgotPasswordController::class, 'sendOtp'])->name('send.otp');
+    Route::get('/verify-otp', [ownerForgotPasswordController::class, 'showVerifyForm'])->name('verify.form');
+    Route::post('/check-otp', [ownerForgotPasswordController::class, 'checkOtp'])->name('check.otp');
+    Route::get('/reset-password', [ownerForgotPasswordController::class, 'showResetForm'])->name('reset.form');
+    Route::post('/reset-password', [ownerForgotPasswordController::class, 'resetPassword'])->name('reset.password');
+});
+
+
+
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/forgot-index', [AdminForgotPasswordController::class, 'index'])->name('forgot.index');
+    Route::get('/forgot-password', [AdminForgotPasswordController::class, 'showForgotForm'])->name('forgot.form');
+    Route::post('/send-otp', [AdminForgotPasswordController::class, 'sendOtp'])->name('send.otp');
+    Route::get('/verify-otp', [AdminForgotPasswordController::class, 'showVerifyForm'])->name('verify.form');
+    Route::post('/check-otp', [AdminForgotPasswordController::class, 'checkOtp'])->name('check.otp');
+    Route::get('/reset-password', [AdminForgotPasswordController::class, 'showResetForm'])->name('reset.form');
+    Route::post('/reset-password', [AdminForgotPasswordController::class, 'resetPassword'])->name('reset.password');
+});
+
+
+
+
+
+
+// Forgot Password Route end
+
+
 Route::controller(FieldWorkerLoginController::class)->prefix('field_worker')->name('field_worker.')->group(function(){
     Route::get('/login', 'fieldWorkerLogin')->name('login');
-    Route::post('/login', 'fieldWorkerLoginCheck')->name('login');
+    Route::post('/login', 'fieldWorkerLoginCheck')->name('login.check');
     Route::post('/logout', 'logout')->name('logout');
 });
 
@@ -412,7 +478,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'], function(){
     Route::controller(OwnerDashboardController::class)->group(function(){
         Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
-        Route::put('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
+        Route::get('/owner/update/{id}', 'owner_update')->name('owner_update');
+        Route::put('/owner/update/{id}', 'owner_update_store')->name('owner_update');
         Route::get('add-vehicle', 'addVehicle')->name('addVehicle');
         Route::post('add-vehicles-srore', 'addVehicleStore')->name('addVehicleStore');
 
@@ -429,6 +496,8 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'],
 Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'], function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
+        Route::get('/driver/update/{id}', 'driver_update')->name('driver_update');
+        Route::put('/driver/update/{id}', 'driver_update_store')->name('driver_update');
         Route::post('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
         Route::get('/get-districts/{division_id}', 'district')->name('getDistricts');
         Route::get('/get-thanas/{district_id}', 'thana')->name('getThanas');
@@ -451,6 +520,8 @@ Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'
 Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as' => 'field_worker.'], function(){
     Route::controller(FieldWorkerDashboardController::class)->group(function (){
         Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/field_worker/update/{id}', 'field_worker_update')->name('field_worker_update');
+        Route::put('/field_worker/update/{id}', 'field_worker_update_store')->name('field_worker_update');
         Route::put('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
         Route::get('index', 'index')->name('index');
         Route::get('driver-create', 'driverCreate')->name('driver.create');

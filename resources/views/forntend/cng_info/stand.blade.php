@@ -18,51 +18,12 @@
                         </div>
                     </div>
                 @endforeach
-                    {{-- <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
-                        </div>
-                    </div>
-                    <div class="notice_list d-flex align-items-center">
-                        <div class="icon-button">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </div>
-                        <div class="notice_head_line">
-                            <p class="p-0">{{ __('Smart Bangladesh refers to the development of a smart citizen, smart society, smart economy, and smart government.') }}</p>
-                        </div>
-                    </div> --}}
                     <div class="all_notice_button text-end">
                         <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
                             <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
                     </div>
-                    {{-- <div class="all_notice_button text-end">
-                        <a href="notice_page.html" class="gradient-border-button">
-                            <span>{{ __('সকল') }}</span>
-                            <i class="fa-solid fa-arrow-right arrow"></i>
-                        </a>
-                    </div> --}}
-
                 </div>
                 <div class="col-md-12 col-lg-3 mt-sm-5 mt-md-5 custom-margin">
                     <div class="advisement text-center">
@@ -134,55 +95,15 @@
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
                             <h1 class="pt-3 text-start">{{ __('Stand Introduction') }}</h1>
                             <div class="card">
-                                <a href="">
+                                <a href="{{ route('f.home.standIntro', $stand->id) }}">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $stand->name }}</p>
                                 </a>
+                                {{-- <a href=""> --}}
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        {{-- <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                            <div class="card">
-                                <a href="{{ route('f.cng.map') }}">
-                                    <img src="{{ asset('forntend/images/map 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('Stand on Map') }}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                            <div class="card">
-                                <a href="{{ route('f.cng.community') }}">
-                                    <img src="{{ asset('forntend/images/team 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('CNG Station President and Members List') }}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                            <div class="card">
-                                <a href="{{ route('f.cng.owner') }}">
-                                    <img src="{{ asset('forntend/images/owner 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('CNG Owner List') }}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                            <div class="card">
-                                <a href="{{ route('f.cng.driver') }}">
-                                    <img src="{{ asset('forntend/images/driver11 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('List of CNG drivers') }}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
-                            <div class="card">
-                                <a href="{{ route('f.cng.notice') }}">
-                                    <img src="{{ asset('forntend/images/report 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ __('CNG Stand Annual Budget, Development Plan, and Financial Statement') }}</p>
-                                </a>
-                            </div>
-                        </div> --}}
-
                         <div class="mt-5 d-lg-block d-md-block d-sm-none">
                             <div class="cover_advisement">
                                 <div class="add_image">

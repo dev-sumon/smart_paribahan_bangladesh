@@ -37,14 +37,16 @@ class StandRequest extends FormRequest
     {
         return [
             'description' => 'required|string|min:20|max:500',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'required|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
         ];
     }
     protected function update(): array
     {
         return [
             'description' => 'nullable|string|min:20|max:500',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'nullable|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
         ];
     }
 }

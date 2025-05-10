@@ -28,15 +28,8 @@
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter The Description" name="description" value="{{ old('description') ?? $driver->description }}">
-                                        @if($errors->has('description'))
-                                            <div class="text-danger">{{ $errors->first('description') }}</div>
-                                        @endif
-                                    </div> --}}
                                     <div class="from-group">
-                                        <textarea name="description" id="description" placeholder="Enter The Description" style="width: 100%; height: 400px; padding: 10px;">{{ $driver->name ?? old('description') }}</textarea>
+                                        <textarea name="description" id="description" placeholder="Enter The Description" style="width: 100%; height: 400px; padding: 10px;">{{ $driver->description ?? old('description') }}</textarea>
                                         @if($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
