@@ -23,8 +23,7 @@ class OwnerRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:50',
-            'description' => 'required|string|min:20|max:500',
-            'status' => 'required|boolean|'
+            'status' => 'nullable|boolean',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -32,6 +31,7 @@ class OwnerRequest extends FormRequest
     protected function store(): array
     {
         return [
+            'description' => 'nullable|string|min:50|',
             'division_id' => 'nullable|exists:divisions,id',
             'district_id' => 'nullable|exists:districts,id',
             'thana_id' => 'nullable|exists:thanas,id',
@@ -40,7 +40,6 @@ class OwnerRequest extends FormRequest
             'vehicle_id' => 'nullable|exists:vehicles,id',
             'email' => 'required|email|unique:owners,email',
             'phone' => 'required|string|min:11|max:11|unique:owners,phone',
-            'vehicles_license' => 'required|string|min:10|max:12|unique:owners,vehicles_license',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
@@ -49,16 +48,16 @@ class OwnerRequest extends FormRequest
     protected function update(): array
     {
         return [
+            'description' => 'nullable|string|min:50|',
             'division_id' => 'required|exists:divisions,id',
             'district_id' => 'required|exists:districts,id',
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
             'stand_id' => 'required|exists:stands,id',
-            'vehicle_id' => 'required|exists:vehicles,id',
+            'vehicle_id' => 'nullable|exists:vehicles,id',
             'email' => 'required|email|unique:owners,email,' . $this->route('id'),
             'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
-            'vehicles_license' => 'required|string|min:10|max:12|unique:owners,vehicles_license,' . $this->route('id'),
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
         ];

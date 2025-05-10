@@ -29,13 +29,33 @@ class Thana extends Model
     }
 
 
-    
-    
+
+
     public function division(){
         return $this->belongsTo(Division::class, 'division_id', 'id');
     }
 
-    public function district(){
-        return $this->belongsTo(District::class, 'district_id', 'id');
+    // public function district(){
+    //     return $this->belongsTo(District::class, 'district_id', 'id');
+    // }
+
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    // Relationship: A thana has many unions
+    public function unions()
+    {
+        return $this->hasMany(Union::class);
+    }
+    public function stands()
+    {
+        return $this->hasMany(Stand::class);
+    }
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
     }
 }

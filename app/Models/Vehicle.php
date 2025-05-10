@@ -27,4 +27,24 @@ class Vehicle extends Model
             return 'btn-success';
         }
     }
+
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class, 'owner_id');
+    }
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class, 'driver_id');
+    }
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class);
+    }
+    public function vehicleType()
+    {
+        return $this->belongsTo(VehicleType::class, 'vehicle_type_id');
+    }
+    
+
 }

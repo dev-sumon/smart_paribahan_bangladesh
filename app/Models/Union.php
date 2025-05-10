@@ -28,7 +28,7 @@ class Union extends Model
         }
     }
 
-    
+
     public function division(){
         return $this->belongsTo(Division::class, 'division_id', 'id');
     }
@@ -36,7 +36,26 @@ class Union extends Model
     public function district(){
         return $this->belongsTo(District::class, 'district_id', 'id');
     }
-    public function thana(){
-        return $this->belongsTo(Thana::class, 'thana_id', 'id');
+    // public function thana(){
+    //     return $this->belongsTo(Thana::class, 'thana_id', 'id');
+    // }
+    public function stand(){
+        return $this->belongsTo(Stand::class, 'stand_id', 'id');
+    }
+
+
+    public function thana()
+    {
+        return $this->belongsTo(Thana::class);
+    }
+
+    // Relationship: A union has many stands
+    public function stands()
+    {
+        return $this->hasMany(Stand::class);
+    }
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
     }
 }

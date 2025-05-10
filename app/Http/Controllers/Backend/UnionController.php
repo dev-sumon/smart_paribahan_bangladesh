@@ -22,8 +22,6 @@ class UnionController extends Controller
     public function create(): View
     {
         $data['divisions'] = Division::latest()->get();
-        $data['districts'] = District::latest()->get();
-        $data['thanas'] = Thana::latest()->get();
         return view('backend.union.create', $data);
     }
     public function store(UnionRequest $request): RedirectResponse
@@ -44,12 +42,12 @@ class UnionController extends Controller
     {
         $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
         $data['divisions'] = Division::all();
-        $data['districts'] = District::all();
-        $data['thanas'] = Thana::all();
+        $data['districts'] = District::where('division_id', $data['union']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['union']->district_id)->get();
 
         return view('backend.union.edit', $data);
-
     }
+
     public function update_store(UnionRequest $request, $id): RedirectResponse
     {
         $update = Union::findOrFail($id);

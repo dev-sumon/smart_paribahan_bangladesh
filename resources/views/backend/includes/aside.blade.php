@@ -1,19 +1,9 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">{{ __('AdminLTE 3') }}</span>
+<aside class="main-sidebar sidebar-light-primary elevation-4">
+    <a href="">
+      <img src="{{ asset('backend/dist/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image p-2">
     </a>
 
     <div class="sidebar">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">{{ __('Alexander Pierce') }}</a>
-        </div>
-      </div>
-
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item menu-open">
@@ -37,19 +27,31 @@
           <li class="nav-item menu-open">
             <a href="{{ route('stand.index') }}" class="nav-link {{ $page_slug == 'stand' ? 'active' : '' }}">
               <i class="nav-icon fas fa-location"></i>
-              <p>{{ __('Stand') }}</p>
+              <p>{{ __('Stand ') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('vehicle_type.index') }}" class="nav-link {{ $page_slug == 'vehicle_type' ? 'active' : '' }}">
+              <i class="fas fa-cogs"></i>
+              <p> {{ __(' Vehicle Type') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('vehicle.index') }}" class="nav-link {{ $page_slug == 'vehicle' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-car"></i>
-              <p>{{ __('Vehicle') }}</p>
+              <p>{{ __('Vehicle ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('faq.index') }}" class="nav-link {{ $page_slug == 'faq' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-question"></i>
               <p>{{ __('FAQ') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('notice_category.index') }}" class="nav-link {{ $page_slug == 'notice_category' ? 'active' : '' }}">
+              <i class="nav-icon fa-solid fa-bell-concierge"></i>
+              <p>{{ __('Notice Category') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -67,7 +69,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('blog.index') }}" class="nav-link {{ $page_slug == 'blog' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-blog"></i>
-              <p>{{ __('Blog') }}</p>
+              <p>{{ __('Blog ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -97,31 +99,37 @@
           <li class="nav-item menu-open">
             <a href="{{ route('blood.index') }}" class="nav-link {{ $page_slug == 'blood' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-droplet"></i>
-              <p>{{ __('Blood Group') }}</p>
+              <p>{{ __('Blood Group ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('division.index') }}" class="nav-link {{ $page_slug == 'division' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-layer-group"></i>
-              <p>{{ __('Division') }}</p>
+              <p>{{ __('Division ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('district.index') }}" class="nav-link {{ $page_slug == 'district' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-landmark"></i>
-              <p>{{ __('District') }}</p>
+              <p>{{ __('District ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('thana.index') }}" class="nav-link {{ $page_slug == 'thana' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-building-shield"></i>
-              <p>{{ __('Thana') }}</p>
+              <p>{{ __('Thana ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('union.index') }}" class="nav-link {{ $page_slug == 'union' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-underline"></i>
-              <p>{{ __('Union') }}</p>
+              <p>{{ __('Union ') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('commitee.index') }}" class="nav-link {{ $page_slug == 'commitee' ? 'active' : '' }}">
+              <i class="nav-icon fa-solid fa-users"></i>
+              <p>{{ __('Stand Committee') }}</p>
             </a>
           </li>
         </ul>

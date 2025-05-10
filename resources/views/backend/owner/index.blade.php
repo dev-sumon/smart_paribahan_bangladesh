@@ -23,9 +23,7 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Image') }}</th>
                                             <th>{{ __('Email') }}</th>
-                                            <th>{{ __('Vehicles License') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -37,9 +35,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $owner->name }}</td>
-                                            <td><img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" width="100"></td>
                                             <td>{{ $owner->email }}</td>
-                                            <td>{{ $owner->vehicles_license }}</td>
                                             <td><span class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span></td>
                                             <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $owner->created_user ? $owner->created_user->name : 'system' }}</td>
@@ -69,6 +65,6 @@
 
 @push('script')
 <script>
-    
+
 </script>
 @endpush

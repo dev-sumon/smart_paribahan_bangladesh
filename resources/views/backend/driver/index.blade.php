@@ -23,11 +23,7 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Description') }}</th>
-                                            <th>{{ __('Designation') }}</th>
-                                            <th>{{ __('Image') }}</th>
                                             <th>{{ __('Email') }}</th>
-                                            <th>{{ __('Driving License') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -39,11 +35,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $driver->name }}</td>
-                                            <td>{{ $driver->description }}</td>
-                                            <td>{{ $driver->designation }}</td>
-                                            <td><img src="{{ asset('storage/' . $driver->image) }}" alt="{{ $driver->name }}" width="100"></td>
                                             <td>{{ $driver->email }}</td>
-                                            <td>{{ $driver->driving_license }}</td>
                                             <td><span class="{{ $driver->statusBg() }}">{{ $driver->statusTitle() }}</span></td>
                                             <td>{{ $driver->created_at ? $driver->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $driver->created_user ? $driver->created_user->name : 'system' }}</td>
@@ -73,6 +65,6 @@
 
 @push('script')
 <script>
-    
+
 </script>
 @endpush

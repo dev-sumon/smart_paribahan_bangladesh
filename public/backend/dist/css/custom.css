@@ -1,0 +1,10 @@
+.main-sidebar .sidebar i{
+    color: #ea1827;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #051e38;
+    color: #fff;
+}
+.sidebar ul li:last-child{
+    margin-bottom: 10px;
+}

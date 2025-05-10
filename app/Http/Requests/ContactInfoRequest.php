@@ -33,7 +33,7 @@ class ContactInfoRequest extends FormRequest
         return [
             'description' => 'required|string|min:50|max:250',
             'address' => 'required|string|min:3|max:250',
-            'phone' => 'required|string|min:11|max:11',
+            'phone' => 'required|string',
             'email' => 'required|email|unique:contact_infos,email',
         ];
     }
@@ -42,7 +42,7 @@ class ContactInfoRequest extends FormRequest
         return [
             'description' => 'nullable|string|min:50|max:250',
             'address' => 'nullable|string|min:3|max:250',
-            'phone' => 'nullable|string|min:11|max:11',
+            'phone' => 'nullable|string',
             'email' => 'nullable|email|unique:contact_infos,email,' .$this->route('id'),
         ];
     }

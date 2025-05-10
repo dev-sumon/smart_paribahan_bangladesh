@@ -22,8 +22,8 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
+                                            <th>{{ __('Vehicle Type') }}</th>
                                             <th>{{ __('Name') }}</th>
-                                            <th>{{ __('Image') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __('Created By') }}</th>
@@ -34,8 +34,8 @@
                                         @foreach ($vehicles as $key=>$vehicle)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $vehicle->vehicleType->name }}</td>
                                                 <td>{{ $vehicle->name }}</td>
-                                                <td><img src="{{ asset('storage/'. $vehicle->image) }}" alt="{{ $vehicle->name }}" width="100"></td>
                                                 <td><span class="{{$vehicle->statusBg()}}">{{$vehicle->statusTitle()}}</span></td>
                                                 <td>{{ $vehicle->created_at ? $vehicle->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                                 <td>{{ $vehicle->created_admin ? $vehicle->created_admin->name : 'system' }}</td>

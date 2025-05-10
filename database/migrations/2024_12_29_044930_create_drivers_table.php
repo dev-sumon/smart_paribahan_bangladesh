@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('description');
-            $table->string('designation');
+            $table->longText('description')->nullable();
+            $table->string('designation')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('driving_license')->unique();
+            $table->string('driving_license')->unique()->nullable();
             $table->string('image')->nullable();
             $table->string('password');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->unsignedBigInteger('owner_id')->nullable();
             $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\FieldWorkRequest;
 use App\Models\FieldWorker;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\FieldWorkRequest;
 use Illuminate\Support\Facades\Storage;
 
 class FieldWorkerController extends Controller
@@ -33,7 +34,8 @@ class FieldWorkerController extends Controller
         $save->mother_name = $request->mother_name;
         $save->address = $request->address;
         $save->status = $request->status ?? 0;
-        $save->password = bcrypt($request->password);
+        $save->password = $request->password;
+
 
 
         if($request->hasFile('image')){
@@ -66,15 +68,15 @@ class FieldWorkerController extends Controller
         $update->password = bcrypt($request->password);
 
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
             $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("worker/", $filename, 'public');
             $update->image = $path;
-        
+        }
 
         $update->save();
         return redirect()->route('worker.index');

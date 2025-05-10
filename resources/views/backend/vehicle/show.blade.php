@@ -26,9 +26,24 @@
                                             <td>{{ $vehicle->name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Image') }}</th>
+                                            <th>{{ __('Vehicle Licence') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $vehicle->image) }}" alt="{{ $vehicle->name }}" width="100"></td>
+                                            <td>{{ $vehicle->vehicle_licence }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Vehicle Type') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $vehicle->vehicleType->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Owner Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $vehicle->owner->name ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Driver Name') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ optional($vehicle->driver)->name ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>

@@ -65,6 +65,11 @@ class Driver extends Authenticatable
         return $this->belongsTo(BloodGroup::class, 'blood_group_id');
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
+
     public function statusBg(){
         if($this->status == 1){
             return 'badge badge-success';
@@ -86,4 +91,34 @@ class Driver extends Authenticatable
             return 'btn-success';
         }
     }
+
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class);
+    }
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
+    }
+    public function thana()
+    {
+        return $this->belongsTo(Thana::class);
+    }
+    public function union()
+    {
+        return $this->belongsTo(Union::class);
+    }
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'owner_id');
+    }
+    public function vehicleTypes()
+    {
+        return $this->hasManyThrough(Vehicle::class, VehicleType::class, 'vehicle_type_id', 'id', 'id', 'vehicle_id');
+    }
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
+    }
+
 }

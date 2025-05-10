@@ -28,6 +28,7 @@ class StandRequest extends FormRequest
             'union_id' => 'nullable|exists:unions,id',
             'name' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
+            'location' => 'required|url',
         ]
             +
             ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -36,18 +37,16 @@ class StandRequest extends FormRequest
     {
         return [
             'description' => 'required|string|min:20|max:500',
-            'location' => 'required|string|min:3|max:250',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'slug' => 'required|string|unique:stands,slug',
+            'image' => 'required|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
         ];
     }
     protected function update(): array
     {
         return [
             'description' => 'nullable|string|min:20|max:500',
-            'location' => 'nullable|string|min:3|max:250',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'slug' => 'required|string|unique:stands,slug,' . $this->route('id'),
+            'image' => 'nullable|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
         ];
     }
 }

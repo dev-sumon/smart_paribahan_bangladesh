@@ -28,9 +28,8 @@
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="description" placeholder="Enter The Description" name="description" value="{{ old('description') ?? $driver->description }}">
+                                    <div class="from-group">
+                                        <textarea name="description" id="description" placeholder="Enter The Description" style="width: 100%; height: 400px; padding: 10px;">{{ $driver->description ?? old('description') }}</textarea>
                                         @if($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
@@ -40,6 +39,90 @@
                                         <input type="text" class="form-control" id="designation" placeholder="Enter The Designation" name="designation" value="{{ old('designation') ?? $driver->designation }}">
                                         @if($errors->has('designation'))
                                             <div class="text-danger">{{ $errors->first('designation') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="mt-3" for="blood_group_id">{{ __('Blood Group') }}</label>
+                                        <select name="blood_group_id" id="blood_group_id" class="form-control">
+                                            <option value=" " selected hidden>{{ __('Select Blood Broup') }}</option>
+                                            @foreach ($bloods as $blood)
+                                                <option value="{{ $blood->id }}" 
+                                                    {{ old('blood_group_id', $driver->blood_group_id) == $blood->id ? 'selected' : '' }}>
+                                                    {{ $blood->blood_group }}
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('blood_group'))
+                                        <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="division">Division <span class="text-danger">*</span></label>
+                                        <select name="division_id" id="division" class="form-control">
+                                            <option value="" hidden>Select Division</option>
+                                            @foreach ($divisions as $division)
+                                                <option value="{{ $division->id }}" {{ $driver->division_id == $division->id ? 'selected' : '' }}>
+                                                    {{ $division->division }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="district">District <span class="text-danger">*</span></label>
+                                        <select name="district_id" id="district" class="form-control">
+                                            <option value="" hidden>Select District</option>
+                                            @foreach ($districts as $district)
+                                                <option value="{{ $district->id }}" {{ $driver->district_id == $district->id ? 'selected' : '' }}>
+                                                    {{ $district->district }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thana">Thana <span class="text-danger">*</span></label>
+                                        <select name="thana_id" id="thana" class="form-control">
+                                            <option value="" hidden>Select Thana</option>
+                                            @foreach ($thanas as $thana)
+                                                <option value="{{ $thana->id }}" {{ $driver->thana_id == $thana->id ? 'selected' : '' }}>
+                                                    {{ $thana->thana }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="union">Union <span class="text-danger">*</span></label>
+                                        <select name="union_id" id="union" class="form-control">
+                                            <option value="" hidden>Select Union</option>
+                                            @foreach ($unions as $union)
+                                                <option value="{{ $union->id }}" {{ $driver->union_id == $union->id ? 'selected' : '' }}>
+                                                    {{ $union->union }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="stand">Stand <span class="text-danger">*</span></label>
+                                        <select name="stand_id" id="stand" class="form-control">
+                                            <option value="" hidden>Select Stand</option>
+                                            @foreach ($stands as $stand)
+                                                <option value="{{ $stand->id }}" {{ $driver->stand_id == $stand->id ? 'selected' : '' }}>
+                                                    {{ $stand->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="vehicle_id">{{ __('Vehicle') }} <span class="text-danger">*</span></label>
+                                        <select name="vehicle_id" id="vehicle" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
+                                            @foreach ($vehicles as $vehicle)
+                                                <option value="{{ $vehicle->id }}" {{ old('vehicle_id', $driver->vehicle_id ?? '') == $vehicle->id ? 'selected' : '' }}>
+                                                    {{ $vehicle->name }}: {{ $vehicle->license_number }}
+                                                </option>                                            
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('vehicle_id'))
+                                            <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -56,60 +139,11 @@
                                             <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label  class="mt-3" for="vehicles_license">{{ __('Vehicles License') }}</label>
-                                        <select name="vehicles_license" id="vehicles_license" class="form-control">
-                                            @foreach ($owners as $owner )
-                                                <option value="{{ $owner->id }}" {{ $owner->id==old('vehicles_license', $driver->owner_id) ? 'selected': '' }}>{{ $owner->vehicles_license}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('owner'))
-                                        <div class="text-danger">{{ $errors->first('owner') }}</div>
-                                        @endif
-                                    </div> --}}
-                                    <div class="form-group">
-                                        <label class="mt-3" for="owner_id">{{ __('Vehicles License') }}</label>
-                                        <select name="owner_id" id="owner_id" class="form-control">
-                                            <option value="" selected hidden>{{ __('Select Vehicles License') }}</option>
-                                            @foreach ($owners as $owner)
-                                                <option value="{{ $owner->id }}" {{ (old('owner_id', $driver->owner_id) == $owner->id) ? 'selected' : '' }}>
-                                                    {{ $owner->vehicles_license }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('owner_id'))
-                                        <div class="text-danger">{{ $errors->first('owner_id') }}</div>
-                                        @endif
-                                    </div>
-                                    
                                     <div class="form-group">
                                         <label for="driving_license">{{ __('Driving License') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="driving_license" placeholder="Enter The Driving License" name="driving_license" value="{{ old('driving_license') ?? $driver->driving_license }}">
                                         @if($errors->has('driving_license'))
                                             <div class="text-danger">{{ $errors->first('driving_license') }}</div>
-                                        @endif
-                                    </div>
-                                    {{-- <div class="form-group">
-                                        <label for="blood_group">{{ __('Blood Group') }}</label>
-                                        <input type="text" class="form-control" id="blood_group" placeholder="Enter The Blood Group" name="blood_group" value="{{ old('blood_group') ?? $driver->blood_group }}">
-                                        @if($errors->has('blood_group'))
-                                            <div class="text-danger">{{ $errors->first('blood_group') }}</div>
-                                        @endif
-                                    </div> --}}
-                                    <div class="form-group">
-                                        <label  class="mt-3" for="blood_group_id">{{ __('Blood Group') }}</label>
-                                        <select name="blood_group_id" id="blood_group_id" class="form-control">
-                                            <option value=" " selected hidden>{{ __('Select Blood Broup') }}</option>
-                                            @foreach ($bloods as $blood)
-                                                {{-- <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id') ? 'selected': '' }}>{{ $blood->blood_group}}</option> --}}
-                                                {{-- <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id', $owner->blood_group_id) ? 'selected': '' }}>{{ $owner->blood_group_id}}</option> --}}
-                                                <option value="{{ $blood->id }}" 
-                                                    {{ old('blood_group_id', $driver->blood_group_id) == $blood->id ? 'selected' : '' }}>
-                                                    {{ $blood->blood_group }}
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('blood_group'))
-                                        <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -142,7 +176,7 @@
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" {{ (old('status') ?? $driver->status) == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ (old('status') ?? $driver->status) == 0 ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                                            <option value="0" {{ (old('status') ?? $driver->status) == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
                                         </select>
                                         @if($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
@@ -150,7 +184,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
-                                            {{ __('Submit') }}
+                                            {{ __('Update') }}
                                         </button>
                                     </div>
                                 </form>
@@ -162,3 +196,150 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#division').on('change', function() {
+                let divisionId = $(this).val();
+                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let districts = response.data;
+                        let districtSelect = $('#district');
+                        districtSelect.empty();
+                        districtSelect.append('<option value="">Select District</option>');
+
+                        $.each(districts, function(index, district) {
+                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#district').on('change', function() {
+                let districtId = $(this).val();
+                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let thanas = response.data;
+                        let thanaSelect = $('#thana');
+                        thanaSelect.empty();
+                        thanaSelect.append('<option value="">Select Thana</option>');
+
+                        $.each(thanas, function(index, thana) {
+                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#thana').on('change', function() {
+                let unionId = $(this).val();
+                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let unions = response.data;
+                        let unionSelect = $('#union');
+                        unionSelect.empty();
+                        unionSelect.append('<option value="">Select Union</option>');
+
+                        $.each(unions, function(index, union) {
+                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('#union').on('change', function() {
+                let standId = $(this).val();
+                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let stands = response.data;
+                        let standSelect = $('#stand');
+                        standSelect.empty();
+                        standSelect.append('<option value="">Select Stand</option>');
+
+                        $.each(stands, function(index, stand) {
+                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+            $('#stand').on('change', function () {
+                let standId = $(this).val();
+                let url = '{{ route("ajax.standVehicles", ":id") }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (response) {
+                        let vehicleSelect = $('#vehicle');
+                        vehicleSelect.empty();
+                        vehicleSelect.append('<option value="" selected hidden>Select Vehicle</option>');
+
+                        if (response.data.length > 0) {
+                            $.each(response.data, function (index, vehicle) {
+                                let vehicleText = `${vehicle.name} : ${vehicle.vehicle_licence}`;
+                                vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicleText + '</option>');
+                            });
+                        } else {
+                            vehicleSelect.append('<option value="" disabled>No Vehicles Found</option>');
+                        }
+                    },
+                    error: function (error) {
+                        console.error('AJAX Error:', error);
+                    }
+                });
+            });
+            $('#vehicle').on('change', function() {
+                let vehicleId = $(this).val();
+                let _url = '{{ route("ajax.vehiclesLicense", ":id") }}'.replace(':id', vehicleId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let licenseSelect = $('#vehicles_license');
+                        licenseSelect.empty();
+                        licenseSelect.append('<option value="">Select Vehicles License</option>');
+
+                        if (response.success && response.data.length > 0) {
+                            licenseSelect.append('<option value="' + response.data[0] + '">' + response.data[0] + '</option>');
+                        } else {
+                            licenseSelect.append('<option value="">No License Available</option>');
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

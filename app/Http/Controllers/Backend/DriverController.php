@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Owner;
+use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
 use App\Models\Driver;
+use App\Models\Vehicle;
+use App\Models\District;
+use App\Models\Division;
+use App\Models\BloodGroup;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DriverRequest;
-use App\Models\BloodGroup;
-use App\Models\Owner;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +27,7 @@ class DriverController extends Controller
     }
     public function create(): View
     {
-        $data['owners'] = Owner::latest()->get();
+        $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.create', $data);
     }
@@ -37,6 +43,12 @@ class DriverController extends Controller
         $save->owner_id = $request->owner_id;
         $save->driving_license = $request->driving_license;
         $save->blood_group_id = $request->blood_group_id;
+        $save->division_id = $request->division_id;
+        $save->district_id = $request->district_id;
+        $save->thana_id = $request->thana_id;
+        $save->union_id = $request->union_id;
+        $save->vehicle_id = $request->vehicle_id;
+        $save->stand_id = $request->stand_id;
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
 
@@ -49,12 +61,33 @@ class DriverController extends Controller
         }
 
         $save->save();
+
+        if ($request->vehicle_id) {
+            Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $save->id]);
+        }
+
+        
         return redirect()->route('driver.index');
     }
     public function update($id): View
     {
-        $data['driver'] = Driver::findOrFail($id);
-        $data['owners'] = Owner::latest()->get();
+        // $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
+        // $data['driver'] = Driver::findOrFail($id);
+        // $data['owners'] = Owner::latest()->get();
+        // $data['bloods'] = BloodGroup::latest()->get();
+        // $data['divisions'] = Division::all();
+        // $data['districts'] = District::all();
+        // $data['thanas'] = Thana::all();
+        // $data['unions'] = Union::all();
+        // $data['vehicles'] = Vehicle::all();
+        // $data['stands'] = Stand::all();
+        $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::where('division_id', $data['driver']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['driver']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['driver']->thana_id)->get();
+        $data['stands'] = Stand::where('id', $data['driver']->stand_id)->get();
+        $data['vehicles'] = Vehicle::where('id', $data['driver']->vehicle_id)->get();
         $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.edit', $data);
     }
@@ -62,7 +95,7 @@ class DriverController extends Controller
     {
         $update = Driver::findOrFail($id);
 
-        
+
 
         $update->name = $request->name;
         $update->description = $request->description;
@@ -72,22 +105,37 @@ class DriverController extends Controller
         $update->owner_id = $request->owner_id;
         $update->driving_license = $request->driving_license;
         $update->blood_group_id = $request->blood_group_id;
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana_id = $request->thana_id;
+        $update->union_id = $request->union_id;
+        $update->vehicle_id = $request->vehicle_id;
+        $update->stand_id = $request->stand_id;
         $update->status = $request->status ?? 0;
 
         if($request->password){
             $update->password = $request->password;
         }
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+        
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("driver/", $filename, 'public');
-        $update->image = $path;
+            
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("driver/", $filename, 'public');
+            $update->image = $path;
+        }
+
 
         $update->save();
+        
+        if ($request->vehicle_id) {
+            Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $update->id]);
+        }
+
         return redirect()->route('driver.index');
     }
     public function status($id): RedirectResponse
@@ -109,17 +157,11 @@ class DriverController extends Controller
 
         return redirect()->route('driver.index');
     }
-    // public function detalis($id): View
-    // {
-    //     $data['driver'] = Driver::findOrFail($id);
-    //     $data['owners'] = Owner::latest()->get();
-    //     return view('backend.driver.show', $data);
-    // }
     public function detalis($id): View
-{
-    $data['driver'] = Driver::with('owner')->findOrFail($id);
-    $data['owners'] = Owner::latest()->get();
-    return view('backend.driver.show', $data);
-}
+    {
+        $data['driver'] = Driver::with('owner')->findOrFail($id);
+        $data['owners'] = Owner::latest()->get();
+        return view('backend.driver.show', $data);
+    }
 
 }

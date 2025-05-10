@@ -14,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class StandController extends Controller
 {
@@ -25,9 +26,6 @@ class StandController extends Controller
     public function create(): View
     {
         $data['divisions'] = Division::latest()->get();
-        $data['districts'] = District::latest()->get();
-        $data['thanas'] = Thana::latest()->get();
-        $data['unions'] = Union::latest()->get();
         return view('backend.stand.create', $data);
     }
     public function store(StandRequest $request): RedirectResponse
@@ -40,54 +38,93 @@ class StandController extends Controller
         $save->name = $request->name; 
         $save->slug = $request->slug; 
         $save->description = $request->description;
-        $save->location = $request->location;
+        // $save->location = $request->location;
         $save->status = $request->has('status') ? $request->status : 0;
 
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs("stands/", $filename, 'public');
-            $save->image = $path;
+
+
+        $location = $request->location;
+
+        if (!Str::contains($location, 'www.google.com/maps/embed?pb=')) {
+            return redirect()->back()->withErrors(['location' => 'Please provide a valid Google Maps Embed link.']);
         }
+
+        $save->location = $location;
+
+
+
+        // if($request->hasFile('image')){
+        //     $image = $request->file('image');
+        //     $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $image->storeAs("stands/", $filename, 'public');
+        //     $save->image = $path;
+        // }
+        $imagePaths = [];
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $img) {
+                $filename = Str::slug($request->name) . '_' . time() . '_' . $img->getClientOriginalName();
+                $path = $img->storeAs('stands', $filename, 'public');
+                $imagePaths[] = $path;
+            }
+        }
+
+        $save->image = json_encode($imagePaths);
 
         $save->save();
         return redirect()->route('stand.index');
     }
-    public function update($id):View
+    public function update($id): View
     {
-        $data['stand'] = Stand::findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
         $data['divisions'] = Division::all();
-        $data['districts'] = District::all();
-        $data['thanas'] = Thana::all();
-        $data['unions'] = Union::all();
+        $data['districts'] = District::where('division_id', $data['stand']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['stand']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['stand']->thana_id)->get();
         return view('backend.stand.edit', $data);
     }
-    public function update_store(StandRequest $request, $id):RedirectResponse
+    public function update_store(StandRequest $request, $id): RedirectResponse
     {
         $update = Stand::findOrFail($id);
         $update->name = $request->name;
         $update->slug = $request->slug; 
         $update->description = $request->description;
-        $update->location = $request->location;
         $update->status = $request->status ?? 0;
 
-        if($request->hasFile('image'));
-            if($update->iamge && Storage::exists($update->image)){
+
+
+        $location = $request->location;
+
+        if (!Str::contains($location, 'www.google.com/maps/embed?pb=')) {
+            return redirect()->back()->withErrors(['location' => 'Please provide a valid Google Maps Embed link.']);
+        }
+
+        $update->location = $location;
+
+
+
+
+
+        if ($request->hasFile('image')) {
+            if ($update->iamge && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-        $image = $request->file('image');
-        $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs("stands/", $filename, 'public');
-        $update->image = $path;
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("stands/", $filename, 'public');
+            $update->image = $path;
+        };
 
-        $update->update();
+
+        $update->save();
         return redirect()->route('stand.index');
     }
-    public function status($id): RedirectResponse{
+    public function status($id): RedirectResponse
+    {
         $stand = Stand::findOrFail($id);
-        if($stand->status == 1){
+        if ($stand->status == 1) {
             $stand->status = 0;
-        }else{
+        } else {
             $stand->status = 1;
         }
         $stand->save();
@@ -103,10 +140,6 @@ class StandController extends Controller
     public function detalis($id): View
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
-
-        // $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
-
-
         return view('backend.stand.show', $data);
     }
 }
