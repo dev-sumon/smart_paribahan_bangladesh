@@ -198,35 +198,31 @@
     <!-- Connected with us section End! -->
 
     <!-- search driver section start  -->
-    <section class="search_section">
-        <div class="image">
-            <img src="{{ asset('forntend/images/Group 39894.svg') }}" alt="">
+    <section class="search_section py-5">
+        <div class="image mb-4">
+            <img src="{{ asset('forntend/images/Group 39894.svg') }}" alt="Driver Image" class="img-fluid">
         </div>
         <div class="container">
-            <div class="row d-flex align-items-center justify-content-center">
-                <div class="col-12 col-md-4 d-flex align-items-center justify-content-sm-center">
+            <div class="row justify-content-center align-items-center text-center text-md-start">
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
                     <div class="text">
-                        <h2>{{ __('Directly to the car or') }}<span
-                                class="d-none d-md-inline"><br></span>{{ __('Find a driver') }}</h2>
+                        <h2 class="fw-bold">
+                            {{ __('Directly to the car or') }}
+                            <span class="d-block d-md-inline"><br></span>
+                            {{ __('Find a driver') }}
+                        </h2>
                     </div>
                 </div>
-                <div class="col-12 col-md-5">
-                    {{-- <form class="d-flex" role="search">
-                <input class="form-control me-2 search" type="search" placeholder="Vehicle or driver number" aria-label="Search">
-              </form> --}}
-                    <form class="d-flex" role="search" action="{{ route('f.home.driverProfileSearch') }}"
-                        method="GET">
+                <div class="col-12 col-md-6">
+                    <form class="d-flex justify-content-center justify-content-md-start" role="search"
+                        action="{{ route('f.home.driverProfileSearch') }}" method="GET">
                         <input class="form-control me-2 search" type="search" name="query"
-                            placeholder="{{ __('Vehicle or driver number') }}" aria-label="Search">
-                        <button type="submit" class="btn btn-outline-success">{{ __('Click') }}</button>
+                            placeholder="{{ __('Vehicle or driver number') }}" aria-label="Search" required>
+                        <button type="submit" class="btn btn-outline-success" style="white-space: nowrap;">
+                            {{ __('Click') }}
+                        </button>
                     </form>
-
                 </div>
-                {{-- <div class="col-12 justify-content-sm-center col-md-3 d-flex justify-content-end form">
-                    <form class="d-flex align-items-end" role="search">
-                        <a href="error.html" class="btn btn-outline-success" type="submit">{{ __('Click') }}</a>
-                    </form>
-                </div> --}}
             </div>
         </div>
     </section>

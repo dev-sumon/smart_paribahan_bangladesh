@@ -1,79 +1,6 @@
 @extends('forntend.layouts.master')
 @section('title', 'SignUp')
 @section('content')
-<<<<<<< Updated upstream
-  <section class="register_section pt-5 py-5">
-      <div class="container d-flex justify-content-center align-items-center">
-        <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
-          <h4 class="mb-4">{{ __('অ্যাকাউন্ট তৈরী করুন') }}</h4>
-          <form action="{{ route('owner.signup.register') }}"  method="POST" enctype="multipart/form-data">
-              @csrf
-            <div class="form-group">
-                  <label for="name">{{ __('নাম') }}</label>
-                  <input type="text" class="form-control" id="name" placeholder="আপনার নাম লিখুন" name="name" value="{{ old('name') }}">
-                  @if($errors->has('name'))
-                      <div class="text-danger">{{ $errors->first('name') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                <label for="description">{{ __('ডেসক্রিপশন') }}</label>
-                <input type="text" class="form-control" id="description" placeholder="আপনার সম্পর্কে লিখুন" name="description" value="{{ old('description') }}">
-                @if($errors->has('description'))
-                    <div class="text-danger">{{ $errors->first('description') }}</div>
-                @endif
-            </div>
-              <div class="form-group">
-                  <label for="email" class="mt-3">{{ __('মেইল লিখুন') }}</label>
-                  <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="মেইল লিখুন">
-                  @if($errors->has('email'))
-                      <div class="text-danger">{{ $errors->first('email') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                  <label for="phone" class="mt-3">{{ __('মোবাইল নাম্বার') }}</label>
-                  <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="মোবাইল নাম্বার">
-                  @if($errors->has('phone'))
-                      <div class="text-danger">{{ $errors->first('phone') }}</div>
-                  @endif
-              </div>
-              <div class="form-group">
-                <label for="image">{{ __('ছবি') }}</label>
-                <input type="file" class="form-control h-auto" id="image" name="image" value="{{ old('image') }}">
-                @if($errors->has('image'))
-                    <div class="text-danger">{{ $errors->first('image') }}</div>
-                @endif
-              </div>
-              <div class="form-group">
-                <label  class="mt-3" for="blood_group_id">{{ __('রক্তের গ্রুপ') }}</label>
-                <select name="blood_group_id" id="blood_group_id" class="form-control">
-                    <option value=" " selected hidden>{{ __('রক্তের গ্রুপ নির্বাচন করুন') }}</option>
-                    @foreach ($bloods as $blood)
-                        <option value="{{ $blood->id }}" {{ $blood->id==old('blood_group_id') ? 'selected': '' }}>{{ $blood->blood_group}}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('blood_group'))
-                <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
-                @endif
-              </div>
-              <div class="form-group">
-                <label for="division">{{ __('বিভাগ') }}</label>
-                <select name="division_id" id="division" class="form-control">
-                    <option value="" selected hidden>{{ __('বিভাগ নির্বাচন করুন') }}</option>
-                    @foreach ($divisions as $division)
-                        <option value="{{ $division->id }}">{{ $division->division }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('division_id'))
-                <div class="text-danger">{{ $errors->first('division_id') }}</div>
-                @endif
-              </div>
-              <div class="form-group">
-                  <label for="district">{{ __('জেলা') }}</label>
-                  <select name="district_id" id="district" class="form-control">
-                      <option value="" selected hidden>{{ __('জেলা নির্বাচন করুন') }}</option>
-                  </select>
-              </div>
-=======
     <section class="register_section pt-5 py-5">
         <div class="container d-flex justify-content-center align-items-center">
             <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
@@ -161,7 +88,6 @@
                             <option value="" selected hidden>{{ __('জেলা নির্বাচন করুন') }}</option>
                         </select>
                     </div>
->>>>>>> Stashed changes
 
               <div class="form-group">
                   <label for="thana">{{ __("থানা") }}</label>
@@ -187,33 +113,7 @@
                   @if($errors->has('password'))
                       <div class="text-danger">{{ $errors->first('password') }}</div>
                   @endif
-<<<<<<< Updated upstream
-              </div>
-              <div class="form-group">
-                  <label for="password_confirmation" class="mt-3">{{ __('আবার পাসওয়ার্ড লিখুন') }}</label>
-                  <input type="password" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control" placeholder="আবার পাসওয়ার্ড লিখুন">
-                  @if($errors->has('password_confirmation'))
-                      <div class="text-danger">{{ $errors->first('password_confirmation') }}</div>
-                  @endif
-              </div>
-              <div class="mb-3">
-                <p>
-                    {{ __('রেজিস্ট্রেশন করার মাধ্যমে আপনি আমাদের ব্যবহারকারীর শর্তাবলি মেনে নিচ্ছেন।') }}
-                </p>
-              </div>
-              <div class="form-group">
-                  <button type="submit" class="btn btn-danger w-100 mb-3 login">
-                      {{ __('অ্যাকাউন্ট তৈরী করুন') }}
-                  </button>
-              </div>
-            <div class="text-center mb-3">
-              <div class="divider">
-                <hr>
-                <span>{{ __('অথবা') }}</span>
-                <hr>
-              </div>
-=======
-              </div> --}}
+              </div> 
                     <div class="form-group" style="position: relative;">
                         <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
                         <input type="password" name="password" id="password" value="{{ old('password') }}"
@@ -270,18 +170,6 @@
                         </div>
                     </div>
                 </form>
->>>>>>> Stashed changes
-            </div>
-            <button type="button" class="btn btn-light border w-100 mb-3 google_button">
-              <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20" class="me-2" />
-              {{ __('গুগল দিয়ে এগিয়ে যান') }}
-            </button>
-            <div class="text-center back_login">
-              <span class="no_account">{{ __('ইতিমধ্যে একটি অ্যাকাউন্ট আছে?') }}</span>
-              <br />
-              <div class="back_login_page">
-                <button type="button" id="loginButton" class="btn btn-light w-100 mb-3">{{ __('আপনার অ্যাকাউন্টে লগইন করুন') }}</button>
-              </div>
             </div>
           </form>
         </div>
