@@ -15,14 +15,6 @@
                             <div class="text-danger">{{ $errors->first('name') }}</div>
                         @endif
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="description">{{ __('ডেসক্রিপশন') }}</label>
-                        <input type="text" class="form-control" id="description" placeholder="আপনার সম্পর্কে লিখুন"
-                            name="description" value="{{ old('description') }}" style="height: 250px">
-                        @if ($errors->has('description'))
-                            <div class="text-danger">{{ $errors->first('description') }}</div>
-                        @endif
-                    </div> --}}
                     <div class="form-group">
                         <label for="description">{{ __('ডেসক্রিপশন') }}</label>
                         <textarea class="form-control" id="description" placeholder="আপনার সম্পর্কে লিখুন" name="description"
@@ -89,31 +81,24 @@
                         </select>
                     </div>
 
-              <div class="form-group">
-                  <label for="thana">{{ __("থানা") }}</label>
-                  <select name="thana_id" id="thana" class="form-control">
-                      <option value="" selected hidden>{{ __('থানা নির্বাচন করুন') }}</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="union">{{ __('ইউনিয়ন') }}</label>
-                  <select name="union_id" id="union" class="form-control">
-                      <option value="" selected hidden>{{ __('ইউনিয়ন নির্বাচন করুন') }}</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="stand">{{ __('স্ট্যান্ড') }}</label>
-                  <select name="stand_id" id="stand" class="form-control">
-                      <option value="" selected hidden>{{ __('স্ট্যান্ড নির্বাচন করুন') }}</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
-                  <input type="password" name="password" id="password" value="{{ old('password') }}" class="form-control" placeholder="পাসওয়ার্ড">
-                  @if($errors->has('password'))
-                      <div class="text-danger">{{ $errors->first('password') }}</div>
-                  @endif
-              </div> 
+                    <div class="form-group">
+                        <label for="thana">{{ __('থানা') }}</label>
+                        <select name="thana_id" id="thana" class="form-control">
+                            <option value="" selected hidden>{{ __('থানা নির্বাচন করুন') }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="union">{{ __('ইউনিয়ন') }}</label>
+                        <select name="union_id" id="union" class="form-control">
+                            <option value="" selected hidden>{{ __('ইউনিয়ন নির্বাচন করুন') }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stand">{{ __('স্ট্যান্ড') }}</label>
+                        <select name="stand_id" id="stand" class="form-control">
+                            <option value="" selected hidden>{{ __('স্ট্যান্ড নির্বাচন করুন') }}</option>
+                        </select>
+                    </div>
                     <div class="form-group" style="position: relative;">
                         <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
                         <input type="password" name="password" id="password" value="{{ old('password') }}"
@@ -128,6 +113,8 @@
                         @if ($errors->has('password'))
                             <div class="text-danger">{{ $errors->first('password') }}</div>
                         @endif
+
+                        <span>{{ __('ন্যূনতম ৮ অক্ষরে লিখুন') }}</span>
                     </div>
 
                     <div class="form-group">
@@ -171,17 +158,18 @@
                     </div>
                 </form>
             </div>
-          </form>
+            </form>
         </div>
-      </div>
+        </div>
     </section>
 @endsection
+
 @push('script')
     <script>
         $(document).ready(function() {
             $('#division').on('change', function() {
                 let divisionId = $(this).val();
-                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+                let _url = '{{ route('ajax.division', ':id') }}'.replace(':id', divisionId);
 
                 $.ajax({
                     url: _url,
@@ -193,7 +181,8 @@
                         districtSelect.append('<option value="">জেলা নির্বাচন করুন</option>');
 
                         $.each(districts, function(index, district) {
-                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                            districtSelect.append('<option value="' + district.id +
+                                '">' + district.district + '</option>');
                         });
                     },
                     error: function(error) {
@@ -204,7 +193,7 @@
 
             $('#district').on('change', function() {
                 let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId);
+                let _url = '{{ route('ajax.thana', ':id') }}'.replace(':id', districtId);
 
                 $.ajax({
                     url: _url,
@@ -216,7 +205,8 @@
                         thanaSelect.append('<option value="">থানা নির্বাচন করুন</option>');
 
                         $.each(thanas, function(index, thana) {
-                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                            thanaSelect.append('<option value="' + thana.id + '">' +
+                                thana.thana + '</option>');
                         });
                     },
                     error: function(error) {
@@ -227,7 +217,7 @@
 
             $('#thana').on('change', function() {
                 let unionId = $(this).val();
-                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId);
+                let _url = '{{ route('ajax.union', ':id') }}'.replace(':id', unionId);
 
                 $.ajax({
                     url: _url,
@@ -239,7 +229,8 @@
                         unionSelect.append('<option value="">ইউনিয়ন নির্বাচন করুন</option>');
 
                         $.each(unions, function(index, union) {
-                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                            unionSelect.append('<option value="' + union.id + '">' +
+                                union.union + '</option>');
                         });
                     },
                     error: function(error) {
@@ -250,7 +241,7 @@
 
             $('#union').on('change', function() {
                 let standId = $(this).val();
-                let _url = '{{ route("ajax.stand", ":id") }}'.replace(':id', standId);
+                let _url = '{{ route('ajax.stand', ':id') }}'.replace(':id', standId);
 
                 $.ajax({
                     url: _url,
@@ -262,7 +253,8 @@
                         standSelect.append('<option value="">স্ট্যান্ড নির্বাচন করুন</option>');
 
                         $.each(stands, function(index, stand) {
-                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                            standSelect.append('<option value="' + stand.id + '">' +
+                                stand.name + '</option>');
                         });
                     },
                     error: function(error) {
@@ -270,32 +262,57 @@
                     }
                 });
             });
-            $('#stand').on('change', function () {
+            $('#stand').on('change', function() {
                 let standId = $(this).val();
-                let url = '{{ route("ajax.standVehicles", ":id") }}'.replace(':id', standId);
+                let url = '{{ route('ajax.standVehicles', ':id') }}'.replace(':id', standId);
 
                 $.ajax({
                     url: url,
                     type: 'GET',
-                    success: function (response) {
+                    success: function(response) {
                         let vehicleSelect = $('#vehicle');
                         vehicleSelect.empty();
-                        vehicleSelect.append('<option value="" selected hidden>গাড়ি নির্বাচন করুন</option>');
+                        vehicleSelect.append(
+                            '<option value="" selected hidden>গাড়ি নির্বাচন করুন</option>');
 
                         if (response.data.length > 0) {
-                            $.each(response.data, function (index, vehicle) {
-                                let vehicleText = `${vehicle.name} : ${vehicle.vehicle_licence}`;
-                                vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicleText + '</option>');
+                            $.each(response.data, function(index, vehicle) {
+                                let vehicleText =
+                                    `${vehicle.name} : ${vehicle.vehicle_licence}`;
+                                vehicleSelect.append('<option value="' + vehicle.id +
+                                    '">' + vehicleText + '</option>');
                             });
                         } else {
-                            vehicleSelect.append('<option value="" disabled>No Vehicles Found</option>');
+                            vehicleSelect.append(
+                                '<option value="" disabled>No Vehicles Found</option>');
                         }
                     },
-                    error: function (error) {
+                    error: function(error) {
                         console.error('AJAX Error:', error);
                     }
                 });
             });
+        });
+    </script>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            if (type === 'text') {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+                eyeIcon.style.color = 'red'; // Show করা অবস্থায় আইকন লাল হবে
+            } else {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+                eyeIcon.style.color = ''; // Hide করলে আবার নরমাল রঙে আসবে
+            }
         });
     </script>
 @endpush
