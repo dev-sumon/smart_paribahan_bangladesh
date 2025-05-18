@@ -24,7 +24,7 @@
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="name"
                                             placeholder="Enter The Owner Name" name="name"
-                                            value="{{ old('name') ?? $owner->name }}">
+                                            value="{{ old('name') ?? $owner->title }}">
                                         @if ($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
@@ -162,7 +162,7 @@
                                             <label for="image">{{ __('Image') }} <span
                                                     class="text-danger">*</span></label>
                                             @if ($owner->image)
-                                                <img src="{{ Storage::url($owner->image) }}" alt="{{ $owner->name }}"
+                                                <img src="{{ Storage::url($owner->image) }}" alt="{{ $owner->title }}"
                                                     class="display-image"
                                                     style="width: 100%; height: auto; object-fit: cover;">
                                             @else

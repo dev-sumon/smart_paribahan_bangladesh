@@ -10,8 +10,8 @@ use Illuminate\Notifications\Notifiable;
 // class Owner extends Model
 class Owner extends Authenticatable
 {
-   
-   
+
+
     use HasFactory, Notifiable;
 
 
@@ -24,7 +24,8 @@ class Owner extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'title',
+        'slug',
         'description',
         'email',
         'phone',
@@ -32,7 +33,8 @@ class Owner extends Authenticatable
         'blood_group',
         'image',
         'password',
-        'status'
+        'status',
+        
     ];
 
     /**

@@ -22,14 +22,15 @@ class Driver extends Authenticatable
      */
 
      protected $fillable = [
-        'name',
+        'title',
+        'slug',
         'description',
         'designation',
         'email',
         'phone',
-        'vehicles_license',
-        'blood_group',
+        'driving_license',
         'image',
+        'blood_group',
         'password',
         'status',
      ];

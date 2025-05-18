@@ -59,7 +59,7 @@
                                         <select name="owner_id" id="owner" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Owner') }}</option>
                                             @foreach($owners as $owner)
-                                                <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                                                <option value="{{ $owner->id }}">{{ $owner->title }}</option>
                                             @endforeach
                                         </select>
                                     </div>

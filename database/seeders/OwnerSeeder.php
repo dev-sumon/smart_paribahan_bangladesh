@@ -15,8 +15,10 @@ class OwnerSeeder extends Seeder
     public function run(): void
     {
         Owner::create([
-            'name' => 'Test Owner',
+            'title' => 'Test Owner',
+            'slug' => 'test-owner',
             'description' => 'Even before the arrival',
+            'designation' => 'I am driver',
             'email' => 'owner@example.com',
             'phone' => '01772941135',
             'vehicles_license' => 'P 688 CC',
