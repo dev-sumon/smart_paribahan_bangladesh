@@ -293,7 +293,7 @@
                         <div class="post_card pb-4">
                             <img src="{{ asset('storage/' . $blog->image) }}" class="card-img-top" alt="Card Image">
                             <div class="post_content">
-                                <h4 class="post_title"><a href="{{ route('f.blog.inner_blog', $blog->id) }}"
+                                <h4 class="post_title"><a href="{{ route('f.blog.inner_blog', $blog->slug) }}"
                                         style="color: #141F39">{{ Str::limit($blog->title, 40, '...') }}</a></h4>
                                 <p class="post_date"><i class="fa-regular fa-calendar mr-1"
                                         style="color: red;"></i>{{ $blog->created_at->format('d M, Y') }}</p>

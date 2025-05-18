@@ -24,6 +24,7 @@ class BlogController extends Controller
     {
         $save = new Blog();
         $save->title = $request->title;
+        $save->slug = $request->slug;
         $save->description = $request->description;
         $save->creator = auth('admin')->user()->name;
         $save->status = $request->status ?? 0;
@@ -38,14 +39,14 @@ class BlogController extends Controller
         $save->save();
         return redirect()->route('blog.index');
     }
-    public function update($id): View
+    public function update($slug): View
     {
-        $data['blog'] = Blog::findOrFail($id);
+        $data['blog'] = Blog::where('slug',$slug)->firstOrFail();
         return view('backend.blog.edit', $data);
     }
-    public function update_store(BlogRequest $request, $id): RedirectResponse
+    public function update_store(BlogRequest $request, $slug): RedirectResponse
     {
-        $update = Blog::findOrFail($id);
+        $update = Blog::where('slug',$slug)->firstOrFail();
 
         $update->title = $request->title;
         $update->description = $request->description;
@@ -67,9 +68,9 @@ class BlogController extends Controller
         $update->save();
         return redirect()->route('blog.index');
     }
-    public function status($id): RedirectResponse
+    public function status($slug): RedirectResponse
     {
-        $blog = Blog::findOrFail($id);
+         $blog= Blog::where('slug',$slug)->firstOrFail();
         if($blog->status == 1){
             $blog->status = 0;
         }else{
@@ -78,16 +79,16 @@ class BlogController extends Controller
         $blog->save();
         return redirect()->route('blog.index');
     }
-    public function delete($id): RedirectResponse
+    public function delete($slug): RedirectResponse
     {
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::where('slug',$slug)->firstOrFail();
         $blog->delete();
 
         return redirect()->route('blog.index');
     }
-    public function detalis($id): View
+    public function detalis($slug): View
     {
-        $data['blog'] = Blog::findOrFail($id);
+        $data['blog'] = Blog::where('slug',$slug)->firstOrFail();
         return view('backend.blog.show', $data);
     }
 }
