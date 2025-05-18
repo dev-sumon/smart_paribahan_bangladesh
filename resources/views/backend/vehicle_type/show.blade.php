@@ -23,7 +23,7 @@
                                         <tr>
                                             <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $vehicle_type->stand->name }}</td>
+                                            <td>{{ $vehicle_type->stand->title }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Name') }}</th>

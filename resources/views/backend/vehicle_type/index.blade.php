@@ -35,7 +35,7 @@
                                        @foreach ($vehicle_types as $vehicle_type)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $vehicle_type->stand->name }}</td>
+                                                <td>{{ $vehicle_type->stand->title }}</td>
                                                 <td>{{ $vehicle_type->name }}</td>
                                                 <td><img src="{{ asset('storage/'. $vehicle_type->image) }}" alt="{{ $vehicle_type->name }}" width="100"></td>
                                                 <td><span class="{{$vehicle_type->statusBg()}}">{{$vehicle_type->statusTitle()}}</span></span></td>

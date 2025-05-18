@@ -86,7 +86,7 @@
 
                                 <div class="detail-row">
                                     <div class="detail-title">{{ __('স্ট্যান্ড') }}</div>
-                                    <div class="detail-value">{{ $owner->stand->name }}</div>
+                                    <div class="detail-value">{{ $owner->stand->title }}</div>
                                 </div>
                             </div>
                         </div>

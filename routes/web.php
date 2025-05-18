@@ -73,8 +73,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
         Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
         Route::post('/search',  'search')->name('search');
-        Route::get('/stand/{id}', 'showStand')->name('stand');
-        Route::get('/stand-intro/{id}', 'showStandIntro')->name('standIntro');
+        Route::get('/stand/{slug}', 'showStand')->name('stand');
+        Route::get('/stand-intro/{slug}', 'showStandIntro')->name('standIntro');
         Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
         Route::get('/stand-driver/{id}', 'standDriver')->name('standDriver');
         Route::get('/driver-profile/{id}', 'driverProfile')->name('driverProfile');
@@ -85,7 +85,7 @@ Route::group(['as' => 'f.'], function () {
 
 
 
-        Route::get('/stand-notice/{id}', 'standNotice')->name('standNotice');
+        Route::get('/stand-notice/{slug}', 'standNotice')->name('standNotice');
         Route::get('/division-notice/{id}', 'divisionNotice')->name('divisionNotice');
         Route::get('/district-notice/{id}', 'districtNotice')->name('districtNotice');
         Route::get('/thana-notice/{id}', 'thanaNotice')->name('thanaNotice');
@@ -120,7 +120,7 @@ Route::group(['as' => 'f.'], function () {
     Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
-        Route::get('/cng-stand/{id}', 'show')->name('cng_stand_details');
+        Route::get('/cng-stand/{slug}', 'show')->name('cng_stand_details');
         Route::get('/map', 'map')->name('map');
         Route::get('/community', 'community')->name('community');
         Route::get('/owner', 'owner')->name('owner');
@@ -269,11 +269,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store','store')->name('store');
-        Route::get('update/{id}', 'update')->name('update');
-        Route::put('update/{id}', 'update_store')->name('update');
-        Route::get('status/{id}', 'status')->name('status.update');
-        Route::get('delete/{id}', 'delete')->name('delete');
-        Route::get('detalis/{id}', 'detalis')->name('detalis');
+        Route::get('update/{slug}', 'update')->name('update');
+        Route::put('update/{slug}', 'update_store')->name('update');
+        Route::get('status/{slug}', 'status')->name('status.update');
+        Route::get('delete/{slug}', 'delete')->name('delete');
+        Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
 
     Route::controller(VehicleTypeController::class)->prefix('vehicle-type')->name('vehicle_type.')->group(function(){

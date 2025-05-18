@@ -43,7 +43,7 @@
                                         <tr>
                                             <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->name }}</td>
+                                            <td>{{ $stand->title }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Description') }}</th>
@@ -59,7 +59,7 @@
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->name }}" width="100"></td>
+                                            <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->title }}" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>

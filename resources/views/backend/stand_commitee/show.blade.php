@@ -63,7 +63,7 @@
                                         <tr>
                                             <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $commitee->stand->name }}</td>
+                                            <td>{{ $commitee->stand->title }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Image') }}</th>

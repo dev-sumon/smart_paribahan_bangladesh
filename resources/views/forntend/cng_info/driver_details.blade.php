@@ -8,7 +8,7 @@
                 {{-- <h5>Sylhet Division - Moulvibazar District - Barlekha Thana - Nijbahadurpur Union</h5> --}}
 
                 <h2 class="ml-4">{{ $driver->district->district }} - {{ $driver->thana->thana }} -
-                    {{ $driver->union->union }} - {{ $driver->stand->name }}</h2>
+                    {{ $driver->union->union }} - {{ $driver->stand->title }}</h2>
             </div>
             <div class="member_list_title">
                 <h2>{{ $driver->vehicle->name }} {{ __('Driver Details') }} </h2>
@@ -109,7 +109,7 @@
                 <div class="d-none d-sm-flex mb-3">
                     <h3>{{ __('Image Gallery') }} - </h3>
                     <h3 class="ml-4">{{ $driver->district->district }} - {{ $driver->thana->thana }} -
-                        {{ $driver->union->union }} - {{ $driver->stand->name }} {{ __("Stand") }} {{ $driver->vehicle->name }} ইমেজ</h3>
+                        {{ $driver->union->union }} - {{ $driver->stand->title }} {{ __("Stand") }} {{ $driver->vehicle->name }} ইমেজ</h3>
                 </div>
 
                 <div class="row gallery_image g-3">

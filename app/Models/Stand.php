@@ -7,8 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Stand extends Model
 
 {
+    protected $fillable = [
+        'division_id',
+        'district_id',
+        'thana_id',
+        'union_id',
+        'title',
+        'slug',
+        'description',
+        'status',
+        'location',
+        'image',
+    ];
 
-    protected $fillable = ['stand', 'id', 'union_id'];
+    // protected $fillable = ['stand', 'id', 'union_id'];
     public function statusBg(){
         if($this->status == 1){
             return 'badge badge-success';

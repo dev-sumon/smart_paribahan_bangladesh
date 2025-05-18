@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'image',
+        'status',
+        'creator',
+    ];
+
     public function statusBg(){
         if($this->status == 1){
             return 'badge badge-success';

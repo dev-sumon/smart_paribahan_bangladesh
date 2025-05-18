@@ -128,9 +128,9 @@ class CngInfoController extends Controller
 
     //     return view('forntend.cng_info.stand', $data);
     // }
-    public function cng_stand($id)
+    public function cng_stand($slug)
     {
-        $data['stands'] = Stand::findOrFail($id);
+        $data['stands'] = Stand::where('slug',$slug)->firstOrFail();
         return view('forntend.cng_info.stand', $data);
     }
 }

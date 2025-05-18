@@ -33,6 +33,7 @@ class BlogRequest extends FormRequest
         return [
             'description' => 'required|string|min:50',
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'slug' => 'required|string|unique:blogs,slug',
         ];
     }
     protected function update(): array
@@ -40,6 +41,7 @@ class BlogRequest extends FormRequest
         return [
             'description' => 'nullable|string|min:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'slug' => 'required|string|unique:blogs,slug,' . $this->route('slug'),
         ];
     }
 }

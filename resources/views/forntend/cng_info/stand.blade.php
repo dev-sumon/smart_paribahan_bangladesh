@@ -19,7 +19,7 @@
                     </div>
                 @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
+                        <a href="{{ route('f.home.standNotice', $stand->slug) }}" class="gradient-border-button">
                             <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                         </a>
@@ -95,9 +95,9 @@
                         <div class="col-md-6 col-12 pb-5 iteam text-center right_side">
                             <h1 class="pt-3 text-start">{{ __('Stand Introduction') }}</h1>
                             <div class="card">
-                                <a href="{{ route('f.home.standIntro', $stand->id) }}">
+                                <a href="{{ route('f.home.standIntro', $stand->slug) }}">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
-                                    <p class="pt-3">{{ $stand->name }}</p>
+                                    <p class="pt-3">{{ $stand->title }}</p>
                                 </a>
                                 {{-- <a href=""> --}}
                             </div>
