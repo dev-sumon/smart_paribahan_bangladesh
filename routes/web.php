@@ -76,8 +76,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/stand/{slug}', 'showStand')->name('stand');
         Route::get('/stand-intro/{slug}', 'showStandIntro')->name('standIntro');
         Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
-        Route::get('/stand-driver/{id}', 'standDriver')->name('standDriver');
-        Route::get('/driver-profile/{id}', 'driverProfile')->name('driverProfile');
+        Route::get('/stand-driver/{slug}', 'standDriver')->name('standDriver');
+        Route::get('/driver-profile/{slug}', 'driverProfile')->name('driverProfile');
         Route::get('/stand-owner/{id}', 'standOwner')->name('standOwner');
         Route::get('/owner-profile/{id}', 'ownerProfile')->name('ownerProfile');
 
@@ -396,11 +396,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
-        Route::get('update/{id}', 'update')->name('update');
-        Route::put('update/{id}', 'update_store')->name('update');
-        Route::get('status/{id}', 'status')->name('status.update');
-        Route::get('delete/{id}', 'delete')->name('delete');
-        Route::get('detalis/{id}', 'detalis')->name('detalis');
+        Route::get('update/{slug}', 'update')->name('update');
+        Route::put('update/{slug}', 'update_store')->name('update');
+        Route::get('status/{slug}', 'status')->name('status.update');
+        Route::get('delete/{slug}', 'delete')->name('delete');
+        Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
     Route::controller(BloodGroupController::class)->prefix('blood')->name('blood.')->group( function(){
         Route::get('index', 'index')->name('index');

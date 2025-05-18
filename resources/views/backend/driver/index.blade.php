@@ -41,10 +41,10 @@
                                             <td>{{ $driver->created_user ? $driver->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('driver.detalis', $driver->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('driver.update', $driver->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('driver.delete', $driver->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('driver.status.update', $driver->id) }}" class="btn {{ $driver->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('driver.detalis', $driver->slug) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('driver.update', $driver->slug) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('driver.delete', $driver->slug) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="{{ route('driver.status.update', $driver->slug) }}" class="btn {{ $driver->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

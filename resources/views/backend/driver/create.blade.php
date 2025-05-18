@@ -21,11 +21,21 @@
                                 <form action="{{ route('driver.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter The Driver Name" name="name" value="{{ old('name') }}">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        <label for="title">{{ __('Name') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="title" placeholder="Enter The Driver Name" name="title" value="{{ old('title') }}" oninput="slugGenerate($(this))">
+                                        @if($errors->has('title'))
+                                            <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="mb-3">
+                                            {{-- <label for="slug" class="form-label">{{ __('Slug') }}</label> --}}
+                                            <input type="hidden" name="slug" class="form-control" id="slug"
+                                                value="{{ old('slug') }}">
+                                            @error('slug')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
                                     {{-- <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>

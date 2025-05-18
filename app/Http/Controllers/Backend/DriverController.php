@@ -11,6 +11,7 @@ use App\Models\Vehicle;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\BloodGroup;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,7 @@ class DriverController extends Controller
     }
     public function create(): View
     {
-        $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
+        $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.create', $data);
     }
@@ -35,7 +36,18 @@ class DriverController extends Controller
     {
         $save = new Driver();
 
-        $save->name = $request->name;
+        $save->title = $request->title;
+        // $save->slug = $request->slug;
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Driver::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $save->slug = $slug;
         $save->description = $request->description;
         $save->designation = $request->designation;
         $save->email = $request->email;
@@ -53,9 +65,9 @@ class DriverController extends Controller
         $save->status = $request->status ?? 0;
 
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("driver/", $filename, 'public');
             $save->image = $path;
         }
@@ -66,22 +78,12 @@ class DriverController extends Controller
             Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $save->id]);
         }
 
-        
+
         return redirect()->route('driver.index');
     }
-    public function update($id): View
+    public function update($slug): View
     {
-        // $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
-        // $data['driver'] = Driver::findOrFail($id);
-        // $data['owners'] = Owner::latest()->get();
-        // $data['bloods'] = BloodGroup::latest()->get();
-        // $data['divisions'] = Division::all();
-        // $data['districts'] = District::all();
-        // $data['thanas'] = Thana::all();
-        // $data['unions'] = Union::all();
-        // $data['vehicles'] = Vehicle::all();
-        // $data['stands'] = Stand::all();
-        $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->findOrFail($id);
+        $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['districts'] = District::where('division_id', $data['driver']->division_id)->get();
         $data['thanas'] = Thana::where('district_id', $data['driver']->district_id)->get();
@@ -91,13 +93,24 @@ class DriverController extends Controller
         $data['bloods'] = BloodGroup::latest()->get();
         return view('backend.driver.edit', $data);
     }
-    public function update_store(DriverRequest $request, $id): RedirectResponse
+    public function update_store(DriverRequest $request, $slug): RedirectResponse
     {
-        $update = Driver::findOrFail($id);
+        $update = Driver::where('slug',$slug)->firstOrFail();
+        $update->title = $request->title;
 
+        if ($update->isDirty('title')) {
+            $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $count = 1;
 
+            while (Driver::where('slug', $slug)->where('id', '!=', $update->id)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
 
-        $update->name = $request->name;
+            $update->slug = $slug;
+        }
+
         $update->description = $request->description;
         $update->designation = $request->designation;
         $update->email = $request->email;
@@ -113,16 +126,16 @@ class DriverController extends Controller
         $update->stand_id = $request->stand_id;
         $update->status = $request->status ?? 0;
 
-        if($request->password){
+        if ($request->password) {
             $update->password = $request->password;
         }
 
-        
+
         if ($request->hasFile('image')) {
             if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-            
+
             $image = $request->file('image');
             $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("driver/", $filename, 'public');
@@ -131,35 +144,35 @@ class DriverController extends Controller
 
 
         $update->save();
-        
+
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $update->id]);
         }
 
         return redirect()->route('driver.index');
     }
-    public function status($id): RedirectResponse
+    public function status($slug): RedirectResponse
     {
-        $driver = Driver::findOrFail($id);
-        if($driver->status == 1){
+        $driver = Driver::where('slug',$slug)->firstOrFail();
+        if ($driver->status == 1) {
             $driver->status = 0;
-        }else{
+        } else {
             $driver->status = 1;
         }
 
         $driver->save();
         return redirect()->route('driver.index');
     }
-    public function delete($id): RedirectResponse
+    public function delete($slug): RedirectResponse
     {
-        $driver = Driver::findOrFail($id);
+        $driver = Driver::where('slug',$slug)->firstOrFail();
         $driver->delete();
 
         return redirect()->route('driver.index');
     }
-    public function detalis($id): View
+    public function detalis($slug): View
     {
-        $data['driver'] = Driver::with('owner')->findOrFail($id);
+        $data['driver'] = Driver::with('owner')->where('slug',$slug)->firstOrFail();;
         $data['owners'] = Owner::latest()->get();
         return view('backend.driver.show', $data);
     }
