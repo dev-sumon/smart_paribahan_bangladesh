@@ -38,7 +38,7 @@
                                         <tr>
                                             <th>{{ __('Owner Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $vehicle->owner->name ?? 'N/A' }}</td>
+                                            <td>{{ $vehicle->owner->title ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Driver Name') }}</th>

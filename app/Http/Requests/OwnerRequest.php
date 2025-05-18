@@ -22,7 +22,7 @@ class OwnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:50',
+            'title' => 'required|string|min:3|max:50',
             'status' => 'nullable|boolean',
         ]
         +

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
+            $table->string('slug')->uniqid();
             $table->longText('description')->nullable();
+            $table->string('designation');
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('vehicles_license')->unique()->nullable();

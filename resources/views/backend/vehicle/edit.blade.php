@@ -39,7 +39,7 @@
                                         <select name="vehicle_type_id" id="vehicle_type_id" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicle Type') }}</option>
                                             @foreach($vehicle_types as $vehicle_type)
-                                                <option value="{{ $vehicle_type->id }}" 
+                                                <option value="{{ $vehicle_type->id }}"
                                                     {{ old('vehicle_type_id', $vehicle->vehicle_type_id) == $vehicle_type->id ? 'selected' : '' }}>
                                                     {{ $vehicle_type->name }}
                                                 </option>
@@ -54,7 +54,7 @@
                                         <select name="owner_id" id="owner" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Owner') }}</option>
                                             @foreach($owners as $owner)
-                                                <option value="{{ $owner->id }}" {{ old('owner_id', $vehicle->owner_id) == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
+                                                <option value="{{ $owner->id }}" {{ old('owner_id', $vehicle->owner_id) == $owner->id ? 'selected' : '' }}>{{ $owner->title }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -77,7 +77,7 @@
                                             <p>কোনো ছবি পাওয়া যায়নি।</p>
                                         @endif
                                     </div>
-                            
+
                                     <div class="mb-3">
                                         <label for="image" class="form-label">নতুন ইমেজ আপলোড করুন (একাধিক)</label>
                                         <input type="file" name="image[]" class="form-control" multiple>
