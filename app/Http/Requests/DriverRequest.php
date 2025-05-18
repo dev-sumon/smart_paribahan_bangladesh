@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Driver;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DriverRequest extends FormRequest
@@ -22,11 +23,11 @@ class DriverRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:30',
+            'title' => 'required|string|min:3|max:30',
             'status' => 'nullable|boolean',
         ]
-        +
-        ($this->isMethod('POST') ? $this->store() : $this->update());
+            +
+            ($this->isMethod('POST') ? $this->store() : $this->update());
     }
     protected function store(): array
     {
@@ -47,8 +48,10 @@ class DriverRequest extends FormRequest
         return [
             'description' => 'nullable|min:55|max:500|string',
             'designation' => 'nullable|min:3|max:55',
-            'email' => 'required|email|unique:drivers,email,' . $this->route('id'),
-            'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . $this->route('id'),
+            // 'email' => 'required|email|unique:drivers,email,' . $this->route('id'),
+            // 'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . $this->route('id'),
+            'email' => 'required|email|unique:drivers,email,' . Driver::where('slug', $this->route('slug'))->value('id'),
+            'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . Driver::where('slug', $this->route('slug'))->value('id'),
             'blood_group' => 'nullable|string|min:2|max:3',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
