@@ -91,7 +91,7 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/thana-notice/{id}', 'thanaNotice')->name('thanaNotice');
         Route::get('/union-notice/{id}', 'unionNotice')->name('unionNotice');
         Route::get('/blog', 'blog')->name('blog');
-        Route::get('/single-blog/{id}', 'singleBlog')->name('single.blog');
+        Route::get('/single-blog/{slug}', 'singleBlog')->name('single.blog');
 
 
         Route::get('/driverProfileSearch', 'driverProfileSearch')->name('driverProfileSearch');
@@ -103,7 +103,7 @@ Route::group(['as' => 'f.'], function () {
 
     Route::controller(BlogPageController::class)->prefix('blog')->name('blog.')->group(function(){
         Route::get('/', 'index')->name('index');
-        Route::get('/inner_blog/{id}', 'inner_blog')->name('inner_blog');
+        Route::get('/inner_blog/{slug}', 'inner_blog')->name('inner_blog');
     });
 
     Route::controller(ContactUsController::class)->prefix('contact-us')->name('contact.')->group(function(){

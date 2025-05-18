@@ -64,7 +64,7 @@
                         <div class="card_link d-flex gap-4 align-content-center mt-3 mb-3">
                             <div class="left_link d-flex text-center">
                                 <i class="fa-solid fa-user"></i>
-                                <h5 class="ml-2">{{ $blog->creator }}</h5>
+                                <h5 class="ml-2">{{ $blog->creator ?? 'N/A' }}</h5>
                                 {{-- <h5 class="ml-2">By Admin</h5> --}}
                             </div>
                             <div class="right_link d-flex text-center">
@@ -149,7 +149,7 @@
                                         </div>
                                         {{-- <a href="#"
                                         class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a> --}}
-                                        <a href="{{ route('f.blog.inner_blog', $blog->id) }}" class="new_blog_text fw-bold"
+                                        <a href="{{ route('f.blog.inner_blog', $blog->slug) }}" class="new_blog_text fw-bold"
                                             style="color: #141F39">{{ Str::limit($blog->title, 70, '...') }}</a>
                                     </div>
                                 @endforeach
