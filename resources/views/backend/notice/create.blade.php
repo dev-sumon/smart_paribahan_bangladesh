@@ -75,7 +75,7 @@
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                             @foreach ($stands as $stand)
-                                                <option value="{{ $stand->id }}" {{ $stand->id==old('stand_id') ? 'selected' : '' }}>{{ $stand->name }}</option>
+                                                <option value="{{ $stand->id }}" {{ $stand->id==old('stand_id') ? 'selected' : '' }}>{{ $stand->title }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('stand_id'))

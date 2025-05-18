@@ -50,13 +50,24 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">{{ __('Stand Name') }} <span
+                                        <label for="title">{{ __('Stand Name') }} <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="name"
-                                            placeholder="Enter Stand Name" name="name" value="{{ old('name') }}">
-                                        @if ($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        <input type="text" class="form-control" id="title"
+                                            placeholder="Enter Stand Name" name="title" value="{{ old('title') }}"
+                                            oninput="slugGenerate($(this))">
+                                        @if ($errors->has('title'))
+                                            <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="mb-3">
+                                            <label for="slug" class="form-label">{{ __('Slug') }}</label>
+                                            <input type="text" name="slug" class="form-control" id="slug"
+                                                value="{{ old('slug') }}">
+                                            @error('slug')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span
@@ -80,7 +91,9 @@
                                     <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span
                                                 class="text-danger">*</span></label>
-                                        <input type="file" class="form-control h-auto" id="image" name="image[]" multiple placeholder="Enter Stand Image" name="image" value="{{ old('image') }}">
+                                        <input type="file" class="form-control h-auto" id="image" name="image[]"
+                                            multiple placeholder="Enter Stand Image" name="image"
+                                            value="{{ old('image') }}">
                                         @if ($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif

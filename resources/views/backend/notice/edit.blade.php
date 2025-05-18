@@ -83,7 +83,7 @@
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                             @foreach ($stands as $stand)
                                                 <option value="{{ $stand->id }}" {{ $notice->stand_id == $stand->id ? 'selected' : '' }}>
-                                                    {{ $stand->name }}
+                                                    {{ $stand->title }}
                                                 </option>
                                             @endforeach
                                         </select>

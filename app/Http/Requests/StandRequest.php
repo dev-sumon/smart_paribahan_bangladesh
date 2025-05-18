@@ -26,7 +26,7 @@ class StandRequest extends FormRequest
             'district_id' => 'nullable|exists:districts,id',
             'thana_id' => 'nullable|exists:thanas,id',
             'union_id' => 'nullable|exists:unions,id',
-            'name' => 'required|string|min:3|max:50',
+            'title' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
             'location' => 'required|url',
         ]
@@ -39,6 +39,7 @@ class StandRequest extends FormRequest
             'description' => 'required|string|min:20|max:500',
             'image' => 'required|array',
             'image.*' => 'image|mimes:jpeg,png,jpg,svg',
+            'slug' => 'required|string|unique:stands,slug',
         ];
     }
     protected function update(): array
@@ -47,6 +48,7 @@ class StandRequest extends FormRequest
             'description' => 'nullable|string|min:20|max:500',
             'image' => 'nullable|array',
             'image.*' => 'image|mimes:jpeg,png,jpg,svg',
+            'slug' => 'required|string|unique:stands,slug,' . $this->route('slug'),
         ];
     }
 }

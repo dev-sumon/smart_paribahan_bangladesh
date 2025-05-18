@@ -35,7 +35,7 @@ class StandController extends Controller
         $save->district_id = $request->district_id;
         $save->thana_id = $request->thana_id;
         $save->union_id = $request->union_id;
-        $save->name = $request->name; 
+        $save->title = $request->title; 
         $save->slug = $request->slug; 
         $save->description = $request->description;
         // $save->location = $request->location;
@@ -51,19 +51,12 @@ class StandController extends Controller
 
         $save->location = $location;
 
-
-
-        // if($request->hasFile('image')){
-        //     $image = $request->file('image');
-        //     $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        //     $path = $image->storeAs("stands/", $filename, 'public');
-        //     $save->image = $path;
-        // }
         $imagePaths = [];
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $img) {
-                $filename = Str::slug($request->name) . '_' . time() . '_' . $img->getClientOriginalName();
+                // $filename = Str::slug($request->title) . '_' . time() . '_' . $img->getClientOriginalName();
+                $filename = Str::slug($request->title) . '_' . time() . '_' . $img->getClientOriginalName();
                 $path = $img->storeAs('stands', $filename, 'public');
                 $imagePaths[] = $path;
             }
@@ -74,35 +67,32 @@ class StandController extends Controller
         $save->save();
         return redirect()->route('stand.index');
     }
-    public function update($id): View
+    public function update($slug): View
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['districts'] = District::where('division_id', $data['stand']->division_id)->get();
         $data['thanas'] = Thana::where('district_id', $data['stand']->district_id)->get();
         $data['unions'] = Union::where('thana_id', $data['stand']->thana_id)->get();
         return view('backend.stand.edit', $data);
     }
-    public function update_store(StandRequest $request, $id): RedirectResponse
+    public function update_store(StandRequest $request, $slug): RedirectResponse
     {
-        $update = Stand::findOrFail($id);
-        $update->name = $request->name;
+        $update = Stand::where('slug',$slug)->firstOrFail();
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana_id = $request->thana_id;
+        $update->union_id = $request->union_id;
+        $update->title = $request->title;
         $update->slug = $request->slug; 
         $update->description = $request->description;
         $update->status = $request->status ?? 0;
 
-
-
         $location = $request->location;
-
         if (!Str::contains($location, 'www.google.com/maps/embed?pb=')) {
             return redirect()->back()->withErrors(['location' => 'Please provide a valid Google Maps Embed link.']);
         }
-
         $update->location = $location;
-
-
-
 
 
         if ($request->hasFile('image')) {
@@ -119,9 +109,9 @@ class StandController extends Controller
         $update->save();
         return redirect()->route('stand.index');
     }
-    public function status($id): RedirectResponse
+    public function status($slug): RedirectResponse
     {
-        $stand = Stand::findOrFail($id);
+        $stand = Stand::where('slug',$slug)->firstOrFail();
         if ($stand->status == 1) {
             $stand->status = 0;
         } else {
@@ -130,16 +120,16 @@ class StandController extends Controller
         $stand->save();
         return redirect()->route('stand.index');
     }
-    public function delete($id): RedirectResponse
+    public function delete($slug): RedirectResponse
     {
-        $stand = Stand::findOrFail($id);
+        $stand = Stand::where('slug',$slug)->firstOrFail();
         $stand->delete();
 
         return redirect()->route('stand.index');
     }
-    public function detalis($id): View
+    public function detalis($slug): View
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->findOrFail($id);
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->where('slug', $slug)->firstOrFail();
         return view('backend.stand.show', $data);
     }
 }

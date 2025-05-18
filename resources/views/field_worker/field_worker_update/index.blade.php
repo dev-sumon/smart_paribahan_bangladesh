@@ -215,7 +215,7 @@
                                         {{-- @foreach ($stands as $stand)
                                             <option value="{{ $stand->id }}"
                                                 {{ $driver->stand_id == $stand->id ? 'selected' : '' }}>
-                                                {{ $stand->name }}
+                                                {{ $stand->title }}
                                             </option>
                                         @endforeach --}}
                                     </select>

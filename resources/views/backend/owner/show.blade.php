@@ -68,7 +68,7 @@
                                         <tr>
                                             <th>{{ __('Stand') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->stand->name ?? 'N/A' }}</td>
+                                            <td> {{ $owner->stand->title ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Vehicle Type') }}</th>

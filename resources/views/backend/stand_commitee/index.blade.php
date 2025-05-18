@@ -38,7 +38,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $commitee->name }}</td>
                                             <td>{{ $commitee->email }}</td>
-                                            <td>{{ $commitee->stand->name }}</td>
+                                            <td>{{ $commitee->stand->title }}</td>
                                             <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td>
                                             <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
                                             <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>

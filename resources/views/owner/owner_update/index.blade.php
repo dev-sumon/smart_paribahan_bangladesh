@@ -159,7 +159,7 @@
                                     @foreach ($stands as $stand)
                                         <option value="{{ $stand->id }}"
                                             {{ $owner->stand_id == $stand->id ? 'selected' : '' }}>
-                                            {{ $stand->name }}
+                                            {{ $stand->title }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -419,7 +419,7 @@
                                         @foreach ($stands as $stand)
                                             <option value="{{ $stand->id }}"
                                                 {{ $owner->stand_id == $stand->id ? 'selected' : '' }}>
-                                                {{ $stand->name }}
+                                                {{ $stand->title }}
                                             </option>
                                         @endforeach
                                     </select>

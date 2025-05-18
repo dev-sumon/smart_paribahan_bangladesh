@@ -37,7 +37,7 @@
                         </div>
                     @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
+                        <a href="{{ route('f.home.standNotice', $stand->slug) }}" class="gradient-border-button">
                             <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>

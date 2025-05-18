@@ -18,7 +18,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('stand.update', $stand->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('stand.update', $stand->slug) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
@@ -26,7 +27,8 @@
                                         <select name="division_id" id="division" class="form-control">
                                             <option value="" hidden>Select Division</option>
                                             @foreach ($divisions as $division)
-                                                <option value="{{ $division->id }}" {{ $stand->division_id == $division->id ? 'selected' : '' }}>
+                                                <option value="{{ $division->id }}"
+                                                    {{ $stand->division_id == $division->id ? 'selected' : '' }}>
                                                     {{ $division->division }}
                                                 </option>
                                             @endforeach
@@ -37,7 +39,8 @@
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" hidden>Select District</option>
                                             @foreach ($districts as $district)
-                                                <option value="{{ $district->id }}" {{ $stand->district_id == $district->id ? 'selected' : '' }}>
+                                                <option value="{{ $district->id }}"
+                                                    {{ $stand->district_id == $district->id ? 'selected' : '' }}>
                                                     {{ $district->district }}
                                                 </option>
                                             @endforeach
@@ -48,7 +51,8 @@
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" hidden>Select Thana</option>
                                             @foreach ($thanas as $thana)
-                                                <option value="{{ $thana->id }}" {{ $stand->thana_id == $thana->id ? 'selected' : '' }}>
+                                                <option value="{{ $thana->id }}"
+                                                    {{ $stand->thana_id == $thana->id ? 'selected' : '' }}>
                                                     {{ $thana->thana }}
                                                 </option>
                                             @endforeach
@@ -59,52 +63,79 @@
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" hidden>Select Union</option>
                                             @foreach ($unions as $union)
-                                                <option value="{{ $union->id }}" {{ $stand->union_id == $union->id ? 'selected' : '' }}>
+                                                <option value="{{ $union->id }}"
+                                                    {{ $stand->union_id == $union->id ? 'selected' : '' }}>
                                                     {{ $union->union }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">{{ __('Stand Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') ?? $stand->name }}">
-                                        @if($errors->has('name'))
+                                        <label for="title">{{ __('Stand Name') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="name" class="form-control" id="title"
+                                            placeholder="Enter Stand Name" name="title"
+                                            value="{{ old('title') ?? $stand->title }}" oninput="slugGenerate($(this))">
+
+                                        @if ($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
+                                        <div class="mb-3">
+                                            <label for="slug" class="form-label">{{ __('Slug') }}</label>
+                                            <input type="text" name="slug" class="form-control" id="slug"
+                                                value="{{ old('slug', $stand->slug) }}">
+                                            @error('slug')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">{{ __('Description') }} <span
+                                                class="text-danger">*</span></label>
                                         <textarea name="description" id="description" class="w-100 p-3" rows="6" style="outline: none;">{{ old('description', $stand->description) }}</textarea>
-                                        @if($errors->has('description'))
+                                        @if ($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="location">{{ __('Location') }} <span class="text-danger">*</span></label>
-                                        <input type="url" class="form-control" id="location" placeholder="Enter Stand Location" name="location" value="{{ old('location') ?? $stand->location }}">
-                                        @if($errors->has('location'))
+                                        <label for="location">{{ __('Location') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="url" class="form-control" id="location"
+                                            placeholder="Enter Stand Location" name="location"
+                                            value="{{ old('location') ?? $stand->location }}">
+                                        @if ($errors->has('location'))
                                             <div class="text-danger">{{ $errors->first('location') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        @if($stand->image)
-                                            <img src="{{ Storage::url($stand->image) }}" alt="{{ $stand->name }}" class="display-image" style="width: 100%; height: auto; object-fit: cover;">
+                                        <label for="image">{{ __('Image') }} <span
+                                                class="text-danger">*</span></label>
+                                        @if ($stand->image)
+                                            <img src="{{ Storage::url($stand->image) }}" alt="{{ $stand->title }}"
+                                                class="display-image" style="width: 100%; height: auto; object-fit: cover;">
                                         @else
                                             <p>{{ __('No image available') }}</p>
                                         @endif
-                                        <input type="file" class="form-control" id="image" placeholder="Enter Stand Image" name="image">
-                                        @if($errors->has('image'))
+                                        <input type="file" class="form-control h-auto" id="image"
+                                            placeholder="Enter Stand Image" name="image">
+                                        @if ($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
+                                        <label for="status">{{ __('Status') }} <span
+                                                class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
-                                            <option value="1" {{ (old('status') ?? $stand->status) == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ (old('status') ?? $stand->status) == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
+                                            <option value="1"
+                                                {{ (old('status') ?? $stand->status) == 1 ? 'selected' : '' }}>
+                                                {{ __('Active') }}</option>
+                                            <option value="0"
+                                                {{ (old('status') ?? $stand->status) == 0 ? 'selected' : '' }}>
+                                                {{ __('Deactive') }}</option>
                                         </select>
-                                        @if($errors->has('status'))
+                                        @if ($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
@@ -129,7 +160,7 @@
         $(document).ready(function() {
             $('#division').on('change', function() {
                 let divisionId = $(this).val();
-                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+                let _url = '{{ route('ajax.division', ':id') }}'.replace(':id', divisionId);
 
                 $.ajax({
                     url: _url,
@@ -141,7 +172,8 @@
                         districtSelect.append('<option value="">Select District</option>');
 
                         $.each(districts, function(index, district) {
-                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                            districtSelect.append('<option value="' + district.id +
+                                '">' + district.district + '</option>');
                         });
                     },
                     error: function(error) {
@@ -150,9 +182,9 @@
                 });
             });
 
-            $('#district').on('change', function() { 
+            $('#district').on('change', function() {
                 let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
+                let _url = '{{ route('ajax.thana', ':id') }}'.replace(':id', districtId);
 
                 $.ajax({
                     url: _url,
@@ -164,7 +196,8 @@
                         thanaSelect.append('<option value="">Select Thana</option>');
 
                         $.each(thanas, function(index, thana) {
-                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                            thanaSelect.append('<option value="' + thana.id + '">' +
+                                thana.thana + '</option>');
                         });
                     },
                     error: function(error) {
@@ -173,9 +206,9 @@
                 });
             });
 
-            $('#thana').on('change', function() { 
+            $('#thana').on('change', function() {
                 let unionId = $(this).val();
-                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
+                let _url = '{{ route('ajax.union', ':id') }}'.replace(':id', unionId);
 
                 $.ajax({
                     url: _url,
@@ -187,7 +220,8 @@
                         unionSelect.append('<option value="">Select Union</option>');
 
                         $.each(unions, function(index, union) {
-                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                            unionSelect.append('<option value="' + union.id + '">' +
+                                union.union + '</option>');
                         });
                     },
                     error: function(error) {
