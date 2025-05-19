@@ -78,8 +78,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
         Route::get('/stand-driver/{slug}', 'standDriver')->name('standDriver');
         Route::get('/driver-profile/{slug}', 'driverProfile')->name('driverProfile');
-        Route::get('/stand-owner/{id}', 'standOwner')->name('standOwner');
-        Route::get('/owner-profile/{id}', 'ownerProfile')->name('ownerProfile');
+        Route::get('/stand-owner/{slug}', 'standOwner')->name('standOwner');
+        Route::get('/owner-profile/{slug}', 'ownerProfile')->name('ownerProfile');
 
 
 
@@ -477,9 +477,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 
 Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'], function(){
     Route::controller(OwnerDashboardController::class)->group(function(){
-        Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
-        Route::get('/owner/update/{id}', 'owner_update')->name('owner_update');
-        Route::put('/owner/update/{id}', 'owner_update_store')->name('owner_update');
+        Route::get('/dashboard/{slug}', 'dashboard')->name('dashboard');
+        Route::get('/owner/update/{slug}', 'owner_update')->name('owner_update');
+        Route::put('/owner/update/{slug}', 'owner_update_store')->name('owner_update');
         Route::get('add-vehicle', 'addVehicle')->name('addVehicle');
         Route::post('add-vehicles-srore', 'addVehicleStore')->name('addVehicleStore');
 
