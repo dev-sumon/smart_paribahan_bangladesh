@@ -481,7 +481,7 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'],
         Route::get('/owner/update/{slug}', 'owner_update')->name('owner_update');
         Route::put('/owner/update/{slug}', 'owner_update_store')->name('owner_update');
         Route::get('add-vehicle', 'addVehicle')->name('addVehicle');
-        Route::post('add-vehicles-srore', 'addVehicleStore')->name('addVehicleStore');
+        Route::post('add-vehicles-store', 'addVehicleStore')->name('addVehicleStore');
 
 
 

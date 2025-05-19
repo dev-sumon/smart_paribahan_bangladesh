@@ -8,11 +8,29 @@
                 <form action="{{ route('owner.signup.register') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="name">{{ __('নাম') }}</label>
-                        <input type="text" class="form-control" id="name" placeholder="আপনার নাম লিখুন"
-                            name="name" value="{{ old('name') }}">
-                        @if ($errors->has('name'))
-                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                        <label for="title">{{ __('নাম') }}</label>
+                        <input type="text" class="form-control" id="title" placeholder="আপনার নাম লিখুন"
+                            name="title" value="{{ old('title') }}" oninput="slugGenerate($(this))">
+                        @if ($errors->has('title'))
+                            <div class="text-danger">{{ $errors->first('title') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-3">
+                            {{-- <label for="slug" class="form-label">{{ __('Slug') }}</label> --}}
+                            <input type="hidden" name="slug" class="form-control" id="slug"
+                                value="{{ old('slug') }}">
+                            @error('slug')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="designation">{{ __('পদবি ') }}</label>
+                        <input type="text" class="form-control" id="designation" placeholder="আপনার পদবি লিখুন"
+                            name="designation" value="{{ old('designation') }}">
+                        @if ($errors->has('designation'))
+                            <div class="text-danger">{{ $errors->first('designation') }}</div>
                         @endif
                     </div>
                     <div class="form-group">
@@ -254,7 +272,7 @@
 
                         $.each(stands, function(index, stand) {
                             standSelect.append('<option value="' + stand.id + '">' +
-                                stand.name + '</option>');
+                                stand.title + '</option>');
                         });
                     },
                     error: function(error) {

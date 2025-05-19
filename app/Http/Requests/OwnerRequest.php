@@ -25,6 +25,7 @@ class OwnerRequest extends FormRequest
         return [
             'title' => 'required|string|min:3|max:50',
             'status' => 'nullable|boolean',
+            'designation' => 'nullable|min:3|max:55',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());

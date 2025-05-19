@@ -112,6 +112,7 @@ class OwnerController extends Controller
             $update->slug = $slug;
         }
 
+        $update->designation = $request->designation;
         $update->description = $request->description;
         $update->email = $request->email;
         $update->phone = $request->phone;

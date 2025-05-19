@@ -23,9 +23,10 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
-    public function dashboard($slug): View{
+    public function dashboard($slug): View
+    {
 
-        $data['owner'] = Owner::where('slug',$slug)->firstOrFail();
+        $data['owner'] = Owner::where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::latest()->get();
         $data['districts'] = District::latest()->get();
         $data['thanas'] = Thana::latest()->get();
@@ -35,7 +36,7 @@ class DashboardController extends Controller
         $data['bloods'] = BloodGroup::latest()->get();
         return view('owner.dashboard.dashboard', $data);
     }
-    
+
     public function district($division_id)
     {
         $districts = District::where('division_id', $division_id)->pluck('district', 'id');
@@ -65,11 +66,11 @@ class DashboardController extends Controller
         $vehicles = Vehicle::where('stand_id', $stand_id)->pluck('name', 'id');
         return response()->json($vehicles);
     }
-    
+
 
     public function owner_update($slug): View
     {
-        $data['owner'] = Owner::where('slug',$slug)->firstOrFail();
+        $data['owner'] = Owner::where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::latest()->get();
         $data['districts'] = District::latest()->get();
         $data['thanas'] = Thana::latest()->get();
@@ -80,11 +81,24 @@ class DashboardController extends Controller
         return view('owner.owner_update.index', $data);
     }
 
-    public function owner_update_store(OwnerRequest $request, $id){
-        $update = Owner::findOrFail($id);
-        
+    public function owner_update_store(OwnerRequest $request, $slug)
+    {
+        $update = Owner::where('slug',$slug)->firstOrFail();
 
-        $update->name = $request->name;
+        $update->title = $request->title;
+        if ($update->isDirty('title')) {
+            $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $count = 1;
+
+            while (Owner::where('slug', $slug)->where('id', '!=', $update->id)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+            $update->slug = $slug;
+        }
+
+        $update->designation = $request->designation;
         $update->description = $request->description;
         $update->email = $request->email;
         $update->phone = $request->phone;
@@ -95,18 +109,9 @@ class DashboardController extends Controller
         $update->union_id = $request->union_id;
         $update->stand_id = $request->stand_id;
 
-    
-        // if($request->hasFile('image'));
-        //     if($update->iamge && Storage::exists($update->image)){
-        //         Storage::delete($update->image);
-        //     }
-        // $image = $request->file('image');
-        // $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        // $path = $image->storeAs("owner/", $filename, 'public');
-        // $update->image = $path;
 
-        if($request->hasFile('image')) {
-            if($update->image && Storage::exists($update->image)){
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
             $image = $request->file('image');
@@ -114,17 +119,10 @@ class DashboardController extends Controller
             $path = $image->storeAs("owner/", $filename, 'public');
             $update->image = $path;
         }
-        
-
-        
-
 
         $update->save();
-        
         return redirect()->route('f.home');
     }
-
-
     public function addVehicle(): View
     {
         $data['vehicle_types'] = VehicleType::latest()->get();
@@ -132,7 +130,7 @@ class DashboardController extends Controller
         return view('owner.vechicle.index', $data);
     }
     public function addVehicleStore(VehicleRequest $request): RedirectResponse
-    { 
+    {
         $save = new Vehicle();
         $save->name = $request->name;
         $save->vehicle_licence = $request->vehicle_licence;
@@ -152,7 +150,7 @@ class DashboardController extends Controller
         $save->image = json_encode($imagePaths);
         $save->status = $request->status ?? 0;
 
-    
+
         $save->save();
         if ($request->driver_id) {
             Driver::where('id', $request->driver_id)->update(['vehicle_id' => $save->id]);
@@ -160,6 +158,6 @@ class DashboardController extends Controller
         Owner::where('id', auth('owner')->user()->id)->update(['vehicle_id' => $request->vehicle_type_id]);
         return redirect()->route('owner.dashboard', ['id' => auth('owner')->user()->id]);
     }
-        
-    
+
+
 }
