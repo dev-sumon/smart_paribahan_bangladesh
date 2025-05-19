@@ -495,10 +495,11 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'],
 
 Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'], function () {
     Route::controller(DashboardController::class)->group(function () {
-        Route::get('/dashboard/{id}', 'dashboard')->name('dashboard');
-        Route::get('/driver/update/{id}', 'driver_update')->name('driver_update');
-        Route::put('/driver/update/{id}', 'driver_update_store')->name('driver_update');
-        Route::post('/dashboard/update/{id}', 'updateDashboard')->name('updateDashboard');
+        Route::get('/dashboard/{slug}', 'dashboard')->name('dashboard');
+        Route::get('/driver/update/{slug}', 'driver_update')->name('driver_update');
+        Route::put('/driver/update/{slug}', 'driver_update_store')->name('driver_update');
+        Route::post('/dashboard/update/{slug}', 'updateDashboard')->name('updateDashboard');
+
         Route::get('/get-districts/{division_id}', 'district')->name('getDistricts');
         Route::get('/get-thanas/{district_id}', 'thana')->name('getThanas');
         Route::get('/get-unions/{thana_id}', 'union')->name('getUnions');
