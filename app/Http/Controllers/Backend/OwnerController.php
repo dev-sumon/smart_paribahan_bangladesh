@@ -93,11 +93,25 @@ class OwnerController extends Controller
 
         return view('backend.owner.edit', $data);
     }
-    public function update_store(OwnerRequest $request, $id): RedirectResponse
+    public function update_store(OwnerRequest $request, $slug): RedirectResponse
     {
-        $update = Owner::findOrFail($id);
+        $update = Owner::where('slug',$slug)->firstOrFail();
 
-        $update->name = $request->name;
+        $update->title = $request->title;
+
+        if ($update->isDirty('title')) {
+            $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $count = 1;
+
+            while (Owner::where('slug', $slug)->where('id', '!=', $update->id)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $update->slug = $slug;
+        }
+
         $update->description = $request->description;
         $update->email = $request->email;
         $update->phone = $request->phone;

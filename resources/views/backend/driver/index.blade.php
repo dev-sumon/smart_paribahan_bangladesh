@@ -34,7 +34,7 @@
                                         @foreach ($drivers as $key=>$driver)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $driver->name }}</td>
+                                            <td>{{ $driver->title }}</td>
                                             <td>{{ $driver->email }}</td>
                                             <td><span class="{{ $driver->statusBg() }}">{{ $driver->statusTitle() }}</span></td>
                                             <td>{{ $driver->created_at ? $driver->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
