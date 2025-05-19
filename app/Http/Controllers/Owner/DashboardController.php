@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
-    public function dashboard($id): View{
+    public function dashboard($slug): View{
 
-        $data['owner'] = Owner::findOrFail($id);
+        $data['owner'] = Owner::where('slug',$slug)->firstOrFail();
         $data['divisions'] = Division::latest()->get();
         $data['districts'] = District::latest()->get();
         $data['thanas'] = Thana::latest()->get();
@@ -67,9 +67,9 @@ class DashboardController extends Controller
     }
     
 
-    public function owner_update($id): View
+    public function owner_update($slug): View
     {
-        $data['owner'] = Owner::findOrFail($id);
+        $data['owner'] = Owner::where('slug',$slug)->firstOrFail();
         $data['divisions'] = Division::latest()->get();
         $data['districts'] = District::latest()->get();
         $data['thanas'] = Thana::latest()->get();

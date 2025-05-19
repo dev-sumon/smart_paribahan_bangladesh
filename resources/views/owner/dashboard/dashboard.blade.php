@@ -49,7 +49,7 @@
                         </div>
                         <div class="right_column d-flex justify-content-between ">
                             <div class="edit">
-                                <a href="{{ route('owner.owner_update', $owner->id) }}">Edit</a>
+                                <a href="{{ route('owner.owner_update', $owner->slug) }}">{{ __('Edit') }}</a>
                             </div>
                             <div class="add">
                                 <a href="{{ route('owner.addVehicle') }}">Add Vehicle</a>
