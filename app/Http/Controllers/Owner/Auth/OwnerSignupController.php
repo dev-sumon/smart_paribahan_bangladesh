@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner\Auth;
 use App\Models\Owner;
 use App\Models\Division;
 use App\Models\BloodGroup;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Contracts\View\View;
@@ -24,7 +25,20 @@ class OwnerSignupController extends Controller
     {
         $save = new Owner();
 
-        $save->name = $request->name;
+        // $save->name = $request->name;
+        $save->title = $request->title;
+
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Owner::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $save->slug = $slug;
+        $save->designation = $request->designation;
         $save->description = $request->description;
         $save->email = $request->email;
         $save->phone = $request->phone;

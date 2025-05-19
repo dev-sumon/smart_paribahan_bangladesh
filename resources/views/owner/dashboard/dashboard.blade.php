@@ -9,14 +9,14 @@
                     <div class="row align-items-center">
                         <div class="col-md-4 text-center text-md-start">
                             @if ($owner->image)
-                                <img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}"
+                                <img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->title }}"
                                     class="profile-img">
                             @else
                                 <p>{{ __('No image available') }}</p>
                             @endif
                         </div>
                         <div class="col-md-8">
-                            <h1 class="profile-name">{{ $owner->name }}</h1>
+                            <h1 class="profile-name">{{ $owner->title }}</h1>
                             <p class="profile-designation">{{ __('পদবি:') }} <span>সিনিয়র ড্রাইভার</span></p>
                             <p>
                                 {{ $owner->description }}

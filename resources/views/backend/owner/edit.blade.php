@@ -20,15 +20,6 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    {{-- <div class="form-group">
-                                        <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="name"
-                                            placeholder="Enter The Owner Name" name="name"
-                                            value="{{ old('name') ?? $owner->title }}">
-                                        @if ($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
-                                        @endif
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="title">{{ __('Name') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="title"
