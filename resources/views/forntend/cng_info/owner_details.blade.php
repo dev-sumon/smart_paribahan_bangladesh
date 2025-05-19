@@ -121,7 +121,7 @@
                 <div class="d-none d-sm-flex mb-3">
                     <h3>{{ __('ইমেজ গ্যালারী - ') }}</h3>
                     <p class="ml-4">{{ $owner->district->district }} - {{ $owner->thana->thana }} -
-                        {{ $owner->union->union }} স্ট্যান্ড এর {{ $owner->vehicle->name }} ইমেজ</p>
+                        {{ $owner->union->union }} স্ট্যান্ড এর {{ $owner->vehicle->title ?? 'N/A' }} ইমেজ</p>
                 </div>
 
                 <div class="row gallery_image g-3">

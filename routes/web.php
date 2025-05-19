@@ -78,8 +78,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
         Route::get('/stand-driver/{slug}', 'standDriver')->name('standDriver');
         Route::get('/driver-profile/{slug}', 'driverProfile')->name('driverProfile');
-        Route::get('/stand-owner/{id}', 'standOwner')->name('standOwner');
-        Route::get('/owner-profile/{id}', 'ownerProfile')->name('ownerProfile');
+        Route::get('/stand-owner/{slug}', 'standOwner')->name('standOwner');
+        Route::get('/owner-profile/{slug}', 'ownerProfile')->name('ownerProfile');
 
 
 
