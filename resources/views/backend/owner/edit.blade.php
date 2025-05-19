@@ -16,11 +16,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('owner.update', $owner->id) }}" method="POST"
+                                <form action="{{ route('owner.update', $owner->slug) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="name"
                                             placeholder="Enter The Owner Name" name="name"
@@ -28,19 +28,36 @@
                                         @if ($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label for="title">{{ __('Name') }} <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="title"
+                                            placeholder="Enter The Owner Name" name="title"
+                                            value="{{ old('title') ?? $owner->title }}" oninput="slugGenerate($(this))">
+                                        @if ($errors->has('title'))
+                                            <div class="text-danger">{{ $errors->first('title') }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group d-none">
+                                        <input type="hidden" name="slug" class="form-control" id="slug"
+                                            value="{{ old('slug', $owner->slug) }}">
+                                        @error('slug')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="designation">{{ __('Designation') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="designation"
+                                            placeholder="Enter The Designation" name="designation"
+                                            value="{{ old('designation') ?? $owner->designation }}">
+                                        @if ($errors->has('designation'))
+                                            <div class="text-danger">{{ $errors->first('designation') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="description">{{ __('Description') }} <span
                                                 class="text-danger">*</span></label>
-                                        {{-- <input type="text" class="form-control" id="description"
-                                            placeholder="Enter The Description" name="description"
-                                            value="{{ old('description') ?? $owner->description }}" height="80">
-                                        @if ($errors->has('description'))
-                                            <div class="text-danger">{{ $errors->first('description') }}</div>
-                                        @endif --}}
-
-
-
                                         <textarea name="description" id="description" placeholder="Enter The Description"
                                             style="width: 100%; height: 150px; padding: 10px;">{{ old('description') ?? $owner->description }}</textarea>
                                         @if ($errors->has('description'))
@@ -55,6 +72,7 @@
                                                 <option value="{{ $blood->id }}"
                                                     {{ old('blood_group_id', $owner->blood_group_id) == $blood->id ? 'selected' : '' }}>
                                                     {{ $blood->blood_group }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('blood_group'))
@@ -161,8 +179,15 @@
                                         <div class="form-group">
                                             <label for="image">{{ __('Image') }} <span
                                                     class="text-danger">*</span></label>
-                                            @if ($owner->image)
+                                            {{-- @if ($owner->image)
                                                 <img src="{{ Storage::url($owner->image) }}" alt="{{ $owner->title }}"
+                                                    class="display-image"
+                                                    style="width: 100%; height: auto; object-fit: cover;">
+                                            @else
+                                                <p>{{ __('No image available') }}</p>
+                                            @endif --}}
+                                            @if ($owner->image)
+                                                <img src="{{ Storage::url($owner->image) }}" alt="{{ $owner->name }}"
                                                     class="display-image"
                                                     style="width: 100%; height: auto; object-fit: cover;">
                                             @else
