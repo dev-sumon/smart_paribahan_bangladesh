@@ -88,7 +88,7 @@
                     </ul>
                 </div>
                 @if (Auth::guard('driver')->check())
-                    <a href="{{ route('driver.dashboard', Auth::guard('driver')->user()->id) }}"><img
+                    <a href="{{ route('driver.dashboard', Auth::guard('driver')->user()->slug) }}"><img
                             src="{{ asset('storage/' . Auth::guard('driver')->user()->image ?? 'default/profile.png') }}"
                             alt="Profile" class="rounded-circle" width="40" height="40"></a>
                 @elseif (Auth::guard('owner')->check())

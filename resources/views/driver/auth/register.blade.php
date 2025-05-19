@@ -8,20 +8,23 @@
                 <form action="{{ route('signup.signup') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="name">{{ __('নাম') }}</label>
-                        <input type="text" class="form-control" id="name" placeholder="আপনার নাম লিখুন"
-                            name="name" value="{{ old('name') }}">
-                        @if ($errors->has('name'))
-                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                        <label for="title">{{ __('নাম') }}</label>
+                        <input type="text" class="form-control" id="title" placeholder="আপনার নাম লিখুন"
+                            name="title" value="{{ old('title') }}" oninput="slugGenerate($(this))">
+                        @if ($errors->has('title'))
+                            <div class="text-danger">{{ $errors->first('title') }}</div>
                         @endif
                     </div>
-                    {{-- <div class="form-group">
-                  <label for="description">{{ __('ডেসক্রিপশন') }}</label>
-                  <input type="text" class="form-control" id="description" placeholder="আপনার সম্পর্কে লিখুন" name="description" value="{{ old('description') }}">
-                  @if ($errors->has('description'))
-                      <div class="text-danger">{{ $errors->first('description') }}</div>
-                  @endif
-              </div> --}}
+                    <div class="form-group">
+                        <div class="mb-3">
+                            {{-- <label for="slug" class="form-label">{{ __('Slug') }}</label> --}}
+                            <input type="hidden" name="slug" class="form-control" id="slug"
+                                value="{{ old('slug') }}">
+                            @error('slug')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="description">{{ __('ডেসক্রিপশন') }}</label>
                         <textarea class="form-control" id="description" placeholder="আপনার সম্পর্কে লিখুন" name="description"

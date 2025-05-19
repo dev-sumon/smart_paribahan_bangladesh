@@ -9,14 +9,14 @@
                     <div class="row align-items-center">
                         <div class="col-md-4 text-center text-md-start">
                             @if ($driver->image)
-                                <img src="{{ asset('storage/' . $driver->image) }}" alt="{{ $driver->name }}"
+                                <img src="{{ asset('storage/' . $driver->image) }}" alt="{{ $driver->title }}"
                                     class="profile-img">
                             @else
                                 <p>{{ __('No image available') }}</p>
                             @endif
                         </div>
                         <div class="col-md-8">
-                            <h1 class="profile-name">{{ $driver->name }}</h1>
+                            <h1 class="profile-name">{{ $driver->title }}</h1>
                             <p class="profile-designation">{{ __('পদবি:') }} <span>{{ $driver->designation }}</span></p>
                             <p>
                                 {{ $driver->description }}
@@ -48,7 +48,7 @@
                         </div>
                         <div class="right_column d-flex justify-content-between ">
                             <div class="edit">
-                                <a href="{{ route('driver.driver_update', $driver->id) }}">Edit</a>
+                                <a href="{{ route('driver.driver_update', $driver->slug) }}">{{ __('Edit') }}</a>
                             </div>
                         </div>
                     </div>

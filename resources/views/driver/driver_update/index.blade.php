@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="profile-body">
-                    <form id="profileForm" action="{{ route('driver.driver_update', $driver->id) }}" method="POST"
+                    <form id="profileForm" action="{{ route('driver.driver_update', $driver->slug) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -24,8 +24,8 @@
                         <!-- Profile Image Section -->
                         <div class="profile-image-container">
                             @if ($driver->image)
-                                <img src="{{ asset('storage/' . $driver->image) }}" alt="{{ $driver->name }}" height="180"
-                                    width="180" class="profile-image">
+                                <img src="{{ asset('storage/' . $driver->image) }}" alt="{{ $driver->title }}"
+                                    height="180" width="180" class="profile-image">
                             @else
                                 <p>{{ __('No image available') }}</p>
                             @endif
@@ -48,15 +48,14 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="name" class="required-field">নাম</label>
+                                    <label for="title" class="required-field">নাম</label>
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="নাম" value="{{ old('name') ?? $driver->name }}">
-
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            placeholder="নাম" value="{{ old('title') ?? $driver->title }}"
+                                            oninput="slugGenerate($(this))">
                                     </div>
                                     <div class="text-danger" id="nameError"></div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <label for="designation" class="required-field">পদবি</label>
                                     <div class="form-floating">
@@ -65,6 +64,13 @@
 
                                     </div>
                                     <div class="text-danger" id="designationError"></div>
+                                </div>
+                                <div class="form-group d-none">
+                                    <input type="hidden" name="slug" class="form-control" id="slug"
+                                        value="{{ old('slug', $driver->slug) }}">
+                                    @error('slug')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <label for="description" class="required-field">বিবরণ</label>
@@ -102,7 +108,8 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         <input type="tel" name="phone" class="form-control"
-                                            placeholder="Enter Driver Phone" value="{{ old('phone') ?? $driver->phone }}">
+                                            placeholder="Enter Driver Phone"
+                                            value="{{ old('phone') ?? $driver->phone }}">
                                         @if ($errors->has('phone'))
                                             <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif
@@ -115,8 +122,9 @@
                                 <div class="col-md-6">
                                     <label for="driving_license" class="required-field">ড্রাইভিং লাইসেন্স নম্বর</label>
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="driving_license" name="driving_license"
-                                            placeholder="ড্রাইভিং লাইসেন্স নম্বর" value="{{ old('driving_license') ?? $driver->driving_license }}">
+                                        <input type="text" class="form-control" id="driving_license"
+                                            name="driving_license" placeholder="ড্রাইভিং লাইসেন্স নম্বর"
+                                            value="{{ old('driving_license') ?? $driver->driving_license }}">
 
                                     </div>
                                     <div class="text-danger" id="designationError"></div>
