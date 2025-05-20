@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Stand extends Model
-
 {
     protected $fillable = [
         'division_id',
@@ -21,55 +20,49 @@ class Stand extends Model
     ];
 
     // protected $fillable = ['stand', 'id', 'union_id'];
-    public function statusBg(){
-        if($this->status == 1){
+    public function statusBg()
+    {
+        if ($this->status == 1) {
             return 'badge badge-success';
-        }else{
+        } else {
             return 'badge badge-danger';
         }
     }
-    public function statusTitle(){
-        if($this->status == 1){
+    public function statusTitle()
+    {
+        if ($this->status == 1) {
             return 'Active';
-        }else{
+        } else {
             return 'Deactive';
         }
     }
-    public function statusIcon(){
-        if($this->status == 1){
+    public function statusIcon()
+    {
+        if ($this->status == 1) {
             return 'btn-warning';
-        }else{
+        } else {
             return 'btn-success';
         }
     }
 
 
 
-    public function division(){
+    public function division()
+    {
         return $this->belongsTo(Division::class, 'division_id', 'id');
     }
-    public function district(){
+    public function district()
+    {
         return $this->belongsTo(District::class, 'district_id', 'id');
     }
-    public function thana(){
+    public function thana()
+    {
         return $this->belongsTo(Thana::class, 'thana_id', 'id');
     }
     public function union()
     {
         return $this->belongsTo(Union::class);
     }
-    // public function vehicles()
-    // {
-    //     return $this->hasMany(Vehicle::class);
-    // }
-    // public function vehicleTypes()
-    // {
-    //     return $this->hasMany(VehicleType::class);
-    // }
-    // public function vehicleTypes()
-    // {
-    //     return $this->hasMany(VehicleType::class, 'stand_id');
-    // }
     public function vehicleTypes()
     {
         return $this->hasMany(VehicleType::class);
@@ -94,6 +87,13 @@ class Stand extends Model
     public function notices()
     {
         return $this->hasMany(Notice::class);
+    }
+
+
+
+    public function vehicleSerials()
+    {
+        return $this->hasMany(VehicleSerial::class);
     }
 
 

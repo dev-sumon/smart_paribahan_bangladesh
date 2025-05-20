@@ -3692,3 +3692,139 @@ footer .copy_right {
         width: auto;
     }
 }
+
+
+/* Serial list page css */
+
+.serial_list .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.serial_list .header {
+    background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
+    padding: 24px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 10px rgba(255, 38, 38, 0.3);
+    text-align: center;
+}
+
+.serial_list .header h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.serial_list .header p {
+    color: white;
+    font-size: 16px;
+}
+
+.serial_list .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+}
+
+.serial_list .card-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.serial_list .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.serial_list .card-content {
+    padding: 16px;
+}
+
+.serial_list .search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.serial_list .input {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.serial_list .button {
+    background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.serial_list .button:hover {
+    opacity: 0.9;
+}
+
+.serial_list .search-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.serial_list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.serial_list th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.serial_list th {
+    font-weight: bold;
+    color: #555;
+}
+
+.serial_list .status-badge {
+    background-color: #e6f7e6;
+    color: #2e7d32;
+    padding: 4px 8px;
+    border-radius: 100px;
+    font-size: 12px;
+}
+
+.serial_list .empty-state {
+    text-align: center;
+    padding: 32px 16px;
+    color: #777;
+}
+
+.serial_list .list{
+    background-color: #fff;
+    color: red;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .serial_list .search-container {
+        flex-direction: row;
+    }
+
+    .serial_list .button {
+        width: auto;
+    }
+}
