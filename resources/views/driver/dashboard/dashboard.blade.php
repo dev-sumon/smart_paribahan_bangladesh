@@ -50,7 +50,14 @@
                             <div class="edit">
                                 <a href="{{ route('driver.driver_update', $driver->slug) }}">{{ __('Edit') }}</a>
                             </div>
+                            <a href="{{ route('driver.serial.search') }}">Serial List</a>
                         </div>
+                         {{-- <div class="right_column d-flex justify-content-between ">
+                            <div class="edit">
+                                <a href="{{ route('driver.driver_update', $driver->id) }}">Edit</a>
+                            </div>
+                            <a href="{{ route('driver.serial.search') }}">Serial List</a>
+                        </div> --}}
                     </div>
 
                     <div class="row">
@@ -94,7 +101,7 @@
                                 <div class="detail-row">
                                     <div class="detail-title">{{ __('গাড়ির নাম ও নম্বর') }}</div>
                                     <div class="detail-value">
-                                        {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }}
+                                        {{-- {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }} --}}
                                     </div>
                                 </div>
                             </div>

@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'owner' => \App\Http\Middleware\OwnerMiddleware::class,
             'driver' => \App\Http\Middleware\DriverMiddleware::class,
             'field_worker' => \App\Http\Middleware\FieldWorkerMiddleware::class,
+            'stand_manager' => \App\Http\Middleware\StandManagerMiddleware::class,
         ]);
         $middleware->web(append: [
             SetLocale::class

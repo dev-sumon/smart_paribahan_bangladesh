@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -35,6 +36,7 @@ use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\NoticeCategoryController;
+use App\Http\Controllers\Forntend\VehicleSerialController;
 use App\Http\Controllers\Owner\Auth\OwnerSignupController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
@@ -42,6 +44,8 @@ use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
 use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
+use App\Http\Controllers\StandManager\Auth\StandManagerLoginController;
+use App\Http\Controllers\StandManager\Auth\StandManagerRegistrationController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Owner\Auth\ForgotPassword\OwnerForgotPasswordController;
 use App\Http\Controllers\Backend\Auth\ForgotPassword\AdminForgotPasswordController;
@@ -66,13 +70,13 @@ Auth::routes();
 
 Route::group(['as' => 'f.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
-    Route::controller(HomePageController::class)->prefix('home')->name('home.')->group(function(){
+    Route::controller(HomePageController::class)->prefix('home')->name('home.')->group(function () {
         Route::get('/get-districts/{division_id}', 'district')->name('get.districts');
         Route::get('/get-thanas/{district_id}', 'thana')->name('get.thanas');
         Route::get('/get-unions/{thana_id}', 'union')->name('get.unions');
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
         Route::get('/get-vehicles/{stand_id}', 'vehicleTypes')->name('get.vehicles');
-        Route::post('/search',  'search')->name('search');
+        Route::post('/search', 'search')->name('search');
         Route::get('/stand/{slug}', 'showStand')->name('stand');
         Route::get('/stand-intro/{slug}', 'showStandIntro')->name('standIntro');
         Route::get('/stand-commitee/{id}', 'standCommitee')->name('standCommitee');
@@ -97,27 +101,27 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/driverProfileSearch', 'driverProfileSearch')->name('driverProfileSearch');
     });
 
-    Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function(){
+    Route::controller(HelpPageController::class)->prefix('help')->name('help.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
 
-    Route::controller(BlogPageController::class)->prefix('blog')->name('blog.')->group(function(){
+    Route::controller(BlogPageController::class)->prefix('blog')->name('blog.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/inner_blog/{slug}', 'inner_blog')->name('inner_blog');
     });
 
-    Route::controller(ContactUsController::class)->prefix('contact-us')->name('contact.')->group(function(){
+    Route::controller(ContactUsController::class)->prefix('contact-us')->name('contact.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
 
-    Route::controller(LoginController::class)->prefix('login')->name('login.')->group(function(){
+    Route::controller(LoginController::class)->prefix('login')->name('login.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
 
-    Route::controller(SignUpController::class)->prefix('signup')->name('signup.')->group(function(){
+    Route::controller(SignUpController::class)->prefix('signup')->name('signup.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
-    Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function(){
+    Route::controller(CngInfoController::class)->prefix('cng-info')->name('cng.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/cng_stand', 'cng_stand')->name('cng_stand');
         Route::get('/cng-stand/{slug}', 'show')->name('cng_stand_details');
@@ -135,11 +139,11 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/get-stands/{union_id}', 'stand')->name('get.stands');
         Route::get('/get-vehicles/{stand_id}', 'vehicle')->name('get.vehicles');
     });
-    Route::controller(AuthDriverLoginController::class)->prefix('driver-login')->name('login')->group(function(){
+    Route::controller(AuthDriverLoginController::class)->prefix('driver-login')->name('login')->group(function () {
         Route::get('/login', 'driverLogin')->name('login');
     });
 
-    Route::controller(AboutUsController::class)->prefix('about-us')->name('about.')->group(function(){
+    Route::controller(AboutUsController::class)->prefix('about-us')->name('about.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
 
@@ -161,26 +165,39 @@ Route::controller(AdminLoginController::class)->prefix('admin')->name('admin.')-
 // Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')->group( function(){
 //     Route::get('/login', 'ownerLogin')->name('login');
 // });
-Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')->group( function(){
+Route::controller(OwnerLoginController::class)->prefix('owner')->name('owner.')->group(function () {
     Route::get('/login', 'ownerLogin')->name('login');
     Route::post('/login', 'ownerLoginCheck')->name('login');
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(OwnerSignupController::class)->prefix('signup')->name('owner.signup.')->group(function(){
+Route::controller(OwnerSignupController::class)->prefix('signup')->name('owner.signup.')->group(function () {
     Route::get('owner/signup', 'signupForm')->name('signup');
     Route::post('driver/register', 'register')->name('register');
 });
 
-Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.')->group( function(){
+Route::controller(DriverLoginController::class)->prefix('driver')->name('driver.')->group(function () {
     Route::get('/login', 'driverLogin')->name('login');
     Route::post('/login', 'driverLoginCheck')->name('login');
     Route::post('/logout', 'logout')->name('logout');
 });
-Route::controller(DriverRegistrationController::class)->prefix('signup')->name('signup.')->group(function(){
+Route::controller(DriverRegistrationController::class)->prefix('signup')->name('signup.')->group(function () {
     Route::get('driver/signup', 'signupForm')->name('signupForm');
     Route::post('driver/signup', 'signup')->name('signup');
     Route::put('driver/update/{id}', 'update')->name('update');
+});
+
+
+Route::controller(StandManagerLoginController::class)->prefix('stand_manager')->name('stand_manager.')->group(function () {
+    Route::get('/login', 'standManagerLogin')->name('login');
+    Route::post('/login', 'standManagerLoginCheck')->name('login');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::controller(StandManagerRegistrationController::class)->prefix('signup')->name('signup.')->group(function () {
+    Route::get('stand_manager/signup', 'signupForm')->name('signupForm');
+    Route::post('stand_manager/signup', 'signup')->name('signup');
+    Route::put('stand_manager/update/{id}', 'update')->name('update');
 });
 
 // Route::prefix('field_worker')->name('field_worker.')->group(function () {
@@ -239,7 +256,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // Forgot Password Route end
 
 
-Route::controller(FieldWorkerLoginController::class)->prefix('field_worker')->name('field_worker.')->group(function(){
+Route::controller(FieldWorkerLoginController::class)->prefix('field_worker')->name('field_worker.')->group(function () {
     Route::get('/login', 'fieldWorkerLogin')->name('login');
     Route::post('/login', 'fieldWorkerLoginCheck')->name('login.check');
     Route::post('/logout', 'logout')->name('logout');
@@ -265,10 +282,10 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(StandController::class)->prefix('stand')->name('stand.')->group(function(){
+    Route::controller(StandController::class)->prefix('stand')->name('stand.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
-        Route::post('store','store')->name('store');
+        Route::post('store', 'store')->name('store');
         Route::get('update/{slug}', 'update')->name('update');
         Route::put('update/{slug}', 'update_store')->name('update');
         Route::get('status/{slug}', 'status')->name('status.update');
@@ -276,7 +293,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
 
-    Route::controller(VehicleTypeController::class)->prefix('vehicle-type')->name('vehicle_type.')->group(function(){
+    Route::controller(VehicleTypeController::class)->prefix('vehicle-type')->name('vehicle_type.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -286,7 +303,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(VehicleListController::class)->prefix('vehicle')->name('vehicle.')->group(function(){
+    Route::controller(VehicleListController::class)->prefix('vehicle')->name('vehicle.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -297,7 +314,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(FaqController::class)->prefix('faq')->name('faq.')->group(function(){
+    Route::controller(FaqController::class)->prefix('faq')->name('faq.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -308,7 +325,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(FieldWorkerController::class)->prefix('worker')->name('worker.')->group( function(){
+    Route::controller(FieldWorkerController::class)->prefix('worker')->name('worker.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -319,7 +336,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(NoticeCategoryController::class)->prefix('notice-category')->name('notice_category.')->group(function(){
+    Route::controller(NoticeCategoryController::class)->prefix('notice-category')->name('notice_category.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -330,7 +347,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group( function() {
+    Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -341,7 +358,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(ContactInfoController::class)->prefix('contact')->name('contact.')->group( function() {
+    Route::controller(ContactInfoController::class)->prefix('contact')->name('contact.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -351,9 +368,9 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(BlogController::class)->prefix('blog')->name('blog.')->group( function(){
-        Route::get('index','index')->name('index');
-        Route::get('create','create')->name('create');
+    Route::controller(BlogController::class)->prefix('blog')->name('blog.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
         Route::get('update/{id}', 'update')->name('update');
         Route::put('update/{id}', 'update_store')->name('update');
@@ -361,7 +378,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(FooterTitleController::class)->prefix('footerTitle')->name('footerTitle.')->group(function(){
+    Route::controller(FooterTitleController::class)->prefix('footerTitle')->name('footerTitle.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -371,7 +388,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(FooterController::class)->prefix('footer')->name('footer.')->group( function(){
+    Route::controller(FooterController::class)->prefix('footer')->name('footer.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -381,7 +398,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(OwnerController::class)->prefix('owner')->name('owner.')->group( function(){
+    Route::controller(OwnerController::class)->prefix('owner')->name('owner.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -392,7 +409,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
 
-    Route::controller(DriverController::class)->prefix('driver')->name('driver.')->group( function(){
+    Route::controller(DriverController::class)->prefix('driver')->name('driver.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -402,7 +419,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{slug}', 'delete')->name('delete');
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
-    Route::controller(BloodGroupController::class)->prefix('blood')->name('blood.')->group( function(){
+    Route::controller(BloodGroupController::class)->prefix('blood')->name('blood.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -412,7 +429,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(DivisionController::class)->prefix('division')->name('division.')->group( function(){
+    Route::controller(DivisionController::class)->prefix('division')->name('division.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -422,7 +439,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(DistrictController::class)->prefix('district')->name('district.')->group(function(){
+    Route::controller(DistrictController::class)->prefix('district')->name('district.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -432,7 +449,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(ThanaController::class)->prefix('thana')->name('thana.')->group(function() {
+    Route::controller(ThanaController::class)->prefix('thana')->name('thana.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -442,7 +459,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(UnionController::class)->prefix('union')->name('union.')->group(function(){
+    Route::controller(UnionController::class)->prefix('union')->name('union.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('ceate');
         Route::post('store', 'store')->name('store');
@@ -452,7 +469,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
+    Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
         Route::get('division/{id}', 'division')->name('division');
         Route::get('district/{id}', 'district')->name('district');
         Route::get('thana/{id}', 'thana')->name('thana');
@@ -460,10 +477,10 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('stand/{id}', 'stand')->name('stand');
         Route::get('stand/{id}/vehicles', 'standVehicles')->name('standVehicles');
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
-        Route::get('/get-vehicles/{stand_id}',  'getVehiclesByStand');
+        Route::get('/get-vehicles/{stand_id}', 'getVehiclesByStand');
 
     });
-    Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function(){
+    Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
@@ -473,10 +490,17 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
+
+
+    // serial check out route
+    Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {
+        Route::get('/stand-wise-serials', 'standWiseSerials')->name('admin.stand.serials');
+        Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
+    });
 });
 
-Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'], function(){
-    Route::controller(OwnerDashboardController::class)->group(function(){
+Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'], function () {
+    Route::controller(OwnerDashboardController::class)->group(function () {
         Route::get('/dashboard/{slug}', 'dashboard')->name('dashboard');
         Route::get('/owner/update/{slug}', 'owner_update')->name('owner_update');
         Route::put('/owner/update/{slug}', 'owner_update_store')->name('owner_update');
@@ -493,7 +517,7 @@ Route::group(['middleware' => ['owner'], 'prefix' => 'owner', 'as' => 'owner.'],
     });
 });
 
-Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'], function () {
+Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' => 'driver.'], function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard/{slug}', 'dashboard')->name('dashboard');
         Route::get('/driver/update/{slug}', 'driver_update')->name('driver_update');
@@ -509,17 +533,27 @@ Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' =>'driver.'
 
     Route::get('/get-districts/{driver_id}', [DriverController::class, 'getDistrictsByDriver'])->name('get.districts');
 
-    Route::controller(DriverAjaxController::class)->prefix('ajax')->name('ajax.')->group(function(){
+    Route::controller(DriverAjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
         Route::get('division/{id}', 'division')->name('division');
         Route::get('district/{id}', 'district')->name('district');
         Route::get('thana/{id}', 'thana')->name('thana');
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
     });
+
+
+    // VehicleSerialController
+    Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {
+        Route::get('/index/{stand_id}', 'index')->name('index');
+        Route::get('/serial-search', 'search')->name('search');
+        Route::post('/serial-show', 'show')->name('show');
+        Route::get('/serial-check-in', 'checkIn')->name('check.in');
+        Route::post('serial-check-in-store', 'checkInStore')->name('check.in.store');
+    });
 });
 
-Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as' => 'field_worker.'], function(){
-    Route::controller(FieldWorkerDashboardController::class)->group(function (){
+Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as' => 'field_worker.'], function () {
+    Route::controller(FieldWorkerDashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::get('/field_worker/update/{id}', 'field_worker_update')->name('field_worker_update');
         Route::put('/field_worker/update/{id}', 'field_worker_update_store')->name('field_worker_update');
@@ -529,6 +563,13 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::post('driver-store', 'driverStore')->name('driver.store');
         Route::get('blog-create', 'blogCreate')->name('blog.create');
         Route::post('blog-store', 'blogStore')->name('blog.store');
+    });
+});
+
+
+Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'as' => 'stand_manager.'], function(){
+    Route::controller(StandManagerDashboardController::class)->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
 });
 

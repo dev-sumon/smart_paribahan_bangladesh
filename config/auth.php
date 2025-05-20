@@ -60,6 +60,10 @@ return [
             'driver' => 'session',
             'provider' => 'field_workers',
         ],
+        'stand_manager' => [
+            'driver' => 'session',
+            'provider' => 'stand_managers',
+        ],
     ],
 
     /*
@@ -99,6 +103,10 @@ return [
         'field_workers' => [
             'driver' => 'eloquent',
             'model' => env('FIELDWORKER_MODEL', App\Models\FieldWorker::class),
+        ],
+        'stand_managers' => [
+            'driver' => 'eloquent',
+            'model' => env('STANDMANAGER_MODEL', App\Models\StandManager::class),
         ],
 
         // 'users' => [

@@ -58,4 +58,10 @@ class Union extends Model
     {
         return $this->hasMany(Notice::class);
     }
+
+
+     public function vehicleSerials()
+    {
+        return $this->hasMany(VehicleSerial::class);
+    }
 }

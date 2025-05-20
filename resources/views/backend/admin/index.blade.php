@@ -14,6 +14,9 @@
                         <span class="float-right">
                             <a href="{{ route('admin.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
+                         <span class="float-right">
+                            <a href="{{ route('serial.admin.stand.serials') }}" class="btn btn-info">{{ __('Serial list') }}</a>
+                        </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
