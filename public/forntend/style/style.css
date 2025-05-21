@@ -3458,6 +3458,7 @@ footer .copy_right {
     min-height: 100vh;
     padding: 2rem 0;
 }
+
 .field_worker_profile .main-wrapper {
     width: 100%;
     max-width: 1200px;
@@ -3655,16 +3656,20 @@ footer .copy_right {
     cursor: pointer;
     transition: background-color 0.2s;
 }
-.btn-primary a{
+
+.btn-primary a {
     color: white;
     text-decoration: none;
 }
+
 .btn-primary:hover {
     background-color: #c41520;
 }
-.btn-primary a:hover{
+
+.btn-primary a:hover {
     background-color: #c41520;
 }
+
 .btn-secondary {
     width: 100%;
     background-color: white;
@@ -3680,11 +3685,13 @@ footer .copy_right {
     gap: 0.5rem;
     transition: background-color 0.2s;
 }
-.btn-secondary a{
+
+.btn-secondary a {
     background-color: white;
     color: #4b5563;
     text-decoration: none;
 }
+
 @media (min-width: 768px) {
 
     .btn-primary,
@@ -3813,7 +3820,7 @@ td {
     color: #777;
 }
 
-.serial_list .list{
+.serial_list .list {
     background-color: #fff;
     color: red;
 }
@@ -3826,5 +3833,155 @@ td {
 
     .serial_list .button {
         width: auto;
+    }
+}
+
+
+
+/* stand manager css start */
+
+.stand_manager_dashboard .sidebar {
+    min-height: 100vh;
+    background-color: #212529;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.stand_manager_dashboard .sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.stand_manager_dashboard .sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.stand_manager_dashboard .sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.stand_manager_dashboard .main-content {
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.stand_manager_dashboard .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.stand_manager_dashboard .card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 15px 20px;
+}
+
+.stand_manager_dashboard .status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.stand_manager_dashboard .status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.stand_manager_dashboard .status-completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stand_manager_dashboard .status-ongoing {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.stand_manager_dashboard .status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.stand_manager_dashboard .status-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stand_manager_dashboard .status-expired {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.stand_manager_dashboard .status-waiting {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.stand_manager_dashboard .type-emergency {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.stand_manager_dashboard .type-general {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.stand_manager_dashboard .type-info {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stand_manager_dashboard .year-badge {
+    background-color: #e0cffc;
+    color: #6610f2;
+}
+
+.stand_manager_dashboard .action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .stand_manager_dashboard .sidebar {
+        margin-left: -250px;
+        position: fixed;
+        z-index: 1000;
+        height: 100%;
+    }
+
+    .stand_manager_dashboard .sidebar.active {
+        margin-left: 0;
+    }
+
+    .stand_manager_dashboard .main-content {
+        width: 100%;
+    }
+
+    .stand_manager_dashboard .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .stand_manager_dashboard .overlay.active {
+        display: block;
+        opacity: 1;
     }
 }
