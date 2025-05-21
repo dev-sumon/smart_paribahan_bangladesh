@@ -99,7 +99,7 @@ class VehicleSerialController extends Controller
             ->orderBy('serial', 'asc')
             ->get();
 
-        return view('backend.admin.driver_serials.index', $data);
+        return view('stand_manager.serial.index', $data);
     }
     public function checkOut(Request $request, $id)
     {

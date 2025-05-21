@@ -571,5 +571,24 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
     Route::controller(StandManagerDashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
+
+    Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {
+        Route::get('/stand-wise-serials', 'standWiseSerials')->name('stand.serials');
+        Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
+    });
+     Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
+        Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
+        Route::get('stand-manager-create', 'create')->name('stand.manager.create');
+    });
+    // Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
+    //     Route::get('index', 'index')->name('index');
+    //     Route::get('create', 'create')->name('create');
+    //     Route::post('store', 'store')->name('store');
+    //     Route::get('update/{id}', 'update')->name('update');
+    //     Route::put('update/{id}', 'update_store')->name('update');
+    //     Route::get('status/{id}', 'status')->name('status.update');
+    //     Route::get('delete/{id}', 'delete')->name('delete');
+    //     Route::get('detalis/{id}', 'detalis')->name('detalis');
+    // });
 });
 
