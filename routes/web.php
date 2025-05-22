@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\StandManagerController;
 use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -194,7 +195,7 @@ Route::controller(StandManagerLoginController::class)->prefix('stand_manager')->
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(StandManagerRegistrationController::class)->prefix('signup')->name('signup.')->group(function () {
+Route::controller(StandManagerRegistrationController::class)->prefix('signup')->name('.stand_managersignup.')->group(function () {
     Route::get('stand_manager/signup', 'signupForm')->name('signupForm');
     Route::post('stand_manager/signup', 'signup')->name('signup');
     Route::put('stand_manager/update/{id}', 'update')->name('update');
@@ -491,6 +492,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
+    Route::controller(StandManagerController::class)->prefix('manager')->name('manager.')->group(function (){
+        Route::get('index','index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+    });
 
     // serial check out route
     Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {

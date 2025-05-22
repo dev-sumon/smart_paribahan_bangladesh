@@ -27,7 +27,14 @@
           <li class="nav-item menu-open">
             <a href="{{ route('stand.index') }}" class="nav-link {{ $page_slug == 'stand' ? 'active' : '' }}">
               <i class="nav-icon fas fa-location"></i>
-              <p>{{ __('Stand ') }}</p>
+              <p>{{ __('Stand') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('manager.index') }}" class="nav-link {{ $page_slug == 'manager' ? 'active' : '' }}">
+              {{-- <i class="nav-icon fas fa-location"></i> --}}
+              <i class="fa-solid fa-users-gear"></i>
+              <p>{{ __('Manager Manager') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
