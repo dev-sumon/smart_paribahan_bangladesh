@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Backend\StandManagerController;
-use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\AjaxController;
@@ -34,6 +34,7 @@ use App\Http\Controllers\Backend\FieldWorkerController;
 use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\VehicleTypeController;
+use App\Http\Controllers\Backend\StandManagerController;
 use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\NoticeCategoryController;
@@ -44,6 +45,7 @@ use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
 use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
+use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\StandManager\Auth\StandManagerLoginController;
 use App\Http\Controllers\StandManager\Auth\StandManagerRegistrationController;
@@ -492,8 +494,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
-    Route::controller(StandManagerController::class)->prefix('manager')->name('manager.')->group(function (){
-        Route::get('index','index')->name('index');
+    Route::controller(StandManagerController::class)->prefix('manager')->name('manager.')->group(function () {
+        Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
     });
@@ -573,7 +575,7 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
 });
 
 
-Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'as' => 'stand_manager.'], function(){
+Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'as' => 'stand_manager.'], function () {
     Route::controller(StandManagerDashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
@@ -582,7 +584,7 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('/stand-wise-serials', 'standWiseSerials')->name('stand.serials');
         Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
     });
-     Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
+    Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
         Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
         Route::get('stand-manager-create', 'create')->name('stand.manager.create');
     });
@@ -596,5 +598,14 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
     //     Route::get('delete/{id}', 'delete')->name('delete');
     //     Route::get('detalis/{id}', 'detalis')->name('detalis');
     // });
+
+    Route::get('qr-form', [QRCodeController::class, 'showForm'])->name('qr.form');
+    Route::post('generate-qr', [QRCodeController::class, 'generateFromForm'])->name('qr.generate');
 });
 
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name(name: 'redirect.google');
+Route::get('auth/google-callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('qr-code', [QRCodeController::class, 'index']);
+Route::get('/secured-url/{token?}', [QRCodeController::class, 'securedUrl'])->name('secured.url');
