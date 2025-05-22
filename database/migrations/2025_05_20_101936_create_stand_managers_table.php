@@ -15,8 +15,12 @@ return new class extends Migration {
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('email')->unique();
+            $table->string('phone')->unique();
+            $table->string('image')->nullable();
             $table->string('password');
             $table->boolean('status');
+            $table->unsignedBigInteger('blood_group_id')->nullable();
+            $table->foreign('blood_group_id')->references('id')->on('blood_groups')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('district_id')->nullable();

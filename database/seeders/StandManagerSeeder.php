@@ -18,6 +18,7 @@ class StandManagerSeeder extends Seeder
             'title'=> 'Test Manager',
             'slug'=> 'test-manager',
             'email'=> 'manager@example.com',
+            'phone' => '01772941135',
             'password' => Hash::make('manager@example.com'),
             'status' => 1
         ]);
