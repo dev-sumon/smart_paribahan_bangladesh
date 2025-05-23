@@ -214,7 +214,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <form class="d-flex justify-content-center justify-content-md-start" role="search"
+                    <form class="d-flex justify-content-center justify-content-md-start align-items-center" role="search"
                         action="{{ route('f.home.driverProfileSearch') }}" method="GET">
                         <input class="form-control me-2 search" type="search" name="query"
                             placeholder="{{ __('Vehicle or driver number') }}" aria-label="Search" required>
