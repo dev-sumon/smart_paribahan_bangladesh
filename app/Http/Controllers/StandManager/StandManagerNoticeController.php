@@ -88,4 +88,28 @@ class StandManagerNoticeController extends Controller
 
         return redirect()->route('stand_manager.notice.stand.manager.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $notice = Notice::findOrFail($id);
+        if($notice->status == 1){
+            $notice->status = 0;
+        }else{
+            $notice->status = 1;
+        }
+        $notice->save();
+        return redirect()->route('stand_manager.notice.stand.manager.index');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $notice = Notice::findOrFail($id);
+        $notice->delete();
+
+        return redirect()->route('stand_manager.notice.stand.manager.index');
+    }
+    public function detalis($id): view
+    {
+        $data['notice'] = Notice::with('noticeCategory')->findOrFail($id);
+        return view('backend.notice.show', $data);
+    }
+
 }
