@@ -31,7 +31,7 @@ class NoticeController extends Controller
         $data['unions'] = Union::latest()->get();
         $data['stands'] = Stand::latest()->get();
         $data['categories'] = NoticeCategory::latest()->get();
-        return view('stand_manager.notice.create', $data);
+        return view('backend.notice.create', $data);
     }
     public function store(NoticeRequest $request): RedirectResponse
     {
@@ -122,12 +122,5 @@ class NoticeController extends Controller
     {
         $data['notice'] = Notice::with('noticeCategory')->findOrFail($id);
         return view('backend.notice.show', $data);
-    }
-
-
-    public function standManagerIndex(): View
-    {
-         $data['notices'] = Notice::latest()->get();
-        return view('stand_manager.notice.index', $data);
     }
 }
