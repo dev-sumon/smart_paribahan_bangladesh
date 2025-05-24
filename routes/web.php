@@ -43,6 +43,7 @@ use App\Http\Controllers\Owner\Auth\OwnerSignupController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
+use App\Http\Controllers\StandManager\StandManagerNoticeController;
 use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
 use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\StandManager\StandManagerDashboardController;
@@ -55,6 +56,7 @@ use App\Http\Controllers\Backend\Auth\ForgotPassword\AdminForgotPasswordControll
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
 use App\Http\Controllers\Driver\Auth\ForgotPassword\driverForgotPasswordController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
+
 
 // use Illuminate\Support\Facades\Auth;
 
@@ -584,9 +586,12 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('/stand-wise-serials', 'standWiseSerials')->name('stand.serials');
         Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
     });
-    Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
+    Route::controller(StandManagerNoticeController::class)->prefix('notice')->name('notice.')->group(function () {
         Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
         Route::get('stand-manager-create', 'create')->name('stand.manager.create');
+        Route::post('stand-manager-store', 'store')->name('stand.manager.store');
+        Route::get('stand-manager-update/{id}', 'update')->name('stand.manager.updae');
+        Route::put('stand-manager-update/{id}', 'update_store')->name('stand.manager.updae');
     });
     // Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
     //     Route::get('index', 'index')->name('index');
