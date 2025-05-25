@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FieldWorker\FieldWorkerBlogController;
 use App\Http\Controllers\FieldWorker\FieldWorkerStandController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -584,6 +585,17 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('status/{slug}', 'status')->name('status.update');
         Route::get('delete/{slug}', 'delete')->name('delete');
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
+    });
+
+    Route::controller(FieldWorkerBlogController::class)->prefix('blog')->name('blog.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {

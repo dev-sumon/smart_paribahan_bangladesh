@@ -18,6 +18,11 @@
                     <i class="nav-icon fas fa-location"></i>{{ __('Stand') }}</a>
             </li>
             <li class="nav-item menu-open">
+                <a href="{{ route('field_worker.blog.index') }}"
+                    class="nav-link {{ $page_slug == 'blog' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-location"></i>{{ __('Blog') }}</a>
+            </li>
+            <li class="nav-item menu-open">
                 <a href="{{ route('stand_manager.serial.stand.serials') }}"
                     class="nav-link {{ $page_slug == 'serial' ? 'active' : '' }}">
                     <i class="bi bi-calendar-check"></i>{{ __('সিরিয়াল ম্যানেজমেন্ট') }}
