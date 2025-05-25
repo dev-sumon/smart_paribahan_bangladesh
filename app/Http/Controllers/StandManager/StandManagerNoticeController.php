@@ -109,7 +109,7 @@ class StandManagerNoticeController extends Controller
     public function detalis($id): view
     {
         $data['notice'] = Notice::with('noticeCategory')->findOrFail($id);
-        return view('backend.notice.show', $data);
+        return view('stand_manager.notice.show', $data);
     }
 
 }

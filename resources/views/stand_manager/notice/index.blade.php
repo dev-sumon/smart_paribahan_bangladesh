@@ -74,9 +74,8 @@
                                     <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-level="Basic example">
-                                            <a href="{{ route('notice.detalis', $notice->id) }}" data-id=""
-                                                class="btn btn-secondary view" title="view deatils"><i
-                                                    class="fa-solid fa-eye"></i></a>
+                                            <a href="{{ route('stand_manager.notice.detalis', $notice->id) }}" data-id=""
+                                                class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                             <a href="{{ route('stand_manager.notice.stand.manager.updae', $notice->id) }}" data-id=""
                                                 class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                             <a href="{{ route('stand_manager.notice.stand.manager.delete', $notice->id) }}" data-id=""
