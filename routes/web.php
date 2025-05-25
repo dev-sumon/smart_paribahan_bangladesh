@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FieldWorker\FieldWorkerStandController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -573,6 +574,24 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::post('driver-store', 'driverStore')->name('driver.store');
         Route::get('blog-create', 'blogCreate')->name('blog.create');
         Route::post('blog-store', 'blogStore')->name('blog.store');
+    });
+    Route::controller(FieldWorkerStandController::class)->prefix('stand')->name('stand.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{slug}', 'update')->name('update');
+        Route::put('update/{slug}', 'update_store')->name('update');
+        Route::get('status/{slug}', 'status')->name('status.update');
+        Route::get('delete/{slug}', 'delete')->name('delete');
+        Route::get('detalis/{slug}', 'detalis')->name('detalis');
+    });
+
+    Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
+        Route::get('division/{id}', 'division')->name('division');
+        Route::get('district/{id}', 'district')->name('district');
+        Route::get('thana/{id}', 'thana')->name('thana');
+        Route::get('union/{id}', 'union')->name('union');
+        Route::get('stand/{id}', 'stand')->name('stand');
     });
 });
 

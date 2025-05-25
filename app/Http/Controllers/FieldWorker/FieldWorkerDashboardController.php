@@ -28,7 +28,7 @@ class FieldWorkerDashboardController extends Controller
 
     public function dashboard(){
         $data['worker'] = Auth::guard('field_worker')->user();
-        return view('field_worker.dashboard', $data);
+        return view('field_worker.dashboard.dashboard', $data);
     }
 
     public function field_worker_update($id){
