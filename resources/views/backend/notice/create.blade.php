@@ -226,7 +226,7 @@
                         standSelect.append('<option value="">Select Stand</option>');
 
                         $.each(stands, function(index, stand) {
-                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                            standSelect.append('<option value="' + stand.id + '">' + stand.title + '</option>');
                         });
                     },
                     error: function(error) {

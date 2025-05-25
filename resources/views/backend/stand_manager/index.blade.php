@@ -21,6 +21,7 @@
                                         <tr>
                                             <th>{{ __('Sl') }}</th>
                                             <th>{{ __('Name') }}</th>
+                                            <th>{{ __('Email') }}</th>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __('Created At') }}</th>
@@ -33,6 +34,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $manager->title }}</td>
+                                                <td>{{ $manager->email }}</td>
                                                 <td><img src="{{ asset('storage/' . $manager->image) }}" alt="{{ $manager->title }}" width="100"></td>
                                                 <td><span class="{{ $manager->statusBg() }}">{{ $manager->statusTitle() }}</span></td>
                                                 <td>{{ $manager->created_at ? $manager->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
