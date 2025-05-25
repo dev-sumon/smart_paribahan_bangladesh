@@ -90,8 +90,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="d-flex justify-content-between align-items-center mt-3">
-                    <div class="text-muted small">মোট ৫টি নোটিশের মধ্যে ১-৫ দেখানো হচ্ছে</div>
+                <div class="d-flex justify-content-end align-items-center text-end mt-3">
+                    {{-- <div class="text-muted small">মোট ৫টি নোটিশের মধ্যে ১-৫ দেখানো হচ্ছে</div> --}}
                     <nav>
                         <ul class="pagination pagination-sm mb-0">
                             <li class="page-item disabled"><a class="page-link" href="#">আগের</a>
