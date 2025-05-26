@@ -1,7 +1,7 @@
 <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebar">
     <div class="position-sticky pt-3">
         <div class="d-flex align-items-center justify-content-between px-3 mb-4">
-            <h4 class="m-0">{{ __('মাঠকর্মী ম্যানেজার') }}</h4>
+            <h4 class="m-0">{{ __('মাঠকর্মী') }}</h4>
             <button type="button" class="btn-close d-md-none" data-bs-toggle="collapse" data-bs-target="#sidebar"
                 aria-label="Close"></button>
         </div>
@@ -22,12 +22,12 @@
                     class="nav-link {{ $page_slug == 'blog' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-location"></i>{{ __('Blog') }}</a>
             </li>
-            <li class="nav-item menu-open">
+            {{-- <li class="nav-item menu-open">
                 <a href="{{ route('stand_manager.serial.stand.serials') }}"
                     class="nav-link {{ $page_slug == 'serial' ? 'active' : '' }}">
                     <i class="bi bi-calendar-check"></i>{{ __('সিরিয়াল ম্যানেজমেন্ট') }}
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item menu-open">
                 <a href="#advertisements-section" class="nav-link {{ $page_slug == 'advertisement' ? 'active' : '' }}">
                     <i class="bi bi-badge-ad"></i> বিজ্ঞাপন

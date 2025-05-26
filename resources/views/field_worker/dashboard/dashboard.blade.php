@@ -1,5 +1,5 @@
 @extends('field_worker.layouts.master', ['page_slug'=>'dashboard'])
-@section('title', 'Stand Manager Dashboard')
+@section('title', 'Field Worker Dashboard')
 @section('content')
     <div class="row">
         <div class="col-md-6 col-lg-3 mb-3">
