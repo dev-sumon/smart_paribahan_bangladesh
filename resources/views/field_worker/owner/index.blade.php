@@ -48,10 +48,10 @@
                                                         <a href="{{ route('field_worker.owner.update', $owner->slug) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('owner.delete', $owner->slug) }}" data-id=""
+                                                        <a href="{{ route('field_worker.owner.delete', $owner->slug) }}" data-id=""
                                                             class="btn btn-danger delete"><i
                                                                 class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('owner.status.update', $owner->slug) }}"
+                                                        <a href="{{ route('field_worker.owner.status.update', $owner->slug) }}"
                                                             class="btn {{ $owner->statusIcon() }}"><i
                                                                 class="fa-solid fa-power-off"></i></a>
                                                     </div>

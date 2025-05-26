@@ -150,4 +150,23 @@ class FieldWorkerOwnerController extends Controller
 
         return redirect()->route('field_worker.owner.index');
     }
+    public function status($slug): RedirectResponse
+    {
+        $owner = Owner::where('slug', $slug)->firstOrFail();
+        if ($owner->status == 1) {
+            $owner->status = 0;
+        } else {
+            $owner->status = 1;
+        }
+        $owner->save();
+        return redirect()->route('field_worker.owner.index');
+    }
+    public function delete($slug): RedirectResponse
+    {
+        $owner = Owner::where('slug', $slug)->firstOrFail();
+        $owner->delete();
+
+        return redirect()->route('field_worker.owner.index');
+    }
+
 }
