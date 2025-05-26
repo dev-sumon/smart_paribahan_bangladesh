@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left card-title">
-                            <h4>{{ __('Blog Dea') }}</h4>
+                            <h4>{{ __('Blog Update') }}</h4>
                         </span>
                         <span class="float-right">
                             <a href="{{ route('blog.index') }}" class="btn btn-info">{{ __('Back') }}</a>

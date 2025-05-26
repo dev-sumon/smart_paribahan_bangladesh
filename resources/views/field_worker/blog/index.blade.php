@@ -46,7 +46,7 @@
                                                         <a href="{{ route('blog.detalis', $blog->slug) }}" data-id=""
                                                             class="btn btn-secondary view" title="view deatils"><i
                                                                 class="fa-solid fa-eye"></i></a>
-                                                        <a href="{{ route('blog.update', $blog->slug) }}" data-id=""
+                                                        <a href="{{ route('field_worker.blog.update', $blog->slug) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="{{ route('blog.delete', $blog->slug) }}" data-id=""
