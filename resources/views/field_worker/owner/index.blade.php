@@ -42,7 +42,7 @@
                                                 <td>{{ $owner->created_user ? $owner->created_user->name : 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
-                                                        <a href="{{ route('owner.detalis', $owner->slug) }}" data-id=""
+                                                        <a href="{{ route('field_worker.owner.detalis', $owner->slug) }}" data-id=""
                                                             class="btn btn-secondary view" title="view deatils"><i
                                                                 class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('field_worker.owner.update', $owner->slug) }}" data-id=""

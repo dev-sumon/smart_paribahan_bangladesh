@@ -168,5 +168,10 @@ class FieldWorkerOwnerController extends Controller
 
         return redirect()->route('field_worker.owner.index');
     }
+    public function detalis($slug): View
+    {
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicle', 'stand')->where('slug', $slug)->firstOrFail();
+        return view('field_worker.owner.show', $data);
+    }
 
 }
