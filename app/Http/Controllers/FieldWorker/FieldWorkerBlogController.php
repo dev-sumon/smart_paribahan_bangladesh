@@ -8,16 +8,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 
 class FieldWorkerBlogController extends Controller
 {
-        public function index(): View
+    public function index(): View
     {
         $data['blogs'] = Blog::latest()->get();
         return view('field_worker.blog.index', $data);
     }
-        public function create(): View
+    public function create(): View
     {
         return view('field_worker.blog.create');
     }
@@ -39,5 +40,57 @@ class FieldWorkerBlogController extends Controller
 
         $save->save();
         return redirect()->route('field_worker.blog.index');
+    }
+    public function update($slug): View
+    {
+        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+        return view('field_worker.blog.edit', $data);
+    }
+    public function update_store(BlogRequest $request, $slug): RedirectResponse
+    {
+        $update = Blog::where('slug', $slug)->firstOrFail();
+
+        $update->title = $request->title;
+        $update->description = $request->description;
+        $update->status = $request->status ?? 0;
+
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::disk('public')->exists($update->image)) {
+                Storage::disk('public')->delete($update->image);
+            }
+
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('blog', $filename, 'public');
+            $update->image = $path;
+        }
+
+
+
+        $update->save();
+        return redirect()->route('field_worker.blog.index');
+    }
+    public function status($slug): RedirectResponse
+    {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        if ($blog->status == 1) {
+            $blog->status = 0;
+        } else {
+            $blog->status = 1;
+        }
+        $blog->save();
+        return redirect()->route('field_worker.blog.index');
+    }
+    public function delete($slug): RedirectResponse
+    {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $blog->delete();
+
+        return redirect()->route('field_worker.blog.index');
+    }
+    public function detalis($slug): View
+    {
+        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+        return view('field_worker.blog.show', $data);
     }
 }
