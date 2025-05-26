@@ -52,7 +52,7 @@
                                                         <a href="{{ route('blog.delete', $blog->slug) }}" data-id=""
                                                             class="btn btn-danger delete"><i
                                                                 class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('blog.status.update', $blog->slug) }}"
+                                                        <a href="{{ route('field_worker.blog.status.update', $blog->slug) }}"
                                                             data-id="" class="btn {{ $blog->statusIcon() }}"><i
                                                                 class="fa-solid fa-power-off"></i></a>
                                                     </div>

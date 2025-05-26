@@ -70,4 +70,15 @@ class FieldWorkerBlogController extends Controller
         $update->save();
         return redirect()->route('field_worker.blog.index');
     }
+    public function status($slug): RedirectResponse
+    {
+         $blog= Blog::where('slug',$slug)->firstOrFail();
+        if($blog->status == 1){
+            $blog->status = 0;
+        }else{
+            $blog->status = 1;
+        }
+        $blog->save();
+        return redirect()->route('field_worker.blog.index');
+    }
 }
