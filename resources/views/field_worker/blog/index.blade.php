@@ -1,16 +1,16 @@
-@extends('field_worker.layouts.master', ['page_slug' => 'Blog'])
+@extends('field_worker.layouts.master', ['page_slug' => 'blog'])
 @section('title', 'Blog')
 @section('content')
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <span class="float-left">
                             <h4>{{ __('Blog List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('field_worker.blog.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -29,24 +29,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($blogs as $key => $blog) --}}
+                                        @foreach ($blogs as $key => $blog)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td><img src="" alt="" width="100"></td>
-                                                <td><spanclass=""></span></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $blog->title }}</td>
+                                                <td><img src="{{ asset('storage/' . $blog->image) }}"
+                                                        alt="{{ $blog->title }}" width="100"></td>
+                                                <td><span
+                                                        class="{{ $blog->statusBg() }}">{{ $blog->statusTitle() }}</span>
+                                                </td>
+                                                <td>{{ $blog->created_at ? $blog->created_at->format('d-m-Y H:i:s') : 'N/A' }}
+                                                </td>
+                                                <td>{{ $blog->created_admin ? $blog->created_admin->name : 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
-                                                        <a href="" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                        <a href="" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="" data-id="" class="btn "><i class="fa-solid fa-power-off"></i></a>
+                                                        <a href="{{ route('blog.detalis', $blog->slug) }}" data-id=""
+                                                            class="btn btn-secondary view" title="view deatils"><i
+                                                                class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('blog.update', $blog->slug) }}" data-id=""
+                                                            class="btn btn-info"><i
+                                                                class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="{{ route('blog.delete', $blog->slug) }}" data-id=""
+                                                            class="btn btn-danger delete"><i
+                                                                class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="{{ route('blog.status.update', $blog->slug) }}"
+                                                            data-id="" class="btn {{ $blog->statusIcon() }}"><i
+                                                                class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
