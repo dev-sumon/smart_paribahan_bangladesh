@@ -18,23 +18,12 @@
                     <i class="nav-icon fas fa-location"></i>{{ __('Stand') }}</a>
             </li>
             <li class="nav-item menu-open">
-                <a href="{{ route('field_worker.blog.index') }}"
-                    class="nav-link {{ $page_slug == 'blog' ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-location"></i>{{ __('Blog') }}</a>
+                <a href="{{ route('field_worker.owner.index') }}"
+                    class="nav-link {{ $page_slug == 'owner' ? 'active' : '' }}">
+                    <i class="fa-regular fa-circle-user"></i>{{ __('Owner') }}</a>
             </li>
-            {{-- <li class="nav-item menu-open">
-                <a href="{{ route('stand_manager.serial.stand.serials') }}"
-                    class="nav-link {{ $page_slug == 'serial' ? 'active' : '' }}">
-                    <i class="bi bi-calendar-check"></i>{{ __('সিরিয়াল ম্যানেজমেন্ট') }}
-                </a>
-            </li> --}}
-            {{-- <li class="nav-item menu-open">
-                <a href="#advertisements-section" class="nav-link {{ $page_slug == 'advertisement' ? 'active' : '' }}">
-                    <i class="bi bi-badge-ad"></i> বিজ্ঞাপন
-                </a>
-            </li> --}}
             <li class="nav-item menu-open">
-                <a href="{{ route('stand_manager.notice.stand.manager.index') }}"
+                <a href=""
                     class="nav-link {{ $page_slug == 'notice' ? 'active' : '' }}">
                     <i class="bi bi-bell"></i> নোটিশ
                 </a>
@@ -60,14 +49,11 @@
 
                 </div>
                 <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-0">{{ Auth::guard('field_worker')->user()->title }}</h6>
+                    <h6 class="mb-0">{{ Auth::guard('field_worker')->user()->name }}</h6>
                 </div>
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-gear"></i> সেটিংস
-                </button>
-                <form action="{{ route('stand_manager.logout') }}" method="POST">
+                <form action="{{ route('field_worker.logout') }}" method="POST">
                     @csrf
                     <button class="btn btn-outline-light btn-sm">
                         <i class="bi bi-box-arrow-right"></i> লগআউট

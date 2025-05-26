@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class FieldWorkerBlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('field_worker');
+    }
     public function index(): View
     {
         $data['blogs'] = Blog::latest()->get();
