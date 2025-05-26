@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Storage;
 
 class FieldWorkerStandController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('field_worker');
+    }
     public function index(): View
     {
         $data['stands'] = Stand::latest()->get();
@@ -102,14 +106,15 @@ class FieldWorkerStandController extends Controller
             $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("stands/", $filename, 'public');
             $update->image = $path;
-        };
+        }
+        ;
 
         $update->save();
         return redirect()->route('field_worker.stand.index');
     }
-     public function status($slug): RedirectResponse
+    public function status($slug): RedirectResponse
     {
-        $stand = Stand::where('slug',$slug)->firstOrFail();
+        $stand = Stand::where('slug', $slug)->firstOrFail();
         if ($stand->status == 1) {
             $stand->status = 0;
         } else {
@@ -120,7 +125,7 @@ class FieldWorkerStandController extends Controller
     }
     public function delete($slug): RedirectResponse
     {
-        $stand = Stand::where('slug',$slug)->firstOrFail();
+        $stand = Stand::where('slug', $slug)->firstOrFail();
         $stand->delete();
 
         return redirect()->route('field_worker.stand.index');

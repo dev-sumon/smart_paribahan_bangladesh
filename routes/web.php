@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\FieldWorker\FieldWorkerBlogController;
-use App\Http\Controllers\FieldWorker\FieldWorkerStandController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -44,6 +42,9 @@ use App\Http\Controllers\Forntend\VehicleSerialController;
 use App\Http\Controllers\Owner\Auth\OwnerSignupController;
 use App\Http\Controllers\Backend\Auth\AdminLoginController;
 use App\Http\Controllers\Driver\Auth\DriverLoginController;
+use App\Http\Controllers\FieldWorker\FieldWorkerBlogController;
+use App\Http\Controllers\FieldWorker\FieldWorkerOwnerController;
+use App\Http\Controllers\FieldWorker\FieldWorkerStandController;
 use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use App\Http\Controllers\StandManager\StandManagerNoticeController;
 use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
@@ -576,6 +577,8 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('blog-create', 'blogCreate')->name('blog.create');
         Route::post('blog-store', 'blogStore')->name('blog.store');
     });
+
+    // Stand Controller
     Route::controller(FieldWorkerStandController::class)->prefix('stand')->name('stand.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
@@ -587,6 +590,7 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
 
+    // Blog Controller
     Route::controller(FieldWorkerBlogController::class)->prefix('blog')->name('blog.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
@@ -598,6 +602,20 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
 
+    // Owner Controller
+    Route::controller(FieldWorkerOwnerController::class)->prefix('owner')->name('owner.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{slug}', 'update')->name('update');
+        Route::put('update/{slug}', 'update_store')->name('update');
+        Route::get('status/{slug}', 'status')->name('status.update');
+        Route::get('delete/{slug}', 'delete')->name('delete');
+        Route::get('detalis/{slug}', 'detalis')->name('detalis');
+    });
+
+
+    // Ajax Controller
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
         Route::get('division/{id}', 'division')->name('division');
         Route::get('district/{id}', 'district')->name('district');
