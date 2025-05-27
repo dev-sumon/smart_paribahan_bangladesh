@@ -49,7 +49,7 @@
                                                         <a href="{{ route('union.detalis', $union->id) }}" data-id=""
                                                             class="btn btn-secondary view" title="view deatils"><i
                                                                 class="fa-solid fa-eye"></i></a>
-                                                        <a href="{{ route('union.update', $union->id) }}" data-id=""
+                                                        <a href="{{ route('field_worker.union.update', $union->id) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="{{ route('union.delete', $union->id) }}" data-id=""
