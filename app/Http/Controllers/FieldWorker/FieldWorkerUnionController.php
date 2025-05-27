@@ -19,12 +19,12 @@ class FieldWorkerUnionController extends Controller
         $data['unions'] = Union::with('division', 'district', 'thana')->latest()->get();
         return view('field_worker.union.index', $data);
     }
-        public function create(): View
+    public function create(): View
     {
         $data['divisions'] = Division::latest()->get();
         return view('field_worker.union.create', $data);
     }
-        public function store(UnionRequest $request): RedirectResponse
+    public function store(UnionRequest $request): RedirectResponse
     {
         $save = new Union();
 
@@ -38,7 +38,7 @@ class FieldWorkerUnionController extends Controller
         return redirect()->route('field_worker.union.index');
 
     }
-        public function update($id): View
+    public function update($id): View
     {
         $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
         $data['divisions'] = Division::all();
@@ -58,6 +58,25 @@ class FieldWorkerUnionController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
+        return redirect()->route('field_worker.union.index');
+    }
+    public function status($id): RedirectResponse
+    {
+        $union = Union::findOrFail($id);
+        if ($union->status == 1) {
+            $union->status = 0;
+        } else {
+            $union->status = 1;
+        }
+
+        $union->save();
+        return redirect()->route('field_worker.union.index');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $union = Union::findOrFail($id);
+        $union->delete();
+
         return redirect()->route('field_worker.union.index');
     }
 }
