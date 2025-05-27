@@ -46,6 +46,7 @@ use App\Http\Controllers\FieldWorker\FieldWorkerBlogController;
 use App\Http\Controllers\FieldWorker\FieldWorkerOwnerController;
 use App\Http\Controllers\FieldWorker\FieldWorkerStandController;
 use App\Http\Controllers\FieldWorker\FieldWorkerUnionController;
+use App\Http\Controllers\FieldWorker\FieldWorkerNoticeController;
 use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use App\Http\Controllers\StandManager\StandManagerNoticeController;
 use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
@@ -622,6 +623,18 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::post('store', 'store')->name('store');
         Route::get('update{id}', 'update')->name('update');
         Route::put('update{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+
+    // Notice Controller
+    Route::controller(FieldWorkerNoticeController::class)->prefix('notice')->name('notice.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');

@@ -14,6 +14,10 @@ use Illuminate\Http\RedirectResponse;
 
 class FieldWorkerUnionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('field_worker');
+    }
     public function index(): View
     {
         $data['unions'] = Union::with('division', 'district', 'thana')->latest()->get();
@@ -79,7 +83,7 @@ class FieldWorkerUnionController extends Controller
 
         return redirect()->route('field_worker.union.index');
     }
-        public function detalis($id): View
+    public function detalis($id): View
     {
         $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
 

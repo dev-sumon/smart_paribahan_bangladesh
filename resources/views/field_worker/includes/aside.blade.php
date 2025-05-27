@@ -28,7 +28,7 @@
                     <i class="fa-regular fa-circle-user"></i>{{ __('Union') }}</a>
             </li>
             <li class="nav-item menu-open">
-                <a href=""
+                <a href="{{ route('field_worker.notice.index') }}"
                     class="nav-link {{ $page_slug == 'notice' ? 'active' : '' }}">
                     <i class="bi bi-bell"></i> নোটিশ
                 </a>
