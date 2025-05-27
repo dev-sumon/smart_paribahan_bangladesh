@@ -23,6 +23,11 @@
                     <i class="fa-regular fa-circle-user"></i>{{ __('Owner') }}</a>
             </li>
             <li class="nav-item menu-open">
+                <a href="{{ route('field_worker.union.index') }}"
+                    class="nav-link {{ $page_slug == 'union' ? 'active' : '' }}">
+                    <i class="fa-regular fa-circle-user"></i>{{ __('Union') }}</a>
+            </li>
+            <li class="nav-item menu-open">
                 <a href=""
                     class="nav-link {{ $page_slug == 'notice' ? 'active' : '' }}">
                     <i class="bi bi-bell"></i> নোটিশ

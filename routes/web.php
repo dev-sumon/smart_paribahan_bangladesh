@@ -45,6 +45,7 @@ use App\Http\Controllers\Driver\Auth\DriverLoginController;
 use App\Http\Controllers\FieldWorker\FieldWorkerBlogController;
 use App\Http\Controllers\FieldWorker\FieldWorkerOwnerController;
 use App\Http\Controllers\FieldWorker\FieldWorkerStandController;
+use App\Http\Controllers\FieldWorker\FieldWorkerUnionController;
 use App\Http\Controllers\Driver\Auth\DriverRegistrationController;
 use App\Http\Controllers\StandManager\StandManagerNoticeController;
 use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
@@ -614,6 +615,17 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
 
+    // UnionController
+    Route::controller(FieldWorkerUnionController::class)->prefix('union')->name('union.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('ceate');
+        Route::post('store', 'store')->name('store');
+        Route::get('update{id}', 'update')->name('update');
+        Route::put('update{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
 
     // Ajax Controller
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
