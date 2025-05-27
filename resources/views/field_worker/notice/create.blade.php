@@ -1,4 +1,4 @@
-@extends('stand_manager.layouts.master', ['page_slug' => 'notice'])
+@extends('field_worker.layouts.master', ['page_slug' => 'notice'])
 @section('title', 'Notice Create')
 @section('content')
     <div class="container-fluid mt-2">
@@ -10,15 +10,15 @@
                             <h4>{{ __('Create New Notice') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('field_worker.notice.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10 m-auto">
-                                <form action="{{ route('stand_manager.notice.stand.manager.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('field_worker.notice.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
                                         <label for="division">{{ __('Division') }}<span class="text-danger">*</span></label>
                                         <select name="division_id" id="division" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Division') }}</option>
@@ -31,9 +31,9 @@
                                         @if ($errors->has('division_id'))
                                             <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
-                                    </div> --}}
+                                    </div>
 
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
                                         <label for="district">{{ __('District') }}<span
                                                 class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
@@ -47,9 +47,9 @@
                                         @if ($errors->has('district_id'))
                                             <div class="text-danger">{{ $errors->first('district_id') }}</div>
                                         @endif
-                                    </div> --}}
+                                    </div>
 
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
                                         <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
@@ -62,8 +62,8 @@
                                         @if ($errors->has('thana_id'))
                                             <div class="text-danger">{{ $errors->first('thana_id') }}</div>
                                         @endif
-                                    </div> --}}
-                                    {{-- <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="union">{{ __('Union') }}<span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
@@ -76,8 +76,8 @@
                                         @if ($errors->has('union_id'))
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
-                                    </div> --}}
-                                    {{-- <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="stand">{{ __('Stand') }}<span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
@@ -90,7 +90,7 @@
                                         @if ($errors->has('stand_id'))
                                             <div class="text-danger">{{ $errors->first('stand_id') }}</div>
                                         @endif
-                                    </div> --}}
+                                    </div>
                                     <div class="form-group">
                                         <label for="title">{{ __('Title') }} <span
                                                 class="text-danger">*</span></label>
