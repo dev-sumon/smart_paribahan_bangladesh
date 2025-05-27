@@ -79,4 +79,10 @@ class FieldWorkerUnionController extends Controller
 
         return redirect()->route('field_worker.union.index');
     }
+        public function detalis($id): View
+    {
+        $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
+
+        return view('field_worker.union.show', $data);
+    }
 }

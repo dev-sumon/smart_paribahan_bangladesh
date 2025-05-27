@@ -46,7 +46,7 @@
                                                 <td>{{ $union->created_user ? $union->created_user->name : 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
-                                                        <a href="{{ route('union.detalis', $union->id) }}" data-id=""
+                                                        <a href="{{ route('field_worker.union.detalis', $union->id) }}" data-id=""
                                                             class="btn btn-secondary view" title="view deatils"><i
                                                                 class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('field_worker.union.update', $union->id) }}" data-id=""
