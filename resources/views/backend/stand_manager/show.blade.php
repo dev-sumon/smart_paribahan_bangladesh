@@ -1,4 +1,4 @@
-@extends('backend.layouts.master', ['page_slug' => 'owner'])
+@extends('backend.layouts.master', ['page_slug' => 'manager'])
 
 
 @section('title', 'Admin - management')
@@ -9,10 +9,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h1 class="float-start">{{ __('Owner Detalis') }}</h1>
+                            <h1 class="float-start">{{ __('Stand Manager Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('owner.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('manager.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -23,69 +23,69 @@
                                         <tr>
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $owner->title }}</td>
+                                            <td>{{ $manager->title }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Email') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->email }}</td>
+                                            <td> {{ $manager->email }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Mobile  No.') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->phone }}</td>
+                                            <td> {{ $manager->phone }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $owner->image) }}"
-                                                    alt="{{ $owner->title }}" width="100"></td>
+                                            <td><img src="{{ asset('storage/' . $manager->image) }}"
+                                                    alt="{{ $manager->title }}" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Blood Group') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->blood_group->blood_group ?? 'N/A' }}</td>
+                                            <td> {{ $manager->blood_group->blood_group ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Division') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->division->division ?? 'N/A' }}</td>
+                                            <td> {{ $manager->division->division ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('District') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->district->district ?? 'N/A' }}</td>
+                                            <td> {{ $manager->district->district ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Thana') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->thana->thana ?? 'N/A' }}</td>
+                                            <td> {{ $manager->thana->thana ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Union') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->union->union ?? 'N/A' }}</td>
+                                            <td> {{ $manager->union->union ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Stand') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->stand->title ?? 'N/A' }}</td>
+                                            <td> {{ $manager->stand->title ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><span class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span>
+                                            <td><span class="{{ $manager->statusBg() }}">{{ $manager->statusTitle() }}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->created_at }}</td>
+                                            <td> {{ $manager->created_at }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $manager->created_by ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
