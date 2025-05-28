@@ -147,4 +147,9 @@ class StandManagerController extends Controller
 
         return redirect()->route('manager.index');
     }
+    public function detalis($id): View
+    {
+        $data['manager'] = StandManager::with('division', 'district', 'thana', 'union', 'stand')->find($id);
+        return view('backend.stand_manager.show', $data);
+    }
 }
