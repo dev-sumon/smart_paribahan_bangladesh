@@ -20,9 +20,19 @@ class StandManager extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'title',
+        'slug',
         'email',
+        'phone',
         'password',
+        'image',
+        'status',
+        'blood_group_id',
+        'division_id',
+        'district_id',
+        'thana_id',
+        'union_id',
+        'stand_id',
     ];
 
     /**
@@ -68,5 +78,30 @@ class StandManager extends Authenticatable
         }else{
             return 'btn-success';
         }
+    }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
+    public function thana()
+    {
+        return $this->belongsTo(Thana::class, 'thana_id');
+    }
+    public function union()
+    {
+        return $this->belongsTo(Union::class, 'union_id');
+    }
+    public function stand()
+    {
+        return $this->belongsTo(Stand::class, 'stand_id');
+    }
+        public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 }

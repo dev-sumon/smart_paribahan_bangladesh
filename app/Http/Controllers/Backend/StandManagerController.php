@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
+use App\Models\Vehicle;
+use App\Models\District;
 use App\Models\Division;
 use Illuminate\View\View;
 use App\Models\BloodGroup;
@@ -14,6 +19,10 @@ use App\Http\Requests\StandManagerRequest;
 
 class StandManagerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['managers'] = StandManager::latest()->get();
@@ -62,4 +71,66 @@ class StandManagerController extends Controller
 
         return redirect()->route('manager.index');
     }
+    public function update($id): View
+    {
+
+        $data['manager'] = StandManager::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::where('division_id', $data['manager']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['manager']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['manager']->thana_id)->get();
+        $data['stands'] = Stand::where('id', $data['manager']->stand_id)->get();
+        $data['vehicles'] = Vehicle::where('id', $data['manager']->vehicle_id)->get();
+        $data['bloods'] = BloodGroup::latest()->get();
+        $data['bloods'] = BloodGroup::latest()->get();
+        return view('backend.stand_manager.edit', $data);
+    }
+    public function update_store(StandManagerRequest $request, $id): RedirectResponse
+    {
+        $manager = StandManager::findOrFail($id);
+
+        $manager->title = $request->title;
+
+        // ইউনিক স্লাগ তৈরি করা হচ্ছে যদি টাইটেল পরিবর্তন হয়
+        if ($manager->title !== $request->title) {
+            $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $count = 1;
+
+            while (StandManager::where('slug', $slug)->where('id', '!=', $id)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $manager->slug = $slug;
+        }
+
+        $manager->email = $request->email;
+        $manager->phone = $request->phone;
+        $manager->blood_group_id = $request->blood_group_id;
+        $manager->division_id = $request->division_id;
+        $manager->district_id = $request->district_id;
+        $manager->thana_id = $request->thana_id;
+        $manager->union_id = $request->union_id;
+        $manager->stand_id = $request->stand_id;
+        $manager->status = $request->status ?? 0;
+
+        // পাসওয়ার্ড আপডেট করতে চাইলে
+        if ($request->filled('password')) {
+            $manager->password = $request->password;
+        }
+
+        // ছবি আপডেট
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("stand_mahaers/", $filename, 'public');
+            $manager->image = $path;
+        }
+
+        $manager->save();
+
+        return redirect()->route('manager.index');
+    }
+
 }
