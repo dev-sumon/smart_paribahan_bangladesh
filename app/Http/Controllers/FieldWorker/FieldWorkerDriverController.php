@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FieldWorker;
 
+use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
@@ -154,5 +155,29 @@ class FieldWorkerDriverController extends Controller
 
         return redirect()->route('field_worker.driver.index');
     }
+        public function status($slug): RedirectResponse
+    {
+        $driver = Driver::where('slug',$slug)->firstOrFail();
+        if ($driver->status == 1) {
+            $driver->status = 0;
+        } else {
+            $driver->status = 1;
+        }
 
+        $driver->save();
+        return redirect()->route('field_worker.driver.index');
+    }
+    public function delete($slug): RedirectResponse
+    {
+        $driver = Driver::where('slug',$slug)->firstOrFail();
+        $driver->delete();
+
+        return redirect()->route('field_worker.driver.index');
+    }
+    public function detalis($slug): View
+    {
+        $data['driver'] = Driver::with('owner')->where('slug',$slug)->firstOrFail();;
+        $data['owners'] = Owner::latest()->get();
+        return view('field_worker.driver.show', $data);
+    }
 }
