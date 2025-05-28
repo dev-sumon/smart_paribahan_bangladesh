@@ -123,4 +123,9 @@ class FieldWorkerNoticeController extends Controller
 
         return redirect()->route('field_worker.notice.index');
     }
+    public function detalis($id): view
+    {
+        $data['notice'] = Notice::with('noticeCategory')->findOrFail($id);
+        return view('field_worker.notice.show', $data);
+    }
 }

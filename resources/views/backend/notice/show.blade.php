@@ -12,7 +12,7 @@
                             <h1 class="float-start">{{ __('Notice Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('notice.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('field_worker.notice.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
