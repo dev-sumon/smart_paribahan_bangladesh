@@ -58,24 +58,21 @@ class Driver extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
     public function owner(){
         return $this->belongsTo(Owner::class, 'owner_id');
     }
     public function blood_group(){
         return $this->belongsTo(BloodGroup::class, 'blood_group_id');
     }
-
     public function district()
     {
         return $this->belongsTo(District::class, 'district_id');
     }
-
     public function statusBg(){
         if($this->status == 1){
-            return 'badge badge-success';
+            return 'badge bg-success';
         }else{
-            return 'badge badge-danger';
+            return 'badge bg-danger';
         }
     }
     public function statusTitle(){
@@ -92,7 +89,6 @@ class Driver extends Authenticatable
             return 'btn-success';
         }
     }
-
     public function stand()
     {
         return $this->belongsTo(Stand::class);
