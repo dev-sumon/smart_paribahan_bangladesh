@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FieldWorker;
 
+use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
@@ -172,5 +173,11 @@ class FieldWorkerDriverController extends Controller
         $driver->delete();
 
         return redirect()->route('field_worker.driver.index');
+    }
+    public function detalis($slug): View
+    {
+        $data['driver'] = Driver::with('owner')->where('slug',$slug)->firstOrFail();;
+        $data['owners'] = Owner::latest()->get();
+        return view('field_worker.driver.show', $data);
     }
 }
