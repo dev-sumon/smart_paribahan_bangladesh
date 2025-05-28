@@ -23,6 +23,11 @@
                     <i class="fa-regular fa-circle-user"></i>{{ __('Owner') }}</a>
             </li>
             <li class="nav-item menu-open">
+                <a href="{{ route('field_worker.driver.index') }}"
+                    class="nav-link {{ $page_slug == 'driver' ? 'active' : '' }}">
+                    <i class="nav-icon fa-solid fa-dharmachakra"></i>{{ __('Driver') }}</a>
+            </li>
+            <li class="nav-item menu-open">
                 <a href="{{ route('field_worker.union.index') }}"
                     class="nav-link {{ $page_slug == 'union' ? 'active' : '' }}">
                     <i class="fa-regular fa-circle-user"></i>{{ __('Union') }}</a>
