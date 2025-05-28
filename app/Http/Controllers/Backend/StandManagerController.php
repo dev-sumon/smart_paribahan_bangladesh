@@ -91,7 +91,6 @@ class StandManagerController extends Controller
 
         $manager->title = $request->title;
 
-        // ইউনিক স্লাগ তৈরি করা হচ্ছে যদি টাইটেল পরিবর্তন হয়
         if ($manager->title !== $request->title) {
             $slug = Str::slug($request->title);
             $originalSlug = $slug;
@@ -115,12 +114,10 @@ class StandManagerController extends Controller
         $manager->stand_id = $request->stand_id;
         $manager->status = $request->status ?? 0;
 
-        // পাসওয়ার্ড আপডেট করতে চাইলে
         if ($request->filled('password')) {
             $manager->password = $request->password;
         }
 
-        // ছবি আপডেট
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
@@ -132,5 +129,22 @@ class StandManagerController extends Controller
 
         return redirect()->route('manager.index');
     }
+    public function status($id): RedirectResponse
+    {
+        $manager = StandManager::find($id);
+        if($manager->status == 1){
+            $manager->status = 0;
+        }else{
+            $manager->status = 1;
+        }
+        $manager->save();
+        return redirect()->route('manager.index');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $manager = StandManager::find($id);
+        $manager->delete();
 
+        return redirect()->route('manager.index');
+    }
 }
