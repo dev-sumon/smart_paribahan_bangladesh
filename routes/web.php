@@ -700,8 +700,13 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
     //     Route::get('detalis/{id}', 'detalis')->name('detalis');
     // });
 
-    Route::get('qr-form', [QRCodeController::class, 'showForm'])->name('qr.form');
-    Route::post('generate-qr', [QRCodeController::class, 'generateFromForm'])->name('qr.generate');
+    Route::controller(QRCodeController::class)->prefix('qr')->name('qr.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('qr-form',  'showForm')->name('form');
+        Route::post('generate-qr',  'generateFromForm')->name('generate');
+        Route::get('/qr-code/download/{token}', 'download')->name('download');
+
+    });
 });
 
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QrCodeGenerate extends Model
 {
@@ -10,4 +11,9 @@ class QrCodeGenerate extends Model
         'url',
         'token'
     ];
+
+     public function getQrImageAttribute()
+    {
+        return QrCode::size(100)->generate(route('secured.url', $this->token));
+    }
 }
