@@ -34,6 +34,12 @@
                     <i class="bi bi-calendar-event"></i> বার্ষিক নোটিশ
                 </a>
             </li>
+            <li class="nav-item menu-open">
+                <a href="{{ route('stand_manager.qr.index') }}"
+                    class="nav-link {{ $page_slug == 'qr-code' ? 'active' : '' }}">
+                    <i class="fa-solid fa-qrcode"></i> {{ __('QR Code Generate') }}
+                </a>
+            </li>
         </ul>
 
         <hr class="my-3">

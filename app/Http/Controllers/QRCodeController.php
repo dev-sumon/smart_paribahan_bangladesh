@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\QrCodeGenerate;
@@ -10,9 +11,14 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QRCodeController extends Controller
 {
+    public function index(): View
+    {
+        $data['qr_codes'] = QrCodeGenerate::latest()->get();
+        return view('stand_manager.qr_code.index', $data);
+    }
     public function showForm()
     {
-        return view('backend.qr_form.form');
+        return view('stand_manager.qr_code.create');
     }
 
     public function generateFromForm(Request $request)
@@ -30,7 +36,7 @@ class QRCodeController extends Controller
 
         $data['qrCode'] = QrCode::size(300)->generate($loginRedirectLink);
         $data['originalUrl'] = $qr->url;
-        return view('backend.qr_form.result', $data);
+        return redirect()->route('stand_manager.qr.index', $data);
     }
 
     public function securedUrl(Request $request, $token)
@@ -55,6 +61,25 @@ class QRCodeController extends Controller
         return view('backend.qr_form.bulk', compact('qrcodes'));
     }
 
+    // public function download($token)
+    // {
+    //     $url = route('secured.url', $token);
+    //     $image = QrCode::format('png')->size(300)->generate($url);
+
+    //     return response($image)
+    //         ->header('Content-Type', 'image/png')
+    //         ->header('Content-Disposition', 'attachment; filename="qr-code.png"');
+    // }
+    public function download($token)
+    {
+        $url = route('secured.url', $token);
+
+        $image = QrCode::format('png')->size(300)->generate($url);
+
+        return response($image)
+            ->header('Content-Type', 'image/png')
+            ->header('Content-Disposition', 'attachment; filename="qr-code-' . $token . '.png"');
+    }
     public function downloadQR($id)
     {
         $qrRecord = QrCodeGenerate::findOrFail($id);
