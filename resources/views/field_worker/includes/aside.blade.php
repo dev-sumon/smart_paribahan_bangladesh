@@ -28,6 +28,11 @@
                     <i class="nav-icon fa-solid fa-dharmachakra"></i>{{ __('Driver') }}</a>
             </li>
             <li class="nav-item menu-open">
+                <a href="{{ route('field_worker.commitee.index') }}"
+                    class="nav-link {{ $page_slug == 'stand-commitee' ? 'active' : '' }}">
+                    <i class="fa-solid fa-users"></i>{{ __('Stand Commitee') }}</a>
+            </li>
+            <li class="nav-item menu-open">
                 <a href="{{ route('field_worker.union.index') }}"
                     class="nav-link {{ $page_slug == 'union' ? 'active' : '' }}">
                     <i class="fa-regular fa-circle-user"></i>{{ __('Union') }}</a>

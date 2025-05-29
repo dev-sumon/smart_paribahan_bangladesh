@@ -119,4 +119,22 @@ class AjaxController extends Controller
             'message' => 'Owner not found for this vehicle'
         ]);
     }
+
+    public function getVehicleTypesByStand($id): JsonResponse
+    {
+        $stand = Stand::with([
+            'vehicles.vehicleType' // vehicles এর সাথে তার vehicleType রিলেশন
+        ])->findOrFail($id);
+
+        $vehicleTypes = $stand->vehicles
+            ->pluck('vehicleType')
+            ->unique('id') // ডুপ্লিকেট রিমুভ করার জন্য
+            ->values();     // reindex array
+
+        return response()->json([
+            'success' => true,
+            'data' => $vehicleTypes
+        ]);
+    }
+
 }
