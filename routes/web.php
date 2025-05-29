@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\SslcommerzController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\AjaxController;
 use App\Http\Controllers\Backend\BlogController;
@@ -55,6 +56,7 @@ use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\StandManager\Auth\StandManagerLoginController;
+use App\Http\Controllers\FieldWorker\FieldWorkerStandCommiteeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerRegistrationController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Owner\Auth\ForgotPassword\OwnerForgotPasswordController;
@@ -62,7 +64,6 @@ use App\Http\Controllers\Backend\Auth\ForgotPassword\AdminForgotPasswordControll
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
 use App\Http\Controllers\Driver\Auth\ForgotPassword\driverForgotPasswordController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
-use App\Http\Controllers\SslcommerzController;
 
 
 // use Illuminate\Support\Facades\Auth;
@@ -490,7 +491,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('stand/{id}/vehicles', 'standVehicles')->name('standVehicles');
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
         Route::get('/get-vehicles/{stand_id}', 'getVehiclesByStand');
-
+        Route::get('stand/{id}/vehicle-types',  'getVehicleTypesByStand')->name('getVehicleTypesByStand');
     });
     Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function () {
         Route::get('index', 'index')->name('index');
@@ -635,6 +636,17 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
 
+    // Stand Commitee
+    Route::controller(FieldWorkerStandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update{id}', 'update')->name('update');
+        Route::put('update{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
     // UnionController
     Route::controller(FieldWorkerUnionController::class)->prefix('union')->name('union.')->group(function () {
         Route::get('index', 'index')->name('index');
