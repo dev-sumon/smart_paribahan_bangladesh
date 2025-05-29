@@ -62,6 +62,7 @@ use App\Http\Controllers\Backend\Auth\ForgotPassword\AdminForgotPasswordControll
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
 use App\Http\Controllers\Driver\Auth\ForgotPassword\driverForgotPasswordController;
 use App\Http\Controllers\Forntend\Auth\DriverLoginController as AuthDriverLoginController;
+use App\Http\Controllers\SslcommerzController;
 
 
 // use Illuminate\Support\Facades\Auth;
@@ -633,7 +634,7 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('delete/{slug}', 'delete')->name('delete');
         Route::get('detalis/{slug}', 'detalis')->name('detalis');
     });
-    
+
     // UnionController
     Route::controller(FieldWorkerUnionController::class)->prefix('union')->name('union.')->group(function () {
         Route::get('index', 'index')->name('index');
@@ -709,3 +710,20 @@ Route::get('auth/google-callback', [GoogleController::class, 'handleGoogleCallba
 
 Route::get('qr-code', [QRCodeController::class, 'index']);
 Route::get('/secured-url/{token?}', [QRCodeController::class, 'securedUrl'])->name('secured.url');
+
+
+
+// Sslcommerz route
+Route::get('payment-form', [SslcommerzController::class, 'paymentForm'])->name('paymentForm');
+Route::post('payment', [SslcommerzController::class, 'payment'])->name('payment');
+
+
+Route::controller(SslcommerzController::class)
+    ->prefix('sslcommerz')
+    ->name('sslc.')
+    ->group(function () {
+        Route::post('success', 'success')->name('success');
+        Route::post('failure', 'failure')->name('failure');
+        Route::post('cancel', 'cancel')->name('cancel');
+        Route::post('ipn', 'ipn')->name('ipn');
+    });
