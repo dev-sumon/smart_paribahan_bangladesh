@@ -233,59 +233,54 @@
                     }
                 });
             });
-            // $('#stand').change(function() {
-            //     var standId = $(this).val();
-            //     if (standId) {
-            //         $.ajax({
-            //             url: '/home/get-vehicles/' + standId,
-            //             type: "GET",
-            //             dataType: "json",
-            //             success: function(data) {
-            //                 $('#vehicle_type').empty();
-            //                 $('#vehicle_type').append('<option value="">গাড়ি</option>');
-            //                 $.each(data, function(key, vehicleType) {
-            //                     $('#vehicle_type').append('<option value="' +
-            //                         vehicleType.id + '">' + vehicleType.name +
-            //                         '</option>');
-            //                 });
-            //                 $('#vehicle_type').prop('disabled', false);
-            //             }
-            //         });
-            //     } else {
-            //         $('#vehicle_type').empty();
-            //         $('#vehicle_type').append('<option value="">গাড়ি</option>');
-            //         $('#vehicle_type').prop('disabled', true);
-            //     }
-            // });
             $('#stand').on('change', function() {
-                var standId = $(this).val();
+                let VehicleTypeId = $(this).val();
+                let _url = "{{ route('ajax.getVehicleTypesByStand', ':id') }}".replace(':id',
+                    VehicleTypeId);
 
-                if (standId) {
-                    $.ajax({
-                        url: '/ajax/stand/' + standId + '/vehicle-types',
-                        type: 'GET',
-                        success: function(response) {
-                            if (response.success) {
-                                $('#vehicle_type_id').empty().append(
-                                    '<option value="">ভেহিকেল টাইপ সিলেক্ট করুন</option>'
-                                );
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let vehicleTypes = response.data;
+                        let vehicleTypeSelect = $('#vehicle');
+                        vehicleTypeSelect.empty();
+                        vehicleTypeSelect.append('<option value="">Select Vehicle</option>');
 
-                                $.each(response.data, function(key, type) {
-                                    $('#vehicle_type_id').append('<option value="' +
-                                        type.id + '">' + type.name + '</option>');
-                                });
-                            }
-                        },
-                        error: function() {
-                            alert('কোনো সমস্যা হয়েছে, দয়া করে পরে চেষ্টা করুন।');
-                        }
-                    });
-                } else {
-                    $('#vehicle_type_id').empty().append(
-                        '<option value="">ভেহিকেল টাইপ সিলেক্ট করুন</option>'
-                    );
-                }
+                        $.each(vehicleTypes, function(index, vehicleType) {
+                            vehicleTypeSelect.append('<option value="' + vehicleType.id +
+                                '">' + vehicleType.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
             });
+            // $('#stand').on('change', function() {
+            //     let VehicleTypeId = $(this).val();
+            //     let _url = "{{ route('ajax.getVehicleTypesByStand', ':id') }}".replace(':id',
+            //         VehicleTypeId);
+
+            //     $.ajax({
+            //         url: _url,
+            //         type: 'GET',
+            //         success: function(response) {
+            //             let vehicleTypes = response.data;
+            //             let vehicleTypeSelect = $('#vehicle');
+            //             vehicleTypeSelect.empty();
+            //             vehicleTypeSelect.append('<option value="">Select Vehicle</option>');
+
+            //             $.each(vehicleTypes, function(index, vehicleType) {
+            //                 vehicleTypeSelect.append('<option value="' + vehicleType
+            //                     .id + '">' + vehicleType.name + '</option>');
+            //             });
+            //         },
+            //         error: function(error) {
+            //             console.log(error);
+            //         }
+            //     });
+            // });
 
         });
     </script>
