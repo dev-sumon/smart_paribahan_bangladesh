@@ -71,4 +71,22 @@ class FieldWorkerStandCommiteeController extends Controller
 
         return view('field_worker.stand_commitee.edit', $data);
     }
+    public function status($id): RedirectResponse
+    {
+        $commitee = StandCommittee::findOrFail($id);
+        if ($commitee->status == 1) {
+            $commitee->status = 0;
+        } else {
+            $commitee->status = 1;
+        }
+        $commitee->save();
+        return redirect()->route('field_worker.commitee.index');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $commitee = StandCommittee::findOrFail($id);
+        $commitee->delete();
+
+        return redirect()->route('field_worker.commitee.index');
+    }
 }
