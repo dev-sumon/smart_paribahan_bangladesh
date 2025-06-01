@@ -89,4 +89,9 @@ class FieldWorkerStandCommiteeController extends Controller
 
         return redirect()->route('field_worker.commitee.index');
     }
+        public function detalis($id): View
+    {
+        $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
+        return view('field_worker.stand_commitee.show', $data);
+    }
 }
