@@ -86,8 +86,8 @@ class AjaxController extends Controller
     {
         $stand = Stand::with([
             'vehicles' => function ($query) {
-                $query->whereNull('driver_id')   // শুধু driver_id null চেক হবে
-                    ->with('vehicleType');     // vehicleType relation load হবে
+                $query->whereNull('driver_id')
+                    ->with('vehicleType');
             }
         ])->findOrFail($id);
 
@@ -119,22 +119,15 @@ class AjaxController extends Controller
             'message' => 'Owner not found for this vehicle'
         ]);
     }
-
     public function getVehicleTypesByStand($id): JsonResponse
     {
-        $stand = Stand::with([
-            'vehicles.vehicleType' // vehicles এর সাথে তার vehicleType রিলেশন
-        ])->findOrFail($id);
+        $stand = Stand::findOrFail($id);
 
-        $vehicleTypes = $stand->vehicles
-            ->pluck('vehicleType')
-            ->unique('id') // ডুপ্লিকেট রিমুভ করার জন্য
-            ->values();     // reindex array
+        $vehicleTypes = $stand->vehicleTypes()->distinct()->get();
 
         return response()->json([
             'success' => true,
             'data' => $vehicleTypes
         ]);
     }
-
 }
