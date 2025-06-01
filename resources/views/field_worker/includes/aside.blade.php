@@ -1,4 +1,4 @@
-<div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebar">
+<div class="col-md-3 col-lg-2 d-md-block sidebar collapse vh-100 position-fixed" id="sidebar">
     <div class="position-sticky pt-3">
         <div class="d-flex align-items-center justify-content-between px-3 mb-4">
             <h4 class="m-0">{{ __('মাঠকর্মী') }}</h4>

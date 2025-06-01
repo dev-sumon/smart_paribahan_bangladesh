@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\FieldWorker;
 
+use App\Models\Stand;
+use App\Models\Thana;
+use App\Models\Union;
+use App\Models\District;
 use App\Models\Division;
+use App\Models\VehicleType;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\StandCommittee;
@@ -13,7 +18,7 @@ use App\Http\Requests\StandCommiteeRequest;
 
 class FieldWorkerStandCommiteeController extends Controller
 {
-   public function index(): View
+    public function index(): View
     {
         $data['commitees'] = StandCommittee::latest()->get();
         return view('field_worker.stand_commitee.index', $data);
@@ -23,7 +28,7 @@ class FieldWorkerStandCommiteeController extends Controller
         $data['divisions'] = Division::latest()->get();
         return view('field_worker.stand_commitee.create', $data);
     }
-        public function store(StandCommiteeRequest $request): RedirectResponse
+    public function store(StandCommiteeRequest $request): RedirectResponse
     {
         $save = new StandCommittee();
 
@@ -49,9 +54,21 @@ class FieldWorkerStandCommiteeController extends Controller
         } else {
             $save->image = '';
         }
-        
+
 
         $save->save();
         return redirect()->route('field_worker.commitee.index');
+    }
+    public function update($id): View
+    {
+        $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
+        $data['divisions'] = Division::all();
+        $data['districts'] = District::where('division_id', $data['commitee']->division_id)->get();
+        $data['thanas'] = Thana::where('district_id', $data['commitee']->district_id)->get();
+        $data['unions'] = Union::where('thana_id', $data['commitee']->thana_id)->get();
+        $data['stands'] = Stand::where('union_id', $data['commitee']->union_id)->get();
+        $data['vehicleTypes'] = VehicleType::where('stand_id', $data['commitee']->stand_id)->get();
+
+        return view('field_worker.stand_commitee.edit', $data);
     }
 }
