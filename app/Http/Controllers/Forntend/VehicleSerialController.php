@@ -121,4 +121,10 @@ class VehicleSerialController extends Controller
         $serial->save();
         return back()->with('success', 'Serial status updated successfully.');
     }
+
+    public function standManagerSerials(): View
+    {
+        $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
+        return view('stand_manager.serial.create', $data);
+    }
 }
