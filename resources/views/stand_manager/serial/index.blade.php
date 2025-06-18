@@ -4,12 +4,12 @@
     <div class="" id="">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <div>
-                <h1 class="h2">সিরিয়াল ম্যানেজমেন্ট</h1>
-                <p class="text-muted">সম্পাদনা এবং ম্যানেজ করুন</p>
+                <h1 class="h2">{{ __('সিরিয়াল ম্যানেজমেন্ট') }}</h1>
+                <p class="text-muted">{{ __('সম্পাদনা এবং ম্যানেজ করুন') }}</p>
             </div>
-            {{-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSerialModal">
-                <i class="bi bi-plus"></i> নতুন সিরিয়াল
-            </button> --}}
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSerialModal">
+                <a href="{{ route('stand_manager.serial.manager.stand.serials') }}"><i class="bi bi-plus"></i> নতুন সিরিয়াল</a>
+            </button>
         </div>
 
         <!-- Filter Card -->

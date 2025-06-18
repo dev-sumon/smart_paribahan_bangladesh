@@ -491,7 +491,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('stand/{id}/vehicles', 'standVehicles')->name('standVehicles');
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
         Route::get('/get-vehicles/{stand_id}', 'getVehiclesByStand');
-        Route::get('stand/{id}/vehicle-types',  'getVehicleTypesByStand')->name('getVehicleTypesByStand');
+        Route::get('stand/{id}/vehicle-types', 'getVehicleTypesByStand')->name('getVehicleTypesByStand');
     });
     Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function () {
         Route::get('index', 'index')->name('index');
@@ -683,6 +683,9 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
 
 
 Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'as' => 'stand_manager.'], function () {
+     Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {
+        Route::get('/stand-manager-serials', 'standManagerSerials')->name('manager.stand.serials');
+    });
     Route::controller(StandManagerDashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
@@ -714,8 +717,8 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
 
     Route::controller(QRCodeController::class)->prefix('qr')->name('qr.')->group(function () {
         Route::get('index', 'index')->name('index');
-        Route::get('qr-form',  'showForm')->name('form');
-        Route::post('generate-qr',  'generateFromForm')->name('generate');
+        Route::get('qr-form', 'showForm')->name('form');
+        Route::post('generate-qr', 'generateFromForm')->name('generate');
         Route::get('/qr-code/download/{token}', 'download')->name('download');
 
     });
