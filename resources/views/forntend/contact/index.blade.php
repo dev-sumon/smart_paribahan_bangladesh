@@ -72,23 +72,24 @@
       <section class="form-container-section pt-5 pb-5">
           <div class="container">
               <h5 class="mb-4">{{ __('Send us your queries in the inbox.') }}</h5>
-              <form>
+              <form action="{{ route('contact.submit') }}" method="POST">
+                @csrf
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="{{ __('Your Name') }}">
+                      <input type="text" class="form-control" name="name" id="name" placeholder="{{ __('Your Name') }}">
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
-                          <input type="email" class="form-control" placeholder="{{ __('Your Email') }}">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="{{ __('Your Email') }}">
                       </div>
                       <div class="form-group col-md-6">
-                          <input type="text" class="form-control" placeholder="{{ __('Your Phone Number') }}">
+                          <input type="text" class="form-control" name="phone" id="phone" placeholder="{{ __('Your Phone Number') }}">
                       </div>
                   </div>
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="{{ __('Your Subject') }}">
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="{{ __('Your Subject') }}">
                   </div>
                   <div class="form-group">
-                      <textarea class="form-control" rows="4" placeholder="{{ __('Write in Detail') }}"></textarea>
+                      <textarea class="form-control" rows="4" name="message" id="message" placeholder="{{ __('Write in Detail') }}"></textarea>
                   </div>
                   <button type="submit" class="btn btn-submit btn-sm">{{ __('Submit') }}</button>
               </form>

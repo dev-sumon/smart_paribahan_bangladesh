@@ -6,6 +6,7 @@ use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ContactInfoRequest;
 
@@ -74,5 +75,25 @@ class ContactInfoController extends Controller
     {
         $data['contact'] = ContactInfo::findOrFail($id);
         return view('backend.contact_page.show', $data);
+    }
+
+
+    public function submit(Request $request)
+    {
+       
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+        // অ্যাডমিন ইমেইল
+        $adminEmail = 'admin@example.com';
+
+        // মেইল পাঠানো
+        Mail::to($adminEmail)->send(new \App\Mail\ContactMail($data));
+
+        return back()->with('success', 'আপনার বার্তা পাঠানো হয়েছে!');
     }
 }

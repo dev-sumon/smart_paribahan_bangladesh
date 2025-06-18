@@ -161,6 +161,12 @@ Route::group(['as' => 'f.'], function () {
     });
 
 });
+
+// contact form mail submit route
+Route::post('/contact-submit', [ContactInfoController::class, 'submit'])->name('contact.submit');
+
+
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(AdminLoginController::class)->prefix('admin')->name('admin.')->group(function () {
