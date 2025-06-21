@@ -689,9 +689,6 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
 
 
 Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'as' => 'stand_manager.'], function () {
-     Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {
-        Route::get('/stand-manager-serials', 'standManagerSerials')->name('manager.stand.serials');
-    });
     Route::controller(StandManagerDashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
@@ -699,6 +696,8 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
     Route::controller(VehicleSerialController::class)->prefix('serial')->name('serial.')->group(function () {
         Route::get('/stand-wise-serials', 'standWiseSerials')->name('stand.serials');
         Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
+        Route::get('/stand-manager-serials', 'standManagerSerials')->name('manager.stand.serials');
+        Route::post('/stand-manager-serials-store', 'standManagerSerialsStore')->name('manager.stand.serials.store');
     });
     Route::controller(StandManagerNoticeController::class)->prefix('notice')->name('notice.')->group(function () {
         Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
@@ -710,16 +709,6 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('stand-manager-delete/{id}', 'delete')->name('stand.manager.delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
-    // Route::controller(NoticeController::class)->prefix('notice')->name('notice.')->group(function () {
-    //     Route::get('index', 'index')->name('index');
-    //     Route::get('create', 'create')->name('create');
-    //     Route::post('store', 'store')->name('store');
-    //     Route::get('update/{id}', 'update')->name('update');
-    //     Route::put('update/{id}', 'update_store')->name('update');
-    //     Route::get('status/{id}', 'status')->name('status.update');
-    //     Route::get('delete/{id}', 'delete')->name('delete');
-    //     Route::get('detalis/{id}', 'detalis')->name('detalis');
-    // });
 
     Route::controller(QRCodeController::class)->prefix('qr')->name('qr.')->group(function () {
         Route::get('index', 'index')->name('index');
@@ -728,8 +717,19 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('/qr-code/download/{token}', 'download')->name('download');
 
     });
-});
+    // Ajax Controller
+    Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
+        Route::get('division/{id}', 'division')->name('division');
+        Route::get('district/{id}', 'district')->name('district');
+        Route::get('thana/{id}', 'thana')->name('thana');
+        Route::get('union/{id}', 'union')->name('union');
+        Route::get('stand/{id}', 'stand')->name('stand');
+        Route::get('drivers', 'searchDrivers')->name('searchDrivers');
+    });
 
+    // Route::get('/stand_manager/ajax/', [AjaxController::class, 'searchDrivers'])->name('stand_manager.ajax.searchDrivers');
+
+});
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name(name: 'redirect.google');
 Route::get('auth/google-callback', [GoogleController::class, 'handleGoogleCallback']);
