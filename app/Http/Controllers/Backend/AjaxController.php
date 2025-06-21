@@ -6,6 +6,7 @@ use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
+use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\District;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class AjaxController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        // $this->middleware('admin');
     }
     public function division(Request $request, $id): JsonResponse
     {
@@ -58,30 +59,6 @@ class AjaxController extends Controller
             'data' => $stands
         ]);
     }
-    // public function standVehicles(Request $request, $id): JsonResponse
-    // {
-    //     $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => $vehicles
-    //     ]);
-    // }
-    // public function standVehicles(Request $request, $id): JsonResponse
-    // {
-    //     $stand = Stand::with(['vehicles' => function ($query) {
-    //         $query->whereNull('driver_id')->whereNull('owner_id');
-    //     }])->findOrFail($id);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => $stand->vehicles
-    //     ]);
-    // }
-
-
-
-
     public function standVehicles(Request $request, $id): JsonResponse
     {
         $stand = Stand::with([
@@ -96,9 +73,6 @@ class AjaxController extends Controller
             'data' => $stand->vehicles
         ]);
     }
-
-
-
     public function getVehiclesByStand($stand_id)
     {
         $vehicles = Vehicle::where('stand_id', $stand_id)->get();
@@ -129,5 +103,15 @@ class AjaxController extends Controller
             'success' => true,
             'data' => $vehicleTypes
         ]);
+    }
+    public function searchDrivers(Request $request)
+    {
+        $search = $request->get('q');
+
+        $drivers = Driver::where('driving_license', 'like', '%' . $search . '%')
+            ->select('id', 'driving_license as text')
+            ->get();
+
+        return response()->json($drivers);
     }
 }

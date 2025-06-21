@@ -22,7 +22,7 @@ class VehicleSerialController extends Controller
             ->take(10)
             ->get();
 
-             $data['stand_id'] = $standId;
+        $data['stand_id'] = $standId;
         return view('forntend.driver_serial.index', $data);
     }
     public function search(): View
@@ -98,7 +98,7 @@ class VehicleSerialController extends Controller
         $standId = Auth::guard('stand_manager')->user()->stand_id;
 
         $data['serials'] = VehicleSerial::with('stand', 'driver')
-             ->where('stand_id', $standId)
+            ->where('stand_id', $standId)
             ->whereNull('check_out')
             ->orderBy('serial', 'asc')
             ->get();
@@ -126,5 +126,37 @@ class VehicleSerialController extends Controller
     {
         $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
         return view('stand_manager.serial.create', $data);
+    }
+    public function standManagerSerialsStore(Request $request)
+    {
+        $existing = VehicleSerial::where('driver_id', $request->driver_id)
+            ->where('status', '!=', 0)
+            ->first();
+
+        if ($existing) {
+            return back()->with('error', 'You already have an active or pending check-in. Please check out first.');
+        }
+
+        $save = new VehicleSerial();
+
+
+        $save->driver_id = $request->driver_id;
+        $save->division_id = $request->division_id;
+        $save->district_id = $request->district_id;
+        $save->thana_id = $request->thana_id;
+        $save->union_id = $request->union_id;
+        $save->stand_id = $request->stand_id;
+        $save->check_in = now();
+        $save->check_out = null;
+        $today = now()->toDateString();
+        $lastSerial = VehicleSerial::where('stand_id', $request->stand_id)
+            ->whereDate('check_in', $today)
+            ->max('serial');
+
+        $save->serial = $lastSerial ? $lastSerial + 1 : 1;
+        $save->status = 1;
+        $save->save();
+
+        return redirect()->route('stand_manager.serial.stand.serials', ['stand_id' => $request->stand_id]);
     }
 }

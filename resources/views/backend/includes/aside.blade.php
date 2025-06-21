@@ -34,7 +34,7 @@
             <a href="{{ route('manager.index') }}" class="nav-link {{ $page_slug == 'manager' ? 'active' : '' }}">
               {{-- <i class="nav-icon fas fa-location"></i> --}}
               <i class="fa-solid fa-users-gear"></i>
-              <p>{{ __('Manager Manager') }}</p>
+              <p>{{ __('Stand Manager') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">

@@ -1,4 +1,4 @@
-@extends('stand_manager.layouts.master', ['page_slug'=>'dashboard'])
+@extends('stand_manager.layouts.master', ['page_slug' => 'dashboard'])
 @section('title', 'Stand Manager Dashboard')
 @section('content')
     <div class="row">
@@ -8,10 +8,20 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title text-muted">আজকের সিরিয়াল</h6>
-                            <h2 class="mb-0">১২</h2>
+                            <h2 class="mb-0">{{ $today_serial }}</h2>
                             <small class="text-success"><i class="bi bi-arrow-up"></i> গতকাল
-                                থেকে +২ বৃদ্ধি</small>
+                                থেকে {{ $serial_diff >= 0 ? '+' : '' }}{{ $serial_diff }} বৃদ্ধি</small>
                         </div>
+                        {{-- <div>
+                            <h6 class="card-title text-muted">আজকের সিরিয়াল</h6>
+                            <h2 class="mb-0">{{ $todayCount }}</h2>
+                            <small class="{{ $difference >= 0 ? 'text-success' : 'text-danger' }}">
+                                <i class="bi {{ $difference >= 0 ? 'bi-arrow-up' : 'bi-arrow-down' }}"></i>
+                                গতকাল থেকে {{ $difference >= 0 ? '+' : '' }}{{ $difference }}
+                                {{ $difference >= 0 ? 'বৃদ্ধি' : 'হ্রাস' }}
+                            </small>
+                        </div> --}}
+
                         <div class="bg-light p-3 rounded">
                             <i class="bi bi-calendar-check text-primary fs-3"></i>
                         </div>
@@ -42,9 +52,9 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title text-muted">নোটিশ</h6>
-                            <h2 class="mb-0">৫</h2>
+                            <h2 class="mb-0">{{ $this_month_notice }}</h2>
                             <small class="text-success"><i class="bi bi-arrow-up"></i> এই মাসে
-                                +২ বৃদ্ধি</small>
+                                {{ $monthly_notice_diff >= 0 ? '+' : '' }}{{ $monthly_notice_diff }} বৃদ্ধি</small>
                         </div>
                         <div class="bg-light p-3 rounded">
                             <i class="bi bi-bell text-warning fs-3"></i>
@@ -71,7 +81,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-8 mb-4">
             <div class="card">
                 <div class="card-header">
@@ -177,5 +187,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
