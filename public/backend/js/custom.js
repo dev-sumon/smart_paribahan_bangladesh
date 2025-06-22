@@ -1,3 +1,4 @@
+// sweet alert start
 function confirmDelete(url) {
     Swal.fire({
         title: 'Are you sure?',
@@ -15,9 +16,9 @@ function confirmDelete(url) {
     });
 }
 
-$(document).ready(function(){
-    $('.delete').on('click', function(){
-        let url=details['url'].replace('_id',$(this).data('id'))
+$(document).ready(function () {
+    $('.delete').on('click', function () {
+        let url = $(this).data('url');
         confirmDelete(url);
     });
 
@@ -29,10 +30,58 @@ $(document).ready(function(){
 });
 
 
+// status change
+$(document).ready(function () {
+    // Status update confirmation
+    $('.status-update').on('click', function () {
+        let url = $(this).data('url');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to update the status!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    });
+
+    // Show SweetAlert for success/error
+    if (window.sessionSuccess) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: window.sessionSuccess,
+            confirmButtonText: 'Okay',
+            timer: 3000,
+            timerProgressBar: true
+        });
+    }
+
+    if (window.sessionError) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: window.sessionError,
+            confirmButtonText: 'Okay'
+        });
+    }
+});
+
+
+// update alert
+
+// sweetalert end
 // Slug js 
 
-function slugGenerate(title){
+function slugGenerate(title) {
     let inputTitle = title.val();
-    let slug = inputTitle.toLowerCase().replace(/ /g,'-');
+    let slug = inputTitle.toLowerCase().replace(/ /g, '-');
     $('#slug').val(slug);
 }

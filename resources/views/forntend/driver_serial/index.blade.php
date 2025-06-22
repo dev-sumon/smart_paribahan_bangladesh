@@ -54,47 +54,6 @@
 @endsection
 
 @push('script')
-    {{-- <script>
-        function fetchRecentSerials() {
-            fetch('{{ route('driver.ajax.fetch.serials') }}')
-                .then(response => response.json())
-                .then(data => {
-                    let tbody = document.getElementById('recentDriversTableBody');
-                    tbody.innerHTML = '';
-
-                    data.forEach(serial => {
-                        let statusBadge = '';
-                        if (serial.status == 0) {
-                            statusBadge = '<span class="badge bg-success">চেক আউট</span>';
-                        } else if (serial.status == 1) {
-                            statusBadge = '<span class="badge bg-warning">চলমান</span>';
-                        } else if (serial.status == 2) {
-                            statusBadge = '<span class="badge bg-secondary">পেন্ডিং</span>';
-                        }
-
-                        let row = `
-                        <tr>
-                            <td>${serial.serial}</td>
-                            <td>${serial.driver?.vehicle?.vehicle_licence ?? 'N/A'}</td>
-                            <td>${serial.driver?.name ?? ''}</td>
-                            <td>${serial.check_in}</td>
-                            <td>${statusBadge}</td>
-                        </tr>
-                    `;
-
-                        tbody.innerHTML += row;
-                    });
-                });
-        }
-
-        
-        setInterval(fetchRecentSerials, 5000);
-
-       
-        fetchRecentSerials();
-    </script> --}}
-
-
     <script>
         let standId = {{ $serials->first()?->stand_id ?? 1 }};
 

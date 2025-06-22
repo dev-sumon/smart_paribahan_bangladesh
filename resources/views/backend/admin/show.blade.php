@@ -1,6 +1,4 @@
 @extends('backend.layouts.master',['page_slug'=>'admin'])
-
-
 @section('title', 'Admin - management')
 @section('content')
     <div class="container-fluid mt-2">
