@@ -46,7 +46,7 @@ class FieldWorkerController extends Controller
         }
 
         $save->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker created successfully!');
     }
     public function update($id): View
     {
@@ -79,7 +79,7 @@ class FieldWorkerController extends Controller
         }
 
         $update->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker updated successfully!');
     }
     public function status($id): RedirectResponse
     {
@@ -92,14 +92,14 @@ class FieldWorkerController extends Controller
         }
     
         $worker->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker status updated successfully!');
     }
     public function delete($id): RedirectResponse
     {
         $worker = FieldWorker::findOrFail($id);
         $worker->delete();
 
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker deleted successfully!');
     }
     public function detalis($id): View
     {
