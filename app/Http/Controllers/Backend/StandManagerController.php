@@ -69,7 +69,7 @@ class StandManagerController extends Controller
 
         $save->save();
 
-        return redirect()->route('manager.index');
+        return redirect()->route('manager.index')->with('success', 'Stand manager created successfully!');
     }
     public function update($id): View
     {
@@ -127,7 +127,7 @@ class StandManagerController extends Controller
 
         $manager->save();
 
-        return redirect()->route('manager.index');
+        return redirect()->route('manager.index')->with('success', 'Stand manager updated successfully!');;
     }
     public function status($id): RedirectResponse
     {
@@ -138,14 +138,14 @@ class StandManagerController extends Controller
             $manager->status = 1;
         }
         $manager->save();
-        return redirect()->route('manager.index');
+        return redirect()->route('manager.index')->with('success', 'Stand manager status updated successfully!');;
     }
     public function delete($id): RedirectResponse
     {
         $manager = StandManager::find($id);
         $manager->delete();
 
-        return redirect()->route('manager.index');
+        return redirect()->route('manager.index')->with('success', 'Stand manager deleted successfully!');;
     }
     public function detalis($id): View
     {

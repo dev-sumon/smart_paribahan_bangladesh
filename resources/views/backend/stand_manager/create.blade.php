@@ -66,14 +66,14 @@
                                     <div class="form-group">
                                         <label class="mt-3" for="blood_group_id">{{ __('Blood Group') }}</label>
                                         <select name="blood_group_id" id="blood_group_id" class="form-control">
-                                            <option value=" " selected hidden>{{ __('Select Blood Broup') }}</option>
+                                            <option value="" selected hidden>{{ __('Select Blood Broup') }}</option>
                                             @foreach ($bloods as $blood)
                                                 <option value="{{ $blood->id }}"
                                                     {{ $blood->id == old('blood_group_id') ? 'selected' : '' }}>
                                                     {{ $blood->blood_group }}</option>
                                             @endforeach
                                         </select>
-                                        @if ($errors->has('blood_group'))
+                                        @if ($errors->has('blood_group_id'))
                                             <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                         @endif
                                     </div>
@@ -96,13 +96,18 @@
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>{{ __('Select District') }}</option>
                                         </select>
+                                         @if ($errors->has('district_id'))
+                                            <div class="text-danger">{{ $errors->first('district_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="thana">{{ __('Thana') }}<span
-                                                class="text-danger">*</span></label>
+                                        <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
                                         </select>
+                                         @if ($errors->has('thana_id'))
+                                            <div class="text-danger">{{ $errors->first('thana_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="union">{{ __('Union') }} <span
@@ -110,6 +115,9 @@
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
                                         </select>
+                                        @if ($errors->has('union_id'))
+                                            <div class="text-danger">{{ $errors->first('union_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="stand">{{ __('Stand') }} <span
@@ -117,6 +125,9 @@
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                         </select>
+                                        @if ($errors->has('stand_id'))
+                                            <div class="text-danger">{{ $errors->first('stand_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="mt-3">{{ __('Password') }} <span

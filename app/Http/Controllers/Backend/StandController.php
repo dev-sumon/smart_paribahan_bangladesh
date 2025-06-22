@@ -18,6 +18,10 @@ use Illuminate\Support\Str;
 
 class StandController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['stands'] = Stand::latest()->get();
@@ -63,7 +67,7 @@ class StandController extends Controller
         $save->image = json_encode($imagePaths);
 
         $save->save();
-        return redirect()->route('stand.index')->with('success', 'Stand created successfully!');;
+        return redirect()->route('stand.index')->with('success', 'Stand created successfully!');
     }
     public function update($slug): View
     {
