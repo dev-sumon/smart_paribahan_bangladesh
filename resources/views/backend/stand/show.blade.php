@@ -54,12 +54,35 @@
                                             <th>{{ __('Location') }}</th>
                                             <th>{{ __(':') }}</th>
                                             {{-- <td> {{ $stand->location }}</td> --}}
-                                            <td><iframe src="{{ $stand->location }}" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+                                            <td><iframe src="{{ $stand->location }}" width="100%" height="250"
+                                                    style="border:0;" allowfullscreen="" loading="lazy"
+                                                    referrerpolicy="no-referrer-when-downgrade"></iframe></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->title }}" width="100"></td>
+                                            {{-- <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->title }}" width="100"></td> --}}
+                                            <td>
+                                                @if ($stand->image)
+                                                    @php
+                                                        $images = is_array($stand->image)
+                                                            ? $stand->image
+                                                            : json_decode($stand->image, true);
+                                                    @endphp
+
+                                                    <div class="row mb-2">
+                                                        @foreach ($images as $img)
+                                                            <div class="col-md-3 mb-2">
+                                                                <img src="{{ Storage::url($img) }}"
+                                                                    alt="{{ $stand->title }}" class="img-fluid rounded"
+                                                                    style="width: 100%; height: auto; object-fit: cover;">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    <p>{{ __('No image available') }}</p>
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>

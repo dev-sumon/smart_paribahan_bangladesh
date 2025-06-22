@@ -109,7 +109,7 @@
                                             <div class="text-danger">{{ $errors->first('location') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="image">{{ __('Image') }} <span
                                                 class="text-danger">*</span></label>
                                         @if ($stand->image)
@@ -120,6 +120,37 @@
                                         @endif
                                         <input type="file" class="form-control h-auto" id="image"
                                             placeholder="Enter Stand Image" name="image[]" multiple>
+                                        @if ($errors->has('image'))
+                                            <div class="text-danger">{{ $errors->first('image') }}</div>
+                                        @endif
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label for="image">{{ __('Image') }} <span
+                                                class="text-danger">*</span></label>
+
+                                        @if ($stand->image)
+                                            @php
+                                                $images = is_array($stand->image)
+                                                    ? $stand->image
+                                                    : json_decode($stand->image, true);
+                                            @endphp
+
+                                            <div class="row mb-2">
+                                                @foreach ($images as $img)
+                                                    <div class="col-md-3 mb-2">
+                                                        <img src="{{ Storage::url($img) }}" alt="{{ $stand->title }}"
+                                                            class="img-fluid rounded"
+                                                            style="width: 100%; height: 150px; object-fit: cover;">
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @else
+                                            <p>{{ __('No image available') }}</p>
+                                        @endif
+
+                                        <input type="file" class="form-control h-auto" id="image" name="image[]"
+                                            multiple>
+
                                         @if ($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
