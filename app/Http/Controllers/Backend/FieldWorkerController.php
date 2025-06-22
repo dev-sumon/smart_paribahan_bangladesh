@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class FieldWorkerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['workers'] = FieldWorker::latest()->get();
