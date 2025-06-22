@@ -32,7 +32,7 @@
                                 <tr>
                                     <td>{{ $serial->serial }}</td>
                                     <td>{{ $serial->driver?->vehicle?->vehicle_licence ?? 'N/A' }}</td>
-                                    <td>{{ $serial->driver?->name }}</td>
+                                    <td>{{ $serial->driver?->title ?? 'N/A' }}</td>
                                     <td>{{ $serial->check_in }}</td>
                                     <td>
                                         @if ($serial->status == 0)
@@ -119,7 +119,7 @@
                 <tr>
                     <td>${serial.serial}</td>
                     <td>${serial.driver?.vehicle?.vehicle_licence ?? 'N/A'}</td>
-                    <td>${serial.driver?.name ?? ''}</td>
+                    <td>${serial.driver?.title ?? ''}</td>
                     <td>${serial.check_in}</td>
                     <td>${statusBadge}</td>
                 </tr>

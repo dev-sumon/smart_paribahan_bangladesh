@@ -118,20 +118,9 @@ class AjaxController extends Controller
     }
 
     // vechicle serial list live update
-    // public function fetchSerials()
-    // {
-    //     $serials = VehicleSerial::with('driver.vehicle')
-    //         ->latest()
-    //         ->take(10)
-    //         ->get();
-
-    //     return response()->json($serials);
-    // }
-
-
     public function fetchStandSerials($stand_id)
     {
-        $serials = VehicleSerial::with('driver.vehicle', // এটুকু কাজ করতে হবে
+        $serials = VehicleSerial::with('driver.vehicle',
         'stand')
             ->where('stand_id', $stand_id)
             ->whereIn('status', [1, 2])
