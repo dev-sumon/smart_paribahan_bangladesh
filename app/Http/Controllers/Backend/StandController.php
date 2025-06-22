@@ -35,8 +35,8 @@ class StandController extends Controller
         $save->district_id = $request->district_id;
         $save->thana_id = $request->thana_id;
         $save->union_id = $request->union_id;
-        $save->title = $request->title; 
-        $save->slug = $request->slug; 
+        $save->title = $request->title;
+        $save->slug = $request->slug;
         $save->description = $request->description;
         // $save->location = $request->location;
         $save->status = $request->has('status') ? $request->status : 0;
@@ -78,13 +78,13 @@ class StandController extends Controller
     }
     public function update_store(StandRequest $request, $slug): RedirectResponse
     {
-        $update = Stand::where('slug',$slug)->firstOrFail();
+        $update = Stand::where('slug', $slug)->firstOrFail();
         $update->division_id = $request->division_id;
         $update->district_id = $request->district_id;
         $update->thana_id = $request->thana_id;
         $update->union_id = $request->union_id;
         $update->title = $request->title;
-        $update->slug = $request->slug; 
+        $update->slug = $request->slug;
         $update->description = $request->description;
         $update->status = $request->status ?? 0;
 
@@ -95,15 +95,37 @@ class StandController extends Controller
         $update->location = $location;
 
 
+        // if ($request->hasFile('image')) {
+        //     if ($update->iamge && Storage::exists($update->image)) {
+        //         Storage::delete($update->image);
+        //     }
+        //     $image = $request->file('image');
+        //     $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $image->storeAs("stands/", $filename, 'public');
+        //     $update->image = $path;
+        // };
+
         if ($request->hasFile('image')) {
-            if ($update->iamge && Storage::exists($update->image)) {
-                Storage::delete($update->image);
+            // পুরানো ইমেজ ডিলিট করতে চাইলে এখানে কোড লিখুন
+            if ($update->image) {
+                foreach (json_decode($update->image) as $oldImage) {
+                    if (Storage::disk('public')->exists($oldImage)) {
+                        Storage::disk('public')->delete($oldImage);
+                    }
+                }
             }
-            $image = $request->file('image');
-            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs("stands/", $filename, 'public');
-            $update->image = $path;
-        };
+
+            $imagePaths = [];
+            foreach ($request->file('image') as $img) {
+                $filename = Str::slug($request->title) . '_' . time() . '_' . $img->getClientOriginalName();
+                $path = $img->storeAs('stands', $filename, 'public');
+                $imagePaths[] = $path;
+            }
+
+            // নতুন ইমেজ path গুলো JSON আকারে সেভ করা হচ্ছে
+            $update->image = json_encode($imagePaths);
+        }
+
 
 
         $update->save();
@@ -111,7 +133,7 @@ class StandController extends Controller
     }
     public function status($slug): RedirectResponse
     {
-        $stand = Stand::where('slug',$slug)->firstOrFail();
+        $stand = Stand::where('slug', $slug)->firstOrFail();
         if ($stand->status == 1) {
             $stand->status = 0;
         } else {
@@ -122,7 +144,7 @@ class StandController extends Controller
     }
     public function delete($slug): RedirectResponse
     {
-        $stand = Stand::where('slug',$slug)->firstOrFail();
+        $stand = Stand::where('slug', $slug)->firstOrFail();
         $stand->delete();
 
         return redirect()->route('stand.index');

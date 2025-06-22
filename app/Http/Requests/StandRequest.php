@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StandRequest extends FormRequest
 {
@@ -48,7 +49,12 @@ class StandRequest extends FormRequest
             'description' => 'nullable|string|min:20|max:500',
             'image' => 'nullable|array',
             'image.*' => 'image|mimes:jpeg,png,jpg,svg',
-            'slug' => 'required|string|unique:stands,slug,' . $this->route('slug'),
+            // 'slug' => 'required|string|unique:stands,slug,' . $this->route('slug'),
+            'slug' => [
+            'required',
+            'string',
+            Rule::unique('stands', 'slug')->ignore($this->route('slug'), 'slug'),
+        ],
         ];
     }
 }
