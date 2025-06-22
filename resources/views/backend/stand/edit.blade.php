@@ -119,7 +119,7 @@
                                             <p>{{ __('No image available') }}</p>
                                         @endif
                                         <input type="file" class="form-control h-auto" id="image"
-                                            placeholder="Enter Stand Image" name="image">
+                                            placeholder="Enter Stand Image" name="image[]" multiple>
                                         @if ($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
