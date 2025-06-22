@@ -53,7 +53,7 @@
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
                                                         <a href="javascript:void(0)" class="btn btn-danger delete" data-url="{{ route('admin.delete', $admin->id) }}"><i class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-warning status-update" data-url="{{ route('admin.status.update', $admin->id) }}"><i class="fa-solid fa-power-off"></i></a>
+                                                        <a href="javascript:void(0)" class="btn {{ $admin->statusIcon() }} status-update" data-url="{{ route('admin.status.update', $admin->id) }}"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
