@@ -38,7 +38,6 @@ class StandController extends Controller
         $save->title = $request->title;
         $save->slug = $request->slug;
         $save->description = $request->description;
-        // $save->location = $request->location;
         $save->status = $request->has('status') ? $request->status : 0;
 
 
@@ -55,7 +54,6 @@ class StandController extends Controller
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $img) {
-                // $filename = Str::slug($request->title) . '_' . time() . '_' . $img->getClientOriginalName();
                 $filename = Str::slug($request->title) . '_' . time() . '_' . $img->getClientOriginalName();
                 $path = $img->storeAs('stands', $filename, 'public');
                 $imagePaths[] = $path;
@@ -65,7 +63,7 @@ class StandController extends Controller
         $save->image = json_encode($imagePaths);
 
         $save->save();
-        return redirect()->route('stand.index');
+        return redirect()->route('stand.index')->with('success', 'Stand created successfully!');;
     }
     public function update($slug): View
     {
@@ -95,16 +93,6 @@ class StandController extends Controller
         $update->location = $location;
 
 
-        // if ($request->hasFile('image')) {
-        //     if ($update->iamge && Storage::exists($update->image)) {
-        //         Storage::delete($update->image);
-        //     }
-        //     $image = $request->file('image');
-        //     $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-        //     $path = $image->storeAs("stands/", $filename, 'public');
-        //     $update->image = $path;
-        // };
-
         if ($request->hasFile('image')) {
             // পুরানো ইমেজ ডিলিট করতে চাইলে এখানে কোড লিখুন
             if ($update->image) {
@@ -129,7 +117,7 @@ class StandController extends Controller
 
 
         $update->save();
-        return redirect()->route('stand.index');
+        return redirect()->route('stand.index')->with('success', 'Stand updated successfully!');
     }
     public function status($slug): RedirectResponse
     {
@@ -140,14 +128,14 @@ class StandController extends Controller
             $stand->status = 1;
         }
         $stand->save();
-        return redirect()->route('stand.index');
+        return redirect()->route('stand.index')->with('success', 'Stand status updated successfully!');
     }
     public function delete($slug): RedirectResponse
     {
         $stand = Stand::where('slug', $slug)->firstOrFail();
         $stand->delete();
 
-        return redirect()->route('stand.index');
+        return redirect()->route('stand.index')->with('success', 'Stand deleted successfully!');
     }
     public function detalis($slug): View
     {
