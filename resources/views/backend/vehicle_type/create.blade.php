@@ -42,6 +42,9 @@
                                                 <option value="{{ $stand->id }}">{{ $stand->title }}</option>
                                             @endforeach
                                         </select>
+                                        @if($errors->has('stand_id'))
+                                            <div class="text-danger">{{ $errors->first('stand_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>

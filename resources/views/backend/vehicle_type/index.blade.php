@@ -45,8 +45,8 @@
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="{{ route('vehicle_type.detalis', $vehicle_type->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                         <a href="{{ route('vehicle_type.update', $vehicle_type->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('vehicle_type.delete', $vehicle_type->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('vehicle_type.status.update', $vehicle_type->id) }}" data-id="" class="btn {{$vehicle_type->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('vehicle_type.delete', $vehicle_type->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('vehicle_type.status.update', $vehicle_type->id) }}" class="btn {{$vehicle_type->statusIcon()}} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
