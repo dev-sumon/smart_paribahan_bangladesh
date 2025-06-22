@@ -87,7 +87,7 @@ class VehicleSerialController extends Controller
 
         $save->serial = $lastSerial ? $lastSerial + 1 : 1;
         $save->driver_id = $driver->id;
-        $save->status = 1;
+        $save->status = 2;
         $save->save();
 
         return redirect()->route('driver.serial.index', ['stand_id' => $request->stand_id]);
@@ -154,7 +154,7 @@ class VehicleSerialController extends Controller
             ->max('serial');
 
         $save->serial = $lastSerial ? $lastSerial + 1 : 1;
-        $save->status = 1;
+        $save->status = 2;
         $save->save();
 
         return redirect()->route('stand_manager.serial.stand.serials', ['stand_id' => $request->stand_id]);

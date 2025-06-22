@@ -10,6 +10,8 @@ use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\District;
 use Illuminate\Http\Request;
+use App\Models\VehicleSerial;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 
@@ -114,4 +116,32 @@ class AjaxController extends Controller
 
         return response()->json($drivers);
     }
+
+    // vechicle serial list live update
+    // public function fetchSerials()
+    // {
+    //     $serials = VehicleSerial::with('driver.vehicle')
+    //         ->latest()
+    //         ->take(10)
+    //         ->get();
+
+    //     return response()->json($serials);
+    // }
+
+
+    public function fetchStandSerials($stand_id)
+    {
+        $serials = VehicleSerial::with('driver.vehicle', // এটুকু কাজ করতে হবে
+        'stand')
+            ->where('stand_id', $stand_id)
+            ->whereIn('status', [1, 2])
+            ->whereDate('check_in', Carbon::today())
+            ->orderBy('check_in', 'asc')
+            ->take(10)
+            ->get();
+
+        return response()->json($serials);
+    }
+
+
 }
