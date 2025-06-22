@@ -23,10 +23,10 @@ class StandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'division_id' => 'nullable|exists:divisions,id',
-            'district_id' => 'nullable|exists:districts,id',
-            'thana_id' => 'nullable|exists:thanas,id',
-            'union_id' => 'nullable|exists:unions,id',
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
+            'thana_id' => 'required|exists:thanas,id',
+            'union_id' => 'required|exists:unions,id',
             'title' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
             'location' => 'required|url',
@@ -50,11 +50,7 @@ class StandRequest extends FormRequest
             'image' => 'nullable|array',
             'image.*' => 'image|mimes:jpeg,png,jpg,svg',
             // 'slug' => 'required|string|unique:stands,slug,' . $this->route('slug'),
-            'slug' => [
-            'required',
-            'string',
-            Rule::unique('stands', 'slug')->ignore($this->route('slug'), 'slug'),
-        ],
+            'slug' => ['required', 'string',Rule::unique('stands', 'slug')->ignore($this->route('slug'), 'slug'),],
         ];
     }
 }
