@@ -48,7 +48,7 @@ class AdminController extends Controller
         }
 
         $save->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success', 'Admin Created successfully!');
     }
 
     public function update($id): View
@@ -82,7 +82,7 @@ class AdminController extends Controller
 
 
         $update->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success', 'Admin updated successfully!');
     }
     public function status($id): RedirectResponse
     {
@@ -93,7 +93,7 @@ class AdminController extends Controller
             $admin->status = 1;
         }
         $admin->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success', 'Status updated successfully!');
     }
     public function delete($id): RedirectResponse
     {
@@ -101,7 +101,7 @@ class AdminController extends Controller
         $admin->delete();
 
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('success', 'Admin deleted successfully!');
     }
     public function detalis($id): View
     {
