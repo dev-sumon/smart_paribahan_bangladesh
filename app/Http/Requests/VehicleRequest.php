@@ -35,7 +35,7 @@ class VehicleRequest extends FormRequest
             'owner_id' => 'nullable|exists:owners,id',
             'driver_id' => 'nullable|exists:drivers,id',
             'vehicle_licence' => 'required|string',
-            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
+            'image.*' => 'required|image|mimes:jpeg,png,jpg,svg',
         ];
     }
     protected function update(): array

@@ -579,11 +579,11 @@ Route::group(['middleware' => ['driver'], 'prefix' => 'driver', 'as' => 'driver.
         Route::get('/serial-check-in', 'checkIn')->name('check.in');
         Route::post('serial-check-in-store', 'checkInStore')->name('check.in.store');
     });
-        // Ajax Controller
+    // Ajax Controller
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
-    // Route::get('/recent-serials',  'fetchSerials')->name('fetch.serials');
-    // Route::get('/recent-serials/{stand_id}',  'fetchSerialsByStand')->name('fetch.serials.by.stand');
-    Route::get('/serials/stand/{stand_id}', 'fetchStandSerials')->name('stand.serials');
+        // Route::get('/recent-serials',  'fetchSerials')->name('fetch.serials');
+        // Route::get('/recent-serials/{stand_id}',  'fetchSerialsByStand')->name('fetch.serials.by.stand');
+        Route::get('/serials/stand/{stand_id}', 'fetchStandSerials')->name('stand.serials');
 
 
 
