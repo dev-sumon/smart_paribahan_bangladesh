@@ -1,4 +1,4 @@
-@extends('backend.layouts.master', ['page_slug' => 'notice'])
+@extends('backend.layouts.master', ['page_slug' => 'yearly_notice'])
 @section('title', 'Admin - management')
 @section('content')
     <div class="container-fluid mt-2">
@@ -7,10 +7,10 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="float-left">
-                            <h4>{{ __('Notice List') }}</h4>
+                            <h4>{{ __('Yearly Notice List') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('notice.create') }}" class="btn btn-info">{{ __('Create') }}</a>
+                            <a href="{{ route('yearly_notice.create') }}" class="btn btn-info">{{ __('Create') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
