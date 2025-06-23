@@ -68,6 +68,13 @@
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="{{ route('yearly_notice.index') }}" class="nav-link {{ $page_slug == 'yearly_notice' ? 'active' : '' }}">
+              {{-- <i class="nav-icon fa-solid fa-bell"></i> --}}
+              <i class="nav-icon fa-solid fa-bullhorn"></i>
+              <p>{{ __('Yearly Notice') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="{{ route('contact.index') }}" class="nav-link {{ $page_slug == 'contact' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-address-book"></i>
               <p>{{ __('Contact Info') }}</p>

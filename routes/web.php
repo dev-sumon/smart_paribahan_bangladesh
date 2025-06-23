@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\YearlyNoticeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -375,6 +376,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('status/{id}', 'status')->name('status.update');
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(YearlyNoticeController::class)->prefix('yearly-notice')->name('yearly_notice.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
     });
 
     Route::controller(ContactInfoController::class)->prefix('contact')->name('contact.')->group(function () {
