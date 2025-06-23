@@ -63,14 +63,8 @@ class VehicleListController extends Controller
         if ($request->owner_id) {
             Owner::where('id', $request->owner_id)->update(['vehicle_id' => $save->id]);
         }
-        return redirect()->route('vehicle.index');
+        return redirect()->route('vehicle.index')->with('success', 'Vehicle created successfully!');
     }
-    // public function update($id): View
-    // {
-    //     $data['vehicle'] = Vehicle::findOrFail($id);
-    //     $data['vehicle_types'] = VehicleType::latest()->get();
-    //     return view('backend.vehicle.edit', $data);
-    // }
     public function update($id): View
     {
         $data['vehicle'] = Vehicle::findOrFail($id);
@@ -120,7 +114,7 @@ class VehicleListController extends Controller
             Owner::where('id', $request->owner_id)->update(['vehicle_id' => $update->id]);
         }
         
-        return redirect()->route('vehicle.index');
+        return redirect()->route('vehicle.index')->with('success', 'Updated created successfully!');
         
     }
     public function status($id): RedirectResponse
@@ -132,14 +126,14 @@ class VehicleListController extends Controller
             $vehicle->status = 1;
         }
         $vehicle->save(); 
-        return redirect()->route('vehicle.index');
+        return redirect()->route('vehicle.index')->with('success', 'Vehicle status updated successfully!');
     }
     public function delete($id): RedirectResponse
     {
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->delete();
 
-        return redirect()->route('vehicle.index');
+        return redirect()->route('vehicle.index')->with('success', 'Vehicle deleted successfully!');
     }
     public function detalis($id): view
     {
