@@ -29,7 +29,7 @@ class FaqController extends Controller
         $save->status = $request->status ?? 0 ;
 
         $save->save();
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success', 'FAQ created successfully!');
     }
     public function update($id): View
     {
@@ -44,7 +44,7 @@ class FaqController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success', 'FAQ updated successfully!');
     }
     public function status($id): RedirectResponse
     {
@@ -56,13 +56,13 @@ class FaqController extends Controller
         }
 
         $faq->save();
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success', 'FAQ status updated successfully!');
     }
     public function delete($id): RedirectResponse
     {
         $faq = Faq::findOrFail($id);
         $faq->delete();
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success', 'FAQ deleted successfully!');
     }
     public function detalis($id): view
     {

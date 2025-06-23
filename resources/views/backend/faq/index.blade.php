@@ -41,8 +41,8 @@
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('faq.detalis', $faq->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('faq.update', $faq->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('faq.delete', $faq->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('faq.status.update', $faq->id) }}" class="btn {{$faq->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="javascript:void(0)" data-url="{{ route('faq.delete', $faq->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="javascript:void(0)" data-url="{{ route('faq.status.update', $faq->id) }}" class="btn {{$faq->statusIcon()}} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
