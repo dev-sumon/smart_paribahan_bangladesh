@@ -110,4 +110,11 @@ class YearlyNoticeController extends Controller
         $yearly_notice_status->save();
         return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice status updated successfully');
     }
+    public function delete($id): RedirectResponse
+    {
+        $yearly_notice_status = YearlyNotice::findOrFail($id);
+        $yearly_notice_status->delete();
+
+        return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice deleted successfully');
+    }
 }
