@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['notices'] = Notice::latest()->get();

@@ -58,6 +58,10 @@ class Union extends Model
     {
         return $this->hasMany(Notice::class);
     }
+    public function yearlyNotics()
+    {
+        return $this->hasMany(YearlyNotice::class);
+    }
 
 
      public function vehicleSerials()

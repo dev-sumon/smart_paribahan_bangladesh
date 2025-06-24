@@ -88,6 +88,10 @@ class Stand extends Model
     {
         return $this->hasMany(Notice::class);
     }
+    public function yearlyNotics()
+    {
+        return $this->hasMany(YearlyNotice::class);
+    }
 
 
 
