@@ -29,12 +29,8 @@ class NoticeController extends Controller
     }
     public function create(): View
     {
-        $data['divisions'] = Division::latest()->get();
-        $data['districts'] = District::latest()->get();
-        $data['thanas'] = Thana::latest()->get();
-        $data['unions'] = Union::latest()->get();
-        $data['stands'] = Stand::latest()->get();
         $data['categories'] = NoticeCategory::latest()->get();
+        $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands'])->latest()->get();
         return view('backend.notice.create', $data);
     }
     public function store(NoticeRequest $request): RedirectResponse
@@ -57,10 +53,10 @@ class NoticeController extends Controller
             $path = $file->storeAs("notices/", $filename, 'public');
             $save->file = $path;
         }
-        
+
 
         $save->save();
-        return redirect()->route('notice.index');
+        return redirect()->route('notice.index')->with('success', 'Notice created successfully');
     }
     public function update($id): View
     {
@@ -99,28 +95,29 @@ class NoticeController extends Controller
             $filename = $request->name . time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs("notices/", $filename, 'public');
             $update->file = $path;
-        };
+        }
+        ;
 
         $update->save();
-        return redirect()->route('notice.index');
+        return redirect()->route('notice.index')->with('success', 'Notice updated successfully');
     }
     public function status($id): RedirectResponse
     {
         $notice = Notice::findOrFail($id);
-        if($notice->status == 1){
+        if ($notice->status == 1) {
             $notice->status = 0;
-        }else{
+        } else {
             $notice->status = 1;
         }
         $notice->save();
-        return redirect()->route('notice.index');
+        return redirect()->route('notice.index')->with('success', 'Notice status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $notice = Notice::findOrFail($id);
         $notice->delete();
 
-        return redirect()->route('notice.index');
+        return redirect()->route('notice.index')->with('success', 'Notice deleted successfully');
     }
     public function detalis($id): view
     {
