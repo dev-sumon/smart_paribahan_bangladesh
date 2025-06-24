@@ -48,22 +48,6 @@
                         <a href="mailto:bangladeshsmartparibahan@gmail.com">{{ $contact->email }}</a>
                     </div>
                 @endforeach
-                {{-- <div class="col-lg-4 col-sm-12">
-                      <h4>অফিসের ঠিকানা</h4>
-                    
-                      <a href="https://www.google.com/maps/search/?api=1&query=Section+11,+Block+A+(Main+road),+Plot+5+(beside+shopno+super+shop),+Pallabi,+Dhaka+1221" target="_blank">
-                          Section -11, Block -A ( Main road), Plot-5 (beside shopno super shop), Pallabi, Dhaka-1221
-                      </a>                    
-                  </div>
-                  <div class="col-lg-4 col-sm-12">
-                      <h4>ফোন নাম্বার</h4>
-                      <a href="tel:+880 1308282653">+880 1308282653</a>
-                      <a href="tel:+880 1308282688">+880 1308282688</a>
-                  </div>
-                  <div class="col-lg-4 col-sm-12">
-                      <h4>ই-মেইল</h4>
-                      <a href="mailto:bangladeshsmartparibahan@gmail.com">bangladeshsmartparibahan@gmail.com</a>
-                  </div> --}}
             </div>
         </div>
     </section>
