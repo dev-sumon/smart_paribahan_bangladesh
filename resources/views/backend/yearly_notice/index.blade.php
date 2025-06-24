@@ -39,7 +39,7 @@
                                             <td>{{ $yearly_notice->created_user ? $yearly_notice->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('notice.detalis', $yearly_notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('yearly_notice.detalis', $yearly_notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('yearly_notice.update', $yearly_notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="javascript:void(0)" data-url="{{ route('yearly_notice.delete', $yearly_notice->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="javascript:void(0)" class="btn {{$yearly_notice->statusIcon()}} status-update" data-url="{{ route('yearly_notice.status.update', $yearly_notice->id) }}"><i class="fa-solid fa-power-off"></i></a>

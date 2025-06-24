@@ -1,6 +1,4 @@
 @extends('backend.layouts.master', ['page_slug' => 'yearly_notice'])
-
-
 @section('title', 'Yearly Notice Update')
 @section('content')
     <div class="container-fluid mt-2">
@@ -268,7 +266,7 @@
 
                         $.each(stands, function(index, stand) {
                             standSelect.append('<option value="' + stand.id + '">' +
-                                stand.name + '</option>');
+                                stand.title + '</option>');
                         });
                     },
                     error: function(error) {

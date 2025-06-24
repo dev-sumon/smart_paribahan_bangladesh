@@ -117,4 +117,9 @@ class YearlyNoticeController extends Controller
 
         return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice deleted successfully');
     }
+    public function detalis($id):View
+    {
+        $data['yearly_notice'] = YearlyNotice::with('noticeCategory')->findOrFail($id);
+        return view('backend.yearly_notice.show', $data);
+    }
 }
