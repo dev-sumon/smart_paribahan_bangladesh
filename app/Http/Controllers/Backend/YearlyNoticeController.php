@@ -59,14 +59,9 @@ class YearlyNoticeController extends Controller
     }
     public function update($id)
     {
-        // $data['yearly_notice'] = YearlyNotice::findOrFail($id);
-        // $data['categories'] = NoticeCategory::latest()->get();
-        // $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands'])->latest()->get();
-
-
         $data['yearly_notice'] = YearlyNotice::findOrFail($id);
-        $data['categories'] = NoticeCategory::latest()->get();
 
+        $data['categories'] = NoticeCategory::latest()->get();
         $data['divisions'] = Division::latest()->get();
         $data['districts'] = District::where('division_id', YearlyNotice::findOrFail($id)->division_id)->get();
         $data['thanas'] = Thana::where('district_id', YearlyNotice::findOrFail($id)->district_id)->get();
@@ -89,7 +84,6 @@ class YearlyNoticeController extends Controller
         $update->status = $request->status ?? 0;
 
         if ($request->hasFile('file')) {
-            // পুরাতন ফাইল থাকলে সেটি ডিলিট করুন
             if ($update->file && \Storage::disk('public')->exists($update->file)) {
                 \Storage::disk('public')->delete($update->file);
             }
@@ -102,6 +96,18 @@ class YearlyNoticeController extends Controller
 
         $update->save();
 
-        return redirect()->route('yearly_notice.index')->with('success', value: 'Yearly notice updated successfully');
+        return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice updated successfully');
+    }
+    public function status($id): RedirectResponse
+    {
+        $yearly_notice_status = YearlyNotice::findOrFail($id);
+        if ($yearly_notice_status->status == 1) {
+            $yearly_notice_status->status = 0;
+        } else {
+            $yearly_notice_status->status = 1;
+        }
+
+        $yearly_notice_status->save();
+        return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice status updated successfully');
     }
 }
