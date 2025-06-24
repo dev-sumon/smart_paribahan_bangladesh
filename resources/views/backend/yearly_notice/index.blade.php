@@ -29,20 +29,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($notices as $key=>$notice)
+                                        @foreach ($yearly_notices as $key=>$yearly_notice)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $notice->title }}</td>
-                                            <td>{{ $notice->date }}</td>
-                                            <td><span class="{{$notice->statusBg()}}">{{ $notice->statusTitle() }}</span></td>
-                                            <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
+                                            <td>{{ $yearly_notice->title }}</td>
+                                            <td>{{ $yearly_notice->date }}</td>
+                                            <td><span class="{{$yearly_notice->statusBg()}}">{{ $yearly_notice->statusTitle() }}</span></td>
+                                            <td>{{ $yearly_notice->created_at ? $yearly_notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                            <td>{{ $yearly_notice->created_user ? $yearly_notice->created_user->name : 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('notice.detalis', $notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('notice.update', $notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('notice.delete', $notice->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('notice.status.update', $notice->id) }}" class="btn {{$notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="{{ route('notice.detalis', $yearly_notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{ route('notice.update', $yearly_notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('notice.delete', $yearly_notice->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="{{ route('notice.status.update', $yearly_notice->id) }}" class="btn {{$yearly_notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -22,16 +22,18 @@ class YearlyNoticeController extends Controller
     }
     public function index(): View
     {
-        return view('backend.yearly_notice.index');
+        $data['yearly_notices'] = YearlyNotice::latest()->get();
+        return view('backend.yearly_notice.index', $data);
     }
     public function create(): View
     {
-        $data['divisions'] = Division::latest()->get();
-        $data['districts'] = District::latest()->get();
-        $data['thanas'] = Thana::latest()->get();
-        $data['unions'] = Union::latest()->get();
-        $data['stands'] = Stand::latest()->get();
+        // $data['divisions'] = Division::latest()->get();
+        // $data['districts'] = District::latest()->get();
+        // $data['thanas'] = Thana::latest()->get();
+        // $data['unions'] = Union::latest()->get();
+        // $data['stands'] = Stand::latest()->get();
         $data['categories'] = NoticeCategory::latest()->get();
+        $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands'])->latest()->get();
         return view('backend.yearly_notice.create', $data);
     }
     public function store(YearlyNoticeRequest $request)
