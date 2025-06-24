@@ -40,7 +40,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('notice.detalis', $yearly_notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('notice.update', $yearly_notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="{{ route('yearly_notice.update', $yearly_notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     <a href="{{ route('notice.delete', $yearly_notice->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
                                                     <a href="{{ route('notice.status.update', $yearly_notice->id) }}" class="btn {{$yearly_notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
@@ -57,12 +57,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-@push('script')
-    <script>
-        
-    </script>
-@endpush
