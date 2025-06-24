@@ -37,7 +37,7 @@ class BlogController extends Controller
         }
 
         $save->save();
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('success', 'Blog created successfully');
     }
     public function update($slug): View
     {
@@ -66,7 +66,7 @@ class BlogController extends Controller
         
 
         $update->save();
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('success', 'Blog updated successfully');
     }
     public function status($slug): RedirectResponse
     {
@@ -77,14 +77,14 @@ class BlogController extends Controller
             $blog->status = 1;
         }
         $blog->save();
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('success', 'Blog status update successfully');
     }
     public function delete($slug): RedirectResponse
     {
         $blog = Blog::where('slug',$slug)->firstOrFail();
         $blog->delete();
 
-        return redirect()->route('blog.index');
+        return redirect()->route('blog.index')->with('success', 'Blog deleted successfully');
     }
     public function detalis($slug): View
     {

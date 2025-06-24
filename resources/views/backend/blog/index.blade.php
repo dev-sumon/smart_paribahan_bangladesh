@@ -43,20 +43,10 @@
                                                 <td>{{ $blog->created_admin ? $blog->created_admin->name : 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
-                                                        <a href="{{ route('blog.detalis', $blog->slug) }}" data-id=""
-                                                            class="btn btn-secondary view" title="view deatils"><i
-                                                                class="fa-solid fa-eye"></i></a>
-                                                        <a href="{{ route('blog.update', $blog->slug) }}" data-id=""
-                                                            class="btn btn-info"><i
-                                                                class="fa-solid fa-pen-to-square"></i></a>
-                                                        {{-- <a href="{{ route('javascript:void(0)', $blog->slug) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a> --}}
-
-                                                         <a href="javascript:void(0)" data-id="{{ $blog->slug }}"
-                                                            class="btn btn-danger delete"><i
-                                                                class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('blog.status.update', $blog->slug) }}"
-                                                            data-id="" class="btn {{ $blog->statusIcon() }}"><i
-                                                                class="fa-solid fa-power-off"></i></a>
+                                                        <a href="{{ route('blog.detalis', $blog->slug) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('blog.update', $blog->slug) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('blog.delete', $blog->slug) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('blog.status.update', $blog->slug) }}" class="btn {{ $blog->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -71,14 +61,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-@push('script')
-    <script>
-        const details = {
-            'url': `{{ route('blog.delete', ['id' => '_id']) }}`
-        }
-    </script>
-@endpush

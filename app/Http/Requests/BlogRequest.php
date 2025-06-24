@@ -41,7 +41,7 @@ class BlogRequest extends FormRequest
         return [
             'description' => 'nullable|string|min:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'slug' => 'required|string|unique:blogs,slug,' . $this->route('slug'),
+            'slug' => 'required|string|unique:blogs,slug,' . $this->route('slug') . ',slug',
         ];
     }
 }

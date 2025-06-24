@@ -65,7 +65,7 @@ class ContactInfoController extends Controller
             ]);
         }
 
-        return redirect()->route('contact.create')->with('success', 'Contact Info saved successfully.');
+        return redirect()->route('contact.create')->with('success', 'Contact Info updated successfully.');
     }
     // public function status($id): RedirectResponse
     // {
