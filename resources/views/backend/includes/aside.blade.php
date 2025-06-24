@@ -75,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ route('contact.index') }}" class="nav-link {{ $page_slug == 'contact' ? 'active' : '' }}">
+            <a href="{{ route('contact.create') }}" class="nav-link {{ $page_slug == 'contact' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-address-book"></i>
               <p>{{ __('Contact Info') }}</p>
             </a>
