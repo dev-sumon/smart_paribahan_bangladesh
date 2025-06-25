@@ -8,10 +8,10 @@
               </a>
               <p class="mb-3">Phasellus pulvinar porta turpis sit amet <br> facilis sapien bibendum eu praesent massa.</p>
               <p ><i class="fas fa-phone-alt me-2"></i>
-                <a class="contact" href="tel:+880 1308282653">+880 1308282653,</a>
-                <a class="contact" href="tel:+880 1308282688">+880 1308282688</a>
+                <a class="contact" href="tel:{{ $contact->phone }}">+880 {{ $contact->phone }},</a>
+                <a class="contact" href="tel:{{ $contact->optional_number }}">{{ $contact->optional_number }}</a>
               </p>
-              <p ><i class="fas fa-envelope me-2"></i><a class="contact" href="mailto:bangladeshsmartparibahan@gmail.com">bangladeshsmartparibahan@gmail.com</a></p>
+              <p ><i class="fas fa-envelope me-2"></i><a class="contact" href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></p>
               <div class="d-flex mobile_app_link">
                   <div class="google_play">
                     <a href="#" class="me-2"><img src="{{ asset('forntend/images/image 30.png') }}" alt="google_img"></a>

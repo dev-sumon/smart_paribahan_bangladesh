@@ -12,6 +12,7 @@ use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\ContactInfo;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,6 +23,7 @@ class HomePageController extends Controller
     public function index()
     {
 
+        $data['contact'] = ContactInfo::first();
         $data['divisions'] = Division::with('districts','thanas','unions','stands','stands.vehicleTypes')->latest()->get();
         $data['faqs'] = Faq::latest()->get();
         $data['districts'] = District::latest()->get();
