@@ -156,7 +156,8 @@ class DashboardController extends Controller
             Driver::where('id', $request->driver_id)->update(['vehicle_id' => $save->id]);
         }
         Owner::where('id', auth('owner')->user()->id)->update(['vehicle_id' => $request->vehicle_type_id]);
-        return redirect()->route('owner.dashboard', ['id' => auth('owner')->user()->id]);
+        // return redirect()->route('owner.dashboard', ['id' => auth('owner')->user()->id]);
+        return redirect()->route('owner.dashboard', ['slug' => auth('owner')->user()->slug]);
     }
 
 

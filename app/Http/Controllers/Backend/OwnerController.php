@@ -77,7 +77,7 @@ class OwnerController extends Controller
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $save->id]);
         }
 
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner created successfully');
     }
     public function update($slug): View
     {
@@ -147,7 +147,7 @@ class OwnerController extends Controller
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $update->id]);
         }
 
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner updated successfully');
     }
     public function status($slug): RedirectResponse
     {
@@ -158,18 +158,18 @@ class OwnerController extends Controller
             $owner->status = 1;
         }
         $owner->save();
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner status updated successfully');
     }
     public function delete($slug): RedirectResponse
     {
         $owner = Owner::where('slug', $slug)->firstOrFail();
         $owner->delete();
 
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner deleted successfully');
     }
     public function detalis($slug): View
     {
-        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicle', 'stand')->where('slug', $slug)->firstOrFail();
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicles', 'stand')->where('slug', $slug)->firstOrFail();
         return view('backend.owner.show', $data);
     }
 }
