@@ -50,12 +50,8 @@
                                                         <a href="{{ route('owner.update', $owner->slug) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('owner.delete', $owner->slug) }}" data-id=""
-                                                            class="btn btn-danger delete"><i
-                                                                class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('owner.status.update', $owner->slug) }}"
-                                                            class="btn {{ $owner->statusIcon() }}"><i
-                                                                class="fa-solid fa-power-off"></i></a>
+                                                        <a href="javascript:vaid(0)" data-url="{{ route('owner.delete', $owner->slug) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:vaid(0)" data-url="{{ route('owner.status.update', $owner->slug) }}" class="btn {{ $owner->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

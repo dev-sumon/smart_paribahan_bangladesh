@@ -154,12 +154,20 @@
                                                     class="text-danger">*</span></label>
                                             <select name="vehicle_id" id="vehicle" class="form-control">
                                                 <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
-                                                @foreach ($vehicles as $vehicle)
+                                                {{-- @foreach ($vehicles as $vehicle)
                                                     <option value="{{ $vehicle->id }}"
                                                         {{ old('vehicle_id', $owner->vehicle_id ?? '') == $vehicle->id ? 'selected' : '' }}>
-                                                        {{ $vehicle->name }}: {{ $vehicle->license_number }}
+                                                        {{ $vehicle->name }}: {{ $owner->$vehicle->license_number }}
                                                     </option>
-                                                @endforeach
+                                                @endforeach --}}
+                                                @if ($vehicles)
+                                                    @foreach ($vehicles as $vehicle)
+                                                        <option value="{{ $vehicle->id }}"
+                                                            {{ old('vehicle_id', $owner->vehicle_id) == $vehicle->id ? 'selected' : '' }}>
+                                                            {{ $vehicle->name }} : {{ $vehicle->vehicle_licence }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                             @if ($errors->has('vehicle_id'))
                                                 <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
@@ -243,7 +251,187 @@
 @endsection
 
 
+
 @push('script')
+    <script>
+        $(document).ready(function () {
+
+            // 🔁 Division to District
+            $('#division').on('change', function () {
+                let divisionId = $(this).val();
+                let _url = '{{ route('ajax.division', ':id') }}'.replace(':id', divisionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function (response) {
+                        let districtSelect = $('#district');
+                        districtSelect.empty();
+                        districtSelect.append('<option value="">Select District</option>');
+
+                        $.each(response.data, function (index, district) {
+                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                        });
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // 🔁 District to Thana
+            $('#district').on('change', function () {
+                let districtId = $(this).val();
+                let _url = '{{ route('ajax.thana', ':id') }}'.replace(':id', districtId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function (response) {
+                        let thanaSelect = $('#thana');
+                        thanaSelect.empty();
+                        thanaSelect.append('<option value="">Select Thana</option>');
+
+                        $.each(response.data, function (index, thana) {
+                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                        });
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // 🔁 Thana to Union
+            $('#thana').on('change', function () {
+                let unionId = $(this).val();
+                let _url = '{{ route('ajax.union', ':id') }}'.replace(':id', unionId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function (response) {
+                        let unionSelect = $('#union');
+                        unionSelect.empty();
+                        unionSelect.append('<option value="">Select Union</option>');
+
+                        $.each(response.data, function (index, union) {
+                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                        });
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // 🔁 Union to Stand
+            $('#union').on('change', function () {
+                let standId = $(this).val();
+                let _url = '{{ route('ajax.stand', ':id') }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function (response) {
+                        let standSelect = $('#stand');
+                        standSelect.empty();
+                        standSelect.append('<option value="">Select Stand</option>');
+
+                        $.each(response.data, function (index, stand) {
+                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                        });
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // 🔁 Stand to Vehicle
+            $('#stand').on('change', function () {
+                let standId = $(this).val();
+                let url = '{{ route('ajax.standVehicles', ':id') }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (response) {
+                        let vehicleSelect = $('#vehicle');
+                        vehicleSelect.empty();
+                        vehicleSelect.append('<option value="" selected hidden>Select Vehicle</option>');
+
+                        if (response.data.length > 0) {
+                            $.each(response.data, function (index, vehicle) {
+                                let vehicleText = `${vehicle.name} : ${vehicle.vehicle_licence}`;
+                                vehicleSelect.append('<option value="' + vehicle.id + '">' + vehicleText + '</option>');
+                            });
+                        } else {
+                            vehicleSelect.append('<option value="" disabled>No Vehicles Found</option>');
+                        }
+                    },
+                    error: function (error) {
+                        console.error('AJAX Error:', error);
+                    }
+                });
+            });
+
+            // 🔁 Vehicle to License (if needed)
+            $('#vehicle').on('change', function () {
+                let vehicleId = $(this).val();
+                let _url = '{{ route('ajax.vehiclesLicense', ':id') }}'.replace(':id', vehicleId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function (response) {
+                        let licenseSelect = $('#vehicles_license');
+                        licenseSelect.empty();
+                        licenseSelect.append('<option value="">Select Vehicles License</option>');
+
+                        if (response.success && response.data.length > 0) {
+                            licenseSelect.append('<option value="' + response.data[0] + '">' + response.data[0] + '</option>');
+                        } else {
+                            licenseSelect.append('<option value="">No License Available</option>');
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            // ✅ ✅ Load union list by old thana (on edit)
+            let oldThanaId = "{{ old('thana_id', isset($owner) ? $owner->thana_id : '') }}";
+            let oldUnionId = "{{ old('union_id', isset($owner) ? $owner->union_id : '') }}";
+
+            if (oldThanaId) {
+                let _url = '{{ route('ajax.union', ':id') }}'.replace(':id', oldThanaId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function (response) {
+                        let unionSelect = $('#union');
+                        unionSelect.empty();
+                        unionSelect.append('<option value="">Select Union</option>');
+
+                        $.each(response.data, function (index, union) {
+                            let selected = union.id == oldUnionId ? 'selected' : '';
+                            unionSelect.append('<option value="' + union.id + '" ' + selected + '>' + union.union + '</option>');
+                        });
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+        });
+    </script>
+@endpush
+
+{{-- @push('script')
     <script>
         $(document).ready(function() {
             $('#division').on('change', function() {
@@ -399,4 +587,4 @@
             });
         });
     </script>
-@endpush
+@endpush --}}

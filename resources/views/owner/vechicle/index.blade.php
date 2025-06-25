@@ -10,7 +10,7 @@
                             <h4>{{ __('Create new Vehicle') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('owner.dashboard', $owner->id) }}" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('owner.dashboard', $owner->slug) }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
