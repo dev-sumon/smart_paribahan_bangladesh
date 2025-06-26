@@ -14,6 +14,10 @@ use PhpParser\Node\Stmt\Return_;
 
 class ThanaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['thanas'] = Thana::with('district.division')->latest()->get();
@@ -35,7 +39,7 @@ class ThanaController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
-        return redirect()->route('thana.index');
+        return redirect()->route('thana.index')->with('success','Thana created successfully');
     }
     public function update($id): View
     {
@@ -54,7 +58,7 @@ class ThanaController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
-        return redirect()->route('thana.index');
+        return redirect()->route('thana.index')->with('success','Thana updated successfully');
     }
     public function status($id): RedirectResponse
     {
@@ -66,7 +70,7 @@ class ThanaController extends Controller
         }
 
         $thana->save();
-        return redirect()->route('thana.index');
+        return redirect()->route('thana.index')->with('success', 'Thana status updated successfully');
 
     }
     public function delete($id): RedirectResponse
@@ -74,7 +78,7 @@ class ThanaController extends Controller
         $thana = Thana::findOrFail($id);
         $thana->delete();
 
-        return redirect()->route('thana.index');
+        return redirect()->route('thana.index')->with('success','Thana deleted successfully');
     }
     public function detalis($id): View
     {
