@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class DivisionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['divisions'] = Division::latest()->get();
@@ -28,7 +32,7 @@ class DivisionController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success','Division created successfully');
     }
     public function update($id): View
     {
@@ -43,7 +47,7 @@ class DivisionController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success','Division updated successfully');
     }
     public function status($id): RedirectResponse
     {
@@ -55,14 +59,14 @@ class DivisionController extends Controller
         }
 
         $Division->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success','Division status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $division = Division::findOrFail($id);
         $division->delete();
 
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success','Division deleted successfully');
     }
     public function detalis($id): View
     {
