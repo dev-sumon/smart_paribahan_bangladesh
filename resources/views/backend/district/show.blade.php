@@ -21,7 +21,7 @@
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
                                         <tr>
-                                            <th>{{ __('District') }}</th>
+                                            <th>{{ __('Division') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $district->division->division ?? 'N/A' }}</td>
                                         </tr>

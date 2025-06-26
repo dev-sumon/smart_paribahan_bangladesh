@@ -23,6 +23,7 @@ class DistrictRequest extends FormRequest
     {
         return [
             'status'=>'required|boolean',
+            'division_id' => 'required|exists:divisions,id',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
