@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function dashboard(){
         $data['admin'] = Auth::guard('admin')->user();
         $data['field_worker'] = FieldWorker::count();
