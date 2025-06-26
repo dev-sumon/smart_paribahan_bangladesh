@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Storage;
 
 class OwnerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['owners'] = Owner::latest()->get();

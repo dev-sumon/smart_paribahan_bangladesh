@@ -26,7 +26,7 @@
                                             <td>{{ $owner->title }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('description') }}</th>
+                                            <th>{{ __('Description') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $owner->description }}</td>
                                         </tr>
@@ -89,8 +89,8 @@
 
                                             <td>
                                                 @foreach ($owner->vehicles as $vehicle)
-                                                    {{-- <p class="display-inline">{{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}, </p> --}}
-                                                    <p class="d-inline">{{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}, </p>
+                                                    <p class="d-inline">{{ $vehicle->name }} -
+                                                        {{ $vehicle->vehicle_licence }}, </p>
                                                 @endforeach
                                             </td>
 
