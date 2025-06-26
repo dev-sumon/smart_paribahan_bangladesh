@@ -31,7 +31,7 @@ class DistrictController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
-        return redirect()->route('district.index');
+        return redirect()->route('district.index')->with('success', 'District created successfully');
     }
     public function update($id): View
     {
@@ -51,7 +51,7 @@ class DistrictController extends Controller
 
 
         $update->save();
-        return redirect()->route('district.index');
+        return redirect()->route('district.index')->with('success', 'District updated successfully');
 
     }
     public function status($id): RedirectResponse
@@ -64,14 +64,14 @@ class DistrictController extends Controller
         }
 
         $district->save();
-        return redirect()->route('district.index');
+        return redirect()->route('district.index')->with('success','District status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $district = District::findOrFail($id);
         $district->delete();
 
-        return redirect()->route('district.index');
+        return redirect()->route('district.index')->with('success','District deleted successfully');
     }
     public function detalis($id): View
     {
