@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Storage;
 
 class DriverController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['drivers'] = Driver::latest()->get();
@@ -79,7 +83,7 @@ class DriverController extends Controller
         }
 
 
-        return redirect()->route('driver.index');
+        return redirect()->route('driver.index')->with('success', 'Driver created successfully');
     }
     public function update($slug): View
     {
@@ -149,7 +153,7 @@ class DriverController extends Controller
             Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $update->id]);
         }
 
-        return redirect()->route('driver.index');
+        return redirect()->route('driver.index')->with('success', 'Driver updated successfully');
     }
     public function status($slug): RedirectResponse
     {
@@ -161,14 +165,14 @@ class DriverController extends Controller
         }
 
         $driver->save();
-        return redirect()->route('driver.index');
+        return redirect()->route('driver.index')->with('success', 'Driver status updated successfully');
     }
     public function delete($slug): RedirectResponse
     {
         $driver = Driver::where('slug',$slug)->firstOrFail();
         $driver->delete();
 
-        return redirect()->route('driver.index');
+        return redirect()->route('driver.index')->with('success', 'Driver deleted successfully');
     }
     public function detalis($slug): View
     {
