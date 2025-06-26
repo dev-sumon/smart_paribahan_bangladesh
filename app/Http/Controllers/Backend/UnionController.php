@@ -35,7 +35,7 @@ class UnionController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
-        return redirect()->route('union.index');
+        return redirect()->route('union.index')->with('success','Union created successfully');
 
     }
     public function update($id): View
@@ -59,7 +59,7 @@ class UnionController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
-        return redirect()->route('union.index');
+        return redirect()->route('union.index')->with('success','Union updated successfully');
     }
     public function status($id): RedirectResponse
     {
@@ -71,14 +71,14 @@ class UnionController extends Controller
         }
         
         $union->save();
-        return redirect()->route('union.index');
+        return redirect()->route('union.index')->with('success','Union status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $union = Union::findOrFail($id);
         $union->delete();
 
-        return redirect()->route('union.index');
+        return redirect()->route('union.index')->with('success','Union deleted successfully');
     }
     public function detalis($id): View
     {

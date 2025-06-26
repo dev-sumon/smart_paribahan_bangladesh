@@ -1,6 +1,4 @@
 @extends('backend.layouts.master', ['page_slug' => 'thana'])
-
-
 @section('title', 'Admin - management')
 @section('content')
     <div class="container-fluid mt-2">
@@ -61,10 +59,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-@push('script')
-
-@endpush

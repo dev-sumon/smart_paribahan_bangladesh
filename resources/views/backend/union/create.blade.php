@@ -28,35 +28,48 @@
                                                 <option value="{{ $division->id }}">{{ $division->division }}</option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('division_id'))
+                                            <div class="text-danger">{{ $errors->first('division_id') }}</div>
+                                        @endif
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="district">District <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>Select District</option>
                                         </select>
+                                        @if ($errors->has('district_id'))
+                                            <div class="text-danger">{{ $errors->first('district_id') }}</div>
+                                        @endif
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="thana">Thana <span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>Select Thana</option>
                                         </select>
+                                        @if ($errors->has('thana_id'))
+                                            <div class="text-danger">{{ $errors->first('thana_id') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="union">{{ __('Union') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="union" placeholder="Enter The Union Name" name="union" value="{{ old('union') }}">
-                                        @if($errors->has('union'))
+                                        <input type="text" class="form-control" id="union"
+                                            placeholder="Enter The Union Name" name="union" value="{{ old('union') }}">
+                                        @if ($errors->has('union'))
                                             <div class="text-danger">{{ $errors->first('union') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
+                                        <label for="status">{{ __('Status') }} <span
+                                                class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
-                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
+                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>
+                                                {{ __('Active') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>
+                                                {{ __('Deactive') }}</option>
                                         </select>
-                                        @if($errors->has('status'))
+                                        @if ($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
@@ -80,7 +93,7 @@
         $(document).ready(function() {
             $('#division').on('change', function() {
                 let divisionId = $(this).val();
-                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+                let _url = '{{ route('ajax.division', ':id') }}'.replace(':id', divisionId);
 
                 $.ajax({
                     url: _url,
@@ -92,7 +105,8 @@
                         districtSelect.append('<option value="">Select District</option>');
 
                         $.each(districts, function(index, district) {
-                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                            districtSelect.append('<option value="' + district.id +
+                                '">' + district.district + '</option>');
                         });
                     },
                     error: function(error) {
@@ -101,9 +115,9 @@
                 });
             });
 
-            $('#district').on('change', function() { 
+            $('#district').on('change', function() {
                 let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
+                let _url = '{{ route('ajax.thana', ':id') }}'.replace(':id', districtId);
 
                 $.ajax({
                     url: _url,
@@ -115,7 +129,8 @@
                         thanaSelect.append('<option value="">Select Thana</option>');
 
                         $.each(thanas, function(index, thana) {
-                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                            thanaSelect.append('<option value="' + thana.id + '">' +
+                                thana.thana + '</option>');
                         });
                     },
                     error: function(error) {
