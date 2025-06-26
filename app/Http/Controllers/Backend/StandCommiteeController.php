@@ -56,7 +56,7 @@ class StandCommiteeController extends Controller
         
 
         $save->save();
-        return redirect()->route('commitee.index');
+        return redirect()->route('commitee.index')->with('success','Stand commitee created successfully');
     }
     public function update($id): View
     {
@@ -98,7 +98,7 @@ class StandCommiteeController extends Controller
         
 
         $update->save();
-        return redirect()->route('commitee.index');
+        return redirect()->route('commitee.index')->with('success','Stand commitee updated successfully');
     }
     public function status($id): RedirectResponse
     {
@@ -109,14 +109,14 @@ class StandCommiteeController extends Controller
             $commitee->status = 1;
         }
         $commitee->save();
-        return redirect()->route('commitee.index');
+        return redirect()->route('commitee.index')->with('success','Stand commitee status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $commitee = StandCommittee::findOrFail($id);
         $commitee->delete();
 
-        return redirect()->route('commitee.index');
+        return redirect()->route('commitee.index')->with('success','Stand commitee deleted successfully');
     }
     public function detalis($id): View
     {
