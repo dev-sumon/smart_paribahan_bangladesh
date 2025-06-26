@@ -28,7 +28,7 @@ class BloodGroupController extends Controller
         $save->status = $request->status ?? 0;
 
         $save->save();
-        return redirect()->route('blood.index');
+        return redirect()->route('blood.index')->with('success', 'Blood group created successfully');
     }
     public function update($id): View
     {
@@ -43,7 +43,7 @@ class BloodGroupController extends Controller
         $update->status = $request->status ?? 0;
 
         $update->save();
-        return redirect()->route('blood.index');
+        return redirect()->route('blood.index')->with('success', 'Blood group updated successfully');
     }
     public function status($id): RedirectResponse
     {
@@ -55,14 +55,14 @@ class BloodGroupController extends Controller
         }
 
         $blood->save();
-        return redirect()->route('blood.index');
+        return redirect()->route('blood.index')->with('success', 'Blood group status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $blood = BloodGroup::findOrFail($id);
         $blood->delete();
 
-        return redirect()->route('blood.index');
+        return redirect()->route('blood.index')->with('success', 'Blood group deleted successfully');
     }
     public function detalis($id): View{
         $data['blood'] = BloodGroup::findOrFail($id);
