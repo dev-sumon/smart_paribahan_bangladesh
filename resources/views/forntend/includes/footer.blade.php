@@ -8,7 +8,7 @@
               </a>
               <p class="mb-3">Phasellus pulvinar porta turpis sit amet <br> facilis sapien bibendum eu praesent massa.</p>
               <p ><i class="fas fa-phone-alt me-2"></i>
-                <a class="contact" href="tel:{{ $contact->phone }}">+880 {{ $contact->phone }},</a>
+                <a class="contact" href="tel:{{ $contact->phone }}">{{ $contact->phone }},</a>
                 <a class="contact" href="tel:{{ $contact->optional_number }}">{{ $contact->optional_number }}</a>
               </p>
               <p ><i class="fas fa-envelope me-2"></i><a class="contact" href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></p>

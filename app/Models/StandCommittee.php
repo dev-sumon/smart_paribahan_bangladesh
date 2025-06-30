@@ -48,4 +48,8 @@ class StandCommittee extends Model
     {
         return $this->belongsTo(Stand::class, 'stand_id');
     }
+    public function vehicleType()
+    {
+        return $this->belongsTo(VehicleType::class, 'vehicle_type_id');
+    }
 }

@@ -66,6 +66,11 @@
                                             <td>{{ $commitee->stand->title }}</td>
                                         </tr>
                                         <tr>
+                                            <th>{{ __('Vehicle Type') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $commitee->VehicleType->name ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td><img src="{{ asset('storage/' . $commitee->image) }}" alt="{{ $commitee->name }}" width="100"></td>
