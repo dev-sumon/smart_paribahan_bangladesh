@@ -509,6 +509,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
         Route::get('/get-vehicles/{stand_id}', 'getVehiclesByStand');
         Route::get('stand/{id}/vehicle-types', 'getVehicleTypesByStand')->name('getVehicleTypesByStand');
+        Route::get('vehicleType/{id}', 'vehicleType')->name('vehicleType');
     });
     Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function () {
         Route::get('index', 'index')->name('index');

@@ -120,11 +120,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="vehicle">Vehicle <span class="text-danger">*</span></label>
-                                        <select name="vehicle_id" id="vehicle" class="form-control">
+                                        <select name="vehicle_type_id" id="vehicle" class="form-control">
                                             <option value="" selected hidden>Select Vehicle</option>
                                         </select>
-                                        @if ($errors->has('vehicle_id'))
-                                            <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
+                                        @if ($errors->has('vehicle_type_id'))
+                                            <div class="text-danger">{{ $errors->first('vehicle_type_id') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
@@ -253,30 +253,31 @@
                     }
                 });
             });
-            $('#stand').change(function() {
-                var standId = $(this).val();
-                if (standId) {
-                    $.ajax({
-                        url: '/home/get-vehicles/' + standId,
-                        type: "GET",
-                        dataType: "json",
-                        success: function(data) {
-                            $('#vehicle_type').empty();
-                            $('#vehicle_type').append('<option value="">গাড়ি</option>');
-                            $.each(data, function(key, vehicleType) {
-                                $('#vehicle_type').append('<option value="' +
-                                    vehicleType.id + '">' + vehicleType.name +
-                                    '</option>');
-                            });
-                            $('#vehicle_type').prop('disabled', false);
-                        }
-                    });
-                } else {
-                    $('#vehicle_type').empty();
-                    $('#vehicle_type').append('<option value="">গাড়ি</option>');
-                    $('#vehicle_type').prop('disabled', true);
-                }
+            $('#stand').on('change', function() {
+                let standId = $(this).val();
+                let _url = '{{ route('ajax.vehicleType', ':id') }}'.replace(':id', standId);
+
+                $.ajax({
+                    url: _url,
+                    type: 'GET',
+                    success: function(response) {
+                        let vehicleTypes = response.data;
+                        let vehicleTypeSelect = $('#vehicle');
+
+                        vehicleTypeSelect.empty().append(
+                            '<option value="">Select Vehicle</option>');
+
+                        $.each(vehicleTypes, function(index, vehicleType) {
+                            vehicleTypeSelect.append('<option value="' + vehicleType
+                                .id + '">' + vehicleType.name + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
             });
+
         });
     </script>
 @endpush

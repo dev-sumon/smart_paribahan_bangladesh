@@ -7,6 +7,7 @@ use App\Models\Thana;
 use App\Models\Union;
 use App\Models\District;
 use App\Models\Division;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use App\Models\StandCommittee;
 use Illuminate\Contracts\View\View;
@@ -40,6 +41,7 @@ class StandCommiteeController extends Controller
         $save->thana_id = $request->thana_id;
         $save->union_id = $request->union_id;
         $save->stand_id = $request->stand_id;
+        $save->vehicle_type_id = $request->vehicle_type_id;
         $save->status = $request->status ?? 0;
 
         if ($request->hasFile('image')) {
@@ -66,11 +68,13 @@ class StandCommiteeController extends Controller
         $data['thanas'] = Thana::where('district_id', $data['commitee']->district_id)->get();
         $data['unions'] = Union::where('thana_id', $data['commitee']->thana_id)->get();
         $data['stands'] = Stand::where('union_id', $data['commitee']->union_id)->get();
+        $data['vehicleTypes'] = VehicleType::where('stand_id', $data['commitee']->stand_id)->get();
 
         return view('backend.stand_commitee.edit', $data);
     }
     public function update_store(StandCommiteeRequest $request, $id): RedirectResponse
     {
+        // dd($request->all());
         $update = StandCommittee::findOrFail($id);
         
 
@@ -83,6 +87,8 @@ class StandCommiteeController extends Controller
         $update->thana_id = $request->thana_id;
         $update->union_id = $request->union_id;
         $update->stand_id = $request->stand_id;
+        $update->stand_id = $request->stand_id;
+        $update->vehicle_type_id = $request->vehicle_type_id;
         $update->status = $request->status ?? 0;
 
         if ($request->hasFile('image')) {
@@ -120,7 +126,7 @@ class StandCommiteeController extends Controller
     }
     public function detalis($id): View
     {
-        $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
+        $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand', 'VehicleType')->findOrFail($id);
         return view('backend.stand_commitee.show', $data);
     }
 }

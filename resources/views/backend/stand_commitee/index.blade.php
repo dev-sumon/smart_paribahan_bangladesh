@@ -1,7 +1,4 @@
 @extends('backend.layouts.master', ['page_slug' => 'commitee'])
-
-
-
 @section('title', 'Stand Commitee')
 @section('content')
     <div class="container-fluid mt-2">
