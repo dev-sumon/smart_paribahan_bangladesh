@@ -68,7 +68,7 @@ class FieldWorkerStandController extends Controller
         $save->image = json_encode($imagePaths);
 
         $save->save();
-        return redirect()->route('field_worker.stand.index');
+        return redirect()->route('field_worker.stand.index')->with('success', 'Stand Created Done By Field Worker');
     }
     public function update($slug): View
     {

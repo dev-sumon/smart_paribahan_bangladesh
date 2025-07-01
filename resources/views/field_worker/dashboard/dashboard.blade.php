@@ -1,6 +1,18 @@
 @extends('field_worker.layouts.master', ['page_slug' => 'dashboard'])
 @section('title', 'Field Worker Dashboard')
 @section('content')
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">{{ __('ড্যাশবোর্ড') }}</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">{{ __('শেয়ার') }}</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">{{ __('এক্সপোর্ট') }}</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <i class="bi bi-calendar"></i> {{ __('এই সপ্তাহ') }}
+            </button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card">
@@ -9,8 +21,8 @@
                         <div>
                             <h6 class="card-title text-muted">{{ __('আজকের ড্রাইভার') }}</h6>
                             <h2 class="mb-0">{{ $today_driver }}</h2>
-                            <small class="text-success"><i class="bi bi-arrow-up"></i> গতকাল
-                                থেকে {{ $driver_diff >= 0 ? '+' : '' }}{{ $driver_diff }} বৃদ্ধি</small>
+                            <small class="text-success"><i class="bi bi-arrow-up"></i> {{ __('গতকাল থেকে') }}
+                                {{ $driver_diff >= 0 ? '+' : '' }}{{ $driver_diff }} {{ __('বৃদ্ধি') }}</small>
                         </div>
                         <div class="bg-light p-3 rounded">
                             <i class="nav-icon fa-solid fa-dharmachakra"></i>
