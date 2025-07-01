@@ -4,11 +4,11 @@
     <section class="login_section">
         <div class="container d-flex justify-content-center align-items-center pt-5 py-5">
             {{-- Alert message --}}
-            @if (session('error'))
+            {{-- @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
-            @endif
+            @endif --}}
             <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
                 <h4 class="mb-4">{{ __('মাঠকর্মী লগইন') }}</h4>
                 <form method="POST" action="{{ route('field_worker.login') }}">
