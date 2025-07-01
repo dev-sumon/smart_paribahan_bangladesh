@@ -29,7 +29,7 @@ class OwnerLoginController extends Controller
                 }
             }
         }
-        return redirect()->route('owner.login');
+        return redirect()->route('owner.login')->with('error', 'Your Email Or Password Invalid');
     }
     public function logout()
     {

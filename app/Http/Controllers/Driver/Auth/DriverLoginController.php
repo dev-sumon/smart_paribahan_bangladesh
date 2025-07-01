@@ -29,7 +29,7 @@ class DriverLoginController extends Controller
                 }
             }
         }
-        return redirect()->route('driver.login')->withErrors(['login' => 'Invalid credentials or inactive account.']);
+        return redirect()->route('driver.login')->with('error', 'Your Email Or Password Invalid');
     }
 
     public function logout()

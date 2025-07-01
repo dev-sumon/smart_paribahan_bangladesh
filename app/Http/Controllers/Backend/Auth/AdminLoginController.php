@@ -27,7 +27,7 @@ class AdminLoginController extends Controller
                 }
             }
         }
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.login')->with('error', 'Your Email Or Password Invalid');
     }
     public function logout()
     {
