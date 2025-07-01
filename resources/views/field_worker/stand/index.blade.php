@@ -49,11 +49,9 @@
                                                         <a href="{{ route('field_worker.stand.update', $stand->slug) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('field_worker.stand.delete', $stand->slug) }}" data-id=""
-                                                            class="btn btn-danger delete"><i
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.stand.delete', $stand->slug) }}" class="btn btn-danger delete"><i
                                                                 class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('field_worker.stand.status.update', $stand->slug) }}"
-                                                            data-id="" class="btn {{ $stand->statusIcon() }}"><i
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.stand.status.update', $stand->slug) }}" class="btn {{ $stand->statusIcon() }} status-update"><i
                                                                 class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
