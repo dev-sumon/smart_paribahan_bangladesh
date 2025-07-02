@@ -6,24 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
-    public function statusBg(){
-        if($this->status == 1){
+    public function statusBg()
+    {
+        if ($this->status == 1) {
             return 'badge badge-success';
-        }else{
+        } else {
             return 'badge badge-danger';
         }
     }
-    public function statusTitle(){
-        if($this->status == 1){
+    public function statusTitle()
+    {
+        if ($this->status == 1) {
             return 'Active';
-        }else{
+        } else {
             return 'Deactive';
         }
     }
-    public function statusIcon(){
-        if($this->status == 1){
+    public function statusIcon()
+    {
+        if ($this->status == 1) {
             return 'btn-warning';
-        }else{
+        } else {
             return 'btn-success';
         }
     }
@@ -52,7 +55,7 @@ class District extends Model
     {
         return $this->hasMany(Stand::class);
     }
-    
+
     public function drivers()
     {
         return $this->hasMany(Driver::class, 'district_id');
@@ -68,9 +71,37 @@ class District extends Model
 
 
 
-     public function vehicleSerials()
+    public function vehicleSerials()
     {
         return $this->hasMany(VehicleSerial::class);
+    }
+
+
+    public function creator()
+    {
+        if (!$this->created_by_guard || !$this->created_by_id) {
+            return null;
+        }
+
+        switch ($this->created_by_guard) {
+            case 'admin':
+                return Admin::find($this->created_by_id);
+            default:
+                return null;
+        }
+    }
+    public function updater()
+    {
+        if (!$this->updated_by_guard || !$this->updated_by_id) {
+            return null;
+        }
+
+        switch ($this->updated_by_guard) {
+            case 'admin':
+                return Admin::find($this->updated_by_id);
+            default:
+                return null;
+        }
     }
 
 }

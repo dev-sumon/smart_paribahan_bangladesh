@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StandRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -66,9 +67,11 @@ class FieldWorkerStandController extends Controller
         }
 
         $save->image = json_encode($imagePaths);
-
+        // setCreator($save);
+        $save->created_by_id = Auth::guard('field_worker')->id();
+        $save->created_by_guard = 'field_worker';
         $save->save();
-        return redirect()->route('field_worker.stand.index')->with('success', 'Stand Created Done By Field Worker');
+        return redirect()->route('field_worker.stand.index')->with('success', 'Stand Created By Field Worker');
     }
     public function update($slug): View
     {
@@ -109,8 +112,10 @@ class FieldWorkerStandController extends Controller
         }
         ;
 
+        $update->updated_by_id = Auth::guard('field_worker')->id();
+        $update->updated_by_guard = 'field_worker';
         $update->save();
-        return redirect()->route('field_worker.stand.index');
+        return redirect()->route('field_worker.stand.index')->with('success', 'Stand Updated By Field Worker');
     }
     public function status($slug): RedirectResponse
     {
@@ -121,7 +126,7 @@ class FieldWorkerStandController extends Controller
             $stand->status = 1;
         }
         $stand->save();
-        return redirect()->route('field_worker.stand.index');
+        return redirect()->route('field_worker.stand.index')->with('success', 'Stand Status Updated By Field Worker');
     }
     public function delete($slug): RedirectResponse
     {
@@ -133,7 +138,7 @@ class FieldWorkerStandController extends Controller
     public function detalis($slug): View
     {
         $data['stand'] = Stand::with('division', 'district', 'thana', 'union')->where('slug', $slug)->firstOrFail();
-        return view('field_worker.stand.show', $data);
+        return view('field_worker.stand.show', $data)->with('success', 'Stand Deleted By Field Worker');
     }
 
 }

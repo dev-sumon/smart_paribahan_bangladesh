@@ -7,14 +7,15 @@ use App\Models\Thana;
 use App\Models\Union;
 use App\Models\District;
 use App\Models\Division;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 use App\Http\Requests\StandRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class StandController extends Controller
 {
@@ -65,7 +66,8 @@ class StandController extends Controller
         }
 
         $save->image = json_encode($imagePaths);
-
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
         return redirect()->route('stand.index')->with('success', 'Stand created successfully!');
     }

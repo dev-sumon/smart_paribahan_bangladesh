@@ -42,7 +42,7 @@
                                             <td>{{ $union->union }}</td>
                                             <td><span class="{{ $union->statusBg() }}">{{ $union->statusTitle() }}</span></td>
                                             <td>{{ $union->created_at ? $union->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $union->created_user ? $union->created_user->name : 'system' }}</td>
+                                            <td>{{ $union->creator()->name ??  'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('union.detalis', $union->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>

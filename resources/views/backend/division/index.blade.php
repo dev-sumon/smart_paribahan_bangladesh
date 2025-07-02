@@ -36,7 +36,7 @@
                                             <td>{{ $division->division }}</td>
                                             <td><span class="{{ $division->statusBg() }}">{{ $division->statusTitle() }}</span></td>
                                             <td>{{ $division->created_at ? $division->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $division->created_user ? $division->created_user->name : 'system' }}</td>
+                                            <td> {{ $division->creator()->name ?? 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('division.detalis', $division->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>

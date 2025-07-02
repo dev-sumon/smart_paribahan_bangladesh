@@ -14,6 +14,7 @@ use App\Models\NoticeCategory;
 use App\Http\Requests\UnionRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticeRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -60,6 +61,8 @@ class FieldWorkerNoticeController extends Controller
         }
 
 
+        $save->created_by_id = Auth::guard('field_worker')->id();
+        $save->created_by_guard = 'field_worker';
         $save->save();
         return redirect()->route('field_worker.notice.index');
     }
@@ -102,15 +105,18 @@ class FieldWorkerNoticeController extends Controller
         }
         ;
 
+
+        $update->updated_by_id = Auth::guard('field_worker')->id();
+        $update->updated_by_guard = 'field_worker';
         $update->save();
         return redirect()->route('field_worker.notice.index');
     }
     public function status($id): RedirectResponse
     {
         $notice = Notice::findOrFail($id);
-        if($notice->status == 1){
+        if ($notice->status == 1) {
             $notice->status = 0;
-        }else{
+        } else {
             $notice->status = 1;
         }
         $notice->save();

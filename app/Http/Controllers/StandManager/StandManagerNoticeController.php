@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\NoticeCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticeRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,6 +53,10 @@ class StandManagerNoticeController extends Controller
             $save->file = $path;
         }
 
+
+
+        $save->created_by_id = Auth::guard('stand_manager')->id();
+        $save->created_by_guard = 'stand_manager';
         $save->save();
         return redirect()->route('stand_manager.notice.stand.manager.index');
     }
@@ -82,8 +87,10 @@ class StandManagerNoticeController extends Controller
             $path = $file->storeAs("notices/", $filename, 'public');
             $update->file = $path;
         }
-        
 
+
+        $update->updated_by_id = Auth::guard('stand_manager')->id();
+        $update->updated_by_guard = 'stand_manager';
         $update->save();
 
         return redirect()->route('stand_manager.notice.stand.manager.index');
@@ -91,9 +98,9 @@ class StandManagerNoticeController extends Controller
     public function status($id): RedirectResponse
     {
         $notice = Notice::findOrFail($id);
-        if($notice->status == 1){
+        if ($notice->status == 1) {
             $notice->status = 0;
-        }else{
+        } else {
             $notice->status = 1;
         }
         $notice->save();

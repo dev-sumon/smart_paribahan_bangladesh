@@ -9,10 +9,11 @@ use App\Models\Notice;
 use App\Models\District;
 use App\Models\Division;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use App\Models\NoticeCategory;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoticeRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -55,6 +56,8 @@ class NoticeController extends Controller
         }
 
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
         return redirect()->route('notice.index')->with('success', 'Notice created successfully');
     }
@@ -98,6 +101,8 @@ class NoticeController extends Controller
         }
         ;
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
         return redirect()->route('notice.index')->with('success', 'Notice updated successfully');
     }

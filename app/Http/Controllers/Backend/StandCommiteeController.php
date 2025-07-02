@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\StandCommittee;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StandCommiteeRequest;
@@ -55,10 +56,13 @@ class StandCommiteeController extends Controller
         } else {
             $save->image = '';
         }
-        
 
+
+
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
-        return redirect()->route('commitee.index')->with('success','Stand commitee created successfully');
+        return redirect()->route('commitee.index')->with('success', 'Stand commitee created successfully');
     }
     public function update($id): View
     {
@@ -76,7 +80,7 @@ class StandCommiteeController extends Controller
     {
         // dd($request->all());
         $update = StandCommittee::findOrFail($id);
-        
+
 
         $update->name = $request->name;
         $update->designation = $request->designation;
@@ -95,34 +99,37 @@ class StandCommiteeController extends Controller
             if ($update->image && Storage::exists($update->image)) {
                 Storage::delete($update->image);
             }
-    
+
             $image = $request->file('image');
             $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("committee/", $filename, 'public');
             $update->image = $path;
         }
-        
 
+
+
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
-        return redirect()->route('commitee.index')->with('success','Stand commitee updated successfully');
+        return redirect()->route('commitee.index')->with('success', 'Stand commitee updated successfully');
     }
     public function status($id): RedirectResponse
     {
         $commitee = StandCommittee::findOrFail($id);
-        if($commitee->status == 1){
+        if ($commitee->status == 1) {
             $commitee->status = 0;
-        }else{
+        } else {
             $commitee->status = 1;
         }
         $commitee->save();
-        return redirect()->route('commitee.index')->with('success','Stand commitee status updated successfully');
+        return redirect()->route('commitee.index')->with('success', 'Stand commitee status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $commitee = StandCommittee::findOrFail($id);
         $commitee->delete();
 
-        return redirect()->route('commitee.index')->with('success','Stand commitee deleted successfully');
+        return redirect()->route('commitee.index')->with('success', 'Stand commitee deleted successfully');
     }
     public function detalis($id): View
     {

@@ -10,7 +10,8 @@
                             <h1 class="float-start">{{ __('Stand Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('field_worker.stand.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('field_worker.stand.index') }}"
+                                class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -58,8 +59,30 @@
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $stand->image) }}"
-                                                    alt="{{ $stand->title }}" width="100"></td>
+                                            <td>
+                                                {{-- <img src="{{ asset('storage/' . $stand->image) }}"
+                                                    alt="{{ $stand->title }}" width="100"> --}}
+
+                                                @if ($stand->image)
+                                                    @php
+                                                        $images = is_array($stand->image)
+                                                            ? $stand->image
+                                                            : json_decode($stand->image, true);
+                                                    @endphp
+
+                                                    <div class="row mb-2">
+                                                        @foreach ($images as $img)
+                                                            <div class="col-md-3 mb-2">
+                                                                <img src="{{ Storage::url($img) }}"
+                                                                    alt="{{ $stand->title }}" class="img-fluid rounded"
+                                                                    style="width: 100%; height: auto; object-fit: cover;">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    <p>{{ __('No image available') }}</p>
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
@@ -73,9 +96,16 @@
                                             <td> {{ $stand->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created B') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $stand->created_by_guard }} -
+                                                {{ $stand->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $stand->updated_by_guard }} - {{ $stand->updater()->name ?? 'System' }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

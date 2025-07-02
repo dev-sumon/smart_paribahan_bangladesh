@@ -40,7 +40,7 @@
                                                 </td>
                                                 <td>{{ $blog->created_at ? $blog->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $blog->created_admin ? $blog->created_admin->name : 'system' }}</td>
+                                                <td>{{ $blog->creator()->name ?? 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="{{ route('field_worker.blog.detalis', $blog->slug) }}" data-id=""

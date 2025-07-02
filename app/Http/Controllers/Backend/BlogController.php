@@ -6,11 +6,16 @@ use App\Models\Blog;
 use App\Http\Requests\BlogRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['blogs'] = Blog::latest()->get();
@@ -36,6 +41,9 @@ class BlogController extends Controller
             $save->image = $path;
         }
 
+
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
         return redirect()->route('blog.index')->with('success', 'Blog created successfully');
     }
@@ -65,6 +73,8 @@ class BlogController extends Controller
 
         
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
         return redirect()->route('blog.index')->with('success', 'Blog updated successfully');
     }

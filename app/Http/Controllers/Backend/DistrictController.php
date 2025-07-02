@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\DistrictRequest;
 use App\Models\District;
 use App\Models\Division;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\DistrictRequest;
 
 class DistrictController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['districts'] = District::with('division')->latest()->get();
@@ -30,6 +35,8 @@ class DistrictController extends Controller
         $save->district = $request->district;
         $save->status = $request->status ?? 0;
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
         return redirect()->route('district.index')->with('success', 'District created successfully');
     }
@@ -50,6 +57,8 @@ class DistrictController extends Controller
         $update->status = $request->status ?? 0;
 
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
         return redirect()->route('district.index')->with('success', 'District updated successfully');
 

@@ -51,7 +51,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $yearly_notice->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $yearly_notice->created_by_guard }} - {{ $yearly_notice->creator()->name ?? 'System' }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $yearly_notice->updated_by_guard }} - {{ $yearly_notice->updater()->name ?? 'N/A' }} </td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -38,7 +38,7 @@
                                             <td>{{ $thana->thana }}</td>
                                             <td><span class="{{ $thana->statusBg() }}">{{ $thana->statusTitle() }}</span></td>
                                             <td>{{ $thana->created_at ? $thana->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $thana->created_user ? $thana->created_user->name : 'system' }}</td>
+                                            <td>{{ $thana->creator()->name ?? 'System' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('thana.detalis', $thana->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
