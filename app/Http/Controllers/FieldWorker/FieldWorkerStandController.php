@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StandRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -66,7 +67,9 @@ class FieldWorkerStandController extends Controller
         }
 
         $save->image = json_encode($imagePaths);
-
+        // setCreator($save);
+        $save->created_by_id = Auth::guard('field_worker')->id();
+        $save->created_by_guard = 'field_worker';
         $save->save();
         return redirect()->route('field_worker.stand.index')->with('success', 'Stand Created By Field Worker');
     }

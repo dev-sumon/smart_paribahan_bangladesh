@@ -101,4 +101,22 @@ class Stand extends Model
     }
 
 
+
+
+    public function creator()
+    {
+        if (!$this->created_by_guard || !$this->created_by_id) {
+            return null;
+        }
+
+        switch ($this->created_by_guard) {
+            case 'admin':
+                return \App\Models\Admin::find($this->created_by_id);
+            case 'field_worker':
+                return \App\Models\FieldWorker::find($this->created_by_id);
+            // তুমি চাইলে আরও guard এখানে যোগ করতে পারো
+            default:
+                return null;
+        }
+    }
 }

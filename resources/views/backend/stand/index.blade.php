@@ -40,7 +40,8 @@
                                             {{-- <td><img src="{{ asset('storage/' . $stand->image) }}" alt="{{ $stand->title }}" width="100"></td> --}}
                                             <td><span class="{{$stand->statusBg()}}">{{$stand->statusTitle()}}</span></td>
                                             <td>{{ $stand->created_at ? $stand->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $stand->created_user ? $stand->created_user->name : 'system' }}</td>
+                                            {{-- <td>{{ $stand->created_user ? $stand->created_user->name : 'system' }}</td> --}}
+                                             <td>{{ $stand->creator()->name ?? 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('stand.detalis', $stand->slug) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
