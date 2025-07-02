@@ -38,7 +38,7 @@
                                             <td>{{ $commitee->stand->title }}</td>
                                             <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td>
                                             <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>
+                                            <td>{{ $commitee->creator()->name ?? 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('field_worker.commitee.detalis', $commitee->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>

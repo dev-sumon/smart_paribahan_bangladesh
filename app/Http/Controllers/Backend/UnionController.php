@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Thana;
+use App\Models\Union;
 use App\Models\District;
 use App\Models\Division;
-use App\Models\Union;
 use Illuminate\Http\Request;
+use App\Http\Requests\UnionRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UnionRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 class UnionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['unions'] = Union::with('division', 'district', 'thana')->latest()->get();
@@ -34,8 +39,10 @@ class UnionController extends Controller
         $save->union = $request->union;
         $save->status = $request->status ?? 0;
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
-        return redirect()->route('union.index')->with('success','Union created successfully');
+        return redirect()->route('union.index')->with('success', 'Union created successfully');
 
     }
     public function update($id): View
@@ -58,27 +65,29 @@ class UnionController extends Controller
         $update->union = $request->union;
         $update->status = $request->status ?? 0;
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
-        return redirect()->route('union.index')->with('success','Union updated successfully');
+        return redirect()->route('union.index')->with('success', 'Union updated successfully');
     }
     public function status($id): RedirectResponse
     {
         $union = Union::findOrFail($id);
-        if($union->status == 1){
+        if ($union->status == 1) {
             $union->status = 0;
-        }else{
+        } else {
             $union->status = 1;
         }
-        
+
         $union->save();
-        return redirect()->route('union.index')->with('success','Union status updated successfully');
+        return redirect()->route('union.index')->with('success', 'Union status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $union = Union::findOrFail($id);
         $union->delete();
 
-        return redirect()->route('union.index')->with('success','Union deleted successfully');
+        return redirect()->route('union.index')->with('success', 'Union deleted successfully');
     }
     public function detalis($id): View
     {

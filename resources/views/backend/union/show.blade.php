@@ -55,7 +55,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $union->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $union->created_by_guard }} - {{ $union->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $union->updated_by_guard }} - {{ $union->updater()->name ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

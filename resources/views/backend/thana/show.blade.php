@@ -50,7 +50,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $thana->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $thana->created_by_guard }} - {{ $thana->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $thana->updated_by_guard }} - {{ $thana->updater()->name ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -39,7 +39,7 @@
                                                 </td>
                                                 <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}
+                                                <td>{{ $notice->creator()->name ?? 'System' }}
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">

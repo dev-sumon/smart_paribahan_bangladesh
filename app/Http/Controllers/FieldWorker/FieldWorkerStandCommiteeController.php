@@ -7,11 +7,12 @@ use App\Models\Thana;
 use App\Models\Union;
 use App\Models\District;
 use App\Models\Division;
-use App\Models\VehicleType;
 use Illuminate\View\View;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use App\Models\StandCommittee;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StandCommiteeRequest;
@@ -56,6 +57,8 @@ class FieldWorkerStandCommiteeController extends Controller
         }
 
 
+        $save->created_by_id = Auth::guard('field_worker')->id();
+        $save->created_by_guard = 'field_worker';
         $save->save();
         return redirect()->route('field_worker.commitee.index');
     }
@@ -89,7 +92,7 @@ class FieldWorkerStandCommiteeController extends Controller
 
         return redirect()->route('field_worker.commitee.index');
     }
-        public function detalis($id): View
+    public function detalis($id): View
     {
         $data['commitee'] = StandCommittee::with('division', 'district', 'thana', 'union', 'stand')->findOrFail($id);
         return view('field_worker.stand_commitee.show', $data);

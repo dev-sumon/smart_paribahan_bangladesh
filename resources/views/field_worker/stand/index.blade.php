@@ -39,7 +39,7 @@
                                                 </td>
                                                 <td>{{ $stand->created_at ? $stand->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $stand->creator()->name  ?? 'System' }}</td>
+                                                <td>{{ $stand->creator()->name ?? 'System' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="{{ route('field_worker.stand.detalis', $stand->slug) }}"

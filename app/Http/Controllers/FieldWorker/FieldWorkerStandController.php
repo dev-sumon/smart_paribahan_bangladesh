@@ -112,6 +112,8 @@ class FieldWorkerStandController extends Controller
         }
         ;
 
+        $update->updated_by_id = Auth::guard('field_worker')->id();
+        $update->updated_by_guard = 'field_worker';
         $update->save();
         return redirect()->route('field_worker.stand.index')->with('success', 'Stand Updated By Field Worker');
     }

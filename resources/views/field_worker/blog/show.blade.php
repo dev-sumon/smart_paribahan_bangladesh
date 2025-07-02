@@ -48,7 +48,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $blog->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $blog->created_by_guard }} - {{ $blog->creator()->name ?? 'System' }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $blog->updated_by_guard }} - {{ $blog->updater()->name ?? 'N/A' }} </td>
                                         </tr>
                                     </tbody>
                                 </table>

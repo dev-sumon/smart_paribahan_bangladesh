@@ -96,9 +96,16 @@
                                             <td> {{ $stand->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created B') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $stand->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $stand->created_by_guard }} -
+                                                {{ $stand->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $stand->updated_by_guard }} - {{ $stand->updater()->name ?? 'System' }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

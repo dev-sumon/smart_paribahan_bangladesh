@@ -43,7 +43,7 @@
                                                 </td>
                                                 <td>{{ $union->created_at ? $union->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $union->created_user ? $union->created_user->name : 'system' }}</td>
+                                                <td>{{ $union->creator()->name ?? 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="{{ route('field_worker.union.detalis', $union->id) }}" data-id=""

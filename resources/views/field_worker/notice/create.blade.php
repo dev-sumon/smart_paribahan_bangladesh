@@ -104,7 +104,7 @@
                                     <div class="form-group">
                                         <label for="date" class="mt-3">{{ __('Date') }} <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" name="date" value="{{ old('date') }}"
+                                        <input type="date" name="date" value="{{ old('date') }}"
                                             class="form-control" placeholder="Enter The Date">
                                         @if ($errors->has('date'))
                                             <div class="text-danger">{{ $errors->first('date') }}</div>

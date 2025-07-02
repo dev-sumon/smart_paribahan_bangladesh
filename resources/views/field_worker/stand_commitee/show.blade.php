@@ -88,9 +88,14 @@
                                             <td> {{ $commitee->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created B') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $commitee->created_by ?? 'N/A' }}</td>
+                                            <td>{{ $commitee->created_by_guard}} - {{ $commitee->creator()->name  ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $commitee->updated_by_guard}} - {{ $commitee->updater()->name  ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -7,12 +7,13 @@ use App\Models\Thana;
 use App\Models\Union;
 use App\Models\District;
 use App\Models\Division;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\YearlyNotice;
 use Illuminate\Http\Request;
 use App\Models\NoticeCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\YearlyNoticeRequest;
 
 class YearlyNoticeController extends Controller
@@ -54,6 +55,8 @@ class YearlyNoticeController extends Controller
         }
 
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
         return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice created successfully');
     }
@@ -94,6 +97,9 @@ class YearlyNoticeController extends Controller
             $update->file = $path;
         }
 
+
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
 
         return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice updated successfully');
@@ -117,7 +123,7 @@ class YearlyNoticeController extends Controller
 
         return redirect()->route('yearly_notice.index')->with('success', 'Yearly notice deleted successfully');
     }
-    public function detalis($id):View
+    public function detalis($id): View
     {
         $data['yearly_notice'] = YearlyNotice::with('noticeCategory')->findOrFail($id);
         return view('backend.yearly_notice.show', $data);
