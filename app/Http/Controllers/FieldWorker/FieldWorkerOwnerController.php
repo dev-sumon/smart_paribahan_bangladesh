@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -78,7 +79,10 @@ class FieldWorkerOwnerController extends Controller
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $save->id]);
         }
 
-        return redirect()->route('field_worker.owner.index');
+
+        $save->created_by_id = Auth::guard('field_worker')->id();
+        $save->created_by_guard = 'field_worker';
+        return redirect()->route('field_worker.owner.index')->with('success', 'Owner created successfully by Field Worker');
     }
     public function update($slug): View
     {
@@ -142,13 +146,17 @@ class FieldWorkerOwnerController extends Controller
             $update->image = $path;
         }
 
+
+        $update->updated_by_id = Auth::guard('field_worker')->id();
+        $update->updated_by_guard = 'field_worker';
         $update->update();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $update->id]);
         }
 
-        return redirect()->route('field_worker.owner.index');
+
+        return redirect()->route('field_worker.owner.index')->with('success', 'Owner created successfully by Field Worker');
     }
     public function status($slug): RedirectResponse
     {
@@ -159,14 +167,14 @@ class FieldWorkerOwnerController extends Controller
             $owner->status = 1;
         }
         $owner->save();
-        return redirect()->route('field_worker.owner.index');
+        return redirect()->route('field_worker.owner.index')->with('success', 'Owner status updated successfully by Field Worker');
     }
     public function delete($slug): RedirectResponse
     {
         $owner = Owner::where('slug', $slug)->firstOrFail();
         $owner->delete();
 
-        return redirect()->route('field_worker.owner.index');
+        return redirect()->route('field_worker.owner.index')->with('success', 'Owner deleted successfully buy Field Worker');
     }
     public function detalis($slug): View
     {

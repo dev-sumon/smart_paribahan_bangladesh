@@ -46,7 +46,8 @@
                                             <div class="text-danger">{{ $errors->first('designation') }}</div>
                                         @endif
                                     </div>
-                                    <div class="from-group">
+                                    <div class="from-group mt-3">
+                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
                                         <textarea name="description" id="description" placeholder="Enter The Description"
                                             style="width: 100%; height: 150px; padding: 10px;">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
@@ -86,7 +87,7 @@
                                             <div class="text-danger">{{ $errors->first('phone') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="division">Division <span class="text-danger">*</span></label>
                                         <select name="division_id" id="division" class="form-control">
                                             <option value="" selected hidden>Select Division</option>
@@ -99,38 +100,38 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="district">District <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>Select District</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="thana">Thana <span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>Select Thana</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="union">Union <span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>Select Union</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="stand">Stand <span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>Select Stand</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="vehicle">Vehicle <span class="text-danger">*</span></label>
                                         <select name="vehicle_id" id="vehicle" class="form-control">
                                             <option value="" selected hidden>Select Vehicle</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="image">{{ __('Image') }}</label>
                                         <input type="file" class="form-control h-auto" id="image" name="image"
                                             value="{{ old('image') }}">
@@ -138,7 +139,7 @@
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="password" class="mt-3">{{ __('Password') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="password" name="password" id="password"
@@ -148,7 +149,7 @@
                                             <div class="text-danger">{{ $errors->first('password') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="password_confirmation" class="mt-3">{{ __('Confirm Password') }}
                                             <span class="text-danger">*</span></label>
                                         <input type="password" name="password_confirmation" id="password_confirmation"
@@ -158,7 +159,7 @@
                                             <div class="text-danger">{{ $errors->first('password_confirmation') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="status">{{ __('Status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
@@ -171,7 +172,7 @@
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
                                             {{ __('Submit') }}
                                         </button>

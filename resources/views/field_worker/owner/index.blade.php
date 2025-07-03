@@ -34,26 +34,15 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $owner->title }}</td>
                                                 <td>{{ $owner->email }}</td>
-                                                <td><span
-                                                        class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span>
-                                                </td>
-                                                <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}
-                                                </td>
-                                                <td>{{ $owner->created_user ? $owner->created_user->name : 'system' }}</td>
+                                                <td><span class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span></td>
+                                                <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
+                                                <td>{{ $owner->creator()->name ?? 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
-                                                        <a href="{{ route('field_worker.owner.detalis', $owner->slug) }}" data-id=""
-                                                            class="btn btn-secondary view" title="view deatils"><i
-                                                                class="fa-solid fa-eye"></i></a>
-                                                        <a href="{{ route('field_worker.owner.update', $owner->slug) }}" data-id=""
-                                                            class="btn btn-info"><i
-                                                                class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('field_worker.owner.delete', $owner->slug) }}" data-id=""
-                                                            class="btn btn-danger delete"><i
-                                                                class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('field_worker.owner.status.update', $owner->slug) }}"
-                                                            class="btn {{ $owner->statusIcon() }}"><i
-                                                                class="fa-solid fa-power-off"></i></a>
+                                                        <a href="{{ route('field_worker.owner.detalis', $owner->slug) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('field_worker.owner.update', $owner->slug) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.owner.delete', $owner->slug) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.owner.status.update', $owner->slug) }}" class="btn {{ $owner->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
