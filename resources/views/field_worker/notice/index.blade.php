@@ -49,12 +49,8 @@
                                                         <a href="{{ route('field_worker.notice.update', $notice->id) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('field_worker.notice.delete', $notice->id) }}" data-id=""
-                                                            class="btn btn-danger delete"><i
-                                                                class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('field_worker.notice.status.update', $notice->id) }}"
-                                                            class="btn {{ $notice->statusIcon() }}"><i
-                                                                class="fa-solid fa-power-off"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.notice.delete', $notice->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.notice.status.update', $notice->id) }}" class="btn {{ $notice->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

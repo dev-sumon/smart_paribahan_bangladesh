@@ -64,7 +64,7 @@ class FieldWorkerNoticeController extends Controller
         $save->created_by_id = Auth::guard('field_worker')->id();
         $save->created_by_guard = 'field_worker';
         $save->save();
-        return redirect()->route('field_worker.notice.index');
+        return redirect()->route('field_worker.notice.index')->with('success','Notice created successfully by Field Worker');
     }
 
     public function update($id): View
@@ -109,7 +109,7 @@ class FieldWorkerNoticeController extends Controller
         $update->updated_by_id = Auth::guard('field_worker')->id();
         $update->updated_by_guard = 'field_worker';
         $update->save();
-        return redirect()->route('field_worker.notice.index');
+        return redirect()->route('field_worker.notice.index')->with('success','Notice updated successfully by Field Worker');
     }
     public function status($id): RedirectResponse
     {
@@ -120,14 +120,14 @@ class FieldWorkerNoticeController extends Controller
             $notice->status = 1;
         }
         $notice->save();
-        return redirect()->route('field_worker.notice.index');
+        return redirect()->route('field_worker.notice.index')->with('success','Notice status updated successfully by Field Worker');
     }
     public function delete($id): RedirectResponse
     {
         $notice = Notice::findOrFail($id);
         $notice->delete();
 
-        return redirect()->route('field_worker.notice.index');
+        return redirect()->route('field_worker.notice.index')->with('success','Notice deleted successfully by Field Worker');
     }
     public function detalis($id): view
     {

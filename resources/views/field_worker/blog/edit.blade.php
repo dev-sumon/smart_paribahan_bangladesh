@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <span class="float-left card-title">
                             <h4>{{ __('Blog Update') }}</h4>
                         </span>

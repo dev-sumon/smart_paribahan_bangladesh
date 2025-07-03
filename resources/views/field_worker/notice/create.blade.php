@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <span class="float-left card-title">
                             <h4>{{ __('Create New Notice') }}</h4>
                         </span>
@@ -32,8 +32,7 @@
                                             <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
                                     </div>
-
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="district">{{ __('District') }}<span
                                                 class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
@@ -49,7 +48,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
@@ -63,7 +62,7 @@
                                             <div class="text-danger">{{ $errors->first('thana_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="union">{{ __('Union') }}<span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
@@ -77,7 +76,7 @@
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="stand">{{ __('Stand') }}<span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
@@ -91,7 +90,7 @@
                                             <div class="text-danger">{{ $errors->first('stand_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="title">{{ __('Title') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="title"
@@ -101,7 +100,7 @@
                                             <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="date" class="mt-3">{{ __('Date') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="date" name="date" value="{{ old('date') }}"
@@ -110,7 +109,7 @@
                                             <div class="text-danger">{{ $errors->first('date') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="category" class="mt-3">{{ __('Category') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="notice_category_id" id="notice_category_id" class="form-control">
@@ -124,7 +123,7 @@
                                             <div class="text-danger">{{ $errors->first('category') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="file" class="mt-3">{{ __('file') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="file" name="file" value="{{ old('file') }}"
@@ -133,7 +132,7 @@
                                             <div class="text-danger">{{ $errors->first('file') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="status">{{ __('Status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
@@ -146,7 +145,7 @@
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
                                             {{ __('Submit') }}
                                         </button>
