@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DriverRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -76,6 +77,9 @@ class DriverController extends Controller
             $save->image = $path;
         }
 
+
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
 
         if ($request->vehicle_id) {
@@ -99,7 +103,7 @@ class DriverController extends Controller
     }
     public function update_store(DriverRequest $request, $slug): RedirectResponse
     {
-        $update = Driver::where('slug',$slug)->firstOrFail();
+        $update = Driver::where('slug', $slug)->firstOrFail();
         $update->title = $request->title;
 
         if ($update->isDirty('title')) {
@@ -147,6 +151,8 @@ class DriverController extends Controller
         }
 
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
 
         if ($request->vehicle_id) {
@@ -157,7 +163,7 @@ class DriverController extends Controller
     }
     public function status($slug): RedirectResponse
     {
-        $driver = Driver::where('slug',$slug)->firstOrFail();
+        $driver = Driver::where('slug', $slug)->firstOrFail();
         if ($driver->status == 1) {
             $driver->status = 0;
         } else {
@@ -169,14 +175,15 @@ class DriverController extends Controller
     }
     public function delete($slug): RedirectResponse
     {
-        $driver = Driver::where('slug',$slug)->firstOrFail();
+        $driver = Driver::where('slug', $slug)->firstOrFail();
         $driver->delete();
 
         return redirect()->route('driver.index')->with('success', 'Driver deleted successfully');
     }
     public function detalis($slug): View
     {
-        $data['driver'] = Driver::with('owner')->where('slug',$slug)->firstOrFail();;
+        $data['driver'] = Driver::with('owner')->where('slug', $slug)->firstOrFail();
+        ;
         $data['owners'] = Owner::latest()->get();
         return view('backend.driver.show', $data);
     }

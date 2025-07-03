@@ -30,7 +30,7 @@ class DriverRequest extends FormRequest
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
             'stand_id'    => 'required|exists:stands,id',
-            'vehicle_id'    => 'required|exists:vehicles,id',
+            'vehicle_id'    => 'nullable|exists:vehicles,id',
             'blood_group_id' => 'required|exists:blood_groups,id',
         ]
             +

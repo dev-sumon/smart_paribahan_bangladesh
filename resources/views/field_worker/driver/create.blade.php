@@ -54,7 +54,7 @@
                                             <div class="text-danger">{{ $errors->first('designation') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="driving_license">{{ __('Driving License') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="driving_license"
@@ -74,7 +74,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone" class="mt-3">{{ __('Phone No.') }} <span
+                                        <label for="phone" class="mt-3">{{ __('Phone No') }}<span
                                                 class="text-danger">*</span></label>
                                         <input type="tel" name="phone" value="{{ old('phone') }}"
                                             class="form-control" placeholder="Enter Driver Phone">
@@ -83,7 +83,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">{{ __('Image') }}</label>
+                                        <label for="image" class="mt-3">{{ __('Image') }}</label>
                                         <input type="file" class="form-control h-auto" id="image" name="image"
                                             value="{{ old('image') }}">
                                         @if ($errors->has('image'))
@@ -104,9 +104,8 @@
                                             <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="division">{{ __('Division') }}<span
-                                                class="text-danger">*</span></label>
+                                    <div class="form-group mt-3">
+                                        <label for="division">{{ __('Division') }}<span class="text-danger">*</span></label>
                                         <select name="division_id" id="division" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Division') }}</option>
                                             @foreach ($divisions as $division)
@@ -117,43 +116,43 @@
                                             <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="district">{{ __('District') }}<span
                                                 class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>{{ __('Select District') }}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="thana">{{ __('Thana') }}<span
                                                 class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="union">{{ __('Union') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="stand">{{ __('Stand') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="vehicle">{{ __('Vehicl') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="vehicle_id" id="vehicle" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="password" class="mt-3">{{ __('Password') }} <span
+                                    <div class="form-group mt-3">
+                                        <label for="password">{{ __('Password') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="password" name="password" id="password"
                                             value="{{ old('password') }}" class="form-control"
@@ -162,8 +161,8 @@
                                             <div class="text-danger">{{ $errors->first('password') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="password_confirmation" class="mt-3">{{ __('Confirm Password') }}
+                                    <div class="form-group mt-3">
+                                        <label for="password_confirmation">{{ __('Confirm Password') }}
                                             <span class="text-danger">*</span></label>
                                         <input type="password" name="password_confirmation" id="password_confirmation"
                                             value="{{ old('password_confirmation') }}" class="form-control"
@@ -172,7 +171,7 @@
                                             <div class="text-danger">{{ $errors->first('password_confirmation') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="status">{{ __('Status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
@@ -185,7 +184,7 @@
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
                                             {{ __('Submit') }}
                                         </button>

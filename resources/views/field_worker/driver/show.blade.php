@@ -22,7 +22,7 @@
                                         <tr>
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $driver->name }}</td>
+                                            <td>{{ $driver->title }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('description') }}</th>
@@ -79,9 +79,14 @@
                                             <td> {{ $driver->created_at }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('Created By') }}y</th>
+                                            <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $driver->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $driver->created_by_guard }} - {{ $driver->creator()->name ?? 'N/A' }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $driver->updated_by_guard }} - {{ $driver->updater()->name ?? 'N/A' }} </td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -21,7 +21,7 @@ class Driver extends Authenticatable
      * @var array<int, string>
      */
 
-     protected $fillable = [
+    protected $fillable = [
         'title',
         'slug',
         'description',
@@ -33,10 +33,10 @@ class Driver extends Authenticatable
         'blood_group',
         'password',
         'status',
-     ];
+    ];
 
 
-     /**
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -58,34 +58,39 @@ class Driver extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function owner(){
+    public function owner()
+    {
         return $this->belongsTo(Owner::class, 'owner_id');
     }
-    public function blood_group(){
+    public function blood_group()
+    {
         return $this->belongsTo(BloodGroup::class, 'blood_group_id');
     }
     public function district()
     {
         return $this->belongsTo(District::class, 'district_id');
     }
-    public function statusBg(){
-        if($this->status == 1){
+    public function statusBg()
+    {
+        if ($this->status == 1) {
             return 'badge bg-success';
-        }else{
+        } else {
             return 'badge bg-danger';
         }
     }
-    public function statusTitle(){
-        if($this->status == 1){
+    public function statusTitle()
+    {
+        if ($this->status == 1) {
             return 'Active';
-        }else{
+        } else {
             return 'Deactive';
         }
     }
-    public function statusIcon(){
-        if($this->status == 1){
+    public function statusIcon()
+    {
+        if ($this->status == 1) {
             return 'btn-warning';
-        }else{
+        } else {
             return 'btn-success';
         }
     }
@@ -118,4 +123,35 @@ class Driver extends Authenticatable
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
+
+    public function creator()
+    {
+        if (!$this->created_by_guard || !$this->created_by_id) {
+            return null;
+        }
+
+        switch ($this->created_by_guard) {
+            case 'admin':
+                return Admin::find($this->created_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->created_by_id);
+            default:
+                return null;
+        }
+    }
+    public function updater()
+    {
+        if (!$this->updated_by_guard || !$this->updated_by_id) {
+            return null;
+        }
+
+        switch ($this->updated_by_guard) {
+            case 'admin':
+                return Admin::find($this->updated_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->updated_by_id);
+            default:
+                return null;
+        }
+    }
 }

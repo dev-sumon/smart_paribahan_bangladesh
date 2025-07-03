@@ -22,10 +22,6 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->string('password');
             $table->boolean('status')->default(1);
-            $table->unsignedBigInteger('created_by_id')->nullable();
-            $table->string('created_by_guard')->nullable();
-            $table->unsignedBigInteger('updated_by_id')->nullable();
-            $table->string('updated_by_guard')->nullable();
             $table->timestamps();
         });
     }
