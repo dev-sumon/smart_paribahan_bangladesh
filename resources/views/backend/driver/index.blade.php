@@ -38,7 +38,7 @@
                                             <td>{{ $driver->email }}</td>
                                             <td><span class="{{ $driver->statusBg() }}">{{ $driver->statusTitle() }}</span></td>
                                             <td>{{ $driver->created_at ? $driver->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $driver->created_user ? $driver->created_user->name : 'system' }}</td>
+                                            <td>{{ $driver->creator()->name ?? 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('driver.detalis', $driver->slug) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>

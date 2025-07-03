@@ -43,7 +43,7 @@ class FieldWorkerUnionController extends Controller
         $save->created_by_id = Auth::guard('field_worker')->id();
         $save->created_by_guard = 'field_worker';
         $save->save();
-        return redirect()->route('field_worker.union.index');
+        return redirect()->route('field_worker.union.index')->with('success', 'Union created successfully done by Field Worker');
 
     }
     public function update($id): View
@@ -69,7 +69,7 @@ class FieldWorkerUnionController extends Controller
         $update->updated_by_id = Auth::guard('field_worker')->id();
         $update->updated_by_guard = 'field_worker';
         $update->save();
-        return redirect()->route('field_worker.union.index');
+        return redirect()->route('field_worker.union.index')->with('success', 'Union updated successfully done by Field Worker');
     }
     public function status($id): RedirectResponse
     {
@@ -81,14 +81,14 @@ class FieldWorkerUnionController extends Controller
         }
 
         $union->save();
-        return redirect()->route('field_worker.union.index');
+        return redirect()->route('field_worker.union.index')->with('success', 'Union status updated successfully done by Field Worker');
     }
     public function delete($id): RedirectResponse
     {
         $union = Union::findOrFail($id);
         $union->delete();
 
-        return redirect()->route('field_worker.union.index');
+        return redirect()->route('field_worker.union.index')->with('success', 'Union deleted successfully done by Field Worker');
     }
     public function detalis($id): View
     {

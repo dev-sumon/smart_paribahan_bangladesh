@@ -122,6 +122,8 @@ class StandController extends Controller
 
 
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
         return redirect()->route('stand.index')->with('success', 'Stand updated successfully!');
     }

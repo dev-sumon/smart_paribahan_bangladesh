@@ -41,7 +41,7 @@
                                                 </td>
                                                 <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $owner->created_user ? $owner->created_user->name : 'system' }}</td>
+                                                <td>{{ $owner->creator()->name ?? 'system' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="{{ route('owner.detalis', $owner->slug) }}" data-id=""
