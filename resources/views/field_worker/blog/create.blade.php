@@ -28,7 +28,7 @@
                                         @endif
                                     </div>
                                     <!-- Slug -->
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <div class="mb-3">
                                             <label for="slug" class="form-label">{{ __('Slug') }}</label>
                                             <input type="text" name="slug" class="form-control" id="slug"
@@ -38,7 +38,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="description">{{ __('Description') }} <span
                                                 class="text-danger">*</span></label>
                                         <textarea name="description" id="description" class="form-control" placeholder="Enter Description"
@@ -47,7 +47,7 @@
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="image">{{ __('Image') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="file" class="form-control h-auto" id="image"
@@ -56,7 +56,7 @@
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="status">{{ __('Status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
@@ -69,7 +69,7 @@
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
                                             {{ __('Submit') }}
                                         </button>

@@ -47,7 +47,7 @@ class FieldWorkerBlogController extends Controller
         $save->created_by_id = Auth::guard('field_worker')->id();
         $save->created_by_guard = 'field_worker';
         $save->save();
-        return redirect()->route('field_worker.blog.index');
+        return redirect()->route('field_worker.blog.index')->with('success', 'Blog created successfully by Field Worker');
     }
     public function update($slug): View
     {
@@ -77,7 +77,7 @@ class FieldWorkerBlogController extends Controller
         $update->updated_by_id = Auth::guard('field_worker')->id();
         $update->updated_by_guard = 'field_worker';
         $update->save();
-        return redirect()->route('field_worker.blog.index');
+        return redirect()->route('field_worker.blog.index')->with('success', 'Blog updated successfully by Field Worker');
     }
     public function status($slug): RedirectResponse
     {
@@ -88,14 +88,14 @@ class FieldWorkerBlogController extends Controller
             $blog->status = 1;
         }
         $blog->save();
-        return redirect()->route('field_worker.blog.index');
+        return redirect()->route('field_worker.blog.index')->with('success', 'Blog status updated successfully by Field Worker');
     }
     public function delete($slug): RedirectResponse
     {
         $blog = Blog::where('slug', $slug)->firstOrFail();
         $blog->delete();
 
-        return redirect()->route('field_worker.blog.index');
+        return redirect()->route('field_worker.blog.index')->with('success', 'Blog deleted successfully by Field Worker');
     }
     public function detalis($slug): View
     {
