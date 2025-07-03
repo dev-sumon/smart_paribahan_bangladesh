@@ -60,7 +60,7 @@ class FieldWorkerStandCommiteeController extends Controller
         $save->created_by_id = Auth::guard('field_worker')->id();
         $save->created_by_guard = 'field_worker';
         $save->save();
-        return redirect()->route('field_worker.commitee.index');
+        return redirect()->route('field_worker.commitee.index')->with('success', 'Stand commitee created successfully by Field Worker');
     }
     public function update($id): View
     {
@@ -74,6 +74,43 @@ class FieldWorkerStandCommiteeController extends Controller
 
         return view('field_worker.stand_commitee.edit', $data);
     }
+    public function update_store(StandCommiteeRequest $request, $id): RedirectResponse
+    {
+        // dd($request->all());
+        $update = StandCommittee::findOrFail($id);
+
+
+        $update->name = $request->name;
+        $update->designation = $request->designation;
+        $update->phone = $request->phone;
+        $update->email = $request->email;
+        $update->division_id = $request->division_id;
+        $update->district_id = $request->district_id;
+        $update->thana_id = $request->thana_id;
+        $update->union_id = $request->union_id;
+        $update->stand_id = $request->stand_id;
+        $update->stand_id = $request->stand_id;
+        $update->vehicle_type_id = $request->vehicle_type_id;
+        $update->status = $request->status ?? 0;
+
+        if ($request->hasFile('image')) {
+            if ($update->image && Storage::exists($update->image)) {
+                Storage::delete($update->image);
+            }
+
+            $image = $request->file('image');
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs("committee/", $filename, 'public');
+            $update->image = $path;
+        }
+
+
+
+        $update->updated_by_id = Auth::guard('field_worker')->id();
+        $update->updated_by_guard = 'field_worker';
+        $update->save();
+        return redirect()->route('field_worker.commitee.index')->with('success', 'Stand commitee updated successfully by Field Worker');
+    }
     public function status($id): RedirectResponse
     {
         $commitee = StandCommittee::findOrFail($id);
@@ -83,14 +120,14 @@ class FieldWorkerStandCommiteeController extends Controller
             $commitee->status = 1;
         }
         $commitee->save();
-        return redirect()->route('field_worker.commitee.index');
+        return redirect()->route('field_worker.commitee.index')->with('success', 'Stand status updated successfully by Field Worker');
     }
     public function delete($id): RedirectResponse
     {
         $commitee = StandCommittee::findOrFail($id);
         $commitee->delete();
 
-        return redirect()->route('field_worker.commitee.index');
+        return redirect()->route('field_worker.commitee.index')->with('success', 'Stand deleted successfully by Field Worker');
     }
     public function detalis($id): View
     {
