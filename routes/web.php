@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Backend\YearlyNoticeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -37,6 +36,7 @@ use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Backend\StandManagerController;
+use App\Http\Controllers\Backend\YearlyNoticeController;
 use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\NoticeCategoryController;
@@ -56,6 +56,7 @@ use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
 use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
+use App\Http\Controllers\FieldWorker\FieldWorkerYearlyNoticeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerLoginController;
 use App\Http\Controllers\FieldWorker\FieldWorkerStandCommiteeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerRegistrationController;
@@ -688,6 +689,16 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
 
     // Notice Controller
     Route::controller(FieldWorkerNoticeController::class)->prefix('notice')->name('notice.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+    Route::controller(FieldWorkerYearlyNoticeController::class)->prefix('yearly-notice')->name('yearly_notice.')->group(function () {
         Route::get('index', 'index')->name('index');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
