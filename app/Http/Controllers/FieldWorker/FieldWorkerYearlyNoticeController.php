@@ -110,4 +110,28 @@ class FieldWorkerYearlyNoticeController extends Controller
         $update->save();
         return redirect()->route('field_worker.yearly_notice.index')->with('success', 'Yearly Notice updated successfully by Field Worker');
     }
+    public function status($id): RedirectResponse
+    {
+        $yearly_notice_status = YearlyNotice::findOrFail($id);
+        if ($yearly_notice_status->status == 1) {
+            $yearly_notice_status->status = 0;
+        } else {
+            $yearly_notice_status->status = 1;
+        }
+
+        $yearly_notice_status->save();
+        return redirect()->route('field_worker.yearly_notice.index')->with('success', 'Yearly notice status updated successfully by Field Worker');
+    }
+    public function delete($id): RedirectResponse
+    {
+        $yearly_notice_status = YearlyNotice::findOrFail($id);
+        $yearly_notice_status->delete();
+
+        return redirect()->route('field_worker.yearly_notice.index')->with('success', 'Yearly notice deleted successfully by Field Worker');
+    }
+    // public function detalis($id): View
+    // {
+    //     $data['yearly_notice'] = YearlyNotice::with('noticeCategory')->findOrFail($id);
+    //     return view('field_worker.yearly_notice.show', $data);
+    // }
 }

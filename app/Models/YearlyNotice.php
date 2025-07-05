@@ -9,9 +9,9 @@ class YearlyNotice extends Model
     public function statusBg()
     {
         if ($this->status == 1) {
-            return 'badge badge-success';
+            return 'badge bg-success';
         } else {
-            return 'badge badge-danger';
+            return 'badge bg-danger';
         }
     }
     public function statusTitle()
