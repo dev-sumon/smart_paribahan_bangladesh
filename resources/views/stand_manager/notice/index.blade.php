@@ -1,55 +1,18 @@
 @extends('stand_manager.layouts.master', ['page_slug' => 'notice'])
 @section('title', 'Notice')
 @section('content')
-    <div class="" id="">
+    <div class="stand_manager_list_page" id="">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <div>
-                <h1 class="h2">নোটিশ ম্যানেজমেন্ট</h1>
-                <p class="text-muted">নোটিশ তৈরি, সম্পাদনা এবং ম্যানেজ করুন</p>
+                <h1 class="h2">{{ __('নোটিশ তালিকা') }}</h1>
+                <p class="text-muted">{{ __('সকল নোটিশের তালিকা দেখুন এবং ম্যানেজ করুন') }}</p>
             </div>
-            <span>
-                <a href="{{ route('stand_manager.notice.stand.manager.create') }}" class="btn btn-info"><i class="bi bi-plus"></i> নতুন নোটিশ</a>
+            <span class="create-button">
+                <a href="{{ route('stand_manager.notice.stand.manager.create') }}"><i class="bi bi-plus"></i> {{ __("নতুন নোটিশ") }}</a>
             </span>
         </div>
-
-        <!-- Filter Card -->
-        {{-- <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="mb-0">নোটিশ অনুসন্ধান</h5>
-                <small class="text-muted">নোটিশ খুঁজতে অনুসন্ধান ব্যবহার করুন</small>
-            </div>
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <label class="form-label">ধরন</label>
-                        <select class="form-select">
-                            <option selected>সকল</option>
-                            <option>জরুরি</option>
-                            <option>সাধারণ</option>
-                            <option>তথ্যমূলক</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">তারিখ</label>
-                        <input type="date" class="form-control">
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label">অনুসন্ধান</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" placeholder="শিরোনাম দিয়ে অনুসন্ধান করুন...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
         <!-- Notices Table -->
         <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">নোটিশ তালিকা</h5>
-                <small class="text-muted">সকল নোটিশের তালিকা দেখুন এবং ম্যানেজ করুন</small>
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -76,13 +39,10 @@
                                         <div class="btn-group" role="group" aria-level="Basic example">
                                             <a href="{{ route('stand_manager.notice.detalis', $notice->id) }}" data-id=""
                                                 class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('stand_manager.notice.stand.manager.updae', $notice->id) }}" data-id=""
+                                            <a href="{{ route('stand_manager.notice.stand.manager.update', $notice->id) }}" data-id=""
                                                 class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="{{ route('stand_manager.notice.stand.manager.delete', $notice->id) }}" data-id=""
-                                                class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                            <a href="{{ route('stand_manager.notice.stand.manager.status.update', $notice->id) }}"
-                                                class="btn {{ $notice->statusIcon() }}"><i
-                                                    class="fa-solid fa-power-off"></i></a>
+                                            <a href="javascript:void(0)" data-url="{{ route('stand_manager.notice.stand.manager.delete', $notice->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                            <a href="javascript:void(0)" data-url="{{ route('stand_manager.notice.stand.manager.status.update', $notice->id) }}" class="btn {{ $notice->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                         </div>
                                     </td>
                                 </tr>
