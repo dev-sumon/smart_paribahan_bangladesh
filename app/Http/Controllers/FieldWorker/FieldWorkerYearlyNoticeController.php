@@ -129,9 +129,10 @@ class FieldWorkerYearlyNoticeController extends Controller
 
         return redirect()->route('field_worker.yearly_notice.index')->with('success', 'Yearly notice deleted successfully by Field Worker');
     }
-    // public function detalis($id): View
-    // {
-    //     $data['yearly_notice'] = YearlyNotice::with('noticeCategory')->findOrFail($id);
-    //     return view('field_worker.yearly_notice.show', $data);
-    // }
+    public function detalis($id): View
+    {
+        $data['yearly_notice'] = YearlyNotice::with('noticeCategory', 'division', 'district', 'thana', 'union')->findOrFail($id);
+        //  $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
+        return view('field_worker.yearly_notice.show', $data);
+    }
 }
