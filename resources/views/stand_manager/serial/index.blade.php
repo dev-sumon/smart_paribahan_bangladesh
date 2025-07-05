@@ -7,9 +7,9 @@
                 <h1 class="h2">{{ __('সিরিয়াল তালিকা') }}</h1>
                 <p class="text-muted">{{ __('সকল সিরিয়ালের তালিকা দেখুন এবং ম্যানেজ করুন') }}</p>
             </div>
-            <button class="btn btn" data-bs-toggle="modal" data-bs-target="#addSerialModal">
-                <a href="{{ route('stand_manager.serial.manager.stand.serials') }}"><i class="bi bi-plus"></i> নতুন সিরিয়াল</a>
-            </button>
+            <span class="button-create">
+                <a href="{{ route('stand_manager.serial.manager.stand.serials') }}"><i class="bi bi-plus"></i> {{ __('নতুন নোটিশ') }}</a>
+            </span>
         </div>
         <!-- Serials Table -->
         <div class="card">

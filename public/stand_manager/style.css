@@ -116,7 +116,7 @@ body {
     justify-content: center;
 }
 
-.stand_manager_list_page button a {
+.stand_manager_list_page .create-button a {
     text-decoration: none;
     border-radius: 5px;
     color: #fff;
