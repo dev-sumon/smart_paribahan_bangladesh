@@ -13,10 +13,6 @@
         </div>
         <!-- Notices Table -->
         <div class="card">
-            {{-- <div class="card-header">
-                <h5 class="mb-0">নোটিশ তালিকা</h5>
-                <small class="text-muted">সকল নোটিশের তালিকা দেখুন এবং ম্যানেজ করুন</small>
-            </div> --}}
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -43,13 +39,10 @@
                                         <div class="btn-group" role="group" aria-level="Basic example">
                                             <a href="{{ route('stand_manager.notice.detalis', $notice->id) }}" data-id=""
                                                 class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                            <a href="{{ route('stand_manager.notice.stand.manager.updae', $notice->id) }}" data-id=""
+                                            <a href="{{ route('stand_manager.notice.stand.manager.update', $notice->id) }}" data-id=""
                                                 class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="{{ route('stand_manager.notice.stand.manager.delete', $notice->id) }}" data-id=""
-                                                class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                            <a href="{{ route('stand_manager.notice.stand.manager.status.update', $notice->id) }}"
-                                                class="btn {{ $notice->statusIcon() }}"><i
-                                                    class="fa-solid fa-power-off"></i></a>
+                                            <a href="javascript:void(0)" data-url="{{ route('stand_manager.notice.stand.manager.delete', $notice->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                            <a href="javascript:void(0)" data-url="{{ route('stand_manager.notice.stand.manager.status.update', $notice->id) }}" class="btn {{ $notice->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                         </div>
                                     </td>
                                 </tr>

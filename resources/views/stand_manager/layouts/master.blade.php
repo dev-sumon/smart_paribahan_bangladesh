@@ -58,6 +58,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
+
+     <!-- Bootstrap JS Bundle with Popper -->
+    @stack('link_script')
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
+    @stack('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        window.sessionSuccess = @json(session('success'));
+        window.sessionError = @json(session('error'));
+    </script>
+
+
     @stack('script')
 
     <script>

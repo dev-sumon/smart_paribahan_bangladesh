@@ -735,8 +735,8 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
         Route::get('stand-manager-create', 'create')->name('stand.manager.create');
         Route::post('stand-manager-store', 'store')->name('stand.manager.store');
-        Route::get('stand-manager-update/{id}', 'update')->name('stand.manager.updae');
-        Route::put('stand-manager-update/{id}', 'update_store')->name('stand.manager.updae');
+        Route::get('stand-manager-update/{id}', 'update')->name('stand.manager.update');
+        Route::put('stand-manager-update/{id}', 'update_store')->name('stand.manager.update');
         Route::get('stand-manager-status/{id}', 'status')->name('stand.manager.status.update');
         Route::get('stand-manager-delete/{id}', 'delete')->name('stand.manager.delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
