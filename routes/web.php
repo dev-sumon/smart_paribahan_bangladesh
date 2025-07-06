@@ -770,8 +770,11 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
         Route::get('drivers', 'searchDrivers')->name('searchDrivers');
+        Route::get('stand-wise-serials/{id}', 'getStandWiseSerials')->name('stand.wise.serials');
     });
-
+    // Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
+    //     Route::get('stand-wise-serials/{id}', 'getStandWiseSerials')->name('stand.wise.serials');
+    // });
     // Route::get('/stand_manager/ajax/', [AjaxController::class, 'searchDrivers'])->name('stand_manager.ajax.searchDrivers');
 
 });

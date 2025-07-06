@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="table table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>সিরিয়াল</th>
@@ -76,7 +76,7 @@
 
         function loadSerials() {
             $.ajax({
-                url: `/ajax/serials/stand/${standId}`,
+                url: `{{ route('stand_manager.ajax.stand.wise.serials', ':id') }}`.replace(':id', standId),
                 method: "GET",
                 success: function (serials) {
                     let html = '';
@@ -92,7 +92,7 @@
                                     <select class="form-select form-select-sm" onchange="updateStatus(${serial.id}, this.value)">
                                         <option value="0" ${serial.status == 0 ? 'selected' : ''}>Checked Out</option>
                                         <option value="1" ${serial.status == 1 ? 'selected' : ''}>Running</option>
-                                        <option value="2" ${serial.status == 2 ? 'selected' : ''}>Panding</option>
+                                        <option value="2" ${serial.status == 2 ? 'selected' : ''}>Pending</option>
                                     </select>
                                 </td>
                             </tr>`;
@@ -107,7 +107,7 @@
         }
 
         window.updateStatus = function (serialId, status) {
-            const url = `{{ route('serial.driver.serial.checkout', ':id') }}`.replace(':id', serialId);
+            const url = `{{ route('stand_manager.serial.driver.serial.checkout', ':id') }}`.replace(':id', serialId);
 
             $.ajax({
                 url: url,
@@ -125,7 +125,7 @@
                         showConfirmButton: false
                     });
 
-                    loadSerials(); // update pore reload
+                    loadSerials(); // Reload after update
                 },
                 error: function () {
                     Swal.fire({
@@ -137,8 +137,8 @@
             });
         }
 
-        loadSerials(); // প্রথমবার
-        setInterval(loadSerials, 5000); // প্রতি 10 সেকেন্ডে
+        loadSerials(); // First call
+        setInterval(loadSerials, 5000); // Every 5 seconds
     });
 </script>
 @endpush

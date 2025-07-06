@@ -62,9 +62,9 @@ class AjaxController extends Controller
             'data' => $stands
         ]);
     }
-        public function vehicleType($id)
+    public function vehicleType($id)
     {
-         $vehicleTypes = VehicleType::where('stand_id', $id)->latest()->get();
+        $vehicleTypes = VehicleType::where('stand_id', $id)->latest()->get();
         return response()->json([
             'success' => true,
             'data' => $vehicleTypes
@@ -142,4 +142,16 @@ class AjaxController extends Controller
 
         return response()->json($serials);
     }
+
+    public function getStandWiseSerials($id)
+    {
+        $serials = VehicleSerial::with('vehicle')
+            ->where('stand_id', $id)
+            ->whereIn('status', [1, 2])
+            ->orderBy('check_in', 'asc')
+            ->get();
+
+        return response()->json($serials);
+    }
+
 }
