@@ -25,7 +25,6 @@ class StandManagerYearlyNoticeController extends Controller
         $standId = auth('stand_manager')->user()->stand_id;
 
         $data['yearly_notices'] = YearlyNotice::where('stand_id', $standId)->latest()->get();
-        // $data['yearly_notices'] = YearlyNotice::latest()->get();
         return view('stand_manager.yearly_notice.index', $data);
     }
     public function create(): View
@@ -88,7 +87,6 @@ class StandManagerYearlyNoticeController extends Controller
         $update->district_id = $request->district_id;
         $update->thana_id = $request->thana_id;
         $update->union_id = $request->union_id;
-        // $update->stand_id = $request->stand_id;
         $update->title = $request->title;
         $update->date = $request->date;
         $update->notice_category_id = $request->notice_category_id;
@@ -136,7 +134,6 @@ class StandManagerYearlyNoticeController extends Controller
     public function detalis($id): View
     {
         $data['yearly_notice'] = YearlyNotice::with('noticeCategory', 'division', 'district', 'thana', 'union')->findOrFail($id);
-        //  $data['union'] = Union::with('division', 'district', 'thana')->findOrFail($id);
         return view('stand_manager.yearly_notice.show', $data);
     }
 }
