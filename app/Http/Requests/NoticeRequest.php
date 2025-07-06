@@ -37,7 +37,7 @@ class NoticeRequest extends FormRequest
             'district_id' => 'required|exists:districts,id',
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
-            'stand_id' => 'required|exists:stands,id',
+            'stand_id' => 'nullable|exists:stands,id',
             'notice_category_id' => 'nullable|exists:notice_categories,id',
             'file' => 'required|mimes:pdf',
         ];
@@ -49,7 +49,7 @@ class NoticeRequest extends FormRequest
             'district_id' => 'required|exists:districts,id',
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
-            'stand_id' => 'required|exists:stands,id',
+            'stand_id' => 'nullable|exists:stands,id',
             'notice_category_id' => 'nullable|exists:notice_categories,id',
             'file' => 'nullable|mimes:pdf',
         ];

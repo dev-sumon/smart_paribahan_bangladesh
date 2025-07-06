@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('qr_code_generates', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->text('url');
             $table->string('image_path')->nullable();
             $table->string('token')->unique();

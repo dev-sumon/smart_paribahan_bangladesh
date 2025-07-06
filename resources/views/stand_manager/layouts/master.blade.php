@@ -54,6 +54,7 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -62,7 +63,6 @@
      <!-- Bootstrap JS Bundle with Popper -->
     @stack('link_script')
     <script src="{{ asset('backend/js/custom.js') }}"></script>
-    @stack('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
@@ -74,33 +74,33 @@
     @stack('script')
 
     <script>
-        Initialize tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+        // Initialize tooltips
+        // var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        // var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        //     return new bootstrap.Tooltip(tooltipTriggerEl)
+        // })
 
         // Mobile sidebar toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tab navigation
-            var triggerTabList = [].slice.call(document.querySelectorAll('.nav-link'))
-            triggerTabList.forEach(function(triggerEl) {
-                triggerEl.addEventListener('click', function(e) {
-                    e.preventDefault()
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // Tab navigation
+        //     var triggerTabList = [].slice.call(document.querySelectorAll('.nav-link'))
+        //     triggerTabList.forEach(function(triggerEl) {
+        //         triggerEl.addEventListener('click', function(e) {
+        //             e.preventDefault()
 
-                    // Close mobile sidebar when a tab is clicked
-                    var sidebar = document.getElementById('sidebar')
-                    if (window.innerWidth < 768 && sidebar.classList.contains('show')) {
-                        var bsCollapse = new bootstrap.Collapse(sidebar)
-                        bsCollapse.hide()
-                    }
+        //             // Close mobile sidebar when a tab is clicked
+        //             var sidebar = document.getElementById('sidebar')
+        //             if (window.innerWidth < 768 && sidebar.classList.contains('show')) {
+        //                 var bsCollapse = new bootstrap.Collapse(sidebar)
+        //                 bsCollapse.hide()
+        //             }
 
-                    // Show the selected tab
-                    var tabTrigger = new bootstrap.Tab(triggerEl)
-                    tabTrigger.show()
-                })
-            })
-        })
+        //             // Show the selected tab
+        //             var tabTrigger = new bootstrap.Tab(triggerEl)
+        //             tabTrigger.show()
+        //         })
+        //     })
+        // })
     </script>
 </body>
 

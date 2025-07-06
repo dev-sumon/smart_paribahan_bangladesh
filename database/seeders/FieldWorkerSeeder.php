@@ -15,7 +15,7 @@ class FieldWorkerSeeder extends Seeder
     public function run(): void
     {
         FieldWorker::create([
-            "name"=> "Test Field Worker",
+            "title"=> "Test Field Worker",
             'email' => 'worker@example.com',
             'phone' => '0123456789',
             'nid' => '1234567890',

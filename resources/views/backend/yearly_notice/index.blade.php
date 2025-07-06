@@ -36,7 +36,7 @@
                                             <td>{{ $yearly_notice->date }}</td>
                                             <td><span class="{{$yearly_notice->statusBg()}}">{{ $yearly_notice->statusTitle() }}</span></td>
                                             <td>{{ $yearly_notice->created_at ? $yearly_notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $yearly_notice->creator()->name ?? 'system' }}</td>
+                                            <td>{{ $yearly_notice->creator()->title ?? 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('yearly_notice.detalis', $yearly_notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>

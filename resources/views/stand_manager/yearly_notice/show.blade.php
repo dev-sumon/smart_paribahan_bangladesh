@@ -1,4 +1,4 @@
-@extends('backend.layouts.master', ['page_slug' => 'yearly_notice'])
+@extends('stand_manager.layouts.master', ['page_slug' => 'yearly_notice'])
 @section('title', 'Yearly Notice Detalis')
 @section('content')
     <div class="container-fluid mt-2">
@@ -10,7 +10,7 @@
                             <h1 class="float-start">{{ __('Yearly Notice Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('yearly_notice.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('stand_manager.yearly_notice.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -33,6 +33,31 @@
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $yearly_notice->noticeCategory->name ?? 'No Category' }}</td>
                                         </tr>
+                                        <tr>
+                                            <th>{{ __('Division') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $yearly_notice->division->division }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('District') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $yearly_notice->district->district }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Union') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $yearly_notice->union->union }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Stand') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $yearly_notice->stand->title }}</td>
+                                        </tr>
+                                        {{-- <tr>
+                                            <th>{{ __('Thana') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $yearly_notice->thana->thana }}</td>
+                                        </tr> --}}
                                         <tr>
                                             <th>{{ __('File') }}</th>
                                             <th>{{ __(':') }}</th>

@@ -34,7 +34,7 @@
                                     <td>{{ $notice->date }}</td>
                                     <td><span class="{{ $notice->statusBg() }}">{{ $notice->statusTitle() }}</span></td>
                                     {{-- <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td> --}}
-                                    <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
+                                    <td>{{ $notice->creator()->title ?? 'system' }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-level="Basic example">
                                             <a href="{{ route('stand_manager.notice.detalis', $notice->id) }}" data-id=""
