@@ -37,7 +37,7 @@ class QRCodeController extends Controller
 
         $data['qrCode'] = QrCode::size(300)->generate($loginRedirectLink);
         $data['originalUrl'] = $qr->url;
-        return redirect()->route('stand_manager.qr.index', $data);
+        return redirect()->route('stand_manager.qr.index', $data)->with('success', 'QR create done by Stand Manager');
     }
 
     public function securedUrl(Request $request, $token)
