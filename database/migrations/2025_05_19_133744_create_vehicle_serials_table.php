@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('check_in');
             $table->dateTime('check_out')->nullable();
-            $table->string('serial');
+            $table->longText('serial');
             $table->tinyInteger('status');
             $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');

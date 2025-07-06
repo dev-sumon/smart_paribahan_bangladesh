@@ -19,7 +19,6 @@ class VehicleSerialController extends Controller
             ->where('stand_id', $standId)
             ->whereIn('status', [1, 2])
             ->orderBy('check_in', 'asc')
-            ->take(10)
             ->get();
 
         $data['stand_id'] = $standId;
@@ -81,9 +80,14 @@ class VehicleSerialController extends Controller
         $save->check_in = now();
         $save->check_out = null;
         $today = now()->toDateString();
+        
         $lastSerial = VehicleSerial::where('stand_id', $request->stand_id)
             ->whereDate('check_in', $today)
-            ->max('serial');
+            ->get()
+            ->pluck('serial')
+            ->map(function ($item) {
+                return (int) $item;
+            })->max();
 
         $save->serial = $lastSerial ? $lastSerial + 1 : 1;
         $save->driver_id = $driver->id;
@@ -120,6 +124,13 @@ class VehicleSerialController extends Controller
         }
         $serial->save();
         return back()->with('success', 'Serial status updated successfully.');
+
+
+        // $serial = VehicleSerial::findOrFail($id);
+        // $serial->status = $request->status;
+        // $serial->save();
+
+        // return response()->json(['success' => 'Serial status updated successfull']);
     }
 
     public function standManagerSerials(): View

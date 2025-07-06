@@ -69,3 +69,76 @@
         </div>
     </div>
 @endsection
+@push('script')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const standId = "{{ auth('stand_manager')->user()->stand_id }}";
+
+        function loadSerials() {
+            $.ajax({
+                url: `/ajax/serials/stand/${standId}`,
+                method: "GET",
+                success: function (serials) {
+                    let html = '';
+
+                    serials.forEach((serial, index) => {
+                        html += `
+                            <tr class="text-center">
+                                <td>${index + 1}</td>
+                                <td>${serial.driver?.title ?? 'N/A'}</td>
+                                <td>${serial.driver?.vehicle?.vehicle_licence ?? 'N/A'}</td>
+                                <td><i class="bi bi-clock me-1"></i> ${serial.check_in}</td>
+                                <td>
+                                    <select class="form-select form-select-sm" onchange="updateStatus(${serial.id}, this.value)">
+                                        <option value="0" ${serial.status == 0 ? 'selected' : ''}>Checked Out</option>
+                                        <option value="1" ${serial.status == 1 ? 'selected' : ''}>Running</option>
+                                        <option value="2" ${serial.status == 2 ? 'selected' : ''}>Panding</option>
+                                    </select>
+                                </td>
+                            </tr>`;
+                    });
+
+                    $('#serials-tbody').html(html);
+                },
+                error: function () {
+                    console.error('❌ Failed to fetch serials.');
+                }
+            });
+        }
+
+        window.updateStatus = function (serialId, status) {
+            const url = `{{ route('serial.driver.serial.checkout', ':id') }}`.replace(':id', serialId);
+
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    status: status
+                },
+                success: function (res) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated!',
+                        text: res.success || 'Status updated successfully.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+
+                    loadSerials(); // update pore reload
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Status update failed.'
+                    });
+                }
+            });
+        }
+
+        loadSerials(); // প্রথমবার
+        setInterval(loadSerials, 5000); // প্রতি 10 সেকেন্ডে
+    });
+</script>
+@endpush
