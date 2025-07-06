@@ -33,37 +33,37 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="district">{{ __('জেলা') }}</label>
                         <select name="district_id" id="district" class="form-control">
                             <option value="" selected hidden>{{ __('জেলা নির্বাচন করুন') }}</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="thana">{{ __('থানা ') }}</label>
                         <select name="thana_id" id="thana" class="form-control">
                             <option value="" selected hidden>{{ __('থানা নির্বাচন করুন') }}</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="union">{{ __('ইউনিয়ন') }} </label>
                         <select name="union_id" id="union" class="form-control">
                             <option value="" selected hidden>{{ __('ইউনিয়ন নির্বাচন করুন') }}</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="stand">{{ __('স্ট্যান্ড') }}</label>
                         <select name="stand_id" id="stand" class="form-control">
                             <option value="" selected hidden>{{ __('স্ট্যান্ড নির্বাচন করুন') }}</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <button type="submit" class="btn btn-danger w-100 mb-3 login">
-                            {{ __('অ্যাকাউন্ট তৈরী করুন') }}
+                            {{ __('Check In') }}
                         </button>
                     </div>
                 </form>
