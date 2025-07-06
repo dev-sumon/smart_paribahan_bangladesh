@@ -29,6 +29,7 @@ class QRCodeController extends Controller
 
         $qr = new QrCodeGenerate();
         $qr->url = $request->url;
+        $qr->title = $request->title;
         $qr->token = Str::random(40);
         $qr->save();
 

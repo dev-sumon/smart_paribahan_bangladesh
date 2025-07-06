@@ -8,6 +8,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class QrCodeGenerate extends Model
 {
     protected $fillable = [
+        'title',
         'url',
         'token'
     ];
