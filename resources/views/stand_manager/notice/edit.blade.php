@@ -57,7 +57,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="union">Union <span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" hidden>Select Union</option>
@@ -69,19 +69,19 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="stand">Stand <span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" hidden>Select Stand</option>
                                             @foreach ($stands as $stand)
                                                 <option value="{{ $stand->id }}"
                                                     {{ $notice->stand_id == $stand->id ? 'selected' : '' }}>
-                                                    {{ $stand->stand }}
+                                                    {{ $stand->title }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="title">{{ __('Title') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="title"
@@ -91,8 +91,8 @@
                                             <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="date" class="mt-3">{{ __('Date') }} <span
+                                    <div class="form-group mt-3">
+                                        <label for="date">{{ __('Date') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="date" name="date" value="{{ old('date') ?? $notice->date }}"
                                             class="form-control" placeholder="Enter The Date">
@@ -100,7 +100,7 @@
                                             <div class="text-danger">{{ $errors->first('date') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="notice_category">{{ __('Category') }}<span
                                                 class="text-danger">*</span></label>
                                         <select name="notice_category_id" id="notice_category_id" class="form-control">
@@ -117,8 +117,8 @@
                                             <div class="text-danger">{{ $errors->first('notice_category_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="file" class="mt-3">{{ __('file') }} <span
+                                    <div class="form-group mt-3">
+                                        <label for="file">{{ __('file') }} <span
                                                 class="text-danger">*</span></label>
                                         @if ($notice->file)
                                             <img src="{{ Storage::url($notice->file) }}" alt="{{ $notice->file }}">
@@ -132,7 +132,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="status">{{ __('Status') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
@@ -147,7 +147,7 @@
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <button type="submit" class="btn btn-success w-100 submitBtn">
                                             {{ __('Update') }}
                                         </button>

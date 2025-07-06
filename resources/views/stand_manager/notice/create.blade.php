@@ -10,7 +10,7 @@
                             <h4>{{ __('Create New Notice') }}</h4>
                         </span>
                         <span class="float-right">
-                            <a href="" class="btn btn-info">{{ __('Back') }}</a>
+                            <a href="{{ route('stand_manager.notice.stand.manager.index') }}" class="btn btn-info">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -31,8 +31,7 @@
                                             <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
                                     </div>
-
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="district">{{ __('District') }}<span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>{{ __('Select District') }}</option>
@@ -45,7 +44,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="thana">{{ __('Thana') }}<span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Thana') }}</option>
@@ -57,7 +56,7 @@
                                             <div class="text-danger">{{ $errors->first('thana_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="union">{{ __('Union') }}<span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Union') }}</option>
@@ -69,7 +68,7 @@
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="stand">{{ __('Stand') }}<span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
@@ -91,8 +90,8 @@
                                             <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="date" class="mt-3">{{ __('Date') }} <span
+                                    <div class="form-group mt-3">
+                                        <label for="date">{{ __('Date') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="date" name="date" value="{{ old('date') }}"
                                             class="form-control" placeholder="Enter The Date">
@@ -100,8 +99,8 @@
                                             <div class="text-danger">{{ $errors->first('date') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="category" class="mt-3">{{ __('Category') }} <span
+                                    <div class="form-group mt-3">
+                                        <label for="category">{{ __('Category') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="notice_category_id" id="notice_category_id" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Notice Category') }}
@@ -114,8 +113,8 @@
                                             <div class="text-danger">{{ $errors->first('category') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
-                                        <label for="file" class="mt-3">{{ __('file') }} <span
+                                    <div class="form-group mt-3">
+                                        <label for="file">{{ __('file') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="file" name="file" value="{{ old('file') }}"
                                             class="form-control h-auto" placeholder="Enter The File">
