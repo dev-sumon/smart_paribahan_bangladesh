@@ -82,7 +82,7 @@
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             @foreach ($stands as $stand)
                                 <div class="card">
-                                    <a href="{{ route('f.home.cng_stand', $stand->id) }}">
+                                    <a href="{{ route('f.home.cng_stand', $stand->slug) }}">
                                         <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                         <p class="pt-3">{{ __('Stand Introduction') }}</p>
                                     </a>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* home page css start */
 /* nav section css start */
 .navbar-toggler {
@@ -9,91 +10,103 @@
 }
 
 
-.navbar-toggler:focus, 
+.navbar-toggler:focus,
 .navbar-toggler:hover {
-  box-shadow: none; 
-  outline: none; 
+    box-shadow: none;
+    outline: none;
 }
-  .navbar .nav_bar .navbar-nav .nav-link {
-      font-family: 'Hind Siliguri';
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 24px;
-      color: #051E38;
-  }
-  .navbar .nav_bar .login{
-      font-family: 'Hind Siliguri';
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 24px;
-      color: #051E38;
-      padding: 10px 20px;
-  }
-  .navbar .nav_bar .login:hover{
-      color: #fff;
-      background: linear-gradient(94.75deg, #FF2121 0.75%, #FF6060 106.31%);
 
-  }
-  .navbar .nav_bar .signUp{
-      font-family: 'Hind Siliguri';
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 24px;
-      color: #051E38;
-      padding: 10px 20px;
-  }
-  .navbar .nav_bar .signUp:hover{
-      color: #fff;
-      background: linear-gradient(94.75deg, #FF2121 0.75%, #FF6060 106.31%);
+.navbar .nav_bar .navbar-nav .nav-link {
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #051E38;
+}
 
-  }
-  .navbar .nav_bar .language_button{
-      border: none;
-      font-family: 'Hind Siliguri';
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 24px;
-      color: #051E38;
-      padding: 0;
-  }
-  .navbar .nav_bar .language_button:hover{
-      background-color: transparent !important;
-  }
-  .navbar .nav_bar .language_button:focus{
-      background-color: transparent !important;
-      box-shadow: none; 
-      outline: none; 
-  }
-  .navbar .responsive_menu .btn-login {
-      border: none;
-      font-family: 'Hind Siliguri';
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 24px;
-      color: #051E38;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      column-gap: 5px;
-  }
-  .navbar .login:focus{
-    box-shadow: none; 
-    outline: none; 
-  }
-  .navbar .signUp{
-    box-shadow: none; 
-    outline: none; 
-  }
-  .navbar .responsive_menu i{
-      color: #EA1827;
-      font-size: 25px;
-  }
+.navbar .nav_bar .login {
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #051E38;
+    padding: 10px 20px;
+}
+
+.navbar .nav_bar .login:hover {
+    color: #fff;
+    background: linear-gradient(94.75deg, #FF2121 0.75%, #FF6060 106.31%);
+
+}
+
+.navbar .nav_bar .signUp {
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #051E38;
+    padding: 10px 20px;
+}
+
+.navbar .nav_bar .signUp:hover {
+    color: #fff;
+    background: linear-gradient(94.75deg, #FF2121 0.75%, #FF6060 106.31%);
+
+}
+
+.navbar .nav_bar .language_button {
+    border: none;
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #051E38;
+    padding: 0;
+}
+
+.navbar .nav_bar .language_button:hover {
+    background-color: transparent !important;
+}
+
+.navbar .nav_bar .language_button:focus {
+    background-color: transparent !important;
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar .responsive_menu .btn-login {
+    border: none;
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #051E38;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.navbar .login:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar .signUp {
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar .responsive_menu i {
+    color: #EA1827;
+    font-size: 25px;
+}
 
 /* nav section css end */
 /* hero section css start */
 
-.hero .title h3{
+.hero .title h3 {
     color: #141F39;
     font-family: "Hind Siliguri";
     font-size: 42px;
@@ -101,7 +114,8 @@
     line-height: 46px;
     letter-spacing: 0.2px;
 }
-.hero .title h2{
+
+.hero .title h2 {
     font-family: 'Hind Siliguri';
     font-style: normal;
     font-weight: 700;
@@ -115,7 +129,8 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-.hero .title p{
+
+.hero .title p {
     font-family: 'Hind Siliguri';
     font-style: normal;
     font-weight: 400;
@@ -126,7 +141,8 @@
     opacity: 0.7;
     padding-right: 20px;
 }
-.hero select{
+
+.hero select {
     font-family: 'Hind Siliguri';
     font-weight: 500;
     font-size: 16px;
@@ -134,18 +150,21 @@
     color: #061E38;
     border-color: #FF4040;
 }
-.hero .select_iteam{
+
+.hero .select_iteam {
     border: 1px solid #FF2727;
     font-family: 'Hind Siliguri';
 }
-.hero .select_iteam option{
+
+.hero .select_iteam option {
     font-style: normal;
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     color: #061E38;
 }
-.hero .submit .btn-custom{
+
+.hero .submit .btn-custom {
     color: #FFFFFF;
     font-style: normal;
     font-size: 16px;
@@ -153,7 +172,8 @@
     line-height: 24px;
     background: linear-gradient(91.25deg, #FF2727 -4.4%, #FF5454 101.68%);
 }
-.hero .submit .btn-custom:focus{
+
+.hero .submit .btn-custom:focus {
     outline: none;
     border: none;
     box-shadow: none;
@@ -162,10 +182,11 @@
 /* hero section css end */
 /* vehicles_list section css start */
 
-.vehicles_list{
+.vehicles_list {
     margin-bottom: 100px;
 }
-.vehicles_list a{
+
+.vehicles_list a {
     text-decoration: none;
     color: #000000;
     font-family: 'Hind Siliguri';
@@ -173,7 +194,8 @@
     line-height: 32px;
     font-weight: 500;
 }
-.vehicles_list .card{
+
+.vehicles_list .card {
     height: 150px;
     object-fit: cover;
     display: flex;
@@ -183,17 +205,19 @@
     text-align: center;
     margin-bottom: 20px;
 }
-.vehicles_list .deatils img{
+
+.vehicles_list .deatils img {
     max-width: 100%;
     height: auto;
     padding-bottom: 10px;
 }
-.vehicles_list .deatils p{
-   color: #000000;
-   font-family: 'Hind Siliguri';
-   font-size: 18px;
-   line-height: 32px;
-   font-weight: 500;
+
+.vehicles_list .deatils p {
+    color: #000000;
+    font-family: 'Hind Siliguri';
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 500;
 }
 
 /* vehicles_list section css end */
@@ -208,6 +232,7 @@
     background-color: #FFFFFF;
     text-align: center;
 }
+
 .icon-container {
     width: 90px;
     height: 90px;
@@ -220,41 +245,50 @@
     margin-bottom: 12px;
     padding: 15px;
 }
-.icon-container .train{
-    width: 58px; 
+
+.icon-container .train {
+    width: 58px;
     height: 57.14px;
 }
-.icon-container .car{
-    width: 50px; 
+
+.icon-container .car {
+    width: 50px;
     height: 50px;
 }
-.icon-container .man{
-    width: 65px; 
+
+.icon-container .man {
+    width: 65px;
     height: 65px;
 }
-.icon-container .driver{
-    width: 67px; 
+
+.icon-container .driver {
+    width: 67px;
     height: 67px;
 }
+
 .card-text {
     font-size: 16px;
     font-weight: 500;
 }
+
 .price {
     font-size: 18px;
     font-weight: bold;
 }
-.connected_us{
+
+.connected_us {
     background-color: #FEF3F3;
 }
+
 .connected_us .container .section-title {
-    font-family: 'Hind Siliguri', sans-serif; 
+    font-family: 'Hind Siliguri', sans-serif;
     font-weight: 600;
-    font-size: 48px; 
+    font-size: 48px;
     line-height: 56px;
-    letter-spacing: 0.2px; 
+    letter-spacing: 0.2px;
     text-align: center;
 }
+
 .connected_us .container .card-text {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 500;
@@ -262,6 +296,7 @@
     line-height: 28px;
     letter-spacing: 0.2px;
 }
+
 .connected_us .container .price {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 600;
@@ -269,32 +304,36 @@
     line-height: 38px;
     letter-spacing: 0.2px;
 }
+
 /* Connected with us section End! */
 /* search_section css start  */
 
-.search_section{
+.search_section {
     margin-bottom: 50px;
 }
-.search_section img{
+
+.search_section img {
     margin-top: -70px;
 }
-.search_section .container{
+
+.search_section .container {
     background-color: #FFE5E5;
     border-radius: 5px;
-    padding: 20px 120px;
+    padding: 30px 120px;
     max-width: 1400px;
 }
-.search_section .text h2{
+
+.search_section .text h2 {
     font-family: 'Hind Siliguri';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 800 !important;
     font-size: 28px;
     line-height: 34px;
     color: #051E38;
-    padding-top: 1rem;
-    padding-left: 43px;
+    margin: 0;
 }
-.search_section .btn{
+
+.search_section .btn {
     color: #FFFFFF;
     font-family: 'Hind Siliguri';
     font-size: 30px;
@@ -303,14 +342,16 @@
     background: linear-gradient(91.25deg, #FF2727 -4.4%, #FF5454 101.68%);
     border: none;
 }
-.search_section .search{
+
+.search_section .search {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     line-height: 28px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.5);
 }
-.search_section .search:focus{
+
+.search_section .search:focus {
     outline: #FF2727;
     box-shadow: none;
     border: 1px solid #FF2727;
@@ -319,17 +360,19 @@
 /* search_section css end */
 /* help_us section css start */
 
-.help_us .help_us_headr{
+.help_us .help_us_headr {
     margin-bottom: 50px;
 }
-.help_us .help_us_headr .title h2{
+
+.help_us .help_us_headr .title h2 {
     color: #141F39;
     font-size: 48px;
     font-weight: 600;
     line-height: 56px;
     letter-spacing: 0.2px;
 }
-.help_us .help_us_headr .desc p{
+
+.help_us .help_us_headr .desc p {
     color: #141F39;
     font-family: 'Hind Siliguri';
     font-size: 18px;
@@ -337,6 +380,7 @@
     line-height: 28px;
     letter-spacing: 0.2px;
 }
+
 .icon-circle {
     position: absolute;
     display: inline-block;
@@ -357,6 +401,7 @@
     top: -40px;
     left: 0px;
 }
+
 .icon-circle::before {
     content: "";
     position: absolute;
@@ -367,6 +412,7 @@
     transform: skewX(-54deg);
     background-color: #FFF;
 }
+
 .icon-circle::after {
     content: "";
     position: absolute;
@@ -377,7 +423,8 @@
     transform: skewY(170deg);
     background-color: #fff;
 }
-.icon-circle-1{
+
+.icon-circle-1 {
     position: absolute;
     display: inline-block;
     width: 35px;
@@ -397,7 +444,8 @@
     top: -40px;
     left: 0px;
 }
-.icon-circle-2{
+
+.icon-circle-2 {
     position: absolute;
     display: inline-block;
     width: 35px;
@@ -417,7 +465,8 @@
     top: -40px;
     left: 0px;
 }
-.icon-circle-3{
+
+.icon-circle-3 {
     position: absolute;
     display: inline-block;
     width: 35px;
@@ -437,7 +486,8 @@
     top: -40px;
     left: 0px;
 }
-.icon-circle-4{
+
+.icon-circle-4 {
     position: absolute;
     display: inline-block;
     width: 35px;
@@ -457,7 +507,8 @@
     top: -40px;
     left: 0px;
 }
-.icon-circle-5{
+
+.icon-circle-5 {
     position: absolute;
     display: inline-block;
     width: 35px;
@@ -477,6 +528,7 @@
     top: -40px;
     left: 0px;
 }
+
 .icon-circle-1::before {
     content: "";
     position: absolute;
@@ -487,6 +539,7 @@
     transform: skewX(-54deg);
     background-color: #FFF;
 }
+
 .icon-circle-1::after {
     content: "";
     position: absolute;
@@ -497,6 +550,7 @@
     transform: skewY(170deg);
     background-color: #fff;
 }
+
 .icon-circle-2::before {
     content: "";
     position: absolute;
@@ -507,6 +561,7 @@
     transform: skewX(-54deg);
     background-color: #FFF;
 }
+
 .icon-circle-2::after {
     content: "";
     position: absolute;
@@ -517,6 +572,7 @@
     transform: skewY(170deg);
     background-color: #fff;
 }
+
 .icon-circle-3::before {
     content: "";
     position: absolute;
@@ -527,6 +583,7 @@
     transform: skewX(-54deg);
     background-color: #FFF;
 }
+
 .icon-circle-3::after {
     content: "";
     position: absolute;
@@ -537,6 +594,7 @@
     transform: skewY(170deg);
     background-color: #fff;
 }
+
 .icon-circle-4::before {
     content: "";
     position: absolute;
@@ -547,6 +605,7 @@
     transform: skewX(-54deg);
     background-color: #FFF;
 }
+
 .icon-circle-4::after {
     content: "";
     position: absolute;
@@ -557,6 +616,7 @@
     transform: skewY(170deg);
     background-color: #fff;
 }
+
 .icon-circle-5::before {
     content: "";
     position: absolute;
@@ -567,6 +627,7 @@
     transform: skewX(-54deg);
     background-color: #FFF;
 }
+
 .icon-circle-5::after {
     content: "";
     position: absolute;
@@ -577,6 +638,7 @@
     transform: skewY(170deg);
     background-color: #fff;
 }
+
 .feature-box {
     color: #000000;
     background: #FFFFFF;
@@ -589,6 +651,7 @@
     width: 366px;
     position: absolute;
 }
+
 .feature-text {
     color: #000000;
     background: white;
@@ -598,6 +661,7 @@
     line-height: auto;
     margin-bottom: 0px;
 }
+
 .car-container {
     position: relative;
     max-width: 600px;
@@ -605,60 +669,72 @@
     padding-bottom: 200px;
     margin-top: 100px;
 }
+
 .car-image {
     width: 100%;
     padding: 100px;
 }
-.feature-box-1 { 
+
+.feature-box-1 {
     top: 0%;
     left: -45%;
-    }
-.feature-box-2 { 
-    top: 0%;
-    right: -31%; 
 }
-.feature-box-3 { 
+
+.feature-box-2 {
+    top: 0%;
+    right: -31%;
+}
+
+.feature-box-3 {
     bottom: 34%;
     left: -31%;
 }
-.feature-box-4 { 
+
+.feature-box-4 {
     bottom: 40%;
     right: -45%;
 }
-.feature-box-5 { 
+
+.feature-box-5 {
     bottom: 21%;
     left: 45%;
 }
+
 /* help_us section css end */
 
 /* BD Smart vehicles Blog section Start */
 .bd_smart_vehicle_part {
     color: #000000;
 }
+
 .bd_smart_vehicle_part .post_card .post_content {
     color: #000000;
     padding: 15px;
 }
-.bd_smart_vehicle_part .post_card .post_title{
-    font-weight: 600;      
-    font-size: 20px;         
+
+.bd_smart_vehicle_part .post_card .post_title {
+    font-weight: 600;
+    font-size: 20px;
     line-height: 24px;
     color: #000000;
 }
-.bd_smart_vehicle_part .post_card .post_date{
+
+.bd_smart_vehicle_part .post_card .post_date {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #000000;
 }
-.bd_smart_vehicle_part .post_card .post_description{
+
+.bd_smart_vehicle_part .post_card .post_description {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #000000;
 }
+
 .bd_smart_vehicle_part .heading_section {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 600;
@@ -667,7 +743,8 @@
     letter-spacing: 0.2px;
     color: #141F39;
 }
-.bd_smart_vehicle_part .btn_section .gradient-border-button{
+
+.bd_smart_vehicle_part .btn_section .gradient-border-button {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -681,6 +758,7 @@
     text-decoration: none;
     z-index: 1;
 }
+
 .bd_smart_vehicle_part .btn_section .gradient-border-button::before {
     content: '';
     position: absolute;
@@ -690,7 +768,7 @@
     bottom: 0;
     border-radius: 5px;
     padding: 1px;
-    background: linear-gradient(270deg, #FF5656  0%, #FF2424 100%);
+    background: linear-gradient(270deg, #FF5656 0%, #FF2424 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
@@ -700,10 +778,12 @@
 .bd_smart_vehicle_part .btn_section .gradient-border-button span {
     margin-right: 10px;
 }
+
 .bd_smart_vehicle_part .btn_section .gradient-border-button .arrow {
     font-size: 20px;
     color: #FF4040;
 }
+
 .bd_smart_vehicle_part .sub_text {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 400;
@@ -711,7 +791,8 @@
     line-height: 28px;
     letter-spacing: 0.2px;
     color: #141F39;
-  }
+}
+
 .bd_smart_vehicle_part .post_card {
     height: 460px;
     max-height: 100%;
@@ -720,16 +801,19 @@
     border-radius: 12px;
     transition: transform 0.3s;
 }
+
 .bd_smart_vehicle_part .post_card:hover {
     transform: translateY(-5px);
 }
+
 .bd_smart_vehicle_part .post_image {
     width: 100%;
     height: auto;
     margin-bottom: 15px;
     background-color: #fef5f5;
 }
-.bd_smart_vehicle_part .btn_section{
+
+.bd_smart_vehicle_part .btn_section {
     font-family: 'Hind Siliguri', sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -737,6 +821,12 @@
     letter-spacing: 0;
     color: #141F39;
     text-align: right;
+}
+
+.bd_smart_vehicle_part .post_card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 /* BD Smart vehicles Blog section End! */
@@ -748,6 +838,7 @@
     border-radius: 8px;
     overflow: hidden;
 }
+
 .faq-title {
     font-family: 'Hind Siliguri';
     font-style: normal;
@@ -761,10 +852,12 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 .faq-item {
     border-bottom: 1px solid #FFFFFF;
     padding-bottom: 10px;
 }
+
 .faq-question {
     font-family: 'Hind Siliguri';
     font-size: 24px;
@@ -776,6 +869,7 @@
     cursor: pointer;
     position: relative;
 }
+
 .faq-question::after {
     content: "+";
     font-size: 30px;
@@ -785,12 +879,14 @@
     color: #FF2929;
     transition: transform 0.3s;
 }
+
 .faq-item.open .faq-question::after {
     content: "-";
     font-size: 30px;
     font-weight: 500;
     color: #FF2929;
 }
+
 .faq-answer {
     font-family: 'Hind Siliguri';
     font-size: 20px;
@@ -802,15 +898,17 @@
     color: #051E38;
     border: 1px solid #EA1827;
 }
+
 .faq-item.open .faq-answer {
     display: block;
 }
+
 /* FAQ section css end */
 /* home page css start */
 
 /* CNG Page CSS start */
 /* notice section CSS start */
-.notice .title{
+.notice .title {
     color: #000000;
     font-family: 'Hind Siliguri';
     font-size: 20px;
@@ -818,11 +916,13 @@
     letter-spacing: 0.2px;
     font-weight: 500;
 }
-.notice .notice_list{
+
+.notice .notice_list {
     display: flex;
     align-items: center !important;
 }
-.notice .notice_list i{
+
+.notice .notice_list i {
     font-size: 17px;
     color: #FFFFFF;
     width: 24px;
@@ -830,13 +930,15 @@
     border-radius: 5px;
     background: linear-gradient(270deg, #FF2424 0%, #FF5656 100%);
 }
-.notice .all_notice_button  span{
+
+.notice .all_notice_button span {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     color: #141F39;
 }
+
 .notice .all_notice_button .gradient-border-button {
     position: relative;
     display: inline-flex;
@@ -851,6 +953,7 @@
     text-decoration: none;
     z-index: 1;
 }
+
 .notice .all_notice_button .gradient-border-button::before {
     content: '';
     position: absolute;
@@ -860,33 +963,39 @@
     bottom: 0;
     border-radius: 5px;
     padding: 2px;
-    background: linear-gradient(270deg, #FF5656  0%, #FF2424 100%);
+    background: linear-gradient(270deg, #FF5656 0%, #FF2424 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
     z-index: -1;
 }
+
 .notice .all_notice_button .gradient-border-button:hover {
     color: #333;
     text-decoration: none;
 }
+
 .notice .all_notice_button .gradient-border-button span {
     margin-right: 10px;
 }
+
 .notice .all_notice_button .gradient-border-button .arrow {
     font-size: 20px;
     color: #FF4040;
 }
+
 .notice .all_notice_button .gradient-border-button .arrow {
     font-size: 20px;
     color: #FF4040;
 }
+
 .icon-button {
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
 }
-.icon-button i{
+
+.icon-button i {
     width: 25px;
     height: 25px;
     background-color: #FF3B3B;
@@ -896,7 +1005,8 @@
     align-items: center;
     justify-content: center;
 }
-.notice .notice_list p{
+
+.notice .notice_list p {
     color: #000000;
     font-family: 'Hind Siliguri';
     font-size: 16px;
@@ -904,6 +1014,7 @@
     line-height: auto;
     margin-top: 1rem;
 }
+
 .location_item .dropdown {
     position: relative;
     display: flex;
@@ -918,7 +1029,8 @@
     width: 70%;
     margin-bottom: 50px;
 }
-.location_item .dropdown option{
+
+.location_item .dropdown option {
     font-family: 'Hind Siliguri';
     font-weight: 500;
     font-size: 16px;
@@ -944,7 +1056,8 @@
     background: none;
     width: 100%;
     cursor: pointer;
-  }
+}
+
 .location_item .dropdown::after {
     content: "\f107";
     font-family: "Font Awesome 5 Free";
@@ -957,21 +1070,25 @@
 /* notice section CSS End */
 /* dealist section design start */
 
-.dealist .location_item{
+.dealist .location_item {
     margin-top: 130px;
 }
-.dealist .form-select{
+
+.dealist .form-select {
     width: 70%;
     margin-bottom: 40px !important;
 }
-.dealist .right_side .card{
+
+.dealist .right_side .card {
     width: 100%;
 
 }
-.dealist .right_side .card a{
+
+.dealist .right_side .card a {
     text-decoration: none;
 }
-.dealist .right_side .card a p{
+
+.dealist .right_side .card a p {
     text-decoration: none;
     color: #000000;
     font-family: 'Hind Siliguri';
@@ -980,22 +1097,27 @@
     line-height: 28px;
     letter-spacing: 0.2px;
 }
-.dealist .right_side .card{
+
+.dealist .right_side .card {
     padding: 45px;
 }
-.dealist .right_side .card:hover{
+
+.dealist .right_side .card:hover {
     border: 1px solid #FF4040;
 }
+
 .dealist .form-select-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .dealist .form-select {
     text-align: center;
     text-align-last: center;
 }
-.dealist select{
+
+.dealist select {
     font-family: 'Hind Siliguri';
     font-weight: 500;
     font-size: 16px;
@@ -1003,14 +1125,17 @@
     color: #061E38;
     border-color: #FF4040;
 }
-.dealist select:focus{
+
+.dealist select:focus {
     border-color: #FF4040;
 }
+
 .form-select {
     box-shadow: none !important;
     outline: none !important;
 }
-.dealist .option{
+
+.dealist .option {
     font-family: 'Hind Siliguri';
     font-weight: 500;
     font-size: 16px;
@@ -1018,10 +1143,12 @@
     color: #061E38;
     border-color: #FF2121;
 }
-.dealist .form-select option:hover{
+
+.dealist .form-select option:hover {
     background-color: #FF2121;
 }
-.dealist .btn{
+
+.dealist .btn {
     color: #FFFFFF;
     font-family: 'Hind Siliguri';
     font-size: 16px;
@@ -1032,28 +1159,32 @@
     border: none;
     width: 70%;
 }
-.dealist .btn-outline-success{
+
+.dealist .btn-outline-success {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
-.dealist .search{
+
+.dealist .search {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     line-height: 28px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.5);
 }
+
 /* dealist section design end */
 /* CNG Page design end */
 
 /* stand_intro  section */
 /* inner page hero section css start */
-.inner_page_hero .hero_details{
+.inner_page_hero .hero_details {
     background: #FFEDED80;
     padding: 60px 0px;
 }
-.inner_page_hero .title h2{
+
+.inner_page_hero .title h2 {
     font-family: "Hind Siliguri", sans-serif;
     font-weight: 700;
     font-size: 68px;
@@ -1065,7 +1196,8 @@
     padding-top: 10px;
     text-align: center;
 }
-.inner_page_hero .desc h5{
+
+.inner_page_hero .desc h5 {
     color: #141F39;
     font-family: 'Hind Siliguri';
     font-size: 24px;
@@ -1077,44 +1209,41 @@
 
 
 /* inner page hero section css end */
-.stand_intro .banner_container{
+.stand_intro .banner_container {
     background: #FFEDED80;
 }
-section .adds_section{
+
+section .adds_section {
     margin-top: 80px;
     margin-bottom: 80px;
 }
-div .adds1{
+
+div .adds1 {
     width: 250px;
     height: 250px;
     margin: 80px 0 80px 0;
 }
-div .adds2{
+
+div .adds2 {
     width: 250px;
     height: 250px;
     margin: 80px 0 80px 0;
 }
+
 .banner_container {
     font-family: "Hind Siliguri", sans-serif;
     background-color: rgba(255, 237, 237, 0.5);
-    width: 100%;              
-    max-width: 1170px;        
-    display: flex;            
-    flex-direction: column;   
-    justify-content: center;  
-    align-items: center;      
-    text-align: center;       
-    margin: 0 auto;           
+    width: 100%;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
 }
-.nav1 ul li a{
-    font-family: "Hind Siliguri", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;  
-    color: #1F1E1E;   
-    text-decoration: none;
-}
-.nav2 ul li a{
+
+.nav1 ul li a {
     font-family: "Hind Siliguri", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -1122,6 +1251,16 @@ div .adds2{
     color: #1F1E1E;
     text-decoration: none;
 }
+
+.nav2 ul li a {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1F1E1E;
+    text-decoration: none;
+}
+
 /* Header Section */
 .stand_intro .banner_container {
     font-family: "Hind Siliguri", sans-serif;
@@ -1129,12 +1268,14 @@ div .adds2{
     text-align: center;
     padding: 50px 0px;
 }
-.stand_intro .banner_container .location_text h6{
+
+.stand_intro .banner_container .location_text h6 {
     font-weight: 700;
     font-size: 24px;
     color: #141F39 !important;
 }
-.stand_intro .banner_container .banner_title h2{
+
+.stand_intro .banner_container .banner_title h2 {
     font-weight: 700;
     font-size: 68px;
     background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
@@ -1142,6 +1283,7 @@ div .adds2{
     color: transparent;
     margin-top: 10px;
 }
+
 /* Navigation Menu */
 .nav_menu {
     display: flex;
@@ -1152,20 +1294,24 @@ div .adds2{
     border-bottom: 2px solid #E0E0E0;
     font-family: "Hind Siliguri", sans-serif;
 }
+
 .nav_menu a {
     color: #141F39;
     text-decoration: none;
     padding: 10px 15px;
 }
+
 .nav_menu a.active {
     color: #FF2626;
     border-bottom: 3px solid #FF2626;
 }
+
 .video_thumbnail img {
     width: 100%;
     height: auto;
     border-radius: 10px;
 }
+
 /* Sidebar */
 .sidebar_card {
     width: 100%;
@@ -1178,13 +1324,15 @@ div .adds2{
     font-size: 18px;
     color: #FF2626;
 }
+
 /* Sidebar Buttons */
 .list_group_item_action {
     text-align: center;
     font-weight: bold;
     color: #FF2626;
 }
-.content_text .bold_content h2{
+
+.content_text .bold_content h2 {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 24px;
     font-weight: 700;
@@ -1194,7 +1342,8 @@ div .adds2{
     color: #141F39;
 
 }
-.content_text .normal_content p{
+
+.content_text .normal_content p {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 22px;
     font-weight: 400;
@@ -1202,8 +1351,9 @@ div .adds2{
     color: #141F39;
 
 }
+
 /* dealist section css start  */
-.dealist .content_nav .nav1 .active-link.active{
+.dealist .content_nav .nav1 .active-link.active {
     color: red;
     text-decoration: underline;
     text-decoration-thickness: 2px;
@@ -1214,22 +1364,24 @@ div .adds2{
 /* stand_intro section End! */
 
 /* Map_intro section start */
-.stand_map{
+.stand_map {
     border-radius: 30px;
 }
-.gallery_image img {
-    border-radius: 8px; 
+
+/* .gallery_image img {
+    border-radius: 8px;
     object-fit: cover;
-}
+} */
 
 /* Map_intro section End! */
 
 /* stand commuity page css start */
 /* president and members section css start */
-.president_and_members .stand_location{
+.president_and_members .stand_location {
     text-align: center;
 }
-.president_and_members .stand_location h5{
+
+.president_and_members .stand_location h5 {
     color: #141F39;
     font-family: 'Hind Siliguri';
     font-size: 24px;
@@ -1237,10 +1389,12 @@ div .adds2{
     line-height: 46px;
     letter-spacing: 0.2px;
 }
-.president_and_members .member_list_title{
+
+.president_and_members .member_list_title {
     text-align: center;
 }
-.president_and_members .member_list_title h2{
+
+.president_and_members .member_list_title h2 {
     font-family: 'Hind Siliguri';
     font-weight: 700;
     font-size: 64px;
@@ -1254,6 +1408,7 @@ div .adds2{
     background-clip: text;
     text-fill-color: transparent;
 }
+
 /* president and members section css end */
 /* deatils section css start */
 .dealist .profile-card {
@@ -1263,7 +1418,8 @@ div .adds2{
     border-radius: 10px;
     text-align: center;
 }
-.dealist .profile-card h3{
+
+.dealist .profile-card h3 {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 500;
@@ -1272,7 +1428,8 @@ div .adds2{
     color: #212529;
 
 }
-.dealist .profile-card p{
+
+.dealist .profile-card p {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 400;
@@ -1280,6 +1437,7 @@ div .adds2{
     letter-spacing: 0.20px;
     color: #212529;
 }
+
 .dealist .badge {
     position: absolute;
     top: 85px;
@@ -1299,11 +1457,13 @@ div .adds2{
     justify-content: center;
     transform: translate(-40%, 250%);
 }
+
 .dealist .profile-image {
     width: 100%;
     border-radius: 6px;
     object-fit: cover;
 }
+
 .dealist .profile-details .owner_name {
     margin-top: 10px;
     font-family: 'Hind Siliguri';
@@ -1313,6 +1473,7 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #212529;
 }
+
 .dealist .profile-details p {
     margin-bottom: 2px;
     font-family: 'Hind Siliguri';
@@ -1322,6 +1483,7 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #212529;
 }
+
 .stant_location_item .dropdown {
     position: relative;
     display: flex;
@@ -1336,7 +1498,8 @@ div .adds2{
     width: 70%;
     margin-bottom: 50px;
 }
-.stant_location_item .dropdown option{
+
+.stant_location_item .dropdown option {
     font-family: 'Hind Siliguri';
     font-weight: 500;
     font-size: 16px;
@@ -1362,7 +1525,8 @@ div .adds2{
     background: none;
     width: 100%;
     cursor: pointer;
-  }
+}
+
 .stant_location_item .dropdown::after {
     content: "\f107";
     font-family: "Font Awesome 5 Free";
@@ -1371,18 +1535,22 @@ div .adds2{
     right: 75px;
     color: #061E38;
 }
-.dealist .community_advisement .advisement{
+
+.dealist .community_advisement .advisement {
     margin-top: 30px;
 }
-.dealist .content_text .normal_content p{
+
+.dealist .content_text .normal_content p {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 400;
     line-height: 28px;
 }
-.notice .advisement .add_image img{
+
+.notice .advisement .add_image img {
     width: 100%;
-} 
+}
+
 .video-responsive {
     position: relative;
     padding-bottom: 56.25%;
@@ -1400,12 +1568,17 @@ div .adds2{
     border: 0;
 }
 
+.video-responsive img {
+    width: 100%;
+    border-radius: 5px;
+}
+
 /* deatils section css end */
 /* stand commuity page css end */
 
 /* CNG owner page css start */
 /* dealist section css start */
-.dealist .owner_list li a{
+.dealist .owner_list li a {
     text-decoration: none;
     font-family: 'Hind Siliguri';
     font-size: 16px;
@@ -1413,11 +1586,13 @@ div .adds2{
     line-height: 24px;
     color: #1F1E1E;
 }
-.dealist .owner_list .profile-card .profile-details{
+
+.dealist .owner_list .profile-card .profile-details {
     text-align: center;
     padding: 0px 0px;
 }
-.dealist .owner_list .profile-card h3{
+
+.dealist .owner_list .profile-card h3 {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 600;
@@ -1426,7 +1601,8 @@ div .adds2{
     color: #212529;
     margin: 0px;
 }
-.dealist .owner_list .profile-card .owner{
+
+.dealist .owner_list .profile-card .owner {
     font-family: 'Hind Siliguri';
     font-size: 14px;
     font-weight: 500;
@@ -1434,7 +1610,8 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #212529;
 }
-.dealist .owner_list .profile-card .number{
+
+.dealist .owner_list .profile-card .number {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 500;
@@ -1442,7 +1619,8 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #212529;
 }
-.dealist .owner_list .profile-card a{
+
+.dealist .owner_list .profile-card a {
     text-decoration: none;
     color: #FF2424;
     font-family: 'Hind Siliguri';
@@ -1452,7 +1630,8 @@ div .adds2{
     letter-spacing: 0.2px;
     border-bottom: 2px solid #FF2424;
 }
-.dealist .owner_list .profile-card span{
+
+.dealist .owner_list .profile-card span {
     color: #FF2424;
     font-family: 'Hind Siliguri';
     font-size: 16px;
@@ -1462,7 +1641,7 @@ div .adds2{
     padding-left: 5px;
 }
 
-.dealist .next_page .left_arrow a{
+.dealist .next_page .left_arrow a {
     text-decoration: none;
     color: #FF2424;
     font-size: 16px;
@@ -1473,9 +1652,10 @@ div .adds2{
     width: 45px;
     background-color: #F1F5F8;
     margin-right: 10px;
-   
+
 }
-.dealist .next_page .page_number a{
+
+.dealist .next_page .page_number a {
     text-decoration: none;
     color: #FFFFFF;
     font-family: 'Hind Siliguri';
@@ -1490,7 +1670,8 @@ div .adds2{
     background-color: #FF2121;
     margin-right: 10px;
 }
-.dealist .next_page .right_arrow a{
+
+.dealist .next_page .right_arrow a {
     text-decoration: none;
     color: #FF2424;
     font-size: 16px;
@@ -1502,9 +1683,10 @@ div .adds2{
     background-color: #F1F5F8;
 }
 
-.cng_owner_location_item{
+.cng_owner_location_item {
     padding-top: 40px;
 }
+
 .cng_owner_location_item .dropdown {
     position: relative;
     display: flex;
@@ -1519,7 +1701,8 @@ div .adds2{
     width: 70%;
     margin-bottom: 50px;
 }
-.cng_owner_location_item .dropdown option{
+
+.cng_owner_location_item .dropdown option {
     font-family: 'Hind Siliguri';
     font-weight: 500;
     font-size: 16px;
@@ -1546,6 +1729,7 @@ div .adds2{
     width: 100%;
     cursor: pointer;
 }
+
 .cng_owner_location_item .dropdown::after {
     content: "\f107";
     font-family: "Font Awesome 5 Free";
@@ -1554,15 +1738,17 @@ div .adds2{
     right: 75px;
     color: #061E38;
 }
+
 /* dealist section css end */
 /* CNG owner page css end */
 
 
 /* CNG owner page css start */
 /* dealist section css start */
-.dealist .driver_list .profile .profile_image{
+.dealist .driver_list .profile .profile_image {
     position: relative;
 }
+
 .dealist .driver_list .profile .beage {
     position: absolute;
     font-family: 'Hind Siliguri';
@@ -1580,13 +1766,15 @@ div .adds2{
     transform: translate(290%, -130%);
     cursor: pointer;
 }
-.dealist .driver_list .profile .profile_image img{
-   width: 200px; 
-   height: 200px;
-   object-fit: cover; 
-   border-radius: 50%;
+
+.dealist .driver_list .profile .profile_image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
-.dealist .driver_list .profile .profile-details h3{
+
+.dealist .driver_list .profile .profile-details h3 {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 600;
@@ -1595,7 +1783,8 @@ div .adds2{
     color: #212529;
     margin: 0px;
 }
-.dealist .driver_list .profile .profile-details p{
+
+.dealist .driver_list .profile .profile-details p {
     font-family: 'Hind Siliguri';
     font-size: 14px;
     font-weight: 500;
@@ -1603,17 +1792,19 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #212529;
 }
+
 /* dealist section css end */
 /* CNG owner page css end */
 
 /* CNG owner profile page css start */
 /* CNG Owner profile section css start */
-.profile_section .profile_image img{
+.profile_section .profile_image img {
     width: 500px;
     height: 620px;
     object-fit: cover;
 }
-.profile_section .profile_deatils .profile_info .owner{
+
+.profile_section .profile_deatils .profile_info .owner {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 500;
@@ -1622,7 +1813,8 @@ div .adds2{
     text-align: left;
     color: #000000;
 }
-.profile_section .profile_deatils .profile_info h3{
+
+.profile_section .profile_deatils .profile_info h3 {
     font-family: 'Hind Siliguri';
     font-size: 60px;
     font-weight: 700;
@@ -1631,7 +1823,8 @@ div .adds2{
     text-align: left;
     color: #000000;
 }
-.profile_section .profile_deatils .profile_info .desc{
+
+.profile_section .profile_deatils .profile_info .desc {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 400;
@@ -1640,7 +1833,8 @@ div .adds2{
     text-align: left;
     color: #000000;
 }
-.profile_section .profile_deatils .profile_info .deatils .designation{
+
+.profile_section .profile_deatils .profile_info .deatils .designation {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 600;
@@ -1650,7 +1844,8 @@ div .adds2{
     color: #141F39;
 
 }
-.profile_section .profile_deatils .profile_info .deatils .designation_name{
+
+.profile_section .profile_deatils .profile_info .deatils .designation_name {
     font-family: 'Kohinoor Bangla';
     font-size: 28px;
     font-weight: 400;
@@ -1659,7 +1854,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .email{
+
+.profile_section .profile_deatils .profile_info .deatils .email {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 600;
@@ -1668,7 +1864,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .email_address{
+
+.profile_section .profile_deatils .profile_info .deatils .email_address {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 500;
@@ -1677,7 +1874,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .phone{
+
+.profile_section .profile_deatils .profile_info .deatils .phone {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 600;
@@ -1686,7 +1884,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .number{
+
+.profile_section .profile_deatils .profile_info .deatils .number {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 500;
@@ -1695,7 +1894,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .car{
+
+.profile_section .profile_deatils .profile_info .deatils .car {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 600;
@@ -1704,7 +1904,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .car_number{
+
+.profile_section .profile_deatils .profile_info .deatils .car_number {
     font-family: 'Kohinoor Bangla';
     font-size: 28px;
     font-weight: 400;
@@ -1713,7 +1914,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .blood{
+
+.profile_section .profile_deatils .profile_info .deatils .blood {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 600;
@@ -1722,7 +1924,8 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
-.profile_section .profile_deatils .profile_info .deatils .blood_group{
+
+.profile_section .profile_deatils .profile_info .deatils .blood_group {
     font-family: 'Kohinoor Bangla';
     font-size: 28px;
     font-weight: 400;
@@ -1731,14 +1934,18 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
+
 /* CNG Owner profile section css end */
 /* Gallery section css start */
-.gallery_section img{
+.gallery_section img {
+    border-radius: 8px;
+    object-fit: fill;
     width: 100%;
-    height: 260px;
-    object-fit: cover;
+    aspect-ratio: 5/4;
+    /* height: auto; */
 }
-.gallery_section h3{
+
+.gallery_section h3 {
     font-family: 'Hind Siliguri';
     font-size: 24px;
     font-weight: 700;
@@ -1747,14 +1954,16 @@ div .adds2{
     text-align: left;
     color: #141F39;
 }
+
 /* Gallery section css end */
 /* CNG owner profile page css end */
 
 /* CNG driver profile page css start */
 /* profile section css start */
-.profile_section .profile_deatils .profile_info .book_now{
+.profile_section .profile_deatils .profile_info .book_now {
     margin-top: 100px;
 }
+
 .profile_section .profile_deatils .profile_info a {
     text-decoration: none;
     padding: 10px 15px;
@@ -1767,13 +1976,14 @@ div .adds2{
     background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
     border-radius: 5px;
 }
+
 /* profile section css end */
 /* CNG driver profile page css end */
 
 /* notice page css start */
 /* notice board section css start */
 
-.notice_bord_section .head .title h3{
+.notice_bord_section .head .title h3 {
     font-family: 'Hind Siliguri';
     font-size: 36px;
     font-weight: 600;
@@ -1782,7 +1992,8 @@ div .adds2{
     text-align: left;
     color: #000000;
 }
-.notice_bord_section .select_option .year select{
+
+.notice_bord_section .select_option .year select {
     font-family: 'Kohinoor Bangla';
     font-size: 16px;
     font-weight: 500;
@@ -1792,7 +2003,8 @@ div .adds2{
     color: #000000;
     border: 1px solid #EA1827;
 }
-.notice_bord_section .select_option .notice_type select{
+
+.notice_bord_section .select_option .notice_type select {
     font-family: 'Kohinoor Bangla';
     font-size: 16px;
     font-weight: 500;
@@ -1802,13 +2014,16 @@ div .adds2{
     color: #000000;
     border: 1px solid #EA1827;
 }
-.table{
+
+.table {
     border: none;
 }
-.table .thead-dark th{
+
+.table .thead-dark th {
     border: none !important;
 }
-.table td{
+
+.table td {
     border: none !important;
     font-family: 'Kohinoor Bangla';
     font-size: 20px;
@@ -1816,7 +2031,8 @@ div .adds2{
     line-height: 28px;
     letter-spacing: 0.2px;
 }
-.custom-header th{
+
+.custom-header th {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 500;
@@ -1824,15 +2040,16 @@ div .adds2{
     letter-spacing: 0.2px;
     background: #051E38;
     color: #FFFEFE;
-    border: none; 
+    border: none;
     padding: 10px;
 }
+
 /* notice board section css end */
 /* notice page css end */
 
 /* error page css start */
 /* error section css start */
-.error_section .error_image .error h3{
+.error_section .error_image .error h3 {
     font-family: 'Hind Siliguri';
     font-size: 36px;
     font-weight: 600;
@@ -1840,15 +2057,17 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #000000;
 }
-.error_section .error_image .image img{
+
+.error_section .error_image .image img {
     width: 100%;
 }
+
 /* error section css end*/
 /* error page css end */
 
 /* contact page css start  */
 /* contact deatils section css start  */
-.contact_deatils h3{
+.contact_deatils h3 {
     font-family: 'Hind Siliguri';
     font-size: 30px;
     font-weight: 600;
@@ -1856,7 +2075,8 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #000000;
 }
-.contact_deatils p{
+
+.contact_deatils p {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 400;
@@ -1864,12 +2084,14 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #000000
 }
-.contact_deatils .details .map img{
+
+.contact_deatils .details .map img {
     width: 100%;
 }
+
 /* contact deatils section css end */
 /* contact section css start  */
-.contact h4{
+.contact h4 {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 600;
@@ -1877,7 +2099,8 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #000000;
 }
-.contact a{
+
+.contact a {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 400;
@@ -1895,7 +2118,8 @@ div .adds2{
     margin: 0 auto;
     padding: 20px;
 }
-.form-container-section h5{
+
+.form-container-section h5 {
     font-family: 'Hind Siliguri';
     font-size: 28px;
     font-weight: 500;
@@ -1903,22 +2127,27 @@ div .adds2{
     letter-spacing: 0.2px;
     color: #000000;
 }
-.form-container-section button{
+
+.form-container-section button {
     padding: 10px 20px;
 }
-.form-container-sectio input{
+
+.form-container-sectio input {
     border: 1.5px solid #E5E5E5;
 }
-.form-container-sectio input:focus{
+
+.form-container-sectio input:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
+
 .form-control:focus {
     box-shadow: none;
     border-color: #ced4da;
 }
-.form-container-sectio::placeholder{
+
+.form-container-sectio::placeholder {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 400;
@@ -1927,6 +2156,7 @@ div .adds2{
     color: #605F62;
 
 }
+
 .form-container-section .btn-submit {
     font-family: 'Hind Siliguri';
     font-size: 20px;
@@ -1937,6 +2167,7 @@ div .adds2{
     color: white;
     border: none;
 }
+
 /* contact section css end */
 /* contact page css end */
 
@@ -1946,7 +2177,8 @@ div .adds2{
     background: linear-gradient(-220deg, #fcebeb 0%, white 50%, #efdede 100%);
 
 }
-.blog_hero .banner_head h2{
+
+.blog_hero .banner_head h2 {
     font-family: "Hind Siliguri", sans-serif;
     font-weight: 700;
     font-size: 68px;
@@ -1958,7 +2190,8 @@ div .adds2{
     padding-top: 10px;
     text-align: left !important;
 }
-.stand_intro .banner_head h2{
+
+.stand_intro .banner_head h2 {
     font-family: "Hind Siliguri", sans-serif;
     font-weight: 700;
     font-size: 68px;
@@ -1970,7 +2203,8 @@ div .adds2{
     padding-top: 10px;
     text-align: left !important;
 }
-.blog_hero .banner_title p{
+
+.blog_hero .banner_title p {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 500;
@@ -1979,7 +2213,8 @@ div .adds2{
     color: #000000;
     text-align: left !important;
 }
-.stand_intro .banner_title p{
+
+.stand_intro .banner_title p {
     font-family: 'Hind Siliguri';
     font-size: 20px;
     font-weight: 500;
@@ -1988,12 +2223,14 @@ div .adds2{
     color: #000000;
     text-align: left !important;
 }
+
 .blog_container {
     font-family: 'Hind Siliguri', sans-serif;
     display: block;
     text-align: left;
     margin: 0;
 }
+
 .blog_container .banner_head {
     font-weight: 700;
     font-size: 68px;
@@ -2002,6 +2239,7 @@ div .adds2{
     color: transparent;
     margin-top: 10px;
 }
+
 .blog_container .banner_title {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 20px;
@@ -2014,41 +2252,49 @@ div .adds2{
     text-decoration-skip-ink: none;
 
 }
+
 .blog_img img {
     max-width: 100%;
     height: auto;
 }
 
-/* Blog & Inner card & form start */      
+/* Blog & Inner card & form start */
 .blog_card_form .card {
     border: none;
     background-color: #FEF3F3;
     border-radius: 12px;
 }
-.blog_card_form .card-body{
+
+.blog_card_form .card-body {
     background: #FEF3F3;
 }
+
 .blog_card_form .card img {
     border-radius: 12px 12px 0 0;
 }
-.blog_card_form .card_link{
+
+.blog_card_form .card_link {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     color: #898888;
 }
-.blog_card_form .card_link i{
+
+.blog_card_form .card_link i {
     color: #EA1827;
 }
+
 .blog_card_form .card_link {
     font-family: "Hind Siliguri", sans-serif;
 }
+
 .blog_card_form .card-body h1 {
     font-family: "Exo";
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 .blog_card_form .search-bar h6 {
     font-family: "Hind Siliguri";
     font-size: 20px;
@@ -2056,19 +2302,21 @@ div .adds2{
     line-height: 24px;
     color: #000000;
 }
-.blog_card_form .search-bar .input-container::placeholder{
+
+.blog_card_form .search-bar .input-container::placeholder {
     color: red;
 }
-.blog_card_form .card-body .card_text{
+
+.blog_card_form .card-body .card_text {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    color: #000000; 
+    color: #000000;
 }
 
-        /* btn css */
-.blog_card_form .custom_btn{
+/* btn css */
+.blog_card_form .custom_btn {
     background-color: #FEF3F3;
     border: 2px solid red;
     border-radius: 8px;
@@ -2078,63 +2326,75 @@ div .adds2{
     font-weight: 500;
     line-height: 24px;
 }
-.blog_card_form .custom_btn i{
+
+.blog_card_form .custom_btn i {
     color: #FF4040;
     font-size: 20px;
     padding-left: 10px;
 }
-        /* form start */
-.blog_card_form .search-bar input{
+
+/* form start */
+.blog_card_form .search-bar input {
     border: none;
     border-radius: 18px;
 }
-.blog_card_form .search-bar{
+
+.blog_card_form .search-bar {
     padding: 20px 40px;
     background: #FEF3F3;
 }
+
 .blog_card_form .blog_hr {
     border: none;
     border-top: 2px solid #FFC2C2;
-    height: 2px; 
+    height: 2px;
     background-color: #FFC2C2;
 }
+
 .blog_hr:hover {
     border-top: 2px solid #EA1827;
 }
-.search{
+
+.search {
     align-items: end;
 }
-.blog_card_form .input-container input::placeholder{
+
+.blog_card_form .input-container input::placeholder {
     color: #ACACAC;
     font-family: "Hind Siliguri", sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 26px;
 }
-.blog_card_form .new_blog{
+
+.blog_card_form .new_blog {
     font-family: "Hind Siliguri", sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
     color: #000000;
 }
-.blog_card_form .new_blog_text{
+
+.blog_card_form .new_blog_text {
     font-family: "Exo", sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
     color: #000000;
 }
-.blog_card_form .date{
+
+.blog_card_form .date {
     font-family: Jost;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
 }
-.blog_card_form .date i{
+
+.blog_card_form .date i {
     color: rgba(255, 73, 73, 1);
 }
-.blog_card_form .popular_a{
+
+.blog_card_form .popular_a {
     background: rgba(255, 255, 255, 1);
     width: 104px;
     height: 39px;
@@ -2147,20 +2407,23 @@ div .adds2{
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
-  }
+}
+
 .blog_card_form .popular_a:hover {
     background: #dc3545;
     color: #fff;
-  }
-.left_card .second_part .tag{
-    font-family:"Hind Siliguri", sans-serif;
+}
+
+.left_card .second_part .tag {
+    font-family: "Hind Siliguri", sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
     color: rgba(0, 0, 0, 1);
     text-decoration: none;
 }
-.left_card .second_part .a_bike{
+
+.left_card .second_part .a_bike {
     background: rgba(255, 255, 255, 1);
     border-radius: 8px;
     border: none;
@@ -2173,29 +2436,34 @@ div .adds2{
     line-height: 26px;
     text-decoration: none;
 }
+
 .left_card .second_part .a_bike:hover {
     background: #dc3545;
     color: #fff;
-  }
-.left_card .second_part .inner_buttom .inner_icon{
+}
+
+.left_card .second_part .inner_buttom .inner_icon {
     width: 18px;
-    height: 18px;    
+    height: 18px;
     font-size: 20px;
     padding-bottom: 26px;
     color: rgba(5, 30, 56, 1);
 }
-        /* form End! */
+
+/* form End! */
 
 .input-container {
     position: relative;
     width: 100%;
 }
+
 .search-input {
     width: 100%;
-    padding-right: 2rem; 
+    padding-right: 2rem;
     border: 1px solid #ced4da;
     border-radius: 5px;
 }
+
 .search-icon {
     position: absolute;
     right: 10px;
@@ -2205,18 +2473,20 @@ div .adds2{
     font-size: 1rem;
     cursor: pointer;
 }
+
 /* card & form End! */
 /* Blog_section end */
 
 
 /* Inner card & form start */
-.left_card h1{
+.left_card h1 {
     font-family: "Exo", sans-serif;
     font-size: 46px;
     font-weight: 600;
     line-height: 55.2px;
 }
-.inner_video{
+
+.inner_video {
     position: relative;
     width: 100%;
     max-width: 800px;
@@ -2226,23 +2496,26 @@ div .adds2{
     border: 8px solid rgba(255, 255, 255, 1);
     border-radius: 15px;
 }
+
 .inner_video #video {
     width: 100%;
     height: 50vh;
     border-radius: 15px;
 }
+
 /* Inner card & form End! */
 
 /* login page css start  */
 /* login section css start  */
-.login_section h4{
+.login_section h4 {
     font-family: 'Hind Siliguri';
     font-size: 24px;
     font-weight: 600;
     line-height: 38.81px;
     color: #051E38;
 }
-.login_section label{
+
+.login_section label {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 500;
@@ -2250,26 +2523,30 @@ div .adds2{
     color: #051E38;
 
 }
-.login_section input::placeholder{
+
+.login_section input::placeholder {
     font-family: 'Hind Siliguri';
     font-size: 17px;
     font-weight: 300;
     line-height: 26.61px;
     color: #8E8E8E;
 }
-.login_section .form-check-label{
+
+.login_section .form-check-label {
     font-family: 'Hind Siliguri';
     font-size: 14px;
     font-weight: 400;
     line-height: 21.91px;
     color: #000000;
 }
+
 .login_section .form-check-input {
     background-color: #C4C4C4;
     border-color: #C4C4C4;
     box-shadow: none;
 
 }
+
 .login_section .form-check-input:checked {
     background-color: #ea1827;
     border-color: #C4C4C4;
@@ -2277,7 +2554,8 @@ div .adds2{
     appearance: none;
     box-shadow: none;
 }
-.login_section .forget_password{
+
+.login_section .forget_password {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 400;
@@ -2285,7 +2563,8 @@ div .adds2{
     text-decoration: none;
     color: #051E38;
 }
-.login_section .login{
+
+.login_section .login {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 500;
@@ -2294,15 +2573,18 @@ div .adds2{
     background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
     padding: 8px 10px;
 }
+
 .login_section .divider {
     display: flex;
     align-items: center;
     text-align: center;
 }
+
 .login_section .divider hr {
     flex: 1;
     border-top: 1px solid #c26161;
 }
+
 .login_section .divider span {
     font-family: 'Hind Siliguri';
     font-size: 18px;
@@ -2311,16 +2593,18 @@ div .adds2{
     padding: 0 10px;
     font-size: 20px;
     font-weight: bold;
-    color: #000000; 
+    color: #000000;
 }
-.login_section .google_button{
+
+.login_section .google_button {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
     color: #051E38;
 }
-.login_section .no_account{
+
+.login_section .no_account {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 400;
@@ -2328,7 +2612,8 @@ div .adds2{
     color: #051E38;
 
 }
-.login_section .create_button{
+
+.login_section .create_button {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 500;
@@ -2337,26 +2622,29 @@ div .adds2{
     background: #051E38;
     padding: 8px 10px;
 }
+
 /* login section css end  */
 /* login page css end */
 
 /* singnup page css start  */
 /* register section css start  */
-.register_section h4{
+.register_section h4 {
     font-family: 'Hind Siliguri';
     font-size: 24px;
     font-weight: 600;
     line-height: 38.81px;
     color: #051E38;
 }
-.register_section label{
+
+.register_section label {
     font-family: 'Hind Siliguri';
     font-size: 16px;
     font-weight: 500;
     line-height: 25.04px;
     color: #051E38;
 }
-.register_section input::placeholder{
+
+.register_section input::placeholder {
     font-family: 'Hind Siliguri';
     font-size: 17px;
     font-weight: 300;
@@ -2364,7 +2652,8 @@ div .adds2{
     color: #8E8E8E;
 
 }
-.register_section span{
+
+.register_section span {
     font-family: 'Hind Siliguri';
     font-size: 10px;
     font-weight: 300;
@@ -2372,16 +2661,19 @@ div .adds2{
     color: #8E8E8E;
     padding-left: 10px;
 }
-.register_section .divider{
+
+.register_section .divider {
     display: flex;
     align-items: center;
     text-align: center;
 }
-.register_section .divider hr{
+
+.register_section .divider hr {
     flex: 1;
     border-top: 1px solid #c26161;
 }
-.register_section .divider span{
+
+.register_section .divider span {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 300;
@@ -2389,9 +2681,10 @@ div .adds2{
     padding: 0 10px;
     font-size: 20px;
     font-weight: 300;
-    color: #000000; 
+    color: #000000;
 }
-.register_section .back_login .no_account{
+
+.register_section .back_login .no_account {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 400;
@@ -2399,7 +2692,8 @@ div .adds2{
     color: #000000;
     padding-bottom: 5px;
 }
-.register_section .back_login .back_login_page button{
+
+.register_section .back_login .back_login_page button {
     font-family: 'Hind Siliguri';
     font-size: 18px;
     font-weight: 400;
@@ -2411,34 +2705,39 @@ div .adds2{
     cursor: pointer;
     margin-top: 5px;
 }
-.register_section .back_login .back_login_page button:focus{
+
+.register_section .back_login .back_login_page button:focus {
     border: none;
     box-shadow: none;
 }
-.register_section .ittle{
+
+.register_section .ittle {
     display: block;
 }
-.register_section .card p{
+
+.register_section .card p {
     font-family: 'Hind Siliguri';
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 0px;
 }
-.register_section .form-group .form-control{
+
+.register_section .form-group .form-control {
     border: 1px solid #ea1827;
 }
+
 /* register section css end */
 /* singnup page css end */
 /* chatbox  css start */
-  .chat-widget {
+.chat-widget {
     position: absolute;
     bottom: 20px;
     right: 20px;
     z-index: 9999;
-  }
+}
 
-  .chat-header {
+.chat-header {
     background-color: #ff4d4d;
     color: #fff;
     padding: 10px 15px;
@@ -2453,16 +2752,18 @@ div .adds2{
     font-size: 16px;
     font-weight: 500;
     line-height: 25.87px;
-  }
-
-  .chat-header i {
-    margin-right: 8px;
-  }
-.chat-box .header i{
-        font-size: 30px;
-        color: #ffc83d;
 }
-  .chat-box {
+
+.chat-header i {
+    margin-right: 8px;
+}
+
+.chat-box .header i {
+    font-size: 30px;
+    color: #ffc83d;
+}
+
+.chat-box {
     position: absolute;
     width: 300px;
     background-color: #fff;
@@ -2473,9 +2774,9 @@ div .adds2{
     padding: 15px;
     bottom: 60px;
     right: 0;
-  }
+}
 
-  .chat-box .header {
+.chat-box .header {
     text-align: center;
     margin-bottom: 10px;
     font-family: 'Hind Siliguri';
@@ -2483,9 +2784,9 @@ div .adds2{
     font-weight: 500;
     line-height: 28px;
     color: #000000;
-  }
+}
 
-  .chat-box .options button {
+.chat-box .options button {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -2493,9 +2794,9 @@ div .adds2{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-  .chat-box .options .live-chat {
+.chat-box .options .live-chat {
     background-color: #ff4d4d;
     color: white;
     font-family: 'Hind Siliguri';
@@ -2503,9 +2804,9 @@ div .adds2{
     font-weight: 600;
     line-height: 28px;
     text-align: center;
-  }
+}
 
-  .chat-box .options .whatsapp {
+.chat-box .options .whatsapp {
     color: #FF3030;
     background-color: white;
     font-family: 'Hind Siliguri';
@@ -2514,9 +2815,9 @@ div .adds2{
     line-height: 28px;
     text-align: center;
     border: 1px solid #d2cfcf;
-  }
+}
 
-  .chat-box .options .call {
+.chat-box .options .call {
     background-color: #ffffff;
     color: #FF3232;
     font-family: 'Hind Siliguri';
@@ -2524,23 +2825,23 @@ div .adds2{
     font-weight: 600;
     line-height: 28px;
     text-align: center;
-  }
+}
 
-  .chat-box .footer {
+.chat-box .footer {
     text-align: center;
     margin-top: 10px;
     font-size: 12px;
-  }
+}
 
-  .chat-box .close-btn {
+.chat-box .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 14px;
     cursor: pointer;
-  }
+}
 
-  .floating-btn {
+.floating-btn {
     background-color: #ff4d4d;
     color: white;
     width: 50px;
@@ -2551,7 +2852,7 @@ div .adds2{
     align-items: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
+}
 
 /* chatbox  css end */
 /* select role page css start */
@@ -2570,49 +2871,58 @@ div .adds2{
     border: 1px solid #ff4d4d;
     transition: 0.5s;
 }
-.select_iteam .card a:hover{
+
+.select_iteam .card a:hover {
     color: #ff4d4d;
     background-color: #ffffff;
 }
+
 /* select role page css end */
 /* logout section css start */
-.logout .logout_form .form-group a{
-        background-color: #ea1827;
-        color: #ffffff;
-        border-radius: 5px;
-        padding: 10px;
+.logout .logout_form .form-group a {
+    background-color: #ea1827;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
 }
+
 /* logout section css end */
 /* Footer start */
 footer {
     background-color: #051E38;
     font-family: "Chivo", serif;
 }
-footer div img .logo{
+
+footer div img .logo {
     width: 279px;
     height: 67.49px;
 }
-footer p{
+
+footer p {
     color: #B4B6C4;
 }
-footer .contact{
+
+footer .contact {
     color: #B4B6C4;
 }
-footer .footer_text{
+
+footer .footer_text {
     font-family: "Chivo", serif;
-    font-weight: 700 ;
+    font-weight: 700;
     font-size: 16px;
     line-height: 20px;
     color: #FFFFFF;
 }
-footer .footer_gray h6{
+
+footer .footer_gray h6 {
     font-family: "Chivo", serif;
-    font-weight: 400 ;
+    font-weight: 400;
     font-size: 16px;
     line-height: 26px;
     color: #B4B6C4;
 }
-.footer_gray a{
+
+.footer_gray a {
     font-family: "Chivo", serif;
     font-size: 16px;
     font-weight: 400;
@@ -2620,20 +2930,22 @@ footer .footer_gray h6{
     text-align: left;
     color: #B4B6C4;
 }
-footer .footer_gray i{
+
+footer .footer_gray i {
     font-size: 25px;
     margin-right: 10px;
 }
 
-footer .copy_right{
+footer .copy_right {
     font-family: "Chivo", serif;
-    font-weight: 500 ;
+    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: #B4B6C4;
     opacity: 80%;
     text-decoration: none;
 }
+
 /* Footer end */
 
 .page-item.disabled .page-link {
@@ -2642,21 +2954,1032 @@ footer .copy_right{
     border-color: #ff2626;
     color: #ff2626;
 }
-.pagination .page-item .page-link{
+
+.pagination .page-item .page-link {
     color: #ff2626;
     border-color: #ff2626;
 }
+
 .page-item.active .page-link {
     z-index: 3;
     color: #fff !important;
     background-color: #ff2626 !important;
 }
-.page-item.active .page-link:focus{
+
+.page-item.active .page-link:focus {
     outline: none;
 }
-.pagination .align-items-sm-center{
+
+.pagination .align-items-sm-center {
     gap: 10px;
 }
-.pagination .align-items-sm-center{
+
+.pagination .align-items-sm-center {
     justify-content: end;
+}
+
+.about_section .title {
+    background: linear-gradient(94.75deg, #ec2828 0.75%, #FF6060 106.31%);
+    padding: 100px 0px;
+}
+
+.about_section .title h2 {
+    font-family: 'Hind Siliguri';
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+}
+
+.about_section .cotent {
+    margin: 70px 0px;
+}
+
+.about_section .cotent p {
+    font-family: 'Hind Siliguri';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    color: #141F39;
+    opacity: 0.7;
+}
+
+
+
+.profile_section .profile-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile_section .profile-header {
+    background: linear-gradient(91.25deg, #FF2727 -4.4%, #FF5454 101.68%);
+    color: white;
+    padding: 30px;
+    position: relative;
+}
+
+.profile_section .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile_section .profile-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile_section .profile-designation {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.profile_section .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.profile_section .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile_section .profile-details {
+    padding: 30px;
+}
+
+.profile_section .detail-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.profile_section .detail-title {
+    font-weight: 600;
+    color: #ff2b2b;
+    margin-bottom: 5px;
+}
+
+.profile_section .detail-value {
+    font-size: 16px;
+}
+
+.profile_section .detail-row {
+    margin-bottom: 15px;
+}
+
+.profile_section .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+}
+
+.profile_section .badge-custom {
+    background-color: #ff2b2b;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.profile_section .right_column {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    gap: 20px;
+}
+
+.profile_section .right_column a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff2b2b;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+
+.profile_section .info {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #ff2b2b;
+    padding-bottom: 10px;
+}
+
+.add_vehicle .card .card-header .card-title h4 {
+    color: #ff2b2b;
+}
+
+.add_vehicle .card .card-header .float-right a {
+    background-color: #ff2b2b;
+    border: none;
+}
+
+.add_vehicle .card .card-body .form-control {
+    border: 1px solid #ff2b2b !important;
+}
+
+.add_vehicle .card .card-body button {
+    background-color: #ff2b2b;
+    border: none;
+}
+
+
+/* owner_update css */
+
+
+
+.profile_update_section .page-header {
+    font-family: 'Hind Siliguri';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 68px;
+    line-height: 70px;
+    letter-spacing: 0.2px;
+    background: linear-gradient(135deg, #ea1827, #ff6b6b);
+    color: white;
+    padding: 100px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+.profile_update_section .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.profile_update_section .profile-container {
+    margin-bottom: 50px;
+}
+
+.profile_update_section .profile-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+}
+
+.profile_update_section .profile-header {
+    background-color: var(--light-color);
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile_update_section .profile-header h3 {
+    margin: 0;
+    color: var(--dark-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.profile_update_section .profile-body {
+    padding: 30px;
+}
+
+.profile_update_section .form-label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 8px;
+}
+
+.profile_update_section .form-control {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 2px solid #ced4da;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.profile_update_section .form-control:focus {
+    border-color: #ea1827;
+    /* box-shadow: 0 0 0 0.25rem #e7979d; */
+}
+
+.profile_update_section .form-select {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 2px solid #ced4da;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    background-position: right 15px center;
+}
+
+.profile_update_section .form-select:focus {
+    border-color: #ea1827;
+    box-shadow: 0 0 0 0.25rem #d8737a;
+}
+
+.profile_update_section .text-danger {
+    color: var(--primary-color) !important;
+    font-size: 14px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.profile_update_section .profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile_update_section .profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ea1827;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile_update_section .image-upload-container {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+}
+
+.profile_update_section .custom-file-upload {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--light-color);
+    border: 2px dashed #ced4da;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile_update_section .custom-file-upload:hover {
+    border-color: var(--primary-color);
+    background-color: #fff9f9;
+}
+
+.profile_update_section .custom-file-upload i {
+    margin-right: 8px;
+    color: #ea1827;
+}
+
+.profile_update_section .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.profile_update_section .section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    border-left: 4px solid #ea1827;
+    padding-left: 15px;
+}
+
+.profile_update_section .form-section {
+    margin-bottom: 30px;
+}
+
+.profile_update_section .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.profile_update_section .btn-primary:hover {
+    background-color: #c41520;
+    border-color: #c41520;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(234, 24, 39, 0.3);
+}
+
+.profile_update_section .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.profile_update_section .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+.profile_update_section .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile_update_section .required-field::after {
+    content: '*';
+    color: var(--primary-color);
+    margin-left: 4px;
+}
+
+.profile_update_section .form-floating {
+    margin-bottom: 20px;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-select {
+    height: 58px;
+    padding: 1rem 0.75rem;
+}
+
+.profile_update_section .form-floating>label {
+    padding: 1rem 0.75rem;
+}
+
+.profile_update_section .input-group {
+    margin-bottom: 20px;
+}
+
+.profile_update_section .input-group-text {
+    background-color: var(--light-color);
+    border: 2px solid #ced4da;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    color: var(--dark-color);
+}
+
+.profile_update_section .input-group .form-control {
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 0;
+}
+
+.profile_update_section .input-group:focus-within .input-group-text {
+    border-color: var(--primary-color);
+}
+
+.logout-section {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.logout-btn {
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+    border: 2px solid #ced4da;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #ff2b2b;
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.logout-btn i {
+    margin-right: 8px;
+}
+
+.form-check {
+    margin-bottom: 20px;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.save-indicator {
+    display: none;
+    align-items: center;
+    margin-left: 15px;
+    color: #ea1827;
+    font-weight: 600;
+}
+
+.save-indicator i {
+    margin-right: 5px;
+}
+
+.action-buttons #saveButton {
+    background-color: #ea1827;
+    color: #fff;
+}
+
+.form-floating>.form-control-plaintext:focus,
+.form-floating>.form-control-plaintext:not(:placeholder-shown),
+.form-floating>.form-control:focus,
+.form-floating>.form-control:not(:placeholder-shown) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+
+.field_worker_profile {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.field_worker_profile .main-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.profile-wrapper {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.btn-edit {
+    background-color: #ea1827;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #c41520;
+}
+
+/* Profile card styles */
+.worker-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Profile header */
+.card-header {
+    background-color: #ea1827;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.avatar-container {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto 1rem;
+}
+
+.avatar-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-camera {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    color: #ea1827;
+    padding: 0.25rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-camera:hover {
+    background-color: #f3f4f6;
+}
+
+.worker-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.worker-role {
+    opacity: 0.8;
+}
+
+/* Profile info */
+.card-body {
+    padding: 1.5rem;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .info-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.info-block {
+    margin-bottom: 1rem;
+}
+
+.block-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.data-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.data-icon {
+    color: #ea1827;
+    margin-right: 0.75rem;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+    width: 1.25rem;
+    text-align: center;
+}
+
+.data-content .label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.data-content .value {
+    font-weight: 500;
+}
+
+/* Actions */
+.card-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 1.5rem;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .btn-group {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: #ea1827;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary a {
+    color: white;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #c41520;
+}
+
+.btn-primary a:hover {
+    background-color: #c41520;
+}
+
+.btn-secondary {
+    width: 100%;
+    background-color: white;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary a {
+    background-color: white;
+    color: #4b5563;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+
+    .btn-primary,
+    .btn-secondary {
+        width: auto;
+    }
+}
+
+
+/* Serial list page css */
+
+.serial_list .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.serial_list .header {
+    background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
+    padding: 24px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 10px rgba(255, 38, 38, 0.3);
+    text-align: center;
+}
+
+.serial_list .header h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.serial_list .header p {
+    color: white;
+    font-size: 16px;
+}
+
+.serial_list .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+}
+
+.serial_list .card-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.serial_list .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.serial_list .card-content {
+    padding: 16px;
+}
+
+.serial_list .search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.serial_list .input {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.serial_list .button {
+    background: linear-gradient(90.56deg, #FF2626 0.49%, #FF5858 99.81%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.serial_list .button:hover {
+    opacity: 0.9;
+}
+
+.serial_list .search-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.serial_list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.serial_list th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.serial_list th {
+    font-weight: bold;
+    color: #555;
+}
+
+.serial_list .status-badge {
+    background-color: #e6f7e6;
+    color: #2e7d32;
+    padding: 4px 8px;
+    border-radius: 100px;
+    font-size: 12px;
+}
+
+.serial_list .empty-state {
+    text-align: center;
+    padding: 32px 16px;
+    color: #777;
+}
+
+.serial_list .list {
+    background-color: #fff;
+    color: red;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .serial_list .search-container {
+        flex-direction: row;
+    }
+
+    .serial_list .button {
+        width: auto;
+    }
+}
+
+
+
+/* stand manager css start */
+
+.stand_manager_dashboard .sidebar {
+    min-height: 100vh;
+    background-color: #212529;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.stand_manager_dashboard .sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.stand_manager_dashboard .sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.stand_manager_dashboard .sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.stand_manager_dashboard .main-content {
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.stand_manager_dashboard .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.stand_manager_dashboard .card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 15px 20px;
+}
+
+.stand_manager_dashboard .status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.stand_manager_dashboard .status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.stand_manager_dashboard .status-completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stand_manager_dashboard .status-ongoing {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.stand_manager_dashboard .status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.stand_manager_dashboard .status-active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stand_manager_dashboard .status-expired {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.stand_manager_dashboard .status-waiting {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.stand_manager_dashboard .type-emergency {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.stand_manager_dashboard .type-general {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.stand_manager_dashboard .type-info {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.stand_manager_dashboard .year-badge {
+    background-color: #e0cffc;
+    color: #6610f2;
+}
+
+.stand_manager_dashboard .action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 768px) {
+    .stand_manager_dashboard .sidebar {
+        margin-left: -250px;
+        position: fixed;
+        z-index: 1000;
+        height: 100%;
+    }
+
+    .stand_manager_dashboard .sidebar.active {
+        margin-left: 0;
+    }
+
+    .stand_manager_dashboard .main-content {
+        width: 100%;
+    }
+
+    .stand_manager_dashboard .overlay {
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 998;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .stand_manager_dashboard .overlay.active {
+        display: block;
+        opacity: 1;
+    }
 }

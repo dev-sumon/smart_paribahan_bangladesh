@@ -23,7 +23,7 @@ class ContactInfoRequest extends FormRequest
     {
         return [
            'title' => 'required|string|min:3|max:250',
-           'status' => 'required|boolean', 
+           'status' => 'nullable|boolean', 
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -34,7 +34,8 @@ class ContactInfoRequest extends FormRequest
             'description' => 'required|string|min:50|max:250',
             'address' => 'required|string|min:3|max:250',
             'phone' => 'required|string',
-            'email' => 'required|email|unique:contact_infos,email',
+            'optional_number' => 'required|string',
+            'email' => 'required|email',
         ];
     }
     protected function update(): array
@@ -43,7 +44,8 @@ class ContactInfoRequest extends FormRequest
             'description' => 'nullable|string|min:50|max:250',
             'address' => 'nullable|string|min:3|max:250',
             'phone' => 'nullable|string',
-            'email' => 'nullable|email|unique:contact_infos,email,' .$this->route('id'),
+            'optional_number' => 'nullable|string',
+            'email' => 'nullable|email',
         ];
     }
 }

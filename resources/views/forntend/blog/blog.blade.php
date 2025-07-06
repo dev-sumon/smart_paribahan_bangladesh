@@ -68,7 +68,7 @@
                                     <div class="card_link d-flex gap-4 align-content-center mt-3 mb-3">
                                         <div class="left_link d-flex text-center">
                                             <i class="fa-solid fa-user"></i>
-                                            <h5 class="ml-2">{{ $blog->creator }}</h5>
+                                            <h5 class="ml-2">{{ $blog->creator ?? 'N/A' }}</h5>
                                         </div>
                                         <div class="right_link d-flex text-center">
                                             <i class="fa-solid fa-folder-open"></i>
@@ -76,10 +76,10 @@
                                         </div>
                                     </div>
                                     {{-- <h1>{{ $blog->title }}</h1> --}}
-                                    <h1><a href="{{ route('f.blog.inner_blog', $blog->id) }}"
+                                    <h1><a href="{{ route('f.blog.inner_blog', $blog->slug) }}"
                                             style="color: #141F39">{{ Str::limit($blog->title, 40, '...') }}</a></h1>
                                     <p class="card_text mt-4 mb-4">{!! Str::limit(strip_tags($blog->description), 300, '...') !!}</p>
-                                    <a href="{{ route('f.blog.inner_blog', $blog->id) }}">
+                                    <a href="{{ route('f.blog.inner_blog', $blog->slug) }}">
                                         <button class="custom_btn">
                                             <span>{{ __('Read More') }}</span>
                                             <i class="fa-solid fa-arrow-right"></i>
@@ -141,7 +141,7 @@
                                         </div>
                                         {{-- <a href="#"
                                         class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a> --}}
-                                        <a href="{{ route('f.blog.inner_blog', $blog->id) }}" class="new_blog_text fw-bold"
+                                        <a href="{{ route('f.blog.inner_blog', $blog->slug) }}" class="new_blog_text fw-bold"
                                             style="color: #141F39">{{ Str::limit($blog->title, 70, '...') }}</a>
                                     </div>
                                 @endforeach

@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\DivisionReqest;
 use App\Models\Division;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\DivisionReqest;
+use Illuminate\Http\RedirectResponse;
 
 class DivisionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['divisions'] = Division::latest()->get();
@@ -27,8 +32,10 @@ class DivisionController extends Controller
         $save->division = $request->division;
         $save->status = $request->status ?? 0;
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success', 'Division created successfully');
     }
     public function update($id): View
     {
@@ -42,27 +49,29 @@ class DivisionController extends Controller
         $update->division = $request->division;
         $update->status = $request->status ?? 0;
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success', 'Division updated successfully');
     }
     public function status($id): RedirectResponse
     {
         $Division = Division::findOrFail($id);
-        if($Division->status == 1){
+        if ($Division->status == 1) {
             $Division->status = 0;
-        }else{
+        } else {
             $Division->status = 1;
         }
 
         $Division->save();
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success', 'Division status updated successfully');
     }
     public function delete($id): RedirectResponse
     {
         $division = Division::findOrFail($id);
         $division->delete();
 
-        return redirect()->route('division.index');
+        return redirect()->route('division.index')->with('success', 'Division deleted successfully');
     }
     public function detalis($id): View
     {

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\ContactInfo;
+use App\Models\StandManager;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,6 +30,15 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call([
             DriverSeeder::class,
+        ]);
+        $this->call([
+            FieldWorkerSeeder::class,
+        ]);
+        $this->call([
+            StandManagerSeeder::class,
+        ]);
+        $this->call([
+            ContactInfoSeeder::class,
         ]);
     }
 }

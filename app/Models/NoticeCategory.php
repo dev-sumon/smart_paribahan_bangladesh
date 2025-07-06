@@ -27,4 +27,10 @@ class NoticeCategory extends Model
             return 'btn-success';
         }
     }
+
+
+    public function yearlyNotics()
+    {
+        return $this->hasMany(YearlyNotice::class);
+    }
 }

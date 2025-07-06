@@ -29,12 +29,12 @@
                 </span>
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                     <div class="email">{{ __('Email') }} - </div>
-                    <div class="number">{{ $vehicle->driver->email ?? {{ __('Email number not found.') }} }}</div>
-                </div>
+                    <div class="number">{{ $vehicle->driver->email ?? __('Email not found.') }}</div>
+                </div>                
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                     <div class="phone">{{ __('Mobile number') }} - </div>
-                    <div class="number">{{ $vehicle->driver->phone ?? {{ __('Email number not found.') }} }}</div>
-                </div>
+                    <div class="number">{{ $vehicle->driver->phone ?? __('Phone number not found.') }}</div>
+                </div>                
                 <div class="deatils d-flex column-gap-3 pt-3 align-items-center">
                     <div class="car">{{ __('Vehicle Number') }}  - </div>
                     <div class="car_number">
@@ -78,7 +78,7 @@
         <div class="row">
             <div class="d-none d-sm-flex mb-3">
                 <h3>{{ __('Image Gallery') }} - </h3>
-                <p class="ml-4">{{ $vehicle->driver->district->district }} - {{ $vehicle->driver->thana->thana }} - {{ $vehicle->driver->union->union }} - {{ $vehicle->driver->stand->name }} {{ __('স্ট্যান্ড এর') }}</p> 
+                <p class="ml-4">{{ $vehicle->driver->district->district }} - {{ $vehicle->driver->thana->thana }} - {{ $vehicle->driver->union->union }} - {{ $vehicle->driver->stand->title }} {{ __('স্ট্যান্ড এর') }}</p> 
             </div>
             
             <div class="row gallery_image g-3">

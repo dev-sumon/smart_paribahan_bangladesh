@@ -28,62 +28,98 @@
                                                 <option value="{{ $division->id }}">{{ $division->division }}</option>
                                             @endforeach
                                         </select>
+                                        @error('division_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="district">District <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" selected hidden>Select District</option>
                                         </select>
+                                        @error('district_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="thana">Thana <span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" selected hidden>Select Thana</option>
                                         </select>
+                                        @error('thana_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="union">Union <span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" selected hidden>Select Union</option>
                                         </select>
+                                        @error('union_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">{{ __('Stand Name') }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Stand Name" name="name" value="{{ old('name') }}">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        <label for="title">{{ __('Stand Name') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="title"
+                                            placeholder="Enter Stand Name" name="title" value="{{ old('title') }}"
+                                            oninput="slugGenerate($(this))">
+                                        @if ($errors->has('title'))
+                                            <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
-                                        <textarea name="description" id="description" class="w-100 p-3" rows="6" style="outline: none;" placeholder="Enter Your Description......"></textarea>
-                                        @if($errors->has('description'))
+                                        <div class="mb-3">
+                                            <label for="slug" class="form-label">{{ __('Slug') }}</label>
+                                            <input type="text" name="slug" class="form-control" id="slug"
+                                                value="{{ old('slug') }}">
+                                            @error('slug')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">{{ __('Description') }} <span
+                                                class="text-danger">*</span></label>
+                                        <textarea name="description" id="description" class="w-100 p-3" rows="6" style="outline: none;"
+                                            placeholder="Enter Your Description......"></textarea>
+                                        @if ($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="location">{{ __('Location') }} <span class="text-danger">*</span></label>
-                                        <input type="url" class="form-control" id="location" placeholder="Enter Stand Google Map Link" name="location" value="{{ old('location') }}">
-                                        @if($errors->has('location'))
+                                        <label for="location">{{ __('Location') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="url" class="form-control" id="location"
+                                            placeholder="Enter Stand Google Map Link" name="location"
+                                            value="{{ old('location') }}">
+                                        @if ($errors->has('location'))
                                             <div class="text-danger">{{ $errors->first('location') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="image">{{ __('Image') }} <span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control h-auto" id="image" placeholder="Enter Stand Image" name="image" value="{{ old('image') }}">
-                                        @if($errors->has('image'))
+                                        <label for="image">{{ __('Image') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="file" class="form-control h-auto" id="image" name="image[]"
+                                            multiple placeholder="Enter Stand Image" name="image"
+                                            value="{{ old('image') }}">
+                                        @if ($errors->has('image'))
                                             <div class="text-danger">{{ $errors->first('image') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="status">{{ __('Status') }}  <span class="text-danger">*</span></label>
+                                        <label for="status">{{ __('Status') }} <span
+                                                class="text-danger">*</span></label>
                                         <select name="status" id="status" class="form-control">
-                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>{{ __('Deactive') }}</option>
+                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>
+                                                {{ __('Active') }}</option>
+                                            <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>
+                                                {{ __('Deactive') }}</option>
                                         </select>
-                                        @if($errors->has('status'))
+                                        @if ($errors->has('status'))
                                             <div class="text-danger">{{ $errors->first('status') }}</div>
                                         @endif
                                     </div>
@@ -107,7 +143,7 @@
         $(document).ready(function() {
             $('#division').on('change', function() {
                 let divisionId = $(this).val();
-                let _url = '{{ route("ajax.division", ":id") }}'.replace(':id', divisionId);
+                let _url = '{{ route('ajax.division', ':id') }}'.replace(':id', divisionId);
 
                 $.ajax({
                     url: _url,
@@ -119,7 +155,8 @@
                         districtSelect.append('<option value="">Select District</option>');
 
                         $.each(districts, function(index, district) {
-                            districtSelect.append('<option value="' + district.id + '">' + district.district + '</option>');
+                            districtSelect.append('<option value="' + district.id +
+                                '">' + district.district + '</option>');
                         });
                     },
                     error: function(error) {
@@ -128,9 +165,9 @@
                 });
             });
 
-            $('#district').on('change', function() { 
+            $('#district').on('change', function() {
                 let districtId = $(this).val();
-                let _url = '{{ route("ajax.thana", ":id") }}'.replace(':id', districtId); 
+                let _url = '{{ route('ajax.thana', ':id') }}'.replace(':id', districtId);
 
                 $.ajax({
                     url: _url,
@@ -142,7 +179,8 @@
                         thanaSelect.append('<option value="">Select Thana</option>');
 
                         $.each(thanas, function(index, thana) {
-                            thanaSelect.append('<option value="' + thana.id + '">' + thana.thana + '</option>');
+                            thanaSelect.append('<option value="' + thana.id + '">' +
+                                thana.thana + '</option>');
                         });
                     },
                     error: function(error) {
@@ -151,9 +189,9 @@
                 });
             });
 
-            $('#thana').on('change', function() { 
+            $('#thana').on('change', function() {
                 let unionId = $(this).val();
-                let _url = '{{ route("ajax.union", ":id") }}'.replace(':id', unionId); 
+                let _url = '{{ route('ajax.union', ':id') }}'.replace(':id', unionId);
 
                 $.ajax({
                     url: _url,
@@ -165,7 +203,8 @@
                         unionSelect.append('<option value="">Select Union</option>');
 
                         $.each(unions, function(index, union) {
-                            unionSelect.append('<option value="' + union.id + '">' + union.union + '</option>');
+                            unionSelect.append('<option value="' + union.id + '">' +
+                                union.union + '</option>');
                         });
                     },
                     error: function(error) {
@@ -176,4 +215,3 @@
         });
     </script>
 @endpush
-

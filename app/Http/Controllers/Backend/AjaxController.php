@@ -6,9 +6,13 @@ use App\Models\Owner;
 use App\Models\Stand;
 use App\Models\Thana;
 use App\Models\Union;
+use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\District;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
+use App\Models\VehicleSerial;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +20,7 @@ class AjaxController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        // $this->middleware('admin');
     }
     public function division(Request $request, $id): JsonResponse
     {
@@ -58,28 +62,28 @@ class AjaxController extends Controller
             'data' => $stands
         ]);
     }
-    // public function standVehicles(Request $request, $id): JsonResponse
-    // {
-    //     $vehicles = Vehicle::where('stand_id', $id)->latest()->get();
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'data' => $vehicles
-    //     ]);
-    // }
+        public function vehicleType($id)
+    {
+         $vehicleTypes = VehicleType::where('stand_id', $id)->latest()->get();
+        return response()->json([
+            'success' => true,
+            'data' => $vehicleTypes
+        ]);
+    }
     public function standVehicles(Request $request, $id): JsonResponse
     {
-        $stand = Stand::with(['vehicles' => function ($query) {
-            $query->whereNull('driver_id')->whereNull('owner_id');
-        }])->findOrFail($id);
+        $stand = Stand::with([
+            'vehicles' => function ($query) {
+                $query->whereNull('driver_id')
+                    ->with('vehicleType');
+            }
+        ])->findOrFail($id);
 
         return response()->json([
             'success' => true,
             'data' => $stand->vehicles
         ]);
     }
-
-
     public function getVehiclesByStand($stand_id)
     {
         $vehicles = Vehicle::where('stand_id', $stand_id)->get();
@@ -99,5 +103,43 @@ class AjaxController extends Controller
             'success' => false,
             'message' => 'Owner not found for this vehicle'
         ]);
+    }
+    public function getVehicleTypesByStand($id): JsonResponse
+    {
+        $stand = Stand::findOrFail($id);
+
+        $vehicleTypes = $stand->vehicleTypes()->distinct()->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $vehicleTypes
+        ]);
+    }
+    public function searchDrivers(Request $request)
+    {
+        $search = $request->get('q');
+
+        $drivers = Driver::where('driving_license', 'like', '%' . $search . '%')
+            ->select('id', 'driving_license as text')
+            ->get();
+
+        return response()->json($drivers);
+    }
+
+    // vechicle serial list live update
+    public function fetchStandSerials($stand_id)
+    {
+        $serials = VehicleSerial::with(
+            'driver.vehicle',
+            'stand'
+        )
+            ->where('stand_id', $stand_id)
+            ->whereIn('status', [1, 2])
+            ->whereDate('check_in', Carbon::today())
+            ->orderBy('check_in', 'asc')
+            ->take(10)
+            ->get();
+
+        return response()->json($serials);
     }
 }

@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class FieldWorkerLoginController extends Controller
 {
-    
+
     public function fieldWorkerLogin()
     {
-        if(Auth::guard('field_worker')->check()){
-           
+        if (Auth::guard('field_worker')->check()) {
+
             return redirect()->route('field_worker.dashboard');
         }
         return view('field_worker.auth.login');
     }
-    public function driverLoginCheck(Request $request)
+    public function FieldWorkerLoginCheck(Request $request)
     {
         $credentials = $request->only('email', 'password');
         $check = FieldWorker::where('email', $request->email)->first();
@@ -30,7 +30,8 @@ class FieldWorkerLoginController extends Controller
                 }
             }
         }
-        return redirect()->route('field_worker.dashboard');
+        return redirect()->route('field_worker.login')->with('error', 'Your Email Or Password Invalid');
+        // return redirect()->route('field_worker.dashboard')->with('error', 'Your Email Or Password Invalid');;
     }
     public function logout()
     {

@@ -16,7 +16,7 @@ class VehicleTypeController extends Controller
 {
     public function index(): View
     {
-        $data['vehicle_types'] = VehicleType::with('stand')->get();
+        $data['vehicle_types'] = VehicleType::latest()->get();
         return view('backend.vehicle_type.index', $data);
     }
     public function create(): View
@@ -41,17 +41,19 @@ class VehicleTypeController extends Controller
         }
 
         $save->save();
-        return redirect()->route('vehicle_type.index');
+        return redirect()->route('vehicle_type.index')->with('success', 'Vehicle Type Created successfully!');
     }
     public function update($id): View
     {
         $data['vehicle_type'] = VehicleType::findOrFail($id);
+        $data['stands'] = Stand::latest()->get();
         return view('backend.vehicle_type.edit', $data);
     }
     public function update_store(VehicleTypeRequest $request, $id):RedirectResponse
     {
         $update = VehicleType::findOrFail($id);
         $update->name = $request->name;
+        $update->stand_id = $request->stand_id;
         $update->status = $request->status ?? 0;
 
 
@@ -65,7 +67,7 @@ class VehicleTypeController extends Controller
             $update->image = $path;
         }
         $update->save();
-        return redirect()->route('vehicle_type.index');
+        return redirect()->route('vehicle_type.index')->with('success', 'Vehicle Type updated successfully!');
     }
     public function status($id): RedirectResponse
     {
@@ -76,13 +78,13 @@ class VehicleTypeController extends Controller
             $vehicle_type->status = 1;
         }
         $vehicle_type->save();
-        return redirect()->route('vehicle_type.index');
+        return redirect()->route('vehicle_type.index')->with('success', 'Vehicle Type status updated successfully!');;
     }
     public function delete($id): RedirectResponse
     {
         $vehicle_type = VehicleType::findOrFail($id);
         $vehicle_type->delete();
-        return redirect()->route('vehicle_type.index');
+        return redirect()->route('vehicle_type.index')->with('success', 'Vehicle Type deleted successfully!');
     }
     public function detalis($id): View
     {

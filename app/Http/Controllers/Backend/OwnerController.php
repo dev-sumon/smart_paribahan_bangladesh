@@ -10,16 +10,22 @@ use App\Models\Vehicle;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\BloodGroup;
+use Illuminate\Support\Str;
+use Laravel\Ui\Presets\Vue;
 use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use Laravel\Ui\Presets\Vue;
 
 class OwnerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['owners'] = Owner::latest()->get();
@@ -27,7 +33,7 @@ class OwnerController extends Controller
     }
     public function create(): View
     {
-        $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands'])->latest()->get();
+        $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands'])->latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
         // $data['vehicles'] = Vehicle::latest()->get();
         // $data['divisions'] = Division::latest()->get();
@@ -36,7 +42,19 @@ class OwnerController extends Controller
     public function store(OwnerRequest $request): RedirectResponse
     {
         $save = new Owner();
-        $save->name = $request->name;
+        $save->title = $request->title;
+
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Owner::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $save->slug = $slug;
+        $save->designation = $request->designation;
         $save->description = $request->description;
         $save->email = $request->email;
         $save->phone = $request->phone;
@@ -51,24 +69,25 @@ class OwnerController extends Controller
         $save->password = $request->password;
         $save->status = $request->status ?? 0;
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("owner/", $filename, 'public');
             $save->image = $path;
         }
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $save->id]);
         }
-
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner created successfully');
     }
-    public function update($id): View
+    public function update($slug): View
     {
-        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->findOrFail($id);
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['districts'] = District::where('division_id', $data['owner']->division_id)->get();
         $data['thanas'] = Thana::where('district_id', $data['owner']->district_id)->get();
@@ -80,11 +99,26 @@ class OwnerController extends Controller
 
         return view('backend.owner.edit', $data);
     }
-    public function update_store(OwnerRequest $request, $id): RedirectResponse
+    public function update_store(OwnerRequest $request, $slug): RedirectResponse
     {
-        $update = Owner::findOrFail($id);
+        $update = Owner::where('slug', $slug)->firstOrFail();
 
-        $update->name = $request->name;
+        $update->title = $request->title;
+
+        if ($update->isDirty('title')) {
+            $slug = Str::slug($request->title);
+            $originalSlug = $slug;
+            $count = 1;
+
+            while (Owner::where('slug', $slug)->where('id', '!=', $update->id)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $update->slug = $slug;
+        }
+
+        $update->designation = $request->designation;
         $update->description = $request->description;
         $update->email = $request->email;
         $update->phone = $request->phone;
@@ -98,7 +132,7 @@ class OwnerController extends Controller
         $update->stand_id = $request->stand_id;
         $update->status = $request->status ?? 0;
 
-        if($request->password){
+        if ($request->password) {
             $update->password = $request->password;
         }
 
@@ -113,35 +147,36 @@ class OwnerController extends Controller
             $update->image = $path;
         }
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->update();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $update->id]);
         }
-
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner updated successfully');
     }
-    public function status($id): RedirectResponse
+    public function status($slug): RedirectResponse
     {
-        $owner = Owner::findOrFail($id);
-        if($owner->status == 1){
+        $owner = Owner::where('slug', $slug)->firstOrFail();
+        if ($owner->status == 1) {
             $owner->status = 0;
-        }else{
+        } else {
             $owner->status = 1;
         }
         $owner->save();
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner status updated successfully');
     }
-    public function delete($id): RedirectResponse
+    public function delete($slug): RedirectResponse
     {
-        $owner = Owner::findOrFail($id);
+        $owner = Owner::where('slug', $slug)->firstOrFail();
         $owner->delete();
 
-        return redirect()->route('owner.index');
+        return redirect()->route('owner.index')->with('success', 'Owner deleted successfully');
     }
-    public function detalis($id): View
+    public function detalis($slug): View
     {
-        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicle', 'stand')->findOrFail($id);
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'blood_group', 'vehicles', 'stand')->where('slug', $slug)->firstOrFail();
         return view('backend.owner.show', $data);
     }
 }

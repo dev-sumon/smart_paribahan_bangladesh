@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,6 +14,10 @@ return new class extends Migration
             $table->id();
             $table->string('thana');
             $table->boolean('status');
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->string('created_by_guard')->nullable();
+            $table->unsignedBigInteger('updated_by_id')->nullable();
+            $table->string('updated_by_guard')->nullable();
             $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('district_id')->nullable();

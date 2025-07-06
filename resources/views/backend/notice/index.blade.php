@@ -1,6 +1,4 @@
 @extends('backend.layouts.master', ['page_slug' => 'notice'])
-
-
 @section('title', 'Admin - management')
 @section('content')
     <div class="container-fluid mt-2">
@@ -38,13 +36,13 @@
                                             <td>{{ $notice->date }}</td>
                                             <td><span class="{{$notice->statusBg()}}">{{ $notice->statusTitle() }}</span></td>
                                             <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}</td>
+                                            <td>{{ $notice->creator()->name ?? 'system' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('notice.detalis', $notice->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('notice.update', $notice->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('notice.delete', $notice->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('notice.status.update', $notice->id) }}" class="btn {{$notice->statusIcon()}}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="javascript:void(0)" data-url="{{ route('notice.delete', $notice->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="javascript:void(0)" class="btn {{$notice->statusIcon()}} status-update" data-url="{{ route('notice.status.update', $notice->id) }}"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

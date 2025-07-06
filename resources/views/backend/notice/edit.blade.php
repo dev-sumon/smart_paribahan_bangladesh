@@ -83,7 +83,7 @@
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
                                             @foreach ($stands as $stand)
                                                 <option value="{{ $stand->id }}" {{ $notice->stand_id == $stand->id ? 'selected' : '' }}>
-                                                    {{ $stand->name }}
+                                                    {{ $stand->title }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="date" class="mt-3">{{ __('Date') }} <span class="text-danger">*</span></label>
-                                        <input type="text" name="date" value="{{ old('date') ?? $notice->date }}" class="form-control" placeholder="Enter The Date">
+                                        <input type="date" name="date" value="{{ old('date') ?? $notice->date }}" class="form-control" placeholder="Enter The Date">
                                         @if($errors->has('date'))
                                             <div class="text-danger">{{ $errors->first('date') }}</div>
                                         @endif
@@ -242,7 +242,7 @@
                         standSelect.append('<option value="">Select Stand</option>');
 
                         $.each(stands, function(index, stand) {
-                            standSelect.append('<option value="' + stand.id + '">' + stand.name + '</option>');
+                            standSelect.append('<option value="' + stand.id + '">' + stand.title + '</option>');
                         });
                     },
                     error: function(error) {

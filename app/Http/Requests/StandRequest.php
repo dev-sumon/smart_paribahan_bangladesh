@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StandRequest extends FormRequest
 {
@@ -26,25 +27,30 @@ class StandRequest extends FormRequest
             'district_id' => 'required|exists:districts,id',
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
-            'name' => 'required|string|min:3|max:50',
+            'title' => 'required|string|min:3|max:50',
             'status' => 'required|boolean',
             'location' => 'required|url',
         ]
-        +
-        ($this->isMethod('POST') ? $this->store() : $this->update());
+            +
+            ($this->isMethod('POST') ? $this->store() : $this->update());
     }
     protected function store(): array
     {
         return [
             'description' => 'required|string|min:20|max:500',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'required|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
+            'slug' => 'required|string|unique:stands,slug',
         ];
     }
     protected function update(): array
     {
         return [
             'description' => 'nullable|string|min:20|max:500',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image' => 'nullable|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,svg',
+            // 'slug' => 'required|string|unique:stands,slug,' . $this->route('slug'),
+            'slug' => ['required', 'string',Rule::unique('stands', 'slug')->ignore($this->route('slug'), 'slug'),],
         ];
     }
 }

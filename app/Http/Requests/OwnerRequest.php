@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Owner;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OwnerRequest extends FormRequest
@@ -22,8 +23,9 @@ class OwnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:50',
+            'title' => 'required|string|min:3|max:50',
             'status' => 'nullable|boolean',
+            'designation' => 'nullable|min:3|max:55',
         ]
         +
         ($this->isMethod('POST') ? $this->store() : $this->update());
@@ -54,9 +56,9 @@ class OwnerRequest extends FormRequest
             'thana_id' => 'required|exists:thanas,id',
             'union_id' => 'required|exists:unions,id',
             'stand_id' => 'required|exists:stands,id',
-            'vehicle_id' => 'required|exists:vehicles,id',
-            'email' => 'required|email|unique:owners,email,' . $this->route('id'),
-            'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . $this->route('id'),
+            'vehicle_id' => 'nullable|exists:vehicles,id',
+            'email' => 'required|email|unique:owners,email,' . Owner::where('slug', $this->route('slug'))->value('id'),
+            'phone' => 'required|string|min:11|max:11|unique:owners,phone,' . Owner::where('slug', $this->route('slug'))->value('id'),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',

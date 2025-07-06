@@ -12,7 +12,8 @@
                             <h1 class="float-start">{{ __('Division Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('division.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('division.index') }}"
+                                class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -25,11 +26,13 @@
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $division->division }}</td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><span class="{{ $division->statusBg() }}">{{ $division->statusTitle() }}</span></td>
+                                            <td><span
+                                                    class="{{ $division->statusBg() }}">{{ $division->statusTitle() }}</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
@@ -39,7 +42,14 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $division->created_by ?? 'N/A' }}</td>
+                                            <td>{{ $division->created_by_guard }} -
+                                                {{ $division->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $division->updated_by_guard }} -
+                                                {{ $division->updater()->name ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

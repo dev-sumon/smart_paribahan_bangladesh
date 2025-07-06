@@ -23,10 +23,10 @@
                                         <tr>
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $owner->name }}</td>
+                                            <td>{{ $owner->title }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('description') }}</th>
+                                            <th>{{ __('Description') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $owner->description }}</td>
                                         </tr>
@@ -68,7 +68,7 @@
                                         <tr>
                                             <th>{{ __('Stand') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->stand->name ?? 'N/A' }}</td>
+                                            <td> {{ $owner->stand->title ?? 'N/A' }}</td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Vehicle Type') }}</th>
@@ -78,13 +78,29 @@
                                         <tr>
                                             <th>{{ __('Vehicles License') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->vehicles_license }}</td>
+                                            {{-- <td> {{ $owner->vehicles_license }}</td> --}}
+                                            {{-- @fore ($owner->vehicles as $vehicle)
+                                                <td>
+                                                    {{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}
+                                                </td>
+                                            @endforelse --}}
+
+
+
+                                            <td>
+                                                @foreach ($owner->vehicles as $vehicle)
+                                                    <p class="d-inline">{{ $vehicle->name }} -
+                                                        {{ $vehicle->vehicle_licence }}, </p>
+                                                @endforeach
+                                            </td>
+
                                         </tr>
-                                        
+
                                         <tr>
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><img src="{{ asset('storage/' . $owner->image) }}" alt="{{ $owner->name }}" width="100"></td>
+                                            <td><img src="{{ asset('storage/' . $owner->image) }}"
+                                                    alt="{{ $owner->title }}" width="100"></td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
@@ -100,7 +116,13 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $owner->created_by_guard }} - {{ $owner->creator()->name ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->updated_by_guard }} - {{ $owner->updater()->name ?? 'N/A' }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

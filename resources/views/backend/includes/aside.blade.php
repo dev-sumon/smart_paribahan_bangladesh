@@ -31,6 +31,13 @@
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="{{ route('manager.index') }}" class="nav-link {{ $page_slug == 'manager' ? 'active' : '' }}">
+              {{-- <i class="nav-icon fas fa-location"></i> --}}
+              <i class="fa-solid fa-users-gear"></i>
+              <p>{{ __('Stand Manager') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="{{ route('vehicle_type.index') }}" class="nav-link {{ $page_slug == 'vehicle_type' ? 'active' : '' }}">
               <i class="fas fa-cogs"></i>
               <p> {{ __(' Vehicle Type') }}</p>
@@ -39,7 +46,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('vehicle.index') }}" class="nav-link {{ $page_slug == 'vehicle' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-car"></i>
-              <p>{{ __('Vehicle') }}</p>
+              <p>{{ __('Vehicle ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -61,7 +68,14 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ route('contact.index') }}" class="nav-link {{ $page_slug == 'contact' ? 'active' : '' }}">
+            <a href="{{ route('yearly_notice.index') }}" class="nav-link {{ $page_slug == 'yearly_notice' ? 'active' : '' }}">
+              {{-- <i class="nav-icon fa-solid fa-bell"></i> --}}
+              <i class="nav-icon fa-solid fa-bullhorn"></i>
+              <p>{{ __('Yearly Notice') }}</p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ route('contact.create') }}" class="nav-link {{ $page_slug == 'contact' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-address-book"></i>
               <p>{{ __('Contact Info') }}</p>
             </a>
@@ -69,7 +83,7 @@
           <li class="nav-item menu-open">
             <a href="{{ route('blog.index') }}" class="nav-link {{ $page_slug == 'blog' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-blog"></i>
-              <p>{{ __('Blog') }}</p>
+              <p>{{ __('Blog ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
@@ -99,31 +113,31 @@
           <li class="nav-item menu-open">
             <a href="{{ route('blood.index') }}" class="nav-link {{ $page_slug == 'blood' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-droplet"></i>
-              <p>{{ __('Blood Group') }}</p>
+              <p>{{ __('Blood Group ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('division.index') }}" class="nav-link {{ $page_slug == 'division' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-layer-group"></i>
-              <p>{{ __('Division') }}</p>
+              <p>{{ __('Division ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('district.index') }}" class="nav-link {{ $page_slug == 'district' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-landmark"></i>
-              <p>{{ __('District') }}</p>
+              <p>{{ __('District ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('thana.index') }}" class="nav-link {{ $page_slug == 'thana' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-building-shield"></i>
-              <p>{{ __('Thana') }}</p>
+              <p>{{ __('Thana ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('union.index') }}" class="nav-link {{ $page_slug == 'union' ? 'active' : '' }}">
               <i class="nav-icon fa-solid fa-underline"></i>
-              <p>{{ __('Union') }}</p>
+              <p>{{ __('Union ') }}</p>
             </a>
           </li>
           <li class="nav-item menu-open">

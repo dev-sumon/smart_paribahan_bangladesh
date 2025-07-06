@@ -12,7 +12,8 @@ class OwnerLoginController extends Controller
     public function ownerLogin()
     {
         if (Auth::guard('owner')->check()) {
-            return redirect()->route('owner.dashboard');
+            // return redirect()->route('owner.dashboard');
+            return redirect()->route('owner.dashboard', ['slug' => Auth::guard('owner')->user()->slug]);
         }
         return view('owner.auth.login');
     }
@@ -23,11 +24,12 @@ class OwnerLoginController extends Controller
         if ($check) {
             if ($check->status == 1) {
                 if (Auth::guard('owner')->attempt($credentials)) {
-                    return redirect()->route('f.home');
+                    // return redirect()->route('f.home');
+                    return redirect()->route('owner.dashboard', ['slug' => $check->slug]);
                 }
             }
         }
-        return redirect()->route('owner.login');
+        return redirect()->route('owner.login')->with('error', 'Your Email Or Password Invalid');
     }
     public function logout()
     {

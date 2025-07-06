@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\FieldWorkRequest;
 use App\Models\FieldWorker;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\FieldWorkRequest;
 use Illuminate\Support\Facades\Storage;
 
 class FieldWorkerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['workers'] = FieldWorker::latest()->get();
@@ -33,7 +38,8 @@ class FieldWorkerController extends Controller
         $save->mother_name = $request->mother_name;
         $save->address = $request->address;
         $save->status = $request->status ?? 0;
-        $save->password = bcrypt($request->password);
+        $save->password = $request->password;
+
 
 
         if($request->hasFile('image')){
@@ -44,7 +50,7 @@ class FieldWorkerController extends Controller
         }
 
         $save->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker created successfully!');
     }
     public function update($id): View
     {
@@ -77,7 +83,7 @@ class FieldWorkerController extends Controller
         }
 
         $update->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker updated successfully!');
     }
     public function status($id): RedirectResponse
     {
@@ -90,14 +96,14 @@ class FieldWorkerController extends Controller
         }
     
         $worker->save();
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker status updated successfully!');
     }
     public function delete($id): RedirectResponse
     {
         $worker = FieldWorker::findOrFail($id);
         $worker->delete();
 
-        return redirect()->route('worker.index');
+        return redirect()->route('worker.index')->with('success', 'Field worker deleted successfully!');
     }
     public function detalis($id): View
     {

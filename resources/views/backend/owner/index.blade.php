@@ -31,23 +31,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($owners as $key=>$owner)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $owner->name }}</td>
-                                            <td>{{ $owner->email }}</td>
-                                            <td><span class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span></td>
-                                            <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $owner->created_user ? $owner->created_user->name : 'system' }}</td>
-                                            <td class="text-center">
-                                                <div class="btn-group" role="group" aria-level="Basic example">
-                                                    <a href="{{ route('owner.detalis', $owner->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="{{ route('owner.update', $owner->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('owner.delete', $owner->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('owner.status.update', $owner->id) }}" class="btn {{ $owner->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($owners as $key => $owner)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $owner->title }}</td>
+                                                <td>{{ $owner->email }}</td>
+                                                <td><span
+                                                        class="{{ $owner->statusBg() }}">{{ $owner->statusTitle() }}</span>
+                                                </td>
+                                                <td>{{ $owner->created_at ? $owner->created_at->format('d-m-Y H:i:s') : 'N/A' }}
+                                                </td>
+                                                <td>{{ $owner->creator()->name ?? 'system' }}</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group" role="group" aria-level="Basic example">
+                                                        <a href="{{ route('owner.detalis', $owner->slug) }}" data-id=""
+                                                            class="btn btn-secondary view" title="view deatils"><i
+                                                                class="fa-solid fa-eye"></i></a>
+                                                        <a href="{{ route('owner.update', $owner->slug) }}" data-id=""
+                                                            class="btn btn-info"><i
+                                                                class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="javascript:vaid(0)" data-url="{{ route('owner.delete', $owner->slug) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:vaid(0)" data-url="{{ route('owner.status.update', $owner->slug) }}" class="btn {{ $owner->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -64,7 +71,5 @@
 
 
 @push('script')
-<script>
-
-</script>
+    <script></script>
 @endpush

@@ -37,7 +37,7 @@
                         </div>
                     @endforeach
                     <div class="all_notice_button text-end">
-                        <a href="{{ route('f.home.standNotice', $stand->id) }}" class="gradient-border-button">
+                        <a href="{{ route('f.home.standNotice', $stand->slug) }}" class="gradient-border-button">
                             <span>{{ __('All') }}</span>
                             <i class="fa-solid fa-arrow-right arrow"></i>
                           </a>
@@ -81,7 +81,7 @@
                                     <div class="profile-details">
                                         <h3>{{ $driver->name }}</h3>
                                         <p class="driver">{{ __('CNG Driver') }}</p>
-                                        <a href="{{ route('f.home.driverProfile', $driver->id) }}">{{ __('Learn More') }} </a>
+                                        <a href="{{ route('f.home.driverProfile', $driver->slug) }}">{{ __('Learn More') }} </a>
                                         <span>>></span>
                                     </div>
                                 </div>

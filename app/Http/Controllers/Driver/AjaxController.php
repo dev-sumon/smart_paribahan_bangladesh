@@ -59,7 +59,9 @@ class AjaxController extends Controller
     }
     public function vehicle(Request $request, $id): JsonResponse
     {
-        $vehicles = Vehicle::where('stand_id', $id)->whereNull('driver_id')->latest()->get();
+        $vehicles = Vehicle::where('stand_id', $id)->whereNull('driver_id')->latest()->get()
+        ->whereNull('driver_id')
+        ->pluck('license_number');
         return response()->json([
             'success' => true,
             'data' => $vehicles
@@ -67,10 +69,36 @@ class AjaxController extends Controller
     }
     public function vehiclesLicense(Request $request, $id): JsonResponse
     {
-        $licenses = Vehicle::where('id', $id)->pluck('license_number');
+        $licenses = Vehicle::where('id', $id)
+        ->whereNull('driver_id')
+        ->pluck('license_number');
         return response()->json([
             'success' => true,
             'data' => $licenses
         ]);
     }
+    // public function getVehicles(Request $request, $stand_id)
+    // {
+    //     $vehicles = Vehicle::where('stand_id', $stand_id)
+    //         ->whereNull('driver_id') // শুধু অব্যবহৃত গাড়ি দেখাবে
+    //         ->get(['id', 'name', 'license_number']);
+
+    //     $data = [];
+    //     foreach ($vehicles as $vehicle) {
+    //         $data[$vehicle->id] = [
+    //             'name' => $vehicle->name,
+    //             'license_number' => $vehicle->license_number
+    //         ];
+    //     }
+
+    //     return response()->json($data);
+    // }
+    public function getVehicles($stand_id)
+    {
+        // vehicle_type সহ তথ্য সংগ্রহ করা হচ্ছে
+        $vehicleTypes = Vehicle::where('stand_id', $stand_id)->pluck('vehicle_type', 'id');
+        return response()->json($vehicleTypes);
+    }
+
+
 }

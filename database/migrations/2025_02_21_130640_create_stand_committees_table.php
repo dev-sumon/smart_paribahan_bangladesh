@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -19,6 +18,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('image');
             $table->boolean('status')->default(1);
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->string('created_by_guard')->nullable();
+            $table->unsignedBigInteger('updated_by_id')->nullable();
+            $table->string('updated_by_guard')->nullable();
             $table->unsignedBigInteger('division_id')->nullable();
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('district_id')->nullable();
@@ -29,6 +32,8 @@ return new class extends Migration
             $table->foreign('union_id')->references('id')->on('unions')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('stand_id')->nullable();
             $table->foreign('stand_id')->references('id')->on('stands')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('vehicle_type_id')->nullable();
+            $table->foreign('vehicle_type_id')->references('id')->on('vehicle_types')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

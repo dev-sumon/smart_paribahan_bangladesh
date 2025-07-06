@@ -6,6 +6,7 @@ use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\Division;
 use App\Models\BloodGroup;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -17,15 +18,28 @@ class DriverRegistrationController extends Controller
     public function signupForm(): View
     {
         $data['bloods'] = BloodGroup::latest()->get();
-        $data['divisions'] = Division::with( ['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
+        $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
         return view('driver.auth.register', $data);
     }
     public function signup(DriverRequest $request)
     {
         $save = new Driver();
 
-        $save->name = $request->name;
+        $save->title = $request->title;
+
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Driver::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $save->slug = $slug;
+
         $save->description = $request->description;
+        $save->designation = $request->designation;
         $save->email = $request->email;
         $save->phone = $request->phone;
         $save->owner_id = $request->owner_id;
@@ -38,14 +52,14 @@ class DriverRegistrationController extends Controller
         $save->stand_id = $request->stand_id;
         $save->driving_license = $request->driving_license;
         $save->password = Hash::make($request->password);
-    
-        if($request->hasFile('image')){
+
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
+            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs("driver/", $filename, 'public');
             $save->image = $path;
         }
-        
+
         $save->save();
 
         if ($request->vehicle_id) {

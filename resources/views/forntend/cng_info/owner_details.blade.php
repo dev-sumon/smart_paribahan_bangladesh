@@ -1,12 +1,27 @@
 @extends('forntend.layouts.master')
 @section('title', 'Owner Details')
 @section('content')
-        <!-- president and members section start-->
-        <section class="president_and_members pt-5 pb-4">
-            <div class="container">
-                <div class="stand_location">
-                    {{-- <h5>সিলেট  বিভাগ - মৌলভীবাজার জেলা - বড়লেখা থানা -নিজবাহাদুরপুর ইউনিয়ন</h5> --}}
-                    <h5>{{ $owner->division->division }} - {{ $owner->district->district }} - {{ $owner->thana->thana }} - {{ $owner->union->union }}</h5>
+    <!-- president and members section start-->
+    <section class="president_and_members pt-5 pb-4">
+        <div class="container">
+            <div class="stand_location">
+                <h5>{{ $owner->division->division }} - {{ $owner->district->district }} - {{ $owner->thana->thana }} -
+                    {{ $owner->union->union }}</h5>
+            </div>
+            <div class="member_list_title">
+                <h2> {{ __('মালিক এর বিস্তারিত') }}</h2>
+            </div>
+        </div>
+    </section>
+    <!-- president and members section end-->
+
+    <!-- CNG Owner profile section start -->
+    <div class="profile_section pt-5 pb-4">
+        <div class="container">
+            <div class="profile_deatils d-lg-flex d-md-block column-gap-5">
+                <div class="profile_image text-center">
+                    <img src="{{ $owner->image ? asset('storage/' . $owner->image) : asset('frontend/images/Ellipse 199.png') }}"
+                        alt="Profile Image" class="rounded-2">
                 </div>
                 <div class="member_list_title">
                     <h2>{{ $owner->vehicle->name }} {{ __('Owner's details') }}</h2>

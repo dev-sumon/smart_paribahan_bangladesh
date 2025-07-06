@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Driver;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DriverRequest extends FormRequest
@@ -22,11 +23,18 @@ class DriverRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:30',
+            'title' => 'required|string|min:3|max:30',
             'status' => 'nullable|boolean',
+            'division_id' => 'required|exists:divisions,id',
+            'district_id' => 'required|exists:districts,id',
+            'thana_id' => 'required|exists:thanas,id',
+            'union_id' => 'required|exists:unions,id',
+            'stand_id'    => 'required|exists:stands,id',
+            'vehicle_id'    => 'nullable|exists:vehicles,id',
+            'blood_group_id' => 'required|exists:blood_groups,id',
         ]
-        +
-        ($this->isMethod('POST') ? $this->store() : $this->update());
+            +
+            ($this->isMethod('POST') ? $this->store() : $this->update());
     }
     protected function store(): array
     {
@@ -35,8 +43,7 @@ class DriverRequest extends FormRequest
             'designation' => 'nullable|min:3|max:55',
             'email' => 'required|email|unique:drivers,email',
             'phone' => 'required|string|unique:drivers,phone',
-            'driving_license' => 'nullable|string|min:13|max:13|unique:drivers,driving_license',
-            'blood_group' => 'nullable|string|min:2|max:3',
+            'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
@@ -45,11 +52,12 @@ class DriverRequest extends FormRequest
     protected function update(): array
     {
         return [
-            'description' => 'nullable|min:55|max:500|string',
+            'description' => 'nullable|min:55|string',
             'designation' => 'nullable|min:3|max:55',
-            'email' => 'required|email|unique:drivers,email,' . $this->route('id'),
-            'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . $this->route('id'),
-            'blood_group' => 'nullable|string|min:2|max:3',
+            // 'email' => 'required|email|unique:drivers,email,' . $this->route('id'),
+            // 'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . $this->route('id'),
+            'email' => 'required|email|unique:drivers,email,' . Driver::where('slug', $this->route('slug'))->value('id'),
+            'driving_license' => 'required|string|min:13|max:13|unique:drivers,driving_license,' . Driver::where('slug', $this->route('slug'))->value('id'),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',

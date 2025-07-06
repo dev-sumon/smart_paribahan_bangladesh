@@ -27,7 +27,7 @@
                     </div>
                     <div class="hero_details">
                         <div class="title pt-3">
-                            <h2>{{ $vehicle_type->stand->name }}</h2>
+                            <h2>{{ $vehicle_type->stand->title }}</h2>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="row text-end">
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standIntro', $vehicle_type->stand_id) }}">
+                                <a href="{{ route('f.home.standIntro', $vehicle_type->stand->slug) }}">
                                     <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                     <p class="pt-3">{{ __('Stand Introduction') }}</p>
                                 </a>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.stand', $vehicle_type->stand_id) }}">
+                                <a href="{{ route('f.home.stand', $vehicle_type->stand->slug) }}">
                                     <img src="{{ asset('forntend/images/map 1.svg') }}" alt="">
                                     <p class="pt-3">{{ __('Stand on Map') }}</p>
                                 </a>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standCommitee',$vehicle_type->stand_id) }}">
+                                <a href="{{ route('f.home.standCommitee',$vehicle_type->stand->slug) }}">
                                     <img src="{{ asset('forntend/images/team 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('Station President and Members List') }}</p>
                                 </a>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standOwner', $vehicle_type->stand_id) }}">
+                                <a href="{{ route('f.home.standOwner', $vehicle_type->stand->slug) }}">
                                     <img src="{{ asset('forntend/images/owner 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('List of Owners') }}</p>
                                 </a>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standDriver', $vehicle_type->stand_id) }}">
+                                <a href="{{ route('f.home.standDriver', $vehicle_type->stand->slug) }}">
                                     <img src="{{ asset('forntend/images/driver11 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('List of Drivers') }}</p>
                                 </a>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                             <div class="card">
-                                <a href="{{ route('f.home.standNotice', $vehicle_type->stand_id) }}">
+                                <a href="{{ route('f.home.standNotice', $vehicle_type->stand->slug) }}">
                                     <img src="{{ asset('forntend/images/report 1.svg') }}" alt="">
                                     <p class="pt-3">{{ $vehicle_type->name }} {{ __('Annual Budget, Development Plan & Financial Statement of Stand') }}</p>
                                 </a>
