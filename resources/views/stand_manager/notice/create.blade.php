@@ -68,7 +68,7 @@
                                             <div class="text-danger">{{ $errors->first('union_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group mt-3">
+                                    {{-- <div class="form-group mt-3">
                                         <label for="stand">{{ __('Stand') }}<span class="text-danger">*</span></label>
                                         <select name="stand_id" id="stand" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Stand') }}</option>
@@ -79,7 +79,7 @@
                                         @if ($errors->has('stand_id'))
                                             <div class="text-danger">{{ $errors->first('stand_id') }}</div>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group mt-3">
                                         <label for="title">{{ __('Title') }} <span
                                                 class="text-danger">*</span></label>
