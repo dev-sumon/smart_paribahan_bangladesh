@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StandManager\StandManagerYearlyNoticeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -749,6 +750,18 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('/qr-code/download/{token}', 'download')->name('download');
 
     });
+
+    Route::controller(StandManagerYearlyNoticeController::class)->prefix('yearly-notice')->name('yearly_notice.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+
     // Ajax Controller
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
         Route::get('division/{id}', 'division')->name('division');

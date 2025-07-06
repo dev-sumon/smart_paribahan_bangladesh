@@ -53,11 +53,6 @@
                                             <th>{{ __(':') }}</th>
                                             <td> {{ $yearly_notice->stand->title }}</td>
                                         </tr>
-                                        {{-- <tr>
-                                            <th>{{ __('Thana') }}</th>
-                                            <th>{{ __(':') }}</th>
-                                            <td> {{ $yearly_notice->thana->thana }}</td>
-                                        </tr> --}}
                                         <tr>
                                             <th>{{ __('File') }}</th>
                                             <th>{{ __(':') }}</th>
@@ -76,12 +71,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $yearly_notice->created_by_guard }} - {{ $yearly_notice->creator()->name ?? 'System' }} </td>
+                                            <td> {{ $yearly_notice->created_by_guard }} - {{ $yearly_notice->creator()->title ?? 'System' }} </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Updated By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $yearly_notice->updated_by_guard }} - {{ $yearly_notice->updater()->name ?? 'N/A' }} </td>
+                                            <td> {{ $yearly_notice->updated_by_guard }} - {{ $yearly_notice->updater()->title ?? 'N/A' }} </td>
                                         </tr>
                                     </tbody>
                                 </table>

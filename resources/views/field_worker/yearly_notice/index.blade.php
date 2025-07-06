@@ -39,7 +39,7 @@
                                                 </td>
                                                 <td>{{ $yearly_notice->created_at ? $yearly_notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $yearly_notice->creator()->name ?? 'System' }}</td>
+                                                <td>{{ $yearly_notice->creator()->title ?? 'System' }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
                                                         <a href="{{ route('field_worker.yearly_notice.detalis', $yearly_notice->id) }}"
