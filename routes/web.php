@@ -801,3 +801,16 @@ Route::controller(SslcommerzController::class)
         Route::post('cancel', 'cancel')->name('cancel');
         Route::post('ipn', 'ipn')->name('ipn');
     });
+    
+
+
+
+
+
+
+
+
+
+
+
+

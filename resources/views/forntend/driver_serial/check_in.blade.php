@@ -6,12 +6,12 @@
             <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
                 <h4 class="mb-4">{{ __('Check In') }}</h4>
                 {{-- Error Message --}}
-                @if (session('error'))
+                {{-- @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                @endif
+                @endif --}}
                 <form action="{{ route('driver.serial.check.in.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">

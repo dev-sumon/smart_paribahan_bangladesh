@@ -99,15 +99,9 @@ class VehicleSerialController extends Controller
 
     public function standWiseSerials()
     {
-        $standId = Auth::guard('stand_manager')->user()->stand_id;
+        
 
-        $data['serials'] = VehicleSerial::with('stand', 'driver')
-            ->where('stand_id', $standId)
-            ->whereNull('check_out')
-            ->orderBy('serial', 'asc')
-            ->get();
-
-        return view('stand_manager.serial.index', $data);
+        return view('stand_manager.serial.index');
     }
     public function checkOut(Request $request, $id)
     {

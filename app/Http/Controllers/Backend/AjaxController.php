@@ -143,12 +143,25 @@ class AjaxController extends Controller
         return response()->json($serials);
     }
 
-    public function getStandWiseSerials($id)
+    public function getStandWiseSerials($stand_id)
     {
-        $serials = VehicleSerial::with('vehicle')
-            ->where('stand_id', $id)
+        // $serials = VehicleSerial::with('vehicle')
+        //     ->where('stand_id', $id)
+        //     ->whereIn('status', [1, 2])
+        //     ->orderBy('check_in', 'asc')
+        //     ->get();
+
+        // return response()->json($serials);
+
+        $serials = VehicleSerial::with(
+            'driver.vehicle',
+            'stand'
+        )
+            ->where('stand_id', $stand_id)
             ->whereIn('status', [1, 2])
+            ->whereDate('check_in', Carbon::today())
             ->orderBy('check_in', 'asc')
+            ->take(10)
             ->get();
 
         return response()->json($serials);
