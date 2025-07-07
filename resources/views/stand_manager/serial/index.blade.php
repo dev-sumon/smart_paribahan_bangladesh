@@ -35,6 +35,9 @@
                 </div>
             </div>
         </div>
+        <div class="create-button mt-4 text-end">
+            <a href="{{ route('stand_manager.serial.manager.check.out.list') }}">{{ __('Check Out List') }}</a>
+        </div>
     </div>
 @endsection
 
