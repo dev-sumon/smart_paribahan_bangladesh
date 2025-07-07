@@ -229,7 +229,21 @@
                                     </select>
                                     <div class="text-danger" id="standError"></div>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="vehicle_id" class="form-label required-field">{{ __('Vehicle') }}</label>
+                                    <select name="vehicle_id" id="vehicle" class="form-select">
+                                        <option value="" hidden>Select Vehicle</option>
+                                        @foreach ($vehicles as $vehicle)
+                                            <option value="{{ $vehicle->id }}"
+                                                {{ $driver->vehicle_id == $vehicle->id ? 'selected' : '' }}>
+                                                {{ $vehicle->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="text-danger" id="vehicleError"></div>
+                                </div>
                             </div>
+
                         </div>
                         <!-- Action Buttons -->
                         <div class="action-buttons">

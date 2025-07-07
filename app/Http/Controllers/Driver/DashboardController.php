@@ -113,6 +113,6 @@ class DashboardController extends Controller
             $update->image = $path;
         }
         $update->save();
-        return redirect()->route('f.home');
+        return redirect()->route('driver.dashboard', ['slug' => $slug])->with('success','Your account updated successfully');
     }
 }
