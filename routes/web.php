@@ -731,6 +731,7 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
         Route::get('/stand-manager-serials', 'standManagerSerials')->name('manager.stand.serials');
         Route::post('/stand-manager-serials-store', 'standManagerSerialsStore')->name('manager.stand.serials.store');
+        Route::get('/check-out-list', 'checkOutList')->name('manager.check.out.list');
     });
     Route::controller(StandManagerNoticeController::class)->prefix('notice')->name('notice.')->group(function () {
         Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
@@ -801,3 +802,16 @@ Route::controller(SslcommerzController::class)
         Route::post('cancel', 'cancel')->name('cancel');
         Route::post('ipn', 'ipn')->name('ipn');
     });
+    
+
+
+
+
+
+
+
+
+
+
+
+

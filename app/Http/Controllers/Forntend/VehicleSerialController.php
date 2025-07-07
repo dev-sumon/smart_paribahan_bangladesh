@@ -6,6 +6,7 @@ use App\Models\Division;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\VehicleSerial;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -80,7 +81,7 @@ class VehicleSerialController extends Controller
         $save->check_in = now();
         $save->check_out = null;
         $today = now()->toDateString();
-        
+
         $lastSerial = VehicleSerial::where('stand_id', $request->stand_id)
             ->whereDate('check_in', $today)
             ->get()
@@ -99,15 +100,9 @@ class VehicleSerialController extends Controller
 
     public function standWiseSerials()
     {
-        $standId = Auth::guard('stand_manager')->user()->stand_id;
 
-        $data['serials'] = VehicleSerial::with('stand', 'driver')
-            ->where('stand_id', $standId)
-            ->whereNull('check_out')
-            ->orderBy('serial', 'asc')
-            ->get();
 
-        return view('stand_manager.serial.index', $data);
+        return view('stand_manager.serial.index');
     }
     public function checkOut(Request $request, $id)
     {
@@ -169,5 +164,31 @@ class VehicleSerialController extends Controller
         $save->save();
 
         return redirect()->route('stand_manager.serial.stand.serials', ['stand_id' => $request->stand_id]);
+    }
+    public function checkOutList(): View
+    {
+        //  $data['serials'] = VehicleSerial::with(
+        //     'driver.vehicle',
+        //     'stand'
+        // )
+        //     ->where('stand_id', $stand_id)
+        //     ->whereIn('status', [0])
+        //     ->whereDate('check_in', Carbon::today())
+        //     ->orderBy('check_in', 'asc')
+        //     ->take(10)
+        //     ->get();
+
+        $standId = auth('stand_manager')->user()->stand_id;
+
+        $data['serials'] = VehicleSerial::with('driver.vehicle', 'stand')
+            ->where('stand_id', $standId)
+            ->where('status', 0)
+            ->whereDate('check_in', Carbon::today())
+            ->orderBy('check_in', 'asc')
+            ->take(10)
+            ->get();
+
+        return view('stand_manager.serial.check_out_list', $data);
+
     }
 }

@@ -50,9 +50,11 @@
                             <div class="edit">
                                 <a href="{{ route('driver.driver_update', $driver->slug) }}">{{ __('Edit') }}</a>
                             </div>
-                            <a href="{{ route('driver.serial.search') }}">Serial List</a>
+                            <div class="edit">
+                                <a href="{{ route('driver.serial.search') }}">{{ __('Serial List') }}</a>
+                            </div>
                         </div>
-                         {{-- <div class="right_column d-flex justify-content-between ">
+                        {{-- <div class="right_column d-flex justify-content-between ">
                             <div class="edit">
                                 <a href="{{ route('driver.driver_update', $driver->id) }}">Edit</a>
                             </div>
@@ -115,7 +117,7 @@
         <div class="container">
             <a href="{{ route('driver.logout') }}" class="logout-btn"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fas fa-sign-out-alt"></i> লগআউট করুন
+                <i class="fas fa-sign-out-alt"></i> {{ __('লগআউট করুন') }}
             </a>
 
             <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" style="display: none;">
