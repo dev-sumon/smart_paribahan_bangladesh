@@ -95,7 +95,7 @@ class VehicleSerialController extends Controller
         $save->status = 2;
         $save->save();
 
-        return redirect()->route('driver.serial.index', ['stand_id' => $request->stand_id]);
+        return redirect()->route('driver.serial.index', ['stand_id' => $request->stand_id])->with('success','Your Check In SUccessfully');
     }
 
     public function standWiseSerials()

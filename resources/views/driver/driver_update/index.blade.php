@@ -266,7 +266,7 @@
             </div>
         </div>
 
-        <div class="logout-section">
+        {{-- <div class="logout-section">
             <div class="container">
                 <a href="#" class="logout-btn"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -277,7 +277,7 @@
                     <!-- CSRF Token would go here in Laravel -->
                 </form>
             </div>
-        </div>
+        </div> --}}
     </section>
 @endsection
 

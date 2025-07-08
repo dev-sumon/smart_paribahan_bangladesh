@@ -101,9 +101,13 @@
                             <div class="detail-card">
                                 <h3 class="mb-4 fw-bold"><i class="fas fa-car me-2"></i> {{ __('গাড়ির তথ্য') }}</h3>
                                 <div class="detail-row">
+                                    <div class="detail-row">
+                                        <div class="detail-title">{{ __('ড্রাইভিং লাইসেন্স') }}</div>
+                                        <div class="detail-value">{{ $driver->driving_license }}</div>
+                                    </div>
                                     <div class="detail-title">{{ __('গাড়ির নাম ও নম্বর') }}</div>
                                     <div class="detail-value">
-                                        {{-- {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }} --}}
+                                        {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }}
                                     </div>
                                 </div>
                             </div>

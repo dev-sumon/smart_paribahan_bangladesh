@@ -13,7 +13,9 @@
             <div class="card">
                 <div class="card-header list d-flex justify-content-between align-items-center">
                     <h2 class="card-title">{{ __('সাম্প্রতিক ড্রাইভার তালিকা') }}</h2>
-                    <a href="{{ route('driver.serial.check.in') }}">{{ __('Check In') }}</a>
+                    <span class="check-in-button">
+                        <a href="{{ route('driver.serial.check.in') }}">{{ __('Check In') }}</a>
+                    </span>
                 </div>
                 <div class="card-content">
                     <table>

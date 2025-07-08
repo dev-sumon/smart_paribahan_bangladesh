@@ -98,7 +98,7 @@ class DashboardController extends Controller
         $update->thana_id = $request->thana_id;
         $update->union_id = $request->union_id;
         $update->stand_id = $request->stand_id;
-        $update->status = $request->status ?? 0;
+        $update->vehicle_id = $request->vehicle_id;
 
         if ($request->password) {
             $update->password = $request->password;

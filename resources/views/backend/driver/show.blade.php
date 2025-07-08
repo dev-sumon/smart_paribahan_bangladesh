@@ -47,8 +47,10 @@
                                         </tr>
                                         <tr>
                                             <th>{{ __('Vehicles License Number') }}</th>
-                                            <th>{{ __(':') }}</th>
-                                            <td>{{ $driver->owner ? $driver->owner->vehicles_license : __('Not Assigned') }}</td>
+                                             <th>{{ __(':') }}</th>
+                                             <td>
+                                                 {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Driving License') }}</th>
