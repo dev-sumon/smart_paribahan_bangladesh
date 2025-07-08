@@ -28,7 +28,7 @@
                                                 <option value="{{ $division->id }}" {{ $division->id==old('division_id') ? 'selected': '' }}>{{ $division->division}}</option>
                                             @endforeach
                                         </select>
-                                        @if($errors->has('division'))
+                                        @if($errors->has('division_id'))
                                         <div class="text-danger">{{ $errors->first('division_id') }}</div>
                                         @endif
                                     </div>

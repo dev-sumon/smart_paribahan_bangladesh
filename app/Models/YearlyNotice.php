@@ -9,9 +9,9 @@ class YearlyNotice extends Model
     public function statusBg()
     {
         if ($this->status == 1) {
-            return 'badge badge-success';
+            return 'badge bg-success';
         } else {
-            return 'badge badge-danger';
+            return 'badge bg-danger';
         }
     }
     public function statusTitle()
@@ -59,5 +59,41 @@ class YearlyNotice extends Model
     public function noticeCategory()
     {
         return $this->belongsTo(NoticeCategory::class, 'notice_category_id');
+    }
+
+
+    public function creator()
+    {
+        if (!$this->created_by_guard || !$this->created_by_id) {
+            return null;
+        }
+
+        switch ($this->created_by_guard) {
+            case 'admin':
+                return Admin::find($this->created_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->created_by_id);
+            case 'stand_manager':
+                return StandManager::find($this->created_by_id);
+            default:
+                return null;
+        }
+    }
+    public function updater()
+    {
+        if (!$this->updated_by_guard || !$this->updated_by_id) {
+            return null;
+        }
+
+        switch ($this->updated_by_guard) {
+            case 'admin':
+                return Admin::find($this->updated_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->updated_by_id);
+            case 'stand_manager':
+                return StandManager::find($this->updated_by_id);
+            default:
+                return null;
+        }
     }
 }

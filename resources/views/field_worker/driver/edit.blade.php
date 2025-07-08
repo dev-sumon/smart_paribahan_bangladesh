@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <span class="float-left card-title">
                             <h4>{{ __('Driver Update') }}</h4>
                         </span>
@@ -36,14 +36,15 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="from-group">
+                                    <div class="from-group mt-3">
+                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
                                         <textarea name="description" id="description" placeholder="Enter The Description"
                                             style="width: 100%; height: 400px; padding: 10px;">{{ $driver->description ?? old('description') }}</textarea>
                                         @if ($errors->has('description'))
                                             <div class="text-danger">{{ $errors->first('description') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="designation">{{ __('Designation') }} <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="designation"
@@ -67,7 +68,7 @@
                                             <div class="text-danger">{{ $errors->first('blood_group_id') }}</div>
                                         @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="division">Division <span class="text-danger">*</span></label>
                                         <select name="division_id" id="division" class="form-control">
                                             <option value="" hidden>Select Division</option>
@@ -79,7 +80,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="district">District <span class="text-danger">*</span></label>
                                         <select name="district_id" id="district" class="form-control">
                                             <option value="" hidden>Select District</option>
@@ -91,7 +92,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="thana">Thana <span class="text-danger">*</span></label>
                                         <select name="thana_id" id="thana" class="form-control">
                                             <option value="" hidden>Select Thana</option>
@@ -103,7 +104,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <label for="union">Union <span class="text-danger">*</span></label>
                                         <select name="union_id" id="union" class="form-control">
                                             <option value="" hidden>Select Union</option>
@@ -115,7 +116,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <div class="form-group">
                                             <label for="stand">Stand <span class="text-danger">*</span></label>
                                             <select name="stand_id" id="stand" class="form-control">
@@ -128,7 +129,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mt-3">
                                             <label for="vehicle_id">{{ __('Vehicle') }} <span
                                                     class="text-danger">*</span></label>
                                             <select name="vehicle_id" id="vehicle" class="form-control">
@@ -164,7 +165,7 @@
                                                 <div class="text-danger">{{ $errors->first('phone') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mt-3">
                                             <label for="driving_license">{{ __('Driving License') }} <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="driving_license"
@@ -174,7 +175,7 @@
                                                 <div class="text-danger">{{ $errors->first('driving_license') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mt-3">
                                             <label for="image">{{ __('Image') }} <span
                                                     class="text-danger">*</span></label>
                                             @if ($driver->image)
@@ -212,7 +213,7 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mt-3">
                                             <label for="status">{{ __('Status') }} <span
                                                     class="text-danger">*</span></label>
                                             <select name="status" id="status" class="form-control">
@@ -227,7 +228,7 @@
                                                 <div class="text-danger">{{ $errors->first('status') }}</div>
                                             @endif
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mt-3">
                                             <button type="submit" class="btn btn-success w-100 submitBtn">
                                                 {{ __('Update') }}
                                             </button>

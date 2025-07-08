@@ -50,9 +50,11 @@
                             <div class="edit">
                                 <a href="{{ route('driver.driver_update', $driver->slug) }}">{{ __('Edit') }}</a>
                             </div>
-                            <a href="{{ route('driver.serial.search') }}">Serial List</a>
+                            <div class="edit">
+                                <a href="{{ route('driver.serial.search') }}">{{ __('Serial List') }}</a>
+                            </div>
                         </div>
-                         {{-- <div class="right_column d-flex justify-content-between ">
+                        {{-- <div class="right_column d-flex justify-content-between ">
                             <div class="edit">
                                 <a href="{{ route('driver.driver_update', $driver->id) }}">Edit</a>
                             </div>
@@ -99,9 +101,13 @@
                             <div class="detail-card">
                                 <h3 class="mb-4 fw-bold"><i class="fas fa-car me-2"></i> {{ __('গাড়ির তথ্য') }}</h3>
                                 <div class="detail-row">
+                                    <div class="detail-row">
+                                        <div class="detail-title">{{ __('ড্রাইভিং লাইসেন্স') }}</div>
+                                        <div class="detail-value">{{ $driver->driving_license }}</div>
+                                    </div>
                                     <div class="detail-title">{{ __('গাড়ির নাম ও নম্বর') }}</div>
                                     <div class="detail-value">
-                                        {{-- {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }} --}}
+                                        {{ $driver->vehicle->name }} - {{ $driver->vehicle->vehicle_licence }}
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +121,7 @@
         <div class="container">
             <a href="{{ route('driver.logout') }}" class="logout-btn"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fas fa-sign-out-alt"></i> লগআউট করুন
+                <i class="fas fa-sign-out-alt"></i> {{ __('লগআউট করুন') }}
             </a>
 
             <form id="logout-form" action="{{ route('driver.logout') }}" method="POST" style="display: none;">

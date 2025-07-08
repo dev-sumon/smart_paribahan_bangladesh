@@ -116,6 +116,39 @@ body {
     justify-content: center;
 }
 
+.stand_manager_list_page .create-button a {
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    background: linear-gradient(91.25deg, #FF2727 -4.4%, #FF5454 101.68%);
+    padding: 8px 10px;
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.stand_manager_list_page .h2 {
+    font-family: 'Hind Siliguri';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.stand_manager_list_page .text-muted {
+    font-family: 'Hind Siliguri';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.stand_manager_list_page .card .card-body .table-responsive .table-hover thead tr th {
+    font-family: 'Hind Siliguri';
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 24px;
+}
+
 @media (max-width: 768px) {
     .stand_manager_dashboard .sidebar {
         margin-left: -250px;

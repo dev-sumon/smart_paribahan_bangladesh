@@ -30,7 +30,8 @@ class FieldWorkerLoginController extends Controller
                 }
             }
         }
-        return redirect()->route('field_worker.dashboard');
+        return redirect()->route('field_worker.login')->with('error', 'Your Email Or Password Invalid');
+        // return redirect()->route('field_worker.dashboard')->with('error', 'Your Email Or Password Invalid');;
     }
     public function logout()
     {

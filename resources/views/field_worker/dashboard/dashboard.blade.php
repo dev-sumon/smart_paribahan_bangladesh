@@ -1,19 +1,49 @@
-@extends('field_worker.layouts.master', ['page_slug'=>'dashboard'])
+@extends('field_worker.layouts.master', ['page_slug' => 'dashboard'])
 @section('title', 'Field Worker Dashboard')
 @section('content')
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">{{ __('ড্যাশবোর্ড') }}</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">{{ __('শেয়ার') }}</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">{{ __('এক্সপোর্ট') }}</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <i class="bi bi-calendar"></i> {{ __('এই সপ্তাহ') }}
+            </button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="card-title text-muted">আজকের সিরিয়াল</h6>
-                            <h2 class="mb-0">১২</h2>
+                            <h6 class="card-title text-muted">{{ __('আজকের ড্রাইভার') }}</h6>
+                            <h2 class="mb-0">{{ $today_driver }}</h2>
+                            <small class="text-success"><i class="bi bi-arrow-up"></i> {{ __('গতকাল থেকে') }}
+                                {{ $driver_diff >= 0 ? '+' : '' }}{{ $driver_diff }} {{ __('বৃদ্ধি') }}</small>
+                        </div>
+                        <div class="bg-light p-3 rounded">
+                            <i class="nav-icon fa-solid fa-dharmachakra"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-muted">{{ __('আজকের মালিক') }}</h6>
+                            <h2 class="mb-0">{{ $today_owner }}</h2>
                             <small class="text-success"><i class="bi bi-arrow-up"></i> গতকাল
-                                থেকে +২ বৃদ্ধি</small>
+                                {{ $owner_diff >= 0 ? '+' : '' }}{{ $owner_diff }} বৃদ্ধি</small>
                         </div>
                         <div class="bg-light p-3 rounded">
-                            <i class="bi bi-calendar-check text-primary fs-3"></i>
+                            {{-- <i class="bi bi-badge-ad text-danger fs-3"></i> --}}
+                            <i class="nav-icon fa-solid fa-circle-user"></i>
                         </div>
                     </div>
                 </div>
@@ -24,13 +54,13 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="card-title text-muted">সক্রিয় বিজ্ঞাপন</h6>
-                            <h2 class="mb-0">৮</h2>
-                            <small class="text-success"><i class="bi bi-arrow-up"></i> গত
-                                সপ্তাহে +৩ বৃদ্ধি</small>
+                            <h6 class="card-title text-muted">{{ __('ইউনিয়ন') }}</h6>
+                            <h2 class="mb-0">{{ $this_week_union }}</h2>
+                            <small class="text-success"><i class="bi bi-arrow-up"></i> এই সপ্তাহে
+                                {{ $union_diff >= 0 ? '+' : '' }}{{ $union_diff }} বৃদ্ধি</small>
                         </div>
                         <div class="bg-light p-3 rounded">
-                            <i class="bi bi-badge-ad text-danger fs-3"></i>
+                            <i class="nav-icon fa-solid fa-underline"></i>
                         </div>
                     </div>
                 </div>
@@ -41,10 +71,28 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="card-title text-muted">নোটিশ</h6>
-                            <h2 class="mb-0">৫</h2>
+                            <h6 class="card-title text-muted">{{ __('স্ট্যান্ড') }}</h6>
+                            <h2 class="mb-0">{{ $this_week_stand }}</h2>
+                            <small class="text-success"><i class="bi bi-arrow-up"></i> এই সপ্তাহে
+                                {{ $stand_diff >= 0 ? '+' : '' }}{{ $stand_diff }} বৃদ্ধি</small>
+                        </div>
+                        <div class="bg-light p-3 rounded">
+                            {{-- <i class="nav-icon fas fa-location"></i> --}}
+                            <i class="bi bi-geo-alt-fill text-danger fs-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-muted">{{ __('নোটিশ') }}</h6>
+                            <h2 class="mb-0">{{ $this_month_notice }}</h2>
                             <small class="text-success"><i class="bi bi-arrow-up"></i> এই মাসে
-                                +২ বৃদ্ধি</small>
+                                {{ $monthly_notice_diff >= 0 ? '+' : '' }}{{ $monthly_notice_diff }} বৃদ্ধি</small>
                         </div>
                         <div class="bg-light p-3 rounded">
                             <i class="bi bi-bell text-warning fs-3"></i>
@@ -58,10 +106,10 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="card-title text-muted">বার্ষিক নোটিশ</h6>
-                            <h2 class="mb-0">৩</h2>
+                            <h6 class="card-title text-muted">{{ __('বার্ষিক নোটিশ') }}</h6>
+                            <h2 class="mb-0">{{ $this_year_notice }}</h2>
                             <small class="text-success"><i class="bi bi-arrow-up"></i> এই বছরে
-                                +১ বৃদ্ধি</small>
+                                {{ $yearly_notice_diff }} বৃদ্ধি</small>
                         </div>
                         <div class="bg-light p-3 rounded">
                             <i class="bi bi-calendar-event text-info fs-3"></i>
@@ -71,7 +119,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-8 mb-4">
             <div class="card">
                 <div class="card-header">
@@ -177,5 +225,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

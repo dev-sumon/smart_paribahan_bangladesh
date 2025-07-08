@@ -79,18 +79,5 @@ class FieldWorker extends Authenticatable
     /**
      * Hash the password before saving.
      */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($fieldWorker) {
-            $fieldWorker->password = bcrypt($fieldWorker->password);
-        });
-
-        static::updating(function ($fieldWorker) {
-            if ($fieldWorker->isDirty('password')) {
-                $fieldWorker->password = bcrypt($fieldWorker->password);
-            }
-        });
-    }
+   
 }

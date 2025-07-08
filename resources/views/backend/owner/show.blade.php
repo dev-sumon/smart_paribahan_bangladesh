@@ -26,7 +26,7 @@
                                             <td>{{ $owner->title }}</td>
                                         </tr>
                                         <tr>
-                                            <th>{{ __('description') }}</th>
+                                            <th>{{ __('Description') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $owner->description }}</td>
                                         </tr>
@@ -89,8 +89,8 @@
 
                                             <td>
                                                 @foreach ($owner->vehicles as $vehicle)
-                                                    {{-- <p class="display-inline">{{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}, </p> --}}
-                                                    <p class="d-inline">{{ $vehicle->name }} - {{ $vehicle->vehicle_licence }}, </p>
+                                                    <p class="d-inline">{{ $vehicle->name }} -
+                                                        {{ $vehicle->vehicle_licence }}, </p>
                                                 @endforeach
                                             </td>
 
@@ -116,7 +116,13 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $owner->created_by_guard }} - {{ $owner->creator()->name ?? 'N/A' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->updated_by_guard }} - {{ $owner->updater()->name ?? 'N/A' }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

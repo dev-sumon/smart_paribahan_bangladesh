@@ -28,7 +28,8 @@ class StandManagerLoginController extends Controller
                 }
             }
         }
-        return redirect()->route('stand_manager.dashboard');
+        // return redirect()->route('stand_manager.dashboard')->with('error', 'Your Email Or Password Invalid');
+        return redirect()->route('stand_manager.login')->with('error', 'Your Email Or Password Invalid');
     }
     public function logout()
     {

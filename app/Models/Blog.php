@@ -15,25 +15,61 @@ class Blog extends Model
         'creator',
     ];
 
-    public function statusBg(){
-        if($this->status == 1){
+    public function statusBg()
+    {
+        if ($this->status == 1) {
             return 'badge bg-success';
-        }else{
+        } else {
             return 'badge bg-danger';
         }
     }
-    public function statusTitle(){
-        if($this->status == 1){
+    public function statusTitle()
+    {
+        if ($this->status == 1) {
             return 'Active';
-        }else{
+        } else {
             return 'Deactive';
         }
     }
-    public function statusIcon(){
-        if($this->status == 1){
+    public function statusIcon()
+    {
+        if ($this->status == 1) {
             return 'btn-warning';
-        }else{
+        } else {
             return 'btn-success';
+        }
+    }
+
+
+    public function creator()
+    {
+        if (!$this->created_by_guard || !$this->created_by_id) {
+            return null;
+        }
+
+        switch ($this->created_by_guard) {
+            case 'admin':
+                return Admin::find($this->created_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->created_by_id);
+            default:
+                return null;
+        }
+    }
+
+    public function updater()
+    {
+        if (!$this->updated_by_guard || !$this->updated_by_id) {
+            return null;
+        }
+
+        switch ($this->updated_by_guard) {
+            case 'admin':
+                return Admin::find($this->updated_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->updated_by_id);
+            default:
+                return null;
         }
     }
 }

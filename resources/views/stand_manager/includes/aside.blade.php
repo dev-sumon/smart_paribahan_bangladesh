@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="nav-item menu-open">
-                <a href="#yearly-notices-section" class="nav-link {{ $page_slug == 'yearly_notice' ? 'active' : '' }}">
+                <a href="{{ route('stand_manager.yearly_notice.index') }}" class="nav-link {{ $page_slug == 'yearly_notice' ? 'active' : '' }}">
                     <i class="bi bi-calendar-event"></i> বার্ষিক নোটিশ
                 </a>
             </li>

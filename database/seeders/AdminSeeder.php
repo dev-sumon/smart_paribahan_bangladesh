@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         Admin::create([
-            'name' => 'Super Admin',
+            'title' => 'Super Admin',
             'nid' => '0000000000',
             'father_name' => 'Test Father',
             'mother_name' => 'Test Mother',

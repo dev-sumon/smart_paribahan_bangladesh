@@ -9,6 +9,7 @@ use App\Models\Union;
 use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\District;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use App\Models\VehicleSerial;
 use Illuminate\Support\Carbon;
@@ -59,6 +60,14 @@ class AjaxController extends Controller
         return response()->json([
             'success' => true,
             'data' => $stands
+        ]);
+    }
+    public function vehicleType($id)
+    {
+        $vehicleTypes = VehicleType::where('stand_id', $id)->latest()->get();
+        return response()->json([
+            'success' => true,
+            'data' => $vehicleTypes
         ]);
     }
     public function standVehicles(Request $request, $id): JsonResponse
@@ -120,8 +129,10 @@ class AjaxController extends Controller
     // vechicle serial list live update
     public function fetchStandSerials($stand_id)
     {
-        $serials = VehicleSerial::with('driver.vehicle',
-        'stand')
+        $serials = VehicleSerial::with(
+            'driver.vehicle',
+            'stand'
+        )
             ->where('stand_id', $stand_id)
             ->whereIn('status', [1, 2])
             ->whereDate('check_in', Carbon::today())
@@ -132,5 +143,28 @@ class AjaxController extends Controller
         return response()->json($serials);
     }
 
+    public function getStandWiseSerials($stand_id)
+    {
+        // $serials = VehicleSerial::with('vehicle')
+        //     ->where('stand_id', $id)
+        //     ->whereIn('status', [1, 2])
+        //     ->orderBy('check_in', 'asc')
+        //     ->get();
+
+        // return response()->json($serials);
+
+        $serials = VehicleSerial::with(
+            'driver.vehicle',
+            'stand'
+        )
+            ->where('stand_id', $stand_id)
+            ->whereIn('status', [1, 2])
+            ->whereDate('check_in', Carbon::today())
+            ->orderBy('check_in', 'asc')
+            ->take(10)
+            ->get();
+
+        return response()->json($serials);
+    }
 
 }

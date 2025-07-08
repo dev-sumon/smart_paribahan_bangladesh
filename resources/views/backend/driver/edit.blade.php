@@ -39,6 +39,8 @@
                                         @enderror
                                     </div>
                                     <div class="from-group">
+                                        <label for="description">{{ __('Description') }} <span
+                                                class="text-danger">*</span></label>
                                         <textarea name="description" id="description" placeholder="Enter The Description"
                                             style="width: 100%; height: 400px; padding: 10px;">{{ $driver->description ?? old('description') }}</textarea>
                                         @if ($errors->has('description'))
@@ -135,12 +137,14 @@
                                                     class="text-danger">*</span></label>
                                             <select name="vehicle_id" id="vehicle" class="form-control">
                                                 <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
-                                                @foreach ($vehicles as $vehicle)
-                                                    <option value="{{ $vehicle->id }}"
-                                                        {{ old('vehicle_id', $driver->vehicle_id ?? '') == $vehicle->id ? 'selected' : '' }}>
-                                                        {{ $vehicle->name }}: {{ $vehicle->license_number }}
-                                                    </option>
-                                                @endforeach
+                                                @if ($vehicles)
+                                                    @foreach ($vehicles as $vehicle)
+                                                        <option value="{{ $vehicle->id }}"
+                                                            {{ old('vehicle_id', $driver->vehicle_id) == $vehicle->id ? 'selected' : '' }}>
+                                                            {{ $vehicle->name }} : {{ $vehicle->vehicle_licence }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                             @if ($errors->has('vehicle_id'))
                                                 <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
@@ -334,7 +338,7 @@
 
                         $.each(stands, function(index, stand) {
                             standSelect.append('<option value="' + stand.id + '">' +
-                                stand.name + '</option>');
+                                stand.title + '</option>');
                         });
                     },
                     error: function(error) {

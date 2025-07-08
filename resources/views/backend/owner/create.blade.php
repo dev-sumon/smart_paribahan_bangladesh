@@ -50,6 +50,8 @@
                                         @endif
                                     </div>
                                     <div class="from-group">
+                                        <label for="description">{{ __('Description') }} <span
+                                                class="text-danger">*</span></label>
                                         <textarea name="description" id="description" placeholder="Enter The Description"
                                             style="width: 100%; height: 150px; padding: 10px;">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
@@ -303,7 +305,7 @@
                         if (response.data.length > 0) {
                             $.each(response.data, function(index, vehicle) {
                                 let vehicleText =
-                                    `${vehicle.name} : ${vehicle.vehicle_licence}`;
+                                    `${vehicle.title} : ${vehicle.vehicle_licence}`;
                                 vehicleSelect.append('<option value="' + vehicle.id +
                                     '">' + vehicleText + '</option>');
                             });

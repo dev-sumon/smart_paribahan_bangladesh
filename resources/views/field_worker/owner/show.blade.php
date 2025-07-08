@@ -105,7 +105,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $owner->created_by ?? 'N/A' }}</td>
+                                            <td> {{ $owner->created_by_guard }} - {{ $owner->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $owner->updated_by_guard }} - {{ $owner->updater()->name ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

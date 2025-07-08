@@ -21,7 +21,7 @@
                                 <table class="table table-bordered table-striped dataTable dtr-inline">
                                     <tbody>
                                         <tr>
-                                            <th>{{ __('District') }}</th>
+                                            <th>{{ __('Division') }}</th>
                                             <th>{{ __(':') }}</th>
                                             <td>{{ $district->division->division ?? 'N/A' }}</td>
                                         </tr>
@@ -44,7 +44,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $district->created_by ?? 'N/A' }}</td>
+                                            <td>{{ $district->created_by_guard }} - {{ $district->creator()->name ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Updated By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $district->updated_by_guard }} - {{ $district->updater()->name ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

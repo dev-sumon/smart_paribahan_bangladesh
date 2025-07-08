@@ -20,6 +20,7 @@
                                     <thead>
                                         <tr class="text-center align-items-center">
                                             <th>{{ __('Sl') }}</th>
+                                            <th>{{ __('Stand Name') }}</th>
                                             <th>{{ __('QR Code') }}</th>
                                             <th>{{ __('Download') }}</th>
                                         </tr>
@@ -28,6 +29,7 @@
                                         @foreach ($qr_codes as $key => $qr_code)
                                             <tr class="text-center align-items-center">
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $qr_code->title }}</td>
                                                 <td>{!! $qr_code->qr_image !!}</td>
                                                 {{-- <td><a href="{{ route('stand_manager.qr.download', $qr_code->token) }}"><i class="fa-solid fa-download"></i></a></td> --}}
                                                 <td>

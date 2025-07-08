@@ -4,14 +4,14 @@
     <section class="register_section pt-5 py-5">
         <div class="container d-flex justify-content-center align-items-center">
             <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
-                <h4 class="mb-4">{{ __('serial din') }}</h4>
+                <h4 class="mb-4">{{ __('Check In') }}</h4>
                 {{-- Error Message --}}
-                @if (session('error'))
+                {{-- @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                @endif
+                @endif --}}
                 <form action="{{ route('driver.serial.check.in.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-danger w-100 mb-3 login">
-                            {{ __('অ্যাকাউন্ট তৈরী করুন') }}
+                            {{ __('Submit') }}
                         </button>
                     </div>
                 </form>

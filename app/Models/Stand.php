@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Admin;
+use App\Models\FieldWorker;
 use Illuminate\Database\Eloquent\Model;
 
 class Stand extends Model
@@ -100,5 +102,39 @@ class Stand extends Model
         return $this->hasMany(VehicleSerial::class);
     }
 
+
+
+
+    public function creator()
+    {
+        if (!$this->created_by_guard || !$this->created_by_id) {
+            return null;
+        }
+
+        switch ($this->created_by_guard) {
+            case 'admin':
+                return Admin::find($this->created_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->created_by_id);
+            default:
+                return null;
+        }
+    }
+
+    public function updater()
+    {
+        if (!$this->updated_by_guard || !$this->updated_by_id) {
+            return null;
+        }
+
+        switch ($this->updated_by_guard) {
+            case 'admin':
+                return Admin::find($this->updated_by_id);
+            case 'field_worker':
+                return FieldWorker::find($this->updated_by_id);
+            default:
+                return null;
+        }
+    }
 
 }

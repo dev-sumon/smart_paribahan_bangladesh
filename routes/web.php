@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Backend\YearlyNoticeController;
+use App\Http\Controllers\StandManager\StandManagerYearlyNoticeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -37,6 +37,7 @@ use App\Http\Controllers\Backend\FooterTitleController;
 use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Backend\StandManagerController;
+use App\Http\Controllers\Backend\YearlyNoticeController;
 use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\NoticeCategoryController;
@@ -56,6 +57,7 @@ use App\Http\Controllers\FieldWorker\FieldWorkerDashboardController;
 use App\Http\Controllers\FieldWorker\Auth\FieldWorkerLoginController;
 use App\Http\Controllers\StandManager\StandManagerDashboardController;
 use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
+use App\Http\Controllers\FieldWorker\FieldWorkerYearlyNoticeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerLoginController;
 use App\Http\Controllers\FieldWorker\FieldWorkerStandCommiteeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerRegistrationController;
@@ -509,6 +511,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
         Route::get('vehicles-license/{id}', 'vehiclesLicense')->name('vehiclesLicense');
         Route::get('/get-vehicles/{stand_id}', 'getVehiclesByStand');
         Route::get('stand/{id}/vehicle-types', 'getVehicleTypesByStand')->name('getVehicleTypesByStand');
+        Route::get('vehicleType/{id}', 'vehicleType')->name('vehicleType');
     });
     Route::controller(StandCommiteeController::class)->prefix('commitee')->name('commitee.')->group(function () {
         Route::get('index', 'index')->name('index');
@@ -696,6 +699,16 @@ Route::group(['middleware' => ['field_worker'], 'prefix' => 'field_worker', 'as'
         Route::get('delete/{id}', 'delete')->name('delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
     });
+    Route::controller(FieldWorkerYearlyNoticeController::class)->prefix('yearly-notice')->name('yearly_notice.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
 
     // Ajax Controller
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
@@ -718,13 +731,14 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::post('/driver-serial/{id}/checkout', 'checkOut')->name('driver.serial.checkout');
         Route::get('/stand-manager-serials', 'standManagerSerials')->name('manager.stand.serials');
         Route::post('/stand-manager-serials-store', 'standManagerSerialsStore')->name('manager.stand.serials.store');
+        Route::get('/check-out-list', 'checkOutList')->name('manager.check.out.list');
     });
     Route::controller(StandManagerNoticeController::class)->prefix('notice')->name('notice.')->group(function () {
         Route::get('stand-manager-index', 'standManagerIndex')->name('stand.manager.index');
         Route::get('stand-manager-create', 'create')->name('stand.manager.create');
         Route::post('stand-manager-store', 'store')->name('stand.manager.store');
-        Route::get('stand-manager-update/{id}', 'update')->name('stand.manager.updae');
-        Route::put('stand-manager-update/{id}', 'update_store')->name('stand.manager.updae');
+        Route::get('stand-manager-update/{id}', 'update')->name('stand.manager.update');
+        Route::put('stand-manager-update/{id}', 'update_store')->name('stand.manager.update');
         Route::get('stand-manager-status/{id}', 'status')->name('stand.manager.status.update');
         Route::get('stand-manager-delete/{id}', 'delete')->name('stand.manager.delete');
         Route::get('detalis/{id}', 'detalis')->name('detalis');
@@ -737,6 +751,18 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('/qr-code/download/{token}', 'download')->name('download');
 
     });
+
+    Route::controller(StandManagerYearlyNoticeController::class)->prefix('yearly-notice')->name('yearly_notice.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('update/{id}', 'update')->name('update');
+        Route::put('update/{id}', 'update_store')->name('update');
+        Route::get('status/{id}', 'status')->name('status.update');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('detalis/{id}', 'detalis')->name('detalis');
+    });
+
     // Ajax Controller
     Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
         Route::get('division/{id}', 'division')->name('division');
@@ -745,8 +771,11 @@ Route::group(['middleware' => ['stand_manager'], 'prefix' => 'stand_manager', 'a
         Route::get('union/{id}', 'union')->name('union');
         Route::get('stand/{id}', 'stand')->name('stand');
         Route::get('drivers', 'searchDrivers')->name('searchDrivers');
+        Route::get('stand-wise-serials/{id}', 'getStandWiseSerials')->name('stand.wise.serials');
     });
-
+    // Route::controller(AjaxController::class)->prefix('ajax')->name('ajax.')->group(function () {
+    //     Route::get('stand-wise-serials/{id}', 'getStandWiseSerials')->name('stand.wise.serials');
+    // });
     // Route::get('/stand_manager/ajax/', [AjaxController::class, 'searchDrivers'])->name('stand_manager.ajax.searchDrivers');
 
 });
@@ -773,3 +802,16 @@ Route::controller(SslcommerzController::class)
         Route::post('cancel', 'cancel')->name('cancel');
         Route::post('ipn', 'ipn')->name('ipn');
     });
+    
+
+
+
+
+
+
+
+
+
+
+
+

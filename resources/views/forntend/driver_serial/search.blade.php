@@ -4,7 +4,7 @@
     <section class="register_section pt-5 py-5">
         <div class="container d-flex justify-content-center align-items-center">
             <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
-                <h4 class="mb-4">{{ __('serial din') }}</h4>
+                <h4 class="mb-4">{{ __('Serial Search') }}</h4>
                 {{-- Error Message --}}
                 @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-danger w-100 mb-3 login">
-                            {{ __('অ্যাকাউন্ট তৈরী করুন') }}
+                            {{ __('Search') }}
                         </button>
                     </div>
                 </form>

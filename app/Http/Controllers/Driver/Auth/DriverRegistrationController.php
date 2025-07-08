@@ -67,7 +67,7 @@ class DriverRegistrationController extends Controller
             Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $save->id]);
         }
 
-        return redirect()->route('f.home');
+        return redirect()->route('driver.login')->with('success','Your account created successfully');
     }
     // public function update($id): View
     // {

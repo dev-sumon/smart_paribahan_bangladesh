@@ -39,7 +39,7 @@
                                                 </td>
                                                 <td>{{ $notice->created_at ? $notice->created_at->format('d-m-Y H:i:s') : 'N/A' }}
                                                 </td>
-                                                <td>{{ $notice->created_user ? $notice->created_user->name : 'system' }}
+                                                <td>{{ $notice->creator()->name ?? 'System' }}
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-level="Basic example">
@@ -49,12 +49,8 @@
                                                         <a href="{{ route('field_worker.notice.update', $notice->id) }}" data-id=""
                                                             class="btn btn-info"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="{{ route('field_worker.notice.delete', $notice->id) }}" data-id=""
-                                                            class="btn btn-danger delete"><i
-                                                                class="fa-solid fa-trash-can"></i></a>
-                                                        <a href="{{ route('field_worker.notice.status.update', $notice->id) }}"
-                                                            class="btn {{ $notice->statusIcon() }}"><i
-                                                                class="fa-solid fa-power-off"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.notice.delete', $notice->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                        <a href="javascript:void(0)" data-url="{{ route('field_worker.notice.status.update', $notice->id) }}" class="btn {{ $notice->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

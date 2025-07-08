@@ -16,11 +16,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests\OwnerRequest;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class OwnerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index(): View
     {
         $data['owners'] = Owner::latest()->get();
@@ -71,12 +76,13 @@ class OwnerController extends Controller
             $save->image = $path;
         }
 
+        $save->created_by_id = Auth::guard('admin')->id();
+        $save->created_by_guard = 'admin';
         $save->save();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $save->id]);
         }
-
         return redirect()->route('owner.index')->with('success', 'Owner created successfully');
     }
     public function update($slug): View
@@ -95,7 +101,7 @@ class OwnerController extends Controller
     }
     public function update_store(OwnerRequest $request, $slug): RedirectResponse
     {
-        $update = Owner::where('slug',$slug)->firstOrFail();
+        $update = Owner::where('slug', $slug)->firstOrFail();
 
         $update->title = $request->title;
 
@@ -141,12 +147,13 @@ class OwnerController extends Controller
             $update->image = $path;
         }
 
+        $update->updated_by_id = Auth::guard('admin')->id();
+        $update->updated_by_guard = 'admin';
         $update->update();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['owner_id' => $update->id]);
         }
-
         return redirect()->route('owner.index')->with('success', 'Owner updated successfully');
     }
     public function status($slug): RedirectResponse

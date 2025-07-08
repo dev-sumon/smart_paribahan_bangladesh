@@ -1,7 +1,4 @@
 @extends('backend.layouts.master', ['page_slug' => 'commitee'])
-
-
-
 @section('title', 'Stand Commitee')
 @section('content')
     <div class="container-fluid mt-2">
@@ -41,13 +38,13 @@
                                             <td>{{ $commitee->stand->title }}</td>
                                             <td><span class="{{ $commitee->statusBg() }}">{{ $commitee->statusTitle() }}</span></td>
                                             <td>{{ $commitee->created_at ? $commitee->created_at->format('d-m-Y H:i:s') : 'N/A' }}</td>
-                                            <td>{{ $commitee->created_user ? $commitee->created_user->name : 'system' }}</td>
+                                            <td>{{ $commitee->creator()->name ?? 'System' }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-level="Basic example">
                                                     <a href="{{ route('commitee.detalis', $commitee->id) }}" data-id="" class="btn btn-secondary view" title="view deatils"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="{{ route('commitee.update', $commitee->id) }}" data-id="" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="{{ route('commitee.delete', $commitee->id) }}" data-id="" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
-                                                    <a href="{{ route('commitee.status.update', $commitee->id) }}" data-id="" class="btn {{ $commitee->statusIcon() }}"><i class="fa-solid fa-power-off"></i></a>
+                                                    <a href="javascript:void(0)" data-url="{{ route('commitee.delete', $commitee->id) }}" class="btn btn-danger delete"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a href="javascript:void(0)" data-url="{{ route('commitee.status.update', $commitee->id) }}" class="btn {{ $commitee->statusIcon() }} status-update"><i class="fa-solid fa-power-off"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

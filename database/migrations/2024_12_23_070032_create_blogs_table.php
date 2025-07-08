@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,11 +13,15 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-           $table->string('slug')->unique();
+            $table->string('slug')->unique();
             $table->longText('description');
             $table->string('image')->nullable();
             $table->boolean('status');
             $table->string('creator');
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->string('created_by_guard')->nullable();
+            $table->unsignedBigInteger('updated_by_id')->nullable();
+            $table->string('updated_by_guard')->nullable();
             $table->timestamps();
         });
     }

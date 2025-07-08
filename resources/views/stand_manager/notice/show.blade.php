@@ -1,7 +1,7 @@
 @extends('stand_manager.layouts.master', ['page_slug' => 'notice'])
 @section('title', 'Stand Notice Deatils')
 @section('content')
-     <div class="container-fluid mt-2">
+    <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-md-10 mx-auto my-5">
                 <div class="card">
@@ -10,7 +10,8 @@
                             <h1 class="float-start">{{ __('Notice Detalis') }}</h1>
                         </span>
                         <span class="float-right">
-                            <a href="{{ route('stand_manager.notice.stand.manager.index') }}" class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
+                            <a href="{{ route('stand_manager.notice.stand.manager.index') }}"
+                                class="btn btn-info btn-sm float-end">{{ __('Back') }}</a>
                         </span>
                     </div>
                     <div class="card-body">
@@ -34,14 +35,37 @@
                                             <td> {{ $notice->noticeCategory->name ?? 'No Category' }}</td>
                                         </tr>
                                         <tr>
+                                            <th>{{ __('Division') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $notice->division->division }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('District') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $notice->district->district }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Union') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $notice->union->union }}</td>
+                                        </tr>
+                                        {{-- <tr>
+                                            <th>{{ __('Stand') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td> {{ $notice->stand->title }}</td>
+                                        </tr> --}}
+                                        <tr>
                                             <th>{{ __('File') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><a href="{{ asset('storage/' . $notice->file) }}" download>Download PDF</a></td>
+                                            <td><a href="{{ asset('storage/' . $notice->file) }}" download>Download PDF</a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Status') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td><span class="{{ $notice->statusBg() }}">{{ $notice->statusTitle() }}</span></td>
+                                            <td><span
+                                                    class="{{ $notice->statusBg() }}">{{ $notice->statusTitle() }}</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Created At') }}</th>
@@ -51,7 +75,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $notice->created_by ?? 'N/A' }}</td>
+                                            <td>{{ $notice->created_by_guard }} {{ $notice->creator()->title ?? 'System' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{ __('Created By') }}</th>
+                                            <th>{{ __(':') }}</th>
+                                            <td>{{ $notice->updated_by_guard }} {{ $notice->updater()->title ?? 'N/A' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

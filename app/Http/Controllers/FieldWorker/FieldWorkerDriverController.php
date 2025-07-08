@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DriverRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -30,7 +31,7 @@ class FieldWorkerDriverController extends Controller
         $data['drivers'] = Driver::latest()->get();
         return view('field_worker.driver.index', $data);
     }
-        public function create(): View
+    public function create(): View
     {
         $data['divisions'] = Division::with(['districts', 'thanas', 'unions', 'stands', 'owners'])->latest()->get();
         $data['bloods'] = BloodGroup::latest()->get();
@@ -76,6 +77,9 @@ class FieldWorkerDriverController extends Controller
             $save->image = $path;
         }
 
+
+        $save->created_by_id = Auth::guard('field_worker')->id();
+        $save->created_by_guard = 'field_worker';
         $save->save();
 
         if ($request->vehicle_id) {
@@ -83,9 +87,9 @@ class FieldWorkerDriverController extends Controller
         }
 
 
-        return redirect()->route('field_worker.driver.index');
+        return redirect()->route('field_worker.driver.index')->with('success', 'Driver created successfully by Field Worker');
     }
-        public function update($slug): View
+    public function update($slug): View
     {
         $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'stand', 'vehicle')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
@@ -99,7 +103,7 @@ class FieldWorkerDriverController extends Controller
     }
     public function update_store(DriverRequest $request, $slug): RedirectResponse
     {
-        $update = Driver::where('slug',$slug)->firstOrFail();
+        $update = Driver::where('slug', $slug)->firstOrFail();
         $update->title = $request->title;
 
         if ($update->isDirty('title')) {
@@ -147,17 +151,19 @@ class FieldWorkerDriverController extends Controller
         }
 
 
+        $update->updated_by_id = Auth::guard('field_worker')->id();
+        $update->updated_by_guard = 'field_worker';
         $update->save();
 
         if ($request->vehicle_id) {
             Vehicle::where('id', $request->vehicle_id)->update(['driver_id' => $update->id]);
         }
 
-        return redirect()->route('field_worker.driver.index');
+        return redirect()->route('field_worker.driver.index')->with('success', 'Driver updated successfully by Field Worker');
     }
-        public function status($slug): RedirectResponse
+    public function status($slug): RedirectResponse
     {
-        $driver = Driver::where('slug',$slug)->firstOrFail();
+        $driver = Driver::where('slug', $slug)->firstOrFail();
         if ($driver->status == 1) {
             $driver->status = 0;
         } else {
@@ -165,18 +171,19 @@ class FieldWorkerDriverController extends Controller
         }
 
         $driver->save();
-        return redirect()->route('field_worker.driver.index');
+        return redirect()->route('field_worker.driver.index')->with('success', 'Driver status updated successfully by Field Worker');
     }
     public function delete($slug): RedirectResponse
     {
-        $driver = Driver::where('slug',$slug)->firstOrFail();
+        $driver = Driver::where('slug', $slug)->firstOrFail();
         $driver->delete();
 
-        return redirect()->route('field_worker.driver.index');
+        return redirect()->route('field_worker.driver.index')->with('success', 'Driver deleted successfully by Field Worker');
     }
     public function detalis($slug): View
     {
-        $data['driver'] = Driver::with('owner')->where('slug',$slug)->firstOrFail();;
+        $data['driver'] = Driver::with('owner')->where('slug', $slug)->firstOrFail();
+        ;
         $data['owners'] = Owner::latest()->get();
         return view('field_worker.driver.show', $data);
     }
