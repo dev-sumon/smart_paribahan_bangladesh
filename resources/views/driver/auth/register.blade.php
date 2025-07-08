@@ -130,15 +130,6 @@
                             <option value="" selected hidden>{{ __('গাড়ি নির্বাচন করুন') }}</option>
                         </select>
                     </div>
-                    {{-- <div class="form-group">
-                <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
-                <input type="password" name="password" id="password" value="{{ old('password') }}" class="form-control" placeholder="পাসওয়ার্ড">
-                <span>{{ __('ন্যূনতম ৮ অক্ষরে লিখুন') }}</span>
-                @if ($errors->has('password'))
-                    <div class="text-danger">{{ $errors->first('password') }}</div>
-                @endif
-            </div> --}}
-
                     <div class="form-group" style="position: relative;">
                         <label for="password" class="mt-3">{{ __('পাসওয়ার্ড') }}</label>
                         <input type="password" name="password" id="password" value="{{ old('password') }}"
@@ -176,24 +167,11 @@
                             {{ __('অ্যাকাউন্ট তৈরী করুন') }}
                         </button>
                     </div>
-                    <div class="text-center mb-3">
-                        <div class="divider">
-                            <hr>
-                            <span>{{ __('অথবা') }}</span>
-                            <hr>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-light border w-100 mb-3 google_button">
-                        <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20"
-                            class="me-2" />
-                        {{ __('গুগল দিয়ে এগিয়ে যান') }}
-                    </button>
                     <div class="text-center back_login">
                         <span class="no_account">{{ __('ইতিমধ্যে একটি অ্যাকাউন্ট আছে?') }}</span>
                         <br />
                         <div class="back_login_page">
-                            <button type="button" id="loginButton"
-                                class="btn btn-light w-100 mb-3">{{ __('আপনার অ্যাকাউন্টে লগইন করুন') }}</button>
+                            <a href="{{ route('driver.login') }}" class="btn btn-light w-100 mb-3 mt-3" style="background-color: #e2e6ea;">{{ __('আপনার অ্যাকাউন্টে লগইন করুন') }}</a>
                         </div>
                     </div>
                 </form>

@@ -134,20 +134,10 @@
                     </div>
                     <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button>
                     <div class="text-center mb-3">
-                        <div class="divider">
-                            <hr>
-                            <span>{{ __('অথবা') }}</span>
-                            <hr>
-                        </div>
-                        <button type="button" class="btn btn-light border w-100 mb-3 google_button">
-                            <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20"
-                                class="me-2" />
-                            {{ __('গুগল দিয়ে প্রবেশ করুন ') }}
-                        </button>
                         <div class="text-center">
                             <span class="no_account">{{ __('আপনার কোন একাউন্ট নেই?') }}</span>
                             <br />
-                            <a href="{{ route('f.signup.index') }}"
+                            <a href="{{ route('owner.signup.signup') }}"
                                 class="btn btn-dark mt-2 w-100 create_button">{{ __('একাউন্ট তৈরি করুন') }}</a>
                         </div>
                 </form>

@@ -48,7 +48,7 @@
                     </div>
                     <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button>
                     <div class="text-center mb-3">
-                        <div class="divider">
+                        {{-- <div class="divider">
                             <hr>
                             <span>{{ __('অথবা') }}</span>
                             <hr>
@@ -57,7 +57,7 @@
                             <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20"
                                 class="me-2" />
                             {{ __('গুগল দিয়ে প্রবেশ করুন ') }}
-                        </button>
+                        </button> --}}
                         <div class="text-center">
                             <span class="no_account">{{ __('আপনার কোন একাউন্ট নেই?') }}</span>
                             <br />

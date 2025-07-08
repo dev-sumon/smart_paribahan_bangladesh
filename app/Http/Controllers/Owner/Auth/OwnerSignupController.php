@@ -59,6 +59,6 @@ class OwnerSignupController extends Controller
         // dd($save);
 
         $save->save();
-        return redirect()->route('f.home');
+        return redirect()->route('owner.login')->with('success','Your account created successfully');
     }
 }

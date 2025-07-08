@@ -60,6 +60,7 @@ class DriverRegistrationController extends Controller
             $save->image = $path;
         }
 
+        
         $save->save();
 
         if ($request->vehicle_id) {
