@@ -90,13 +90,11 @@
             <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%; border-radius: 15px">
                 <h4 class="mb-4">{{ __('একাউন্টে লগইন করুন') }}</h4>
                 <form method="POST" action="{{ route('driver.login') }}">
-                    {{-- <div class="mb-3">
-                    <label for="email" class="form-label">ইমেইল অথবা মোবাইল নাম্বার লিখুন</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="ইমেইল অথবা মোবাইল নাম্বার লিখুন" required />
-                </div> --}}
                     @csrf
                     <div class="row mb-3">
-                        <label for="email" class="col-md-12 col-form-label">{{ __('ইমেইল অথবা মোবাইল নাম্বার লিখুন') }}</label><br>
+                        <label for="email"
+                            class="col-md-12 col-form-label">{{ __('ইমেইল অথবা মোবাইল নাম্বার লিখুন') }}</label><br>
+
                         <div class="col-md-12">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                 name="email" placeholder="ইমেইল অথবা মোবাইল নাম্বার লিখুন" value="{{ old('email') }}"
@@ -134,18 +132,6 @@
                                 href="{{ route('driver.forgot.index') }}">{{ __('পাসওয়ার্ড ভুলে গেছেন?') }}</a>
                         </div>
                         <button type="submit" class="btn btn-danger w-100 mb-3 login">{{ __('লগইন করুন') }}</button>
-                        {{-- <div class="text-center mb-3">
-                            <div class="divider">
-                                <hr>
-                                <span>{{ __('অথবা') }}</span>
-                                <hr>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-light border w-100 mb-3 google_button">
-                            <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20"
-                                class="me-2" />
-                            {{ __('গুগল দিয়ে প্রবেশ করুন') }}
-                        </button> --}}
                         <div class="text-center">
                             <span class="no_account">{{ __('আপনার কোন একাউন্ট নেই?') }}</span>
                             <br />

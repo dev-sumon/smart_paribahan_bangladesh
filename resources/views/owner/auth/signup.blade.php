@@ -154,7 +154,7 @@
                             {{ __('অ্যাকাউন্ট তৈরী করুন') }}
                         </button>
                     </div>
-                    <div class="text-center mb-3">
+                    {{-- <div class="text-center mb-3">
                         <div class="divider">
                             <hr>
                             <span>{{ __('অথবা') }}</span>
@@ -165,13 +165,13 @@
                         <img src="{{ asset('forntend/images/google.png') }}" alt="Google logo" width="20"
                             class="me-2" />
                         {{ __('গুগল দিয়ে এগিয়ে যান') }}
-                    </button>
+                    </button> --}}
                     <div class="text-center back_login">
                         <span class="no_account">{{ __('ইতিমধ্যে একটি অ্যাকাউন্ট আছে?') }}</span>
                         <br />
                         <div class="back_login_page">
-                            <button type="button" id="loginButton"
-                                class="btn btn-light w-100 mb-3">{{ __('আপনার অ্যাকাউন্টে লগইন করুন') }}</button>
+                            {{-- <button type="button" id="loginButton" class="btn btn-light w-100 mb-3">{{ __('আপনার অ্যাকাউন্টে লগইন করুন') }}</button> --}}
+                            <a href="{{ route('owner.login') }}" class="btn btn-light w-100 mb-3 mt-3" style="background-color: #e2e6ea;">{{ __('আপনার অ্যাকাউন্টে লগইন করুন') }}</a>
                         </div>
                     </div>
                 </form>
