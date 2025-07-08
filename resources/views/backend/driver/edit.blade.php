@@ -338,7 +338,7 @@
 
                         $.each(stands, function(index, stand) {
                             standSelect.append('<option value="' + stand.id + '">' +
-                                stand.name + '</option>');
+                                stand.title + '</option>');
                         });
                     },
                     error: function(error) {

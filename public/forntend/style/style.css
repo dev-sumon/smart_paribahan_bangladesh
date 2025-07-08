@@ -3581,6 +3581,18 @@ footer .copy_right {
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
+/* driver serial check in button design */
+.check-in-button a {
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    background: linear-gradient(91.25deg, #FF2727 -4.4%, #FF5454 101.68%);
+    padding: 8px 10px;
+    font-family: 'Hind Siliguri';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
 
 @media (min-width: 768px) {
     .info-container {
@@ -3951,6 +3963,7 @@ td {
     align-items: center;
     justify-content: center;
 }
+
 @media (max-width: 768px) {
     .stand_manager_dashboard .sidebar {
         margin-left: -250px;

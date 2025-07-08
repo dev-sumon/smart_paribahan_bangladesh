@@ -40,7 +40,8 @@
                                         </div>
                                     </div>
                                     <div class="from-group">
-                                        <label for="description">{{ __('Description') }} <span class="text-danger">*</span></label>
+                                        <label for="description">{{ __('Description') }} <span
+                                                class="text-danger">*</span></label>
                                         <textarea name="description" id="description" placeholder="Enter The Description"
                                             style="width: 100%; height: 400px; padding: 10px;">{{ old('description') }}</textarea>
                                         @if ($errors->has('description'))
@@ -161,7 +162,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="vehicle">{{ __('Vehicl') }} <span
+                                        <label for="vehicle_id">{{ __('Vehicle') }} <span
                                                 class="text-danger">*</span></label>
                                         <select name="vehicle_id" id="vehicle" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
@@ -170,6 +171,27 @@
                                             <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
                                         @endif
                                     </div>
+
+                                    {{-- <div class="form-group">
+                                        <label for="vehicle_id">{{ __('Vehicle') }} <span
+                                                class="text-danger">*</span></label>
+                                        <select name="vehicle_id" id="vehicle" class="form-control">
+                                            <option value="" selected hidden>{{ __('Select Vehicle') }}</option>
+                                            @if ($vehicles)
+                                                @foreach ($vehicles as $vehicle)
+                                                    <option value="{{ $vehicle->id }}"
+                                                        {{ old('vehicle_id', $driver->vehicle_id) == $vehicle->id ? 'selected' : '' }}>
+                                                        {{ $vehicle->name }} : {{ $vehicle->vehicle_licence }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @if ($errors->has('vehicle_id'))
+                                            <div class="text-danger">{{ $errors->first('vehicle_id') }}</div>
+                                        @endif
+                                    </div> --}}
+
+
                                     <div class="form-group">
                                         <label for="password" class="mt-3">{{ __('Password') }} <span
                                                 class="text-danger">*</span></label>
@@ -333,6 +355,8 @@
                             $.each(response.data, function(index, vehicle) {
                                 let vehicleText =
                                     `${vehicle.name} : ${vehicle.vehicle_licence}`;
+                                // let vehicleText = `${vehicle.vehicle_type?.name ?? 'No Type'} - ${vehicle.vehicle_licence ?? 'No Licence'}`;
+
                                 vehicleSelect.append('<option value="' + vehicle.id +
                                     '">' + vehicleText + '</option>');
                             });

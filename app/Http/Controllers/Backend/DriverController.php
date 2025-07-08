@@ -183,7 +183,6 @@ class DriverController extends Controller
     public function detalis($slug): View
     {
         $data['driver'] = Driver::with('owner')->where('slug', $slug)->firstOrFail();
-        ;
         $data['owners'] = Owner::latest()->get();
         return view('backend.driver.show', $data);
     }

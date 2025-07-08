@@ -68,7 +68,7 @@
                                         <select name="driver_id" id="driver" class="form-control">
                                             <option value="" selected hidden>{{ __('Select Driver') }}</option>
                                             @foreach($drivers as $driver)
-                                                <option value="{{ $driver->id }}">{{ $driver->name }}</option>
+                                                <option value="{{ $driver->id }}">{{ $driver->title }}</option>
                                             @endforeach
                                         </select>
                                     </div>
