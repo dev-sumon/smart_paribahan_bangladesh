@@ -95,5 +95,12 @@ class GoogleController extends Controller
         // } catch (\Exception $e) {
         //     return redirect('/')->withErrors('Login failed: ' . $e->getMessage());
         // }
+
+
+        // 1032063175415-p3gfkamrh012ktgaa7i8ggccsavkbmr3.apps.googleusercontent.com
+        // 1032063175415-p3gfkamrh012ktgaa7i8ggccsavkbmr3.apps.googleusercontent.com
+
+        // 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
+        // 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
     }
 }
