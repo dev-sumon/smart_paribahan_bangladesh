@@ -101,7 +101,7 @@
                         @foreach ($union->stands as $stand)
                             <div class="col-md-6 col-12 pb-5 iteam d-flex justify-content-center text-center right_side">
                                 <div class="card">
-                                    <a href="{{ route('f.cng.cng_stand_details', $stand->stand) }}">
+                                    <a href="{{ route('f.cng.cng_stand_details', $stand->slug) }}">
                                         <img src="{{ asset('forntend/images/stop 1.svg') }}" alt="">
                                         <p class="pt-3">{{ $stand->title }}</p>
                                     </a>
