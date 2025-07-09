@@ -101,16 +101,37 @@ class FieldWorkerStandController extends Controller
         $update->location = $location;
 
 
+        // if ($request->hasFile('image')) {
+        //     if ($update->iamge && Storage::exists($update->image)) {
+        //         Storage::delete($update->image);
+        //     }
+        //     $image = $request->file('image');
+        //     $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $image->storeAs("stands/", $filename, 'public');
+        //     $update->image = $path;
+        // }
+        // ;
+
         if ($request->hasFile('image')) {
-            if ($update->iamge && Storage::exists($update->image)) {
-                Storage::delete($update->image);
+            // পুরানো ইমেজ ডিলিট করতে চাইলে এখানে কোড লিখুন
+            if ($update->image) {
+                foreach (json_decode($update->image) as $oldImage) {
+                    if (Storage::disk('public')->exists($oldImage)) {
+                        Storage::disk('public')->delete($oldImage);
+                    }
+                }
             }
-            $image = $request->file('image');
-            $filename = $request->name . time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs("stands/", $filename, 'public');
-            $update->image = $path;
+
+            $imagePaths = [];
+            foreach ($request->file('image') as $img) {
+                $filename = Str::slug($request->title) . '_' . time() . '_' . $img->getClientOriginalName();
+                $path = $img->storeAs('stands', $filename, 'public');
+                $imagePaths[] = $path;
+            }
+
+            // নতুন ইমেজ path গুলো JSON আকারে সেভ করা হচ্ছে
+            $update->image = json_encode($imagePaths);
         }
-        ;
 
         $update->updated_by_id = Auth::guard('field_worker')->id();
         $update->updated_by_guard = 'field_worker';

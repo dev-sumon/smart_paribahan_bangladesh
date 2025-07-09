@@ -81,12 +81,12 @@
                                         <tr>
                                             <th>{{ __('Created By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $driver->created_by_guard }} - {{ $driver->creator()->name ?? 'N/A' }} </td>
+                                            <td> {{ $driver->created_by_guard }} - {{ $driver->creator()->title ?? 'N/A' }} </td>
                                         </tr>
                                         <tr>
                                             <th>{{ __('Updated By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td> {{ $driver->updated_by_guard }} - {{ $driver->updater()->name ?? 'N/A' }} </td>
+                                            <td> {{ $driver->updated_by_guard }} - {{ $driver->updater()->title ?? 'N/A' }} </td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -104,7 +104,7 @@
                                         <tr>
                                             <th>{{ __('Updated By') }}</th>
                                             <th>{{ __(':') }}</th>
-                                            <td>{{ $stand->updated_by_guard }} - {{ $stand->updater()->name ?? 'System' }}
+                                            <td>{{ $stand->updated_by_guard }} - {{ $stand->updater()->title ?? 'System' }}
                                             </td>
                                         </tr>
                                     </tbody>
