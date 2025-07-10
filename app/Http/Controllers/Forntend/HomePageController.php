@@ -24,7 +24,7 @@ class HomePageController extends Controller
     {
 
         $data['contact'] = ContactInfo::first();
-        $data['divisions'] = Division::with('districts','thanas','unions','stands','stands.vehicleTypes')->latest()->get();
+        $data['divisions'] = Division::with('districts', 'thanas', 'unions', 'stands', 'stands.vehicleTypes')->latest()->get();
         $data['faqs'] = Faq::latest()->get();
         $data['districts'] = District::latest()->get();
         $data['blogs'] = Blog::latest()->take(3)->get();
@@ -108,47 +108,47 @@ class HomePageController extends Controller
     }
     public function showStand($slug)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->where('slug',$slug)->firstOrFail();
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['page_slug'] = 'map';
         return view('forntend.cng_info.map', $data);
     }
     public function showStandIntro($slug)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->where('slug',$slug)->firstOrFail();
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['page_slug'] = 'intro';
         return view('forntend.cng_info.stand_intro', $data);
     }
     public function standCommitee($slug)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'commitees')->where('slug',$slug)->firstOrFail();
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'commitees')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['page_slug'] = 'commitee';
         return view('forntend.cng_info.stand_community', $data);
     }
     public function standDriver($slug)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers', 'notices')->where('slug',$slug)->firstOrFail();
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'drivers', 'notices')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['page_slug'] = 'driver';
         return view('forntend.cng_info.driver_list', $data);
     }
     public function standOwner($slug)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'owners.vehicles', 'owners.vehicles.vehicleType', 'owners', 'notices')->where('slug',$slug)->firstOrFail();
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'owners.vehicles', 'owners.vehicles.vehicleType', 'owners', 'notices')->where('slug', $slug)->firstOrFail();
         $data['divisions'] = Division::all();
         $data['page_slug'] = 'owner';
         return view('forntend.cng_info.owner_list', $data);
     }
     public function ownerProfile($slug)
     {
-        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicles')->where('slug',$slug)->firstOrFail();
+        $data['owner'] = Owner::with('division', 'district', 'thana', 'union', 'vehicles')->where('slug', $slug)->firstOrFail();
         return view('forntend.cng_info.owner_details', $data);
     }
     public function driverProfile($slug)
     {
-        $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'vehicles')->where('slug',$slug)->firstOrFail();
+        $data['driver'] = Driver::with('division', 'district', 'thana', 'union', 'vehicles')->where('slug', $slug)->firstOrFail();
         return view('forntend.cng_info.driver_details', $data);
     }
 
@@ -165,31 +165,59 @@ class HomePageController extends Controller
 
     public function standNotice($slug)
     {
-        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices')->latest()->where('slug',$slug)->firstOrFail();
+        $data['stand'] = Stand::with('division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices')->latest()->where('slug', $slug)->firstOrFail();
         return view('forntend.cng_info.notice', $data);
     }
     public function divisionNotice($id)
     {
-        $data['division_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}
-    ])->findOrFail($id);
+        $data['division_notice'] = Stand::with([
+            'division',
+            'district',
+            'thana',
+            'union',
+            'vehicleTypes.vehicles',
+            'notices' => function ($query) {
+                $query->latest(); }
+        ])->findOrFail($id);
         return view('forntend.cng_info.division_notice', $data);
     }
     public function districtNotice($id)
     {
-        $data['district_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}
-    ])->findOrFail($id);
+        $data['district_notice'] = Stand::with([
+            'division',
+            'district',
+            'thana',
+            'union',
+            'vehicleTypes.vehicles',
+            'notices' => function ($query) {
+                $query->latest(); }
+        ])->findOrFail($id);
         return view('forntend.cng_info.district_notice', $data);
     }
     public function thanaNotice($id)
     {
-        $data['thana_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}
-    ])->findOrFail($id);
+        $data['thana_notice'] = Stand::with([
+            'division',
+            'district',
+            'thana',
+            'union',
+            'vehicleTypes.vehicles',
+            'notices' => function ($query) {
+                $query->latest(); }
+        ])->findOrFail($id);
         return view('forntend.cng_info.thana_notice', $data);
     }
     public function unionNotice($id)
     {
-        $data['union_notice'] = Stand::with(['division', 'district', 'thana', 'union', 'vehicleTypes.vehicles', 'notices' => function ($query) {$query->latest();}
-    ])->findOrFail($id);
+        $data['union_notice'] = Stand::with([
+            'division',
+            'district',
+            'thana',
+            'union',
+            'vehicleTypes.vehicles',
+            'notices' => function ($query) {
+                $query->latest(); }
+        ])->findOrFail($id);
         return view('forntend.cng_info.union_notice', $data);
     }
 
@@ -221,4 +249,18 @@ class HomePageController extends Controller
         return view('forntend.cng_info.error');
     }
 
+
+
+    // public function blogSearch(Request $request)
+    // {
+    //     $query = Blog::query();
+
+    //     if ($request->has('search') && $request->search != '') {
+    //         $query->where('title', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     $blogs = $query->latest()->paginate(10);
+
+    //     return view('blogs.index', compact('blogs'));
+    // }
 }

@@ -45,7 +45,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('f.home') }}">{{ __('Home') }}</a>
                 </li>
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{ __('Services') }}
@@ -54,9 +54,12 @@
                         <li><a class="dropdown-item" href="#">{{ __('Service1') }}</a></li>
                         <li><a class="dropdown-item" href="#">{{ __('Service2') }}</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('f.about.index') }}">{{ __('Related') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('f.instruction.index') }}">{{ __('নির্দেশনা') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('f.help.index') }}">{{ __('Help') }}</a>

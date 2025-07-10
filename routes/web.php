@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\StandManager\StandManagerYearlyNoticeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -38,6 +37,7 @@ use App\Http\Controllers\Backend\VehicleListController;
 use App\Http\Controllers\Backend\VehicleTypeController;
 use App\Http\Controllers\Backend\StandManagerController;
 use App\Http\Controllers\Backend\YearlyNoticeController;
+use App\Http\Controllers\Forntend\InstructionController;
 use App\Http\Controllers\Backend\StandCommiteeController;
 use App\Http\Controllers\Owner\Auth\OwnerLoginController;
 use App\Http\Controllers\Backend\NoticeCategoryController;
@@ -60,6 +60,7 @@ use App\Http\Controllers\Driver\AjaxController as DriverAjaxController;
 use App\Http\Controllers\FieldWorker\FieldWorkerYearlyNoticeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerLoginController;
 use App\Http\Controllers\FieldWorker\FieldWorkerStandCommiteeController;
+use App\Http\Controllers\StandManager\StandManagerYearlyNoticeController;
 use App\Http\Controllers\StandManager\Auth\StandManagerRegistrationController;
 use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
 use App\Http\Controllers\Owner\Auth\ForgotPassword\OwnerForgotPasswordController;
@@ -112,6 +113,8 @@ Route::group(['as' => 'f.'], function () {
         Route::get('/union-notice/{id}', 'unionNotice')->name('unionNotice');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/single-blog/{slug}', 'singleBlog')->name('single.blog');
+        Route::get('/blogs', 'blogSearch ')->name('blogs.list');
+
 
 
         Route::get('/driverProfileSearch', 'driverProfileSearch')->name('driverProfileSearch');
@@ -161,6 +164,9 @@ Route::group(['as' => 'f.'], function () {
 
     Route::controller(AboutUsController::class)->prefix('about-us')->name('about.')->group(function () {
         Route::get('/', 'index')->name('index');
+    });
+    Route::controller(InstructionController::class)->prefix('instruction')->name('instruction.')->group(function(){
+        Route::get('index', 'index')->name('index');
     });
 
 });

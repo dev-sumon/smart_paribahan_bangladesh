@@ -31,7 +31,7 @@ class BlogController extends Controller
         $save->title = $request->title;
         $save->slug = $request->slug;
         $save->description = $request->description;
-        $save->creator = auth('admin')->user()->name;
+        // $save->creator = auth('admin')->user()->name;
         $save->status = $request->status ?? 0;
 
         if ($request->hasFile('image')) {
