@@ -54,8 +54,18 @@
                                 <h6 class="text-start">{{ __('Search here') }}</h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
-                                    <input type="text" class="form-control search-input" placeholder="Search">
-                                    <i class="fas fa-search search-icon"></i>
+                                    {{-- <input type="text" class="form-control search-input" placeholder="Search">
+                                    <i class="fas fa-search search-icon"></i> --}}
+
+                                    <form action="{{ route('f.blog.index') }}" method="GET" class="mb-3">
+                                        <div class="form-group">
+                                            <input type="text" name="search" class="form-control"
+                                                placeholder="Search blog title..." value="{{ request('search') }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn search-icon"><i class="fas fa-search search-icon"></i></button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +78,7 @@
                                     <div class="card_link d-flex gap-4 align-content-center mt-3 mb-3">
                                         <div class="left_link d-flex text-center">
                                             <i class="fa-solid fa-user"></i>
-                                            <h5 class="ml-2">{{ $blog->creator ?? 'N/A' }}</h5>
+                                            <h5 class="ml-2">{{ $blog->creator()->title ?? 'N/A' }}</h5>
                                         </div>
                                         <div class="right_link d-flex text-center">
                                             <i class="fa-solid fa-folder-open"></i>
@@ -101,9 +111,15 @@
                                 <h6 class="text-start">{{ __('Search here') }}</h6>
                                 <hr class="blog_hr">
                                 <div class="input-container">
-                                    <input type="text" class="form-control search-input"
-                                        placeholder="{{ __('Search') }}">
-                                    <i class="fas fa-search search-icon"></i>
+                                    <form action="{{ route('f.blog.index') }}" method="GET" class="mb-3">
+                                        <div class="form-group">
+                                            <input type="text" name="search" class="form-control"
+                                                placeholder="Search blog title..." value="{{ request('search') }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn search-icon"><i class="fas fa-search search-icon"></i></button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -139,8 +155,6 @@
                                                     class="fa-regular fa-calendar mr-1"></i>{{ $blog->created_at->format('d M, Y') }}
                                             </span>
                                         </div>
-                                        {{-- <a href="#"
-                                        class="new_blog_text fw-bold">{{ __('Will the Transport Sector of Smart Bangladesh Remain UnsMart?') }}</a> --}}
                                         <a href="{{ route('f.blog.inner_blog', $blog->slug) }}" class="new_blog_text fw-bold"
                                             style="color: #141F39">{{ Str::limit($blog->title, 70, '...') }}</a>
                                     </div>

@@ -214,14 +214,25 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <form class="d-flex justify-content-center justify-content-md-start align-items-center" role="search"
+                    {{-- <form class="d-flex justify-content-center justify-content-md-start align-items-center" role="search"
                         action="{{ route('f.home.driverProfileSearch') }}" method="GET">
                         <input class="form-control me-2 search" type="search" name="query"
                             placeholder="{{ __('Vehicle or driver number') }}" aria-label="Search" required>
                         <button type="submit" class="btn btn-outline-success" style="white-space: nowrap;">
                             {{ __('Click') }}
                         </button>
+                    </form> --}}
+                    <form
+                        class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center"
+                        role="search" action="{{ route('f.home.driverProfileSearch') }}" method="GET">
+                        <input class="form-control me-md-2 mb-2 mb-md-0 search" type="search" name="query"
+                            placeholder="{{ __('Vehicle or driver number') }}" aria-label="Search" required>
+
+                        <button type="submit" class="btn btn-outline-success" style="white-space: nowrap;">
+                            {{ __('Click') }}
+                        </button>
                     </form>
+
                 </div>
             </div>
         </div>
