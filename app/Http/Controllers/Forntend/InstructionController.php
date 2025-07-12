@@ -13,4 +13,5 @@ class InstructionController extends Controller
         $data['faqs'] = Faq::latest()->get();
         return view('forntend.instructions.idex', $data);
     }
+    
 }
