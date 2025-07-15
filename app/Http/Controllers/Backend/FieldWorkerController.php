@@ -30,21 +30,23 @@ class FieldWorkerController extends Controller
     {
         $save = new FieldWorker();
 
-        $save->name = $request->name;
+        $save->title = $request->title;
         $save->phone = $request->phone;
         $save->email = $request->email;
-        $save->nid = $request->nid;
+        $save->nid = $request->nid; 
         $save->father_name = $request->father_name;
         $save->mother_name = $request->mother_name;
         $save->address = $request->address;
         $save->status = $request->status ?? 0;
-        $save->password = $request->password;
+        // $save->password = $request->password;
+        $save->password = Hash::make($request->password);
+
 
 
 
         if($request->hasFile('image')){
             $image = $request->file('image');
-            $filename = $request->name . time(). '.' .$image->getClientOriginalExtension();
+            $filename = $request->title . time(). '.' .$image->getClientOriginalExtension();
             $path = $image->storeAs("worker/", $filename, 'public');
             $save->image = $path;
         }

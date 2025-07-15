@@ -21,10 +21,10 @@
                                 <form action="{{ route('worker.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="name">{{ __('Name') }} <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" id="name" placeholder="Enter Field Worker Name" name="name" value="{{ old('name') }}">
-                                        @if($errors->has('name'))
-                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        <label for="title">{{ __('Name') }} <span class="text-danger">*</span></label>
+                                        <input type="name" class="form-control" id="title" placeholder="Enter Field Worker Name" name="title" value="{{ old('title') }}">
+                                        @if($errors->has('title'))
+                                            <div class="text-danger">{{ $errors->first('title') }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
